@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+	PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+	
+	<mappers>
+		<mapper resource="META-INF/mybatis-mapper.xml" />
+		<mapper resource="META-INF/accountlist-mapper.xml" />
+		<mapper resource="META-INF/csmanagement-mapper.xml" />
+		<mapper resource="META-INF/invest-mapper.xml" />
+		<mapper resource="META-INF/join-mapper.xml" />
+		<mapper resource="META-INF/loan-mapper.xml" />
+		<mapper resource="META-INF/login-mapper.xml" />
+		<mapper resource="META-INF/main-mapper.xml" />
+		<mapper resource="META-INF/mybatis-mapper.xml" />
+		<mapper resource="META-INF/mypage-mapper.xml" />
+		<mapper resource="META-INF/projectmanagement-mapper.xml" />
+		<mapper resource="META-INF/support-mapper.xml" />
+		<mapper resource="META-INF/usermanagement-mapper.xml" />
+	</mappers>
+
+</configuration>
