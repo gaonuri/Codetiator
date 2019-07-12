@@ -18,7 +18,7 @@ public class ProjectVO {
 	private String en_date;				// 등록날짜
 	private String rate;				// 금리
 	
-	private String loan_num;				// (참조)대출번호
+	private String loan_num;			// (참조)대출번호
 	
 	public ProjectVO() {}	//constructor
 	public ProjectVO(String project_num, String img, String project_name, String current_price, String price, String deadline, String ach_rate, String customer, String type, String genre, String yield, String grade, String more_information, String en_date, String rate, String loan_num) {
