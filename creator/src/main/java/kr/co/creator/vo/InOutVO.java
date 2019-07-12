@@ -2,7 +2,7 @@ package kr.co.creator.vo;
 
 // 투자자입출금
 public class InOutVO {
-	private String in_out_num;			// 입출금번호
+	private String in_out_num;		// 입출금번호
 	private String input_history;	// 입금내역
 	private String output_history;	// 출금내역
 	

@@ -2,7 +2,7 @@ package kr.co.creator.vo;
 
 // 1:1문의
 public class NoteVO {
-	private String user_num;				// 문의번호
+	private String user_num;			// 문의번호
 	private String email;				// 타입(보낸문의받은문의)
 	private String user_password;		// 수신일
 	private String user_name;			// 수신확인여부

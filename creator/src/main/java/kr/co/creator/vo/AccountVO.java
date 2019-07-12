@@ -8,8 +8,8 @@ public class AccountVO {
 	private String bank_num;		// 계좌번호
 	private String deposit;			// 예치금
 	
-	private String user_num;			// (참조)유저번호
-	private String busi_num;			// (참조)법인 유저 순서
+	private String user_num;		// (참조)유저번호
+	private String busi_num;		// (참조)법인 유저 순서
 	
 	public AccountVO() {}	//constructor
 	public AccountVO(String account_num, String account_name, String bank_name, String bank_num, String deposit, String user_num, String busi_num) {

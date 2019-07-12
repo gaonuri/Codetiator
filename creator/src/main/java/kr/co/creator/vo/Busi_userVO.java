@@ -2,7 +2,7 @@ package kr.co.creator.vo;
 
 // 법인유저
 public class Busi_userVO {
-	private String busi_num;					// 법인 유저번호
+	private String busi_num;				// 법인 유저번호
 	private String busi_resi_num;			// 사업자 등록번호
 	private String busi_password;			// 사업자 비밀번호
 	private String com_name;				// 업체명

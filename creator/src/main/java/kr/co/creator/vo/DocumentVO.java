@@ -2,7 +2,7 @@ package kr.co.creator.vo;
 
 // 서류
 public class DocumentVO {
-	private String document_num;		// 서류번호
+	private String document_num;	// 서류번호
 	private String busi_regi;		// 사업자등록증
 	private String jumin_chobon;	// 주민등록초본
 	private String cer_ingam;		// 인감증명서
@@ -15,7 +15,7 @@ public class DocumentVO {
 	private String copy_bankbook;	// 통장사본
 	private String chk_select;		// 개인정보 선택적이용확인
 	
-	private String loan_num;			// (참조)대출번호
+	private String loan_num;		// (참조)대출번호
 	
 	public DocumentVO() {}	//constructor
 	public DocumentVO(String document_num, String busi_regi, String jumin_chobon, String cer_ingam, String cer_budong, String cer_dong, String cer_income, String cer_vat, String cer_other, String copy_id, String copy_bankbook, String chk_select, String loan_num) {

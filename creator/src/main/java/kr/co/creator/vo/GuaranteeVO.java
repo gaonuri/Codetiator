@@ -2,7 +2,7 @@ package kr.co.creator.vo;
 
 // 게런티
 public class GuaranteeVO {
-	private String guarantee_num;				// 담보번호
+	private String guarantee_num;			// 담보번호
 	private String guarantee_comple_year;	// 담보유형
 	private String guarantee_name;			// 담보이름
 	private String connoisseur;				// 감정가
@@ -14,7 +14,7 @@ public class GuaranteeVO {
 	private String quote;					// 시세
 	private String code;					// 담보분류
 	
-	private String loan_num;					// (참조)대출 번호
+	private String loan_num;				// (참조)대출 번호
 	
 	public GuaranteeVO() {}	//constructor
 	public GuaranteeVO(String guarantee_num, String guarantee_comple_year, String guarantee_name, String connoisseur, String area, String map, String location, String scale, String comple_year, String quote, String code, String grade, String more_information, String en_date, String rate, String loan_num) {

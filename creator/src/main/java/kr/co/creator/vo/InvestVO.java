@@ -2,12 +2,12 @@ package kr.co.creator.vo;
 
 // 투자
 public class InvestVO {
-	private String invest_num;			// 투자번호
+	private String invest_num;		// 투자번호
 	private String invest_price;	// 투자금액
 	private String invest_date;		// 투자날짜
 	
-	private String user_num;			// (참조)유저번호
-	private String busi_num;			// (참조)법인 유저 순서
+	private String user_num;		// (참조)유저번호
+	private String busi_num;		// (참조)법인 유저 순서
 	private String project_num;		// (참조)유저번호
 	
 	public InvestVO() {}	//constructor

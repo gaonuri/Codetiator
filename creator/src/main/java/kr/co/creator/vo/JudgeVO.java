@@ -2,10 +2,10 @@ package kr.co.creator.vo;
 
 // 상환내역
 public class JudgeVO {
-	private String judge_num;			// 심사번호
+	private String judge_num;		// 심사번호
 	private String judge_success;	// 투자자 상환내역
 	
-	private String loan_num;			// (참조)대출법인
+	private String loan_num;		// (참조)대출법인
 	
 	public JudgeVO() {}	//constructor
 	public JudgeVO(String judge_num, String judge_success, String loan_num) {
