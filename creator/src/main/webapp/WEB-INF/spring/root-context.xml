@@ -11,9 +11,9 @@
 <!-- 		<property name="username" value="scott" /> -->
 <!-- 		<property name="password" value="tiger" /> -->
 		<property name="driverClassName" value="com.mysql.cj.jdbc.Driver" />
-		<property name="url" value="jdbc:mysql://192.168.199.131:3306/project?serverTimezone=UTC" />
-		<property name="username" value="root" />
-		<property name="password" value="1111" />
+		<property name="url" value="jdbc:mysql://umj7-006.cafe24.com:3306/creator?serverTimezone=UTC" />
+		<property name="username" value="whitesky1203" />
+		<property name="password" value="zhdlxm12!" />
 		<property name="initialSize" value="10" />
 		<property name="maxActive" value="100" />
 		<property name="maxIdle" value="30" />
