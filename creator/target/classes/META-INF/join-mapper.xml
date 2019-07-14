@@ -16,5 +16,21 @@
             SELECT LAST_INSERT_ID()
         </selectKey>
 	</insert>
+	
+		<insert id="joinBusi" parameterType="kr.co.creator.vo.Busi_userVO">
+		insert into busi_user_list (busi_num, busi_resi_num, busi_password, com_name, presen_name, cor_num,
+									homepage, address, pre_phone, fax_num, manager_name, manager_birth, 
+									manager_email, office_num, manager_phone, manager_fax, manager_task, 
+									manager_rank, manager_depart, terms_of_service, privacy_policy_agree, join_date)
+		values(#{busi_num}, #{busi_resi_num}, #{busi_password}, #{com_name}, #{presen_name}, #{cor_num}, 
+				#{homepage}, #{address}, #{pre_phone}, #{fax_num}, #{manager_name}, #{manager_birth}, 
+				#{manager_email}, #{office_num}, #{manager_phone}, #{manager_fax}, #{manager_task}, 
+				#{manager_rank}, #{manager_depart}, #{terms_of_service}, #{privacy_policy_agree}, now())
+		
+        <selectKey resultType="String" keyProperty="busi_num" order="AFTER">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+	</insert>
+	
 
 </mapper>

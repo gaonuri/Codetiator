@@ -61,6 +61,17 @@
 		});//click
 	});//ready
 </script>  
+<script>
+	$(document).ready(function(){
+		$("#address1").click(function(){
+		    new daum.Postcode({
+		        oncomplete: function(data) {
+	 	        	$("#address1").val(data.address);
+		        }//oncomplete
+		    }).open();
+		});//click
+	});//ready
+</script>  
 <script type="text/javascript">
 
 var chkemail = '';
@@ -177,6 +188,7 @@ $(document).ready(function(){
 
 	$(document).ready(function(){
 		$("#join_btn").click(function(){
+// 			기본정보
 			if($.trim($("#user_name").val()) == ''){
 				alert("이름은 필수 입력 사항입니다.");
 				$("#user_name").focus();
@@ -233,7 +245,6 @@ $(document).ready(function(){
 				$("#agree2").focus();
 				return;
 			}
-			
 // 			alert("aaa");
 			$.post(
 					"./joinuser",
@@ -246,7 +257,7 @@ $(document).ready(function(){
 						addr:$("#addr").val(),
 						addr:$("#addr").val(),
 						join_date:$("#join_date").val()
-					},
+					},					
 					function(data,status){
 // 						alert("bbb");
 						if(status == "success"){
@@ -265,9 +276,190 @@ $(document).ready(function(){
 			);//post
 		});//click
 	});//ready
+	
+// 	<!--  ======================================================= 일반회원-->
+	
+	$(document).ready(function(){
+		$("#join_btn1").click(function(){
+//			사업자정보
+		if($.trim($("#busi_resi_num").val()) == ''){
+			alert("사업장 등록 번호는 필수 입력 사항입니다.");
+			$("#busi_resi_num").focus();
+			return;
+		}
+		if($.trim($("#busi_resi_num_re").val()) == ''){
+			alert("사업장 등록 번호를 한번 더  입력해 주세요.");
+			$("#busi_resi_num_re").focus();
+			return;
+		}
+		if($.trim($("#busi_password").val()) == ''){
+			alert("비밀번호는 필수 입력 사항입니다.");
+			$("#busi_password").focus();
+			return;
+		}
+		if($("#busi_password").val() != $("#busi_password_re").val()){
+			alert("비밀번호를 똑같이 입력해 주세요.");
+			$("#busi_password").focus();
+			return;
+		}
+		if($.trim($("#busi_regi").val()) == ''){
+			alert("사업자등록증 사본은 필수 입력 사항입니다.");
+			$("#busi_regi").focus();
+			return;
+		}
+		
+//			기업정보
+		if($.trim($("#com_name").val()) == ''){
+			alert("업체명은 필수 입력 사항입니다.");
+			$("#com_name").focus();
+			return;
+		}
+		if($.trim($("#presen_name").val()) == ''){
+			alert("대표자명은 필수 입력 사항입니다.");
+			$("#presen_name").focus();
+			return;
+		}
+		if($.trim($("#cor_num").val()) == ''){
+			alert("법인번호는 필수 입력 사항입니다.");
+			$("#cor_num").focus();
+			return;
+		}
+		
+//			본사정보
+		if($.trim($("#address").val()) == ''){
+			alert("주소는 필수 입력 사항입니다.");
+			$("#address").focus();
+			return;
+		}
+		if($.trim($("#addressdetail").val()) == ''){
+			alert("상세주소를 입력해주세요.");
+			$("#addressdetail").focus();
+			return;
+		}	
+		
+//			사업장정보
+		if($.trim($("#address1").val()) == ''){
+			alert("주소는 필수 입력 사항입니다.");
+			$("#address1").focus();
+			return;
+		}
+		if($.trim($("#addressdetail").val()) == ''){
+			alert("상세주소를 입력해주세요.");
+			$("#addressdetail").focus();
+			return;
+		}
+		
+//			담당자정보
+		if($.trim($("#Manager_name").val()) == ''){
+			alert("담당자명은 필수 입력 사항입니다.");
+			$("#Manager_name").focus();
+			return;
+		}	
+		if($.trim($("#Manager_birth").val()) == ''){
+			alert("담당자 생년월일은 필수 입력 사항입니다.");
+			$("#Manager_birth").focus();
+			return;
+		}	
+		if($.trim($("#Manager_email").val()) == ''){
+			alert("담당자 이메일은 필수 입력 사항입니다.");
+			$("#Manager_email").focus();
+			return;
+		}
+		if($("#Manager_email").val().indexOf('@') == '-1'
+			|| $("#Manager_email").val().lastIndexOf('.') == '-1'){
+			alert("이메일 형식이 잘못되었습니다.");
+			$("#Manager_email").focus();
+			return;
+		}		
+		if($.trim($("#Office_num").val()) == ''){
+			alert("사무실번호는 필수 입력 사항입니다.");
+			$("#Office_num").focus();
+			return;
+		}	
+		if($.trim($("#Manager_phone").val()) == ''){
+			alert("휴대전화 번호는 필수 입력 사항입니다.");
+			$("#Manager_phone").focus();
+			return;
+		}	
+		if($.trim($("#Manager_fax_num").val()) == ''){
+			alert("팩스번호는 필수 입력 사항입니다.");
+			$("#Manager_fax_num").focus();
+			return;
+		}	
+		if($.trim($("#Manager_task").val()) == ''){
+			alert("담당업무는 필수 입력 사항입니다.");
+			$("#Manager_task").focus();
+			return;
+		}	
+		if($.trim($("#Manager_rank").val()) == ''){
+			alert("직급은 필수 입력 사항입니다.");
+			$("#Manager_rank").focus();
+			return;
+		}	
+		if($.trim($("#Manager_depart").val()) == ''){
+			alert("근무부서는 필수 입력 사항입니다.");
+			$("#Manager_depart").focus();
+			return;
+		}	
+		
+//		이용약관
+		if($("#agree1").val() == 0){
+			alert("이용 약관 동의 후 회원 가입 바랍니다.");
+			$("#agree1").focus();
+			return;
+		}
+		if($("#agree2").val() == 0){
+			alert("개인 정보 처리 방침 동의 후 회원 가입 바랍니다.");
+			$("#agree2").focus();
+			return;
+		}
+		
+		$.post(
+				"./joinbusi",
+				{
+					busi_resi_num:$("#busi_resi_num").val(),
+					busi_password:$("#busi_password").val(),
+					com_name:$("#com_name").val(),
+					presen_name:$("#presen_name").val(),
+					cor_num:$("#cor_num").val(),
+					homepage:$("#homepage").val(),
+					address:$("#address").val(),
+					Fax_num:$("#Fax_num").val(),
+					Manager_name:$("#Manager_name").val(),
+					Manager_birth:$("#Manager_birth").val(),
+					Manager_email:$("#Manager_email").val(),
+					Office_num:$("#Office_num").val(),
+					Manager_phone:$("#Manager_phone").val(),
+					Manager_fax_num:$("#Manager_fax_num").val(),
+					Manager_task:$("#Manager_task").val(),
+					Manager_depart:$("#Manager_depart").val(),
+					Terms_of_service:$("#Terms_of_service").val(),
+					privacy_policy_agree:$("#privacy_policy_agree").val(),
+					join_date:$("#join_date").val()
+				},				
+
+				function(data,status){
+//						alert("bbb");
+					if(status == "success"){
+						if(data == -1) {
+							alert("시스템 관리자에게 문의 바랍니다.");
+						} else if(data > 0) {
+							alert("회원 가입 되었습니다.");
+							location.href="/creator/main";
+						} else {
+							alert("잠시 후, 다시 시도해 주세요.");
+						}
+					} else {
+						alert("시스템 관리자에게 문의 바랍니다.");
+					}
+				}//function
+		);//post
+	});//click
+});//ready
+// 		<!--  ======================================================= 법인회원-->	
+		
 </script>
 
-<!--  ======================================================= -->
 
 </head>
 
@@ -578,13 +770,13 @@ $(document).ready(function(){
 					</div>						
 					<div class="form-group">
 						<div class="col-sm-10">
-							<input type="text" class="form-control" id="Pre_phone" placeholder="*대표전화번호">
+							<input type="text" class="form-control" id="Pre_phone" placeholder="대표전화번호">
 							<span class="mt-2 d-block">'-'을 제외한 숫자만 입력해 주세요.</span>
 						</div>				
 					</div>
 					<div class="form-group">
 						<div class="col-sm-10">
-							<input type="text" class="form-control" id="Fax_num" placeholder="*팩스번호">
+							<input type="text" class="form-control" id="Fax_num" placeholder="팩스번호">
 							<span class="mt-2 d-block">'-'을 제외한 숫자만 입력해 주세요.</span>
 						</div>				
 					</div>	
@@ -602,13 +794,13 @@ $(document).ready(function(){
 					</div>						
 					<div class="form-group">
 						<div class="col-sm-10">
-							<input type="text" class="form-control" id="Pre_phone" placeholder="*대표전화번호">
+							<input type="text" class="form-control" id="Pre_phone" placeholder="대표전화번호">
 							<span class="mt-2 d-block">'-'을 제외한 숫자만 입력해 주세요.</span>
 						</div>				
 					</div>
 					<div class="form-group">
 						<div class="col-sm-10">
-							<input type="text" class="form-control" id="Fax_num" placeholder="*팩스번호">
+							<input type="text" class="form-control" id="Fax_num" placeholder="팩스번호">
 							<span class="mt-2 d-block">'-'을 제외한 숫자만 입력해 주세요.</span>
 						</div>				
 					</div>	
@@ -683,7 +875,7 @@ $(document).ready(function(){
 						</div>
 					</div>					
 					<div class="col-sm-10 col-lg-offset-3 ">
-						<button type="submit" class="btn btn-theme" id="join_btn">회원가입</button>
+						<button type="submit" class="btn btn-theme" id="join_btn1">회원가입</button>
 					</div>
 				</div>
 				</div>
@@ -832,6 +1024,17 @@ $(document).ready(function(){
       console.log('nav ' + nav + ' to: ' + to.month + '/' + to.year);
     }
 	</script>
+	
 </body>
 
 </html>
+
+
+
+
+
+
+
+
+
+

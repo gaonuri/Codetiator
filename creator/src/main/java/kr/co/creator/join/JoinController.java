@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import kr.co.creator.vo.Busi_userVO;
 import kr.co.creator.vo.UserVO;
 
 
@@ -42,6 +43,16 @@ public class JoinController {
 		out.flush();
 		out.close();
 	}//joinUser
+	
+	@RequestMapping(value="/joinbusi", method=RequestMethod.POST)
+	public void joinBusi(PrintWriter out, Busi_userVO vo) {
+		logger.info("=== joinBusi ===");
+		int successCnt = 0;
+		successCnt = joinService.joinBusi(vo);
+		out.print(successCnt);
+		out.flush();
+		out.close();
+	}//joinBusi
 	
 	
 	@RequestMapping(value = "/join", method = RequestMethod.GET)

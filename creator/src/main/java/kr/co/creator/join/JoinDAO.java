@@ -4,6 +4,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import kr.co.creator.vo.Busi_userVO;
 import kr.co.creator.vo.UserVO;
 
 @Repository
@@ -23,5 +24,11 @@ public class JoinDAO {
 		successCnt = sqlSession.insert("JoinMapper.joinUser", vo);
 		return successCnt;
 	}//joinUser
+	
+	public int joinBusi(Busi_userVO vo) {
+		int successCnt = 0;
+		successCnt = sqlSession.insert("JoinMapper.joinBusi", vo);
+		return successCnt;
+	}//joinBusi
 
 }
