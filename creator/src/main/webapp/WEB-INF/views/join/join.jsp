@@ -4,6 +4,10 @@
 <html>
 
 <head>
+
+<script src="${pageContext.request.contextPath}/resources/jquery/jquery-3.4.1.js"></script>
+<script src="${pageContext.request.contextPath}/resources/ckeditor/ckeditor.js"></script>
+
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="description" content="">
@@ -34,8 +38,8 @@
 	======================================================= -->
 
 
-	<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
-	<script>
+<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+<script>
 	$(document).ready(function(){
 		$("#addr").click(function(){
 		    new daum.Postcode({
@@ -45,26 +49,45 @@
 		    }).open();
 		});//click
 	});//ready
-	</script>
-  
+</script>
+<script>
+	$(document).ready(function(){
+		$("#address").click(function(){
+		    new daum.Postcode({
+		        oncomplete: function(data) {
+	 	        	$("#address").val(data.address);
+		        }//oncomplete
+		    }).open();
+		});//click
+	});//ready
+</script>  
 <script type="text/javascript">
 
 var chkemail = '';
-var rdoVal = 0;
 
 //id check
 $(document).ready(function(){
-		$.post("./joinemailchk",
-				{email:$("#email").val()},
+	$("#email").blur(function(){
+		if($.trim($("#email").val()) == ''){
+			alert("사용 가능한 이메일 입니다");
+			$("#email").focus();
+			return;
+		}
+		$.post(
+				"./joinemailchk",
+				{
+					email:$("#email").val()
+				},
 				function(data,status){
 					if(data == 0){
 						chkemail = $("#email").val();
 					}else{
 						alert("이미 등록된 이메일 입니다.");
 					}
-				}
-		);
-	});//click
+				}//function
+		);//post
+	});//ready
+});//blur
 
 //radio & checkbox & eng
 $(document).ready(function(){
@@ -76,10 +99,23 @@ $(document).ready(function(){
 		}
 	});//click
 
-	$(".onlyEng").change(function(){
+	$(".onlyKor").change(function(){
 		//alert($(this).val());
-		var engStd = /^[a-zA-Z@.]+$/;
-		if($(this).val().match(engStd)){
+		var korStd = /^[가-힣]{1,9}$/;
+		if($(this).val().match(korStd)){
+			//alert("ok");
+		}else{
+			alert("정확한 이름을 입력해 주세요.");
+			//$(this).val("");
+			$(this).focus();
+			return;
+		}
+	});//change
+	
+	$(".onlyEmail").change(function(){
+		//alert($(this).val());
+		var emailStd = /^[a-zA-Z@.]{1,20}$/;
+		if($(this).val().match(emailStd)){
 			//alert("ok");
 		}else{
 			alert("영문만 입력 가능한 필드 입니다.");
@@ -89,14 +125,27 @@ $(document).ready(function(){
 		}
 	});//change
 	
-	$(".onlyCal").change(function(){
+	$(".onlyJumin").change(function(){
 		//alert($(this).val());
-		var calStd = /^[0-9]+$/;
-		if($(this).val().match(calStd)){
+		var juminStd = /^[0-9]{8}$/;
+		if($(this).val().match(juminStd)){
 			//alert("ok");
 		}else{
-			alert("숫자만 입력 가능한 필드 입니다.");
-			$(this).val("");
+			alert("YYYYMMDD형식으로 작성해 주세요.");
+			//$(this).val("");
+			$(this).focus();
+			return;
+		}
+	});//change
+	
+	$(".onlyPhone").change(function(){
+		//alert($(this).val());
+		var phoneStd = /^[0-9]{11}$/;
+		if($(this).val().match(phoneStd)){
+			//alert("ok");
+		}else{
+			alert("핸드폰번호 형식에 맞게 작성해 주세요.");
+			//$(this).val("");
 			$(this).focus();
 			return;
 		}
@@ -144,11 +193,6 @@ $(document).ready(function(){
 				$("#email").focus();
 				return;
 			}
-			if($("#email").val() != chkemail){
-				alert("이메일을 다시 확인해 주세요.");
-				$("#email").focus();
-				return;
-			}
 			if($.trim($("#user_password").val()) == ''){
 				alert("비밀번호는 필수 입력 사항입니다.");
 				$("#user_password").focus();
@@ -174,6 +218,11 @@ $(document).ready(function(){
 				$("#addr").focus();
 				return;
 			}
+			if($.trim($("#addrdetail").val()) == ''){
+				alert("상세주소를 입력해주세요.");
+				$("#addrdetail").focus();
+				return;
+			}			
 			if($("#agree1").val() == 0){
 				alert("이용 약관 동의 후 회원 가입 바랍니다.");
 				$("#agree1").focus();
@@ -194,6 +243,7 @@ $(document).ready(function(){
 						user_password:$("#user_password").val(),
 						jumin:$("#jumin").val(),
 						phone:$("#phone").val(),
+						addr:$("#addr").val(),
 						addr:$("#addr").val(),
 						join_date:$("#join_date").val()
 					},
@@ -216,9 +266,14 @@ $(document).ready(function(){
 		});//click
 	});//ready
 </script>
+
+<!--  ======================================================= -->
+
 </head>
 
 <body>
+    <!-- /MAIN CONTENT -->
+    <!--main content end-->
 	<section id="container">
 	    <!-- **********************************************************************************************************************************************************
 	        TOP BAR CONTENT & NOTIFICATIONS
@@ -346,220 +401,305 @@ $(document).ready(function(){
 	        ***********************************************************************************************************************************************************-->
 	
 	<!--main content start-->
-	<section id="main-content">
-		<section class="wrapper site-min-height">
-			
-<!-- 	<div id="headerlogo"> -->
-<!-- 				</div> -->
-
+	
+	
+<section id="main-content">
+<section class="wrapper site-min-height">
 <div class="container">
-	<div class="section-body">
-		<div class="wrap">
-			<div class="logo text-center">
-				<img src="${pageContext.request.contextPath}/resources/img/test_logo.jpg" alt="login_img">
-			</div>
-		</div>
+	<div class="col-md-offset-3">
+	<img src="${pageContext.request.contextPath}/resources/img/test_logo.jpg" alt="login_img">
 	</div>
 </div>
 				
-				
-<!-- =====================================================================logo -->	
-
-<div class="row">
-	<div class="col-lg-4">
-		<div class="card card-default">
-				<div class="card-body">
-				<ul class="nav nav-pills nav-justified nav-style-fill" id="myTab" role="tablist">
-					<li class="nav-item">
-						<a class="nav-link active" id="home3-tab" data-toggle="tab" href="#home3" role="tab" aria-controls="home3" aria-selected="true">일반회원</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" id="profile3-tab" data-toggle="tab" href="#profile3" role="tab" aria-controls="profile3" aria-selected="false">법인회원</a>
-					</li>
-				</ul>
-				
-				<div class="tab-content" id="myTabContent4">
-					<div class="tab-pane pt-3 fade show active" id="home3" role="tabpanel" aria-labelledby="home3-tab">
-						<div class="form-group">
-							<label for="exampleFormControlInput1">기본정보</label>
-							<input type="text" class="form-control" id="user_name" placeholder="*이름">
-						</div>
-						<div class="form-group">
-							<input type="email" class="form-control onlyEng" id="email" placeholder="*이메일">
-						</div>
-						<div class="form-group">
-							<input type="password" class="form-control onlyPass" id="user_password" placeholder="*비밀번호">
-							<span class="mt-2 d-block">영문,숫자,특수문자(~,!,# 등) 포함 8~20자</span>
-						</div>	
-						<div class="form-group">
-							<input type="password" class="form-control" id="user_password_re" placeholder="*비밀번호 확인">
-							<span class="mt-2 d-block">비밀번호를 환번 더 입력해 주세요.</span>
-						</div>	
-						<div class="form-group">
-							<input type="text" class="form-control onlyCal" id="jumin" placeholder="*생년월일">
-							<span class="mt-2 d-block">YYYYMMDD형식으로 입력해 주세요.</span>
-						</div>	
-						<div class="form-group">
-							<input type="text" class="form-control onlyCal" id="phone" placeholder="*휴대폰 번호">
-							<span class="mt-2 d-block">'-'을 제외한 숫자만 입력해 주세요.</span>
-						</div>		
-						<div class="form-group">
-							<input type="text" class="form-control" id="addr" readonly="readonly" placeholder="*주소">
-						</div>	
-						<div class="form-group row">
-							<div class="col-12 col-md-9">
-								<input type="checkbox" name="checkbox1" />
-								<label class="control control-checkbox">이메일 수신 여부[선택]	</label>
-							</div>
-						</div>		
-						<div class="form-group row">
-							<div class="col-12 col-md-9">
-								<input type="checkbox" name="checkbox1" id="agree1" value="0"/>
-								<label class="control-inline control-checkbox"><strong>이용약관 동의[필수]</strong></label>
-							</div>
-						</div>	
-						<div class="form-group row">
-							<div class="col-12 col-md-9">
-								<input type="checkbox" name="checkbox1" id="agree2" value="0" />
-								<label class="control-inline control-checkbox"><strong>개인정보 처리방침 동의[필수]</strong></label>
-							</div>
-						</div>					
-						<div class="form-footer pt-4 pt-5 mt-4 border-top">
-							<button type="submit" class="btn btn-primary btn-default" id="join_btn">회원가입</button>
+<!-- =====================================================================logo -->
+	
+<div class="col-lg-4 mt col-md-offset-3">
+<div class="row content-panel">
+	<div class="panel-heading">
+		<ul class="nav nav-tabs nav-justified">
+			<li class="active">
+				<a data-toggle="tab" href="#usertab">일반회원</a>
+			</li>
+			<li>
+				<a data-toggle="tab" href="#busitab">법인회원</a>
+			</li>
+		</ul>
+	</div>
+    <!-- /panel-heading -->
+    
+	<div class="panel-body">
+	<div class="tab-content">
+		<div id="usertab" class="tab-pane active">
+	    	<form role="form" class="form-horizontal">
+		   		<div class="row">
+		   		<div class="col-sm-10 col-md-offset-1"><h4>기본정보</h4></div>
+		    	<div class="col-md col-md-offset-2  ">
+					<div class="form-group">
+			           	<div class="col-sm-10">
+							<input type="text" class="form-control onlyKor" id="user_name" placeholder="*이름">
+			            </div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-10">
+							<input type="email" class="form-control onlyEmail" id="email" placeholder="*이메일">
 						</div>
 					</div>
-					
-<!-- =====================================================================일반회원 -->	
-					
-					<div class="tab-pane pt-3 fade" id="profile3" role="tabpanel" aria-labelledby="profile3-tab">
-						<div class="form-group">
-							<label for="exampleFormControlInput1">사업자정보</label>
-							<input type="text" class="form-control" id="exampleFormControlInput1" placeholder="*사업자등록번호">
-							<span class="mt-2 d-block">'-'을 제외한 숫자만 입력해 주세요.</span>
+					<div class="form-group">
+						<div class="col-sm-10">
+							<input type="password" class="form-control onlyPass" id="user_password" placeholder="*비밀번호">
+							<span class="help-block">영문,숫자,특수문자(~,!,# 등) 포함 8~20자</span>
 						</div>
-						<div class="form-group">
-							<input type="text" class="form-control" id="exampleFormControlInput1" placeholder="*사업자등록번호 확인">
-							<span class="mt-2 d-block">사업자등록번호를 한번 더 입력해 주세요.</span>
-						</div>
-						<div class="form-group">
-							<input type="password" class="form-control" id="exampleFormControlPassword" placeholder="*비밀번호">
-							<span class="mt-2 d-block">영문,숫자,특수문자(~,!,# 등) 포함 8~20자</span>
-						</div>	
-						<div class="form-group">
-							<input type="password" class="form-control" id="exampleFormControlPassword" placeholder="*비밀번호 확인">
+					</div>	
+					<div class="form-group">
+						<div class="col-sm-10">
+							<input type="password" class="form-control onlyPass" id="user_password_re" placeholder="*비밀번호 확인">
 							<span class="mt-2 d-block">비밀번호를 환번 더 입력해 주세요.</span>
-						</div>	
-						<div class="form-group">
-							<label for="exampleFormControlFile1">*사업자등록증 사본 등록[필수]</label>
-							<input type="file" class="form-control-file" id="exampleFormControlFile1">
-						</div>			
-<br>
-						<div class="form-group">w
-							<label for="exampleFormControlInput1">기업정보</label>
-							<input type="text" class="form-control" id="exampleFormControlInput1" placeholder="*업체명">
 						</div>
-						<div class="form-group">
-							<input type="text" class="form-control" id="exampleFormControlInput1" placeholder="*대표자명">
-						</div>
-						<div class="form-group">
-							<input type="text" class="form-control" id="exampleFormControlInput1" placeholder="*법인번호">
-							<span class="mt-2 d-block">'-'을 제외한 숫자만 입력해 주세요.</span>
-						</div>	
-						<div class="form-group">
-							<input type="text" class="form-control" id="exampleFormControlInput1" placeholder="홈페이지URL">
-						</div>	
-						
-						<div class="form-group">
-							<label for="exampleFormControlInput1">본사정보</label>
-							<input type="text" class="form-control" id="exampleFormControlInput1" placeholder="*주소">
-						</div>
-						<div class="form-group">
-							<input type="text" class="form-control" id="exampleFormControlInput1" placeholder="*대표전화번호">
-							<span class="mt-2 d-block">'-'을 제외한 숫자만 입력해 주세요.</span>
-						</div>
-						<div class="form-group">
-							<input type="text" class="form-control" id="exampleFormControlInput1" placeholder="*팩스번호">
-							<span class="mt-2 d-block">'-'을 제외한 숫자만 입력해 주세요.</span>
-						</div>	
-						
-						<div class="form-group">
-							<label for="exampleFormControlInput1">사업장정보</label>
-							<input type="text" class="form-control" id="exampleFormControlInput1" placeholder="*주소">
-						</div>
-						<div class="form-group">
-							<input type="text" class="form-control" id="exampleFormControlInput1" placeholder="*대표전화번호">
-							<span class="mt-2 d-block">'-'을 제외한 숫자만 입력해 주세요.</span>
-						</div>
-						<div class="form-group">
-							<input type="text" class="form-control" id="exampleFormControlInput1" placeholder="*팩스번호">
-							<span class="mt-2 d-block">'-'을 제외한 숫자만 입력해 주세요.</span>
-						</div>	
-						
-						<div class="form-group">
-							<label for="exampleFormControlInput1">담당자정보</label>
-							<input type="text" class="form-control" id="exampleFormControlInput1" placeholder="*담당자명">
-						</div>
-						<div class="form-group">
-							<input type="text" class="form-control" id="exampleFormControlInput1" placeholder="*담당자 생년월일">
-							<span class="mt-2 d-block">YYYYMMDD와 같은 형식으로 입력해 주세요.</span>
-						</div>
-						<div class="form-group">
-							<input type="email" class="form-control" id="exampleFormControlInput1" placeholder="*이메일">
+					</div>	
+					<div class="form-group">
+						<div class="col-sm-10">
+							<input type="text" class="form-control onlyJumin" id="jumin" placeholder="*생년월일">
+							<span class="mt-2 d-block">YYYYMMDD형식으로 입력해 주세요.</span>
 						</div>						
-						<div class="form-group">
+					</div>	
+					<div class="form-group">
+						<div class="col-sm-10">
+							<input type="text" class="form-control onlyPhone" id="phone" placeholder="*휴대폰 번호">
+							<span class="mt-2 d-block">'-'을 제외한 숫자만 입력해 주세요.</span>
+						</div>
+					</div>		
+					<div class="form-group">
+						<div class="col-sm-10">
+							<input type="text" class="form-control" id="addr" readonly="readonly" placeholder="*주소">
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-10">
+							<input type="text" class="form-control" id="addrdetail" placeholder="*상세주소">
+						</div>
+					</div>		
+					<div class="form-group row">
+						<div class="col-sm-10">
+							<input type="checkbox" name="checkbox1" />
+							<label class="control control-checkbox">이메일 수신 여부[선택]	</label>
+						</div>
+					</div>		
+					<div class="form-group row">
+						<div class="col-sm-10">
+							<input type="checkbox" name="checkbox1" id="agree1" value="0" />
+							<label class="control-inline control-checkbox"><strong>이용약관 동의[필수]</strong></label>
+						</div>
+					</div>	
+					<div class="form-group row">
+						<div class="col-sm-10">
+							<input type="checkbox" name="checkbox1" id="agree2" value="0" />
+							<label class="control-inline control-checkbox"><strong>개인정보 처리방침 동의[필수]</strong></label>
+						</div>
+					</div>					
+					<div class="col-sm-10 col-lg-offset-3 ">
+						<button type="submit" class="btn btn-theme" id="join_btn">회원가입</button>
+					</div>
+				</div>
+				</div>
+	    	</form>
+		</div>
+		
+		<!-- =====================================================================일반회원 -->	
+		
+		<div id="busitab" class="tab-pane">
+			<form role="form" class="form-horizontal">
+		   		<div class="row">
+		   		<div class="col-sm-10 col-md-offset-1"><h4>사업자정보</h4></div>
+		    	<div class="col-md col-md-offset-2  ">
+					<div class="form-group">
+						<div class="col-sm-10">
+							<input type="text" class="form-control" id="busi_resi_num" placeholder="*사업자등록번호">
+							<span class="mt-2 d-block">'-'을 제외한 숫자만 입력해 주세요.</span>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-10">
+							<input type="text" class="form-control" id="busi_resi_num_re" placeholder="*사업자등록번호 확인">
+							<span class="mt-2 d-block">사업자등록번호를 한번 더 입력해 주세요.</span>
+						</div>				
+					</div>
+					<div class="form-group">
+						<div class="col-sm-10">
+							<input type="password" class="form-control" id="busi_password" placeholder="*비밀번호">
+							<span class="mt-2 d-block">영문,숫자,특수문자(~,!,# 등) 포함 8~20자</span>
+						</div>				
+					</div>	
+					<div class="form-group">
+						<div class="col-sm-10">
+							<input type="password" class="form-control" id="busi_password_re" placeholder="*비밀번호 확인">
+							<span class="mt-2 d-block">비밀번호를 환번 더 입력해 주세요.</span>
+						</div>				
+					</div>	
+					<div class="form-group">
+						<div class="col-sm-10">
+							<label for="exampleFormControlFile1">*사업자등록증 사본 등록[필수]</label>
+							<input type="file" class="file-pos" id="busi_regi">
+						</div>				
+					</div>	
+					
+					<div class="col-sm-10 col-md-offset-1"><h4>기업정보</h4></div>		
+					<div class="form-group">
+						<div class="col-sm-10">
+							<input type="text" class="form-control" id="com_name" placeholder="*업체명">
+						</div>				
+					</div>
+					<div class="form-group">
+						<div class="col-sm-10">
+							<input type="text" class="form-control" id="presen_name" placeholder="*대표자명">
+						</div>				
+					</div>
+					<div class="form-group">
+						<div class="col-sm-10">
+							<input type="text" class="form-control" id="cor_num" placeholder="*법인번호">
+							<span class="mt-2 d-block">'-'을 제외한 숫자만 입력해 주세요.</span>
+						</div>				
+					</div>	
+					<div class="form-group">
+						<div class="col-sm-10">
+							<input type="text" class="form-control" id="homepage" placeholder="홈페이지URL">
+						</div>				
+					</div>	
+					
+					<div class="col-sm-10 col-md-offset-1"><h4>본사정보</h4></div>
+					<div class="form-group">
+						<div class="col-sm-10">
+							<input type="text" class="form-control" id="address" readonly="readonly" placeholder="*주소">
+						</div>				
+					</div>
+					<div class="form-group">
+						<div class="col-sm-10">
+							<input type="text" class="form-control" id="addressdetail" placeholder="*상세주소">
+						</div>
+					</div>						
+					<div class="form-group">
+						<div class="col-sm-10">
+							<input type="text" class="form-control" id="Pre_phone" placeholder="*대표전화번호">
+							<span class="mt-2 d-block">'-'을 제외한 숫자만 입력해 주세요.</span>
+						</div>				
+					</div>
+					<div class="form-group">
+						<div class="col-sm-10">
+							<input type="text" class="form-control" id="Fax_num" placeholder="*팩스번호">
+							<span class="mt-2 d-block">'-'을 제외한 숫자만 입력해 주세요.</span>
+						</div>				
+					</div>	
+					
+					<div class="col-sm-10 col-md-offset-1"><h4>사업장정보</h4></div>
+					<div class="form-group">
+						<div class="col-sm-10">
+							<input type="text" class="form-control" id="address" readonly="readonly" placeholder="*주소">
+						</div>				
+					</div>
+					<div class="form-group">
+						<div class="col-sm-10">
+							<input type="text" class="form-control" id="addressdetail" placeholder="*상세주소">
+						</div>
+					</div>						
+					<div class="form-group">
+						<div class="col-sm-10">
+							<input type="text" class="form-control" id="Pre_phone" placeholder="*대표전화번호">
+							<span class="mt-2 d-block">'-'을 제외한 숫자만 입력해 주세요.</span>
+						</div>				
+					</div>
+					<div class="form-group">
+						<div class="col-sm-10">
+							<input type="text" class="form-control" id="Fax_num" placeholder="*팩스번호">
+							<span class="mt-2 d-block">'-'을 제외한 숫자만 입력해 주세요.</span>
+						</div>				
+					</div>	
+					
+					<div class="col-sm-10 col-md-offset-1"><h4>담당자정보</h4></div>
+					<div class="form-group">
+						<div class="col-sm-10">
+							<input type="text" class="form-control" id="Manager_name" placeholder="*담당자명">
+						</div>				
+					</div>
+					<div class="form-group">
+						<div class="col-sm-10">
+							<input type="text" class="form-control" id="Manager_birth" placeholder="*담당자 생년월일">
+							<span class="mt-2 d-block">YYYYMMDD와 같은 형식으로 입력해 주세요.</span>
+						</div>				
+					</div>
+					<div class="form-group">
+						<div class="col-sm-10">
+							<input type="email" class="form-control" id="Manager_email" placeholder="*이메일">
+						</div>				
+					</div>						
+					<div class="form-group">
+						<div class="col-sm-10">
 							<input type="text" class="form-control" id="exampleFormControlInput1" placeholder="*사무실 번호">
 							<span class="mt-2 d-block">'-'을 제외한 숫자만 입력해 주세요.</span>
 						</div>				
-						<div class="form-group">
-							<input type="text" class="form-control" id="exampleFormControlInput1" placeholder="*휴대폰 번호">
+					</div>				
+					<div class="form-group">
+						<div class="col-sm-10">
+							<input type="text" class="form-control" id="Manager_phone" placeholder="*휴대폰 번호">
 							<span class="mt-2 d-block">'-'을 제외한 숫자만 입력해 주세요.</span>
-						</div>		
-						<div class="form-group">
-							<input type="text" class="form-control" id="exampleFormControlInput1" placeholder="*팩스번호">
+						</div>				
+					</div>		
+					<div class="form-group">
+						<div class="col-sm-10">
+							<input type="text" class="form-control" id="Manager_fax_num" placeholder="*팩스번호">
 							<span class="mt-2 d-block">'-'을 제외한 숫자만 입력해 주세요.</span>
-						</div>		
-						<div class="form-group">
-							<input type="text" class="form-control" id="exampleFormControlInput1" placeholder="*담당업무">
-						</div>		
-						<div class="form-group">
-							<input type="text" class="form-control" id="exampleFormControlInput1" placeholder="*직급">
-						</div>	
-						<div class="form-group">
-							<input type="text" class="form-control" id="exampleFormControlInput1" placeholder="*근무부서">
-						</div>																																																							
-
-						<div class="form-group row">
-							<div class="col-12 col-md-9">
-								<input type="checkbox" name="checkbox1" />
-								<label class="control control-checkbox">이메일 수신 여부[선택]	</label>
-							</div>
-						</div>		
-						<div class="form-group row">
-							<div class="col-12 col-md-9">
-								<input type="checkbox" name="checkbox1" id="agree1"/>
-								<label class="control control-checkbox">이용약관 동의[필수]	</label>
-							</div>
-						</div>	
-						<div class="form-group row">
-							<div class="col-12 col-md-9">
-								<input type="checkbox" name="checkbox1" id="agree2"/>
-								<label class="control control-checkbox">개인정보 처리방침 동의[필수]	</label>
-							</div>
-						</div>					
-						<div class="form-footer pt-4 pt-5 mt-4 border-top">
-							<button type="submit" class="btn btn-primary btn-default">회원가입</button>
+						</div>				
+					</div>		
+					<div class="form-group">
+						<div class="col-sm-10">
+							<input type="text" class="form-control" id="Manager_task" placeholder="*담당업무">
+						</div>				
+					</div>		
+					<div class="form-group">
+						<div class="col-sm-10">
+							<input type="text" class="form-control" id="Manager_rank" placeholder="*직급">
+						</div>				
+					</div>	
+					<div class="form-group">
+						<div class="col-sm-10">
+							<input type="text" class="form-control" id="Manager_depart" placeholder="*근무부서">
+						</div>				
+					</div>																																																							
+				
+					<div class="form-group row">
+						<div class="col-sm-10">
+							<input type="checkbox" name="checkbox1" />
+							<label class="control control-checkbox">이메일 수신 여부[선택]	</label>
 						</div>
+					</div>		
+					<div class="form-group row">
+						<div class="col-sm-10">
+							<input type="checkbox" name="checkbox1" id="agree1" value="0" />
+							<label class="control-inline control-checkbox"><strong>이용약관 동의[필수]</strong></label>
+						</div>
+					</div>	
+					<div class="form-group row">
+						<div class="col-sm-10">
+							<input type="checkbox" name="checkbox1" id="agree2" value="0" />
+							<label class="control-inline control-checkbox"><strong>개인정보 처리방침 동의[필수]</strong></label>
+						</div>
+					</div>					
+					<div class="col-sm-10 col-lg-offset-3 ">
+						<button type="submit" class="btn btn-theme" id="join_btn">회원가입</button>
 					</div>
 				</div>
-			</div>
-		</div>
+				</div>
+	    	</form>
+	   	</div>
+	</div>
 	</div>
 </div>
+</div>
+
 <!-- =====================================================================법인회원 -->		
 
-		</section>
+	</section>
 		<!-- /wrapper -->
     </section>
+    
     <!-- /MAIN CONTENT -->
     <!--main content end-->
 		
@@ -626,8 +766,10 @@ $(document).ready(function(){
 	<!--script for this page-->
 	<script src="${pageContext.request.contextPath}/resources/bootstrap/lib/sparkline-chart.js"></script>
 	<script src="${pageContext.request.contextPath}/resources/bootstrap/lib/zabuto_calendar.js"></script>
-	<script type="text/javascript">
-    $(document).ready(function() {
+	
+	<script type="text/javascript">// 팝업
+	/*  
+	$(document).ready(function() {
       var unique_id = $.gritter.add({
         // (string | mandatory) the heading of the notification
         title: 'Welcome to Dashio!',
@@ -642,10 +784,12 @@ $(document).ready(function(){
         // (string | optional) the class name you want to apply to that specific message
         class_name: 'my-sticky-class'
       });
-
+      
       return false;
     });
+      */
 	</script>
+	
 	<script type="application/javascript">
     $(document).ready(function() {
       $("#date-popover").popover({
