@@ -61,17 +61,7 @@
 		});//click
 	});//ready
 </script>  
-<script>
-	$(document).ready(function(){
-		$("#address1").click(function(){
-		    new daum.Postcode({
-		        oncomplete: function(data) {
-	 	        	$("#address1").val(data.address);
-		        }//oncomplete
-		    }).open();
-		});//click
-	});//ready
-</script>  
+
 <script type="text/javascript">
 
 var chkemail = '';
@@ -749,30 +739,6 @@ $(document).ready(function(){
 					</div>	
 					
 					<div class="col-sm-10 col-md-offset-1"><h4>본사정보</h4></div>
-					<div class="form-group">
-						<div class="col-sm-10">
-							<input type="text" class="form-control" id="address" readonly="readonly" placeholder="*주소">
-						</div>				
-					</div>
-					<div class="form-group">
-						<div class="col-sm-10">
-							<input type="text" class="form-control" id="addressdetail" placeholder="*상세주소">
-						</div>
-					</div>						
-					<div class="form-group">
-						<div class="col-sm-10">
-							<input type="text" class="form-control" id="Pre_phone" placeholder="대표전화번호">
-							<span class="mt-2 d-block">'-'을 제외한 숫자만 입력해 주세요.</span>
-						</div>				
-					</div>
-					<div class="form-group">
-						<div class="col-sm-10">
-							<input type="text" class="form-control" id="Fax_num" placeholder="팩스번호">
-							<span class="mt-2 d-block">'-'을 제외한 숫자만 입력해 주세요.</span>
-						</div>				
-					</div>	
-					
-					<div class="col-sm-10 col-md-offset-1"><h4>사업장정보</h4></div>
 					<div class="form-group">
 						<div class="col-sm-10">
 							<input type="text" class="form-control" id="address" readonly="readonly" placeholder="*주소">
