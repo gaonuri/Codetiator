@@ -169,7 +169,7 @@
 						<div class="row">
 							<!-- PROJECT PANEL -->
 							<div class="col-xs-6 col-md-4 mb">
-								<a href="./invest_datail?no=${projectVO.vo}">
+								<a href="./invest_detail?project_num=${vo.project_num}">
 									<div>
 										<img alt="" src="${pageContext.request.contextPath}/resources/img/ner.jpg" width="400px">
 									</div>

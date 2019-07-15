@@ -19,10 +19,15 @@ public class InvestDAO {
 	}
 
 	public List<ProjectVO> invest_list() {
-		
 		List<ProjectVO> list = null;
 		list = sqlSession.selectList("InvestMapper.investList");
 		
 		return list;
 	}//invest_list
+
+	public ProjectVO invest_detail(ProjectVO vo) {
+		vo = sqlSession.selectOne("InvestMapper.investDetail", vo);
+		
+		return vo;
+	}
 }//class

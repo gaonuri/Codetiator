@@ -18,10 +18,16 @@ public class InvestService {
 	}
 
 	public List<ProjectVO> invest_list() {
-		
 		List<ProjectVO> list = null;
 		list = investDAO.invest_list();
 		
 		return list;
+	}
+
+	public ProjectVO invest_detail(ProjectVO vo) {
+		
+		vo = investDAO.invest_detail(vo);
+		
+		return vo;
 	}
 }//class

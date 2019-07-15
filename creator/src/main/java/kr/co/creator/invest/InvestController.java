@@ -50,16 +50,20 @@ public class InvestController {
 	}
 	
 	@RequestMapping(value = "/invest_detail", method = RequestMethod.GET)
-	public String invest_detail() {
+	public String invest_detail(Model model, ProjectVO vo) {
 		logger.info("invest_detail");
-				
+		
+		vo = investService.invest_detail(vo);
+		model.addAttribute("detailVO", vo);
+		
 		return "invest/invest_detail";
 	}
 	
 	@RequestMapping(value = "/invest_finish", method = RequestMethod.GET)
 	public String invest_finish() {
 		logger.info("invest_finish");
-				
+		
+		
 		return "invest/invest_finish";
 	}
 }//class
