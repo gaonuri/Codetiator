@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import kr.co.creator.vo.Busi_userVO;
-import kr.co.creator.vo.DocumentVO;
 import kr.co.creator.vo.UserVO;
 
 
@@ -27,7 +26,7 @@ public class JoinController {
 	@RequestMapping(value = "/joinemailchk", method = RequestMethod.POST)
 	public void joinEmailChk(PrintWriter out, UserVO vo) throws IOException {
 		logger.info("=== joinEmailChk ===");
-		logger.info(vo.getEmail());
+//		logger.info(vo.getEmail());
 		int cnt = 0;
 		cnt = joinService.joinEmailChk(vo);
 		out.print(cnt);
@@ -55,10 +54,31 @@ public class JoinController {
 		out.close();
 	}//joinBusi
 	
+	@RequestMapping(value = "/joinlicensechk", method = RequestMethod.POST)
+	public void joinLicenseChk(PrintWriter out, Busi_userVO vo) throws IOException {
+		logger.info("=== joinLicenseChk ===");
+//		logger.info(vo.getEmail());
+		int cnt = 0;
+		cnt = joinService.joinLicenseChk(vo);
+		out.print(cnt);
+		out.flush();
+		out.close();
+	}//joinLicenseChk
+	
+	@RequestMapping(value = "/joinmagemailchk", method = RequestMethod.POST)
+	public void joinMagEmailChk(PrintWriter out, Busi_userVO vo) throws IOException {
+		logger.info("=== joinMagEmailChk ===");
+//		logger.info(vo.getEmail());
+		int cnt = 0;
+		cnt = joinService.joinMagEmailChk(vo);
+		out.print(cnt);
+		out.flush();
+		out.close();
+	}//joinMagEmailChk
+	
 	@RequestMapping(value = "/join", method = RequestMethod.GET)
 	public String join() {
 		logger.info("join");
-				
 		return "join/join";
 	}
 }

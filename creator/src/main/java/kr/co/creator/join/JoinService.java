@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kr.co.creator.vo.Busi_userVO;
-import kr.co.creator.vo.DocumentVO;
 import kr.co.creator.vo.UserVO;
 
 @Service
@@ -31,11 +30,17 @@ public class JoinService {
 		return successCnt;
 	}//joinBusi
 	
-	public int joinCumbu(DocumentVO vo) {
-		int successCnt = 0;
-		successCnt = joinDAO.joinCumbu(vo);
-		return successCnt;
-	}//joinCumbu
+	public int joinLicenseChk(Busi_userVO vo) {
+		int cnt = 0;
+		cnt = joinDAO.joinLicenseChk(vo);
+		return cnt;
+	}//joinLicenseChk
+	
+	public int joinMagEmailChk(Busi_userVO vo) {
+		int cnt = 0;
+		cnt = joinDAO.joinMagEmailChk(vo);
+		return cnt;
+	}//joinMagEmailChk
 	
 
 }

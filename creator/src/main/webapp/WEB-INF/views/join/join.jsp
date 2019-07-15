@@ -65,8 +65,11 @@
 <script type="text/javascript">
 
 var chkemail = '';
+var chklicense = '';
+var chkmagemail = '';
 
 //id check
+
 $(document).ready(function(){
 	$("#email").blur(function(){
 		if($.trim($("#email").val()) == ''){
@@ -83,6 +86,54 @@ $(document).ready(function(){
 					if(data == 0){
 						alert("사용 가능한 이메일 입니다.");
 						chkemail = $("#email").val();
+					}else{
+						alert("이미 등록된 이메일 입니다.");
+					}
+				}//function
+		);//post
+	});//ready
+});//blur
+
+$(document).ready(function(){
+	$("#busi_resi_num").blur(function(){
+		if($.trim($("#busi_resi_num").val()) == ''){
+			alert("사업자등록번호는 필수 입력 입니다.");
+// 			$("#email").focus();
+			return;
+		}
+		$.post(
+				"./joinlicensechk",
+				{
+					busi_resi_num:$("#busi_resi_num").val()
+				},
+				function(data,status){
+					if(data == 0){
+						alert("사용 가능한 사업자등록번호 입니다.");
+						chklicense = $("#busi_resi_num").val();
+					}else{
+						alert("이미 등록된 사업자등록번호 입니다.");
+					}
+				}//function
+		);//post
+	});//ready
+});//blur
+
+$(document).ready(function(){
+	$("#manager_email").blur(function(){
+		if($.trim($("#manager_email").val()) == ''){
+			alert("이메일은 필수 입력 입니다.");
+// 			$("#email").focus();
+			return;
+		}
+		$.post(
+				"./joinmagemailchk",
+				{
+					manager_email:$("#manager_email").val()
+				},
+				function(data,status){
+					if(data == 0){
+						alert("사용 가능한 이메일 입니다.");
+						chkmagemail = $("#manager_email").val();
 					}else{
 						alert("이미 등록된 이메일 입니다.");
 					}
@@ -112,7 +163,7 @@ $(document).ready(function(){
 			$(this).focus();
 			return;
 		}
-	});//change
+	});//onlyKor
 	
 	$(".onlyEmail").change(function(){
 		//alert($(this).val());
@@ -125,7 +176,20 @@ $(document).ready(function(){
 			$(this).focus();
 			return;
 		}
-	});//change
+	});//onlyEmail
+	
+	$(".onlyhomepage").change(function(){
+		//alert($(this).val());
+		var emailStd = /(http(s)?:\/\/)([a-z0-9\w]+\.*)+[a-z0-9]{2,4}/gi;
+		if($(this).val().match(emailStd)){
+			//alert("ok");
+		}else{
+			alert("사용가능한 홈페이지를 입력해 주세요.");
+			$(this).val("");
+			$(this).focus();
+			return;
+		}
+	});//onlyhomepage
 	
 	$(".onlyJumin").change(function(){
 		//alert($(this).val());
@@ -138,7 +202,20 @@ $(document).ready(function(){
 			$(this).focus();
 			return;
 		}
-	});//change
+	});//onlyJumin
+	
+	$(".onlyNum").change(function(){
+		//alert($(this).val());
+		var numStd = /^[0-9]{1,20}$/;
+		if($(this).val().match(numStd)){
+			//alert("ok");
+		}else{
+			alert("숫자로 작성해 주세요.");
+			//$(this).val("");
+			$(this).focus();
+			return;
+		}
+	});//onlyNum
 	
 	$(".onlyPhone").change(function(){
 		//alert($(this).val());
@@ -151,7 +228,20 @@ $(document).ready(function(){
 			$(this).focus();
 			return;
 		}
-	});//change
+	});//onlyPhone
+	
+	$(".onlylicense").change(function(){
+		//alert($(this).val());
+		var licenseStd = /^[0-9]{10}$/;
+		if($(this).val().match(licenseStd)){
+			//alert("ok");
+		}else{
+			alert("사업자등록번호를 형식에 맞게 작성해 주세요.");
+			//$(this).val("");
+			$(this).focus();
+			return;
+		}
+	});//onlylicense
 	
 	$(".onlyPass").change(function(){
 		//alert($(this).val());
@@ -164,7 +254,20 @@ $(document).ready(function(){
 			$(this).focus();
 			return;
 		}
-	});//change
+	});//onlyPass
+	
+	$(".onlyKrEng").change(function(){
+		//alert($(this).val());
+		var passStd = /^[가-힣a-zA-Z]{1,20}$/;
+		if($(this).val().match(passStd)){
+			//alert("ok");
+		}else{
+			alert("올바른 입력을 해주세요.");
+			$(this).val("");
+			$(this).focus();
+			return;
+		}
+	});//onlyPass
 	
 	$(":radio").click(function(){
 		if($(this).val() == 1) {
@@ -281,13 +384,23 @@ $(document).ready(function(){
 		$("#join_btn1").click(function(){
 //			사업자정보
 		if($.trim($("#busi_resi_num").val()) == ''){
-			alert("사업장 등록 번호는 필수 입력 사항입니다.");
+			alert("사업장등록번호는 필수 입력 사항입니다.");
 			$("#busi_resi_num").focus();
 			return;
 		}
 		if($.trim($("#busi_resi_num_re").val()) == ''){
-			alert("사업장 등록 번호를 한번 더  입력해 주세요.");
+			alert("사업장등록번호를 한번 더  입력해 주세요.");
 			$("#busi_resi_num_re").focus();
+			return;
+		}
+		if($("#busi_resi_num").val() != $("#busi_resi_num_re").val()){
+			alert("사업자번호를 똑같이 입력해 주세요.");
+			$("#busi_resi_num").focus();
+			return;
+		}
+		if($("#busi_resi_num").val() != chklicense){
+			alert("사업자등록번호를 다시 입력해 주세요.");
+//				$("#email").focus();
 			return;
 		}
 		if($.trim($("#busi_password").val()) == ''){
@@ -351,7 +464,12 @@ $(document).ready(function(){
 			alert("이메일 형식이 잘못되었습니다.");
 			$("#manager_email").focus();
 			return;
-		}		
+		}	
+		if($("#manager_email").val() != chkmagemail){
+			alert("이메일을 다시 입력해 주세요.");
+//				$("#email").focus();
+			return;
+		}
 		if($.trim($("#office_num").val()) == ''){
 			alert("사무실번호는 필수 입력 사항입니다.");
 			$("#office_num").focus();
@@ -689,25 +807,25 @@ $(document).ready(function(){
 		    	<div class="col-md col-md-offset-2 ">
 					<div class="form-group">
 						<div class="col-sm-10">
-							<input type="text" class="form-control" id="busi_resi_num" placeholder="*사업자등록번호">
+							<input type="text" class="form-control onlylicense" id="busi_resi_num" placeholder="*사업자등록번호">
 							<span class="mt-2 d-block">'-'을 제외한 숫자만 입력해 주세요.</span>
 						</div>
 					</div>
 					<div class="form-group">
 						<div class="col-sm-10">
-							<input type="text" class="form-control" id="busi_resi_num_re" placeholder="*사업자등록번호 확인">
+							<input type="text" class="form-control onlylicense" id="busi_resi_num_re" placeholder="*사업자등록번호 확인">
 							<span class="mt-2 d-block">사업자등록번호를 한번 더 입력해 주세요.</span>
 						</div>				
 					</div>
 					<div class="form-group">
 						<div class="col-sm-10">
-							<input type="password" class="form-control" id="busi_password" placeholder="*비밀번호">
+							<input type="password" class="form-control onlyPass" id="busi_password" placeholder="*비밀번호">
 							<span class="mt-2 d-block">영문,숫자,특수문자(~,!,# 등) 포함 8~20자</span>
 						</div>				
 					</div>	
 					<div class="form-group">
 						<div class="col-sm-10">
-							<input type="password" class="form-control" id="busi_password_re" placeholder="*비밀번호 확인">
+							<input type="password" class="form-control onlyPass" id="busi_password_re" placeholder="*비밀번호 확인">
 							<span class="mt-2 d-block">비밀번호를 환번 더 입력해 주세요.</span>
 						</div>				
 					</div>	
@@ -717,23 +835,24 @@ $(document).ready(function(){
 				<div class="col-md col-md-offset-2 ">	
 					<div class="form-group">
 						<div class="col-sm-10">
-							<input type="text" class="form-control" id="com_name" placeholder="*업체명">
+							<input type="text" class="form-control onlyKrEng" id="com_name" placeholder="*업체명">
 						</div>				
 					</div>
 					<div class="form-group">
 						<div class="col-sm-10">
-							<input type="text" class="form-control" id="presen_name" placeholder="*대표자명">
+							<input type="text" class="form-control onlyKrEng" id="presen_name" placeholder="*대표자명">
 						</div>				
 					</div>
 					<div class="form-group">
 						<div class="col-sm-10">
-							<input type="text" class="form-control" id="cor_num" placeholder="*법인번호">
+							<input type="text" class="form-control onlyNum" id="cor_num" placeholder="*법인번호">
 							<span class="mt-2 d-block">'-'을 제외한 숫자만 입력해 주세요.</span>
 						</div>				
 					</div>	
 					<div class="form-group">
 						<div class="col-sm-10">
-							<input type="text" class="form-control" id="homepage" placeholder="홈페이지URL">
+							<input type="text" class="form-control onlyhomepage" id="homepage" placeholder="홈페이지URL">
+							<span class="mt-2 d-block">http://www.creator.com 형식으로 작성해 주세요.</span>
 						</div>				
 					</div>	
 				</div>
@@ -752,13 +871,13 @@ $(document).ready(function(){
 					</div>						
 					<div class="form-group">
 						<div class="col-sm-10">
-							<input type="text" class="form-control" id="pre_phone" placeholder="대표전화번호">
+							<input type="text" class="form-control onlyNum" id="pre_phone" placeholder="대표전화번호">
 							<span class="mt-2 d-block">'-'을 제외한 숫자만 입력해 주세요.</span>
 						</div>				
 					</div>
 					<div class="form-group">
 						<div class="col-sm-10">
-							<input type="text" class="form-control" id="fax_num" placeholder="팩스번호">
+							<input type="text" class="form-control onlyNum" id="fax_num" placeholder="팩스번호">
 							<span class="mt-2 d-block">'-'을 제외한 숫자만 입력해 주세요.</span>
 						</div>				
 					</div>	
@@ -768,51 +887,51 @@ $(document).ready(function(){
 				<div class="col-md col-md-offset-2 ">
 					<div class="form-group">
 						<div class="col-sm-10">
-							<input type="text" class="form-control" id="manager_name" placeholder="*담당자명">
+							<input type="text" class="form-control onlyKrEng" id="manager_name" placeholder="*담당자명">
 						</div>				
 					</div>
 					<div class="form-group">
 						<div class="col-sm-10">
-							<input type="text" class="form-control" id="manager_birth" placeholder="*담당자 생년월일">
+							<input type="text" class="form-control onlyJumin" id="manager_birth" placeholder="*담당자 생년월일">
 							<span class="mt-2 d-block">YYYYMMDD와 같은 형식으로 입력해 주세요.</span>
 						</div>				
 					</div>
 					<div class="form-group">
 						<div class="col-sm-10">
-							<input type="email" class="form-control" id="manager_email" placeholder="*이메일">
+							<input type="email" class="form-control onlyEmail" id="manager_email" placeholder="*이메일">
 						</div>				
 					</div>						
 					<div class="form-group">
 						<div class="col-sm-10">
-							<input type="text" class="form-control" id="office_num" placeholder="*사무실 번호">
+							<input type="text" class="form-control onlyNum" id="office_num" placeholder="*사무실 번호">
 							<span class="mt-2 d-block">'-'을 제외한 숫자만 입력해 주세요.</span>
 						</div>				
 					</div>				
 					<div class="form-group">
 						<div class="col-sm-10">
-							<input type="text" class="form-control" id="manager_phone" placeholder="*휴대폰 번호">
+							<input type="text" class="form-control onlyPhone" id="manager_phone" placeholder="*휴대폰 번호">
 							<span class="mt-2 d-block">'-'을 제외한 숫자만 입력해 주세요.</span>
 						</div>				
 					</div>		
 					<div class="form-group">
 						<div class="col-sm-10">
-							<input type="text" class="form-control" id="manager_fax_num" placeholder="*팩스번호">
+							<input type="text" class="form-control onlyNum" id="manager_fax_num" placeholder="*팩스번호">
 							<span class="mt-2 d-block">'-'을 제외한 숫자만 입력해 주세요.</span>
 						</div>				
 					</div>		
 					<div class="form-group">
 						<div class="col-sm-10">
-							<input type="text" class="form-control" id="manager_task" placeholder="*담당업무">
+							<input type="text" class="form-control onlyKrEng" id="manager_task" placeholder="*담당업무">
 						</div>				
 					</div>		
 					<div class="form-group">
 						<div class="col-sm-10">
-							<input type="text" class="form-control" id="manager_rank" placeholder="*직급">
+							<input type="text" class="form-control onlyKrEng" id="manager_rank" placeholder="*직급">
 						</div>				
 					</div>	
 					<div class="form-group">
 						<div class="col-sm-10">
-							<input type="text" class="form-control" id="manager_depart" placeholder="*근무부서">
+							<input type="text" class="form-control onlyKrEng" id="manager_depart" placeholder="*근무부서">
 						</div>				
 					</div>	
 																																																											
