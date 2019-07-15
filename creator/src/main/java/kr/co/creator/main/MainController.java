@@ -24,18 +24,11 @@ public class MainController {
 		return "main/main";
 	}
 	
-	@RequestMapping(value = "/menubar", method = RequestMethod.GET)
-	public String menubar() {
-		logger.info("menubar");
+	@RequestMapping(value = "/main2", method = RequestMethod.GET)
+	public String main2() {
+		logger.info("main2");
 		
-		return "main/menubar";
-	}
-
-	@RequestMapping(value = "/menubar2", method = RequestMethod.GET)
-	public String menubar2() {
-		logger.info("menubar2");
-		
-		return "main/menubar2";
+		return "main/main2";
 	}
 	
 	@RequestMapping(value = "/intro", method = RequestMethod.GET)

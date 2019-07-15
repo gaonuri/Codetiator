@@ -55,7 +55,9 @@
 					
 					<!-- 대출 start -->
 					<li class="dropdown">
-						<a data-toggle="dropdown" class="dropdown-toggle" href="#">대출</a>
+						<a data-toggle="dropdown" class="dropdown-toggle" href="#">
+							대출
+						</a>
 						<ul class="dropdown-menu extended tasks-bar">
 							<div class="notify-arrow notify-arrow-green"></div>
 							<li>
@@ -157,56 +159,51 @@
 	        MAIN CONTENT
 	        *********************************************************************************************************************************************************** -->
 		<!--main content start-->
-		<section id="main-content">
-			<section class="wrapper site-min-height">
-				<!-- card start -->
-				<table border="1">
-					<div class="card">
-						<div class="card-header">
-							<div class="card-title">articleForm</div>
-						</div>
-						<div class="card-body">
-							<table class="table table-head-bg-primary mt-4">
-								<thead>
+	<section id="main-content">
+		<section class="wrapper">
+			<h3><i class="fa fa-angle-right"></i> 투자상품</h3>
+			<div class="row mb">
+				<!-- page start-->
+				<div class="content-panel">
+					<div class="adv-table">
+ 						<table cellpadding="0" cellspacing="0" border="0" class="display table table-bordered" id="hidden-table-info">
+							<thead>
+					            <tr>
+									<th class="col">상품명</th>
+									<th class="col">등급</th>
+									<th class="col">연 수익률</th>
+									<th class="col">기간</th>
+									<th class="col">모집금액</th>
+									<th class="col">상환방식</th>
+									<th class="col">모집현황</th>
+									<th class="col">모집상태</th>
+								</tr>
+							</thead>
+							<tbody>
+								<c:forEach items="${investList}" var="vo" varStatus="status">
 									<tr>
-										<th scope="col">상품명</th>
-										<th scope="col">등급</th>
-										<th scope="col">연 수익률</th>
-										<th scope="col">기간</th>
-										<th scope="col">모집금액</th>
-										<th scope="col">상환방식</th>
-										<th scope="col">모집현황</th>
-										<th scope="col">모집상태</th>
+										<td><a href="./invest_detail?project_name=${vo.project_num}">${vo.project_name}</a></td>
+										<td>${vo.grade}</td>
+										<td>${vo.yield}</td>
+										<td>${vo.refund}개월</td>
+										<td>${vo.price}</td>
+										<td>${vo.repay_method}</td>
+										<td>${vo.ach_rate}</td>
+										<td>${vo.ach_state}</td>
 									</tr>
-								</thead>
-								<tbody>
-									<c:forEach var = "vo" items="${investList}">
-										<a href="./invest_detail?project_name=${vo.project_num}">
-											<div class="card-body">
-												<tr>
-													<td>${vo.project_name}</td>
-													<td>${vo.grade}</td>
-													<td>${vo.yield}</td>
-													<td>${vo.refund}개월</td>
-													<td>${vo.price}</td>
-													<td>${vo.repay_method}</td>
-													<td>${vo.ach_rate}</td>
-													<td>${vo.ach_state}</td>
-												</tr>
-											</div>
-										</a>
-									</c:forEach>
-								</tbody>
-							</table>
-						</div>
+								</c:forEach>
+							</tbody>
+						</table>
 					</div>
-				</table>
-				<!-- card end -->
-			</section>
-			<!-- /wrapper -->
-	    </section>
-	    <!-- /MAIN CONTENT -->
-	    <!--main content end-->
+				</div>
+				<!-- page end-->
+			</div>
+			<!-- /row -->
+		</section>
+		<!-- /wrapper -->
+	</section>
+	<!-- /MAIN CONTENT -->
+	<!--main content end-->
 		
 		<!--footer start-->
 		<footer class="site-footer">
@@ -333,6 +330,60 @@
       console.log('nav ' + nav + ' to: ' + to.month + '/' + to.year);
     }
 	</script>
+  <!-- js placed at the end of the document so the pages load faster -->
+  <script type="text/javascript" language="javascript" src="${pageContext.request.contextPath}/resources/bootstrap/lib/advanced-datatable/js/jquery.js"></script>
+  <script type="text/javascript" language="javascript" src="${pageContext.request.contextPath}/resources/bootstrap/lib/advanced-datatable/js/jquery.dataTables.js"></script>
+  <script type="text/javascript" src="lib/advanced-datatable/js/DT_bootstrap.js"></script>
+  <!--script for this page-->
+  <script type="text/javascript">
+
+    $(document).ready(function() {
+      /*
+       * Insert a 'details' column to the table
+       */
+      var nCloneTh = document.createElement('th');
+      var nCloneTd = document.createElement('td');
+      nCloneTd.className = "center";
+
+      $('#hidden-table-info thead tr').each(function() {
+        this.insertBefore(nCloneTh, this.childNodes[0]);
+      });
+
+      $('#hidden-table-info tbody tr').each(function() {
+        this.insertBefore(nCloneTd.cloneNode(true), this.childNodes[0]);
+      });
+
+      /*
+       * Initialse DataTables, with no sorting on the 'details' column
+       */
+      var oTable = $('#hidden-table-info').dataTable({
+        "aoColumnDefs": [{
+          "bSortable": false,
+          "aTargets": [0]
+        }],
+        "aaSorting": [
+          [1, 'asc']
+        ]
+      });
+
+      /* Add event listener for opening and closing details
+       * Note that the indicator for showing which row is open is not controlled by DataTables,
+       * rather it is done here
+       */
+      $('#hidden-table-info tbody td img').live('click', function() {
+        var nTr = $(this).parents('tr')[0];
+        if (oTable.fnIsOpen(nTr)) {
+          /* This row is already open - close it */
+          this.src = "lib/advanced-datatable/media/images/details_open.png";
+          oTable.fnClose(nTr);
+        } else {
+          /* Open this row */
+          this.src = "lib/advanced-datatable/images/details_close.png";
+          oTable.fnOpen(nTr, fnFormatDetails(oTable, nTr), 'details');
+        }
+      });
+    });
+  </script>
 </body>
 
 </html>
