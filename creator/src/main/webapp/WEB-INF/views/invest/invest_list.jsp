@@ -181,20 +181,20 @@
 								</thead>
 								<tbody>
 									<c:forEach var = "vo" items="${investList}">
-										<div class="card">
-											<a href="./invest_detail?project_name=${vo.project_num}">
+										<a href="./invest_detail?project_name=${vo.project_num}">
+											<div class="card-body">
 												<tr>
 													<td>${vo.project_name}</td>
 													<td>${vo.grade}</td>
 													<td>${vo.yield}</td>
-													<td>${vo.refund}</td>
+													<td>${vo.refund}개월</td>
 													<td>${vo.price}</td>
 													<td>${vo.repay_method}</td>
 													<td>${vo.ach_rate}</td>
 													<td>${vo.ach_state}</td>
 												</tr>
-											</a>
-										</div>
+											</div>
+										</a>
 									</c:forEach>
 								</tbody>
 							</table>
