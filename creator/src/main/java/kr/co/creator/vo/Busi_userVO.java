@@ -2,31 +2,38 @@ package kr.co.creator.vo;
 
 // 법인유저
 public class Busi_userVO {
-	private String busi_num;				// 법인 유저번호
-	private String busi_resi_num;			// 사업자 등록번호
-	private String busi_password;			// 사업자 비밀번호
-	private String com_name;				// 업체명
-	private String presen_name;				// 대표자명
-	private String cor_num;					// 법인번호
-	private String homepage;				// 홈페이지
-	private String address;					// 주소
-	private String pre_phone;				// 대표자번호
-	private String fax_num;					// 팩스번호
-	private String manager_name;			// 담당자명
-	private String manager_birth;			// 담당자 생년월일
-	private String manager_email;			// 담당자 이메일
-	private String office_num;				// 사무실 번호
-	private String manager_phone;			// 매니저 번호
-	private String manager_fax;				// 매니저 팩스번호
-	private String manager_task;			// 담당업무
-	private String manager_rank;			// 직급
-	private String manager_depart;			// 근무부서
-	private String terms_of_service;		// 이용약관
-	private String privacy_policy_agree;	// 개인정보처리동의
-	private String join_date;				// 가입일
+	private String busi_num;					// 법인 유저번호
+	private String busi_resi_num;				// 사업자 등록번호
+	private String busi_password;				// 사업자 비밀번호
+	private String com_name;					// 업체명
+	private String presen_name;					// 대표자명
+	private String cor_num;						// 법인번호
+	private String homepage;					// 홈페이지
+	private String address;						// 주소
+	private String pre_phone;					// 대표자번호
+	private String fax_num;						// 팩스번호
+	private String manager_name;				// 담당자명
+	private String manager_birth;				// 담당자 생년월일
+	private String manager_email;				// 담당자 이메일
+	private String office_num;					// 사무실 번호
+	private String manager_phone;				// 매니저 번호
+	private String manager_fax_num;				// 매니저 팩스번호
+	private String manager_task;				// 담당업무
+	private String manager_rank;				// 직급
+	private String manager_depart;				// 근무부서
+	private String busi_chk_email;				// 이메일 수신 여부
+	private String busi_terms_of_service;		// 이용약관
+	private String busi_privacy_policy_agree;	// 개인정보처리동의
+	private String join_date;					// 가입일
+	private String login_time;					// 로그인 이력
+	private String busi_phone_key;				// 휴대폰 인증
 	
 	public Busi_userVO() {}	//constructor
-	public Busi_userVO(String busi_num, String busi_resi_num, String busi_password, String com_name, String presen_name, String cor_num, String homepage, String address, String pre_phone, String fax_num, String manager_name, String manager_birth, String manager_email, String office_num, String manager_phone, String manager_fax, String manager_task, String manager_rank, String manager_depart, String terms_of_service, String privacy_policy_agree, String join_date) {
+	public Busi_userVO(String busi_num, String busi_resi_num, String busi_password, String com_name, String presen_name, 
+						String cor_num, String homepage, String address, String pre_phone, String fax_num, 
+						String manager_name, String manager_birth, String manager_email, String office_num, String manager_phone, 
+						String manager_fax_num, String manager_task, String manager_rank, String manager_depart, String busi_chk_email, 
+						String busi_terms_of_service, String busi_privacy_policy_agree, String join_date, String login_time, String busi_phone_key) {
 		this.busi_num = busi_num;
 		this.busi_resi_num = busi_resi_num;
 		this.busi_password = busi_password;
@@ -42,14 +49,18 @@ public class Busi_userVO {
 		this.manager_email = manager_email;
 		this.office_num = office_num;
 		this.manager_phone = manager_phone;
-		this.manager_fax = manager_fax;
+		this.manager_fax_num = manager_fax_num;
 		this.manager_task = manager_task;
 		this.manager_rank = manager_rank;
 		this.manager_depart = manager_depart;
-		this.terms_of_service = terms_of_service;
-		this.privacy_policy_agree = privacy_policy_agree;
+		this.busi_chk_email = busi_chk_email;
+		this.busi_terms_of_service = busi_terms_of_service;
+		this.busi_privacy_policy_agree = busi_privacy_policy_agree;
 		this.join_date = join_date;
+		this.login_time = login_time;
+		this.busi_phone_key = busi_phone_key;
 	}//constructor
+	
 	
 	public String getBusi_num() {
 		return busi_num;
@@ -156,12 +167,12 @@ public class Busi_userVO {
 		this.manager_phone = manager_phone;
 	}//manager_phone
 	
-	public String getManager_fax() {
-		return manager_fax;
+	public String getManager_fax_num() {
+		return manager_fax_num;
 	}
-	public void setManager_fax(String manager_fax) {
-		this.manager_fax = manager_fax;
-	}//manager_fax
+	public void setManager_fax_num(String manager_fax_num) {
+		this.manager_fax_num = manager_fax_num;
+	}//manager_fax_num
 	
 	public String getManager_task() {
 		return manager_task;
@@ -183,20 +194,24 @@ public class Busi_userVO {
 	public void setManager_depart(String manager_depart) {
 		this.manager_depart = manager_depart;
 	}//manager_depart
-	
-	public String getTerms_of_service() {
-		return terms_of_service;
+	public String getBusi_chk_email() {
+		return busi_chk_email;
 	}
-	public void setTerms_of_service(String terms_of_service) {
-		this.terms_of_service = terms_of_service;
-	}//terms_of_service
-	
-	public String getPrivacy_policy_agree() {
-		return privacy_policy_agree;
+	public void setBusi_chk_email(String busi_chk_email) {
+		this.busi_chk_email = busi_chk_email;
+	}//busi_chk_email
+	public String getBusi_terms_of_service() {
+		return busi_terms_of_service;
 	}
-	public void setPrivacy_policy_agree(String privacy_policy_agree) {
-		this.privacy_policy_agree = privacy_policy_agree;
-	}//privacy_policy_agree
+	public void setBusi_terms_of_service(String busi_terms_of_service) {
+		this.busi_terms_of_service = busi_terms_of_service;
+	}//busi_terms_of_service
+	public String getBusi_privacy_policy_agree() {
+		return busi_privacy_policy_agree;
+	}
+	public void setBusi_privacy_policy_agree(String busi_privacy_policy_agree) {
+		this.busi_privacy_policy_agree = busi_privacy_policy_agree;
+	}//busi_privacy_policy_agree
 	
 	public String getJoin_date() {
 		return join_date;
@@ -204,4 +219,22 @@ public class Busi_userVO {
 	public void setJoin_date(String join_date) {
 		this.join_date = join_date;
 	}//join_date
+	public String getLogin_time() {
+		return login_time;
+	}
+	public void setLogin_time(String login_time) {
+		this.login_time = login_time;
+	}//login_time
+	public String getBusi_phone_key() {
+		return busi_phone_key;
+	}
+	public void setBusi_phone_key(String busi_phone_key) {
+		this.busi_phone_key = busi_phone_key;
+	}//busi_phone_key
+	
 }//class
+
+
+
+
+

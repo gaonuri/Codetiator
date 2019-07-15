@@ -18,7 +18,7 @@ public class LoginController {
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String login() {
 		logger.info("login");
-		
+//		session.setattribute(usrVO, vo);
 		service.login();
 		
 		return "login/login";
