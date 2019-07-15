@@ -6,15 +6,15 @@
 <mapper namespace="InvestMapper">
 	
 	<select id="investList" resultType="kr.co.creator.vo.ProjectVO">
-		select project_name, 
+		select	project_name, 
 				grade, 
 				yield, 
 				refund, 
 				price, 
 				repay_method, 
 				ach_rate, 
-				ach_state 
-		from project_list
+				ach_state
+		FROM	project_list
 	</select>
 	
 </mapper>
