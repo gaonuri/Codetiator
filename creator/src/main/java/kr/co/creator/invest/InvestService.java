@@ -1,15 +1,27 @@
 package kr.co.creator.invest;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import kr.co.creator.vo.ProjectVO;
 
 @Service
 public class InvestService {
 
 	@Autowired
-	InvestDAO dao;
+	InvestDAO investDAO;
 
 	public void invest() {
-		dao.invest();
+		investDAO.invest();
+	}
+
+	public List<ProjectVO> invest_list() {
+		
+		List<ProjectVO> list = null;
+		list = investDAO.invest_list();
+		
+		return list;
 	}
 }//class
