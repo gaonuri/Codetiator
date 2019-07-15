@@ -244,8 +244,7 @@ $(document).ready(function(){
 						user_password:$("#user_password").val(),
 						jumin:$("#jumin").val(),
 						phone:$("#phone").val(),
-						addr:$("#addr").val(),
-						addr:$("#addrdetail").val(),
+						addr:$("#addr").val() + $("#addrdetail").val(),
 						user_chk_email:$("#user_chk_email").val(),
 						user_terms_of_service:$("#user_terms_of_service").val(),
 						user_privacy_policy_agree:$("#user_privacy_policy_agree").val(),
@@ -295,11 +294,6 @@ $(document).ready(function(){
 			$("#busi_password").focus();
 			return;
 		}
-		if($.trim($("#busi_regi").val()) == ''){
-			alert("사업자등록증 사본은 필수 입력 사항입니다.");
-			$("#busi_regi").focus();
-			return;
-		}
 		
 //			기업정보
 		if($.trim($("#com_name").val()) == ''){
@@ -331,67 +325,67 @@ $(document).ready(function(){
 		}	
 		
 //			담당자정보
-		if($.trim($("#Manager_name").val()) == ''){
+		if($.trim($("#manager_name").val()) == ''){
 			alert("담당자명은 필수 입력 사항입니다.");
-			$("#Manager_name").focus();
+			$("#manager_name").focus();
 			return;
 		}	
-		if($.trim($("#Manager_birth").val()) == ''){
+		if($.trim($("#manager_birth").val()) == ''){
 			alert("담당자 생년월일은 필수 입력 사항입니다.");
-			$("#Manager_birth").focus();
+			$("#manager_birth").focus();
 			return;
 		}	
-		if($.trim($("#Manager_email").val()) == ''){
+		if($.trim($("#manager_email").val()) == ''){
 			alert("담당자 이메일은 필수 입력 사항입니다.");
-			$("#Manager_email").focus();
+			$("#manager_email").focus();
 			return;
 		}
-		if($("#Manager_email").val().indexOf('@') == '-1'
-			|| $("#Manager_email").val().lastIndexOf('.') == '-1'){
+		if($("#manager_email").val().indexOf('@') == '-1'
+			|| $("#manager_email").val().lastIndexOf('.') == '-1'){
 			alert("이메일 형식이 잘못되었습니다.");
-			$("#Manager_email").focus();
+			$("#manager_email").focus();
 			return;
 		}		
-		if($.trim($("#Office_num").val()) == ''){
+		if($.trim($("#office_num").val()) == ''){
 			alert("사무실번호는 필수 입력 사항입니다.");
-			$("#Office_num").focus();
+			$("#office_num").focus();
 			return;
 		}	
-		if($.trim($("#Manager_phone").val()) == ''){
+		if($.trim($("#manager_phone").val()) == ''){
 			alert("휴대전화 번호는 필수 입력 사항입니다.");
-			$("#Manager_phone").focus();
+			$("#manager_phone").focus();
 			return;
 		}	
-		if($.trim($("#Manager_fax_num").val()) == ''){
+		if($.trim($("#manager_fax_num").val()) == ''){
 			alert("팩스번호는 필수 입력 사항입니다.");
-			$("#Manager_fax_num").focus();
+			$("#manager_fax_num").focus();
 			return;
 		}	
-		if($.trim($("#Manager_task").val()) == ''){
+		if($.trim($("#manager_task").val()) == ''){
 			alert("담당업무는 필수 입력 사항입니다.");
-			$("#Manager_task").focus();
+			$("#manager_task").focus();
 			return;
 		}	
-		if($.trim($("#Manager_rank").val()) == ''){
+		if($.trim($("#manager_rank").val()) == ''){
 			alert("직급은 필수 입력 사항입니다.");
-			$("#Manager_rank").focus();
+			$("#manager_rank").focus();
 			return;
 		}	
-		if($.trim($("#Manager_depart").val()) == ''){
+		if($.trim($("#manager_depart").val()) == ''){
 			alert("근무부서는 필수 입력 사항입니다.");
-			$("#Manager_depart").focus();
+			$("#manager_depart").focus();
 			return;
 		}	
 		
 //		이용약관
-		if($("#busi_privacy_policy_agree").val() == 0){
+		if($("#busi_terms_of_service").val() == 0){
 			alert("이용 약관 동의 후 회원 가입 바랍니다.");
-			$("#busi_privacy_policy_agree").focus();
+			$("#busi_terms_of_service").focus();
 			return;
 		}
-		if($("#busi_terms_of_service").val() == 0){
+		if($("#busi_privacy_policy_agree").val() == 0){
 			alert("개인 정보 처리 방침 동의 후 회원 가입 바랍니다.");
-			$("#busi_terms_of_service").focus();
+			$("#busi_privacy_policy_agree").focus();
 			return;
 		}
 		
@@ -404,18 +398,21 @@ $(document).ready(function(){
 					presen_name:$("#presen_name").val(),
 					cor_num:$("#cor_num").val(),
 					homepage:$("#homepage").val(),
-					address:$("#address").val(),
-					Fax_num:$("#Fax_num").val(),
-					Manager_name:$("#Manager_name").val(),
-					Manager_birth:$("#Manager_birth").val(),
-					Manager_email:$("#Manager_email").val(),
-					Office_num:$("#Office_num").val(),
-					Manager_phone:$("#Manager_phone").val(),
-					Manager_fax_num:$("#Manager_fax_num").val(),
-					Manager_task:$("#Manager_task").val(),
-					Manager_depart:$("#Manager_depart").val(),
-					Terms_of_service:$("#Terms_of_service").val(),
-					privacy_policy_agree:$("#privacy_policy_agree").val(),
+					address:$("#address").val() +" "+ $("#addressdetail").val(),
+					pre_phone:$("#pre_phone").val(),
+					fax_num:$("#fax_num").val(),
+					manager_name:$("#manager_name").val(),
+					manager_birth:$("#manager_birth").val(),
+					manager_email:$("#manager_email").val(),
+					office_num:$("#office_num").val(),
+					manager_phone:$("#manager_phone").val(),
+					manager_fax_num:$("#manager_fax_num").val(),
+					manager_task:$("#manager_task").val(),
+					manager_rank:$("#manager_rank").val(),
+					manager_depart:$("#manager_depart").val(),
+					busi_chk_email:$("#busi_chk_email").val(),
+					busi_terms_of_service:$("#busi_terms_of_service").val(),
+					busi_privacy_policy_agree:$("#busi_privacy_policy_agree").val(),
 					join_date:$("#join_date").val()
 				},				
 
@@ -593,7 +590,7 @@ $(document).ready(function(){
 			<li class="active">
 				<a data-toggle="tab" href="#usertab">일반회원</a>
 			</li>
-			<li>
+			<li >
 				<a data-toggle="tab" href="#busitab">법인회원</a>
 			</li>
 		</ul>
@@ -653,25 +650,25 @@ $(document).ready(function(){
 					</div>		
 					<div class="form-group row">
 						<div class="col-sm-10">
-							<input type="checkbox" name="checkbox1" />
+							<input type="checkbox" name="checkbox1" id="user_chk_email" value="0" />
 							<label class="control control-checkbox">이메일 수신 여부[선택]	</label>
 						</div>
 					</div>		
 					<div class="form-group row">
 						<div class="col-sm-10">
-							<input type="checkbox" name="checkbox1" id="agree1" value="0" />
+							<input type="checkbox" name="checkbox1" id="user_terms_of_service" value="0" />
 							<label class="control-inline control-checkbox"><strong>이용약관 동의[필수]</strong></label>
 						</div>
 					</div>	
 					<div class="form-group row">
 						<div class="col-sm-10">
-							<input type="checkbox" name="checkbox1" id="agree2" value="0" />
+							<input type="checkbox" name="checkbox1" id="user_privacy_policy_agree" value="0" />
 							<label class="control-inline control-checkbox"><strong>개인정보 처리방침 동의[필수]</strong></label>
 						</div>
 					</div>					
-					<div class="col-sm-10 col-lg-offset-3 ">
-						<button type="submit" class="btn btn-theme" id="join_btn">회원가입</button>
-					</div>
+				</div>
+				<div class="col-sm-10 col-lg-offset-3">
+					<input type="text" class="btn btn-theme" id="join_btn" value="회원가입" />
 				</div>
 				</div>
 	    	</form>
@@ -683,7 +680,7 @@ $(document).ready(function(){
 			<form role="form" class="form-horizontal">
 		   		<div class="row">
 		   		<div class="col-sm-10 col-md-offset-1"><h4>사업자정보</h4></div>
-		    	<div class="col-md col-md-offset-2  ">
+		    	<div class="col-md col-md-offset-2 ">
 					<div class="form-group">
 						<div class="col-sm-10">
 							<input type="text" class="form-control" id="busi_resi_num" placeholder="*사업자등록번호">
@@ -708,14 +705,10 @@ $(document).ready(function(){
 							<span class="mt-2 d-block">비밀번호를 환번 더 입력해 주세요.</span>
 						</div>				
 					</div>	
-					<div class="form-group">
-						<div class="col-sm-10">
-							<label for="exampleFormControlFile1">*사업자등록증 사본 등록[필수]</label>
-							<input type="file" class="file-pos" id="busi_regi">
-						</div>				
-					</div>	
+				</div>
 					
-					<div class="col-sm-10 col-md-offset-1"><h4>기업정보</h4></div>		
+				<div class="col-sm-10 col-md-offset-1"><h4>기업정보</h4></div>
+				<div class="col-md col-md-offset-2 ">	
 					<div class="form-group">
 						<div class="col-sm-10">
 							<input type="text" class="form-control" id="com_name" placeholder="*업체명">
@@ -737,8 +730,10 @@ $(document).ready(function(){
 							<input type="text" class="form-control" id="homepage" placeholder="홈페이지URL">
 						</div>				
 					</div>	
+				</div>
 					
-					<div class="col-sm-10 col-md-offset-1"><h4>본사정보</h4></div>
+				<div class="col-sm-10 col-md-offset-1"><h4>본사정보</h4></div>
+				<div class="col-md col-md-offset-2 ">
 					<div class="form-group">
 						<div class="col-sm-10">
 							<input type="text" class="form-control" id="address" readonly="readonly" placeholder="*주소">
@@ -751,89 +746,91 @@ $(document).ready(function(){
 					</div>						
 					<div class="form-group">
 						<div class="col-sm-10">
-							<input type="text" class="form-control" id="Pre_phone" placeholder="대표전화번호">
+							<input type="text" class="form-control" id="pre_phone" placeholder="대표전화번호">
 							<span class="mt-2 d-block">'-'을 제외한 숫자만 입력해 주세요.</span>
 						</div>				
 					</div>
 					<div class="form-group">
 						<div class="col-sm-10">
-							<input type="text" class="form-control" id="Fax_num" placeholder="팩스번호">
+							<input type="text" class="form-control" id="fax_num" placeholder="팩스번호">
 							<span class="mt-2 d-block">'-'을 제외한 숫자만 입력해 주세요.</span>
 						</div>				
 					</div>	
+				</div>
 					
-					<div class="col-sm-10 col-md-offset-1"><h4>담당자정보</h4></div>
+				<div class="col-sm-10 col-md-offset-1"><h4>담당자정보</h4></div>
+				<div class="col-md col-md-offset-2 ">
 					<div class="form-group">
 						<div class="col-sm-10">
-							<input type="text" class="form-control" id="Manager_name" placeholder="*담당자명">
+							<input type="text" class="form-control" id="manager_name" placeholder="*담당자명">
 						</div>				
 					</div>
 					<div class="form-group">
 						<div class="col-sm-10">
-							<input type="text" class="form-control" id="Manager_birth" placeholder="*담당자 생년월일">
+							<input type="text" class="form-control" id="manager_birth" placeholder="*담당자 생년월일">
 							<span class="mt-2 d-block">YYYYMMDD와 같은 형식으로 입력해 주세요.</span>
 						</div>				
 					</div>
 					<div class="form-group">
 						<div class="col-sm-10">
-							<input type="email" class="form-control" id="Manager_email" placeholder="*이메일">
+							<input type="email" class="form-control" id="manager_email" placeholder="*이메일">
 						</div>				
 					</div>						
 					<div class="form-group">
 						<div class="col-sm-10">
-							<input type="text" class="form-control" id="exampleFormControlInput1" placeholder="*사무실 번호">
+							<input type="text" class="form-control" id="office_num" placeholder="*사무실 번호">
 							<span class="mt-2 d-block">'-'을 제외한 숫자만 입력해 주세요.</span>
 						</div>				
 					</div>				
 					<div class="form-group">
 						<div class="col-sm-10">
-							<input type="text" class="form-control" id="Manager_phone" placeholder="*휴대폰 번호">
+							<input type="text" class="form-control" id="manager_phone" placeholder="*휴대폰 번호">
 							<span class="mt-2 d-block">'-'을 제외한 숫자만 입력해 주세요.</span>
 						</div>				
 					</div>		
 					<div class="form-group">
 						<div class="col-sm-10">
-							<input type="text" class="form-control" id="Manager_fax_num" placeholder="*팩스번호">
+							<input type="text" class="form-control" id="manager_fax_num" placeholder="*팩스번호">
 							<span class="mt-2 d-block">'-'을 제외한 숫자만 입력해 주세요.</span>
 						</div>				
 					</div>		
 					<div class="form-group">
 						<div class="col-sm-10">
-							<input type="text" class="form-control" id="Manager_task" placeholder="*담당업무">
+							<input type="text" class="form-control" id="manager_task" placeholder="*담당업무">
 						</div>				
 					</div>		
 					<div class="form-group">
 						<div class="col-sm-10">
-							<input type="text" class="form-control" id="Manager_rank" placeholder="*직급">
+							<input type="text" class="form-control" id="manager_rank" placeholder="*직급">
 						</div>				
 					</div>	
 					<div class="form-group">
 						<div class="col-sm-10">
-							<input type="text" class="form-control" id="Manager_depart" placeholder="*근무부서">
+							<input type="text" class="form-control" id="manager_depart" placeholder="*근무부서">
 						</div>				
-					</div>																																																							
-				
+					</div>	
+																																																											
 					<div class="form-group row">
 						<div class="col-sm-10">
-							<input type="checkbox" name="checkbox1" />
+							<input type="checkbox" name="checkbox1" id="busi_chk_email" value="0" />
 							<label class="control control-checkbox">이메일 수신 여부[선택]	</label>
 						</div>
 					</div>		
 					<div class="form-group row">
 						<div class="col-sm-10">
-							<input type="checkbox" name="checkbox1" id="agree1" value="0" />
+							<input type="checkbox" name="checkbox1" id="busi_terms_of_service" value="0" />
 							<label class="control-inline control-checkbox"><strong>이용약관 동의[필수]</strong></label>
 						</div>
 					</div>	
 					<div class="form-group row">
 						<div class="col-sm-10">
-							<input type="checkbox" name="checkbox1" id="agree2" value="0" />
+							<input type="checkbox" name="checkbox1" id="busi_privacy_policy_agree" value="0" />
 							<label class="control-inline control-checkbox"><strong>개인정보 처리방침 동의[필수]</strong></label>
 						</div>
 					</div>					
-					<div class="col-sm-10 col-lg-offset-3 ">
-						<button type="submit" class="btn btn-theme" id="join_btn1">회원가입</button>
-					</div>
+				</div>
+				<div class="col-sm-10 col-lg-offset-3 ">
+					<input type="text" class="btn btn-theme" id="join_btn1" value="회원가입" />
 				</div>
 				</div>
 	    	</form>

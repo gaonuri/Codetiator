@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import kr.co.creator.vo.Busi_userVO;
+import kr.co.creator.vo.DocumentVO;
 import kr.co.creator.vo.UserVO;
 
 @Repository
@@ -31,4 +32,10 @@ public class JoinDAO {
 		return successCnt;
 	}//joinBusi
 
+	public int joinCumbu(DocumentVO vo) {
+		int successCnt = 0;
+		successCnt = sqlSession.insert("JoinMapper.joinCumbu", vo);
+		return successCnt;
+	}//joinCumbu
+	
 }
