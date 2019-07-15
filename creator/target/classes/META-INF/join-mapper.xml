@@ -12,10 +12,10 @@
 
 	<insert id="joinUser" parameterType="kr.co.creator.vo.UserVO">
 		insert into user_list (user_name, email, user_password, jumin, phone, 
-								addr, user_privacy_policy_agree, user_terms_of_service, 
+								addr, user_chk_email, user_terms_of_service, 
 								user_privacy_policy_agree, join_date)
 		values(#{user_name}, #{email}, #{user_password}, #{jumin}, #{phone}, 
-				#{addr}, #{user_privacy_policy_agree}, #{user_terms_of_service}, 
+				#{addr}, #{user_chk_email}, #{user_terms_of_service}, 
 				#{user_privacy_policy_agree}, now())
 		
         <selectKey resultType="String" keyProperty="user_num" order="AFTER">

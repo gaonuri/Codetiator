@@ -235,14 +235,14 @@ $(document).ready(function(){
 				$("#addrdetail").focus();
 				return;
 			}			
-			if($("#agree1").val() == 0){
+			if($("#user_privacy_policy_agree").val() == 0){
 				alert("이용 약관 동의 후 회원 가입 바랍니다.");
-				$("#agree1").focus();
+				$("#user_privacy_policy_agree").focus();
 				return;
 			}
-			if($("#agree2").val() == 0){
+			if($("#user_terms_of_service").val() == 0){
 				alert("개인 정보 처리 방침 동의 후 회원 가입 바랍니다.");
-				$("#agree2").focus();
+				$("#user_terms_of_service").focus();
 				return;
 			}
 // 			alert("aaa");
@@ -255,7 +255,10 @@ $(document).ready(function(){
 						jumin:$("#jumin").val(),
 						phone:$("#phone").val(),
 						addr:$("#addr").val(),
-						addr:$("#addr").val(),
+						addr:$("#addrdetail").val(),
+						user_chk_email:$("#user_chk_email").val(),
+						user_terms_of_service:$("#user_terms_of_service").val(),
+						user_privacy_policy_agree:$("#user_privacy_policy_agree").val(),
 						join_date:$("#join_date").val()
 					},					
 					function(data,status){
@@ -337,18 +340,6 @@ $(document).ready(function(){
 			return;
 		}	
 		
-//			사업장정보
-		if($.trim($("#address1").val()) == ''){
-			alert("주소는 필수 입력 사항입니다.");
-			$("#address1").focus();
-			return;
-		}
-		if($.trim($("#addressdetail").val()) == ''){
-			alert("상세주소를 입력해주세요.");
-			$("#addressdetail").focus();
-			return;
-		}
-		
 //			담당자정보
 		if($.trim($("#Manager_name").val()) == ''){
 			alert("담당자명은 필수 입력 사항입니다.");
@@ -403,14 +394,14 @@ $(document).ready(function(){
 		}	
 		
 //		이용약관
-		if($("#agree1").val() == 0){
+		if($("#busi_privacy_policy_agree").val() == 0){
 			alert("이용 약관 동의 후 회원 가입 바랍니다.");
-			$("#agree1").focus();
+			$("#busi_privacy_policy_agree").focus();
 			return;
 		}
-		if($("#agree2").val() == 0){
+		if($("#busi_terms_of_service").val() == 0){
 			alert("개인 정보 처리 방침 동의 후 회원 가입 바랍니다.");
-			$("#agree2").focus();
+			$("#busi_terms_of_service").focus();
 			return;
 		}
 		
