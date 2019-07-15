@@ -70,8 +70,8 @@ var chkemail = '';
 $(document).ready(function(){
 	$("#email").blur(function(){
 		if($.trim($("#email").val()) == ''){
-			alert("사용 가능한 이메일 입니다");
-			$("#email").focus();
+			alert("이메일은 필수 입력 입니다.");
+// 			$("#email").focus();
 			return;
 		}
 		$.post(
@@ -81,6 +81,7 @@ $(document).ready(function(){
 				},
 				function(data,status){
 					if(data == 0){
+						alert("사용 가능한 이메일 입니다.");
 						chkemail = $("#email").val();
 					}else{
 						alert("이미 등록된 이메일 입니다.");
@@ -195,6 +196,11 @@ $(document).ready(function(){
 				$("#email").focus();
 				return;
 			}
+			if($("#email").val() != chkemail){
+				alert("이메일을 다시 입력해 주세요.");
+// 				$("#email").focus();
+				return;
+			}
 			if($.trim($("#user_password").val()) == ''){
 				alert("비밀번호는 필수 입력 사항입니다.");
 				$("#user_password").focus();
@@ -244,7 +250,7 @@ $(document).ready(function(){
 						user_password:$("#user_password").val(),
 						jumin:$("#jumin").val(),
 						phone:$("#phone").val(),
-						addr:$("#addr").val() + $("#addrdetail").val(),
+						addr:$("#addr").val() +" "+ $("#addrdetail").val(),
 						user_chk_email:$("#user_chk_email").val(),
 						user_terms_of_service:$("#user_terms_of_service").val(),
 						user_privacy_policy_agree:$("#user_privacy_policy_agree").val(),
