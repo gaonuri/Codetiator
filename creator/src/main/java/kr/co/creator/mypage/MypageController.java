@@ -56,4 +56,11 @@ public class MypageController {
 				
 		return "mypage/my_modify";
 	}
+	
+//	@RequestMapping(value = "/my_", method = RequestMethod.GET)
+//	public String my_modify() {
+//		logger.info("my_modify");
+//				
+//		return "mypage/my_modify";
+//	
 }//class
