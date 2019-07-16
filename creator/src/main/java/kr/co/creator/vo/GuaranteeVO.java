@@ -3,7 +3,8 @@ package kr.co.creator.vo;
 // 게런티
 public class GuaranteeVO {
 	private String guarantee_num;			// 담보번호
-	private String guarantee_comple_year;	// 담보유형
+	private String guarantee_type;			// 담보유형
+	private String guarantee_img;			// 담보문사진경로
 	private String guarantee_name;			// 담보이름
 	private String connoisseur;				// 감정가
 	private String area;					// 면적
@@ -17,9 +18,10 @@ public class GuaranteeVO {
 	private String loan_num;				// (참조)대출 번호
 	
 	public GuaranteeVO() {}	//constructor
-	public GuaranteeVO(String guarantee_num, String guarantee_comple_year, String guarantee_name, String connoisseur, String area, String map, String location, String scale, String comple_year, String quote, String code, String grade, String more_information, String en_date, String rate, String loan_num) {
+	public GuaranteeVO(String guarantee_num, String guarantee_type, String guarantee_img, String guarantee_name, String connoisseur, String area, String map, String location, String scale, String comple_year, String quote, String code, String grade, String more_information, String en_date, String rate, String loan_num) {
 		this.guarantee_num = guarantee_num;
-		this.guarantee_comple_year = guarantee_comple_year;
+		this.guarantee_type = guarantee_type;
+		this.guarantee_img = guarantee_img;
 		this.guarantee_name = guarantee_name;
 		this.connoisseur = connoisseur;
 		this.area = area;
@@ -40,12 +42,19 @@ public class GuaranteeVO {
 		this.guarantee_num = guarantee_num;
 	}//guarantee_num
 	
-	public String getGuarantee_comple_year() {
-		return guarantee_comple_year;
+	public String getGuarantee_type() {
+		return guarantee_type;
 	}
-	public void setGuarantee_comple_year(String guarantee_comple_year) {
-		this.guarantee_comple_year = guarantee_comple_year;
-	}//guarantee_comple_year
+	public void setGuarantee_type(String guarantee_type) {
+		this.guarantee_type = guarantee_type;
+	}//guarantee_type
+	
+	public String getGuarantee_img() {
+		return guarantee_img;
+	}
+	public void setGuarantee_img(String guarantee_img) {
+		this.guarantee_img = guarantee_img;
+	}//guarantee_img
 	
 	public String getGuarantee_name() {
 		return guarantee_name;
