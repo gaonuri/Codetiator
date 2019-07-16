@@ -55,14 +55,16 @@
 					
 					<!-- 대출 start -->
 					<li class="dropdown">
-						<a data-toggle="dropdown" class="dropdown-toggle" href="#">대출</a>
+						<a data-toggle="dropdown" class="dropdown-toggle" href="#">
+							대출
+						</a>
 						<ul class="dropdown-menu extended tasks-bar">
 							<div class="notify-arrow notify-arrow-green"></div>
 							<li>
 								<a href="./loan_guide">대출안내</a>
 							</li>
 							<li>
-								<a href="./loan">대출하기</a>
+								<a href="./loan/getloan">대출하기</a>
 							</li>
 						</ul>
 					</li>
@@ -163,385 +165,385 @@
 					<div class="col-lg-12">
 					<!-- CHART PANELS -->
 
-					<!--  FOURTH ROW OF PANELS -->
-					<div class="row">
-						<!-- PROJECT PANEL -->
-						<div class="col-xs-6 col-md-4 mb">
-							<a href="./invest_datail?no=${projectVO.vo}">
-								<div>
-									<img alt="" src="${pageContext.request.contextPath}/resources/img/ner.jpg" width="400px">
-								</div>
-								<div>
-									<table style="border-left: 1px; border-right: 1px; width: 400px">
-										<tr>
-											<td class="date">시작일</td>
-										</tr>
-										<tr>
-											<td class="project-name">프로젝트명</td>
-										</tr>
-										<tr>
-											<td witdh="400px">
-												<!--  ANIMATED PROGRESS BARS -->
-								 				<div class="progress progress-striped active">
-								  					<div class="progress-bar" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 45%">
-								  						45%
+						<!--  FOURTH ROW OF PANELS -->
+						<div class="row">
+							<!-- PROJECT PANEL -->
+							<div class="col-xs-6 col-md-4 mb">
+								<a href="./invest_detail?project_num=${vo.project_num}">
+									<div>
+										<img alt="" src="${pageContext.request.contextPath}/resources/img/ner.jpg" width="400px">
+									</div>
+									<div>
+										<table style="border-left: 1px; border-right: 1px; width: 400px">
+											<tr>
+												<td class="date">시작일</td>
+											</tr>
+											<tr>
+												<td class="project-name">프로젝트명</td>
+											</tr>
+											<tr>
+												<td witdh="400px">
+													<!--  ANIMATED PROGRESS BARS -->
+									 				<div class="progress progress-striped active">
+									  					<div class="progress-bar" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 45%">
+									  						45%
+														</div>
 													</div>
-												</div>
-									            <!-- /showback -->
-								            </td>
-										</tr>
-									</table>
-									<table width="400px">
-										<tr>
-											<td class="infomation">등급</td>
-											<td class="infomation">연수익률</td>
-											<td class="infomation">기간</td>
-											<td class="infomation">모집금액</td>
-											<td class="infomation">상환방식</td>
-										</tr>
-									</table>
-								</div>
-							</a>
+										            <!-- /showback -->
+									            </td>
+											</tr>
+										</table>
+										<table width="400px">
+											<tr>
+												<td class="infomation">등급</td>
+												<td class="infomation">연수익률</td>
+												<td class="infomation">기간</td>
+												<td class="infomation">모집금액</td>
+												<td class="infomation">상환방식</td>
+											</tr>
+										</table>
+									</div>
+								</a>
+							</div>
+							<!-- PROJECT PANEL -->
+							
+							
+							<!-- PROJECT PANEL -->
+							<div class="col-xs-6 col-md-4 mb">
+								<a href="./invest_datail?no=${projectVO.vo}">
+									<div>
+										<img alt="" src="${pageContext.request.contextPath}/resources/img/ner.jpg" width="400px">
+									</div>
+									<div>
+										<table style="border-left: 1px; border-right: 1px; width: 400px">
+											<tr>
+												<td class="date">시작일</td>
+											</tr>
+											<tr>
+												<td class="project-name">프로젝트명</td>
+											</tr>
+											<tr>
+												<td witdh="400px">
+													<!--  ANIMATED PROGRESS BARS -->
+									 				<div class="progress progress-striped active">
+									  					<div class="progress-bar" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 45%">
+									  						45%
+														</div>
+													</div>
+										            <!-- /showback -->
+									            </td>
+											</tr>
+										</table>
+										<table width="400px">
+											<tr>
+												<td class="infomation">등급</td>
+												<td class="infomation">연수익률</td>
+												<td class="infomation">기간</td>
+												<td class="infomation">모집금액</td>
+												<td class="infomation">상환방식</td>
+											</tr>
+										</table>
+									</div>
+								</a>
+							</div>
+							<!-- PROJECT PANEL -->
+													<!-- PROJECT PANEL -->
+							<div class="col-xs-6 col-md-4 mb">
+								<a href="./invest_datail?no=${projectVO.vo}">
+									<div>
+										<img alt="" src="${pageContext.request.contextPath}/resources/img/ner.jpg" width="400px">
+									</div>
+									<div>
+										<table style="border-left: 1px; border-right: 1px; width: 400px">
+											<tr>
+												<td class="date">시작일</td>
+											</tr>
+											<tr>
+												<td class="project-name">프로젝트명</td>
+											</tr>
+											<tr>
+												<td witdh="400px">
+													<!--  ANIMATED PROGRESS BARS -->
+									 				<div class="progress progress-striped active">
+									  					<div class="progress-bar" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 45%">
+									  						45%
+														</div>
+													</div>
+										            <!-- /showback -->
+									            </td>
+											</tr>
+										</table>
+										<table width="400px">
+											<tr>
+												<td class="infomation">등급</td>
+												<td class="infomation">연수익률</td>
+												<td class="infomation">기간</td>
+												<td class="infomation">모집금액</td>
+												<td class="infomation">상환방식</td>
+											</tr>
+										</table>
+									</div>
+								</a>
+							</div>
+							<!-- PROJECT PANEL -->
 						</div>
-						<!-- PROJECT PANEL -->
+						<!-- row end -->
 						
+						<!--  FOURTH ROW OF PANELS -->
+						<div class="row">
+							<!-- PROJECT PANEL -->
+							<div class="col-xs-6 col-md-4 mb">
+								<a href="./invest_datail?no=${projectVO.vo}">
+									<div>
+										<img alt="" src="${pageContext.request.contextPath}/resources/img/ner.jpg" width="400px">
+									</div>
+									<div>
+										<table style="border-left: 1px; border-right: 1px; width: 400px">
+											<tr>
+												<td class="date">시작일</td>
+											</tr>
+											<tr>
+												<td class="project-name">프로젝트명</td>
+											</tr>
+											<tr>
+												<td witdh="400px">
+													<!--  ANIMATED PROGRESS BARS -->
+									 				<div class="progress progress-striped active">
+									  					<div class="progress-bar" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 45%">
+									  						45%
+														</div>
+													</div>
+										            <!-- /showback -->
+									            </td>
+											</tr>
+										</table>
+										<table width="400px">
+											<tr>
+												<td class="infomation">등급</td>
+												<td class="infomation">연수익률</td>
+												<td class="infomation">기간</td>
+												<td class="infomation">모집금액</td>
+												<td class="infomation">상환방식</td>
+											</tr>
+										</table>
+									</div>
+								</a>
+							</div>
+							<!-- PROJECT PANEL -->
+							
+							
+							<!-- PROJECT PANEL -->
+							<div class="col-xs-6 col-md-4 mb">
+								<a href="./invest_datail?no=${projectVO.vo}">
+									<div>
+										<img alt="" src="${pageContext.request.contextPath}/resources/img/ner.jpg" width="400px">
+									</div>
+									<div>
+										<table style="border-left: 1px; border-right: 1px; width: 400px">
+											<tr>
+												<td class="date">시작일</td>
+											</tr>
+											<tr>
+												<td class="project-name">프로젝트명</td>
+											</tr>
+											<tr>
+												<td witdh="400px">
+													<!--  ANIMATED PROGRESS BARS -->
+									 				<div class="progress progress-striped active">
+									  					<div class="progress-bar" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 45%">
+									  						45%
+														</div>
+													</div>
+										            <!-- /showback -->
+									            </td>
+											</tr>
+										</table>
+										<table width="400px">
+											<tr>
+												<td class="infomation">등급</td>
+												<td class="infomation">연수익률</td>
+												<td class="infomation">기간</td>
+												<td class="infomation">모집금액</td>
+												<td class="infomation">상환방식</td>
+											</tr>
+										</table>
+									</div>
+								</a>
+							</div>
+							<!-- PROJECT PANEL -->
+													<!-- PROJECT PANEL -->
+							<div class="col-xs-6 col-md-4 mb">
+								<a href="./invest_datail?no=${projectVO.vo}">
+									<div>
+										<img alt="" src="${pageContext.request.contextPath}/resources/img/ner.jpg" width="400px">
+									</div>
+									<div>
+										<table style="border-left: 1px; border-right: 1px; width: 400px">
+											<tr>
+												<td class="date">시작일</td>
+											</tr>
+											<tr>
+												<td class="project-name">프로젝트명</td>
+											</tr>
+											<tr>
+												<td witdh="400px">
+													<!--  ANIMATED PROGRESS BARS -->
+									 				<div class="progress progress-striped active">
+									  					<div class="progress-bar" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 45%">
+									  						45%
+														</div>
+													</div>
+										            <!-- /showback -->
+									            </td>
+											</tr>
+										</table>
+										<table width="400px">
+											<tr>
+												<td class="infomation">등급</td>
+												<td class="infomation">연수익률</td>
+												<td class="infomation">기간</td>
+												<td class="infomation">모집금액</td>
+												<td class="infomation">상환방식</td>
+											</tr>
+										</table>
+									</div>
+								</a>
+							</div>
+							<!-- PROJECT PANEL -->
+						</div>
+						<!-- row end -->
 						
-						<!-- PROJECT PANEL -->
-						<div class="col-xs-6 col-md-4 mb">
-							<a href="./invest_datail?no=${projectVO.vo}">
-								<div>
-									<img alt="" src="${pageContext.request.contextPath}/resources/img/ner.jpg" width="400px">
-								</div>
-								<div>
-									<table style="border-left: 1px; border-right: 1px; width: 400px">
-										<tr>
-											<td class="date">시작일</td>
-										</tr>
-										<tr>
-											<td class="project-name">프로젝트명</td>
-										</tr>
-										<tr>
-											<td witdh="400px">
-												<!--  ANIMATED PROGRESS BARS -->
-								 				<div class="progress progress-striped active">
-								  					<div class="progress-bar" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 45%">
-								  						45%
+											<!--  FOURTH ROW OF PANELS -->
+						<div class="row">
+							<!-- PROJECT PANEL -->
+							<div class="col-xs-6 col-md-4 mb">
+								<a href="./invest_datail?no=${projectVO.vo}">
+									<div>
+										<img alt="" src="${pageContext.request.contextPath}/resources/img/ner.jpg" width="400px">
+									</div>
+									<div>
+										<table style="border-left: 1px; border-right: 1px; width: 400px">
+											<tr>
+												<td class="date">시작일</td>
+											</tr>
+											<tr>
+												<td class="project-name">프로젝트명</td>
+											</tr>
+											<tr>
+												<td witdh="400px">
+													<!--  ANIMATED PROGRESS BARS -->
+									 				<div class="progress progress-striped active">
+									  					<div class="progress-bar" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 45%">
+									  						45%
+														</div>
 													</div>
-												</div>
-									            <!-- /showback -->
-								            </td>
-										</tr>
-									</table>
-									<table width="400px">
-										<tr>
-											<td class="infomation">등급</td>
-											<td class="infomation">연수익률</td>
-											<td class="infomation">기간</td>
-											<td class="infomation">모집금액</td>
-											<td class="infomation">상환방식</td>
-										</tr>
-									</table>
-								</div>
-							</a>
-						</div>
-						<!-- PROJECT PANEL -->
-												<!-- PROJECT PANEL -->
-						<div class="col-xs-6 col-md-4 mb">
-							<a href="./invest_datail?no=${projectVO.vo}">
-								<div>
-									<img alt="" src="${pageContext.request.contextPath}/resources/img/ner.jpg" width="400px">
-								</div>
-								<div>
-									<table style="border-left: 1px; border-right: 1px; width: 400px">
-										<tr>
-											<td class="date">시작일</td>
-										</tr>
-										<tr>
-											<td class="project-name">프로젝트명</td>
-										</tr>
-										<tr>
-											<td witdh="400px">
-												<!--  ANIMATED PROGRESS BARS -->
-								 				<div class="progress progress-striped active">
-								  					<div class="progress-bar" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 45%">
-								  						45%
+										            <!-- /showback -->
+									            </td>
+											</tr>
+										</table>
+										<table width="400px">
+											<tr>
+												<td class="infomation">등급</td>
+												<td class="infomation">연수익률</td>
+												<td class="infomation">기간</td>
+												<td class="infomation">모집금액</td>
+												<td class="infomation">상환방식</td>
+											</tr>
+										</table>
+									</div>
+								</a>
+							</div>
+							<!-- PROJECT PANEL -->
+							
+							
+							<!-- PROJECT PANEL -->
+							<div class="col-xs-6 col-md-4 mb">
+								<a href="./invest_datail?no=${projectVO.vo}">
+									<div>
+										<img alt="" src="${pageContext.request.contextPath}/resources/img/ner.jpg" width="400px">
+									</div>
+									<div>
+										<table style="border-left: 1px; border-right: 1px; width: 400px">
+											<tr>
+												<td class="date">시작일</td>
+											</tr>
+											<tr>
+												<td class="project-name">프로젝트명</td>
+											</tr>
+											<tr>
+												<td witdh="400px">
+													<!--  ANIMATED PROGRESS BARS -->
+									 				<div class="progress progress-striped active">
+									  					<div class="progress-bar" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 45%">
+									  						45%
+														</div>
 													</div>
-												</div>
-									            <!-- /showback -->
-								            </td>
-										</tr>
-									</table>
-									<table width="400px">
-										<tr>
-											<td class="infomation">등급</td>
-											<td class="infomation">연수익률</td>
-											<td class="infomation">기간</td>
-											<td class="infomation">모집금액</td>
-											<td class="infomation">상환방식</td>
-										</tr>
-									</table>
-								</div>
-							</a>
+										            <!-- /showback -->
+									            </td>
+											</tr>
+										</table>
+										<table width="400px">
+											<tr>
+												<td class="infomation">등급</td>
+												<td class="infomation">연수익률</td>
+												<td class="infomation">기간</td>
+												<td class="infomation">모집금액</td>
+												<td class="infomation">상환방식</td>
+											</tr>
+										</table>
+									</div>
+								</a>
+							</div>
+							<!-- PROJECT PANEL -->
+													<!-- PROJECT PANEL -->
+							<div class="col-xs-6 col-md-4 mb">
+								<a href="./invest_datail?no=${projectVO.vo}">
+									<div>
+										<img alt="" src="${pageContext.request.contextPath}/resources/img/ner.jpg" width="400px">
+									</div>
+									<div>
+										<table style="border-left: 1px; border-right: 1px; width: 400px">
+											<tr>
+												<td class="date">시작일</td>
+											</tr>
+											<tr>
+												<td class="project-name">프로젝트명</td>
+											</tr>
+											<tr>
+												<td witdh="400px">
+													<!--  ANIMATED PROGRESS BARS -->
+									 				<div class="progress progress-striped active">
+									  					<div class="progress-bar" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 45%">
+									  						45%
+														</div>
+													</div>
+										            <!-- /showback -->
+									            </td>
+											</tr>
+										</table>
+										<table width="400px">
+											<tr>
+												<td class="infomation">등급</td>
+												<td class="infomation">연수익률</td>
+												<td class="infomation">기간</td>
+												<td class="infomation">모집금액</td>
+												<td class="infomation">상환방식</td>
+											</tr>
+										</table>
+									</div>
+								</a>
+							</div>
+							<!-- PROJECT PANEL -->
 						</div>
-						<!-- PROJECT PANEL -->
-					</div>
-					<!-- row end -->
+						<!-- row end -->
 					
-										<!--  FOURTH ROW OF PANELS -->
-					<div class="row">
-						<!-- PROJECT PANEL -->
-						<div class="col-xs-6 col-md-4 mb">
-							<a href="./invest_datail?no=${projectVO.vo}">
-								<div>
-									<img alt="" src="${pageContext.request.contextPath}/resources/img/ner.jpg" width="400px">
-								</div>
-								<div>
-									<table style="border-left: 1px; border-right: 1px; width: 400px">
-										<tr>
-											<td class="date">시작일</td>
-										</tr>
-										<tr>
-											<td class="project-name">프로젝트명</td>
-										</tr>
-										<tr>
-											<td witdh="400px">
-												<!--  ANIMATED PROGRESS BARS -->
-								 				<div class="progress progress-striped active">
-								  					<div class="progress-bar" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 45%">
-								  						45%
-													</div>
-												</div>
-									            <!-- /showback -->
-								            </td>
-										</tr>
-									</table>
-									<table width="400px">
-										<tr>
-											<td class="infomation">등급</td>
-											<td class="infomation">연수익률</td>
-											<td class="infomation">기간</td>
-											<td class="infomation">모집금액</td>
-											<td class="infomation">상환방식</td>
-										</tr>
-									</table>
-								</div>
-							</a>
-						</div>
-						<!-- PROJECT PANEL -->
-						
-						
-						<!-- PROJECT PANEL -->
-						<div class="col-xs-6 col-md-4 mb">
-							<a href="./invest_datail?no=${projectVO.vo}">
-								<div>
-									<img alt="" src="${pageContext.request.contextPath}/resources/img/ner.jpg" width="400px">
-								</div>
-								<div>
-									<table style="border-left: 1px; border-right: 1px; width: 400px">
-										<tr>
-											<td class="date">시작일</td>
-										</tr>
-										<tr>
-											<td class="project-name">프로젝트명</td>
-										</tr>
-										<tr>
-											<td witdh="400px">
-												<!--  ANIMATED PROGRESS BARS -->
-								 				<div class="progress progress-striped active">
-								  					<div class="progress-bar" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 45%">
-								  						45%
-													</div>
-												</div>
-									            <!-- /showback -->
-								            </td>
-										</tr>
-									</table>
-									<table width="400px">
-										<tr>
-											<td class="infomation">등급</td>
-											<td class="infomation">연수익률</td>
-											<td class="infomation">기간</td>
-											<td class="infomation">모집금액</td>
-											<td class="infomation">상환방식</td>
-										</tr>
-									</table>
-								</div>
-							</a>
-						</div>
-						<!-- PROJECT PANEL -->
-												<!-- PROJECT PANEL -->
-						<div class="col-xs-6 col-md-4 mb">
-							<a href="./invest_datail?no=${projectVO.vo}">
-								<div>
-									<img alt="" src="${pageContext.request.contextPath}/resources/img/ner.jpg" width="400px">
-								</div>
-								<div>
-									<table style="border-left: 1px; border-right: 1px; width: 400px">
-										<tr>
-											<td class="date">시작일</td>
-										</tr>
-										<tr>
-											<td class="project-name">프로젝트명</td>
-										</tr>
-										<tr>
-											<td witdh="400px">
-												<!--  ANIMATED PROGRESS BARS -->
-								 				<div class="progress progress-striped active">
-								  					<div class="progress-bar" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 45%">
-								  						45%
-													</div>
-												</div>
-									            <!-- /showback -->
-								            </td>
-										</tr>
-									</table>
-									<table width="400px">
-										<tr>
-											<td class="infomation">등급</td>
-											<td class="infomation">연수익률</td>
-											<td class="infomation">기간</td>
-											<td class="infomation">모집금액</td>
-											<td class="infomation">상환방식</td>
-										</tr>
-									</table>
-								</div>
-							</a>
-						</div>
-						<!-- PROJECT PANEL -->
 					</div>
-					<!-- row end -->
-					
-										<!--  FOURTH ROW OF PANELS -->
-					<div class="row">
-						<!-- PROJECT PANEL -->
-						<div class="col-xs-6 col-md-4 mb">
-							<a href="./invest_datail?no=${projectVO.vo}">
-								<div>
-									<img alt="" src="${pageContext.request.contextPath}/resources/img/ner.jpg" width="400px">
-								</div>
-								<div>
-									<table style="border-left: 1px; border-right: 1px; width: 400px">
-										<tr>
-											<td class="date">시작일</td>
-										</tr>
-										<tr>
-											<td class="project-name">프로젝트명</td>
-										</tr>
-										<tr>
-											<td witdh="400px">
-												<!--  ANIMATED PROGRESS BARS -->
-								 				<div class="progress progress-striped active">
-								  					<div class="progress-bar" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 45%">
-								  						45%
-													</div>
-												</div>
-									            <!-- /showback -->
-								            </td>
-										</tr>
-									</table>
-									<table width="400px">
-										<tr>
-											<td class="infomation">등급</td>
-											<td class="infomation">연수익률</td>
-											<td class="infomation">기간</td>
-											<td class="infomation">모집금액</td>
-											<td class="infomation">상환방식</td>
-										</tr>
-									</table>
-								</div>
-							</a>
-						</div>
-						<!-- PROJECT PANEL -->
-						
-						
-						<!-- PROJECT PANEL -->
-						<div class="col-xs-6 col-md-4 mb">
-							<a href="./invest_datail?no=${projectVO.vo}">
-								<div>
-									<img alt="" src="${pageContext.request.contextPath}/resources/img/ner.jpg" width="400px">
-								</div>
-								<div>
-									<table style="border-left: 1px; border-right: 1px; width: 400px">
-										<tr>
-											<td class="date">시작일</td>
-										</tr>
-										<tr>
-											<td class="project-name">프로젝트명</td>
-										</tr>
-										<tr>
-											<td witdh="400px">
-												<!--  ANIMATED PROGRESS BARS -->
-								 				<div class="progress progress-striped active">
-								  					<div class="progress-bar" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 45%">
-								  						45%
-													</div>
-												</div>
-									            <!-- /showback -->
-								            </td>
-										</tr>
-									</table>
-									<table width="400px">
-										<tr>
-											<td class="infomation">등급</td>
-											<td class="infomation">연수익률</td>
-											<td class="infomation">기간</td>
-											<td class="infomation">모집금액</td>
-											<td class="infomation">상환방식</td>
-										</tr>
-									</table>
-								</div>
-							</a>
-						</div>
-						<!-- PROJECT PANEL -->
-												<!-- PROJECT PANEL -->
-						<div class="col-xs-6 col-md-4 mb">
-							<a href="./invest_datail?no=${projectVO.vo}">
-								<div>
-									<img alt="" src="${pageContext.request.contextPath}/resources/img/ner.jpg" width="400px">
-								</div>
-								<div>
-									<table style="border-left: 1px; border-right: 1px; width: 400px">
-										<tr>
-											<td class="date">시작일</td>
-										</tr>
-										<tr>
-											<td class="project-name">프로젝트명</td>
-										</tr>
-										<tr>
-											<td witdh="400px">
-												<!--  ANIMATED PROGRESS BARS -->
-								 				<div class="progress progress-striped active">
-								  					<div class="progress-bar" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 45%">
-								  						45%
-													</div>
-												</div>
-									            <!-- /showback -->
-								            </td>
-										</tr>
-									</table>
-									<table width="400px">
-										<tr>
-											<td class="infomation">등급</td>
-											<td class="infomation">연수익률</td>
-											<td class="infomation">기간</td>
-											<td class="infomation">모집금액</td>
-											<td class="infomation">상환방식</td>
-										</tr>
-									</table>
-								</div>
-							</a>
-						</div>
-						<!-- PROJECT PANEL -->
-					</div>
-					<!-- row end -->
-					
 				</div>
-			</div>
-		</section>
-		<!-- /wrapper -->
-    </section>
-    <!-- /MAIN CONTENT -->
-    <!--main content end-->
+			</section>
+			<!-- /wrapper -->
+	    </section>
+	    <!-- /MAIN CONTENT -->
+	    <!--main content end-->
 		
 		<!--footer start-->
 		<footer class="site-footer">
@@ -671,113 +673,3 @@
 </body>
 
 </html>
-
-
-
-<!-- 대출 start -->
-<!-- <li class="dropdown"> -->
-<!-- 	<a data-toggle="dropdown" class="dropdown-toggle" href="index.html#"> -->
-<!-- 		대출 -->
-<!-- 	</a> -->
-<!-- 	<ul class="dropdown-menu extended tasks-bar"> -->
-<!-- 		<div class="notify-arrow notify-arrow-green"></div> -->
-<!-- 		<li> -->
-<!-- 			<a href="index.html#"> -->
-<!-- 				<div class="task-info"> -->
-<!-- 					<div class="desc">Dashio Admin Panel</div> -->
-<!-- 					<div class="percent">80%</div> -->
-<!-- 				</div> -->
-<!-- 			<div class="progress progress-striped"> -->
-<!-- 				<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 80%"> -->
-<!-- 					<span class="sr-only">80% Complete (success)</span> -->
-<!-- 				</div> -->
-<!-- 			</div> -->
-<!-- 			</a> -->
-<!-- 		</li> -->
-<!-- 		<li> -->
-<!-- 			<a href="index.html#"> -->
-<!-- 				<div class="task-info"> -->
-<!-- 					<div class="desc">Database Update</div> -->
-<!-- 					<div class="percent">60%</div> -->
-<!-- 				</div> -->
-<!-- 				<div class="progress progress-striped"> -->
-<!-- 					<div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%"> -->
-<!-- 						<span class="sr-only">60% Complete (warning)</span> -->
-<!-- 					</div> -->
-<!-- 				</div> -->
-<!-- 			</a> -->
-<!-- 		</li> -->
-<!-- 		<li> -->
-<!-- 			<a href="index.html#"> -->
-<!-- 				<div class="task-info"> -->
-<!-- 					<div class="desc">Product Development</div> -->
-<!-- 					<div class="percent">80%</div> -->
-<!-- 				</div> -->
-<!-- 				<div class="progress progress-striped"> -->
-<!-- 					<div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%"> -->
-<!-- 						<span class="sr-only">80% Complete</span> -->
-<!-- 					</div> -->
-<!-- 				</div> -->
-<!-- 			</a> -->
-<!-- 		</li> -->
-<!-- 		<li> -->
-<!-- 			<a href="index.html#"> -->
-<!-- 				<div class="task-info"> -->
-<!-- 					<div class="desc">Payments Sent</div> -->
-<!-- 					<div class="percent">70%</div> -->
-<!-- 				</div> -->
-<!--                			<div class="progress progress-striped"> -->
-<!-- 					<div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 70%"> -->
-<!-- 						<span class="sr-only">70% Complete (Important)</span> -->
-<!-- 					</div> -->
-<!-- 				</div> -->
-<!-- 			</a> -->
-<!-- 		</li> -->
-<!-- 		<li class="external"> -->
-<!-- 			<a href="#">See All Tasks</a> -->
-<!-- 		</li> -->
-<!-- 	</ul> -->
-<!-- </li> -->
-<!--       		대출 end -->
-
-<!-- <!-- 마이페이지 start-->
-<!-- <li id="header_notification_bar" class="dropdown"> -->
-<!-- 	<a data-toggle="dropdown" class="dropdown-toggle" href="index.html#"> -->
-<!-- 		마이페이지 -->
-<!-- 	</a> -->
-<!-- 	<ul class="dropdown-menu extended notification"> -->
-<!-- 		<div class="notify-arrow"></div> -->
-<!-- 		<li> -->
-<!-- 			<a href="index.html#"> -->
-<!-- 				<span class="label label-danger"><i class="fa fa-bolt"></i></span> -->
-<!-- 					Server Overloaded. -->
-<!-- 				<span class="small italic">4 mins.</span> -->
-<!-- 			</a> -->
-<!-- 		</li> -->
-<!-- 		<li> -->
-<!-- 			<a href="index.html#"> -->
-<!-- 				<span class="label label-warning"><i class="fa fa-bell"></i></span> -->
-<!-- 					Memory #2 Not Responding. -->
-<!-- 				<span class="small italic">30 mins.</span> -->
-<!-- 			</a> -->
-<!-- 		</li> -->
-<!-- 		<li> -->
-<!-- 			<a href="index.html#"> -->
-<!-- 				<span class="label label-danger"><i class="fa fa-bolt"></i></span> -->
-<!-- 					Disk Space Reached 85%. -->
-<!-- 				<span class="small italic">2 hrs.</span> -->
-<!-- 			</a> -->
-<!-- 		</li> -->
-<!-- 		<li> -->
-<!-- 			<a href="index.html#"> -->
-<!-- 				<span class="label label-success"><i class="fa fa-plus"></i></span> -->
-<!-- 					New User Registered. -->
-<!-- 				<span class="small italic">3 hrs.</span> -->
-<!-- 			</a> -->
-<!-- 		</li> -->
-<!-- 		<li> -->
-<!-- 			<a href="index.html#">See all notifications</a> -->
-<!-- 		</li> -->
-<!-- 	</ul> -->
-<!-- </li> -->
-<!-- <!-- 마이페이지 end -->
