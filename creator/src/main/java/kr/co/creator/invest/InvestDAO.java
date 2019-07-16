@@ -25,6 +25,13 @@ public class InvestDAO {
 		return list;
 	}//invest_list
 
+	public List<ProjectVO> invest_finish() {
+		List<ProjectVO> list = null;
+		list = sqlSession.selectList("InvestMapper.investFinish");
+		
+		return list;
+	}
+	
 	public ProjectVO invest_detail(ProjectVO vo) {
 		vo = sqlSession.selectOne("InvestMapper.investDetail", vo);
 		

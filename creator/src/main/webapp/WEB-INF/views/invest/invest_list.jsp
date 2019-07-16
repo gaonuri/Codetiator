@@ -186,7 +186,7 @@
 											<td>${vo.grade}</td>
 											<td>${vo.yield}%</td>
 											<td>${vo.refund}개월</td>
-											<td>${vo.price}</td>
+											<td>${vo.price}만원</td>
 											<td>${vo.repay_method}</td>
 											<td>${vo.ach_rate}</td>
 											<td>

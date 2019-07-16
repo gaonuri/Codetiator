@@ -25,9 +25,15 @@ public class InvestService {
 	}
 
 	public ProjectVO invest_detail(ProjectVO vo) {
-		
 		vo = investDAO.invest_detail(vo);
 		
 		return vo;
+	}
+
+	public List<ProjectVO> invest_finish() {
+		List<ProjectVO> list = null;
+		list = investDAO.invest_finish();
+		
+		return list;
 	}
 }//class

@@ -160,14 +160,13 @@
 	        *********************************************************************************************************************************************************** -->
 		<!--main content start-->
 		<section id="main-content">
+			
 			<section class="wrapper site-min-height">
 				<div class="row mt">
+			<div style="background-color: orange; width: 60px; text-align: center; color: white; font-size: 15px;">${detailVO.ach_state}</div>
+			<div style="width: 200px; color: black; font-size: 25px;">${detailVO.project_name}</div>
 					<div class="col-lg-12">
 						<table border="1">
-							<tr>
-								<th>제목</th>
-								<td>${detailVO.project_name}</td>
-							</tr>
 							<tr>
 								<th>등급</th>
 								<td>${detailVO.grade}</td>
@@ -191,10 +190,6 @@
 							<tr>
 								<th>모집현황</th>
 								<td>${detailVO.ach_rate}</td>
-							</tr>
-							<tr>
-								<th>모집상태</th>
-								<td>${detailVO.ach_state}</td>
 							</tr>
 							<tr>
 								<th>등록일</th>
