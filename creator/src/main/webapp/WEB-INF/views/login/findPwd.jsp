@@ -35,35 +35,29 @@
 	  Template URL: https://templatemag.com/dashio-bootstrap-admin-template/
 	  Author: TemplateMag.com
 	  License: https://templatemag.com/license/
-	  
 	======================================================= -->
-<script type="text/javascript">
+	
+	<script type="text/javascript">
 $(document).ready(function(){
-	$("#login_btn").click(function(){
+	$("#findpwd_btn").click(function(){
 		if($.trim($("#email").val()) == ""){
-			alert("이메일을 확인하세요.");
+			alert("가입된 정보가 없습니다.");
 			$("#email").focus();
 			return;
 		}
-		if($.trim($("#user_password").val()) == ""){
-			alert("비밀번호를 확인하세요.");
-			$("#user_password").focus();
-			return;
-		}
-
 		$.post(
-				"./loginuser"
+				"./findpwd"
 				,{
-					email:$("#email").val()
-					,user_password:$("#user_password").val()
+					email:$("#email").val(),
+					manager_email:$("#manager_email").val()
 				}
 				,function(data,status){
 					if(status == "success"){
 						if(data > 0){
-							alert("로그인 되었습니다.");
+							alert("버튼을 클릭해 주세요");
 							location.href="/creator/main";
 						} else if(data == 0){
-							alert("존재하지 않는 이메일 또는 비밀번호 입니다.");
+							alert("존재하지 않는 이메일 입니다.");
 						} else {
 							alert("잠시 후, 다시 시도해 주세요.");
 						}
@@ -76,45 +70,7 @@ $(document).ready(function(){
 });//ready
 </script>
 
-<script type="text/javascript">
-$(document).ready(function(){
-	$("#login_btn1").click(function(){
-		if($.trim($("#busi_resi_num").val()) == ""){
-			alert("사업자등록번호를 확인하세요.");
-			$("#busi_resi_num").focus();
-			return;
-		}
-		if($.trim($("#busi_password").val()) == ""){
-			alert("비밀번호를 확인하세요.");
-			$("#busi_password").focus();
-			return;
-		}
 
-		$.post(
-				"./loginbusi"
-				,{
-					busi_resi_num:$("#busi_resi_num").val()
-					,busi_password:$("#busi_password").val()
-				}
-				,function(data,status){
-					if(status == "success"){
-						if(data > 0){
-							alert("로그인 되었습니다.");
-							location.href="/creator/main";
-						} else if(data == 0){
-							alert("존재하지 않는 사업자등록번호 또는 비밀번호 입니다.");
-						} else {
-							alert("잠시 후, 다시 시도해 주세요.");
-						}
-					} else {
-						alert("시스템 관리자에게 문의 바랍니다.");
-					}
-				}
-		);//post
-	});//click
-});//ready
-</script>
-	
 </head>
 
 <body>
@@ -252,86 +208,22 @@ $(document).ready(function(){
 </div>
 				
 <!-- =====================================================================logo -->
-	
-<div class="col-lg-4 mt col-md-offset-3">
-<div class="row content-panel">
-	<div class="panel-heading">
-		<ul class="nav nav-tabs nav-justified">
-			<li class="active">
-				<a data-toggle="tab" href="#usertab">일반회원</a>
-			</li>
-			<li >
-				<a data-toggle="tab" href="#busitab">법인회원</a>
-			</li>
-		</ul>
-	</div>
-	
-    <!-- /panel-heading -->
 				
-	<div class="panel-body">
-	<div class="tab-content">
-		<div id="usertab" class="tab-pane active">
-	    	<form role="form" class="form-horizontal">
-		   		<div class="row">
-		    	<div class="col-md col-md-offset-2  ">
-					<div class="form-group">
-						<div class="col-sm-10">
-							<input type="email" class="form-control" id="email" placeholder="*이메일">
-						</div>
-					</div>
-					<div class="form-group">
-						<div class="col-sm-10">
-							<input type="password" class="form-control" id="user_password" placeholder="*비밀번호">
-						</div>
-					</div>	
-				</div>
-				<div class="col-sm-10 col-lg-offset-3">
-					<input type="text" class="btn btn-theme" id="login_btn" value="로그인" />
-				</div>
-				</div>
-	    	</form>
-	    	<div class="col-md-offset-1">
-				<a class="" href="./findpwd">비밀번호를 잊으셨나요?</a>
-				<a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
-				<a class="" href="./join">회원 가입하기</a>
-	    	</div>	    	
+				
+<div class="col-lg-6 mt col-md-offset-3">
+	<h3 class="title">비밀번호를 잊어 버리셨나요?</h3>
+	<h4 class="title">임시 비밀번호를 보내드립니다.</h4>
+	<div class="form-group">
+		<div class="col-sm-10">
+			<input type="email" class="form-control" id="email" placeholder="*이메일">
 		</div>
-		
-		<!-- =====================================================================일반회원 -->	
-		
-		<div id="busitab" class="tab-pane">
-			<form role="form" class="form-horizontal">
-		   		<div class="row">
-		    	<div class="col-md col-md-offset-2 ">
-					<div class="form-group">
-						<div class="col-sm-10">
-							<input type="text" class="form-control onlyLicense" id="busi_resi_num" placeholder="*사업자등록번호">
-							<span class="mt-2 d-block">'-'을 제외한 숫자만 입력해 주세요.</span>
-						</div>
-					</div>
-					<div class="form-group">
-						<div class="col-sm-10">
-							<input type="password" class="form-control onlyPass" id="busi_password" placeholder="*비밀번호">
-						</div>				
-					</div>	
-				</div>
-				<div class="col-sm-10 col-lg-offset-3 ">
-					<input type="text" class="btn btn-theme" id="login_btn1" value="로그인" />
-				</div>
-				</div>
-	    	</form>
-	    	<div class="col-md-offset-1">
-				<a class="" href="./findpwd">비밀번호를 잊으셨나요?</a>
-				<a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
-				<a class="" href="./join">회원 가입하기</a>
-	    	</div>
-	   	</div>
 	</div>
-	</div>
+	<div class="form-send">
+		<div class="col-sm-10 col-lg-offset-3">
+			<input type="text" class="btn btn-theme" id="findpwd_btn" value="비밀번호 초기화" />
+		</div>
+	</div>	
 </div>
-</div>			
 				
 		<!-- ===================================================================== body-->		
 				
