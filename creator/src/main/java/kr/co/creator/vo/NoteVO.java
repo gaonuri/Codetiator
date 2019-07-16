@@ -2,16 +2,16 @@ package kr.co.creator.vo;
 
 // 1:1문의
 public class NoteVO {
-	private String note_num;			// 문의번호
-	private String note_type;			// 타입(보낸문의받은문의)
-	private String note_date;			// 수신일
-	private String chk_note_reception;	// 수신확인여부
-	private String note_contents;		// 문의내용
-	private String send_user_num;		// 문의자번호
-	private String send_nickname;		// 문의자닉네임
-	private String note_title;			// 제목
-	private String status;				// 처리상태
-	private String file_path;			// 파일경로
+	private String note_num;				// 문의번호
+	private String note_type;				// 타입(보낸문의받은문의)
+	private String note_date;				// 수신일
+	private String chk_note_reception;		// 수신확인여부
+	private String note_contents;			// 문의내용
+	private String send_user_num;			// 문의자번호
+	private String send_nickname;			// 문의자닉네임
+	private String note_title;				// 제목
+	private String status;					// 처리상태
+	private String file_path;				// 파일경로
 	
 	public NoteVO() {}	//constructor
 	public NoteVO(String note_num, String note_type, String note_date, String chk_note_reception, String note_contents, String send_user_num, String send_nickname, String note_title, String status, String file_path) {
