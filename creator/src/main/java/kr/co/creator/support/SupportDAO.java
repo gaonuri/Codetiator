@@ -28,4 +28,18 @@ public class SupportDAO {
 							"SupportMapper.supportList");
 		return support;
 	}
+	
+	public List<NoticeVO> supportList2() {
+		List<NoticeVO> support = null;
+		support = sqlSession.selectList(
+							"SupportMapper.supportList2");
+		return support;
+	}
+	
+	public List<NoticeVO> supportList3() {
+		List<NoticeVO> support = null;
+		support = sqlSession.selectList(
+							"SupportMapper.supportList3");
+		return support;
+	}
 }//class
