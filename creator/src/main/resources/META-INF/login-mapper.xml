@@ -5,4 +5,23 @@
  
 <mapper namespace="LoginMapper">
 	
+	<select id="loginUser" parameterType="kr.co.creator.vo.UserVO" resultType="kr.co.creator.vo.UserVO">
+		select user_num, email
+		from user_list
+		where email=#{email} and user_password=#{user_password}
+	</select>
+	
+	<select id="loginBusi" parameterType="kr.co.creator.vo.Busi_userVO"	resultType="kr.co.creator.vo.Busi_userVO">
+		select busi_num, busi_resi_num
+		from busi_user_list
+		where busi_resi_num=#{busi_resi_num} and busi_password=#{busi_password}
+	</select>
+	
+	<select id="findPwd" parameterType="kr.co.creator.vo.FindPwdVO"	resultType="kr.co.creator.vo.FindPwdVO">
+		select email from user_list
+		union
+		select manager_email from busi_user_list
+		order by 1;
+	</select> 
+	 
 </mapper>

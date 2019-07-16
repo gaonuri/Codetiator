@@ -4,13 +4,18 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import kr.co.creator.vo.FindPwdVO;
+
 @Repository
 public class LoginDAO {
 	
 	@Autowired
 	SqlSession sqlSession;
-
-	public void login() {
-		//sqlSession.selectList("LoginMapper");
-	}
+	
+	public int findPwdChk(FindPwdVO vo) {
+		int cnt = 0;
+		cnt = sqlSession.selectOne("JoinMapper.findPwdChk", vo);
+		return cnt;
+	}//findPwdChk
+	
 }//class

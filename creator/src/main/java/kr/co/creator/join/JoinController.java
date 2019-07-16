@@ -80,5 +80,5 @@ public class JoinController {
 	public String join() {
 		logger.info("join");
 		return "join/join";
-	}
+	}//join
 }
