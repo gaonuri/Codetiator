@@ -33,7 +33,6 @@ public class InvestController {
 	public String invest_guide() {
 		logger.info("invest_guide");
 		
-		
 		return "invest/invest_guide";
 	}
 	
@@ -43,7 +42,6 @@ public class InvestController {
 		
 		List<ProjectVO> list = null;
 		list = investService.invest_list();
-		
 		model.addAttribute("investList", list);
 		
 		return "invest/invest_list";
@@ -53,16 +51,19 @@ public class InvestController {
 	public String invest_detail(Model model, ProjectVO vo) {
 		logger.info("invest_detail");
 		
-		vo = investService.invest_detail(vo);
-		model.addAttribute("detailVO", vo);
+		vo = investService.project_detail(vo);
+		model.addAttribute("projectVO", vo);
 		
 		return "invest/invest_detail";
 	}
 	
 	@RequestMapping(value = "/invest_finish", method = RequestMethod.GET)
-	public String invest_finish() {
+	public String invest_finish(Model model) {
 		logger.info("invest_finish");
 		
+		List<ProjectVO> list = null;
+		list = investService.invest_finish();
+		model.addAttribute("investFinish", list);
 		
 		return "invest/invest_finish";
 	}

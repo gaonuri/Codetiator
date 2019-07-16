@@ -10,6 +10,7 @@
 	<meta name="author" content="Dashboard">
 	<meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
 	<title>Dashio - Bootstrap Admin Template</title>
+	<script src="../resources/jquery/jquery-3.4.1.js"></script>
 	
 	<!-- Favicons -->
 	<link href="${pageContext.request.contextPath}/resources/bootstrap/img/favicon.png" rel="icon">
@@ -160,68 +161,10 @@
 	        *********************************************************************************************************************************************************** -->
 		<!--main content start-->
 		<section id="main-content">
-			
 			<section class="wrapper site-min-height">
 				<div class="row mt">
-			<div style="background-color: orange; width: 60px; text-align: center; color: white; font-size: 15px;">${projectVO.ach_state}</div>
-			<div style="width: 200px; color: black; font-size: 25px;">${projectVO.project_name}</div>
 					<div class="col-lg-12">
-						<table>
-							<tr>
-								<th>기본정보</th>
-							</tr>
-							<tr>
-								<td>담보유형</td>
-								<td>만기</td>
-								<td>대출금액</td>
-								<td>대출잔액</td>
-							</tr>
-							<tr>
-								<td>${guaranteeVO.guarantee_type}</td>
-								<td>${projectVO.refund}</td>
-								<td>${projectVO.price}</td>
-								<td>${projectVO.guarantee_price}</td>
-							</tr>
-						</table>
-						<table>
-							<tr>
-								<th>담보물건 정보</th>
-							</tr>							
-							<tr>
-								<td>담보유형</td>
-								<td>만기</td>
-								<td>대출금액</td>
-								<td>대출잔액</td>
-							</tr>
-							<tr>
-								<td>${guaranteeVO.guarantee_type}</td>
-								<td>${projectVO.refund}</td>
-								<td>${projectVO.price}</td>
-								<td>${projectVO.guarantee_price}</td>
-							</tr>
-						</table>
-						<table border="1">
-							<tr>
-								<th>등급</th>
-								<td>${projectVO.grade}</td>
-							</tr>
-							<tr>
-								<th>연 수익률</th>
-								<td>${projectVO.yield}</td>
-							</tr>
-							<tr>
-								<th>상환방식</th>
-								<td>${projectVO.repay_method}</td>
-							</tr>
-							<tr>
-								<th>모집현황</th>
-								<td>${projectVO.ach_rate}</td>
-							</tr>
-							<tr>
-								<th>등록일</th>
-								<td>${projectVO.en_date}</td>
-							</tr>
-						</table>
+						
 					</div>
 				</div>
 			</section>

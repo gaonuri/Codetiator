@@ -5,4 +5,22 @@
  
 <mapper namespace="SupportMapper">
 	
-</mapper>
+	<insert id="supportInsert"
+			parameterType="kr.co.creator.vo.NoticeVO">
+			insert into notice( title
+							, notice_contents
+							, notice_date)
+		values( #{title}
+				, #{notice_contents}
+				, now())
+	</insert>
+	
+	<select id="supportList"
+			resultType="kr.co.creator.vo.NoticeVO">
+		select notice_num
+			, title
+			, notice_date
+			FROM notice
+			order by notice_date desc
+	</select>
+	</mapper>

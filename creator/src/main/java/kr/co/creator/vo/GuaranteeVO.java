@@ -3,9 +3,12 @@ package kr.co.creator.vo;
 // 게런티
 public class GuaranteeVO {
 	private String guarantee_num;			// 담보번호
-	private String guarantee_comple_year;	// 담보유형
+	private String guarantee_type;			// 담보유형(부동산, 동산)
+	private String guarantee_img;			// 담보문사진경로
 	private String guarantee_name;			// 담보이름
-	private String connoisseur;				// 감정가
+	private String debtor_type;				// 차주유형(개인, 법인)
+	private String business_type;			// 차주업종(직종)
+	private String connoisseur;				// 외부감정가
 	private String area;					// 면적
 	private String map;						// 지도
 	private String location;				// 소재지
@@ -14,13 +17,16 @@ public class GuaranteeVO {
 	private String quote;					// 시세
 	private String code;					// 담보분류
 	
-	private String loan_num;				// (참조)대출 번호
+	private String project_num;				// (참조)프로젝트번호
 	
 	public GuaranteeVO() {}	//constructor
-	public GuaranteeVO(String guarantee_num, String guarantee_comple_year, String guarantee_name, String connoisseur, String area, String map, String location, String scale, String comple_year, String quote, String code, String grade, String more_information, String en_date, String rate, String loan_num) {
+	public GuaranteeVO(String guarantee_num, String guarantee_type, String guarantee_img, String guarantee_name, String debtor_type, String business_type, String connoisseur, String area, String map, String location, String scale, String comple_year, String quote, String code, String grade, String more_information, String en_date, String rate, String project_num) {
 		this.guarantee_num = guarantee_num;
-		this.guarantee_comple_year = guarantee_comple_year;
+		this.guarantee_type = guarantee_type;
+		this.guarantee_img = guarantee_img;
 		this.guarantee_name = guarantee_name;
+		this.debtor_type = debtor_type;
+		this.business_type = business_type;
 		this.connoisseur = connoisseur;
 		this.area = area;
 		this.map = map;
@@ -30,7 +36,7 @@ public class GuaranteeVO {
 		this.quote = quote;
 		this.code = code;
 		
-		this.loan_num = loan_num;
+		this.project_num = project_num;
 	}//constructor
 	
 	public String getGuarantee_num() {
@@ -40,12 +46,19 @@ public class GuaranteeVO {
 		this.guarantee_num = guarantee_num;
 	}//guarantee_num
 	
-	public String getGuarantee_comple_year() {
-		return guarantee_comple_year;
+	public String getGuarantee_type() {
+		return guarantee_type;
 	}
-	public void setGuarantee_comple_year(String guarantee_comple_year) {
-		this.guarantee_comple_year = guarantee_comple_year;
-	}//guarantee_comple_year
+	public void setGuarantee_type(String guarantee_type) {
+		this.guarantee_type = guarantee_type;
+	}//guarantee_type
+	
+	public String getGuarantee_img() {
+		return guarantee_img;
+	}
+	public void setGuarantee_img(String guarantee_img) {
+		this.guarantee_img = guarantee_img;
+	}//guarantee_img
 	
 	public String getGuarantee_name() {
 		return guarantee_name;
@@ -53,6 +66,20 @@ public class GuaranteeVO {
 	public void setGuarantee_name(String guarantee_name) {
 		this.guarantee_name = guarantee_name;
 	}//guarantee_name
+	
+	public String getDebtor_type() {
+		return debtor_type;
+	}
+	public void setDebtor_type(String debtor_type) {
+		this.debtor_type = debtor_type;
+	}//debtor_type
+	
+	public String getBusiness_type() {
+		return business_type;
+	}
+	public void setBusiness_type(String business_type) {
+		this.business_type = business_type;
+	}//business_type
 	
 	public String getConnoisseur() {
 		return connoisseur;
@@ -110,10 +137,10 @@ public class GuaranteeVO {
 		this.code = code;
 	}//code
 	
-	public String getLoan_num() {
-		return loan_num;
+	public String getProject_num() {
+		return project_num;
 	}
-	public void setLoan_num(String loan_num) {
-		this.loan_num = loan_num;
-	}//loan_num
+	public void setProject_num(String project_num) {
+		this.project_num = project_num;
+	}//project_num
 }//class

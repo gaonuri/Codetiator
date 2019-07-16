@@ -7,6 +7,7 @@ public class ProjectVO {
 	private String project_name;		// 이름
 	private String current_price;		// 현재금액
 	private String price;				// 모집금액
+	private String guarantee_price;		// 남은대출금액 
 	private String deadline;			// 남은기간
 	private String refund;				// 상환기간
 	private String ach_rate;			// 모집현황
@@ -26,15 +27,16 @@ public class ProjectVO {
 	private String repay_method;		// 상환방식
 	
 	private String user_num;			// (참조)유저번호
-	private String busi_num;			// (참조)법인 유저번호
+	private String busi_num;			// (참조)법인유저번호
 	
 	public ProjectVO() {}	//constructor
-	public ProjectVO(String project_num, String img, String project_name, String current_price, String price, String deadline, String refund, String ach_rate, String customer, String type, String genre, String yield, String grade, String more_information, String en_date, String rate, String loan_period, String loan_amount, String loan_class, String loan_type, String repay_method, String user_num, String busi_num) {
+	public ProjectVO(String project_num, String img, String project_name, String current_price, String price,String guarantee_price, String deadline, String refund, String ach_rate, String customer, String type, String genre, String yield, String grade, String more_information, String en_date, String rate, String loan_period, String loan_amount, String loan_class, String loan_type, String repay_method, String user_num, String busi_num) {
 		this.project_num = project_num;
 		this.img = img;
 		this.project_name = project_name;
 		this.current_price = current_price;
 		this.price = price;
+		this.guarantee_price = guarantee_price;
 		this.deadline = deadline;
 		this.ach_rate = ach_rate;
 		this.customer = customer;
@@ -89,6 +91,13 @@ public class ProjectVO {
 	public void setPrice(String price) {
 		this.price = price;
 	}//price
+	
+	public String getGuarantee_price() {
+		return guarantee_price;
+	}
+	public void setGuarantee_price(String guarantee_price) {
+		this.guarantee_price = guarantee_price;
+	}//guarantee_price
 	
 	public String getDeadline() {
 		return deadline;

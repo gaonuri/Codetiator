@@ -14,7 +14,6 @@
 		<mapper resource="META-INF/loan-mapper.xml" />
 		<mapper resource="META-INF/login-mapper.xml" />
 		<mapper resource="META-INF/main-mapper.xml" />
-		<mapper resource="META-INF/mybatis-mapper.xml" />
 		<mapper resource="META-INF/mypage-mapper.xml" />
 		<mapper resource="META-INF/projectmanagement-mapper.xml" />
 		<mapper resource="META-INF/support-mapper.xml" />

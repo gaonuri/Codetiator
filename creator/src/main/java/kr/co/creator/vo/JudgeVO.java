@@ -3,16 +3,16 @@ package kr.co.creator.vo;
 // 상환내역
 public class JudgeVO {
 	private String judge_num;		// 심사번호
-	private String judge_success;	// 투자자 상환내역
+	private String judge_success;	// 심사성공여부
 	
-	private String loan_num;		// (참조)대출법인
+	private String project_num;		// (참조)프로젝트번호
 	
 	public JudgeVO() {}	//constructor
-	public JudgeVO(String judge_num, String judge_success, String loan_num) {
+	public JudgeVO(String judge_num, String judge_success, String project_num) {
 		this.judge_num = judge_num;
 		this.judge_success = judge_success;
 		
-		this.loan_num = loan_num;
+		this.project_num = project_num;
 	}//constructor
 	
 	public String getJudge_num() {
@@ -31,10 +31,10 @@ public class JudgeVO {
 
 	
 	//참조
-	public String getLoan_num() {
-		return loan_num;
+	public String getProject_num() {
+		return project_num;
 	}
-	public void setLoan_num(String loan_num) {
-		this.loan_num = loan_num;
-	}//loan_num
+	public void setProject_num(String project_num) {
+		this.project_num = project_num;
+	}//project_num
 }//class

@@ -6,7 +6,7 @@ public class InOutVO {
 	private String input_history;	// 입금내역
 	private String output_history;	// 출금내역
 	
-	private String account_num;		// (참조)계좌순번
+	private String account_num;		// (참조)계좌순서
 	
 	public InOutVO() {}	//constructor
 	public InOutVO(String in_out_num, String input_history, String output_history, String account_num) {
