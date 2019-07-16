@@ -40,6 +40,21 @@
 					location.href = "${pageContext.request.contextPath}/support/formi";
 				});//btn_write
 			});//ready
+			$(document).ready(function() {
+				$("#btn_total").click(function() {
+					location.href = "${pageContext.request.contextPath}/support/support_total";
+				});//btn_write
+			});//ready
+			$(document).ready(function() {
+				$("#btn_new").click(function() {
+					location.href = "${pageContext.request.contextPath}/support/support_new";
+				});//btn_write
+			});//ready
+			$(document).ready(function() {
+				$("#btn_operation").click(function() {
+					location.href = "${pageContext.request.contextPath}/support/support_operation";
+				});//btn_write
+			});//ready
 		</script>
 		
 </head>
@@ -173,9 +188,9 @@
           <div class="col-md-10">
             <div class="content-panel">
             <div class="btn-group">
-                <button type="button" class="btn btn-default">전체</button>
-                <button type="button" class="btn btn-default">새소식</button>
-                <button type="button" class="btn btn-default">운영사항</button>
+                <button id="total" type="button" class="btn btn-default">전체</button>
+                <button id="new" type="button" class="btn btn-default">새소식</button>
+                <button id="operation" type="button" class="btn btn-default">운영사항</button>
               </div>
               <hr>
               <table class="table">

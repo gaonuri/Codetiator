@@ -23,6 +23,17 @@ public class SupportService {
 		List<NoticeVO> support = null;
 		support = dao.supportList();
 		return support;
-	}//boardList
+	}//supportList
 
+	public List<NoticeVO> supportList2() {
+		List<NoticeVO> support = null;
+		support = dao.supportList2();
+		return support;
+	}//supportList2
+	
+	public List<NoticeVO> supportList3() {
+		List<NoticeVO> support = null;
+		support = dao.supportList3();
+		return support;
+	}//supportList3
 }//class
