@@ -166,6 +166,20 @@
 			<div style="background-color: orange; width: 60px; text-align: center; color: white; font-size: 15px;">${detailVO.ach_state}</div>
 			<div style="width: 200px; color: black; font-size: 25px;">${detailVO.project_name}</div>
 					<div class="col-lg-12">
+						<table>
+							<tr>
+								<th>담보유형</th>
+								<th>만기</th>
+								<th>대출금액</th>
+								<th>대출잔액</th>
+							</tr>
+							<tr>
+								<td>${guaranteeVO.guarantee_type}</td>
+								<td>${detailVO.refund}</td>
+								<td>${detailVO.price}</td>
+								<td></td>
+							</tr>
+						</table>
 						<table border="1">
 							<tr>
 								<th>등급</th>
@@ -174,14 +188,6 @@
 							<tr>
 								<th>연 수익률</th>
 								<td>${detailVO.yield}</td>
-							</tr>
-							<tr>
-								<th>상환기간</th>
-								<td>${detailVO.refund}</td>
-							</tr>
-							<tr>
-								<th>모집금액</th>
-								<td>${detailVO.price}</td>
 							</tr>
 							<tr>
 								<th>상환방식</th>
