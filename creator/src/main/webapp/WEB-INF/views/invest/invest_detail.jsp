@@ -166,40 +166,45 @@
 			<div style="background-color: orange; width: 60px; text-align: center; color: white; font-size: 15px;">${projectVO.ach_state}</div>
 			<div style="width: 200px; color: black; font-size: 25px;">${projectVO.project_name}</div>
 					<div class="col-lg-12">
-						<table>
-							<tr>
-								<th>기본정보</th>
-							</tr>
-							<tr>
-								<td>담보유형</td>
-								<td>만기</td>
-								<td>대출금액</td>
-								<td>대출잔액</td>
-							</tr>
-							<tr>
-								<td>${guaranteeVO.guarantee_type}</td>
-								<td>${projectVO.refund}</td>
-								<td>${projectVO.price}</td>
-								<td>${projectVO.guarantee_price}</td>
-							</tr>
-						</table>
-						<table>
-							<tr>
-								<th>담보물건 정보</th>
-							</tr>							
-							<tr>
-								<td>담보유형</td>
-								<td>만기</td>
-								<td>대출금액</td>
-								<td>대출잔액</td>
-							</tr>
-							<tr>
-								<td>${guaranteeVO.guarantee_type}</td>
-								<td>${projectVO.refund}</td>
-								<td>${projectVO.price}</td>
-								<td>${projectVO.guarantee_price}</td>
-							</tr>
-						</table>
+						<div class="card-header">
+							상품요약
+						</div>
+						<div class="card-body">
+							<table>
+								<tr>
+									<th>기본정보</th>
+								</tr>
+								<tr>
+									<td>담보유형</td>
+									<td>만기</td>
+									<td>대출금액</td>
+									<td>대출잔액</td>
+								</tr>
+								<tr>
+									<td>${guaranteeVO.guarantee_type}</td>
+									<td>${projectVO.refund}</td>
+									<td>${projectVO.price}</td>
+									<td>${projectVO.guarantee_price}</td>
+								</tr>
+							</table>
+							<table>
+								<tr>
+									<th>담보물건 정보</th>
+								</tr>							
+								<tr>
+									<td>담보유형</td>
+									<td>만기</td>
+									<td>대출금액</td>
+									<td>대출잔액</td>
+								</tr>
+								<tr>
+									<td>${guaranteeVO.guarantee_type}</td>
+									<td>${projectVO.refund}</td>
+									<td>${projectVO.price}</td>
+									<td>${projectVO.guarantee_price}</td>
+								</tr>
+							</table>
+						</div>
 						<table border="1">
 							<tr>
 								<th>등급</th>
