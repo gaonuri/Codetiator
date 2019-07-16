@@ -98,7 +98,6 @@ $(document).ready(function(){
 	$("#busi_resi_num").blur(function(){
 		if($.trim($("#busi_resi_num").val()) == ''){
 			alert("사업자등록번호는 필수 입력 입니다.");
-// 			$("#email").focus();
 			return;
 		}
 		$.post(
@@ -185,7 +184,7 @@ $(document).ready(function(){
 			//alert("ok");
 		}else{
 			alert("사용가능한 홈페이지를 입력해 주세요.");
-			$(this).val("");
+// 			$(this).val("");
 			$(this).focus();
 			return;
 		}
@@ -230,7 +229,7 @@ $(document).ready(function(){
 		}
 	});//onlyPhone
 	
-	$(".onlylicense").change(function(){
+	$(".onlyLicense").change(function(){
 		//alert($(this).val());
 		var licenseStd = /^[0-9]{10}$/;
 		if($(this).val().match(licenseStd)){
@@ -241,7 +240,7 @@ $(document).ready(function(){
 			$(this).focus();
 			return;
 		}
-	});//onlylicense
+	});//onlyLicense
 	
 	$(".onlyPass").change(function(){
 		//alert($(this).val());
@@ -807,13 +806,13 @@ $(document).ready(function(){
 		    	<div class="col-md col-md-offset-2 ">
 					<div class="form-group">
 						<div class="col-sm-10">
-							<input type="text" class="form-control onlylicense" id="busi_resi_num" placeholder="*사업자등록번호">
+							<input type="text" class="form-control onlyLicense" id="busi_resi_num" placeholder="*사업자등록번호">
 							<span class="mt-2 d-block">'-'을 제외한 숫자만 입력해 주세요.</span>
 						</div>
 					</div>
 					<div class="form-group">
 						<div class="col-sm-10">
-							<input type="text" class="form-control onlylicense" id="busi_resi_num_re" placeholder="*사업자등록번호 확인">
+							<input type="text" class="form-control onlyLicense" id="busi_resi_num_re" placeholder="*사업자등록번호 확인">
 							<span class="mt-2 d-block">사업자등록번호를 한번 더 입력해 주세요.</span>
 						</div>				
 					</div>

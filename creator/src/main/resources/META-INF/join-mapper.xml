@@ -45,7 +45,7 @@
 		select count(*) from busi_user_list where busi_resi_num = #{busi_resi_num}
 	</select>
 	
-		<select id="joinMagEmailChk" parameterType="java.lang.String" resultType="int">
+	<select id="joinMagEmailChk" parameterType="java.lang.String" resultType="int">
 		select count(*) from busi_user_list where manager_email = #{manager_email}
 	</select>
 	
