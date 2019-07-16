@@ -163,43 +163,63 @@
 			
 			<section class="wrapper site-min-height">
 				<div class="row mt">
-			<div style="background-color: orange; width: 60px; text-align: center; color: white; font-size: 15px;">${detailVO.ach_state}</div>
-			<div style="width: 200px; color: black; font-size: 25px;">${detailVO.project_name}</div>
+			<div style="background-color: orange; width: 60px; text-align: center; color: white; font-size: 15px;">${projectVO.ach_state}</div>
+			<div style="width: 200px; color: black; font-size: 25px;">${projectVO.project_name}</div>
 					<div class="col-lg-12">
 						<table>
 							<tr>
-								<th>담보유형</th>
-								<th>만기</th>
-								<th>대출금액</th>
-								<th>대출잔액</th>
+								<th>기본정보</th>
+							</tr>
+							<tr>
+								<td>담보유형</td>
+								<td>만기</td>
+								<td>대출금액</td>
+								<td>대출잔액</td>
 							</tr>
 							<tr>
 								<td>${guaranteeVO.guarantee_type}</td>
-								<td>${detailVO.refund}</td>
-								<td>${detailVO.price}</td>
-								<td></td>
+								<td>${projectVO.refund}</td>
+								<td>${projectVO.price}</td>
+								<td>${projectVO.guarantee_price}</td>
+							</tr>
+						</table>
+						<table>
+							<tr>
+								<th>담보물건 정보</th>
+							</tr>							
+							<tr>
+								<td>담보유형</td>
+								<td>만기</td>
+								<td>대출금액</td>
+								<td>대출잔액</td>
+							</tr>
+							<tr>
+								<td>${guaranteeVO.guarantee_type}</td>
+								<td>${projectVO.refund}</td>
+								<td>${projectVO.price}</td>
+								<td>${projectVO.guarantee_price}</td>
 							</tr>
 						</table>
 						<table border="1">
 							<tr>
 								<th>등급</th>
-								<td>${detailVO.grade}</td>
+								<td>${projectVO.grade}</td>
 							</tr>
 							<tr>
 								<th>연 수익률</th>
-								<td>${detailVO.yield}</td>
+								<td>${projectVO.yield}</td>
 							</tr>
 							<tr>
 								<th>상환방식</th>
-								<td>${detailVO.repay_method}</td>
+								<td>${projectVO.repay_method}</td>
 							</tr>
 							<tr>
 								<th>모집현황</th>
-								<td>${detailVO.ach_rate}</td>
+								<td>${projectVO.ach_rate}</td>
 							</tr>
 							<tr>
 								<th>등록일</th>
-								<td>${detailVO.en_date}</td>
+								<td>${projectVO.en_date}</td>
 							</tr>
 						</table>
 					</div>

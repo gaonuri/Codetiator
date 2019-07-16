@@ -51,8 +51,8 @@ public class InvestController {
 	public String invest_detail(Model model, ProjectVO vo) {
 		logger.info("invest_detail");
 		
-		vo = investService.invest_detail(vo);
-		model.addAttribute("detailVO", vo);
+		vo = investService.project_detail(vo);
+		model.addAttribute("projectVO", vo);
 		
 		return "invest/invest_detail";
 	}

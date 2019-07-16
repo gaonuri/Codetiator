@@ -32,7 +32,7 @@
 		where	ach_state = "상환완료" || ach_state = "중도상환"
 	</select>
 	
-	<select id="investDetail" parameterType="kr.co.creator.vo.ProjectVO" resultType="kr.co.creator.vo.ProjectVO">
+	<select id="projectDetail" parameterType="kr.co.creator.vo.ProjectVO" resultType="kr.co.creator.vo.ProjectVO">
 		select	project_name, 
 				grade, 
 				yield, 

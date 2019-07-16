@@ -8,7 +8,7 @@ public class InvestVO {
 	
 	private String user_num;		// (참조)유저번호
 	private String busi_num;		// (참조)법인 유저 순서
-	private String project_num;		// (참조)유저번호
+	private String project_num;		// (참조)프로젝트번호
 	
 	public InvestVO() {}	//constructor
 	public InvestVO(String invest_num, String invest_price, String invest_date, String user_num, String busi_num, String project_num) {

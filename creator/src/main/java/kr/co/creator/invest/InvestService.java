@@ -24,8 +24,8 @@ public class InvestService {
 		return list;
 	}
 
-	public ProjectVO invest_detail(ProjectVO vo) {
-		vo = investDAO.invest_detail(vo);
+	public ProjectVO project_detail(ProjectVO vo) {
+		vo = investDAO.project_detail(vo);
 		
 		return vo;
 	}

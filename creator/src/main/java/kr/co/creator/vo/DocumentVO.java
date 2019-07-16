@@ -15,10 +15,10 @@ public class DocumentVO {
 	private String copy_bankbook;	// 통장사본
 	private String chk_select;		// 개인정보 선택적이용확인
 	
-	private String loan_num;		// (참조)대출번호
+	private String project_num;		// (참조)프로젝트번호
 	
 	public DocumentVO() {}	//constructor
-	public DocumentVO(String document_num, String busi_regi, String jumin_chobon, String cer_ingam, String cer_budong, String cer_dong, String cer_income, String cer_vat, String cer_other, String copy_id, String copy_bankbook, String chk_select, String loan_num) {
+	public DocumentVO(String document_num, String busi_regi, String jumin_chobon, String cer_ingam, String cer_budong, String cer_dong, String cer_income, String cer_vat, String cer_other, String copy_id, String copy_bankbook, String chk_select, String project_num) {
 		this.document_num = document_num;
 		this.busi_regi = busi_regi;
 		this.jumin_chobon = jumin_chobon;
@@ -32,7 +32,7 @@ public class DocumentVO {
 		this.copy_bankbook = copy_bankbook;
 		this.chk_select = chk_select;
 		
-		this.loan_num = loan_num;
+		this.project_num = project_num;
 	}//constructor
 	
 	public String getDocument_num() {
@@ -121,10 +121,10 @@ public class DocumentVO {
 	
 	
 	//참조
-	public String getLoan_num() {
-		return loan_num;
+	public String getProject_num() {
+		return project_num;
 	}
-	public void setLoan_num(String loan_num) {
-		this.loan_num = loan_num;
-	}//loan_num
+	public void setProject_num(String project_num) {
+		this.project_num = project_num;
+	}//project_num
 }//class

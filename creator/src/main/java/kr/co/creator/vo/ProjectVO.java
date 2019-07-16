@@ -27,7 +27,7 @@ public class ProjectVO {
 	private String repay_method;		// 상환방식
 	
 	private String user_num;			// (참조)유저번호
-	private String busi_num;			// (참조)법인 유저번호
+	private String busi_num;			// (참조)법인유저번호
 	
 	public ProjectVO() {}	//constructor
 	public ProjectVO(String project_num, String img, String project_name, String current_price, String price,String guarantee_price, String deadline, String refund, String ach_rate, String customer, String type, String genre, String yield, String grade, String more_information, String en_date, String rate, String loan_period, String loan_amount, String loan_class, String loan_type, String repay_method, String user_num, String busi_num) {
