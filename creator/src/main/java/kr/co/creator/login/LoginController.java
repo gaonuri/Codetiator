@@ -41,6 +41,7 @@ public class LoginController {
 		int successCnt = 0;
 		if(vo != null && vo.getUser_num() != null && !vo.getUser_num().equals("")) {
 			successCnt = 1;
+			logger.info("success");
 			session.setAttribute("UserVO", vo);
 		}
 		out.print(successCnt);
@@ -58,7 +59,7 @@ public class LoginController {
 		}
 		out.print(successCnt);
 		out.close();
-	}//loginBusi
+	}//loginBusi 
 	
 	@RequestMapping(value="/logout", method=RequestMethod.GET)
 	public String logout(HttpSession session) {

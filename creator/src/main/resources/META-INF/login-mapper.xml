@@ -18,10 +18,9 @@
 	</select>
 	
 	<select id="findPwd" parameterType="kr.co.creator.vo.FindPwdVO"	resultType="kr.co.creator.vo.FindPwdVO">
-		select email from user_list
-		union
-		select manager_email from busi_user_list
-		order by 1;
+		select count(*) from user_list where email=#{email}
+		union all
+		select count(*) from busi_user_list manager_email=#{manager_email}
 	</select> 
 	 
 </mapper>
