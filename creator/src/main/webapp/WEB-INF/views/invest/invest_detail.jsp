@@ -110,6 +110,9 @@
 							<li>
 								<a href="./inquiry">1:1문의</a>
 							</li>
+							<li>
+								<a href="./support_total">공지사항</a>
+							</li>
 						</ul>
 					</li>
 					<!-- 고객지원 end -->
@@ -163,9 +166,45 @@
 			
 			<section class="wrapper site-min-height">
 				<div class="row mt">
-			<div style="background-color: orange; width: 60px; text-align: center; color: white; font-size: 15px;">${projectVO.ach_state}</div>
-			<div style="width: 200px; color: black; font-size: 25px;">${projectVO.project_name}</div>
+				<div style="background-color: orange; width: 60px; text-align: center; color: white; font-size: 15px;">${projectVO.ach_state}</div>
+				<div style="width: 200px; color: black; font-size: 25px;">${projectVO.project_name}</div>
+				
+					<!-- page start -->
 					<div class="col-lg-12">
+						<div class="card" style="float: right; border: solid 1px black">
+							<div class="card-body">
+								<table>
+									<tr>
+										<td>${projectVO.current_price / projectVO.price * 100}%</td>
+									</tr>
+									<tr>
+										<td>${projectVO.current_price}</td>
+										<td>${projectVO.price}</td>
+									</tr>
+									<tr>
+										<td>상환방식</td>
+										<td>${projectVO.repay_method}</td>
+									</tr>
+									<tr>
+										<th>연 수익률</th>
+										<td>${projectVO.yield}</td>
+									</tr>
+									<tr>
+										<td>투자기간</td>
+										<td>${projectVO.refund}</td>
+									</tr>
+									<tr>
+										<td>투자한도</td>
+										<td>500만원</td>
+									</tr>
+									<tr>
+										<td><button>투자신청</button></td>
+									</tr>
+								</table>
+							</div>
+						</div>
+						
+						<!-- 상품요약 start -->
 						<div class="card" style="width:800px;">
 							<div class="card-header">
 								상품요약
@@ -188,7 +227,7 @@
 										<td>${projectVO.guarantee_price}</td>
 									</tr>
 								</table>
-								<table>
+								<table style="float:left;">
 									<tr>
 										<th>담보물건 정보</th>
 									</tr>							
@@ -197,7 +236,12 @@
 										<td>${guaranteeVO.guarantee_type}</td>
 									</tr>
 									<tr>
+										<td>공급/전용</td>
+										<td>${guaranteeVO.supply_area} / ${guaranteeVO.exclusive_area}</td>
+									</tr>
+									<tr>
 										<td>LTV</td>
+										<td>${projectVO.price / guaranteeVO.connoisseur * 100}%</td>
 									</tr>
 									<tr>
 										<td>담보권</td>
@@ -223,41 +267,48 @@
 								</table>
 							</div>
 						</div>
-						<div style="float: right;">
-							<table>
-								<tr>
-									<td>${projectVO.current_price / projectVO.price * 100}%</td>
-								</tr>
-								<tr>
-									<td>${projectVO.current_price}</td>
-									<td>${projectVO.price}</td>
-								</tr>
-								<tr>
-									<td>상환방식</td>
-									<td>${projectVO.repay_method}</td>
-								</tr>
-								<tr>
-									<th>연 수익률</th>
-									<td>${projectVO.yield}</td>
-								</tr>
-								<tr>
-									<td>투자기간</td>
-									<td>${projectVO.refund}</td>
-								</tr>
-								<tr>
-									<td>투자한도</td>
-									<td>500만원</td>
-								</tr>
-								<tr>
-									<td><button>투자신청</button></td>
-								</tr>
-							</table>
+						<!-- 상품요약 end -->
+						
+						<!-- 담보상세 start -->
+						<div class="card" style="width:800px; height: 1000px;">
+							<div class="card-header">
+								담보상세
+							</div>
+							<div class="card-body">
+								<table border="1">
+									<tr>
+										<td>물건유형</td>
+										<td>면적</td>
+										<td>외부 감정가</td>
+									</tr>
+									<tr>
+										<td>${guaranteeVO.object_type}</td>
+										<td>${guaranteeVO.area}</td>
+										<td>${guaranteeVO.connoisseur}</td>
+									</tr>
+									<tr>
+										<td>선순위 금액</td>
+										<td>LTV</td>
+										<td>담보 설정비율</td>
+									</tr>
+									<tr>
+										<td>모른다</td>
+										<td>${projectVO.price / guaranteeVO.connoisseur * 100}%</td>
+										<td>150%</td>
+									</tr>
+								</table>
+								<div style="border: solid 1px black; width:800px; height:400px;">
+									${guaranteeVO.guarantee_img}
+								</div>
+								<div id="map" style="width:800px;height:300px;"></div>
+								<div style="">소재지 : ${guaranteeVO.location}</div>
+							</div>
 						</div>
-						<div style="border: solid 1px black; width:800px; height:400px;">
-							${guaranteeVO.guarantee_img}
-						</div>
-						<div id="map" style="width:800px;height:300px;"></div>
+						<!-- 담보상세 end -->
+						
 					</div>
+					<!-- page end -->
+					
 				</div>
 			</section>
 			<!-- /wrapper -->
@@ -314,6 +365,7 @@
 	
 	</section>
 	
+	<!-- 지도 api -->
 	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=634dddac053ddf6be0b6aa5a165b2da8"></script>
 	<script>
 		var container = document.getElementById('map');
@@ -324,6 +376,7 @@
 
 		var map = new kakao.maps.Map(container, options);
 	</script>
+	<!-- 지도 api -->
 	
 	<!-- js placed at the end of the document so the pages load faster -->
 	<script src="${pageContext.request.contextPath}/resources/bootstrap/lib/jquery/jquery.min.js"></script>
@@ -340,68 +393,7 @@
 	<!--script for this page-->
 	<script src="${pageContext.request.contextPath}/resources/bootstrap/lib/sparkline-chart.js"></script>
 	<script src="${pageContext.request.contextPath}/resources/bootstrap/lib/zabuto_calendar.js"></script>
-	<script type="text/javascript">
-    $(document).ready(function() {
-      var unique_id = $.gritter.add({
-        // (string | mandatory) the heading of the notification
-        title: 'Welcome to Dashio!',
-        // (string | mandatory) the text inside the notification
-        text: 'Hover me to enable the Close Button. You can hide the left sidebar clicking on the button next to the logo. Developed by <a href="http://alvarez.is" target="_blank" style="color:#4ECDC4">Alvarez.is</a>.',
-        // (string | optional) the image to display on the left
-        image: '${pageContext.request.contextPath}/resources/bootstrap/img/ui-sam.jpg',
-        // (bool | optional) if you want it to fade out on its own or just sit there
-        sticky: false,
-        // (int | optional) the time you want it to be alive for before fading out
-        time: 8000,
-        // (string | optional) the class name you want to apply to that specific message
-        class_name: 'my-sticky-class'
-      });
 
-      return false;
-    });
-	</script>
-	<script type="application/javascript">
-    $(document).ready(function() {
-      $("#date-popover").popover({
-        html: true,
-        trigger: "manual"
-      });
-      $("#date-popover").hide();
-      $("#date-popover").click(function(e) {
-        $(this).hide();
-      });
-
-      $("#my-calendar").zabuto_calendar({
-        action: function() {
-          return myDateFunction(this.id, false);
-        },
-        action_nav: function() {
-          return myNavFunction(this.id);
-        },
-        ajax: {
-          url: "show_data.php?action=1",
-          modal: true
-        },
-        legend: [{
-            type: "text",
-            label: "Special event",
-            badge: "00"
-          },
-          {
-            type: "block",
-            label: "Regular event",
-          }
-        ]
-      });
-    });
-
-    function myNavFunction(id) {
-      $("#date-popover").hide();
-      var nav = $("#" + id).data("navigation");
-      var to = $("#" + id).data("to");
-      console.log('nav ' + nav + ' to: ' + to.month + '/' + to.year);
-    }
-	</script>
 </body>
 
 </html>

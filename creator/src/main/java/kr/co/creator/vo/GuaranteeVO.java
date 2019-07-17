@@ -8,7 +8,10 @@ public class GuaranteeVO {
 	private String guarantee_name;			// 담보이름
 	private String debtor_type;				// 차주유형(개인, 법인)
 	private String business_type;			// 차주업종(직종)
+	private String object_type;				// 물건유형(아파트, 연립주택)
 	private String connoisseur;				// 외부감정가
+	private String supply_area;				// 공급면적
+	private String exclusive_area;			// 전용면적
 	private String area;					// 면적
 	private String map;						// 지도
 	private String location;				// 소재지
@@ -21,15 +24,17 @@ public class GuaranteeVO {
 	
 	public GuaranteeVO() {}	//constructor
 	public GuaranteeVO(	String guarantee_num, String guarantee_type, String guarantee_img, String guarantee_name, 
-						String debtor_type, String business_type, String connoisseur, String area, String map, 
-						String location, String scale, String comple_year, String quote, String code, String grade, 
-						String more_information, String en_date, String rate, String project_num) {
+						String debtor_type, String business_type, String object_type, String connoisseur, 
+						String exclusive_area, String supply_area, String area, String map, 
+						String location, String scale, String comple_year, String quote, String code, 
+						String grade, String more_information, String en_date, String rate, String project_num) {
 		this.guarantee_num = guarantee_num;
 		this.guarantee_type = guarantee_type;
 		this.guarantee_img = guarantee_img;
 		this.guarantee_name = guarantee_name;
 		this.debtor_type = debtor_type;
 		this.business_type = business_type;
+		this.object_type = object_type;
 		this.connoisseur = connoisseur;
 		this.area = area;
 		this.map = map;
@@ -84,12 +89,33 @@ public class GuaranteeVO {
 		this.business_type = business_type;
 	}//business_type
 	
+	public String getObject_type() {
+		return object_type;
+	}
+	public void setObject_type(String object_type) {
+		this.object_type = object_type;
+	}//object_type
+	
 	public String getConnoisseur() {
 		return connoisseur;
 	}
 	public void setConnoisseur(String connoisseur) {
 		this.connoisseur = connoisseur;
 	}//connoisseur
+	
+	public String getExclusive_area() {
+		return exclusive_area;
+	}
+	public void setExclusive_area(String exclusive_area) {
+		this.exclusive_area = exclusive_area;
+	}//exclusive_area
+	
+	public String getSupply_area() {
+		return supply_area;
+	}
+	public void setSupply_area(String supply_area) {
+		this.supply_area = supply_area;
+	}//supply_area
 	
 	public String getArea() {
 		return area;

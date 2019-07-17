@@ -10,6 +10,18 @@
 		from	project_list
 	</select>
 	
+	<select id="projectDetail" parameterType="kr.co.creator.vo.ProjectVO" resultType="kr.co.creator.vo.ProjectVO">
+		select	*
+		from	project_list 
+		where 	project_num = #{project_num}
+	</select>
+		
+	<select id="guaranteeDetail" parameterType="kr.co.creator.vo.GuaranteeVO" resultType="kr.co.creator.vo.GuaranteeVO">
+		select	*
+		from	guarantee 
+		where 	project_num = #{project_num}
+	</select>
+	
 	<select id="investFinish" resultType="kr.co.creator.vo.ProjectVO">
 		select	project_num, 
 				project_name, 
@@ -22,12 +34,6 @@
 				ach_state
 		from	project_list
 		where	ach_state = "상환완료" || ach_state = "중도상환"
-	</select>
-	
-	<select id="projectDetail" parameterType="kr.co.creator.vo.ProjectVO" resultType="kr.co.creator.vo.ProjectVO">
-		select	*
-		from	project_list 
-		where 	project_num = #{project_num}
 	</select>
 	
 </mapper>
