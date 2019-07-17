@@ -167,40 +167,43 @@
 		<!--main content start-->
 		<br>
 		<br>
-    <section id="main-content">
-      <section class="wrapper">
-       <div class="row">
-          <div class="col-md-10">
-            <div class="content-panel">
-              <div class="invoice-body">
-                <div class="pull-left">
-                </div>
-                <!-- /pull-left -->
-                <div class="clearfix"></div>
-                <br>
-                <br>
-                <table class="table">
-                  <thead>
-                    <tr>
-                    	<td>${NoticeVO.title}</td>
-                    </tr>
-                      <tr>
-                    	<td>${NoticeVO.write_date}</td>
-                    </tr>
-                    <tr>
-                    	<td>${NoticeVO.cnts}</td>
-                    </tr>
-                  
-                  </thead>
-                </table>
-				<button id="btn_list">목록으로</button>
-                <br>
-                <br>
-              </div>
-              <!--/col-lg-12 mt -->
-      </section>
-      <!-- /wrapper -->
-    </section>
+	<section id="main-content">
+		<section class="wrapper">
+			<div class="row">
+				<div class="col-md-10">
+					<div class="content-panel">
+						<div class="invoice-body">
+			                <!-- /pull-left -->
+							<div class="pull-left">
+							</div>
+			                <div class="clearfix"></div>
+			                <br>
+			                <br>
+                			<table>
+                				<tr>
+									<td>제목</td>
+									<td>${total_detailVO.title}</td>
+								</tr>
+								<tr>
+									<td>${total_detailVO.notice_date}</td>
+								</tr>
+								<tr>
+									<td>내용</td>
+									<td>${total_detailVO.notice_contents}</td>
+								</tr>
+							</table>
+							<div class="pull-right">
+								<button id="btn_list">목록으로</button>
+							</div>
+							<br>
+						</div>
+						<!--/col-lg-12 mt -->
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- /wrapper -->
+	</section>
     <!-- /MAIN CONTENT -->
     <!--main content end-->
 		<!--footer start-->

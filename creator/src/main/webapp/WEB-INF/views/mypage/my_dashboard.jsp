@@ -162,32 +162,29 @@
 		<section id="main-content">
 		<section class="wrapper">
 			<div class="row">
-			 	<div class="col-lg-1"></div>
+			 	<div class="col-sm-12 col-md-3 col-box"></div>
 					 <div class="card" style="width:200px">
 			  			<div class="card-body">
-						    <h2 class="card-title">홍길동</h2><h5>님</h5>
+						    <h2 class="card-title">홍길동</h2>
 						   	 <div class="card-body"></div>
 						    <a href="#" class="btn btn-primary">나의 예치금</a>
 						 </div>
 					</div>
-				<div class="col-lg-2"></div>
-					<div class="card" style="width:500px">
+				<div class="col-sm-12 col-md-9 col-box"></div>
+					<div class="card" style="width:300px">
 			  			<div class="card-body">
 						<a href="#" class="btn btn-primary">나의 투자</a>
 						<a href="#" class="btn btn-primary">나의 자산</a>
 					 </div>
-			</div>
-			</section>
+				</div>
+			</div>	
+		</section>
 			<!-- /wrapper -->
-			
-				 <!--sidebar start-->
+	<!--sidebar start-->
     <aside>
-    
       <div id="sidebar" class="nav-collapse">
         <!-- sidebar menu start-->
         <ul class="sidebar-menu" id="nav-accordion">
-          <p class="centered"><a href="profile.html"><img src="img/ui-sam.jpg" class="img-circle" width="80"></a></p>
-          <h5 class="centered">Sam Soffes</h5>
           <li class="mt">
             <a href="creator/my_desktop">
               <i class="fa fa-dashboard"></i>

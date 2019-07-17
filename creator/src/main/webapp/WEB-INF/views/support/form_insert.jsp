@@ -26,7 +26,7 @@ $(document).ready(function() {
 					if(status == "success"){
 						if(data > 0){
 							alert("저장 되었습니다.");
-							location.href="${pageContext.request.contextPath}/support";
+							location.href="${pageContext.request.contextPath}/support_total";
 						} else {
 							alert("잠시 후에 다시 시도해 주세요.");
 						}
@@ -42,15 +42,17 @@ $(document).ready(function() {
 <body>
 
 <br><br>
-<h1>자유 게시판 글 쓰기</h1>
+<h1>공지 사항 등록</h1>
 <form id="form_write" enctype="multipart/form-data">
 	<br><br>제목 :
 	<input type="text" id="title" name="title"
 			maxlength="30" />
 	<br><br>내용 :
 	<textarea rows="5" cols="35" id="cnts" name="cnts"></textarea>
+	<br><br>첨부파일 :
+	<input type="file" id="chumbu" name="chumbu" />
 </form>
 <br><br>
-<input type="button" id="btn_write" value="게시글 전송" />
+<input type="button" id="btn_write" value="등록" />
 </body>
 </html>

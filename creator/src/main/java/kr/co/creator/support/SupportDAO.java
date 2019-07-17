@@ -43,9 +43,9 @@ public class SupportDAO {
 		return support;
 	}//supportList3
 
-//	public NoticeVO totalDetail(NoticeVO vo) {
-//		vo = sqlSession.selectOne(
-//				"SupportMapper.boardDetail", vo);
-//		return vo;
-//	}//totalDetail
+	public NoticeVO totalDetail(NoticeVO vo) {
+		vo = sqlSession.selectOne(
+				"SupportMapper.totalDetail", vo);
+		return vo;
+	}//totalDetail
 }//class

@@ -92,12 +92,11 @@ public class SupportController {
 	}//boardInsert
 	
 	
-	
 	@RequestMapping(value="/support_total_detail"
 			,method=RequestMethod.GET)
 	public String supportDatail(NoticeVO vo, Model model) {
 	logger.info("total_detail");
-//	vo = service.totalDetail(vo);
+	vo = service.totalDetail(vo);
 	model.addAttribute("total_detailVO", vo);
 	return "support/support_total_detail";
 	}//support_total_detail
