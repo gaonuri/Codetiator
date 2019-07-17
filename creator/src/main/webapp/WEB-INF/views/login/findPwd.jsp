@@ -4,6 +4,10 @@
 <html>
 
 <head>
+
+<script src="${pageContext.request.contextPath}/resources/jquery/jquery-3.4.1.js"></script>
+<script src="${pageContext.request.contextPath}/resources/ckeditor/ckeditor.js"></script>
+
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="description" content="">
@@ -32,6 +36,41 @@
 	  Author: TemplateMag.com
 	  License: https://templatemag.com/license/
 	======================================================= -->
+	
+	<script type="text/javascript">
+$(document).ready(function(){
+	$("#findpwd_btn").click(function(){
+		if($.trim($("#email").val()) == ""){
+			alert("가입된 정보가 없습니다.");
+			$("#email").focus();
+			return;
+		}
+		$.post(
+				"./findpwd"
+				,{
+					email:$("#email").val(),
+					manager_email:$("#manager_email").val()
+				}
+				,function(data,status){
+					if(status == "success"){
+						if(data > 0){
+							alert("버튼을 클릭해 주세요");
+							location.href="/creator/main";
+						} else if(data == 0){
+							alert("존재하지 않는 이메일 입니다.");
+						} else {
+							alert("잠시 후, 다시 시도해 주세요.");
+						}
+					} else {
+						alert("시스템 관리자에게 문의 바랍니다.");
+					}
+				}
+		);//post
+	});//click
+});//ready
+</script>
+
+
 </head>
 
 <body>
@@ -159,77 +198,36 @@
 	        MAIN CONTENT
 	        *********************************************************************************************************************************************************** -->
 		<!--main content start-->
-		<section id="main-content">
-			
-			<section class="wrapper site-min-height">
-				<div class="row mt">
-			<div style="background-color: orange; width: 60px; text-align: center; color: white; font-size: 15px;">${projectVO.ach_state}</div>
-			<div style="width: 200px; color: black; font-size: 25px;">${projectVO.project_name}</div>
-					<div class="col-lg-12">
-						<div class="card-header">
-							상품요약
-						</div>
-						<div class="card-body">
-							<table>
-								<tr>
-									<th>기본정보</th>
-								</tr>
-								<tr>
-									<td>담보유형</td>
-									<td>만기</td>
-									<td>대출금액</td>
-									<td>대출잔액</td>
-								</tr>
-								<tr>
-									<td>${guaranteeVO.guarantee_type}</td>
-									<td>${projectVO.refund}</td>
-									<td>${projectVO.price}</td>
-									<td>${projectVO.guarantee_price}</td>
-								</tr>
-							</table>
-							<table>
-								<tr>
-									<th>담보물건 정보</th>
-								</tr>							
-								<tr>
-									<td>담보유형</td>
-									<td>만기</td>
-									<td>대출금액</td>
-									<td>대출잔액</td>
-								</tr>
-								<tr>
-									<td>${guaranteeVO.guarantee_type}</td>
-									<td>${projectVO.refund}</td>
-									<td>${projectVO.price}</td>
-									<td>${projectVO.guarantee_price}</td>
-								</tr>
-							</table>
-						</div>
-						<table border="1">
-							<tr>
-								<th>등급</th>
-								<td>${projectVO.grade}</td>
-							</tr>
-							<tr>
-								<th>연 수익률</th>
-								<td>${projectVO.yield}</td>
-							</tr>
-							<tr>
-								<th>상환방식</th>
-								<td>${projectVO.repay_method}</td>
-							</tr>
-							<tr>
-								<th>모집현황</th>
-								<td>${projectVO.ach_rate}</td>
-							</tr>
-							<tr>
-								<th>등록일</th>
-								<td>${projectVO.en_date}</td>
-							</tr>
-						</table>
-					</div>
-				</div>
-			</section>
+		
+<section id="main-content">
+<section class="wrapper site-min-height">
+<div class="container">
+	<div class="col-md-offset-3">
+	<img src="${pageContext.request.contextPath}/resources/img/test_logo.jpg" alt="login_img">
+	</div>
+</div>
+				
+<!-- =====================================================================logo -->
+				
+				
+<div class="col-lg-6 mt col-md-offset-3">
+	<h3 class="title">비밀번호를 잊어 버리셨나요?</h3>
+	<h4 class="title">임시 비밀번호를 보내드립니다.</h4>
+	<div class="form-group">
+		<div class="col-sm-10">
+			<input type="email" class="form-control" id="email" placeholder="*이메일">
+		</div>
+	</div>
+	<div class="form-send">
+		<div class="col-sm-10 col-lg-offset-3">
+			<input type="text" class="btn btn-theme" id="findpwd_btn" value="비밀번호 초기화" />
+		</div>
+	</div>	
+</div>
+				
+		<!-- ===================================================================== body-->		
+				
+		</section>
 			<!-- /wrapper -->
 	    </section>
 	    <!-- /MAIN CONTENT -->
@@ -299,6 +297,7 @@
 	<script src="${pageContext.request.contextPath}/resources/bootstrap/lib/sparkline-chart.js"></script>
 	<script src="${pageContext.request.contextPath}/resources/bootstrap/lib/zabuto_calendar.js"></script>
 	<script type="text/javascript">
+	/*
     $(document).ready(function() {
       var unique_id = $.gritter.add({
         // (string | mandatory) the heading of the notification
@@ -317,6 +316,7 @@
 
       return false;
     });
+	*/
 	</script>
 	<script type="application/javascript">
     $(document).ready(function() {

@@ -45,13 +45,31 @@ public class SupportController {
 //		return "support/inquiry";
 //	}
 //	
-	@RequestMapping(value = "/support", method = RequestMethod.GET)
+	@RequestMapping(value = "/support_total", method = RequestMethod.GET)
 	public String support(Model model) {
 		logger.info("support");
 		List<NoticeVO> support = null;
 		support = service.supportList();
 		model.addAttribute("supportlist", support);
-		return "support/support";
+		return "support/support_total";
+	}
+
+	@RequestMapping(value = "/support_new", method = RequestMethod.GET)
+	public String support2(Model model) {
+		logger.info("support2");
+		List<NoticeVO> support = null;
+		support = service.supportList2();
+		model.addAttribute("supportlist2", support);
+		return "support/support_new";
+	}
+	
+	@RequestMapping(value = "/support_operation", method = RequestMethod.GET)
+	public String support3(Model model) {
+		logger.info("support3");
+		List<NoticeVO> support = null;
+		support = service.supportList3();
+		model.addAttribute("supportlist3", support);
+		return "support/support_operation";
 	}
 	
 	@RequestMapping(value="/support/formi"
