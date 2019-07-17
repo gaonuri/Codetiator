@@ -48,11 +48,11 @@ public class InvestController {
 	}
 	
 	@RequestMapping(value = "/invest_detail", method = RequestMethod.GET)
-	public String invest_detail(Model model, ProjectVO vo) {
+	public String invest_detail(Model model, ProjectVO proVO) {
 		logger.info("invest_detail");
 		
-		vo = investService.project_detail(vo);
-		model.addAttribute("projectVO", vo);
+		proVO = investService.project_detail(proVO);
+		model.addAttribute("projectVO", proVO);
 		
 		return "invest/invest_detail";
 	}

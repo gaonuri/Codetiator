@@ -20,7 +20,10 @@ public class GuaranteeVO {
 	private String project_num;				// (참조)프로젝트번호
 	
 	public GuaranteeVO() {}	//constructor
-	public GuaranteeVO(String guarantee_num, String guarantee_type, String guarantee_img, String guarantee_name, String debtor_type, String business_type, String connoisseur, String area, String map, String location, String scale, String comple_year, String quote, String code, String grade, String more_information, String en_date, String rate, String project_num) {
+	public GuaranteeVO(	String guarantee_num, String guarantee_type, String guarantee_img, String guarantee_name, 
+						String debtor_type, String business_type, String connoisseur, String area, String map, 
+						String location, String scale, String comple_year, String quote, String code, String grade, 
+						String more_information, String en_date, String rate, String project_num) {
 		this.guarantee_num = guarantee_num;
 		this.guarantee_type = guarantee_type;
 		this.guarantee_img = guarantee_img;
