@@ -108,6 +108,9 @@
 							<li>
 								<a href="./inquiry">1:1문의</a>
 							</li>
+							<li>
+								<a href="./support_total">공지사항</a>
+							</li>
 						</ul>
 					</li>
 					<!-- 고객지원 end -->

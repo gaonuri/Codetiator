@@ -1,6 +1,5 @@
 package kr.co.creator.support;
 
-import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 
@@ -90,17 +89,6 @@ public class SupportController {
 	out.flush();
 	out.close();
 	}//boardInsert
-	
-	
-	
-	@RequestMapping(value="/support_total_detail"
-			,method=RequestMethod.GET)
-	public String supportDatail(NoticeVO vo, Model model) {
-	logger.info("total_detail");
-//	vo = service.totalDetail(vo);
-	model.addAttribute("total_detailVO", vo);
-	return "support/support_total_detail";
-	}//support_total_detail
 	
 //	@RequestMapping(value="/support/formu"
 //			,method=RequestMethod.GET)
