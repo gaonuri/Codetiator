@@ -116,45 +116,61 @@
 					<!-- 고객지원 end -->
 					
 					<!-- 마이페이지 start-->
-					<li id="header_notification_bar" class="dropdown">
-						<a data-toggle="dropdown" class="dropdown-toggle" href="#">
-							마이페이지
-						</a>
-						<ul class="dropdown-menu extended notification">
-							<div class="notify-arrow notify-arrow-yellow"></div>
-							<li>
-								<a href="./my_dashboard">대시보드</a>
-							</li>
-							<li>
-								<a href="./my_invest_list">투자내역</a>
-							</li>
-							<li>
-								<a href="./my_loan_list">대출내역</a>
-							</li>
-							<li>
-								<a href="./my_depo_mgn">예치금관리</a>
-							</li>
-							<li>
-								<a href="./my_modify">회원정보수정</a>
-							</li>
-						</ul>
-					</li>
 					<!-- 마이페이지 end -->
 					
 					<!-- 로그아웃 start -->
-					<li><a class="loginzz" href="./login">로그인</a></li>
+					
+					<c:choose>
+						<c:when test="${Login_ss != null && Login_ss.user_num != '' || Login_sss != null && Login_sss.busi_num != ''}">
+							<li id="header_notification_bar" class="dropdown">
+								<a data-toggle="dropdown" class="dropdown-toggle" href="#">
+									${Login_ss.user_name}${Login_sss.manager_name}님
+								</a>
+								<ul class="dropdown-menu extended notification">
+									<div class="notify-arrow notify-arrow-yellow"></div>
+									<li>
+										<a href="./my_dashboard">대시보드</a>
+									</li>
+									<li>
+										<a href="./my_invest_list">투자내역</a>
+									</li>
+									<li>
+										<a href="./my_loan_list">대출내역</a>
+									</li>
+									<li>
+										<a href="./my_depo_mgn">예치금관리</a>
+									</li>
+									<li>
+										<a href="./my_modify">회원정보수정</a>
+									</li>
+								</ul>
+							</li>						
+						</c:when>
+						<c:otherwise>
+							<li><a class="loginss" href="./login">로그인</a></li>
+						</c:otherwise>
+					</c:choose>
+					
+					<c:choose>
+						<c:when test="${Login_ss != null && Login_ss.user_num != '' || Login_sss != null && Login_sss.busi_num != ''}">
+							<li>
+								<a href="./logout">로그아웃</a>
+							</li>
+						</c:when>
+						<c:otherwise>
+							<li><a class="loginss" href="./join">회원가입</a></li>
+						</c:otherwise>
+					</c:choose>
+				
 					<!-- 로그아웃 end -->
 				</ul>
 				<!--  notification end -->
 			</div>
 			<div class="top-menu">
-				<ul class="nav pull-right top-menu">
-					<li><a class="logout" href="/creator/join">회원가입</a></li>
-				</ul>
 			</div>
 	    </header>
 	    <!--header end-->
-	   
+
 	   
 	    <!-- **********************************************************************************************************************************************************
 	        MAIN CONTENT
@@ -610,7 +626,8 @@
 	<script src="${pageContext.request.contextPath}/resources/bootstrap/lib/sparkline-chart.js"></script>
 	<script src="${pageContext.request.contextPath}/resources/bootstrap/lib/zabuto_calendar.js"></script>
 	<script type="text/javascript">
-    $(document).ready(function() {
+  /*
+	$(document).ready(function() {
       var unique_id = $.gritter.add({
         // (string | mandatory) the heading of the notification
         title: 'Welcome to Dashio!',
@@ -628,6 +645,7 @@
 
       return false;
     });
+  */
 	</script>
 	<script type="application/javascript">
     $(document).ready(function() {

@@ -41,8 +41,7 @@ public class LoginController {
 		int successCnt = 0;
 		if(vo != null && vo.getUser_num() != null && !vo.getUser_num().equals("")) {
 			successCnt = 1;
-			logger.info("success");
-			session.setAttribute("UserVO", vo);
+			session.setAttribute("Login_ss", vo);
 		}
 		out.print(successCnt);
 		out.close();
@@ -55,7 +54,7 @@ public class LoginController {
 		int successCnt = 0;
 		if(vo != null && vo.getBusi_num() != null && !vo.getBusi_num().equals("")) {
 			successCnt = 1;
-			session.setAttribute("Busi_userVO", vo);
+			session.setAttribute("Login_sss", vo);
 		}
 		out.print(successCnt);
 		out.close();
@@ -65,7 +64,7 @@ public class LoginController {
 	public String logout(HttpSession session) {
 		logger.info("=== logout ===");
 		session.invalidate();
-		return "redirect:/";
+		return "main/main";
 	}//logout
 	
 	@RequestMapping(value = "/findpwd", method = RequestMethod.GET)
