@@ -224,7 +224,7 @@ $(document).ready(function(){
 					<!-- 마이페이지 end -->
 					
 					<!-- 로그아웃 start -->
-					<li><a href="./loan_guide">로그아웃</a></li>
+					<li><a href="./login">로그인</a></li>
 					<!-- 로그아웃 end -->
 				</ul>
 				<!--  notification end -->

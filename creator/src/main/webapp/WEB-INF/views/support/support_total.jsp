@@ -25,13 +25,38 @@
 	<link href="${pageContext.request.contextPath}/resources/bootstrap/css/style.css" rel="stylesheet">
 	<link href="${pageContext.request.contextPath}/resources/bootstrap/css/style-responsive.css" rel="stylesheet">
 	<script src="${pageContext.request.contextPath}/resources/bootstrap/lib/chart-master/Chart.js"></script>
-
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	
 	<!-- =======================================================
 	  Template Name: Dashio
 	  Template URL: https://templatemag.com/dashio-bootstrap-admin-template/
 	  Author: TemplateMag.com
 	  License: https://templatemag.com/license/
 	======================================================= -->
+		<script type="text/javascript">
+			$(document).ready(function() {
+				$("#btn_write").click(function() {
+					location.href = "${pageContext.request.contextPath}/support/formi";
+				});//btn_write
+			});//ready
+			$(document).ready(function() {
+				$("#btn_total").click(function() {
+					location.href = "${pageContext.request.contextPath}/support_total";
+				});//btn_write
+			});//ready
+			$(document).ready(function() {
+				$("#btn_new").click(function() {
+					location.href = "${pageContext.request.contextPath}/support_new";
+				});//btn_write
+			});//ready
+			$(document).ready(function() {
+				$("#btn_operation").click(function() {
+					location.href = "${pageContext.request.contextPath}/support_operation";
+				});//btn_write
+			});//ready
+		</script>
+		
 </head>
 
 <body>
@@ -55,16 +80,14 @@
 					
 					<!-- 대출 start -->
 					<li class="dropdown">
-						<a data-toggle="dropdown" class="dropdown-toggle" href="#">
-							대출
-						</a>
+						<a data-toggle="dropdown" class="dropdown-toggle" href="#">대출</a>
 						<ul class="dropdown-menu extended tasks-bar">
 							<div class="notify-arrow notify-arrow-green"></div>
 							<li>
 								<a href="./loan_guide">대출안내</a>
 							</li>
 							<li>
-								<a href="./loan/getloan">대출하기</a>
+								<a href="./loan">대출하기</a>
 							</li>
 						</ul>
 					</li>
@@ -109,9 +132,6 @@
 							</li>
 							<li>
 								<a href="./inquiry">1:1문의</a>
-							</li>
-							<li>
-								<a href="./support_total">공지사항</a>
 							</li>
 						</ul>
 					</li>
@@ -162,160 +182,40 @@
 	        MAIN CONTENT
 	        *********************************************************************************************************************************************************** -->
 		<!--main content start-->
-		<section id="main-content">
-			
-			<section class="wrapper site-min-height">
-				<div class="row mt">
-				<div style="background-color: orange; width: 60px; text-align: center; color: white; font-size: 15px;">${projectVO.ach_state}</div>
-				<div style="width: 200px; color: black; font-size: 25px;">${projectVO.project_name}</div>
-				
-					<!-- page start -->
-					<div class="col-lg-12">
-						<div class="card" style="float: right; border: solid 1px black">
-							<div class="card-body">
-								<table>
-									<tr>
-										<td>${projectVO.current_price / projectVO.price * 100}%</td>
-									</tr>
-									<tr>
-										<td>${projectVO.current_price}</td>
-										<td>${projectVO.price}</td>
-									</tr>
-									<tr>
-										<td>상환방식</td>
-										<td>${projectVO.repay_method}</td>
-									</tr>
-									<tr>
-										<th>연 수익률</th>
-										<td>${projectVO.yield}</td>
-									</tr>
-									<tr>
-										<td>투자기간</td>
-										<td>${projectVO.refund}</td>
-									</tr>
-									<tr>
-										<td>투자한도</td>
-										<td>500만원</td>
-									</tr>
-									<tr>
-										<td><button>투자신청</button></td>
-									</tr>
-								</table>
-							</div>
-						</div>
-						
-						<!-- 상품요약 start -->
-						<div class="card" style="width:800px;">
-							<div class="card-header">
-								상품요약
-							</div>
-							<div class="card-body">
-								<table>
-									<tr>
-										<th>기본정보</th>
-									</tr>
-									<tr>
-										<td>담보유형</td>
-										<td>만기</td>
-										<td>대출금액</td>
-										<td>대출잔액</td>
-									</tr>
-									<tr>
-										<td>${guaranteeVO.guarantee_type}</td>
-										<td>${projectVO.refund}</td>
-										<td>${projectVO.price}</td>
-										<td>${projectVO.guarantee_price}</td>
-									</tr>
-								</table>
-								<table style="float:left;">
-									<tr>
-										<th>담보물건 정보</th>
-									</tr>							
-									<tr>
-										<td>유형</td>
-										<td>${guaranteeVO.guarantee_type}</td>
-									</tr>
-									<tr>
-										<td>공급/전용</td>
-										<td>${guaranteeVO.supply_area} / ${guaranteeVO.exclusive_area}</td>
-									</tr>
-									<tr>
-										<td>LTV</td>
-										<td>${projectVO.price / guaranteeVO.connoisseur * 100}%</td>
-									</tr>
-									<tr>
-										<td>담보권</td>
-										<td>근저당부질권</td>
-									</tr>
-								</table>
-								<table style="float:right;">
-									<tr>
-										<th>차주 정보</th>
-									</tr>							
-									<tr>
-										<td>유형</td>
-										<td>개인사업자</td>
-									</tr>
-									<tr>
-										<td>업종</td>
-										<td>개인사업자</td>
-									</tr>
-									<tr>
-										<td>대출목적</td>
-										<td>사업운영자금</td>
-									</tr>
-								</table>
-							</div>
-						</div>
-						<!-- 상품요약 end -->
-						
-						<!-- 담보상세 start -->
-						<div class="card" style="width:800px; height: 1000px;">
-							<div class="card-header">
-								담보상세
-							</div>
-							<div class="card-body">
-								<table border="1">
-									<tr>
-										<td>물건유형</td>
-										<td>면적</td>
-										<td>외부 감정가</td>
-									</tr>
-									<tr>
-										<td>${guaranteeVO.object_type}</td>
-										<td>${guaranteeVO.area}</td>
-										<td>${guaranteeVO.connoisseur}</td>
-									</tr>
-									<tr>
-										<td>선순위 금액</td>
-										<td>LTV</td>
-										<td>담보 설정비율</td>
-									</tr>
-									<tr>
-										<td>모른다</td>
-										<td>${projectVO.price / guaranteeVO.connoisseur * 100}%</td>
-										<td>150%</td>
-									</tr>
-								</table>
-								<div style="border: solid 1px black; width:800px; height:400px;">
-									${guaranteeVO.guarantee_img}
-								</div>
-								<div id="map" style="width:800px;height:300px;"></div>
-								<div style="">소재지 : ${guaranteeVO.location}</div>
-							</div>
-						</div>
-						<!-- 담보상세 end -->
-						
-					</div>
-					<!-- page end -->
-					
-				</div>
-			</section>
-			<!-- /wrapper -->
-	    </section>
-	    <!-- /MAIN CONTENT -->
-	    <!--main content end-->
-		
+    <section id="main-content">
+      <section class="wrapper">
+        <div class="row">
+          <div class="col-md-10">
+            <div class="content-panel">
+            <div class="btn-group">
+                <button id="btn_total" type="button" class="btn btn-default">전체</button>
+                <button id="btn_new" type="button" class="btn btn-default">새소식</button>
+                <button id="btn_operation" type="button" class="btn btn-default">운영사항</button>
+              </div>
+              <hr>
+              <table class="table">
+                <c:forEach items="${supportlist}" var="vo" varStatus="status">
+					<tr>
+					<tbody>
+						<td>${vo.notice_num}</td>
+						<td>${vo.title}</td>
+						<td>${vo.notice_date}</td>
+					</tbody>
+					</tr>
+				</c:forEach>
+              </table>
+            </div>
+          </div>
+          <!-- /col-md-12 -->
+        </div>
+        <!-- row -->
+        <br><br>
+			<button id="btn_write">글쓰기</button>
+			<br><br>
+      </section>
+    </section>
+    <!-- /MAIN CONTENT -->
+    <!--main content end-->
 		<!--footer start-->
 		<footer class="site-footer">
 			<div class="container">
@@ -364,20 +264,6 @@
 		<!--footer end-->
 	
 	</section>
-	
-	<!-- 지도 api -->
-	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=634dddac053ddf6be0b6aa5a165b2da8"></script>
-	<script>
-		var container = document.getElementById('map');
-		var options = {
-			center: new kakao.maps.LatLng(33.450701, 126.570667),
-			level: 3
-		};
-
-		var map = new kakao.maps.Map(container, options);
-	</script>
-	<!-- 지도 api -->
-	
 	<!-- js placed at the end of the document so the pages load faster -->
 	<script src="${pageContext.request.contextPath}/resources/bootstrap/lib/jquery/jquery.min.js"></script>
 	
@@ -393,7 +279,178 @@
 	<!--script for this page-->
 	<script src="${pageContext.request.contextPath}/resources/bootstrap/lib/sparkline-chart.js"></script>
 	<script src="${pageContext.request.contextPath}/resources/bootstrap/lib/zabuto_calendar.js"></script>
+	<script type="text/javascript">
+    $(document).ready(function() {
+      var unique_id = $.gritter.add({
+        // (string | mandatory) the heading of the notification
+        title: 'Welcome to Dashio!',
+        // (string | mandatory) the text inside the notification
+        text: 'Hover me to enable the Close Button. You can hide the left sidebar clicking on the button next to the logo. Developed by <a href="http://alvarez.is" target="_blank" style="color:#4ECDC4">Alvarez.is</a>.',
+        // (string | optional) the image to display on the left
+        image: '${pageContext.request.contextPath}/resources/bootstrap/img/ui-sam.jpg',
+        // (bool | optional) if you want it to fade out on its own or just sit there
+        sticky: false,
+        // (int | optional) the time you want it to be alive for before fading out
+        time: 8000,
+        // (string | optional) the class name you want to apply to that specific message
+        class_name: 'my-sticky-class'
+      });
 
+      return false;
+    });
+	</script>
+	<script type="application/javascript">
+    $(document).ready(function() {
+      $("#date-popover").popover({
+        html: true,
+        trigger: "manual"
+      });
+      $("#date-popover").hide();
+      $("#date-popover").click(function(e) {
+        $(this).hide();
+      });
+
+      $("#my-calendar").zabuto_calendar({
+        action: function() {
+          return myDateFunction(this.id, false);
+        },
+        action_nav: function() {
+          return myNavFunction(this.id);
+        },
+        ajax: {
+          url: "show_data.php?action=1",
+          modal: true
+        },
+        legend: [{
+            type: "text",
+            label: "Special event",
+            badge: "00"
+          },
+          {
+            type: "block",
+            label: "Regular event",
+          }
+        ]
+      });
+    });
+
+    function myNavFunction(id) {
+      $("#date-popover").hide();
+      var nav = $("#" + id).data("navigation");
+      var to = $("#" + id).data("to");
+      console.log('nav ' + nav + ' to: ' + to.month + '/' + to.year);
+    }
+	</script>
 </body>
 
 </html>
+
+
+
+<!-- 대출 start -->
+<!-- <li class="dropdown"> -->
+<!-- 	<a data-toggle="dropdown" class="dropdown-toggle" href="index.html#"> -->
+<!-- 		대출 -->
+<!-- 	</a> -->
+<!-- 	<ul class="dropdown-menu extended tasks-bar"> -->
+<!-- 		<div class="notify-arrow notify-arrow-green"></div> -->
+<!-- 		<li> -->
+<!-- 			<a href="index.html#"> -->
+<!-- 				<div class="task-info"> -->
+<!-- 					<div class="desc">Dashio Admin Panel</div> -->
+<!-- 					<div class="percent">80%</div> -->
+<!-- 				</div> -->
+<!-- 			<div class="progress progress-striped"> -->
+<!-- 				<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 80%"> -->
+<!-- 					<span class="sr-only">80% Complete (success)</span> -->
+<!-- 				</div> -->
+<!-- 			</div> -->
+<!-- 			</a> -->
+<!-- 		</li> -->
+<!-- 		<li> -->
+<!-- 			<a href="index.html#"> -->
+<!-- 				<div class="task-info"> -->
+<!-- 					<div class="desc">Database Update</div> -->
+<!-- 					<div class="percent">60%</div> -->
+<!-- 				</div> -->
+<!-- 				<div class="progress progress-striped"> -->
+<!-- 					<div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%"> -->
+<!-- 						<span class="sr-only">60% Complete (warning)</span> -->
+<!-- 					</div> -->
+<!-- 				</div> -->
+<!-- 			</a> -->
+<!-- 		</li> -->
+<!-- 		<li> -->
+<!-- 			<a href="index.html#"> -->
+<!-- 				<div class="task-info"> -->
+<!-- 					<div class="desc">Product Development</div> -->
+<!-- 					<div class="percent">80%</div> -->
+<!-- 				</div> -->
+<!-- 				<div class="progress progress-striped"> -->
+<!-- 					<div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%"> -->
+<!-- 						<span class="sr-only">80% Complete</span> -->
+<!-- 					</div> -->
+<!-- 				</div> -->
+<!-- 			</a> -->
+<!-- 		</li> -->
+<!-- 		<li> -->
+<!-- 			<a href="index.html#"> -->
+<!-- 				<div class="task-info"> -->
+<!-- 					<div class="desc">Payments Sent</div> -->
+<!-- 					<div class="percent">70%</div> -->
+<!-- 				</div> -->
+<!--                			<div class="progress progress-striped"> -->
+<!-- 					<div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 70%"> -->
+<!-- 						<span class="sr-only">70% Complete (Important)</span> -->
+<!-- 					</div> -->
+<!-- 				</div> -->
+<!-- 			</a> -->
+<!-- 		</li> -->
+<!-- 		<li class="external"> -->
+<!-- 			<a href="#">See All Tasks</a> -->
+<!-- 		</li> -->
+<!-- 	</ul> -->
+<!-- </li> -->
+<!--       		대출 end -->
+
+<!-- <!-- 마이페이지 start-->
+<!-- <li id="header_notification_bar" class="dropdown"> -->
+<!-- 	<a data-toggle="dropdown" class="dropdown-toggle" href="index.html#"> -->
+<!-- 		마이페이지 -->
+<!-- 	</a> -->
+<!-- 	<ul class="dropdown-menu extended notification"> -->
+<!-- 		<div class="notify-arrow"></div> -->
+<!-- 		<li> -->
+<!-- 			<a href="index.html#"> -->
+<!-- 				<span class="label label-danger"><i class="fa fa-bolt"></i></span> -->
+<!-- 					Server Overloaded. -->
+<!-- 				<span class="small italic">4 mins.</span> -->
+<!-- 			</a> -->
+<!-- 		</li> -->
+<!-- 		<li> -->
+<!-- 			<a href="index.html#"> -->
+<!-- 				<span class="label label-warning"><i class="fa fa-bell"></i></span> -->
+<!-- 					Memory #2 Not Responding. -->
+<!-- 				<span class="small italic">30 mins.</span> -->
+<!-- 			</a> -->
+<!-- 		</li> -->
+<!-- 		<li> -->
+<!-- 			<a href="index.html#"> -->
+<!-- 				<span class="label label-danger"><i class="fa fa-bolt"></i></span> -->
+<!-- 					Disk Space Reached 85%. -->
+<!-- 				<span class="small italic">2 hrs.</span> -->
+<!-- 			</a> -->
+<!-- 		</li> -->
+<!-- 		<li> -->
+<!-- 			<a href="index.html#"> -->
+<!-- 				<span class="label label-success"><i class="fa fa-plus"></i></span> -->
+<!-- 					New User Registered. -->
+<!-- 				<span class="small italic">3 hrs.</span> -->
+<!-- 			</a> -->
+<!-- 		</li> -->
+<!-- 		<li> -->
+<!-- 			<a href="index.html#">See all notifications</a> -->
+<!-- 		</li> -->
+<!-- 	</ul> -->
+<!-- </li> -->
+<!-- <!-- 마이페이지 end -->

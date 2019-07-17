@@ -29,7 +29,7 @@ public class JudgeVO {
 		this.judge_success = judge_success;
 	}//judge_success
 
-	
+
 	//참조
 	public String getProject_num() {
 		return project_num;
