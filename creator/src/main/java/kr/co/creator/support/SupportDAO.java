@@ -27,19 +27,25 @@ public class SupportDAO {
 		support = sqlSession.selectList(
 							"SupportMapper.supportList");
 		return support;
-	}
+	}//supportList
 	
 	public List<NoticeVO> supportList2() {
 		List<NoticeVO> support = null;
 		support = sqlSession.selectList(
 							"SupportMapper.supportList2");
 		return support;
-	}
+	}//supportList2
 	
 	public List<NoticeVO> supportList3() {
 		List<NoticeVO> support = null;
 		support = sqlSession.selectList(
 							"SupportMapper.supportList3");
 		return support;
-	}
+	}//supportList3
+
+//	public NoticeVO totalDetail(NoticeVO vo) {
+//		vo = sqlSession.selectOne(
+//				"SupportMapper.boardDetail", vo);
+//		return vo;
+//	}//totalDetail
 }//class

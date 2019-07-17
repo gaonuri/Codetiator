@@ -4,10 +4,6 @@
 <html>
 
 <head>
-
-<script src="${pageContext.request.contextPath}/resources/jquery/jquery-3.4.1.js"></script>
-<script src="${pageContext.request.contextPath}/resources/ckeditor/ckeditor.js"></script>
-
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="description" content="">
@@ -29,92 +25,38 @@
 	<link href="${pageContext.request.contextPath}/resources/bootstrap/css/style.css" rel="stylesheet">
 	<link href="${pageContext.request.contextPath}/resources/bootstrap/css/style-responsive.css" rel="stylesheet">
 	<script src="${pageContext.request.contextPath}/resources/bootstrap/lib/chart-master/Chart.js"></script>
-
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	
 	<!-- =======================================================
 	  Template Name: Dashio
 	  Template URL: https://templatemag.com/dashio-bootstrap-admin-template/
 	  Author: TemplateMag.com
 	  License: https://templatemag.com/license/
-	  
 	======================================================= -->
-<script type="text/javascript">
-$(document).ready(function(){
-	$("#login_btn").click(function(){
-		if($.trim($("#email").val()) == ""){
-			alert("이메일을 확인하세요.");
-			$("#email").focus();
-			return;
-		}
-		if($.trim($("#user_password").val()) == ""){
-			alert("비밀번호를 확인하세요.");
-			$("#user_password").focus();
-			return;
-		}
-
-		$.post(
-				"./loginuser"
-				,{
-					email:$("#email").val()
-					,user_password:$("#user_password").val()
-				}
-				,function(data,status){
-					if(status == "success"){
-						if(data > 0){
-							alert("로그인 되었습니다.");
-							location.href="/creator/main";
-						} else if(data == 0){
-							alert("존재하지 않는 이메일 또는 비밀번호 입니다.");
-						} else {
-							alert("잠시 후, 다시 시도해 주세요.");
-						}
-					} else {
-						alert("시스템 관리자에게 문의 바랍니다.");
-					}
-				}
-		);//post
-	});//click
-});//ready
-</script>
-
-<script type="text/javascript">
-$(document).ready(function(){
-	$("#login_btn1").click(function(){
-		if($.trim($("#busi_resi_num").val()) == ""){
-			alert("사업자등록번호를 확인하세요.");
-			$("#busi_resi_num").focus();
-			return;
-		}
-		if($.trim($("#busi_password").val()) == ""){
-			alert("비밀번호를 확인하세요.");
-			$("#busi_password").focus();
-			return;
-		}
-
-		$.post(
-				"./loginbusi"
-				,{
-					busi_resi_num:$("#busi_resi_num").val()
-					,busi_password:$("#busi_password").val()
-				}
-				,function(data,status){
-					if(status == "success"){
-						if(data > 0){
-							alert("로그인 되었습니다.");
-							location.href="/creator/main";
-						} else if(data == 0){
-							alert("존재하지 않는 사업자등록번호 또는 비밀번호 입니다.");
-						} else {
-							alert("잠시 후, 다시 시도해 주세요.");
-						}
-					} else {
-						alert("시스템 관리자에게 문의 바랍니다.");
-					}
-				}
-		);//post
-	});//click
-});//ready
-</script>
-	
+		<script type="text/javascript">
+			$(document).ready(function() {
+				$("#btn_write").click(function() {
+					location.href = "${pageContext.request.contextPath}/support/formi";
+				});//btn_write
+			});//ready
+			$(document).ready(function() {
+				$("#btn_total").click(function() {
+					location.href = "${pageContext.request.contextPath}/support_total";
+				});//btn_write
+			});//ready
+			$(document).ready(function() {
+				$("#btn_new").click(function() {
+					location.href = "${pageContext.request.contextPath}/support_new";
+				});//btn_write
+			});//ready
+			$(document).ready(function() {
+				$("#btn_operation").click(function() {
+					location.href = "${pageContext.request.contextPath}/support_operation";
+				});//btn_write
+			});//ready
+		</script>
+		
 </head>
 
 <body>
@@ -138,16 +80,14 @@ $(document).ready(function(){
 					
 					<!-- 대출 start -->
 					<li class="dropdown">
-						<a data-toggle="dropdown" class="dropdown-toggle" href="#">
-							대출
-						</a>
+						<a data-toggle="dropdown" class="dropdown-toggle" href="#">대출</a>
 						<ul class="dropdown-menu extended tasks-bar">
 							<div class="notify-arrow notify-arrow-green"></div>
 							<li>
 								<a href="./loan_guide">대출안내</a>
 							</li>
 							<li>
-								<a href="./loan/getloan">대출하기</a>
+								<a href="./loan">대출하기</a>
 							</li>
 						</ul>
 					</li>
@@ -224,7 +164,7 @@ $(document).ready(function(){
 					<!-- 마이페이지 end -->
 					
 					<!-- 로그아웃 start -->
-					<li><a href="./login">로그인</a></li>
+					<li><a href="./loan_guide">로그아웃</a></li>
 					<!-- 로그아웃 end -->
 				</ul>
 				<!--  notification end -->
@@ -242,105 +182,40 @@ $(document).ready(function(){
 	        MAIN CONTENT
 	        *********************************************************************************************************************************************************** -->
 		<!--main content start-->
-		
-<section id="main-content">
-<section class="wrapper site-min-height">
-<div class="container">
-	<div class="col-md-offset-3">
-	<img src="${pageContext.request.contextPath}/resources/img/test_logo.jpg" alt="login_img">
-	</div>
-</div>
-				
-<!-- =====================================================================logo -->
-	
-<div class="col-lg-4 mt col-md-offset-3">
-<div class="row content-panel">
-	<div class="panel-heading">
-		<ul class="nav nav-tabs nav-justified">
-			<li class="active">
-				<a data-toggle="tab" href="#usertab">일반회원</a>
-			</li>
-			<li >
-				<a data-toggle="tab" href="#busitab">법인회원</a>
-			</li>
-		</ul>
-	</div>
-	
-    <!-- /panel-heading -->
-				
-	<div class="panel-body">
-	<div class="tab-content">
-		<div id="usertab" class="tab-pane active">
-	    	<form role="form" class="form-horizontal">
-		   		<div class="row">
-		    	<div class="col-md col-md-offset-2  ">
-					<div class="form-group">
-						<div class="col-sm-10">
-							<input type="email" class="form-control" id="email" placeholder="*이메일">
-						</div>
-					</div>
-					<div class="form-group">
-						<div class="col-sm-10">
-							<input type="password" class="form-control" id="user_password" placeholder="*비밀번호">
-						</div>
-					</div>	
-				</div>
-				<div class="col-sm-10 col-lg-offset-3">
-					<input type="text" class="btn btn-theme" id="login_btn" value="로그인" />
-				</div>
-				</div>
-	    	</form>
-	    	<div class="col-md-offset-1">
-				<a class="" href="./findpwd">비밀번호를 잊으셨나요?</a>
-				<a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
-				<a class="" href="./join">회원 가입하기</a>
-	    	</div>	    	
-		</div>
-		
-		<!-- =====================================================================일반회원 -->	
-		
-		<div id="busitab" class="tab-pane">
-			<form role="form" class="form-horizontal">
-		   		<div class="row">
-		    	<div class="col-md col-md-offset-2 ">
-					<div class="form-group">
-						<div class="col-sm-10">
-							<input type="text" class="form-control onlyLicense" id="busi_resi_num" placeholder="*사업자등록번호">
-							<span class="mt-2 d-block">'-'을 제외한 숫자만 입력해 주세요.</span>
-						</div>
-					</div>
-					<div class="form-group">
-						<div class="col-sm-10">
-							<input type="password" class="form-control onlyPass" id="busi_password" placeholder="*비밀번호">
-						</div>				
-					</div>	
-				</div>
-				<div class="col-sm-10 col-lg-offset-3 ">
-					<input type="text" class="btn btn-theme" id="login_btn1" value="로그인" />
-				</div>
-				</div>
-	    	</form>
-	    	<div class="col-md-offset-1">
-				<a class="" href="./findpwd">비밀번호를 잊으셨나요?</a>
-				<a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
-				<a class="" href="./join">회원 가입하기</a>
-	    	</div>
-	   	</div>
-	</div>
-	</div>
-</div>
-</div>			
-				
-		<!-- ===================================================================== body-->		
-				
-		</section>
-			<!-- /wrapper -->
-	    </section>
-	    <!-- /MAIN CONTENT -->
-	    <!--main content end-->
-		
+    <section id="main-content">
+      <section class="wrapper">
+        <div class="row">
+          <div class="col-md-10">
+            <div class="content-panel">
+            <div class="btn-group">
+               <button id="btn_total" type="button" class="btn btn-default">전체</button>
+                <button id="btn_new" type="button" class="btn btn-default">새소식</button>
+                <button id="btn_operation" type="button" class="btn btn-default">운영사항</button>
+              </div>
+              <hr>
+              <table class="table">
+                <c:forEach items="${supportlist}" var="vo" varStatus="status">
+					<tr>
+					<tbody>
+						<td>${vo.notice_num}</td>
+						<td>${vo.title}</td>
+						<td>${vo.notice_date}</td>
+					</tbody>
+					</tr>
+				</c:forEach>
+              </table>
+            </div>
+          </div>
+          <!-- /col-md-12 -->
+        </div>
+        <!-- row -->
+        <br><br>
+			<button id="btn_write">글쓰기</button>
+			<br><br>
+      </section>
+    </section>
+    <!-- /MAIN CONTENT -->
+    <!--main content end-->
 		<!--footer start-->
 		<footer class="site-footer">
 			<div class="container">
@@ -405,7 +280,6 @@ $(document).ready(function(){
 	<script src="${pageContext.request.contextPath}/resources/bootstrap/lib/sparkline-chart.js"></script>
 	<script src="${pageContext.request.contextPath}/resources/bootstrap/lib/zabuto_calendar.js"></script>
 	<script type="text/javascript">
-	/*
     $(document).ready(function() {
       var unique_id = $.gritter.add({
         // (string | mandatory) the heading of the notification
@@ -424,7 +298,6 @@ $(document).ready(function(){
 
       return false;
     });
-	*/
 	</script>
 	<script type="application/javascript">
     $(document).ready(function() {
@@ -471,3 +344,113 @@ $(document).ready(function(){
 </body>
 
 </html>
+
+
+
+<!-- 대출 start -->
+<!-- <li class="dropdown"> -->
+<!-- 	<a data-toggle="dropdown" class="dropdown-toggle" href="index.html#"> -->
+<!-- 		대출 -->
+<!-- 	</a> -->
+<!-- 	<ul class="dropdown-menu extended tasks-bar"> -->
+<!-- 		<div class="notify-arrow notify-arrow-green"></div> -->
+<!-- 		<li> -->
+<!-- 			<a href="index.html#"> -->
+<!-- 				<div class="task-info"> -->
+<!-- 					<div class="desc">Dashio Admin Panel</div> -->
+<!-- 					<div class="percent">80%</div> -->
+<!-- 				</div> -->
+<!-- 			<div class="progress progress-striped"> -->
+<!-- 				<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 80%"> -->
+<!-- 					<span class="sr-only">80% Complete (success)</span> -->
+<!-- 				</div> -->
+<!-- 			</div> -->
+<!-- 			</a> -->
+<!-- 		</li> -->
+<!-- 		<li> -->
+<!-- 			<a href="index.html#"> -->
+<!-- 				<div class="task-info"> -->
+<!-- 					<div class="desc">Database Update</div> -->
+<!-- 					<div class="percent">60%</div> -->
+<!-- 				</div> -->
+<!-- 				<div class="progress progress-striped"> -->
+<!-- 					<div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%"> -->
+<!-- 						<span class="sr-only">60% Complete (warning)</span> -->
+<!-- 					</div> -->
+<!-- 				</div> -->
+<!-- 			</a> -->
+<!-- 		</li> -->
+<!-- 		<li> -->
+<!-- 			<a href="index.html#"> -->
+<!-- 				<div class="task-info"> -->
+<!-- 					<div class="desc">Product Development</div> -->
+<!-- 					<div class="percent">80%</div> -->
+<!-- 				</div> -->
+<!-- 				<div class="progress progress-striped"> -->
+<!-- 					<div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%"> -->
+<!-- 						<span class="sr-only">80% Complete</span> -->
+<!-- 					</div> -->
+<!-- 				</div> -->
+<!-- 			</a> -->
+<!-- 		</li> -->
+<!-- 		<li> -->
+<!-- 			<a href="index.html#"> -->
+<!-- 				<div class="task-info"> -->
+<!-- 					<div class="desc">Payments Sent</div> -->
+<!-- 					<div class="percent">70%</div> -->
+<!-- 				</div> -->
+<!--                			<div class="progress progress-striped"> -->
+<!-- 					<div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 70%"> -->
+<!-- 						<span class="sr-only">70% Complete (Important)</span> -->
+<!-- 					</div> -->
+<!-- 				</div> -->
+<!-- 			</a> -->
+<!-- 		</li> -->
+<!-- 		<li class="external"> -->
+<!-- 			<a href="#">See All Tasks</a> -->
+<!-- 		</li> -->
+<!-- 	</ul> -->
+<!-- </li> -->
+<!--       		대출 end -->
+
+<!-- <!-- 마이페이지 start-->
+<!-- <li id="header_notification_bar" class="dropdown"> -->
+<!-- 	<a data-toggle="dropdown" class="dropdown-toggle" href="index.html#"> -->
+<!-- 		마이페이지 -->
+<!-- 	</a> -->
+<!-- 	<ul class="dropdown-menu extended notification"> -->
+<!-- 		<div class="notify-arrow"></div> -->
+<!-- 		<li> -->
+<!-- 			<a href="index.html#"> -->
+<!-- 				<span class="label label-danger"><i class="fa fa-bolt"></i></span> -->
+<!-- 					Server Overloaded. -->
+<!-- 				<span class="small italic">4 mins.</span> -->
+<!-- 			</a> -->
+<!-- 		</li> -->
+<!-- 		<li> -->
+<!-- 			<a href="index.html#"> -->
+<!-- 				<span class="label label-warning"><i class="fa fa-bell"></i></span> -->
+<!-- 					Memory #2 Not Responding. -->
+<!-- 				<span class="small italic">30 mins.</span> -->
+<!-- 			</a> -->
+<!-- 		</li> -->
+<!-- 		<li> -->
+<!-- 			<a href="index.html#"> -->
+<!-- 				<span class="label label-danger"><i class="fa fa-bolt"></i></span> -->
+<!-- 					Disk Space Reached 85%. -->
+<!-- 				<span class="small italic">2 hrs.</span> -->
+<!-- 			</a> -->
+<!-- 		</li> -->
+<!-- 		<li> -->
+<!-- 			<a href="index.html#"> -->
+<!-- 				<span class="label label-success"><i class="fa fa-plus"></i></span> -->
+<!-- 					New User Registered. -->
+<!-- 				<span class="small italic">3 hrs.</span> -->
+<!-- 			</a> -->
+<!-- 		</li> -->
+<!-- 		<li> -->
+<!-- 			<a href="index.html#">See all notifications</a> -->
+<!-- 		</li> -->
+<!-- 	</ul> -->
+<!-- </li> -->
+<!-- <!-- 마이페이지 end -->

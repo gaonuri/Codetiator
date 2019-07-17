@@ -36,4 +36,17 @@ public class SupportService {
 		support = dao.supportList3();
 		return support;
 	}//supportList3
+
+//	public NoticeVO totalDetail(NoticeVO vo) {
+//		vo = dao.totalDetail(vo);
+//		if(vo != null && vo.getFile_path() != null
+//				&& !vo.getFile_path().equals("")) {
+//			vo.setFile_name(
+//				vo.getFile_path().substring(
+//					vo.getFile_path().lastIndexOf("\\")+1
+//				)
+//			);
+//		}//if
+//		return vo;
+//	}//totalDetail
 }//class
