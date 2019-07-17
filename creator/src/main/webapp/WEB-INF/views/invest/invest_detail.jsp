@@ -31,7 +31,16 @@
 	  Template URL: https://templatemag.com/dashio-bootstrap-admin-template/
 	  Author: TemplateMag.com
 	  License: https://templatemag.com/license/
-	======================================================= -->
+	======================================================= -->	
+	<script type="text/javascript">
+	$(document).ready(function() {
+		alert("ready");
+		$("#investBtn").click(function() {
+			alert("click");
+			location.href="./creator/invest";
+		});//investBtn
+	});//ready
+	</script>
 </head>
 
 <body>
@@ -163,12 +172,35 @@
 	        *********************************************************************************************************************************************************** -->
 		<!--main content start-->
 		<section id="main-content">
+			<script type="text/javascript">
+			$(document).ready(function() {
+				$("#investBtn").click(function() {
+					location.href = "${pageContext.request.contextPath}/invest";
+				});//investBtn
+			});//ready
+			$(document).ready(function() {
+				$("#btn_total").click(function() {
+					location.href = "${pageContext.request.contextPath}/support_total";
+				});//btn_write
+			});//ready
+			$(document).ready(function() {
+				$("#btn_new").click(function() {
+					location.href = "${pageContext.request.contextPath}/support_new";
+				});//btn_write
+			});//ready
+			$(document).ready(function() {
+				$("#btn_operation").click(function() {
+					location.href = "${pageContext.request.contextPath}/support_operation";
+				});//btn_write
+			});//ready
+		</script>
+			
 			
 			<section class="wrapper site-min-height">
 				<div class="row mt">
 				<div style="background-color: orange; width: 60px; text-align: center; color: white; font-size: 15px;">${projectVO.ach_state}</div>
 				<div style="width: 200px; color: black; font-size: 25px;">${projectVO.project_name}</div>
-				
+				<input type="button" id="test" value="test" />
 					<!-- page start -->
 					<div class="col-lg-12">
 						<div class="card" style="float: right; border: solid 1px black">
@@ -198,7 +230,7 @@
 										<td>500만원</td>
 									</tr>
 									<tr>
-										<td><button>투자신청</button></td>
+										<td><input type="button" id="investBtn" value="투자신청"/></td>
 									</tr>
 								</table>
 							</div>
@@ -254,11 +286,11 @@
 									</tr>							
 									<tr>
 										<td>유형</td>
-										<td>개인사업자</td>
+										<td>${guaranteeVO.debtor_type}</td>
 									</tr>
 									<tr>
 										<td>업종</td>
-										<td>개인사업자</td>
+										<td>${guaranteeVO.business_type}</td>
 									</tr>
 									<tr>
 										<td>대출목적</td>
@@ -364,7 +396,7 @@
 		<!--footer end-->
 	
 	</section>
-	
+
 	<!-- 지도 api -->
 	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=634dddac053ddf6be0b6aa5a165b2da8"></script>
 	<script>
