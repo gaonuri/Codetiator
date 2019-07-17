@@ -14,7 +14,8 @@ public class NoteVO {
 	private String file_path;				// 파일경로
 	
 	public NoteVO() {}	//constructor
-	public NoteVO(String note_num, String note_type, String note_date, String chk_note_reception, String note_contents, String send_user_num, String send_nickname, String note_title, String status, String file_path) {
+	public NoteVO(	String note_num, String note_type, String note_date, String chk_note_reception, String note_contents, 
+					String send_user_num, String send_nickname, String note_title, String status, String file_path) {
 		this.note_num = note_num;
 		this.note_type = note_type;
 		this.note_date = note_date;

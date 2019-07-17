@@ -166,67 +166,97 @@
 			<div style="background-color: orange; width: 60px; text-align: center; color: white; font-size: 15px;">${projectVO.ach_state}</div>
 			<div style="width: 200px; color: black; font-size: 25px;">${projectVO.project_name}</div>
 					<div class="col-lg-12">
-						<div class="card-header">
-							상품요약
+						<div class="card" style="width:800px;">
+							<div class="card-header">
+								상품요약
+							</div>
+							<div class="card-body">
+								<table>
+									<tr>
+										<th>기본정보</th>
+									</tr>
+									<tr>
+										<td>담보유형</td>
+										<td>만기</td>
+										<td>대출금액</td>
+										<td>대출잔액</td>
+									</tr>
+									<tr>
+										<td>${guaranteeVO.guarantee_type}</td>
+										<td>${projectVO.refund}</td>
+										<td>${projectVO.price}</td>
+										<td>${projectVO.guarantee_price}</td>
+									</tr>
+								</table>
+								<table>
+									<tr>
+										<th>담보물건 정보</th>
+									</tr>							
+									<tr>
+										<td>유형</td>
+										<td>${guaranteeVO.guarantee_type}</td>
+									</tr>
+									<tr>
+										<td>LTV</td>
+									</tr>
+									<tr>
+										<td>담보권</td>
+										<td>근저당부질권</td>
+									</tr>
+								</table>
+								<table style="float:right;">
+									<tr>
+										<th>차주 정보</th>
+									</tr>							
+									<tr>
+										<td>유형</td>
+										<td>개인사업자</td>
+									</tr>
+									<tr>
+										<td>업종</td>
+										<td>개인사업자</td>
+									</tr>
+									<tr>
+										<td>대출목적</td>
+										<td>사업운영자금</td>
+									</tr>
+								</table>
+							</div>
 						</div>
-						<div class="card-body">
+						<div style="float: right;">
 							<table>
 								<tr>
-									<th>기본정보</th>
+									<td>${projectVO.current_price / projectVO.price * 100}%</td>
 								</tr>
 								<tr>
-									<td>담보유형</td>
-									<td>만기</td>
-									<td>대출금액</td>
-									<td>대출잔액</td>
-								</tr>
-								<tr>
-									<td>${guaranteeVO.guarantee_type}</td>
-									<td>${projectVO.refund}</td>
+									<td>${projectVO.current_price}</td>
 									<td>${projectVO.price}</td>
-									<td>${projectVO.guarantee_price}</td>
-								</tr>
-							</table>
-							<table>
-								<tr>
-									<th>담보물건 정보</th>
-								</tr>							
-								<tr>
-									<td>담보유형</td>
-									<td>만기</td>
-									<td>대출금액</td>
-									<td>대출잔액</td>
 								</tr>
 								<tr>
-									<td>${guaranteeVO.guarantee_type}</td>
+									<td>상환방식</td>
+									<td>${projectVO.repay_method}</td>
+								</tr>
+								<tr>
+									<th>연 수익률</th>
+									<td>${projectVO.yield}</td>
+								</tr>
+								<tr>
+									<td>투자기간</td>
 									<td>${projectVO.refund}</td>
-									<td>${projectVO.price}</td>
-									<td>${projectVO.guarantee_price}</td>
+								</tr>
+								<tr>
+									<td>투자한도</td>
+									<td>500만원</td>
+								</tr>
+								<tr>
+									<td><button>투자신청</button></td>
 								</tr>
 							</table>
 						</div>
-						<table border="1">
-							<tr>
-								<th>등급</th>
-								<td>${projectVO.grade}</td>
-							</tr>
-							<tr>
-								<th>연 수익률</th>
-								<td>${projectVO.yield}</td>
-							</tr>
-							<tr>
-								<th>상환방식</th>
-								<td>${projectVO.repay_method}</td>
-							</tr>
-							<tr>
-								<th>모집현황</th>
-								<td>${projectVO.ach_rate}</td>
-							</tr>
-							<tr>
-								<th>등록일</th>
-								<td>${projectVO.en_date}</td>
-							</tr>
-						</table>
+						<div style="border: solid 1px black; width:800px; height:400px;">
+							${guaranteeVO.guarantee_img}
+						</div>
+						<div id="map" style="width:800px;height:300px;"></div>
 					</div>
 				</div>
 			</section>
@@ -283,6 +313,18 @@
 		<!--footer end-->
 	
 	</section>
+	
+	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=634dddac053ddf6be0b6aa5a165b2da8"></script>
+	<script>
+		var container = document.getElementById('map');
+		var options = {
+			center: new kakao.maps.LatLng(33.450701, 126.570667),
+			level: 3
+		};
+
+		var map = new kakao.maps.Map(container, options);
+	</script>
+	
 	<!-- js placed at the end of the document so the pages load faster -->
 	<script src="${pageContext.request.contextPath}/resources/bootstrap/lib/jquery/jquery.min.js"></script>
 	

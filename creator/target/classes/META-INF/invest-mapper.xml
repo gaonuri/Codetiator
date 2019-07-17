@@ -6,15 +6,7 @@
 <mapper namespace="InvestMapper">
 	
 	<select id="investList" resultType="kr.co.creator.vo.ProjectVO">
-		select	project_num, 
-				project_name, 
-				grade, 
-				yield, 
-				refund, 
-				price, 
-				repay_method, 
-				ach_rate, 
-				ach_state
+		select	*
 		from	project_list
 	</select>
 	
@@ -33,15 +25,7 @@
 	</select>
 	
 	<select id="projectDetail" parameterType="kr.co.creator.vo.ProjectVO" resultType="kr.co.creator.vo.ProjectVO">
-		select	project_name, 
-				grade, 
-				yield, 
-				refund, 
-				price, 
-				repay_method, 
-				ach_rate,
-				ach_state,
-				en_date
+		select	*
 		from	project_list 
 		where 	project_num = #{project_num}
 	</select>
