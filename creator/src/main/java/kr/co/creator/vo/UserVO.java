@@ -17,9 +17,9 @@ public class UserVO {
 	private String user_phone_key;				// 휴대폰인증
 	
 	public UserVO() {}	//constructor
-	public UserVO(String user_num, String email, String user_password, String user_name, String jumin, 
-			String phone, String addr, String user_chk_email, String user_terms_of_service, String user_privacy_policy_agree, 
-			String join_date, String login_time, String user_phone_key) {
+	public UserVO(	String user_num, String email, String user_password, String user_name, String jumin, 
+					String phone, String addr, String user_chk_email, String user_terms_of_service, String user_privacy_policy_agree, 
+					String join_date, String login_time, String user_phone_key) {
 		this.user_num = user_num;
 		this.email = email;
 		this.user_password = user_password;

@@ -18,7 +18,9 @@ public class DocumentVO {
 	private String project_num;		// (참조)프로젝트번호
 	
 	public DocumentVO() {}	//constructor
-	public DocumentVO(String document_num, String busi_regi, String jumin_chobon, String cer_ingam, String cer_budong, String cer_dong, String cer_income, String cer_vat, String cer_other, String copy_id, String copy_bankbook, String chk_select, String project_num) {
+	public DocumentVO(	String document_num, String busi_regi, String jumin_chobon, String cer_ingam, 
+						String cer_budong, String cer_dong, String cer_income, String cer_vat, String cer_other, 
+						String copy_id, String copy_bankbook, String chk_select, String project_num) {
 		this.document_num = document_num;
 		this.busi_regi = busi_regi;
 		this.jumin_chobon = jumin_chobon;
