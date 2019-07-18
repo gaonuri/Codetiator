@@ -10,7 +10,7 @@
 	<meta name="author" content="Dashboard">
 	<meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
 	<title>Dashio - Bootstrap Admin Template</title>
-	<script src="../resources/jquery/jquery-3.4.1.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/jquery/jquery-3.4.1.js"></script>
 	
 	<!-- Favicons -->
 	<link href="${pageContext.request.contextPath}/resources/bootstrap/img/favicon.png" rel="icon">
@@ -35,10 +35,39 @@
 	======================================================= -->
 	<script type="text/javascript">
 	$(document).ready(function() {
-		alert();
+		var temp = 0;
+		
 		$("#amtPlus100_771").click(function() {
-			alert("amtPlus100_771");
-		});//investBtn
+			temp = parseInt($("#inputAmt771").val());
+			temp += 100;
+			$("#inputAmt771").val(temp);
+		});//amtPlus100_771
+		$("#amtPlus50_771").click(function() {
+			temp = parseInt($("#inputAmt771").val());
+			temp += 50;
+			$("#inputAmt771").val(temp);
+		});//amtPlus50_771
+		$("#amtPlus10_771").click(function() {
+			temp = parseInt($("#inputAmt771").val());
+			temp += 10;
+			$("#inputAmt771").val(temp);
+		});//amtPlus10_771
+		$("#amtPlus5_771").click(function() {
+			temp = parseInt($("#inputAmt771").val());
+			temp += 5;
+			$("#inputAmt771").val(temp);
+		});//amtPlus5_771
+		$("#amtPlus1_771").click(function() {
+			temp = parseInt($("#inputAmt771").val());
+			temp += 1;
+			$("#inputAmt771").val(temp);
+		});//amtPlus1_771
+		$("#amtPlusAll_771").click(function() {
+			$("#inputAmt771").val() = $("#inputDeposit771").val();
+		});//amtPlusAll_771
+		$("#amtReset_771").click(function() {
+			$("#inputAmt771").val("0");
+		});//amtReset_771
 	});//ready
 	</script>
 </head>
@@ -410,7 +439,7 @@
 																	</div>
 																	<div class="col-xs-6 col-sm-4 col-md-4 col-lg-3 col">
 																		<div class="form-group has-feedback inputForm" id="inputDepositDiv">
-																			<input type="text" class="form-control text-right" id="inputDeposit771" name="inputDeposit" aria-describedby="inputDepositStatus" value="0" readonly="">
+																			<input type="text" class="form-control text-right" id="inputDeposit771" name="inputDeposit" aria-describedby="inputDepositStatus" value="0" readonly="readonly">
 																			<span class="form-control-feedback" aria-hidden="true">원</span>
 																			<span id="inputDepositStatus" class="sr-only">(success)</span>
 																			<input type="hidden" id="reqDeposit771" name="reqDeposit" value="0">
