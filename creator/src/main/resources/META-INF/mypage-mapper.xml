@@ -4,5 +4,15 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  
 <mapper namespace="MypageMapper">
+
+<select id="assetsList"
+			resultType="kr.co.creator.vo.InvestVO">
+		select invest_num
+			, project_num
+			, invest_price
+			, invest_date
+			FROM invest_list
+			order by invest_date desc
+	</select>
 	
 </mapper>

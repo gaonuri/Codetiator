@@ -24,8 +24,8 @@ public class MypageController {
 	public String list(Model model) {
 		logger.info("my_dashboard");
 		List<InvestVO> list = null;
-		list = service.investList();
-		model.addAttribute("investList", list);
+		list = service.assetsList();
+		model.addAttribute("assetsList", list);
 		return "mypage/my_dashboard";
 	}
 	

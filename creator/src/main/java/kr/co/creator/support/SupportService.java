@@ -18,6 +18,12 @@ public class SupportService {
 		count = dao.supportInsert(vo);
 		return count;
 	}//noticeInsert
+	
+	public int supportInsert2(NoticeVO vo) {
+		int count = 0;
+		count = dao.supportInsert2(vo);
+		return count;
+	}
 
 	public List<NoticeVO> supportList() {
 		List<NoticeVO> support = null;
@@ -41,4 +47,16 @@ public class SupportService {
 		vo = dao.totalDetail(vo);
 		return vo;
 	}//totalDetail
+
+	public NoticeVO newDetail(NoticeVO vo) {
+		vo = dao.newDetail(vo);
+		return vo;
+	}//newDetail
+
+	public NoticeVO operationDetail(NoticeVO vo) {
+		vo = dao.operationDetail(vo);
+		return vo;
+	}//operationDetail
+
+	
 }//class

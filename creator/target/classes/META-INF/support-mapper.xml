@@ -15,6 +15,16 @@
 				, now())
 	</insert>
 	
+	<insert id="supportInsert2"
+			parameterType="kr.co.creator.vo.NoticeVO">
+			insert into notice_operation( title
+							, notice_contents
+							, notice_date)
+		values( #{title}
+				, #{notice_contents}
+				, now())
+	</insert>
+	
 	<select id="supportList"
 			resultType="kr.co.creator.vo.NoticeVO">
 		select notice_num
@@ -38,7 +48,7 @@
 		select notice_num
 			, title
 			, notice_date
-			FROM notice
+			FROM notice_operation
 			order by notice_date desc
 	</select>
 	

@@ -14,9 +14,10 @@ public class MypageDAO {
 	@Autowired
 	SqlSession sqlSession;
 
-	public List<InvestVO> investList() {
+	public List<InvestVO> assetsList() {
 		List<InvestVO> list = null;
-//		list = sqlSession.selectList("");
+		list = sqlSession.selectList(
+							"mypage-mapper.assetsList");
 		return list;
-	}//investlist
+	}//assetList
 }//class

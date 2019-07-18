@@ -91,6 +91,18 @@ public class SupportController {
 	out.close();
 	}//boardInsert
 	
+	@RequestMapping(value="/support/insert2"
+			,method=RequestMethod.POST)
+	public void supportInsert2(NoticeVO vo, PrintWriter out) {
+	System.out.println("supportInsert");
+	int count = 0;
+	count = service.supportInsert2(vo);
+	logger.info("controller - count : "+count);
+	out.print(count);
+	out.flush();
+	out.close();
+	}//boardInsert
+	
 	
 	@RequestMapping(value="/support_total_detail"
 			,method=RequestMethod.GET)
@@ -100,6 +112,24 @@ public class SupportController {
 	model.addAttribute("total_detailVO", vo);
 	return "support/support_total_detail";
 	}//support_total_detail
+	
+	@RequestMapping(value="/support_new_detail"
+			,method=RequestMethod.GET)
+	public String newDatail(NoticeVO vo, Model model) {
+	logger.info("new_detail");
+	vo = service.newDetail(vo);
+	model.addAttribute("new_detailVO", vo);
+	return "support/support_new_detail";
+	}//support_new_detail
+	
+	@RequestMapping(value="/support_operation_detail"
+			,method=RequestMethod.GET)
+	public String operationDatail(NoticeVO vo, Model model) {
+	logger.info("operation_detail");
+	vo = service.operationDetail(vo);
+	model.addAttribute("operation_detailVO", vo);
+	return "support/support_operation_detail";
+	}//support_new_detail
 	
 //	@RequestMapping(value="/support/formu"
 //			,method=RequestMethod.GET)

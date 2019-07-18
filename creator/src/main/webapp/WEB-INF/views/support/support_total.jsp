@@ -208,9 +208,6 @@
          		 <!-- /col-md-12 -->
         	</div>
         	<!-- row -->
-	        	<br><br>
-				<button id="btn_write">글쓰기</button>
-				<br><br>
       </section>
     </section>
     <!-- /MAIN CONTENT -->

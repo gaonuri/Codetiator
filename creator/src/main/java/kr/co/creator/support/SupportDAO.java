@@ -21,6 +21,14 @@ public class SupportDAO {
 		System.out.println("dao - count : "+ count);
 		return count;
 	}//noticeInsert
+	
+	public int supportInsert2(NoticeVO vo) {
+		System.out.println("dao - supportInsert2");
+		int count = 0;
+		count = sqlSession.insert("SupportMapper.supportInsert2", vo);
+		System.out.println("dao - count : "+ count);
+		return count;
+	}
 
 	public List<NoticeVO> supportList() {
 		List<NoticeVO> support = null;
@@ -48,4 +56,18 @@ public class SupportDAO {
 				"SupportMapper.totalDetail", vo);
 		return vo;
 	}//totalDetail
+
+	public NoticeVO newDetail(NoticeVO vo) {
+		vo = sqlSession.selectOne(
+				"SupportMapper.totalDetail", vo);
+		return vo;
+	}//totalDetail
+
+	public NoticeVO operationDetail(NoticeVO vo) {
+		vo = sqlSession.selectOne(
+				"SupportMapper.totalDetail", vo);
+		return vo;
+	}//totalDetail
+
+	
 }//class
