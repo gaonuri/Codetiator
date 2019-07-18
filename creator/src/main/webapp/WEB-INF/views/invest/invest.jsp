@@ -36,8 +36,8 @@
 	<script type="text/javascript">
 	$(document).ready(function() {
 		alert();
-		$("#investBtn").click(function() {
-			location.href="${pageContext.request.contextPath}/invest";
+		$("#amtPlus100_771").click(function() {
+			alert("amtPlus100_771");
 		});//investBtn
 	});//ready
 	</script>

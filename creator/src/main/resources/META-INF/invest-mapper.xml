@@ -30,15 +30,7 @@
 	</select>
 	
 	<select id="investFinish" resultType="kr.co.creator.vo.ProjectVO">
-		select	project_num, 
-				project_name, 
-				grade, 
-				yield, 
-				refund, 
-				price, 
-				repay_method, 
-				ach_rate, 
-				ach_state
+		select	*
 		from	project_list
 		where	ach_state = "상환완료" || ach_state = "중도상환"
 	</select>
