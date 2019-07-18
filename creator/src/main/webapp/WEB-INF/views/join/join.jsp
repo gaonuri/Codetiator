@@ -64,19 +64,35 @@
 
 <script type="text/javascript">
 
+
 var chkemail = '';
 var chklicense = '';
-var chkmagemail = '';
 
 //id check
 
+// /([a-z0-9]{1,20})(@)+([a-z]{1,20})(.)+([a-z]{1,20})/gi;
+// var homepageStd = /(http(s)?:\/\/)([a-z0-9\w]+\.*)+[a-z0-9]{2,4}/gi;
+// var numStd = /^[0-9]{1,20}$/;
+// 		$(".onlyEmail").change(function(){
+// 			//alert($(this).val());
+// 			var emailStd = /([a-z0-9]{1,20}\@)([a-z]{1,20})(.)([a-z]{1,10})/gi;
+// 			if($(this).val().match(emailStd)){
+// 				//alert("ok");
+// 			}else {
+// 				alert("옳바르지 않은 이메일 입니다.");
+// 				$(this).val("");
+// // 				$(this).focus();
+// 				return;
+// 			}
+// 		});//onlyEmail
 $(document).ready(function(){
 	$("#email").blur(function(){
-		if($.trim($("#email").val()) == ''){
-			alert("이메일은 필수 입력 입니다.");
-// 			$("#email").focus();
+		var emailStd = /([a-z0-9]{1,20}\@)([a-z]{1,20}\.)([a-z]{1,10})/gi;
+		if($.trim($("#email").val()) != $(this).val().match(emailStd)){
+			alert("옳바르지 않은 이메일 입니다.");
 			return;
 		}
+
 		$.post(
 				"./joinemailchk",
 				{
@@ -117,10 +133,13 @@ $(document).ready(function(){
 	});//ready
 });//blur
 
+var chkmagemail = '';
+
 $(document).ready(function(){
 	$("#manager_email").blur(function(){
-		if($.trim($("#manager_email").val()) == ''){
-			alert("이메일은 필수 입력 입니다.");
+		var emailStd = /([a-z0-9]{1,20}\@)([a-z]{1,20}\.)([a-z]{1,10})/gi;
+		if($.trim($("#manager_email").val()) != $(this).val().match(emailStd)){
+			alert("옳바르지 않은 이메일 입니다.");
 // 			$("#email").focus();
 			return;
 		}
@@ -164,26 +183,14 @@ $(document).ready(function(){
 		}
 	});//onlyKor
 	
-	$(".onlyEmail").change(function(){
-		//alert($(this).val());
-		var emailStd = /^[a-zA-Z@.]{1,20}$/;
-		if($(this).val().match(emailStd)){
-			//alert("ok");
-		}else{
-			alert("영문만 입력 가능한 필드 입니다.");
-			$(this).val("");
-			$(this).focus();
-			return;
-		}
-	});//onlyEmail
 	
 	$(".onlyhomepage").change(function(){
 		//alert($(this).val());
-		var emailStd = /(http(s)?:\/\/)([a-z0-9\w]+\.*)+[a-z0-9]{2,4}/gi;
-		if($(this).val().match(emailStd)){
+		var homepageStd = /(http(s)?:\/\/)([a-z0-9\w]+\.*)+[a-z0-9]{2,4}/gi;
+		if($(this).val().match(homepageStd)){
 			//alert("ok");
 		}else{
-			alert("사용가능한 홈페이지를 입력해 주세요.");
+			alert("사용 가능한 홈페이지를 입력해 주세요.");
 // 			$(this).val("");
 			$(this).focus();
 			return;

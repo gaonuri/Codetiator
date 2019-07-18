@@ -42,7 +42,7 @@ public class LoginController {
 		if(vo != null && vo.getUser_num() != null && !vo.getUser_num().equals("")) {
 			successCnt = 1;
 			session.setAttribute("Login_ss", vo);
-		}
+		} 
 		out.print(successCnt);
 		out.close();
 	}//loginUser
@@ -71,18 +71,17 @@ public class LoginController {
 	public String findPwd() {
 		logger.info("findPwd");
 		return "login/findPwd";
-	}//join
+	}//findPwd
+	
 	
 	@RequestMapping(value = "/findpwdchk", method = RequestMethod.POST)
 	public void findPwdChk(PrintWriter out, FindPwdVO vo) throws IOException {
 		logger.info("=== findPwdChk ===");
-//		logger.info(vo.getEmail());
 		int cnt = 0;
 		cnt = loginService.findPwdChk(vo);
 		out.print(cnt);
 		out.flush();
 		out.close();
 	}//findPwdChk
-	
 	
 }//class
