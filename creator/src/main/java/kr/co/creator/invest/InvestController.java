@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import kr.co.creator.vo.GuaranteeVO;
 import kr.co.creator.vo.ProjectVO;
 
 @Controller
@@ -33,7 +34,6 @@ public class InvestController {
 	public String invest_guide() {
 		logger.info("invest_guide");
 		
-		
 		return "invest/invest_guide";
 	}
 	
@@ -43,27 +43,31 @@ public class InvestController {
 		
 		List<ProjectVO> list = null;
 		list = investService.invest_list();
-		
 		model.addAttribute("investList", list);
 		
 		return "invest/invest_list";
-	}
+	}//invest_list
 	
 	@RequestMapping(value = "/invest_detail", method = RequestMethod.GET)
-	public String invest_detail(Model model, ProjectVO vo) {
+	public String invest_detail(Model model, ProjectVO proVO, GuaranteeVO guaVO) {
 		logger.info("invest_detail");
 		
-		vo = investService.invest_detail(vo);
-		model.addAttribute("detailVO", vo);
+		proVO = investService.project_detail(proVO);
+		guaVO = investService.guarantee_detail(proVO, guaVO);
+		model.addAttribute("projectVO", proVO);
+		model.addAttribute("guaranteeVO", guaVO);
 		
 		return "invest/invest_detail";
-	}
+	}//invest_detail
 	
 	@RequestMapping(value = "/invest_finish", method = RequestMethod.GET)
-	public String invest_finish() {
+	public String invest_finish(Model model) {
 		logger.info("invest_finish");
 		
+		List<ProjectVO> list = null;
+		list = investService.invest_finish();
+		model.addAttribute("investFinish", list);
 		
 		return "invest/invest_finish";
-	}
+	}//invest_finish
 }//class

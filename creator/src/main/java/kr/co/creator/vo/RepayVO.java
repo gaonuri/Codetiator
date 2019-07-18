@@ -1,16 +1,16 @@
 package kr.co.creator.vo;
 
 // 상환내역
-public class Repay_listVO {
+public class RepayVO {
 	private String repay_num;			// 상환번호
 	private String invest_history;		// 투자자 상환내역
 	private String loan_history;		// 대출자 상환내역
 	
 	private String user_num;			// (참조)유저번호
-	private String busi_num;			// (참조)법인 유저 순서
+	private String busi_num;			// (참조)법인유저번호
 	
-	public Repay_listVO() {}	//constructor
-	public Repay_listVO(String repay_num, String invest_history, String loan_history, String user_num, String busi_num) {
+	public RepayVO() {}	//constructor
+	public RepayVO(String repay_num, String invest_history, String loan_history, String user_num, String busi_num) {
 		this.repay_num = repay_num;
 		this.invest_history = invest_history;
 		this.loan_history = loan_history;

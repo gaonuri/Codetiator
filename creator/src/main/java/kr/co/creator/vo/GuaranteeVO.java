@@ -3,9 +3,15 @@ package kr.co.creator.vo;
 // 게런티
 public class GuaranteeVO {
 	private String guarantee_num;			// 담보번호
-	private String guarantee_comple_year;	// 담보유형
+	private String guarantee_type;			// 담보유형(부동산, 동산)
+	private String guarantee_img;			// 담보문사진경로
 	private String guarantee_name;			// 담보이름
-	private String connoisseur;				// 감정가
+	private String debtor_type;				// 차주유형(개인, 법인)
+	private String business_type;			// 차주업종(직종)
+	private String object_type;				// 물건유형(아파트, 연립주택)
+	private String connoisseur;				// 외부감정가
+	private String supply_area;				// 공급면적
+	private String exclusive_area;			// 전용면적
 	private String area;					// 면적
 	private String map;						// 지도
 	private String location;				// 소재지
@@ -13,14 +19,26 @@ public class GuaranteeVO {
 	private String comple_year;				// 준공년도
 	private String quote;					// 시세
 	private String code;					// 담보분류
+	private String reference_file1;			// 참고파일1
+	private String reference_file2;			// 참고파일2
+	private String reference_file3;			// 참고파일3
 	
-	private String loan_num;				// (참조)대출 번호
+	private String project_num;				// (참조)프로젝트번호
 	
 	public GuaranteeVO() {}	//constructor
-	public GuaranteeVO(String guarantee_num, String guarantee_comple_year, String guarantee_name, String connoisseur, String area, String map, String location, String scale, String comple_year, String quote, String code, String grade, String more_information, String en_date, String rate, String loan_num) {
+	public GuaranteeVO(	String guarantee_num, String guarantee_type, String guarantee_img, String guarantee_name, 
+						String debtor_type, String business_type, String object_type, String connoisseur, 
+						String exclusive_area, String supply_area, String area, String map, 
+						String location, String scale, String comple_year, String quote, String code, 
+						String grade, String more_information, String en_date, String rate, 
+						String reference_file1, String reference_file2, String reference_file3, String project_num) {
 		this.guarantee_num = guarantee_num;
-		this.guarantee_comple_year = guarantee_comple_year;
+		this.guarantee_type = guarantee_type;
+		this.guarantee_img = guarantee_img;
 		this.guarantee_name = guarantee_name;
+		this.debtor_type = debtor_type;
+		this.business_type = business_type;
+		this.object_type = object_type;
 		this.connoisseur = connoisseur;
 		this.area = area;
 		this.map = map;
@@ -29,8 +47,11 @@ public class GuaranteeVO {
 		this.comple_year = comple_year;
 		this.quote = quote;
 		this.code = code;
+		this.reference_file1 = reference_file1;
+		this.reference_file2 = reference_file2;
+		this.reference_file3 = reference_file3;
 		
-		this.loan_num = loan_num;
+		this.project_num = project_num;
 	}//constructor
 	
 	public String getGuarantee_num() {
@@ -40,12 +61,19 @@ public class GuaranteeVO {
 		this.guarantee_num = guarantee_num;
 	}//guarantee_num
 	
-	public String getGuarantee_comple_year() {
-		return guarantee_comple_year;
+	public String getGuarantee_type() {
+		return guarantee_type;
 	}
-	public void setGuarantee_comple_year(String guarantee_comple_year) {
-		this.guarantee_comple_year = guarantee_comple_year;
-	}//guarantee_comple_year
+	public void setGuarantee_type(String guarantee_type) {
+		this.guarantee_type = guarantee_type;
+	}//guarantee_type
+	
+	public String getGuarantee_img() {
+		return guarantee_img;
+	}
+	public void setGuarantee_img(String guarantee_img) {
+		this.guarantee_img = guarantee_img;
+	}//guarantee_img
 	
 	public String getGuarantee_name() {
 		return guarantee_name;
@@ -54,12 +82,47 @@ public class GuaranteeVO {
 		this.guarantee_name = guarantee_name;
 	}//guarantee_name
 	
+	public String getDebtor_type() {
+		return debtor_type;
+	}
+	public void setDebtor_type(String debtor_type) {
+		this.debtor_type = debtor_type;
+	}//debtor_type
+	
+	public String getBusiness_type() {
+		return business_type;
+	}
+	public void setBusiness_type(String business_type) {
+		this.business_type = business_type;
+	}//business_type
+	
+	public String getObject_type() {
+		return object_type;
+	}
+	public void setObject_type(String object_type) {
+		this.object_type = object_type;
+	}//object_type
+	
 	public String getConnoisseur() {
 		return connoisseur;
 	}
 	public void setConnoisseur(String connoisseur) {
 		this.connoisseur = connoisseur;
 	}//connoisseur
+	
+	public String getExclusive_area() {
+		return exclusive_area;
+	}
+	public void setExclusive_area(String exclusive_area) {
+		this.exclusive_area = exclusive_area;
+	}//exclusive_area
+	
+	public String getSupply_area() {
+		return supply_area;
+	}
+	public void setSupply_area(String supply_area) {
+		this.supply_area = supply_area;
+	}//supply_area
 	
 	public String getArea() {
 		return area;
@@ -110,10 +173,33 @@ public class GuaranteeVO {
 		this.code = code;
 	}//code
 	
-	public String getLoan_num() {
-		return loan_num;
+	public String getReference_file1() {
+		return reference_file1;
 	}
-	public void setLoan_num(String loan_num) {
-		this.loan_num = loan_num;
-	}//loan_num
+	public void setReference_file1(String reference_file1) {
+		this.reference_file1 = reference_file1;
+	}//reference_file1
+	
+	public String getReference_file2() {
+		return reference_file2;
+	}
+	public void setReference_file2(String reference_file2) {
+		this.reference_file2 = reference_file2;
+	}//reference_file2
+	
+	public String getReference_file3() {
+		return reference_file3;
+	}
+	public void setReference_file3(String reference_file3) {
+		this.reference_file3 = reference_file3;
+	}//reference_file3
+	
+	
+	//참조
+	public String getProject_num() {
+		return project_num;
+	}
+	public void setProject_num(String project_num) {
+		this.project_num = project_num;
+	}//project_num
 }//class

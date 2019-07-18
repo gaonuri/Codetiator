@@ -29,7 +29,7 @@ public class Busi_userVO {
 	private String busi_phone_key;				// 휴대폰 인증
 	
 	public Busi_userVO() {}	//constructor
-	public Busi_userVO(String busi_num, String busi_resi_num, String busi_password, String com_name, String presen_name, 
+	public Busi_userVO(	String busi_num, String busi_resi_num, String busi_password, String com_name, String presen_name, 
 						String cor_num, String homepage, String address, String pre_phone, String fax_num, 
 						String manager_name, String manager_birth, String manager_email, String office_num, String manager_phone, 
 						String manager_fax_num, String manager_task, String manager_rank, String manager_depart, String busi_chk_email, 

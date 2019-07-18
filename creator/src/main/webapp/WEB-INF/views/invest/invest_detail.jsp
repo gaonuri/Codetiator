@@ -10,6 +10,7 @@
 	<meta name="author" content="Dashboard">
 	<meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
 	<title>Dashio - Bootstrap Admin Template</title>
+	<script src="../resources/jquery/jquery-3.4.1.js"></script>
 	
 	<!-- Favicons -->
 	<link href="${pageContext.request.contextPath}/resources/bootstrap/img/favicon.png" rel="icon">
@@ -31,7 +32,14 @@
 	  Template URL: https://templatemag.com/dashio-bootstrap-admin-template/
 	  Author: TemplateMag.com
 	  License: https://templatemag.com/license/
-	======================================================= -->
+	======================================================= -->	
+	<script type="text/javascript">
+	$(document).ready(function() {
+		$("#investBtn").click(function() {
+			location.href="${pageContext.request.contextPath}/invest";
+		});//investBtn
+	});//ready
+	</script>
 </head>
 
 <body>
@@ -110,6 +118,9 @@
 							<li>
 								<a href="./inquiry">1:1문의</a>
 							</li>
+							<li>
+								<a href="./support_total">공지사항</a>
+							</li>
 						</ul>
 					</li>
 					<!-- 고객지원 end -->
@@ -162,46 +173,221 @@
 		<section id="main-content">
 			<section class="wrapper site-min-height">
 				<div class="row mt">
-					<div class="col-lg-12">
-						<table border="1">
-							<tr>
-								<th>제목</th>
-								<td>${detailVO.project_name}</td>
-							</tr>
-							<tr>
-								<th>등급</th>
-								<td>${detailVO.grade}</td>
-							</tr>
-							<tr>
-								<th>연 수익률</th>
-								<td>${detailVO.yield}</td>
-							</tr>
-							<tr>
-								<th>상환기간</th>
-								<td>${detailVO.refund}</td>
-							</tr>
-							<tr>
-								<th>모집금액</th>
-								<td>${detailVO.price}</td>
-							</tr>
-							<tr>
-								<th>상환방식</th>
-								<td>${detailVO.repay_method}</td>
-							</tr>
-							<tr>
-								<th>모집현황</th>
-								<td>${detailVO.ach_rate}</td>
-							</tr>
-							<tr>
-								<th>모집상태</th>
-								<td>${detailVO.ach_state}</td>
-							</tr>
-							<tr>
-								<th>등록일</th>
-								<td>${detailVO.en_date}</td>
-							</tr>
-						</table>
+				<div style="background-color: orange; width: 60px; text-align: center; color: white; font-size: 15px;">${projectVO.ach_state}</div>
+				<div style="width: 200px; color: black; font-size: 25px;">${projectVO.project_name}</div>
+					<!-- page start -->
+					<div class="col-xs-12 col-sm-12 col-md-offset-1 col-md-10 col">
+						<div class="card" style="float: right; border: solid 1px black">
+							<div class="card-body">
+								<table>
+									<tr>
+										<td>${projectVO.current_price / projectVO.price * 100}%</td>
+									</tr>
+									<tr>
+										<td>${projectVO.current_price}</td>
+										<td>${projectVO.price}</td>
+									</tr>
+									<tr>
+										<td>상환방식</td>
+										<td>${projectVO.repay_method}</td>
+									</tr>
+									<tr>
+										<th>연 수익률</th>
+										<td>${projectVO.yield}</td>
+									</tr>
+									<tr>
+										<td>투자기간</td>
+										<td>${projectVO.refund}</td>
+									</tr>
+									<tr>
+										<td>투자한도</td>
+										<td>500만원</td>
+									</tr>
+									<tr>
+										<td><input type="button" id="investBtn" value="투자신청"/></td>
+									</tr>
+								</table>
+							</div>
+						</div>
+						
+						<!-- 상품요약 start -->
+						<div class="card" style="width:800px;">
+							<div class="card-header">
+								상품요약
+							</div>
+							<div class="card-body">
+								<table>
+									<tr>
+										<th>기본정보</th>
+									</tr>
+									<tr>
+										<td>담보유형</td>
+										<td>만기</td>
+										<td>대출금액</td>
+										<td>대출잔액</td>
+									</tr>
+									<tr>
+										<td>${guaranteeVO.guarantee_type}</td>
+										<td>${projectVO.refund}</td>
+										<td>${projectVO.price}</td>
+										<td>${projectVO.guarantee_price}</td>
+									</tr>
+								</table>
+								<table style="float:left;">
+									<tr>
+										<th>담보물건 정보</th>
+									</tr>							
+									<tr>
+										<td>유형</td>
+										<td>${guaranteeVO.guarantee_type}</td>
+									</tr>
+									<tr>
+										<td>공급/전용</td>
+										<td>${guaranteeVO.supply_area} / ${guaranteeVO.exclusive_area}</td>
+									</tr>
+									<tr>
+										<td>LTV</td>
+										<td>${projectVO.price / guaranteeVO.connoisseur * 100}%</td>
+									</tr>
+									<tr>
+										<td>담보권</td>
+										<td>근저당부질권</td>
+									</tr>
+								</table>
+								<table style="float:right;">
+									<tr>
+										<th>차주 정보</th>
+									</tr>							
+									<tr>
+										<td>유형</td>
+										<td>${guaranteeVO.debtor_type}</td>
+									</tr>
+									<tr>
+										<td>업종</td>
+										<td>${guaranteeVO.business_type}</td>
+									</tr>
+									<tr>
+										<td>대출목적</td>
+										<td>사업운영자금</td>
+									</tr>
+								</table>
+							</div>
+						</div>
+						<!-- 상품요약 end -->
+						
+						<!-- 담보상세 start -->
+						<div class="card" style="width:800px; height: 1000px;">
+							<div class="card-header">
+								담보상세
+							</div>
+							<div class="card-body">
+								<table border="1">
+									<tr>
+										<td>물건유형</td>
+										<td>면적</td>
+										<td>외부 감정가</td>
+									</tr>
+									<tr>
+										<td>${guaranteeVO.object_type}</td>
+										<td>${guaranteeVO.area}</td>
+										<td>${guaranteeVO.connoisseur}</td>
+									</tr>
+									<tr>
+										<td>선순위 금액</td>
+										<td>LTV</td>
+										<td>담보 설정비율</td>
+									</tr>
+									<tr>
+										<td>모른다</td>
+										<td>${projectVO.price / guaranteeVO.connoisseur * 100}%</td>
+										<td>150%</td>
+									</tr>
+								</table>
+								<div style="border: solid 1px black; width:800px; height:400px;">
+									${guaranteeVO.guarantee_img}
+								</div>
+								<div id="map" style="width:800px;height:300px;"></div>
+								<div style="">소재지 : ${guaranteeVO.location}</div>
+							</div>
+						</div>
+						<!-- 담보상세 end -->
+						
+						<!-- 상환계획 start -->
+						<div class="card" style="width:800px;">
+							<div class="card-header">
+								상환계획
+							</div>
+							<div class="card-body">
+								<table>
+									<tr>
+										<td>자체상환 - 고정적 수익을 바탕으로 자체상환 계획</td>
+									</tr>
+									<tr>
+										<td>NPL매각 - 매입전문 업체에 매각진행</td>
+									</tr>
+									<tr>
+										<td>경매회수 - 경매진행 후 회수</td>
+									</tr>
+								</table>
+							</div>
+						</div>
+						<!-- 상환계획 end -->
+						
+						<!-- 투자자보호 start -->
+						<div class="card" style="width:800px;">
+							<div class="card-header">
+								투자자보호
+							</div>
+							<div class="card-body">
+								<table>
+									<tr>
+										<td>담보권</td>
+										<td>인출조건</td>
+										<td>기타보강</td>
+									</tr>
+									<tr>
+										<td>후순위 근저당부 질권</td>
+										<td>대출약정서<br>근저당설정계약서</td>
+										<td>임대차확인서<br>질권설정 승낙서</td>
+									</tr>
+								</table>
+							</div>
+						</div>
+						<!-- 투자자보호 end -->
+						
+						<!-- 참고파일 start -->
+						<div class="card" style="width:800px;">
+							<div class="card-header">
+								참고파일
+							</div>
+							<div class="card-body">
+								<button id="refFile1">첨부파일1</button>
+								<button id="refFile2">첨부파일2</button>
+								<button id="refFile3">첨부파일3</button>
+							</div>
+						</div>
+						<!-- 참고파일 end -->
+						
+						<!-- 자주묻는질문 start -->
+						<!-- 자주묻는질문 end -->
+						
+						<!-- 투자시 위험 안내 start -->
+						<div class="card" style="width:800px;">
+							<div class="card-header">
+								투자시 위험안내
+							</div>
+							<div class="card-body">
+								<div>
+									CREATOR는 원금과 수익률을 보장하지 않으며 투자 손실의 가능성이 있습니다. 
+									엄격한 차입자 신용 평가와 금리 산정으로 평균 수익률 연 8%를 목표로 합니다.
+								</div>
+							</div>
+						</div>
+						<!-- 투자시 위험 안내 end -->
+						
 					</div>
+					<!-- page end -->
+					
 				</div>
 			</section>
 			<!-- /wrapper -->
@@ -257,6 +443,20 @@
 		<!--footer end-->
 	
 	</section>
+
+	<!-- 지도 api -->
+	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=634dddac053ddf6be0b6aa5a165b2da8"></script>
+	<script>
+		var container = document.getElementById('map');
+		var options = {
+			center: new kakao.maps.LatLng(33.450701, 126.570667),
+			level: 3
+		};
+
+		var map = new kakao.maps.Map(container, options);
+	</script>
+	<!-- 지도 api -->
+	
 	<!-- js placed at the end of the document so the pages load faster -->
 	<script src="${pageContext.request.contextPath}/resources/bootstrap/lib/jquery/jquery.min.js"></script>
 	
@@ -272,68 +472,7 @@
 	<!--script for this page-->
 	<script src="${pageContext.request.contextPath}/resources/bootstrap/lib/sparkline-chart.js"></script>
 	<script src="${pageContext.request.contextPath}/resources/bootstrap/lib/zabuto_calendar.js"></script>
-	<script type="text/javascript">
-    $(document).ready(function() {
-      var unique_id = $.gritter.add({
-        // (string | mandatory) the heading of the notification
-        title: 'Welcome to Dashio!',
-        // (string | mandatory) the text inside the notification
-        text: 'Hover me to enable the Close Button. You can hide the left sidebar clicking on the button next to the logo. Developed by <a href="http://alvarez.is" target="_blank" style="color:#4ECDC4">Alvarez.is</a>.',
-        // (string | optional) the image to display on the left
-        image: '${pageContext.request.contextPath}/resources/bootstrap/img/ui-sam.jpg',
-        // (bool | optional) if you want it to fade out on its own or just sit there
-        sticky: false,
-        // (int | optional) the time you want it to be alive for before fading out
-        time: 8000,
-        // (string | optional) the class name you want to apply to that specific message
-        class_name: 'my-sticky-class'
-      });
 
-      return false;
-    });
-	</script>
-	<script type="application/javascript">
-    $(document).ready(function() {
-      $("#date-popover").popover({
-        html: true,
-        trigger: "manual"
-      });
-      $("#date-popover").hide();
-      $("#date-popover").click(function(e) {
-        $(this).hide();
-      });
-
-      $("#my-calendar").zabuto_calendar({
-        action: function() {
-          return myDateFunction(this.id, false);
-        },
-        action_nav: function() {
-          return myNavFunction(this.id);
-        },
-        ajax: {
-          url: "show_data.php?action=1",
-          modal: true
-        },
-        legend: [{
-            type: "text",
-            label: "Special event",
-            badge: "00"
-          },
-          {
-            type: "block",
-            label: "Regular event",
-          }
-        ]
-      });
-    });
-
-    function myNavFunction(id) {
-      $("#date-popover").hide();
-      var nav = $("#" + id).data("navigation");
-      var to = $("#" + id).data("to");
-      console.log('nav ' + nav + ' to: ' + to.month + '/' + to.year);
-    }
-	</script>
 </body>
 
 </html>

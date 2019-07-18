@@ -10,7 +10,6 @@
 	<meta name="author" content="Dashboard">
 	<meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
 	<title>Dashio - Bootstrap Admin Template</title>
-	<script src="../resources/jquery/jquery-3.4.1.js"></script>
 	
 	<!-- Favicons -->
 	<link href="${pageContext.request.contextPath}/resources/bootstrap/img/favicon.png" rel="icon">
@@ -26,16 +25,38 @@
 	<link href="${pageContext.request.contextPath}/resources/bootstrap/css/style.css" rel="stylesheet">
 	<link href="${pageContext.request.contextPath}/resources/bootstrap/css/style-responsive.css" rel="stylesheet">
 	<script src="${pageContext.request.contextPath}/resources/bootstrap/lib/chart-master/Chart.js"></script>
-
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	
 	<!-- =======================================================
 	  Template Name: Dashio
 	  Template URL: https://templatemag.com/dashio-bootstrap-admin-template/
 	  Author: TemplateMag.com
 	  License: https://templatemag.com/license/
 	======================================================= -->
-	
-
-
+		<script type="text/javascript">
+			$(document).ready(function() {
+				$("#btn_write").click(function() {
+					location.href = "${pageContext.request.contextPath}/support/formi";
+				});//btn_write
+			});//ready
+			$(document).ready(function() {
+				$("#btn_total").click(function() {
+					location.href = "${pageContext.request.contextPath}/support_total";
+				});//btn_write
+			});//ready
+			$(document).ready(function() {
+				$("#btn_new").click(function() {
+					location.href = "${pageContext.request.contextPath}/support_new";
+				});//btn_write
+			});//ready
+			$(document).ready(function() {
+				$("#btn_operation").click(function() {
+					location.href = "${pageContext.request.contextPath}/support_operation";
+				});//btn_write
+			});//ready
+		</script>
+		
 </head>
 
 <body>
@@ -59,16 +80,14 @@
 					
 					<!-- 대출 start -->
 					<li class="dropdown">
-						<a data-toggle="dropdown" class="dropdown-toggle" href="#">
-							대출
-						</a>
+						<a data-toggle="dropdown" class="dropdown-toggle" href="#">대출</a>
 						<ul class="dropdown-menu extended tasks-bar">
 							<div class="notify-arrow notify-arrow-green"></div>
 							<li>
 								<a href="./loan_guide">대출안내</a>
 							</li>
 							<li>
-								<a href="./loan/getloan">대출하기</a>
+								<a href="./loan">대출하기</a>
 							</li>
 						</ul>
 					</li>
@@ -114,9 +133,6 @@
 							<li>
 								<a href="./inquiry">1:1문의</a>
 							</li>
-							<li>
-								<a href="./support_total">공지사항</a>
-							</li>
 						</ul>
 					</li>
 					<!-- 고객지원 end -->
@@ -148,7 +164,7 @@
 					<!-- 마이페이지 end -->
 					
 					<!-- 로그아웃 start -->
-					<li><a href="./login">로그인</a></li>
+					<li><a href="./loan_guide">로그아웃</a></li>
 					<!-- 로그아웃 end -->
 				</ul>
 				<!--  notification end -->
@@ -166,21 +182,40 @@
 	        MAIN CONTENT
 	        *********************************************************************************************************************************************************** -->
 		<!--main content start-->
-		<section id="main-content">
-			<section class="wrapper site-min-height">
-				<div class="row mt">
-					<!-- page start -->
-					<div class="col-lg-12">
-					
-					</div>
-					<!-- page end -->
-				</div>
-			</section>
-			<!-- /wrapper -->
-	    </section>
-	    <!-- /MAIN CONTENT -->
-	    <!--main content end-->
-		
+    <section id="main-content">
+      <section class="wrapper">
+        <div class="row">
+          <div class="col-md-10">
+            <div class="content-panel">
+            <div class="btn-group">
+               <button id="btn_total" type="button" class="btn btn-default">전체</button>
+                <button id="btn_new" type="button" class="btn btn-default">새소식</button>
+                <button id="btn_operation" type="button" class="btn btn-default">운영사항</button>
+              </div>
+              <hr>
+              <table class="table">
+                <c:forEach items="${supportlist}" var="vo" varStatus="status">
+					<tr>
+					<tbody>
+						<td>${vo.notice_num}</td>
+						<td>${vo.title}</td>
+						<td>${vo.notice_date}</td>
+					</tbody>
+					</tr>
+				</c:forEach>
+              </table>
+            </div>
+          </div>
+          <!-- /col-md-12 -->
+        </div>
+        <!-- row -->
+        <br><br>
+			<button id="btn_write">글쓰기</button>
+			<br><br>
+      </section>
+    </section>
+    <!-- /MAIN CONTENT -->
+    <!--main content end-->
 		<!--footer start-->
 		<footer class="site-footer">
 			<div class="container">
