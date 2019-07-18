@@ -32,7 +32,14 @@
 	  Template URL: https://templatemag.com/dashio-bootstrap-admin-template/
 	  Author: TemplateMag.com
 	  License: https://templatemag.com/license/
-	======================================================= -->
+	======================================================= -->	
+	<script type="text/javascript">
+	$(document).ready(function() {
+		$("#investBtn").click(function() {
+			location.href="${pageContext.request.contextPath}/invest";
+		});//investBtn
+	});//ready
+	</script>
 </head>
 
 <body>
@@ -164,52 +171,230 @@
 	        *********************************************************************************************************************************************************** -->
 		<!--main content start-->
 		<section id="main-content">
-			<section class="wrapper">
-				<h3><i class="fa fa-angle-right"></i>완료된 투자상품</h3>
-				<div class="row mb">
-					<!-- page start-->
-					<div class="content-panel">
-					
-						<!-- 투자리스트 start -->
-						<div class="adv-table">
-	 						<table cellpadding="0" cellspacing="0" border="0" class="display table table-bordered" id="hidden-table-info">
-								<thead>
-						            <tr>
-										<th class="col">상품명</th>
-										<th class="col">등급</th>
-										<th class="col">연 수익률</th>
-										<th class="col">기간</th>
-										<th class="col">모집금액</th>
-										<th class="col">상환방식</th>
-										<th class="col">모집현황</th>
-										<th class="col">모집상태</th>
+			<section class="wrapper site-min-height">
+				<div class="row mt">
+				<div style="background-color: orange; width: 60px; text-align: center; color: white; font-size: 15px;">${projectVO.ach_state}</div>
+				<div style="width: 200px; color: black; font-size: 25px;">${projectVO.project_name}</div>
+				<input type="button" id="test" value="test" />
+					<!-- page start -->
+					<div class="col-xs-12 col-sm-12 col-md-offset-1 col-md-10 col">
+						<div class="card" style="float: right; border: solid 1px black">
+							<div class="card-body">
+								<table>
+									<tr>
+										<td>${projectVO.current_price / projectVO.price * 100}%</td>
 									</tr>
-								</thead>
-								<c:forEach items="${investFinish}" var="vo" varStatus="status">
-										<tr>
-											<td><a href="./invest_detail?project_num=${vo.project_num}">${vo.project_name}</a></td>
-											<td>${vo.grade}</td>
-											<td>${vo.yield}%</td>
-											<td>${vo.refund}개월</td>
-											<td>${vo.price}만원</td>
-											<td>${vo.repay_method}</td>
-											<td>${vo.ach_rate}</td>
-											<td>${vo.ach_state}</td>
-										</tr>
-								</c:forEach>
-							</table>
+									<tr>
+										<td>${projectVO.current_price}</td>
+										<td>${projectVO.price}</td>
+									</tr>
+									<tr>
+										<td>상환방식</td>
+										<td>${projectVO.repay_method}</td>
+									</tr>
+									<tr>
+										<th>연 수익률</th>
+										<td>${projectVO.yield}</td>
+									</tr>
+									<tr>
+										<td>투자기간</td>
+										<td>${projectVO.refund}</td>
+									</tr>
+									<tr>
+										<td>투자한도</td>
+										<td>500만원</td>
+									</tr>
+									<tr>
+										<td><input type="button" id="investBtn" value="투자신청"/></td>
+									</tr>
+								</table>
+							</div>
 						</div>
-						<!-- 투자리스트 end -->
+						
+						<!-- 상품요약 start -->
+						<div class="card" style="width:800px;">
+							<div class="card-header">
+								상품요약
+							</div>
+							<div class="card-body">
+								<table>
+									<tr>
+										<th>기본정보</th>
+									</tr>
+									<tr>
+										<td>담보유형</td>
+										<td>만기</td>
+										<td>대출금액</td>
+										<td>대출잔액</td>
+									</tr>
+									<tr>
+										<td>${guaranteeVO.guarantee_type}</td>
+										<td>${projectVO.refund}</td>
+										<td>${projectVO.price}</td>
+										<td>${projectVO.guarantee_price}</td>
+									</tr>
+								</table>
+								<table style="float:left;">
+									<tr>
+										<th>담보물건 정보</th>
+									</tr>							
+									<tr>
+										<td>유형</td>
+										<td>${guaranteeVO.guarantee_type}</td>
+									</tr>
+									<tr>
+										<td>공급/전용</td>
+										<td>${guaranteeVO.supply_area} / ${guaranteeVO.exclusive_area}</td>
+									</tr>
+									<tr>
+										<td>LTV</td>
+										<td>${projectVO.price / guaranteeVO.connoisseur * 100}%</td>
+									</tr>
+									<tr>
+										<td>담보권</td>
+										<td>근저당부질권</td>
+									</tr>
+								</table>
+								<table style="float:right;">
+									<tr>
+										<th>차주 정보</th>
+									</tr>							
+									<tr>
+										<td>유형</td>
+										<td>${guaranteeVO.debtor_type}</td>
+									</tr>
+									<tr>
+										<td>업종</td>
+										<td>${guaranteeVO.business_type}</td>
+									</tr>
+									<tr>
+										<td>대출목적</td>
+										<td>사업운영자금</td>
+									</tr>
+								</table>
+							</div>
+						</div>
+						<!-- 상품요약 end -->
+						
+						<!-- 담보상세 start -->
+						<div class="card" style="width:800px; height: 1000px;">
+							<div class="card-header">
+								담보상세
+							</div>
+							<div class="card-body">
+								<table border="1">
+									<tr>
+										<td>물건유형</td>
+										<td>면적</td>
+										<td>외부 감정가</td>
+									</tr>
+									<tr>
+										<td>${guaranteeVO.object_type}</td>
+										<td>${guaranteeVO.area}</td>
+										<td>${guaranteeVO.connoisseur}</td>
+									</tr>
+									<tr>
+										<td>선순위 금액</td>
+										<td>LTV</td>
+										<td>담보 설정비율</td>
+									</tr>
+									<tr>
+										<td>모른다</td>
+										<td>${projectVO.price / guaranteeVO.connoisseur * 100}%</td>
+										<td>150%</td>
+									</tr>
+								</table>
+								<div style="border: solid 1px black; width:800px; height:400px;">
+									${guaranteeVO.guarantee_img}
+								</div>
+								<div id="map" style="width:800px;height:300px;"></div>
+								<div style="">소재지 : ${guaranteeVO.location}</div>
+							</div>
+						</div>
+						<!-- 담보상세 end -->
+						
+						<!-- 상환계획 start -->
+						<div class="card" style="width:800px;">
+							<div class="card-header">
+								상환계획
+							</div>
+							<div class="card-body">
+								<table>
+									<tr>
+										<td>자체상환 - 고정적 수익을 바탕으로 자체상환 계획</td>
+									</tr>
+									<tr>
+										<td>NPL매각 - 매입전문 업체에 매각진행</td>
+									</tr>
+									<tr>
+										<td>경매회수 - 경매진행 후 회수</td>
+									</tr>
+								</table>
+							</div>
+						</div>
+						<!-- 상환계획 end -->
+						
+						<!-- 투자자보호 start -->
+						<div class="card" style="width:800px;">
+							<div class="card-header">
+								투자자보호
+							</div>
+							<div class="card-body">
+								<table>
+									<tr>
+										<td>담보권</td>
+										<td>인출조건</td>
+										<td>기타보강</td>
+									</tr>
+									<tr>
+										<td>후순위 근저당부 질권</td>
+										<td>대출약정서<br>근저당설정계약서</td>
+										<td>임대차확인서<br>질권설정 승낙서</td>
+									</tr>
+								</table>
+							</div>
+						</div>
+						<!-- 투자자보호 end -->
+						
+						<!-- 참고파일 start -->
+						<div class="card" style="width:800px;">
+							<div class="card-header">
+								참고파일
+							</div>
+							<div class="card-body">
+								<button id="refFile1">첨부파일1</button>
+								<button id="refFile2">첨부파일2</button>
+								<button id="refFile3">첨부파일3</button>
+							</div>
+						</div>
+						<!-- 참고파일 end -->
+						
+						<!-- 자주묻는질문 start -->
+						<!-- 자주묻는질문 end -->
+						
+						<!-- 투자시 위험 안내 start -->
+						<div class="card" style="width:800px;">
+							<div class="card-header">
+								투자시 위험안내
+							</div>
+							<div class="card-body">
+								<div>
+									CREATOR는 원금과 수익률을 보장하지 않으며 투자 손실의 가능성이 있습니다. 
+									엄격한 차입자 신용 평가와 금리 산정으로 평균 수익률 연 8%를 목표로 합니다.
+								</div>
+							</div>
+						</div>
+						<!-- 투자시 위험 안내 end -->
 						
 					</div>
-					<!-- page end-->
+					<!-- page end -->
+					
 				</div>
-				<!-- /row -->
 			</section>
 			<!-- /wrapper -->
-		</section>
-		<!-- /MAIN CONTENT -->
-		<!--main content end-->
+	    </section>
+	    <!-- /MAIN CONTENT -->
+	    <!--main content end-->
 		
 		<!--footer start-->
 		<footer class="site-footer">
@@ -259,6 +444,20 @@
 		<!--footer end-->
 	
 	</section>
+
+	<!-- 지도 api -->
+	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=634dddac053ddf6be0b6aa5a165b2da8"></script>
+	<script>
+		var container = document.getElementById('map');
+		var options = {
+			center: new kakao.maps.LatLng(33.450701, 126.570667),
+			level: 3
+		};
+
+		var map = new kakao.maps.Map(container, options);
+	</script>
+	<!-- 지도 api -->
+	
 	<!-- js placed at the end of the document so the pages load faster -->
 	<script src="${pageContext.request.contextPath}/resources/bootstrap/lib/jquery/jquery.min.js"></script>
 	
@@ -274,61 +473,7 @@
 	<!--script for this page-->
 	<script src="${pageContext.request.contextPath}/resources/bootstrap/lib/sparkline-chart.js"></script>
 	<script src="${pageContext.request.contextPath}/resources/bootstrap/lib/zabuto_calendar.js"></script>
-	
-	<!-- 게시판 -->
-	<!-- js placed at the end of the document so the pages load faster -->
-	<script type="text/javascript" language="javascript" src="${pageContext.request.contextPath}/resources/bootstrap/lib/advanced-datatable/js/jquery.js"></script>
-	<script type="text/javascript" language="javascript" src="${pageContext.request.contextPath}/resources/bootstrap/lib/advanced-datatable/js/jquery.dataTables.js"></script>
-	<script type="text/javascript" src="lib/advanced-datatable/js/DT_bootstrap.js"></script>
-	<!--script for this page-->
-	<script type="text/javascript">
-	$(document).ready(function() {
-		/*
-		 * Insert a 'details' column to the table
-		 */
-		var nCloneTh = document.createElement('th');
-		var nCloneTd = document.createElement('td');
-		nCloneTd.className = "center";
-		
-		$('#hidden-table-info thead tr').each(function() {
-		  this.insertBefore(nCloneTh, this.childNodes[0]);
-		});
-		
-		$('#hidden-table-info tbody tr').each(function() {
-		  this.insertBefore(nCloneTd.cloneNode(true), this.childNodes[0]);
-		});
 
-		/*
-		 * Initialse DataTables, with no sorting on the 'details' column
-		 */
-		var oTable = $('#hidden-table-info').dataTable({
-			"aoColumnDefs": [{
-			  "bSortable": false,
-			  "aTargets": [0]
-			}],
-			"aaSorting": [
-			  [1, 'asc']
-			]
-		});
-
-		/* Add event listener for opening and closing details
-		 * Note that the indicator for showing which row is open is not controlled by DataTables,
-		 * rather it is done here
-		 */
-		$('#hidden-table-info tbody td img').live('click', function() {
-			var nTr = $(this).parents('tr')[0];
-			if (oTable.fnIsOpen(nTr)) {
-				/* This row is already open - close it */
-				this.src = "lib/advanced-datatable/media/images/details_open.png";
-				oTable.fnClose(nTr);
-			} else {
-				/* Open this row */
-				this.src = "lib/advanced-datatable/images/details_close.png";
-				oTable.fnOpen(nTr, fnFormatDetails(oTable, nTr), 'details');
-			}
-		});
-    });
-	</script>
 </body>
 
 </html>

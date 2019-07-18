@@ -14,6 +14,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import kr.co.creator.vo.Busi_userVO;
+import kr.co.creator.vo.DocumentVO;
+import kr.co.creator.vo.ProjectVO;
 import kr.co.creator.vo.UserVO;
 
 @Controller
@@ -24,16 +27,16 @@ public class LoanController {
 
 	private static final Logger logger = LoggerFactory.getLogger(LoanController.class);
 
-	@RequestMapping(value = "/loan", method = RequestMethod.GET)
+	@RequestMapping(value = "/loan/loan", method = RequestMethod.GET)
     public String loan(HttpSession session) throws Exception {
 
     	return "loan/loan";
     }
 	
-	@RequestMapping(value = "/loan_guide", method = RequestMethod.GET)
+	@RequestMapping(value = "/loan/loan_guide", method = RequestMethod.GET)
     public String loan_guide(HttpSession session) throws Exception {
 
-    	return "loan/loan_guide";
+    	return null;
     }
 	
 	@RequestMapping(value = "/loan/getloan", method = RequestMethod.GET)
@@ -44,44 +47,22 @@ public class LoanController {
 	
 	@RequestMapping(value = "/loan/applyloan", method = RequestMethod.GET)
 	public String applyloan(HttpSession session, UserVO vo) throws Exception {
-		vo = userDAOService.memberInfo(vo);
-		session.setAttribute("name", vo.getUser_name());
-		session.setAttribute("phone", vo.getPhone());
+//		vo = userDAOService.memberInfo(vo);
+//		session.setAttribute("UserVO", vo);
     	return "loan/applyloan";
     }
 	
-	@RequestMapping(value = "/loan/popup", method = RequestMethod.GET)
-	public String popup(HttpSession session, HttpServletRequest request, PrintWriter out) throws Exception {
-		String loan_period = request.getParameter("loan_period"); //대출금액
-		String loan_class = request.getParameter("loan_class"); //대출계좌
-		String repay_method = request.getParameter("repay_method"); //상환방식
-		out.write("<script>\n" + 
-				"function fn_doNextStep() {\n" + 
-				"	window.open('${pageContext.request.contextPath}/loan/popup1','','menubar=no,width=450,height=300');\n" + 
-				"}\n" + 
-				"\n" + 
-				"</script>");
-		out.close();
-    	return null;
-    }
 	
-	@RequestMapping(value = "/loan/popup1", method = RequestMethod.GET)
+	@RequestMapping(value = "/loan/popup", method = RequestMethod.GET)
 	public String popup1(HttpSession session) throws Exception {
-
+		
     	return "loan/popup";
     }
 	
-	@RequestMapping(value = "/loan/popup2", method = RequestMethod.GET)
-	public void popup2(PrintWriter out, UserVO vo) throws Exception {
-		logger.info("/loan/popup2");
-		int count = 0;
-		count = userDAOService.insertMember(vo);
-		out.print(count);
-		out.close();
-    }
-	
 	@RequestMapping(value = "/loan/addinfo", method = RequestMethod.GET)
-	public String addinfo(HttpSession session) throws Exception {
+	public String addinfo(HttpSession session, ProjectVO pvo, DocumentVO dvo) throws Exception {
+		session.setAttribute("ProjectVO", pvo);
+		session.setAttribute("DocumentVO", dvo);
 
     	return "loan/addinfo";
     }
@@ -92,10 +73,65 @@ public class LoanController {
     	return "loan/sub_document";
     }
 	
-	@RequestMapping(value = "/loan/final_loan", method = RequestMethod.GET)
+	@RequestMapping(value = "/loan/sub_document_process", method = RequestMethod.GET)
+	public String sub_document_process(HttpSession session, DocumentVO dvo) throws Exception {
+		
+		session.setAttribute("DocumentVO", dvo);
+    	return "loan/sub_document_process";
+    }
+	
+	@RequestMapping(value = "/loan/loan_judge", method = RequestMethod.GET)
 	public String final_loan(HttpSession session) throws Exception {
 		
-    	return "loan/final_loan";
+    	return "loan/loan_judge";
+    }
+	
+	@RequestMapping(value = "/loan/final_fail", method = RequestMethod.GET)
+	public String final_fail(HttpSession session) throws Exception {
+		
+    	return "loan/final_fail";
+    }
+	
+	@RequestMapping(value = "/loan/final_success", method = RequestMethod.GET)
+	public String final_success(HttpSession session) throws Exception {
+		
+    	return "loan/final_success";
+    }
+	
+	@RequestMapping(value = "/support/useTerm", method = RequestMethod.GET)
+	public String useTerm(UserVO userVO, HttpSession session) throws Exception {
+		
+    	return "support/useTerm";
+    }
+	
+	@RequestMapping(value = "/support/pInfoProvideTerm", method = RequestMethod.GET)
+	public String pInfoProvideTerm(UserVO userVO, HttpSession session) throws Exception {
+		
+    	return "support/pInfoProvideTerm";
+    }
+	
+	@RequestMapping(value = "/support/pInfoInquiryTerm", method = RequestMethod.GET)
+	public String pInfoInquiryTerm(UserVO userVO, HttpSession session) throws Exception {
+		
+    	return "support/pInfoInquiryTerm";
+    }
+	
+	@RequestMapping(value = "/support/pInfoUseTerm", method = RequestMethod.GET)
+	public String pInfoUseTerm(UserVO userVO, HttpSession session) throws Exception {
+		
+    	return "support/pInfoUseTerm";
+    }
+	
+	@RequestMapping(value = "/support/uniqueInfoTerm", method = RequestMethod.GET)
+	public String uniqueInfoTerm(UserVO userVO, HttpSession session) throws Exception {
+		
+    	return "support/uniqueInfoTerm";
+    }
+	
+	@RequestMapping(value = "/support/pInfoSelectedTerm", method = RequestMethod.GET)
+	public String pInfoSelectedTerm(UserVO userVO, HttpSession session) throws Exception {
+		
+    	return "support/pInfoSelectedTerm";
     }
 	
 }

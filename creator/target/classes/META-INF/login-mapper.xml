@@ -6,21 +6,19 @@
 <mapper namespace="LoginMapper">
 	
 	<select id="loginUser" parameterType="kr.co.creator.vo.UserVO" resultType="kr.co.creator.vo.UserVO">
-		select user_num, email
+		select user_num, email, user_name
 		from user_list
 		where email=#{email} and user_password=#{user_password}
 	</select>
 	
 	<select id="loginBusi" parameterType="kr.co.creator.vo.Busi_userVO"	resultType="kr.co.creator.vo.Busi_userVO">
-		select busi_num, busi_resi_num
+		select busi_num, busi_resi_num, manager_name
 		from busi_user_list
 		where busi_resi_num=#{busi_resi_num} and busi_password=#{busi_password}
 	</select>
 	
-	<select id="findPwd" parameterType="kr.co.creator.vo.FindPwdVO"	resultType="kr.co.creator.vo.FindPwdVO">
+	<select id="findPwdChk" parameterType="java.lang.String" resultType="int">
 		select count(*) from user_list where email=#{email}
-		union all
-		select count(*) from busi_user_list manager_email=#{manager_email}
 	</select> 
 	 
 </mapper>

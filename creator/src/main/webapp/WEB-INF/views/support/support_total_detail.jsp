@@ -10,7 +10,7 @@
 	<meta name="author" content="Dashboard">
 	<meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
 	<title>Dashio - Bootstrap Admin Template</title>
-	<script src="../resources/jquery/jquery-3.4.1.js"></script>
+	
 	<!-- Favicons -->
 	<link href="${pageContext.request.contextPath}/resources/bootstrap/img/favicon.png" rel="icon">
 	<link href="${pageContext.request.contextPath}/resources/bootstrap/img/apple-touch-icon.png" rel="apple-touch-icon">
@@ -21,112 +21,30 @@
 	<link href="${pageContext.request.contextPath}/resources/bootstrap/lib/font-awesome/css/font-awesome.css" rel="stylesheet" />
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/bootstrap/css/zabuto_calendar.css">
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/bootstrap/lib/gritter/css/jquery.gritter.css" />
-	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/bootstrap/lib/bootstrap-fileupload/bootstrap-fileupload.css" />
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/bootstrap/lib/bootstrap-datepicker/css/datepicker.css" />
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/bootstrap/lib/bootstrap-daterangepicker/daterangepicker.css" />
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/bootstrap/lib/bootstrap-timepicker/compiled/timepicker.css" />
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/bootstrap/lib/bootstrap-datetimepicker/datertimepicker.css" />
 	<!-- Custom styles for this template -->
 	<link href="${pageContext.request.contextPath}/resources/bootstrap/css/style.css" rel="stylesheet">
 	<link href="${pageContext.request.contextPath}/resources/bootstrap/css/style-responsive.css" rel="stylesheet">
 	<script src="${pageContext.request.contextPath}/resources/bootstrap/lib/chart-master/Chart.js"></script>
-
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	
 	<!-- =======================================================
 	  Template Name: Dashio
 	  Template URL: https://templatemag.com/dashio-bootstrap-admin-template/
 	  Author: TemplateMag.com
 	  License: https://templatemag.com/license/
 	======================================================= -->
-	<style>
-#content .step {
-    padding: 0px 10px 60px 10px;
-}
-#content .step .wrap .item.active {
-    background-color: #712594;
-    font-weight: bold;
-    color: #fff;
-}
-#loanGuide-banner {
-    background: url(${pageContext.request.contextPath}/resources/bootstrap/img/blog-bg.jpg)no-repeat center center fixed;
-    background-size: cover;
-    background-attachment: fixed;
-    width: 100%;
-    height: 80px;
-    padding: 100px 0 200px 0;
-}
-#content .step .wrap .item {
-    padding: 10px 20px;
-    border-style: solid;
-    border-color: #712594;
-    border-width: 1px;
-    background-color: #fff;
-    color: #712594;
-    display: inline;
-}
-
-.container {
-    width: 1170px;
-}
-
-.container {
-    padding-right: 15px;
-    padding-left: 15px;
-    margin-right: auto;
-    margin-left: auto;
-}
-#loanGuide-banner {
-    background: url(${pageContext.request.contextPath}/resources/bootstrap/img/blog-bg.jpg)no-repeat center center fixed;
-    background-size: cover;
-    background-attachment: fixed;
-    width: 100%;
-    height: 80px;
-    padding: 100px 0 200px 0;
-}
-.text-center {
-    text-align: center;
-}
-.title {
-    font-size: 26pt;
-    font-weight: 500;
-    color: #732173;
-    text-shadow: 1px 1px 1px #bf9bcb;
-    letter-spacing: -0.5pt;
-    line-height: 1.2;
-}
-.section-body {
-    color: #fff;
-    position: relative;
-    padding: 60px 20px 30px 20px;
-}
-.btn {
-    display: inline-block;
-    padding: 6px 12px;
-    margin-bottom: 0;
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 1.42857143;
-    text-align: center;
-    white-space: nowrap;
-    vertical-align: middle;
-    -ms-touch-action: manipulation;
-    touch-action: manipulation;
-    cursor: pointer;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    background-image: none;
-    border: 1px solid transparent;
-    border-radius: 4px;
-}
-.top {
-    padding: 30px 0px;
-    text-align: center;
-}
-</style>
+		<script type="text/javascript">
+			$(document).ready(function() {
+				$("#btn_list").click(function() {
+					location.href = "${pageContext.request.contextPath}/support_total";
+				});//btn_write
+			});//ready
+		</script>
+		
 </head>
-<body>
 
+<body>
 	<section id="container">
 	    <!-- **********************************************************************************************************************************************************
 	        TOP BAR CONTENT & NOTIFICATIONS
@@ -147,16 +65,14 @@
 					
 					<!-- 대출 start -->
 					<li class="dropdown">
-						<a data-toggle="dropdown" class="dropdown-toggle" href="#">
-							대출
-						</a>
+						<a data-toggle="dropdown" class="dropdown-toggle" href="#">대출</a>
 						<ul class="dropdown-menu extended tasks-bar">
 							<div class="notify-arrow notify-arrow-green"></div>
 							<li>
 								<a href="./loan_guide">대출안내</a>
 							</li>
 							<li>
-								<a href="./loan/getloan">대출하기</a>
+								<a href="./loan">대출하기</a>
 							</li>
 						</ul>
 					</li>
@@ -245,166 +161,48 @@
 			</div>
 	    </header>
 	    <!--header end-->
-	    
-	    <section id="loanGuide-banner" class="text-center">
-			<div class="overlay">
-				<div class="section-body">
-					<span class="title">서류제출</span>
-				</div>
-			</div>
-		</section>
-	   
-	   
 	    <!-- **********************************************************************************************************************************************************
 	        MAIN CONTENT
 	        *********************************************************************************************************************************************************** -->
 		<!--main content start-->
-		<section id="main-content">
-			<section class="wrapper site-min-height">
-				<div class="row mt">
-					<div class="col-lg-12">
-					<section id="content">
-<div class="container">
-			<div class="row" style="width: 800px;">
-				<div class="col-md-offset-2 col-md-8 col">
-					<div class="form" style="width: 750px;">
-						<div class="box-header"></div>
-						<div class="box-body">
-							<div class="box-wrap">
-							<div class="top">
-								<div class="step">
-									<div class="wrap">
-										<div class="item">
-											대출신청
-										</div>
-										<div class="item">
-											추가정보
-										</div>
-										<div class="item active">
-											서류제출
-										</div>
-										<div class="item">
-											대출심사
-										</div>
-									</div>
-								</div>
-								<div class="title" style="font-size: 15pt;">
-									서류제출
-								</div>
-								<div class="line"></div>
-							</div>
-            <div class="form-panel">
-              <form id="document_form" class="form-horizontal style-form">
-                <div class="form-group last">
-                  <label class="control-label col-md-3">신분증 사본</label>
-                  <div class="col-md-9">
-                    <div class="fileupload fileupload-new" data-provides="fileupload">
-                      <div class="fileupload-new thumbnail" style="width: 200px; height: 150px;">
-                        <img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&text=no+image" alt="" />
-                      </div>
-                      <div class="fileupload-preview fileupload-exists thumbnail" style="max-width: 200px; max-height: 150px; line-height: 20px;"></div>
-                      <div>
-                        <span class="btn btn-theme02 btn-file">
-                          <span class="fileupload-new"><i class="fa fa-paperclip"></i> 사진 선택</span>
-                        <span class="fileupload-exists"><i class="fa fa-undo"></i> 사진 변경</span>
-                        <input type="file" class="default" name="copy_id"/>
-                        </span>
-                      </div>
-                    </div>
-                  </div>
+		<br>
+		<br>
+    <section id="main-content">
+      <section class="wrapper">
+       <div class="row">
+          <div class="col-md-10">
+            <div class="content-panel">
+              <div class="invoice-body">
+                <div class="pull-left">
                 </div>
-                <div class="form-group last">
-                  <label class="control-label col-md-3">통장 사본</label>
-                  <div class="col-md-9">
-                    <div class="fileupload fileupload-new" data-provides="fileupload">
-                      <div class="fileupload-new thumbnail" style="width: 200px; height: 150px;">
-                        <img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&text=no+image" alt="" />
-                      </div>
-                      <div class="fileupload-preview fileupload-exists thumbnail" style="max-width: 200px; max-height: 150px; line-height: 20px;"></div>
-                      <div>
-                        <span class="btn btn-theme02 btn-file">
-                          <span class="fileupload-new"><i class="fa fa-paperclip"></i> 사진 선택</span>
-                        <span class="fileupload-exists"><i class="fa fa-undo"></i> 사진 변경</span>
-                        <input type="file" class="default" name="copy_bankbook"/>
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                  <div class="form-group">
-                  	<label class="control-label col-md-3">사업자 등록증</label>
-                  	<div class="col-md-4">
-                    	<input type="file" class="default" name="busi_regi"/>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                  	<label class="control-label col-md-3">주민등록 초본</label>
-                  	<div class="col-md-4">
-                    	<input type="file" class="default" name="jumin_chobon"/>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                  	<label class="control-label col-md-3">인감증명서</label>
-                  	<div class="col-md-4">
-                    	<input type="file" class="default" name="cer_ingam"/>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                  	<label class="control-label col-md-3">부동산증명서(선택)</label>
-                  	<div class="col-md-4">
-                    	<input type="file" class="default" name="cer_budong"/>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                  	<label class="control-label col-md-3">동산증명서(선택)</label>
-                  	<div class="col-md-4">
-                    	<input type="file" class="default" name="cer_dong"/>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                  	<label class="control-label col-md-3">소득금액증명원(선택)</label>
-                  	<div class="col-md-4">
-                    	<input type="file" class="default" name="cer_income"/>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                  	<label class="control-label col-md-3">부가가치세과세증명원(선택)</label>
-                  	<div class="col-md-4">
-                    	<input type="file" class="default" name="cer_vat"/>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                  	<label class="control-label col-md-3">기타증명서(선택)</label>
-                  	<div class="col-md-4">
-                    	<input type="file" class="default" name="cer_other"/>
-                    </div>
-                  </div>
-                  <div class="bottom">
-								<input type="button" class="btn btn-purple-transparent btn-block" id="doNextStepBtn"
-										value="서류 제출" />
-<!-- 									<button type="submit" class="btn btn-purple-transparent btn-block" id="doNextStepBtn">본인 인증 및 대출 가능여부 확인</button> -->
-									<p>※ 대출심사 결격사유 : 최근 현금서비스 3회 이상 이용 고객 및 기타 당사가 규정하는 채무불이행 사유가 있는 고객.</p>
-									<div class="page" style="text-align: right;">3/4</div>
-				</div>
-              </form>
-             	 </div>
+                <!-- /pull-left -->
+                <div class="clearfix"></div>
+                <br>
+                <br>
+                <table class="table">
+                  <thead>
+                    <tr>
+                    	<td>${NoticeVO.title}</td>
+                    </tr>
+                      <tr>
+                    	<td>${NoticeVO.write_date}</td>
+                    </tr>
+                    <tr>
+                    	<td>${NoticeVO.cnts}</td>
+                    </tr>
+                  
+                  </thead>
+                </table>
+				<button id="btn_list">목록으로</button>
+                <br>
+                <br>
               </div>
-              </div>
-						<div class="box-footer"></div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-            </div>
-					</div>
-				</div>
-			</section>
-			<!-- /wrapper -->
-	    </section>
-	    <!-- /MAIN CONTENT -->
-	    <!--main content end-->
-		
+              <!--/col-lg-12 mt -->
+      </section>
+      <!-- /wrapper -->
+    </section>
+    <!-- /MAIN CONTENT -->
+    <!--main content end-->
 		<!--footer start-->
 		<footer class="site-footer">
 			<div class="container">
@@ -468,15 +266,6 @@
 	<!--script for this page-->
 	<script src="${pageContext.request.contextPath}/resources/bootstrap/lib/sparkline-chart.js"></script>
 	<script src="${pageContext.request.contextPath}/resources/bootstrap/lib/zabuto_calendar.js"></script>
-	<script src="${pageContext.request.contextPath}/resources/bootstrap/lib/jquery-ui-1.9.2.custom.min.js"></script>
-  	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/bootstrap/lib/bootstrap-fileupload/bootstrap-fileupload.js"></script>
-  	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/bootstrap/lib/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
-  	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/bootstrap/lib/bootstrap-daterangepicker/date.js"></script>
-  	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/bootstrap/lib/bootstrap-daterangepicker/daterangepicker.js"></script>
-  	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/bootstrap/lib/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"></script>
- 	 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/bootstrap/lib/bootstrap-daterangepicker/moment.min.js"></script>
-  	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/bootstrap/lib/bootstrap-timepicker/js/bootstrap-timepicker.js"></script>
-  	<script src="${pageContext.request.contextPath}/resources/bootstrap/lib/advanced-form-components.js"></script>
 	<script type="text/javascript">
     $(document).ready(function() {
       var unique_id = $.gritter.add({
@@ -539,31 +328,116 @@
       console.log('nav ' + nav + ' to: ' + to.month + '/' + to.year);
     }
 	</script>
-
-<script type="text/javascript">
-var form = new FormData(document.getElementById("document_form"));
-
-
-$(document).ready(function() {
-	$("#doNextStepBtn").click(function() {
-		$.post("/loan/sub_document_process"
-			,{
-				dvo:form
-			}//data
-			,function(data,status) {
-				if(status == "success") {
-					if(data > 0){
-						location.href = "${pageContext.request.contextPath}/loan/loan_judge";
-					} else {
-						alert("잠시 후 다시 시도해 주세요.");
-					}
-				} else {
-					alert("admin : 02-5555-7777");
-				}
-			}//function
-		);//get
-	});//click
-});//ready
-</script>
 </body>
+
 </html>
+
+
+
+<!-- 대출 start -->
+<!-- <li class="dropdown"> -->
+<!-- 	<a data-toggle="dropdown" class="dropdown-toggle" href="index.html#"> -->
+<!-- 		대출 -->
+<!-- 	</a> -->
+<!-- 	<ul class="dropdown-menu extended tasks-bar"> -->
+<!-- 		<div class="notify-arrow notify-arrow-green"></div> -->
+<!-- 		<li> -->
+<!-- 			<a href="index.html#"> -->
+<!-- 				<div class="task-info"> -->
+<!-- 					<div class="desc">Dashio Admin Panel</div> -->
+<!-- 					<div class="percent">80%</div> -->
+<!-- 				</div> -->
+<!-- 			<div class="progress progress-striped"> -->
+<!-- 				<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 80%"> -->
+<!-- 					<span class="sr-only">80% Complete (success)</span> -->
+<!-- 				</div> -->
+<!-- 			</div> -->
+<!-- 			</a> -->
+<!-- 		</li> -->
+<!-- 		<li> -->
+<!-- 			<a href="index.html#"> -->
+<!-- 				<div class="task-info"> -->
+<!-- 					<div class="desc">Database Update</div> -->
+<!-- 					<div class="percent">60%</div> -->
+<!-- 				</div> -->
+<!-- 				<div class="progress progress-striped"> -->
+<!-- 					<div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%"> -->
+<!-- 						<span class="sr-only">60% Complete (warning)</span> -->
+<!-- 					</div> -->
+<!-- 				</div> -->
+<!-- 			</a> -->
+<!-- 		</li> -->
+<!-- 		<li> -->
+<!-- 			<a href="index.html#"> -->
+<!-- 				<div class="task-info"> -->
+<!-- 					<div class="desc">Product Development</div> -->
+<!-- 					<div class="percent">80%</div> -->
+<!-- 				</div> -->
+<!-- 				<div class="progress progress-striped"> -->
+<!-- 					<div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%"> -->
+<!-- 						<span class="sr-only">80% Complete</span> -->
+<!-- 					</div> -->
+<!-- 				</div> -->
+<!-- 			</a> -->
+<!-- 		</li> -->
+<!-- 		<li> -->
+<!-- 			<a href="index.html#"> -->
+<!-- 				<div class="task-info"> -->
+<!-- 					<div class="desc">Payments Sent</div> -->
+<!-- 					<div class="percent">70%</div> -->
+<!-- 				</div> -->
+<!--                			<div class="progress progress-striped"> -->
+<!-- 					<div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 70%"> -->
+<!-- 						<span class="sr-only">70% Complete (Important)</span> -->
+<!-- 					</div> -->
+<!-- 				</div> -->
+<!-- 			</a> -->
+<!-- 		</li> -->
+<!-- 		<li class="external"> -->
+<!-- 			<a href="#">See All Tasks</a> -->
+<!-- 		</li> -->
+<!-- 	</ul> -->
+<!-- </li> -->
+<!--       		대출 end -->
+
+<!-- <!-- 마이페이지 start-->
+<!-- <li id="header_notification_bar" class="dropdown"> -->
+<!-- 	<a data-toggle="dropdown" class="dropdown-toggle" href="index.html#"> -->
+<!-- 		마이페이지 -->
+<!-- 	</a> -->
+<!-- 	<ul class="dropdown-menu extended notification"> -->
+<!-- 		<div class="notify-arrow"></div> -->
+<!-- 		<li> -->
+<!-- 			<a href="index.html#"> -->
+<!-- 				<span class="label label-danger"><i class="fa fa-bolt"></i></span> -->
+<!-- 					Server Overloaded. -->
+<!-- 				<span class="small italic">4 mins.</span> -->
+<!-- 			</a> -->
+<!-- 		</li> -->
+<!-- 		<li> -->
+<!-- 			<a href="index.html#"> -->
+<!-- 				<span class="label label-warning"><i class="fa fa-bell"></i></span> -->
+<!-- 					Memory #2 Not Responding. -->
+<!-- 				<span class="small italic">30 mins.</span> -->
+<!-- 			</a> -->
+<!-- 		</li> -->
+<!-- 		<li> -->
+<!-- 			<a href="index.html#"> -->
+<!-- 				<span class="label label-danger"><i class="fa fa-bolt"></i></span> -->
+<!-- 					Disk Space Reached 85%. -->
+<!-- 				<span class="small italic">2 hrs.</span> -->
+<!-- 			</a> -->
+<!-- 		</li> -->
+<!-- 		<li> -->
+<!-- 			<a href="index.html#"> -->
+<!-- 				<span class="label label-success"><i class="fa fa-plus"></i></span> -->
+<!-- 					New User Registered. -->
+<!-- 				<span class="small italic">3 hrs.</span> -->
+<!-- 			</a> -->
+<!-- 		</li> -->
+<!-- 		<li> -->
+<!-- 			<a href="index.html#">See all notifications</a> -->
+<!-- 		</li> -->
+<!-- 	</ul> -->
+<!-- </li> -->
+<!-- <!-- 마이페이지 end -->

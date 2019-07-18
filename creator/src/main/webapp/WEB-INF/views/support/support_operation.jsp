@@ -10,7 +10,6 @@
 	<meta name="author" content="Dashboard">
 	<meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
 	<title>Dashio - Bootstrap Admin Template</title>
-	<script src="../resources/jquery/jquery-3.4.1.js"></script>
 	
 	<!-- Favicons -->
 	<link href="${pageContext.request.contextPath}/resources/bootstrap/img/favicon.png" rel="icon">
@@ -26,13 +25,38 @@
 	<link href="${pageContext.request.contextPath}/resources/bootstrap/css/style.css" rel="stylesheet">
 	<link href="${pageContext.request.contextPath}/resources/bootstrap/css/style-responsive.css" rel="stylesheet">
 	<script src="${pageContext.request.contextPath}/resources/bootstrap/lib/chart-master/Chart.js"></script>
-
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	
 	<!-- =======================================================
 	  Template Name: Dashio
 	  Template URL: https://templatemag.com/dashio-bootstrap-admin-template/
 	  Author: TemplateMag.com
 	  License: https://templatemag.com/license/
 	======================================================= -->
+		<script type="text/javascript">
+			$(document).ready(function() {
+				$("#btn_write").click(function() {
+					location.href = "${pageContext.request.contextPath}/support/formi";
+				});//btn_write
+			});//ready
+			$(document).ready(function() {
+				$("#btn_total").click(function() {
+					location.href = "${pageContext.request.contextPath}/support_total";
+				});//btn_write
+			});//ready
+			$(document).ready(function() {
+				$("#btn_new").click(function() {
+					location.href = "${pageContext.request.contextPath}/support_new";
+				});//btn_write
+			});//ready
+			$(document).ready(function() {
+				$("#btn_operation").click(function() {
+					location.href = "${pageContext.request.contextPath}/support_operation";
+				});//btn_write
+			});//ready
+		</script>
+		
 </head>
 
 <body>
@@ -56,16 +80,14 @@
 					
 					<!-- 대출 start -->
 					<li class="dropdown">
-						<a data-toggle="dropdown" class="dropdown-toggle" href="#">
-							대출
-						</a>
+						<a data-toggle="dropdown" class="dropdown-toggle" href="#">대출</a>
 						<ul class="dropdown-menu extended tasks-bar">
 							<div class="notify-arrow notify-arrow-green"></div>
 							<li>
 								<a href="./loan_guide">대출안내</a>
 							</li>
 							<li>
-								<a href="./loan/getloan">대출하기</a>
+								<a href="./loan">대출하기</a>
 							</li>
 						</ul>
 					</li>
@@ -110,9 +132,6 @@
 							</li>
 							<li>
 								<a href="./inquiry">1:1문의</a>
-							</li>
-							<li>
-								<a href="./support_total">공지사항</a>
 							</li>
 						</ul>
 					</li>
@@ -163,54 +182,40 @@
 	        MAIN CONTENT
 	        *********************************************************************************************************************************************************** -->
 		<!--main content start-->
-		<section id="main-content">
-			<section class="wrapper">
-				<h3><i class="fa fa-angle-right"></i>완료된 투자상품</h3>
-				<div class="row mb">
-					<!-- page start-->
-					<div class="content-panel">
-					
-						<!-- 투자리스트 start -->
-						<div class="adv-table">
-	 						<table cellpadding="0" cellspacing="0" border="0" class="display table table-bordered" id="hidden-table-info">
-								<thead>
-						            <tr>
-										<th class="col">상품명</th>
-										<th class="col">등급</th>
-										<th class="col">연 수익률</th>
-										<th class="col">기간</th>
-										<th class="col">모집금액</th>
-										<th class="col">상환방식</th>
-										<th class="col">모집현황</th>
-										<th class="col">모집상태</th>
-									</tr>
-								</thead>
-								<c:forEach items="${investFinish}" var="vo" varStatus="status">
-										<tr>
-											<td><a href="./invest_detail?project_num=${vo.project_num}">${vo.project_name}</a></td>
-											<td>${vo.grade}</td>
-											<td>${vo.yield}%</td>
-											<td>${vo.refund}개월</td>
-											<td>${vo.price}만원</td>
-											<td>${vo.repay_method}</td>
-											<td>${vo.ach_rate}</td>
-											<td>${vo.ach_state}</td>
-										</tr>
-								</c:forEach>
-							</table>
-						</div>
-						<!-- 투자리스트 end -->
-						
-					</div>
-					<!-- page end-->
-				</div>
-				<!-- /row -->
-			</section>
-			<!-- /wrapper -->
-		</section>
-		<!-- /MAIN CONTENT -->
-		<!--main content end-->
-		
+    <section id="main-content">
+      <section class="wrapper">
+        <div class="row">
+          <div class="col-md-10">
+            <div class="content-panel">
+            <div class="btn-group">
+               <button id="btn_total" type="button" class="btn btn-default">전체</button>
+                <button id="btn_new" type="button" class="btn btn-default">새소식</button>
+                <button id="btn_operation" type="button" class="btn btn-default">운영사항</button>
+              </div>
+              <hr>
+              <table class="table">
+                <c:forEach items="${supportlist}" var="vo" varStatus="status">
+					<tr>
+					<tbody>
+						<td>${vo.notice_num}</td>
+						<td>${vo.title}</td>
+						<td>${vo.notice_date}</td>
+					</tbody>
+					</tr>
+				</c:forEach>
+              </table>
+            </div>
+          </div>
+          <!-- /col-md-12 -->
+        </div>
+        <!-- row -->
+        <br><br>
+			<button id="btn_write">글쓰기</button>
+			<br><br>
+      </section>
+    </section>
+    <!-- /MAIN CONTENT -->
+    <!--main content end-->
 		<!--footer start-->
 		<footer class="site-footer">
 			<div class="container">
@@ -274,61 +279,7 @@
 	<!--script for this page-->
 	<script src="${pageContext.request.contextPath}/resources/bootstrap/lib/sparkline-chart.js"></script>
 	<script src="${pageContext.request.contextPath}/resources/bootstrap/lib/zabuto_calendar.js"></script>
-	
-	<!-- 게시판 -->
-	<!-- js placed at the end of the document so the pages load faster -->
-	<script type="text/javascript" language="javascript" src="${pageContext.request.contextPath}/resources/bootstrap/lib/advanced-datatable/js/jquery.js"></script>
-	<script type="text/javascript" language="javascript" src="${pageContext.request.contextPath}/resources/bootstrap/lib/advanced-datatable/js/jquery.dataTables.js"></script>
-	<script type="text/javascript" src="lib/advanced-datatable/js/DT_bootstrap.js"></script>
-	<!--script for this page-->
-	<script type="text/javascript">
-	$(document).ready(function() {
-		/*
-		 * Insert a 'details' column to the table
-		 */
-		var nCloneTh = document.createElement('th');
-		var nCloneTd = document.createElement('td');
-		nCloneTd.className = "center";
-		
-		$('#hidden-table-info thead tr').each(function() {
-		  this.insertBefore(nCloneTh, this.childNodes[0]);
-		});
-		
-		$('#hidden-table-info tbody tr').each(function() {
-		  this.insertBefore(nCloneTd.cloneNode(true), this.childNodes[0]);
-		});
 
-		/*
-		 * Initialse DataTables, with no sorting on the 'details' column
-		 */
-		var oTable = $('#hidden-table-info').dataTable({
-			"aoColumnDefs": [{
-			  "bSortable": false,
-			  "aTargets": [0]
-			}],
-			"aaSorting": [
-			  [1, 'asc']
-			]
-		});
-
-		/* Add event listener for opening and closing details
-		 * Note that the indicator for showing which row is open is not controlled by DataTables,
-		 * rather it is done here
-		 */
-		$('#hidden-table-info tbody td img').live('click', function() {
-			var nTr = $(this).parents('tr')[0];
-			if (oTable.fnIsOpen(nTr)) {
-				/* This row is already open - close it */
-				this.src = "lib/advanced-datatable/media/images/details_open.png";
-				oTable.fnClose(nTr);
-			} else {
-				/* Open this row */
-				this.src = "lib/advanced-datatable/images/details_close.png";
-				oTable.fnOpen(nTr, fnFormatDetails(oTable, nTr), 'details');
-			}
-		});
-    });
-	</script>
 </body>
 
 </html>
