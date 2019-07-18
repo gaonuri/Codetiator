@@ -175,6 +175,7 @@
 				<div class="row mt">
 				<div style="background-color: orange; width: 60px; text-align: center; color: white; font-size: 15px;">${projectVO.ach_state}</div>
 				<div style="width: 200px; color: black; font-size: 25px;">${projectVO.project_name}</div>
+				<input type="button" id="test" value="test" />
 					<!-- page start -->
 					<div class="col-xs-12 col-sm-12 col-md-offset-1 col-md-10 col">
 						<div class="card" style="float: right; border: solid 1px black">
