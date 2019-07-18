@@ -111,6 +111,9 @@
 							<li>
 								<a href="./inquiry">1:1문의</a>
 							</li>
+							<li>
+								<a href="./support_total">공지사항</a>
+							</li>
 						</ul>
 					</li>
 					<!-- 고객지원 end -->
@@ -625,6 +628,9 @@
 	<!--script for this page-->
 	<script src="${pageContext.request.contextPath}/resources/bootstrap/lib/sparkline-chart.js"></script>
 	<script src="${pageContext.request.contextPath}/resources/bootstrap/lib/zabuto_calendar.js"></script>
+<<<<<<< HEAD
+	
+=======
 	<script type="text/javascript">
   /*
 	$(document).ready(function() {
@@ -689,6 +695,7 @@
       console.log('nav ' + nav + ' to: ' + to.month + '/' + to.year);
     }
 	</script>
+>>>>>>> branch 'master' of https://github.com/gaonuri/Codetiator.git
 </body>
 
 </html>

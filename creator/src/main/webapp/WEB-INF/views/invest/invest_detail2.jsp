@@ -10,6 +10,7 @@
 	<meta name="author" content="Dashboard">
 	<meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
 	<title>Dashio - Bootstrap Admin Template</title>
+	<script src="../resources/jquery/jquery-3.4.1.js"></script>
 	
 	<!-- Favicons -->
 	<link href="${pageContext.request.contextPath}/resources/bootstrap/img/favicon.png" rel="icon">
@@ -25,38 +26,20 @@
 	<link href="${pageContext.request.contextPath}/resources/bootstrap/css/style.css" rel="stylesheet">
 	<link href="${pageContext.request.contextPath}/resources/bootstrap/css/style-responsive.css" rel="stylesheet">
 	<script src="${pageContext.request.contextPath}/resources/bootstrap/lib/chart-master/Chart.js"></script>
-	
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-	
+
 	<!-- =======================================================
 	  Template Name: Dashio
 	  Template URL: https://templatemag.com/dashio-bootstrap-admin-template/
 	  Author: TemplateMag.com
 	  License: https://templatemag.com/license/
-	======================================================= -->
-		<script type="text/javascript">
-			$(document).ready(function() {
-				$("#btn_write").click(function() {
-					location.href = "${pageContext.request.contextPath}/support/formi";
-				});//btn_write
-			});//ready
-			$(document).ready(function() {
-				$("#btn_total").click(function() {
-					location.href = "${pageContext.request.contextPath}/support_total";
-				});//btn_write
-			});//ready
-			$(document).ready(function() {
-				$("#btn_new").click(function() {
-					location.href = "${pageContext.request.contextPath}/support_new";
-				});//btn_write
-			});//ready
-			$(document).ready(function() {
-				$("#btn_operation").click(function() {
-					location.href = "${pageContext.request.contextPath}/support_operation";
-				});//btn_write
-			});//ready
-		</script>
-		
+	======================================================= -->	
+	<script type="text/javascript">
+	$(document).ready(function() {
+		$("#investBtn").click(function() {
+			location.href="${pageContext.request.contextPath}/invest";
+		});//investBtn
+	});//ready
+	</script>
 </head>
 
 <body>
@@ -80,14 +63,16 @@
 					
 					<!-- 대출 start -->
 					<li class="dropdown">
-						<a data-toggle="dropdown" class="dropdown-toggle" href="#">대출</a>
+						<a data-toggle="dropdown" class="dropdown-toggle" href="#">
+							대출
+						</a>
 						<ul class="dropdown-menu extended tasks-bar">
 							<div class="notify-arrow notify-arrow-green"></div>
 							<li>
 								<a href="./loan_guide">대출안내</a>
 							</li>
 							<li>
-								<a href="./loan">대출하기</a>
+								<a href="./loan/getloan">대출하기</a>
 							</li>
 						</ul>
 					</li>
@@ -132,6 +117,9 @@
 							</li>
 							<li>
 								<a href="./inquiry">1:1문의</a>
+							</li>
+							<li>
+								<a href="./support_total">공지사항</a>
 							</li>
 						</ul>
 					</li>
@@ -182,39 +170,232 @@
 	        MAIN CONTENT
 	        *********************************************************************************************************************************************************** -->
 		<!--main content start-->
-    <section id="main-content">
-     	 <section class="wrapper">
-       	 	<div class="row">
-         		 <div class="col-md-10">
-            		<div class="content-panel">
-            		<div class="btn-group">
-		                <button id="btn_total" type="button" class="btn btn-default">전체</button>
-		                <button id="btn_new" type="button" class="btn btn-default">새소식</button>
-		                <button id="btn_operation" type="button" class="btn btn-default">운영사항</button>
-              		</div>
-		            <table class="table">
-		                <c:forEach items="${supportlist2}" var="vo" varStatus="status">
-							<tbody>
-								<tr>
-									<td><a href="support_new_detail?notice_num=${vo.notice_num}">${vo.notice_num}</a></td>
-									<td><a href="support_new_detail?notice_num=${vo.notice_num}">${vo.title}</a></td>
-									<td>${vo.notice_date}</td>
-								</tr>
-							</tbody>
-						</c:forEach>
-		            </table>
-		            </div>
-		          </div>
-         		 <!-- /col-md-12 -->
-        	</div>
-        	<!-- row -->
-	        	<br><br>
-				<button id="btn_write">글쓰기</button>
-				<br><br>
-      </section>
-    </section>
-    <!-- /MAIN CONTENT -->
-    <!--main content end-->
+		<section id="main-content">
+			<section class="wrapper site-min-height">
+				<div class="row mt">
+				<div style="background-color: orange; width: 60px; text-align: center; color: white; font-size: 15px;">${projectVO.ach_state}</div>
+				<div style="width: 200px; color: black; font-size: 25px;">${projectVO.project_name}</div>
+				<input type="button" id="test" value="test" />
+					<!-- page start -->
+					<div class="col-xs-12 col-sm-12 col-md-offset-1 col-md-10 col">
+						<div class="card" style="float: right; border: solid 1px black">
+							<div class="card-body">
+								<table>
+									<tr>
+										<td>${projectVO.current_price / projectVO.price * 100}%</td>
+									</tr>
+									<tr>
+										<td>${projectVO.current_price}</td>
+										<td>${projectVO.price}</td>
+									</tr>
+									<tr>
+										<td>상환방식</td>
+										<td>${projectVO.repay_method}</td>
+									</tr>
+									<tr>
+										<th>연 수익률</th>
+										<td>${projectVO.yield}</td>
+									</tr>
+									<tr>
+										<td>투자기간</td>
+										<td>${projectVO.refund}</td>
+									</tr>
+									<tr>
+										<td>투자한도</td>
+										<td>500만원</td>
+									</tr>
+									<tr>
+										<td><input type="button" id="investBtn" value="투자신청"/></td>
+									</tr>
+								</table>
+							</div>
+						</div>
+						
+						<!-- 상품요약 start -->
+						<div class="card" style="width:800px;">
+							<div class="card-header">
+								상품요약
+							</div>
+							<div class="card-body">
+								<table>
+									<tr>
+										<th>기본정보</th>
+									</tr>
+									<tr>
+										<td>담보유형</td>
+										<td>만기</td>
+										<td>대출금액</td>
+										<td>대출잔액</td>
+									</tr>
+									<tr>
+										<td>${guaranteeVO.guarantee_type}</td>
+										<td>${projectVO.refund}</td>
+										<td>${projectVO.price}</td>
+										<td>${projectVO.guarantee_price}</td>
+									</tr>
+								</table>
+								<table style="float:left;">
+									<tr>
+										<th>담보물건 정보</th>
+									</tr>							
+									<tr>
+										<td>유형</td>
+										<td>${guaranteeVO.guarantee_type}</td>
+									</tr>
+									<tr>
+										<td>공급/전용</td>
+										<td>${guaranteeVO.supply_area} / ${guaranteeVO.exclusive_area}</td>
+									</tr>
+									<tr>
+										<td>LTV</td>
+										<td>${projectVO.price / guaranteeVO.connoisseur * 100}%</td>
+									</tr>
+									<tr>
+										<td>담보권</td>
+										<td>근저당부질권</td>
+									</tr>
+								</table>
+								<table style="float:right;">
+									<tr>
+										<th>차주 정보</th>
+									</tr>							
+									<tr>
+										<td>유형</td>
+										<td>${guaranteeVO.debtor_type}</td>
+									</tr>
+									<tr>
+										<td>업종</td>
+										<td>${guaranteeVO.business_type}</td>
+									</tr>
+									<tr>
+										<td>대출목적</td>
+										<td>사업운영자금</td>
+									</tr>
+								</table>
+							</div>
+						</div>
+						<!-- 상품요약 end -->
+						
+						<!-- 담보상세 start -->
+						<div class="card" style="width:800px; height: 1000px;">
+							<div class="card-header">
+								담보상세
+							</div>
+							<div class="card-body">
+								<table border="1">
+									<tr>
+										<td>물건유형</td>
+										<td>면적</td>
+										<td>외부 감정가</td>
+									</tr>
+									<tr>
+										<td>${guaranteeVO.object_type}</td>
+										<td>${guaranteeVO.area}</td>
+										<td>${guaranteeVO.connoisseur}</td>
+									</tr>
+									<tr>
+										<td>선순위 금액</td>
+										<td>LTV</td>
+										<td>담보 설정비율</td>
+									</tr>
+									<tr>
+										<td>모른다</td>
+										<td>${projectVO.price / guaranteeVO.connoisseur * 100}%</td>
+										<td>150%</td>
+									</tr>
+								</table>
+								<div style="border: solid 1px black; width:800px; height:400px;">
+									${guaranteeVO.guarantee_img}
+								</div>
+								<div id="map" style="width:800px;height:300px;"></div>
+								<div style="">소재지 : ${guaranteeVO.location}</div>
+							</div>
+						</div>
+						<!-- 담보상세 end -->
+						
+						<!-- 상환계획 start -->
+						<div class="card" style="width:800px;">
+							<div class="card-header">
+								상환계획
+							</div>
+							<div class="card-body">
+								<table>
+									<tr>
+										<td>자체상환 - 고정적 수익을 바탕으로 자체상환 계획</td>
+									</tr>
+									<tr>
+										<td>NPL매각 - 매입전문 업체에 매각진행</td>
+									</tr>
+									<tr>
+										<td>경매회수 - 경매진행 후 회수</td>
+									</tr>
+								</table>
+							</div>
+						</div>
+						<!-- 상환계획 end -->
+						
+						<!-- 투자자보호 start -->
+						<div class="card" style="width:800px;">
+							<div class="card-header">
+								투자자보호
+							</div>
+							<div class="card-body">
+								<table>
+									<tr>
+										<td>담보권</td>
+										<td>인출조건</td>
+										<td>기타보강</td>
+									</tr>
+									<tr>
+										<td>후순위 근저당부 질권</td>
+										<td>대출약정서<br>근저당설정계약서</td>
+										<td>임대차확인서<br>질권설정 승낙서</td>
+									</tr>
+								</table>
+							</div>
+						</div>
+						<!-- 투자자보호 end -->
+						
+						<!-- 참고파일 start -->
+						<div class="card" style="width:800px;">
+							<div class="card-header">
+								참고파일
+							</div>
+							<div class="card-body">
+								<button id="refFile1">첨부파일1</button>
+								<button id="refFile2">첨부파일2</button>
+								<button id="refFile3">첨부파일3</button>
+							</div>
+						</div>
+						<!-- 참고파일 end -->
+						
+						<!-- 자주묻는질문 start -->
+						<!-- 자주묻는질문 end -->
+						
+						<!-- 투자시 위험 안내 start -->
+						<div class="card" style="width:800px;">
+							<div class="card-header">
+								투자시 위험안내
+							</div>
+							<div class="card-body">
+								<div>
+									CREATOR는 원금과 수익률을 보장하지 않으며 투자 손실의 가능성이 있습니다. 
+									엄격한 차입자 신용 평가와 금리 산정으로 평균 수익률 연 8%를 목표로 합니다.
+								</div>
+							</div>
+						</div>
+						<!-- 투자시 위험 안내 end -->
+						
+					</div>
+					<!-- page end -->
+					
+				</div>
+			</section>
+			<!-- /wrapper -->
+	    </section>
+	    <!-- /MAIN CONTENT -->
+	    <!--main content end-->
+		
 		<!--footer start-->
 		<footer class="site-footer">
 			<div class="container">
@@ -263,6 +444,20 @@
 		<!--footer end-->
 	
 	</section>
+
+	<!-- 지도 api -->
+	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=634dddac053ddf6be0b6aa5a165b2da8"></script>
+	<script>
+		var container = document.getElementById('map');
+		var options = {
+			center: new kakao.maps.LatLng(33.450701, 126.570667),
+			level: 3
+		};
+
+		var map = new kakao.maps.Map(container, options);
+	</script>
+	<!-- 지도 api -->
+	
 	<!-- js placed at the end of the document so the pages load faster -->
 	<script src="${pageContext.request.contextPath}/resources/bootstrap/lib/jquery/jquery.min.js"></script>
 	

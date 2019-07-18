@@ -183,6 +183,7 @@
 	        *********************************************************************************************************************************************************** -->
 		<!--main content start-->
     <section id="main-content">
+<<<<<<< HEAD
      	 <section class="wrapper">
        	 	<div class="row">
          		 <div class="col-md-10">
@@ -208,6 +209,37 @@
          		 <!-- /col-md-12 -->
         	</div>
         	<!-- row -->
+=======
+      <section class="wrapper">
+        <div class="row">
+          <div class="col-md-10">
+            <div class="content-panel">
+            <div class="btn-group">
+                <button id="btn_total" type="button" class="btn btn-default">전체</button>
+                <button id="btn_new" type="button" class="btn btn-default">새소식</button>
+                <button id="btn_operation" type="button" class="btn btn-default">운영사항</button>
+              </div>
+              <hr>
+              <table class="table">
+                <c:forEach items="${supportlist}" var="vo" varStatus="status">
+					<tbody>
+						<tr>
+							<td><a href="./support?notice_num=${vo.notice_num}">${vo.notice_num}</a></td>
+							<td>${vo.title}</td>
+							<td>${vo.notice_date}</td>
+						</tr>
+					</tbody>
+				</c:forEach>
+              </table>
+            </div>
+          </div>
+          <!-- /col-md-12 -->
+        </div>
+        <!-- row -->
+        <br><br>
+			<button id="btn_write">글쓰기</button>
+			<br><br>
+>>>>>>> branch 'master' of https://github.com/gaonuri/Codetiator.git
       </section>
     </section>
     <!-- /MAIN CONTENT -->
@@ -275,178 +307,7 @@
 	<!--script for this page-->
 	<script src="${pageContext.request.contextPath}/resources/bootstrap/lib/sparkline-chart.js"></script>
 	<script src="${pageContext.request.contextPath}/resources/bootstrap/lib/zabuto_calendar.js"></script>
-	<script type="text/javascript">
-    $(document).ready(function() {
-      var unique_id = $.gritter.add({
-        // (string | mandatory) the heading of the notification
-        title: 'Welcome to Dashio!',
-        // (string | mandatory) the text inside the notification
-        text: 'Hover me to enable the Close Button. You can hide the left sidebar clicking on the button next to the logo. Developed by <a href="http://alvarez.is" target="_blank" style="color:#4ECDC4">Alvarez.is</a>.',
-        // (string | optional) the image to display on the left
-        image: '${pageContext.request.contextPath}/resources/bootstrap/img/ui-sam.jpg',
-        // (bool | optional) if you want it to fade out on its own or just sit there
-        sticky: false,
-        // (int | optional) the time you want it to be alive for before fading out
-        time: 8000,
-        // (string | optional) the class name you want to apply to that specific message
-        class_name: 'my-sticky-class'
-      });
-
-      return false;
-    });
-	</script>
-	<script type="application/javascript">
-    $(document).ready(function() {
-      $("#date-popover").popover({
-        html: true,
-        trigger: "manual"
-      });
-      $("#date-popover").hide();
-      $("#date-popover").click(function(e) {
-        $(this).hide();
-      });
-
-      $("#my-calendar").zabuto_calendar({
-        action: function() {
-          return myDateFunction(this.id, false);
-        },
-        action_nav: function() {
-          return myNavFunction(this.id);
-        },
-        ajax: {
-          url: "show_data.php?action=1",
-          modal: true
-        },
-        legend: [{
-            type: "text",
-            label: "Special event",
-            badge: "00"
-          },
-          {
-            type: "block",
-            label: "Regular event",
-          }
-        ]
-      });
-    });
-
-    function myNavFunction(id) {
-      $("#date-popover").hide();
-      var nav = $("#" + id).data("navigation");
-      var to = $("#" + id).data("to");
-      console.log('nav ' + nav + ' to: ' + to.month + '/' + to.year);
-    }
-	</script>
+	
 </body>
 
 </html>
-
-
-
-<!-- 대출 start -->
-<!-- <li class="dropdown"> -->
-<!-- 	<a data-toggle="dropdown" class="dropdown-toggle" href="index.html#"> -->
-<!-- 		대출 -->
-<!-- 	</a> -->
-<!-- 	<ul class="dropdown-menu extended tasks-bar"> -->
-<!-- 		<div class="notify-arrow notify-arrow-green"></div> -->
-<!-- 		<li> -->
-<!-- 			<a href="index.html#"> -->
-<!-- 				<div class="task-info"> -->
-<!-- 					<div class="desc">Dashio Admin Panel</div> -->
-<!-- 					<div class="percent">80%</div> -->
-<!-- 				</div> -->
-<!-- 			<div class="progress progress-striped"> -->
-<!-- 				<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 80%"> -->
-<!-- 					<span class="sr-only">80% Complete (success)</span> -->
-<!-- 				</div> -->
-<!-- 			</div> -->
-<!-- 			</a> -->
-<!-- 		</li> -->
-<!-- 		<li> -->
-<!-- 			<a href="index.html#"> -->
-<!-- 				<div class="task-info"> -->
-<!-- 					<div class="desc">Database Update</div> -->
-<!-- 					<div class="percent">60%</div> -->
-<!-- 				</div> -->
-<!-- 				<div class="progress progress-striped"> -->
-<!-- 					<div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%"> -->
-<!-- 						<span class="sr-only">60% Complete (warning)</span> -->
-<!-- 					</div> -->
-<!-- 				</div> -->
-<!-- 			</a> -->
-<!-- 		</li> -->
-<!-- 		<li> -->
-<!-- 			<a href="index.html#"> -->
-<!-- 				<div class="task-info"> -->
-<!-- 					<div class="desc">Product Development</div> -->
-<!-- 					<div class="percent">80%</div> -->
-<!-- 				</div> -->
-<!-- 				<div class="progress progress-striped"> -->
-<!-- 					<div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%"> -->
-<!-- 						<span class="sr-only">80% Complete</span> -->
-<!-- 					</div> -->
-<!-- 				</div> -->
-<!-- 			</a> -->
-<!-- 		</li> -->
-<!-- 		<li> -->
-<!-- 			<a href="index.html#"> -->
-<!-- 				<div class="task-info"> -->
-<!-- 					<div class="desc">Payments Sent</div> -->
-<!-- 					<div class="percent">70%</div> -->
-<!-- 				</div> -->
-<!--                			<div class="progress progress-striped"> -->
-<!-- 					<div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 70%"> -->
-<!-- 						<span class="sr-only">70% Complete (Important)</span> -->
-<!-- 					</div> -->
-<!-- 				</div> -->
-<!-- 			</a> -->
-<!-- 		</li> -->
-<!-- 		<li class="external"> -->
-<!-- 			<a href="#">See All Tasks</a> -->
-<!-- 		</li> -->
-<!-- 	</ul> -->
-<!-- </li> -->
-<!--       		대출 end -->
-
-<!-- <!-- 마이페이지 start-->
-<!-- <li id="header_notification_bar" class="dropdown"> -->
-<!-- 	<a data-toggle="dropdown" class="dropdown-toggle" href="index.html#"> -->
-<!-- 		마이페이지 -->
-<!-- 	</a> -->
-<!-- 	<ul class="dropdown-menu extended notification"> -->
-<!-- 		<div class="notify-arrow"></div> -->
-<!-- 		<li> -->
-<!-- 			<a href="index.html#"> -->
-<!-- 				<span class="label label-danger"><i class="fa fa-bolt"></i></span> -->
-<!-- 					Server Overloaded. -->
-<!-- 				<span class="small italic">4 mins.</span> -->
-<!-- 			</a> -->
-<!-- 		</li> -->
-<!-- 		<li> -->
-<!-- 			<a href="index.html#"> -->
-<!-- 				<span class="label label-warning"><i class="fa fa-bell"></i></span> -->
-<!-- 					Memory #2 Not Responding. -->
-<!-- 				<span class="small italic">30 mins.</span> -->
-<!-- 			</a> -->
-<!-- 		</li> -->
-<!-- 		<li> -->
-<!-- 			<a href="index.html#"> -->
-<!-- 				<span class="label label-danger"><i class="fa fa-bolt"></i></span> -->
-<!-- 					Disk Space Reached 85%. -->
-<!-- 				<span class="small italic">2 hrs.</span> -->
-<!-- 			</a> -->
-<!-- 		</li> -->
-<!-- 		<li> -->
-<!-- 			<a href="index.html#"> -->
-<!-- 				<span class="label label-success"><i class="fa fa-plus"></i></span> -->
-<!-- 					New User Registered. -->
-<!-- 				<span class="small italic">3 hrs.</span> -->
-<!-- 			</a> -->
-<!-- 		</li> -->
-<!-- 		<li> -->
-<!-- 			<a href="index.html#">See all notifications</a> -->
-<!-- 		</li> -->
-<!-- 	</ul> -->
-<!-- </li> -->
-<!-- <!-- 마이페이지 end -->

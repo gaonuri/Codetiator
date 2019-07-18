@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import kr.co.creator.vo.GuaranteeVO;
 import kr.co.creator.vo.ProjectVO;
 
 @Repository
@@ -24,17 +25,23 @@ public class InvestDAO {
 		
 		return list;
 	}//invest_list
+	
+	public ProjectVO project_detail(ProjectVO proVO) {
+		proVO = sqlSession.selectOne("InvestMapper.projectDetail", proVO);
+		
+		return proVO;
+	}//project_detail
+
+	public GuaranteeVO guarantee_detail(ProjectVO proVO, GuaranteeVO guaVO) {
+		guaVO = sqlSession.selectOne("InvestMapper.guaranteeDetail", proVO);
+		
+		return guaVO;
+	}//guarantee_detail
 
 	public List<ProjectVO> invest_finish() {
 		List<ProjectVO> list = null;
 		list = sqlSession.selectList("InvestMapper.investFinish");
 		
 		return list;
-	}
-	
-	public ProjectVO project_detail(ProjectVO vo) {
-		vo = sqlSession.selectOne("InvestMapper.projectDetail", vo);
-		
-		return vo;
-	}
+	}//invest_finish
 }//class
