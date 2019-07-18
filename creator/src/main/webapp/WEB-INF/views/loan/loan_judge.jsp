@@ -249,7 +249,7 @@
 	    <section id="loanGuide-banner" class="text-center">
 			<div class="overlay">
 				<div class="section-body">
-					<span class="title">서류제출</span>
+					<span class="title">대출심사</span>
 				</div>
 			</div>
 		</section>
@@ -280,113 +280,21 @@
 										<div class="item">
 											추가정보
 										</div>
-										<div class="item active">
+										<div class="item">
 											서류제출
 										</div>
-										<div class="item">
+										<div class="item active">
 											대출심사
 										</div>
 									</div>
 								</div>
 								<div class="title" style="font-size: 15pt;">
-									서류제출
+									심사중
 								</div>
 								<div class="line"></div>
 							</div>
             <div class="form-panel">
-              <form id="document_form" class="form-horizontal style-form">
-                <div class="form-group last">
-                  <label class="control-label col-md-3">신분증 사본</label>
-                  <div class="col-md-9">
-                    <div class="fileupload fileupload-new" data-provides="fileupload">
-                      <div class="fileupload-new thumbnail" style="width: 200px; height: 150px;">
-                        <img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&text=no+image" alt="" />
-                      </div>
-                      <div class="fileupload-preview fileupload-exists thumbnail" style="max-width: 200px; max-height: 150px; line-height: 20px;"></div>
-                      <div>
-                        <span class="btn btn-theme02 btn-file">
-                          <span class="fileupload-new"><i class="fa fa-paperclip"></i> 사진 선택</span>
-                        <span class="fileupload-exists"><i class="fa fa-undo"></i> 사진 변경</span>
-                        <input type="file" class="default" name="copy_id"/>
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="form-group last">
-                  <label class="control-label col-md-3">통장 사본</label>
-                  <div class="col-md-9">
-                    <div class="fileupload fileupload-new" data-provides="fileupload">
-                      <div class="fileupload-new thumbnail" style="width: 200px; height: 150px;">
-                        <img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&text=no+image" alt="" />
-                      </div>
-                      <div class="fileupload-preview fileupload-exists thumbnail" style="max-width: 200px; max-height: 150px; line-height: 20px;"></div>
-                      <div>
-                        <span class="btn btn-theme02 btn-file">
-                          <span class="fileupload-new"><i class="fa fa-paperclip"></i> 사진 선택</span>
-                        <span class="fileupload-exists"><i class="fa fa-undo"></i> 사진 변경</span>
-                        <input type="file" class="default" name="copy_bankbook"/>
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                  <div class="form-group">
-                  	<label class="control-label col-md-3">사업자 등록증</label>
-                  	<div class="col-md-4">
-                    	<input type="file" class="default" name="busi_regi"/>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                  	<label class="control-label col-md-3">주민등록 초본</label>
-                  	<div class="col-md-4">
-                    	<input type="file" class="default" name="jumin_chobon"/>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                  	<label class="control-label col-md-3">인감증명서</label>
-                  	<div class="col-md-4">
-                    	<input type="file" class="default" name="cer_ingam"/>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                  	<label class="control-label col-md-3">부동산증명서(선택)</label>
-                  	<div class="col-md-4">
-                    	<input type="file" class="default" name="cer_budong"/>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                  	<label class="control-label col-md-3">동산증명서(선택)</label>
-                  	<div class="col-md-4">
-                    	<input type="file" class="default" name="cer_dong"/>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                  	<label class="control-label col-md-3">소득금액증명원(선택)</label>
-                  	<div class="col-md-4">
-                    	<input type="file" class="default" name="cer_income"/>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                  	<label class="control-label col-md-3">부가가치세과세증명원(선택)</label>
-                  	<div class="col-md-4">
-                    	<input type="file" class="default" name="cer_vat"/>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                  	<label class="control-label col-md-3">기타증명서(선택)</label>
-                  	<div class="col-md-4">
-                    	<input type="file" class="default" name="cer_other"/>
-                    </div>
-                  </div>
-                  <div class="bottom">
-								<input type="button" class="btn btn-purple-transparent btn-block" id="doNextStepBtn"
-										value="서류 제출" />
-<!-- 									<button type="submit" class="btn btn-purple-transparent btn-block" id="doNextStepBtn">본인 인증 및 대출 가능여부 확인</button> -->
-									<p>※ 대출심사 결격사유 : 최근 현금서비스 3회 이상 이용 고객 및 기타 당사가 규정하는 채무불이행 사유가 있는 고객.</p>
-									<div class="page" style="text-align: right;">3/4</div>
-				</div>
-              </form>
+
              	 </div>
               </div>
               </div>

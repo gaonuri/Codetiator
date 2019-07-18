@@ -17,10 +17,8 @@
 		where busi_resi_num=#{busi_resi_num} and busi_password=#{busi_password}
 	</select>
 	
-	<select id="findPwd" parameterType="kr.co.creator.vo.FindPwdVO"	resultType="kr.co.creator.vo.FindPwdVO">
+	<select id="findPwdChk" parameterType="java.lang.String" resultType="int">
 		select count(*) from user_list where email=#{email}
-		union all
-		select count(*) from busi_user_list manager_email=#{manager_email}
 	</select> 
 	 
 </mapper>

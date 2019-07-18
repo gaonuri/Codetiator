@@ -34,29 +34,13 @@
       </TABLE>
       <BR>
       <center>
-        <input type="button" id="btn_certi_complete" Value="인증완료" OnClick="fxPopUp()">
+        <input type="button" id="btn_certi_complete" Value="인증완료" OnClick="fxPopUp2()">
       </center>
 <script>
-function fxPopUp() {
-	$.get("/loan/popup2"
-			,{
-				user_name:$("#user_name").val(),
-				phone:$("#phone").val()
-				
-			}//data
-			,function(data,status) {
-				if(status == "success") {
-					if(data > 0){
-						opener.location.href = "${pageContext.request.contextPath}/loan/addinfo";
-						window.self.close();
-					} else {
-						alert("잠시 후 다시 시도해 주세요.");
-					}
-				} else {
-					alert("admin : 02-5555-7777");
-				}
-			}//function
-	);//get
+
+function fxPopUp2() {
+	opener.tempFunction();
+	window.self.close();
 }
 </script>
 

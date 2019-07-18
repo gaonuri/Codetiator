@@ -10,7 +10,7 @@
 	<meta name="author" content="Dashboard">
 	<meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
 	<title>Dashio - Bootstrap Admin Template</title>
-	<script src="../resources/jquery/jquery-3.4.1.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/jquery/jquery-3.4.1.js"></script>
 	
 	<!-- Favicons -->
 	<link href="${pageContext.request.contextPath}/resources/bootstrap/img/favicon.png" rel="icon">
@@ -166,9 +166,11 @@
 		<section id="main-content">
 			<section class="wrapper site-min-height">
 				<div class="row mt">
+					<!-- page start -->
 					<div class="col-lg-12">
 						
 					</div>
+					<!-- page end -->
 				</div>
 			</section>
 			<!-- /wrapper -->

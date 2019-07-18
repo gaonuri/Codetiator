@@ -19,6 +19,9 @@ public class GuaranteeVO {
 	private String comple_year;				// 준공년도
 	private String quote;					// 시세
 	private String code;					// 담보분류
+	private String reference_file1;			// 참고파일1
+	private String reference_file2;			// 참고파일2
+	private String reference_file3;			// 참고파일3
 	
 	private String project_num;				// (참조)프로젝트번호
 	
@@ -27,7 +30,8 @@ public class GuaranteeVO {
 						String debtor_type, String business_type, String object_type, String connoisseur, 
 						String exclusive_area, String supply_area, String area, String map, 
 						String location, String scale, String comple_year, String quote, String code, 
-						String grade, String more_information, String en_date, String rate, String project_num) {
+						String grade, String more_information, String en_date, String rate, 
+						String reference_file1, String reference_file2, String reference_file3, String project_num) {
 		this.guarantee_num = guarantee_num;
 		this.guarantee_type = guarantee_type;
 		this.guarantee_img = guarantee_img;
@@ -43,6 +47,9 @@ public class GuaranteeVO {
 		this.comple_year = comple_year;
 		this.quote = quote;
 		this.code = code;
+		this.reference_file1 = reference_file1;
+		this.reference_file2 = reference_file2;
+		this.reference_file3 = reference_file3;
 		
 		this.project_num = project_num;
 	}//constructor
@@ -166,6 +173,29 @@ public class GuaranteeVO {
 		this.code = code;
 	}//code
 	
+	public String getReference_file1() {
+		return reference_file1;
+	}
+	public void setReference_file1(String reference_file1) {
+		this.reference_file1 = reference_file1;
+	}//reference_file1
+	
+	public String getReference_file2() {
+		return reference_file2;
+	}
+	public void setReference_file2(String reference_file2) {
+		this.reference_file2 = reference_file2;
+	}//reference_file2
+	
+	public String getReference_file3() {
+		return reference_file3;
+	}
+	public void setReference_file3(String reference_file3) {
+		this.reference_file3 = reference_file3;
+	}//reference_file3
+	
+	
+	//참조
 	public String getProject_num() {
 		return project_num;
 	}
