@@ -166,18 +166,16 @@
 	        MAIN CONTENT
 	        *********************************************************************************************************************************************************** -->
 		<!--main content start-->
-		
-		
 		<section id="main-content">
 			<section class="wrapper site-min-height">
 				<div class="row mt">
+					<!-- page start -->
 					<div class="col-lg-12">
 					
 					</div>
+					<!-- page end -->
 				</div>
-				
-				
-		</section>
+			</section>
 			<!-- /wrapper -->
 	    </section>
 	    <!-- /MAIN CONTENT -->

@@ -10,6 +10,7 @@
 	<meta name="author" content="Dashboard">
 	<meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
 	<title>Dashio - Bootstrap Admin Template</title>
+	<script src="../resources/jquery/jquery-3.4.1.js"></script>
 	
 	<!-- Favicons -->
 	<link href="${pageContext.request.contextPath}/resources/bootstrap/img/favicon.png" rel="icon">
@@ -34,10 +35,8 @@
 	======================================================= -->	
 	<script type="text/javascript">
 	$(document).ready(function() {
-		alert("ready");
 		$("#investBtn").click(function() {
-			alert("click");
-			location.href="./creator/invest";
+			location.href="${pageContext.request.contextPath}/invest";
 		});//investBtn
 	});//ready
 	</script>
@@ -172,30 +171,6 @@
 	        *********************************************************************************************************************************************************** -->
 		<!--main content start-->
 		<section id="main-content">
-			<script type="text/javascript">
-			$(document).ready(function() {
-				$("#investBtn").click(function() {
-					location.href = "${pageContext.request.contextPath}/invest";
-				});//investBtn
-			});//ready
-			$(document).ready(function() {
-				$("#btn_total").click(function() {
-					location.href = "${pageContext.request.contextPath}/support_total";
-				});//btn_write
-			});//ready
-			$(document).ready(function() {
-				$("#btn_new").click(function() {
-					location.href = "${pageContext.request.contextPath}/support_new";
-				});//btn_write
-			});//ready
-			$(document).ready(function() {
-				$("#btn_operation").click(function() {
-					location.href = "${pageContext.request.contextPath}/support_operation";
-				});//btn_write
-			});//ready
-		</script>
-			
-			
 			<section class="wrapper site-min-height">
 				<div class="row mt">
 				<div style="background-color: orange; width: 60px; text-align: center; color: white; font-size: 15px;">${projectVO.ach_state}</div>
@@ -337,6 +312,79 @@
 							</div>
 						</div>
 						<!-- 담보상세 end -->
+						
+						<!-- 상환계획 start -->
+						<div class="card" style="width:800px;">
+							<div class="card-header">
+								상환계획
+							</div>
+							<div class="card-body">
+								<table>
+									<tr>
+										<td>자체상환 - 고정적 수익을 바탕으로 자체상환 계획</td>
+									</tr>
+									<tr>
+										<td>NPL매각 - 매입전문 업체에 매각진행</td>
+									</tr>
+									<tr>
+										<td>경매회수 - 경매진행 후 회수</td>
+									</tr>
+								</table>
+							</div>
+						</div>
+						<!-- 상환계획 end -->
+						
+						<!-- 투자자보호 start -->
+						<div class="card" style="width:800px;">
+							<div class="card-header">
+								투자자보호
+							</div>
+							<div class="card-body">
+								<table>
+									<tr>
+										<td>담보권</td>
+										<td>인출조건</td>
+										<td>기타보강</td>
+									</tr>
+									<tr>
+										<td>후순위 근저당부 질권</td>
+										<td>대출약정서<br>근저당설정계약서</td>
+										<td>임대차확인서<br>질권설정 승낙서</td>
+									</tr>
+								</table>
+							</div>
+						</div>
+						<!-- 투자자보호 end -->
+						
+						<!-- 참고파일 start -->
+						<div class="card" style="width:800px;">
+							<div class="card-header">
+								참고파일
+							</div>
+							<div class="card-body">
+								<button id="refFile1">첨부파일1</button>
+								<button id="refFile2">첨부파일2</button>
+								<button id="refFile3">첨부파일3</button>
+							</div>
+						</div>
+						<!-- 참고파일 end -->
+						
+						<!-- 자주묻는질문 start -->
+						<!-- 자주묻는질문 end -->
+						
+						<!-- 투자시 위험 안내 start -->
+						<div class="card" style="width:800px;">
+							<div class="card-header">
+								투자시 위험안내
+							</div>
+							<div class="card-body">
+								<div>
+									CREATOR는 원금과 수익률을 보장하지 않으며 투자 손실의 가능성이 있습니다. 
+									엄격한 차입자 신용 평가와 금리 산정으로 평균 수익률 연 8%를 목표로 합니다.
+								</div>
+							</div>
+						</div>
+						<!-- 투자시 위험 안내 end -->
 						
 					</div>
 					<!-- page end -->
