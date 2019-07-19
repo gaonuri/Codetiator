@@ -20,7 +20,7 @@ public class MypageService {
 		return list;
 	}//assetsList
 
-	public static ProjectVO project_detail(ProjectVO proVO) {
+	public ProjectVO project_detail(ProjectVO proVO) {
 		proVO = MypageDAO.project_detail(proVO);
 		return proVO;
 	}//project_detail
