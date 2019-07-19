@@ -30,5 +30,5 @@ public class MypageDAO {
 	public InvestVO invest_detail(InvestVO ivVO) {
 		ivVO = sqlSession.selectOne("MypageMapper.InvestList", ivVO);
 		return ivVO;
-	}
+	} 
 }//class

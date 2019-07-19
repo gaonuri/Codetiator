@@ -21,7 +21,11 @@ public class MypageService {
 	}//assetsList
 
 	public ProjectVO project_detail(ProjectVO proVO) {
+<<<<<<< HEAD
 		proVO = dao.project_detail(proVO);
+=======
+		proVO = MypageDAO.project_detail(proVO);
+>>>>>>> branch 'master' of https://github.com/gaonuri/Codetiator.git
 		return proVO;
 	}//project_detail
 
