@@ -37,24 +37,52 @@
 	  License: https://templatemag.com/license/
 	======================================================= -->
 	
-	<script type="text/javascript">
+<script type="text/javascript">
+
+var chkemail = '';
+
+//id check
+
 $(document).ready(function(){
-	$("#findpwd_btn").click(function(){
-		if($.trim($("#email").val()) == ""){
-			alert("가입된 정보가 없습니다.");
-			$("#email").focus();
+	$("#email").blur(function(){
+		var emailStd = /([a-z0-9]{1,20}\@)([a-z]{1,20}\.)([a-z]{1,10})/gi;
+		if($.trim($("#email").val()) != $(this).val().match(emailStd)){
+			alert("옳바르지 않은 이메일 입니다.");
 			return;
 		}
 		$.post(
-				"./findpwd"
+				"./findpwdchk",
+				{
+					email:$("#email").val()
+				},
+				function(data,status){
+					if(data == 1){
+						alert("이메일이 확인 되었습니다.");
+						chkemail = $("#email").val();
+					}else{
+						alert("등록된 이메일이 없습니다.");
+					}
+				}//function
+		);//post
+	});//ready
+});//blur
+
+$(document).ready(function(){
+	$("#findpwd_btn").click(function(){
+		if($.trim($("#email").val()) == ""){
+			alert("등록된 이메일이 없습니다.");
+// 			$("#email").focus();
+			return;
+		}
+		$.post(
+				"./findpwdchk"
 				,{
 					email:$("#email").val(),
-					manager_email:$("#manager_email").val()
 				}
 				,function(data,status){
 					if(status == "success"){
 						if(data > 0){
-							alert("버튼을 클릭해 주세요");
+							alert("해당 이메일로 임시비밀번호를 발송했습니다.");
 							location.href="/creator/main";
 						} else if(data == 0){
 							alert("존재하지 않는 이메일 입니다.");
@@ -79,120 +107,8 @@ $(document).ready(function(){
 	        TOP BAR CONTENT & NOTIFICATIONS
 	        *********************************************************************************************************************************************************** -->
 	    <!--header start-->
-	    <header class="header black-bg">
-			<!--logo start-->
-			<a href="./main" class="logo"><img id="logoImage" alt="로고" src="${pageContext.request.contextPath}/resources/img/ner.jpg" width="200px" height="30px"></a>
-			<!--logo end-->
-			<div class="nav notify-row top-menu" id="top_menu">
-				<!--  notification start -->
-				<ul class="nav pull-right top-menu">
-					<!-- settings start -->
-					
-					<!-- 회사소개 start -->
-					<li><a href="./loan_guide">회사소개</a></li>
-					<!-- 회사소개 end -->
-					
-					<!-- 대출 start -->
-					<li class="dropdown">
-						<a data-toggle="dropdown" class="dropdown-toggle" href="#">
-							대출
-						</a>
-						<ul class="dropdown-menu extended tasks-bar">
-							<div class="notify-arrow notify-arrow-green"></div>
-							<li>
-								<a href="./loan_guide">대출안내</a>
-							</li>
-							<li>
-								<a href="./loan/getloan">대출하기</a>
-							</li>
-						</ul>
-					</li>
-	          		<!-- 대출 end -->
-	          
-	          		<!-- inbox dropdown start-->
-	         		<li class="dropdown">
-						<a data-toggle="dropdown" class="dropdown-toggle" href="#">
-							투자
-						</a>
-						<ul class="dropdown-menu extended tasks-bar">
-							<div class="notify-arrow notify-arrow-black"></div>
-							<li>
-								<a href="./invest_guide">투자안내</a>
-							</li>
-							<li>
-								<a href="./invest_list">투자하기</a>
-							</li>
-							<li>
-								<a href="./invest_finish">완료된투자</a>
-							</li>
-						</ul>
-					</li>
-	          		<!-- 투자 end -->
-	          
-	          
-					<!-- 고객지원 start-->
-					<li id="header_notification_bar" class="dropdown">
-						<a data-toggle="dropdown" class="dropdown-toggle" href="#">
-							고객지원
-						</a>
-						<ul class="dropdown-menu extended notification">
-							<div class="notify-arrow"></div>
-							<li>
-								<a href="./faq">FAQ</a>
-							</li>
-							<li>
-								<a href="./support">이용약관</a>
-							</li>
-							<li>
-								<a href="./policy">개인정보</a>
-							</li>
-							<li>
-								<a href="./inquiry">1:1문의</a>
-							</li>
-						</ul>
-					</li>
-					<!-- 고객지원 end -->
-					
-					<!-- 마이페이지 start-->
-					<li id="header_notification_bar" class="dropdown">
-						<a data-toggle="dropdown" class="dropdown-toggle" href="#">
-							마이페이지
-						</a>
-						<ul class="dropdown-menu extended notification">
-							<div class="notify-arrow notify-arrow-yellow"></div>
-							<li>
-								<a href="./my_dashboard">대시보드</a>
-							</li>
-							<li>
-								<a href="./my_invest_list">투자내역</a>
-							</li>
-							<li>
-								<a href="./my_loan_list">대출내역</a>
-							</li>
-							<li>
-								<a href="./my_depo_mgn">예치금관리</a>
-							</li>
-							<li>
-								<a href="./my_modify">회원정보수정</a>
-							</li>
-						</ul>
-					</li>
-					<!-- 마이페이지 end -->
-					
-					<!-- 로그아웃 start -->
-					<li><a href="./loan_guide">로그아웃</a></li>
-					<!-- 로그아웃 end -->
-				</ul>
-				<!--  notification end -->
-			</div>
-			<div class="top-menu">
-				<ul class="nav pull-right top-menu">
-					<li><a class="logout" href="/creator/join">회원가입</a></li>
-				</ul>
-			</div>
-	    </header>
-	    <!--header end-->
-	   
+	    
+	     <%@ include file="../header.jsp" %>
 	   
 	    <!-- **********************************************************************************************************************************************************
 	        MAIN CONTENT
@@ -215,14 +131,19 @@ $(document).ready(function(){
 	<h4 class="title">임시 비밀번호를 보내드립니다.</h4>
 	<div class="form-group">
 		<div class="col-sm-10">
-			<input type="email" class="form-control" id="email" placeholder="*이메일">
+			<input type="text" class="form-control" id="email" placeholder="*이메일">
 		</div>
 	</div>
-	<div class="form-send">
-		<div class="col-sm-10 col-lg-offset-3">
-			<input type="text" class="btn btn-theme" id="findpwd_btn" value="비밀번호 초기화" />
+	<div class="form-group">
+		<div class="col-sm-10 col-lg-offset-3" id="findpwd_btn">
+			<button type="submit" class="btn btn-theme" >비밀번호 초기화</button>
 		</div>
 	</div>	
+<!-- 	<div class="form-send"> -->
+<!-- 		<div class="col-sm-10 col-lg-offset-3"> -->
+<!-- 			<input type="text" class="btn btn-theme" id="findpwd_btn" value="비밀번호 초기화" /> -->
+<!-- 		</div> -->
+<!-- 	</div>		 -->
 </div>
 				
 		<!-- ===================================================================== body-->		

@@ -15,6 +15,6 @@ public class HomeController {
 	public String home() {
 		logger.info("home");
 				
-		return "home";
+		return "main";
 	}
 }

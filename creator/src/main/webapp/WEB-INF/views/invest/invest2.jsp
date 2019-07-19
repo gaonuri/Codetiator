@@ -35,39 +35,10 @@
 	======================================================= -->
 	<script type="text/javascript">
 	$(document).ready(function() {
-		var temp = 0;
-		
-		$("#amtPlus100_771").click(function() {
-			temp = parseInt($("#inputAmt771").val());
-			temp += 100;
-			$("#inputAmt771").val(temp);
-		});//amtPlus100_771
-		$("#amtPlus50_771").click(function() {
-			temp = parseInt($("#inputAmt771").val());
-			temp += 50;
-			$("#inputAmt771").val(temp);
-		});//amtPlus50_771
-		$("#amtPlus10_771").click(function() {
-			temp = parseInt($("#inputAmt771").val());
-			temp += 10;
-			$("#inputAmt771").val(temp);
-		});//amtPlus10_771
-		$("#amtPlus5_771").click(function() {
-			temp = parseInt($("#inputAmt771").val());
-			temp += 5;
-			$("#inputAmt771").val(temp);
-		});//amtPlus5_771
-		$("#amtPlus1_771").click(function() {
-			temp = parseInt($("#inputAmt771").val());
-			temp += 1;
-			$("#inputAmt771").val(temp);
-		});//amtPlus1_771
-		$("#amtPlusAll_771").click(function() {
-			$("#inputAmt771").val() = $("#inputDeposit771").val();
-		});//amtPlusAll_771
-		$("#amtReset_771").click(function() {
-			$("#inputAmt771").val("0");
-		});//amtReset_771
+		alert();
+		$("#investBtn").click(function() {
+			location.href="${pageContext.request.contextPath}/invest";
+		});//investBtn
 	});//ready
 	</script>
 </head>
@@ -329,6 +300,15 @@
 															<div class="row">
 																<div class="col-sm-5 col-md-5">
 																	<div class="row" id="popoverPlaceL">
+																		<div class="col-xs-2 col-sm-2 col-md-2 col">
+																			<div class="umbrellar" data-placement="bottom" tabindex="0" role="button" data-container="#popoverPlaceL" data-toggle="popover" data-trigger="hover" data-content="부실채권 발생시 투자자를 보호하기 위해 자본금과 투자자(선택)와 차입자로부터 일부 금액을 수취하여 대부 계좌와는 별도로 독립된 계좌에 적립하는 충당금 제도입니다." data-original-title="" title="">
+																				<img id="umbrellarOffImg" src="/images/invest/img_umbrellar_off_small.png" width="25px;" height="30px;">
+																				<img id="umbrellarOnImg" src="/images/invest/img_umbrellar_on_small.png" width="25px;" height="30px;" style="display: none;">
+																				<div>
+																					Umbrellar
+																				</div>
+																			</div>
+																		</div>
 																		<div class="col-xs-10 col-sm-10 col-md-10 col">
 																			<div class="name">상품명</div>
 																		</div>
@@ -351,146 +331,174 @@
 																</div>
 															</div>
 														</div>
+															
 														<div id="goodListBody">
-															<div class="goodlist-item">
-																<div class="row" id="popoverPlaceS">
-																	<div class="col-xs-9 col-sm-5 col-md-5 col">
-																		<div class="row">
-																			<div class="col-xs-10 col-sm-10 col-md-10 col">
-																				<div class="name" id="loanNm771">[부동산] 경기도 파주시 문산읍 토지</div>
-																			</div>
-																		</div>
-																	</div>
-																	<div class="col-xs-3 col-sm-1 col-md-1 col">
-																		<div class="grade">
-																			<span id="grade771">MA1</span>
-																		</div>
-																	</div>
-																	<div class="clearfix visible-xs-block"></div>
-																	<div class="col-xs-3 col-sm-1 col-md-1 col">
-																		<div class="rate">
-																			<span id="rate771">13.0</span><font size="1">%</font>
-																		</div>
-																	</div>
-																	<div class="col-xs-3 col-sm-1 col-md-1 col">
-																		<div class="period">
-																			<span id="period771">9</span><font size="1">개월</font>
-																		</div>
-																	</div>
-																	<div class="col-xs-3 col-sm-2 col-md-2 col">
-																		<div class="amt">
-																			<span id="investOkAmt771">11828</span><font size="1">만원</font>
-																		</div>
-																	</div>
-																	<div class="col-xs-3 col-sm-2 col-md-2 col">
-																		<div class="amt">
-																			<span name="lmtAmt" id="lmtAmt771" class="font-purple">0</span><font size="1">만원</font>
-																			 <span class="glyphicon glyphicon-question-sign hover" style="font-size: 12px;" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="auto left" data-html="true" data-content="
-																					총 투자한도 : 
-																					
-																					
-																						10,000,000원
-																					
-																					<br>
-																					동일차입자 한도 : 
-																					
-																					
-																						5,000,000원
-																					
-																					<br>
-																					투자잔여금액 : 118,280,000원<br>
-																					현재 기본예치금 : 0원<br>
-																				" data-original-title="" title="">
-																			</span>
-																		</div>
-																	</div>
-																</div>
-																<hr>
-																<div class="row">
-																	<div class="col-xs-6 col-sm-8 col-md-8 col-lg-3 col">
-																		<div class="inputAmtTitle">투자금액</div>
-																	</div>
-																	<div class="col-xs-6 col-sm-4 col-md-4 col-lg-3 col">
-																		<div class="form-group has-feedback inputForm" id="inputAmtDiv">
-																			<input type="text" class="form-control text-right" id="inputAmt771" name="inputAmt" aria-describedby="inputAmtStatus" value="0">
-																			<span class="form-control-feedback" aria-hidden="true">만원</span>
-																			<span id="inputAmtStatus" class="sr-only">(success)</span>
-																			<input type="hidden" id="reqAmt771" name="reqAmt" value="0">
-																		</div>
-																	</div>
-																	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 col">
-																		<form class="form-inline amtForm">
-																			<div class="form-group">
-																				<span name="amtPlus100" id="amtPlus100_771">+100만</span>
-																				<span name="amtPlus50" id="amtPlus50_771">+50만</span>
-																				<span name="amtPlus10" id="amtPlus10_771">+10만</span>
-																				<span name="amtPlus5" id="amtPlus5_771">+5만</span>
-																				<span name="amtPlus1" id="amtPlus1_771">+1만</span>
-																				<span name="amtPlusAll" id="amtPlusAll_771">전액</span>
-																				<span name="amtReset" id="amtReset_771" class="gray">정정</span>
-																			</div>
-																		</form>
-																	</div>
-																</div>
+															
 																
-																<div class="row" id="depositDiv">
-																	<div class="col-xs-6 col-sm-8 col-md-8 col-lg-3 col">
-																		<div class="inputDepositTitle">예치금 사용</div>
-																	</div>
-																	<div class="col-xs-6 col-sm-4 col-md-4 col-lg-3 col">
-																		<div class="form-group has-feedback inputForm" id="inputDepositDiv">
-																			<input type="text" class="form-control text-right" id="inputDeposit771" name="inputDeposit" aria-describedby="inputDepositStatus" value="0" readonly="readonly">
-																			<span class="form-control-feedback" aria-hidden="true">원</span>
-																			<span id="inputDepositStatus" class="sr-only">(success)</span>
-																			<input type="hidden" id="reqDeposit771" name="reqDeposit" value="0">
-																		</div>
-																	</div>
-																	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-2 col">
-																	</div>
-																	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-4 col">
-																		<div class="inputDepositText">
-																			투자 가능 예치금 : <span class="font-purple" name="availDeposit" id="availDeposit771&quot;">0</span><font size="1">원</font>
-																			<div id="brrwrLmtGuideDiv" class="display-none">
-																				(동일차입자 상품에 투자하신 적이 있습니다.)
+																	
+																		<div class="goodlist-item">
+																			<div class="row" id="popoverPlaceS">
+																				<div class="col-xs-9 col-sm-5 col-md-5 col">
+																					<div class="row">
+																						<div class="col-xs-2 col-sm-2 col-md-2 col" style="padding: 0px;">
+																							<div class="item-title umbrellar">
+																								<div data-placement="bottom" tabindex="0" role="button" data-container="#popoverPlaceS" data-toggle="popover" data-trigger="hover" data-content="부실채권 발생시 투자자를 보호하기 위해 자본금과 투자자(선택)와 차입자로부터 일부 금액을 수취하여 대부 계좌와는 별도로 독립된 계좌에 적립하는 충당금 제도입니다." data-original-title="" title="">
+																									<div>
+																										Umbrellar
+																									</div>
+																								</div>
+																							</div>
+																							
+																							
+																								<input type="hidden" class="umbrellarChk" name="umbrellarChk" id="umbrellarChk_771">
+																							
+																						</div>
+																						<div class="col-xs-10 col-sm-10 col-md-10 col">
+																							<div class="id" name="loanGdId" id="loanGdId771">04-19-121</div>
+																							<div class="name" id="loanNm771">[부동산] 경기도 파주시 문산읍 토지</div>
+																						</div>
+																					</div>
+																				</div>
+																				<div class="col-xs-3 col-sm-1 col-md-1 col">
+																					<div class="item-title">등급</div>
+																					<div class="grade">
+																						<span id="grade771">MA1</span>
+																					</div>
+																				</div>
+																				<div class="clearfix visible-xs-block"></div>
+																				<div class="col-xs-3 col-sm-1 col-md-1 col">
+																					<div class="item-title">금리</div>
+																					<div class="rate">
+																						<span id="rate771">13.0</span><font size="1">%</font>
+																					</div>
+																				</div>
+																				<div class="col-xs-3 col-sm-1 col-md-1 col">
+																					<div class="item-title">기간</div>
+																					<div class="period">
+																						<span id="period771">9</span><font size="1">개월</font>
+																					</div>
+																				</div>
+																				<div class="col-xs-3 col-sm-2 col-md-2 col">
+																					<div class="item-title">잔여금액</div>
+																					<div class="amt">
+																						<span id="investOkAmt771">11828</span><font size="1">만원</font>
+																					</div>
+																				</div>
+																				<div class="col-xs-3 col-sm-2 col-md-2 col">
+																					<div class="item-title">투자한도</div>
+																					<div class="amt">
+																						<span name="lmtAmt" id="lmtAmt771" class="font-purple">0</span><font size="1">만원</font>
+																						 <span class="glyphicon glyphicon-question-sign hover" style="font-size: 12px;" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="auto left" data-html="true" data-content="
+																								총 투자한도 : 
+																								
+																								
+																									10,000,000원
+																								
+																								<br>
+																								동일차입자 한도 : 
+																								
+																								
+																									5,000,000원
+																								
+																								<br>
+																								투자잔여금액 : 118,280,000원<br>
+																								현재 기본예치금 : 0원<br>
+																							" data-original-title="" title="">
+																						</span>
+																					</div>
+																				</div>
 																			</div>
-																		</div>
-																	</div>
-																</div>
+																			<hr>
+																			<div class="row">
+																				<div class="col-xs-6 col-sm-8 col-md-8 col-lg-3 col">
+																					<div class="inputAmtTitle">투자금액</div>
+																				</div>
+																				<div class="col-xs-6 col-sm-4 col-md-4 col-lg-3 col">
+																					<div class="form-group has-feedback inputForm" id="inputAmtDiv">
+																						<input type="text" class="form-control text-right" id="inputAmt771" name="inputAmt" aria-describedby="inputAmtStatus" value="0">
+																						<span class="form-control-feedback" aria-hidden="true">만원</span>
+																						<span id="inputAmtStatus" class="sr-only">(success)</span>
+																						<input type="hidden" id="reqAmt771" name="reqAmt" value="0">
+																					</div>
+																				</div>
+																				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 col">
+																					<form class="form-inline amtForm">
+																						<div class="form-group">
+																							<span name="amtPlus100" id="amtPlus100_771">+100만</span>
+																							<span name="amtPlus50" id="amtPlus50_771">+50만</span>
+																							<span name="amtPlus10" id="amtPlus10_771">+10만</span>
+																							<span name="amtPlus5" id="amtPlus5_771">+5만</span>
+																							<span name="amtPlus1" id="amtPlus1_771">+1만</span>
+																							<span name="amtPlusAll" id="amtPlusAll_771">전액</span>
+																							<span name="amtReset" id="amtReset_771" class="gray">정정</span>
+																						</div>
+																					</form>
+																				</div>
+																			</div>
+																			
+																			<div class="row" id="depositDiv">
+																				<div class="col-xs-6 col-sm-8 col-md-8 col-lg-3 col">
+																					<div class="inputDepositTitle">예치금 사용</div>
+																				</div>
+																				<div class="col-xs-6 col-sm-4 col-md-4 col-lg-3 col">
+																					<div class="form-group has-feedback inputForm" id="inputDepositDiv">
+																						<input type="text" class="form-control text-right" id="inputDeposit771" name="inputDeposit" aria-describedby="inputDepositStatus" value="0" readonly="">
+																						<span class="form-control-feedback" aria-hidden="true">원</span>
+																						<span id="inputDepositStatus" class="sr-only">(success)</span>
+																						<input type="hidden" id="reqDeposit771" name="reqDeposit" value="0">
+																					</div>
+																				</div>
+																				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-2 col">
+																				</div>
+																				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-4 col">
+																					<div class="inputDepositText">
+																						투자 가능 예치금 : <span class="font-purple" name="availDeposit" id="availDeposit771&quot;">0</span><font size="1">원</font>
+																						<div id="brrwrLmtGuideDiv" class="display-none">
+																							(동일차입자 상품에 투자하신 적이 있습니다.)
+																						</div>
+																					</div>
+																				</div>
+																			</div>
+																			
+																			
+																			<div class="row display-none" id="autoDepositDiv" style="display: none;">
+																				<div class="col-xs-6 col-sm-8 col-md-8 col-lg-3 col">
+																					<div class="inputAutoDepositTitle">
+																						자동투자예치금을<br>기본예치금으로 이동
+																					</div>
+																				</div>
+																				<div class="col-xs-6 col-sm-4 col-md-4 col-lg-3 col">
+																					<div class="form-group has-feedback inputForm" id="inputAutoDepositDiv">
+																						<input type="text" class="form-control text-right" id="inputAutoDeposit771" name="inputAutoDeposit" aria-describedby="inputAutoDepositStatus">
+																						<span class="form-control-feedback" aria-hidden="true">원</span>
+																						<span id="inputAutoDepositStatus" class="sr-only">(success)</span>
+																					</div>
+																				</div>
+																				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-2 col">
+																					<form class="form-inline amtForm">
+																						<div class="form-group">
+																							<span name="autoDepositUse" id="autoDepositUse_771">이동</span>
+																							<span name="autoDepositUseReset" id="autoDepositUseReset_771">정정</span>
+																						</div>
+																					</form>
+																				</div>
+																				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-4 col">
+																					<div class="inputAutoDepositText">
+																						현재 자동투자예치금 <span class="glyphicon glyphicon-question-sign hover" style="font-size: 12px;" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="auto bottom" data-html="true" data-content="투자 신청에 사용하기 위해 자동투자예치금을 기본예치금으로 즉시 이동시킵니다." data-original-title="" title="">
+																								</span> : <span class="font-purple" name="availAutoDeposit" id="availAutoDeposit771">0</span><font size="1">원</font>
+																					</div>
+																				</div>
+																			</div>
+																			
+																		</div>	
+																		<input type="hidden" name="repayAmt" id="repayAmt771" value="164625000">
+																		<input type="hidden" name="loanAmt" id="loanAmt771" value="150000000">
+																		<input type="hidden" name="umbrellarRate" id="umbrellarRate771" value="0.0">
+																		<input type="hidden" name="umbrellarAplyYn" id="umbrellarAplyYn771" value="N">
+																		<input type="hidden" name="brrwrAmt" id="brrwrAmt771" value="5000000">
+																	
 																
-																<div class="row display-none" id="autoDepositDiv" style="display: none;">
-																	<div class="col-xs-6 col-sm-8 col-md-8 col-lg-3 col">
-																		<div class="inputAutoDepositTitle">
-																			자동투자예치금을<br>기본예치금으로 이동
-																		</div>
-																	</div>
-																	<div class="col-xs-6 col-sm-4 col-md-4 col-lg-3 col">
-																		<div class="form-group has-feedback inputForm" id="inputAutoDepositDiv">
-																			<input type="text" class="form-control text-right" id="inputAutoDeposit771" name="inputAutoDeposit" aria-describedby="inputAutoDepositStatus">
-																			<span class="form-control-feedback" aria-hidden="true">원</span>
-																			<span id="inputAutoDepositStatus" class="sr-only">(success)</span>
-																		</div>
-																	</div>
-																	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-2 col">
-																		<form class="form-inline amtForm">
-																			<div class="form-group">
-																				<span name="autoDepositUse" id="autoDepositUse_771">이동</span>
-																				<span name="autoDepositUseReset" id="autoDepositUseReset_771">정정</span>
-																			</div>
-																		</form>
-																	</div>
-																	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-4 col">
-																		<div class="inputAutoDepositText">
-																			현재 자동투자예치금 <span class="glyphicon glyphicon-question-sign hover" style="font-size: 12px;" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="auto bottom" data-html="true" data-content="투자 신청에 사용하기 위해 자동투자예치금을 기본예치금으로 즉시 이동시킵니다." data-original-title="" title="">
-																					</span> : <span class="font-purple" name="availAutoDeposit" id="availAutoDeposit771">0</span><font size="1">원</font>
-																		</div>
-																	</div>
-																</div>
-															</div>	
-															<input type="hidden" name="repayAmt" id="repayAmt771" value="164625000">
-															<input type="hidden" name="loanAmt" id="loanAmt771" value="150000000">
-															<input type="hidden" name="umbrellarRate" id="umbrellarRate771" value="0.0">
-															<input type="hidden" name="umbrellarAplyYn" id="umbrellarAplyYn771" value="N">
-															<input type="hidden" name="brrwrAmt" id="brrwrAmt771" value="5000000">
+															
 														</div>
 														
 														<div class="title">
@@ -502,20 +510,59 @@
 															<thead>
 																<tr>
 																	<th scope="col">예치금 투자액</th>
+																	<th scope="col">포인트 투자액</th>
+																	<th scope="col">총 투자액</th>
 																	<th scope="col">이자(+)</th>
 																	<th scope="col">
 																		세금(-) <span class="glyphicon glyphicon-question-sign hover" style="font-size: 12px;" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="auto bottom" data-html="true" data-content="실제 회차별 상환 이자에 따른 세금은 원 단위로 절삭되기 때문에 표기된 값보다 적을 수 있습니다." data-original-title="" title="">
 																		</span>
 																	</th>
+																	<th scope="col">우산구입(-)</th>
 																	<th scope="col">수익금(+)</th>
 																</tr>
 															</thead>
 															<tbody>
 																<tr>
 																	<td><span id="investAmtL" class="">0</span><font size="1">원</font></td>
+																	<td><span id="investPointL" class="">0</span><font size="1">원</font></td>
+																	<td><span id="investSumL" class="font-purple">0</span><font size="1">원</font></td>
 																	<td><span id="intrstAmtL" class="font-blue">0</span><font size="1">원</font></td>
 																	<td><span id="taxAmtL" class="font-red">0</span><font size="1">원</font></td>
+																	<td><span id="umbrellarAmtL" class="font-red">0</span><font size="1">원</font></td>
 																	<td><span id="benefitAmtL" class="font-blue">0</span><font size="1">원</font></td>
+																</tr>
+															</tbody>
+														</table>
+														
+														<table class="table" id="summaryTableS">
+															<thead>
+																<tr>
+																	<th scope="col" colspan="4">예치금<div class="xd"></div> 투자액</th>
+																	<th scope="col" colspan="4">포인트<div class="xd"></div> 투자액</th>
+																	<th scope="col" colspan="4">총 투자액</th>
+																</tr>
+															</thead>
+															<tbody>
+																<tr>
+																	<td colspan="4"><span id="investAmtS" class="">0</span><font size="1">원</font></td>
+																	<td colspan="4"><span id="investPointS" class="">0</span><font size="1">원</font></td>
+																	<td colspan="4"><span id="investSumS" class="font-purple">0</span><font size="1">원</font></td>
+																</tr>
+															</tbody>
+															<thead>
+																<tr>
+																	<th scope="col" colspan="3">이자(+)</th>
+																	<th scope="col" colspan="3">세금(-)</th>
+																	<th scope="col" colspan="3">우산구입(-)</th>
+																	<th scope="col" colspan="3">수익금(+)</th>
+																</tr>
+															</thead>
+															<tbody>
+																<tr>
+																	<td colspan="3"><span id="intrstAmtS" class="font-blue">0</span><font size="1">원</font></td>
+																	<td colspan="3"><span id="taxAmtS" class="font-red">0</span><font size="1">원</font></td>
+																	<td colspan="3"><span id="umbrellarAmtS" class="font-red">0</span><font size="1">원</font></td>
+																	<td colspan="3"><span id="benefitAmtS" class="font-blue">0</span><font size="1">원</font></td>
 																</tr>
 															</tbody>
 														</table>
@@ -529,7 +576,7 @@
 															
 														</div>
 														 -->
-														<div>
+														<div class="guideTitle">
 															투자시 주의사항 안내
 														</div>
 														<div class="guide">
@@ -546,7 +593,7 @@
 														
 														<div class="agree">
 															<label class="ui-checkbox">
-																<input type="checkbox" id="agreeCheckbox" value="N" /><span>위 내용을 이해하였으며 이에 동의합니다.</span>
+																<input type="checkbox" id="agreeCheckbox" value="N"> <span>위 내용을 이해하였으며 이에 동의합니다.</span>
 															</label>
 														</div>
 													</div>
@@ -554,17 +601,24 @@
 					
 												<div class="bottomLine">
 													<a href="javascript:(void(0));" onclick="fn_openInvestWarning();" style="position: relative; bottom: 0px;" disabled="disabled">
-														<div style="margin-top: 30px;">
-															투자 신청<span></span>
-															<span>
+														<div class="mr-green" style="margin-top: 30px;">
+															투자 신청<span class="mr-cap"></span>
+															<span class="mr-angle">
 																<div><p style="margin-top:0px;text-align: right;">&gt;</p></div>
 															</span>
 														</div>
 													</a>
 												</div>
 												<div class="bottomLine">
-													<p>투자 신청시 <a href="" target="_blank">개인정보 처리방침</a> 및 
-													<a href="" target="_blank">투자자 이용약관</a>에 동의하게 됩니다.</p>
+													<p>투자 신청시 <a href="/info/pInfoTerm" target="_blank">개인정보 처리방침</a> 및 
+													<a href="/info/investorUseTerm" target="_blank">투자자 이용약관</a>에 동의하게 됩니다.</p>
+													<!-- 
+													<br>
+													<p>
+														사용하시는 브라우저가 인터넷 익스플로러 계열인 경우 인터넷 옵션 설정에 따라 투자신청 팝업 실행이 차단될 수 있습니다.
+														<a href="https://midrate.co.kr/doc/MIDRATE_IE_setting_20170822.pdf" target="_blank"><strong>▶ IE 설정가이드 ◀</strong></a>를 참고하여 브라우저 설정을 변경해주시기 바랍니다.
+													</p>
+													 -->
 												</div>
 											</div>
 											<div class="box-footer"></div>
