@@ -10,7 +10,7 @@
 	<meta name="author" content="Dashboard">
 	<meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
 	<title>Dashio - Bootstrap Admin Template</title>
-	<script src="../resources/jquery/jquery-3.4.1.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/jquery/jquery-3.4.1.js"></script>
 	
 	<!-- Favicons -->
 	<link href="${pageContext.request.contextPath}/resources/bootstrap/img/favicon.png" rel="icon">
@@ -116,118 +116,228 @@
 					<!-- 고객지원 end -->
 					
 					<!-- 마이페이지 start-->
-					<li id="header_notification_bar" class="dropdown">
-						<a data-toggle="dropdown" class="dropdown-toggle" href="#">
-							마이페이지
-						</a>
-						<ul class="dropdown-menu extended notification">
-							<div class="notify-arrow notify-arrow-yellow"></div>
-							<li>
-								<a href="./my_dashboard">대시보드</a>
-							</li>
-							<li>
-								<a href="./my_invest_list">투자내역</a>
-							</li>
-							<li>
-								<a href="./my_loan_list">대출내역</a>
-							</li>
-							<li>
-								<a href="./my_depo_mgn">예치금관리</a>
-							</li>
-							<li>
-								<a href="./my_modify">회원정보수정</a>
-							</li>
-						</ul>
 					<!-- 마이페이지 end -->
 					
 					<!-- 로그아웃 start -->
-					<li><a class="loginzz" href="./login">로그인</a></li>
+					
+					<c:choose>
+						<c:when test="${Login_ss != null && Login_ss.user_num != '' || Login_sss != null && Login_sss.busi_num != ''}">
+							<li id="header_notification_bar" class="dropdown">
+								<a data-toggle="dropdown" class="dropdown-toggle" href="#">
+									${Login_ss.user_name}${Login_sss.manager_name}님
+								</a>
+								<ul class="dropdown-menu extended notification">
+									<div class="notify-arrow notify-arrow-yellow"></div>
+									<li>
+										<a href="./my_dashboard">대시보드</a>
+									</li>
+									<li>
+										<a href="./my_invest_list">투자내역</a>
+									</li>
+									<li>
+										<a href="./my_loan_list">대출내역</a>
+									</li>
+									<li>
+										<a href="./my_depo_mgn">예치금관리</a>
+									</li>
+									<li>
+										<a href="./my_modify">회원정보수정</a>
+									</li>
+								</ul>
+							</li>						
+						</c:when>
+						<c:otherwise>
+							<li><a class="loginss" href="./login">로그인</a></li>
+						</c:otherwise>
+					</c:choose>
+					
+					<c:choose>
+						<c:when test="${Login_ss != null && Login_ss.user_num != '' || Login_sss != null && Login_sss.busi_num != ''}">
+							<li>
+								<a href="./logout">로그아웃</a>
+							</li>
+						</c:when>
+						<c:otherwise>
+							<li><a class="loginss" href="./join">회원가입</a></li>
+						</c:otherwise>
+					</c:choose>
+				
 					<!-- 로그아웃 end -->
 				</ul>
 				<!--  notification end -->
 			</div>
 			<div class="top-menu">
-				<ul class="nav pull-right top-menu">
-					<li><a class="logout" href="/creator/join">회원가입</a></li>
-				</ul>
 			</div>
 	    </header>
 	    <!--header end-->
-	   
-	   
+
+	   <!--sidebar start-->
+	    <aside>
+	      <div id="sidebar" class="nav-collapse">
+	        <!-- sidebar menu start-->
+	        <ul class="sidebar-menu" id="nav-accordion">
+	          <li class="mt">
+	            <a href="creator/my_desktop">
+	              <i class="fa fa-dashboard"></i>
+	              <span>대시 보드</span>
+	              </a>
+	          </li>
+	          <li class="mt">
+	            <a href="/creator/my_invest_list">
+	              <i class="fa fa-ticket"></i>
+	              <span>투자 내역</span>
+	              </a>
+	          </li>
+	          <li class="mt">
+	            <a href="/creator/my_loan_list">
+	              <i class="fa fa-ticket"></i>
+	              <span>대출 내역</span>
+	              </a>
+	          </li>
+	          <li class="mt">
+	            <a href="/creator/my_depo_mgn">
+	              <i class="fa fa-money"></i>
+	              <span>예치금 관리</span>
+	              </a>
+	          </li>
+	          <li class="mt">
+	            <a href="/creator/my_modify">
+	              <i class="fa fa-gear"></i>
+	              <span>기본 정보 수정</span>
+	              </a>
+	          </li>
+	        </ul>
+	        <!-- sidebar menu end-->
+	      </div>
+	    </aside>
+	    <!--sidebar end-->					
 	    <!-- **********************************************************************************************************************************************************
 	        MAIN CONTENT
 	        *********************************************************************************************************************************************************** -->
 		<!--main content start-->
-		<section id="main-content">
-		<section class="wrapper">
-			<div class="row">
-			 	<div class="col-lg-1"></div>
-					 <div class="card" style="width:200px">
-			  			<div class="card-body">
-						    <h2 class="card-title">홍길동</h2><h5>님</h5>
-						   	 <div class="card-body"></div>
-						    <a href="#" class="btn btn-primary">나의 예치금</a>
-						 </div>
-					</div>
-				<div class="col-lg-2"></div>
-					<div class="card" style="width:500px">
-			  			<div class="card-body">
-						<a href="#" class="btn btn-primary">나의 투자</a>
-						<a href="#" class="btn btn-primary">나의 자산</a>
-					 </div>
-			</div>
-			</section>
-			<!-- /wrapper -->
-			
-				 <!--sidebar start-->
-    <aside>
-    
-      <div id="sidebar" class="nav-collapse">
-        <!-- sidebar menu start-->
-        <ul class="sidebar-menu" id="nav-accordion">
-          <p class="centered"><a href="profile.html"><img src="img/ui-sam.jpg" class="img-circle" width="80"></a></p>
-          <h5 class="centered">Sam Soffes</h5>
-          <li class="mt">
-            <a href="creator/my_desktop">
-              <i class="fa fa-dashboard"></i>
-              <span>대시 보드</span>
-              </a>
-          </li>
-          <li class="mt">
-            <a href="/creator/my_invest_list">
-              <i class="fa fa-ticket"></i>
-              <span>투자 내역</span>
-              </a>
-          </li>
-          <li class="mt">
-            <a href="/creator/my_loan_list">
-              <i class="fa fa-ticket"></i>
-              <span>대출 내역</span>
-              </a>
-          </li>
-          <li class="mt">
-            <a href="/creator/my_depo_mgn">
-              <i class="fa fa-money"></i>
-              <span>예치금 관리</span>
-              </a>
-          </li>
-          <li class="mt">
-            <a href="/creator/my_modify">
-              <i class="fa fa-gear"></i>
-              <span>기본 정보 수정</span>
-              </a>
-          </li>
-        </ul>
-        <!-- sidebar menu end-->
-      </div>
-    </aside>
-    <!--sidebar end-->
-    
-	    </section>
-	    <!-- /MAIN CONTENT -->
-	    <!--main content end-->
-		
+    <section id="main-content">
+      <section class="wrapper">
+        <!-- BASIC FORM ELELEMNTS -->
+
+          <div class="col-lg-6 col-md-6 col-sm-6">
+			  <div class="card">
+            	 <div class="card-body">
+            	 <button id="btn_invest" type="button" class="btn btn-default">나의 투자</button>
+            	 <!-- row -->
+			        
+			            </div>
+			            <!-- /content-panel -->
+			          </div>
+			          <!-- /col-md-12 -->
+			        </div>
+			        <!-- /row -->
+            	 <a href="#" class="btn btn-primary">나의 자산</a>
+            	 <div class="row">
+													<div class="col-md-6 rightLine">
+														<div class="title">
+															<font class="font-purple">
+																●
+															</font> 자산 요약
+														</div>
+														<div class="row height statsText">
+															<div class="col-xs-12 col-sm-12 col-md-12">
+																<div class="row">
+																	<div class="col-xs-7 col-sm-7 col-md-7">
+																		총 예치금&nbsp;&nbsp;
+																		<span class="glyphicon glyphicon-question-sign hover" style="font-size: 12px;" tabindex="0" data-toggle="tooltip" data-placement="auto" data-trigger="hover" title="" data-original-title="=기본 예치금 +자동투자 예치금"></span>
+																	</div>
+																	<div class="col-xs-5 col-sm-5 col-md-5 text-right">
+																		0 원
+																	</div>
+																</div>
+																<div class="row" style="margin-top: 5px;">
+																	<div class="col-xs-7 col-sm-7 col-md-7">
+																		상환 예정 원금&nbsp;&nbsp;
+																		<span class="glyphicon glyphicon-question-sign hover" style="font-size: 12px;" tabindex="0" data-toggle="tooltip" data-placement="auto" data-trigger="hover" title="" data-original-title="부실없이 정상 상환을 가정한 예상 원금"></span>
+																	</div>
+																	<div class="col-xs-5 col-sm-5 col-md-5 text-right">
+																		<span name="REST_PRNCPL_DSTRBTN_AMT">0</span> 원
+																	</div>
+																</div>
+																<div class="row" style="margin-top: 5px;">
+																	<div class="col-xs-7 col-sm-7 col-md-7">
+																		투자 대기 금액&nbsp;&nbsp;
+																		<span class="glyphicon glyphicon-question-sign hover" style="font-size: 12px;" tabindex="0" data-toggle="tooltip" data-placement="auto" data-trigger="hover" title="" data-original-title="투자금액이 차입자에게 전달되기 전 시점에서의 금액 "></span>
+																	</div>
+																	<div class="col-xs-5 col-sm-5 col-md-5 text-right">
+																		<span name="INVEST_REQ_AMT">0</span> 원
+																	</div>
+																</div>
+																
+																<hr>
+																
+																<div class="row">
+																	<div class="col-xs-7 col-sm-7 col-md-7">
+																		총 자산
+																	</div>
+																	<div class="col-xs-5 col-sm-5 col-md-5 text-right">
+																		<span class="font-purple"><strong>
+																			<span name="TOTAL_ASSET_AMT">0</span> <font size="2">원</font>
+																		</strong></span>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+													
+													<div class="col-md-6">
+														<div class="title">
+															<font class="font-purple">
+																●
+															</font> 예치금 요약
+														</div>
+														<div class="row height statsText">
+															<div class="col-xs-12 col-sm-12 col-md-12">
+																<div class="row">
+																	<div class="col-xs-6 col-sm-6 col-md-6">
+																		기본 예치금
+																	</div>
+																	<div class="col-xs-6 col-sm-6 col-md-6 text-right">
+																		0 원
+																	</div>
+																</div>
+																<div class="row" style="margin-top: 30px;">
+																	<div class="col-xs-6 col-sm-6 col-md-6">
+																		자동투자 예치금
+																	</div>
+																	<div class="col-xs-6 col-sm-6 col-md-6 text-right">
+																		0 원
+																	</div>
+																</div>
+																
+																<hr>
+																
+																<div class="row">
+																	<div class="col-xs-6 col-sm-6 col-md-6">
+																		총 예치금
+																	</div>
+																	<div class="col-xs-6 col-sm-6 col-md-6 text-right">
+																		<span class="font-purple"><strong>
+																			0 <font size="2">원</font>
+																		</strong></span>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+													
+												</div>
+                 </div>
+              </div>
+          </div>
+        <!-- /row -->
+
+
+        <!-- /row -->
+      </section>
+      <!-- /wrapper -->
+    </section>
+    <!-- /MAIN CONTENT -->
 		<!--footer start-->
 		<footer class="site-footer">
 			<div class="container">
@@ -291,68 +401,6 @@
 	<!--script for this page-->
 	<script src="${pageContext.request.contextPath}/resources/bootstrap/lib/sparkline-chart.js"></script>
 	<script src="${pageContext.request.contextPath}/resources/bootstrap/lib/zabuto_calendar.js"></script>
-	<script type="text/javascript">
-    $(document).ready(function() {
-      var unique_id = $.gritter.add({
-        // (string | mandatory) the heading of the notification
-        title: 'Welcome to Dashio!',
-        // (string | mandatory) the text inside the notification
-        text: 'Hover me to enable the Close Button. You can hide the left sidebar clicking on the button next to the logo. Developed by <a href="http://alvarez.is" target="_blank" style="color:#4ECDC4">Alvarez.is</a>.',
-        // (string | optional) the image to display on the left
-        image: '${pageContext.request.contextPath}/resources/bootstrap/img/ui-sam.jpg',
-        // (bool | optional) if you want it to fade out on its own or just sit there
-        sticky: false,
-        // (int | optional) the time you want it to be alive for before fading out
-        time: 8000,
-        // (string | optional) the class name you want to apply to that specific message
-        class_name: 'my-sticky-class'
-      });
-
-      return false;
-    });
-	</script>
-	<script type="application/javascript">
-    $(document).ready(function() {
-      $("#date-popover").popover({
-        html: true,
-        trigger: "manual"
-      });
-      $("#date-popover").hide();
-      $("#date-popover").click(function(e) {
-        $(this).hide();
-      });
-
-      $("#my-calendar").zabuto_calendar({
-        action: function() {
-          return myDateFunction(this.id, false);
-        },
-        action_nav: function() {
-          return myNavFunction(this.id);
-        },
-        ajax: {
-          url: "show_data.php?action=1",
-          modal: true
-        },
-        legend: [{
-            type: "text",
-            label: "Special event",
-            badge: "00"
-          },
-          {
-            type: "block",
-            label: "Regular event",
-          }
-        ]
-      });
-    });
-
-    function myNavFunction(id) {
-      $("#date-popover").hide();
-      var nav = $("#" + id).data("navigation");
-      var to = $("#" + id).data("to");
-      console.log('nav ' + nav + ' to: ' + to.month + '/' + to.year);
-    }
-	</script>
 </body>
 
 </html>

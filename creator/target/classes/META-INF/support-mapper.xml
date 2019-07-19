@@ -15,6 +15,16 @@
 				, now())
 	</insert>
 	
+	<insert id="supportInsert2"
+			parameterType="kr.co.creator.vo.NoticeVO">
+			insert into notice_operation( title
+							, notice_contents
+							, notice_date)
+		values( #{title}
+				, #{notice_contents}
+				, now())
+	</insert>
+	
 	<select id="supportList"
 			resultType="kr.co.creator.vo.NoticeVO">
 		select notice_num
@@ -38,22 +48,15 @@
 		select notice_num
 			, title
 			, notice_date
-			FROM notice
+			FROM notice_operation
 			order by notice_date desc
 	</select>
 	
-<!-- 	<select id="totalDetail" -->
-<!-- 			parameterType="kr.co.koitt.vo.NoticeVO" -->
-<!-- 			resultType="kr.co.koitt.vo.NoticeVO"> -->
-<!-- 		select notice_num -->
-<!-- 			, title -->
-<!-- 			, to_char(n.write_date,'YYYY-MM-dd')notice_date -->
-
-<!-- 			, f.no file_no -->
-<!-- 			, f.file_path -->
-<!-- 		from notice n -->
-<!-- 		left outer join board1_file f -->
-<!--         on b.no = f.board1_no -->
-<!-- 		where b.no = #{no} -->
-<!-- 	</select> -->
+	<select id="totalDetail"
+			parameterType="kr.co.creator.vo.NoticeVO"
+			resultType="kr.co.creator.vo.NoticeVO">
+		select *
+			from notice 
+			where notice_num = #{notice_num}
+	</select>
 	</mapper>

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kr.co.creator.vo.NoticeVO;
+import kr.co.creator.vo.Notice_operationVO;
 
 @Service
 public class SupportService {
@@ -18,6 +19,12 @@ public class SupportService {
 		count = dao.supportInsert(vo);
 		return count;
 	}//noticeInsert
+	
+	public int supportInsert2(NoticeVO vo) {
+		int count = 0;
+		count = dao.supportInsert2(vo);
+		return count;
+	}
 
 	public List<NoticeVO> supportList() {
 		List<NoticeVO> support = null;
@@ -37,16 +44,20 @@ public class SupportService {
 		return support;
 	}//supportList3
 
-//	public NoticeVO totalDetail(NoticeVO vo) {
-//		vo = dao.totalDetail(vo);
-//		if(vo != null && vo.getFile_path() != null
-//				&& !vo.getFile_path().equals("")) {
-//			vo.setFile_name(
-//				vo.getFile_path().substring(
-//					vo.getFile_path().lastIndexOf("\\")+1
-//				)
-//			);
-//		}//if
-//		return vo;
-//	}//totalDetail
+	public NoticeVO totalDetail(NoticeVO vo) {
+		vo = dao.totalDetail(vo);
+		return vo;
+	}//totalDetail
+
+	public NoticeVO newDetail(NoticeVO vo) {
+		vo = dao.newDetail(vo);
+		return vo;
+	}//newDetail
+
+	public NoticeVO operationDetail(NoticeVO vo) {
+		vo = dao.operationDetail(vo);
+		return vo;
+	}//operationDetail
+
+	
 }//class
