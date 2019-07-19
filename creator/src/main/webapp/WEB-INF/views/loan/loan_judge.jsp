@@ -123,6 +123,86 @@
     padding: 30px 0px;
     text-align: center;
 }
+.icn-container {
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    border-radius: 500px;
+    text-align: center;
+    margin: 10px 0;
+    font-weight: 600;
+    font-size: 13;
+    line-height: 100px;
+    color: #712594;
+    background-color: #fff;
+    -webkit-transition: all 0.6s ease-in-out;
+    transition: all 0.6s ease-in-out;
+}
+.icn-container-active {
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    border-radius: 500px;
+    text-align: center;
+    margin: 10px 0;
+    font-weight: 600;
+    font-size: 13;
+    line-height: 100px;
+    color: #fff;
+    background-color: #712594;
+    -webkit-transition: all 0.6s ease-in-out;
+    transition: all 0.6s ease-in-out;
+}
+.icn-main-container {
+    position: relative;
+}
+.loan_int_btn {
+    width: 200px;
+    height: 36px;
+    outline: 0;
+    margin-top: 40px;
+    margin-bottom: 50px;
+    padding: 0px;
+}
+.mr-green {
+    text-align: center;
+    font-weight: 600;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    border: 2px solid #01C351;
+    line-height: 30px;
+    font-size: 14px;
+}
+.botn {
+	margin-bottom: 0px;
+	color: #fff;
+	margin: 0;
+    padding: 0;
+    vertical-align: middle;
+    border: none
+}
+.mr-cap {
+    color: #fff;
+    background-color: #02863A;
+    width: 20px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    float: right;
+    height: 100%;
+}
+.mr-angle {
+    margin-right: -10px;
+    width: 20px;
+    text-align: right;
+    float: right;
+    transform: skew(-30deg);
+    -webkit-transform: skew(-30deg);
+    -ms-transform: skew(-30deg);
+    height: 100%;
+    color: #fff;
+    background-color: #02863A;
+}
 </style>
 </head>
 <body>
@@ -293,20 +373,31 @@
 								</div>
 								<div class="line"></div>
 							</div>
-            <div class="form-panel">
-
-             	 </div>
+            
+					 <div class="icn-main-container" style="margin-top: 200px;">
+                  		<span class="icn-container-active" style="margin-right: 220px;">인적사항 검토중</span>
+                  		<span class="icn-container" style="margin-right: 220px;">제출서류 검토중</span>
+                  		<span class="icn-container" style="font-size: 10;">최종적격 여부 검토중</span>
+               		 </div>
+               		 <button class="loan_int_btn mr-green" id="loanReqBtn2" style="width:200px; height: 36px;margin-left: 280px;margin-right: 248px;margin-top: 150px;">
+								돌아가기<span class="mr-cap"></span>
+								<span class="mr-angle">
+									<div>
+										<p class="botn">&gt;</p>
+									</div>
+								</span>
+					 </button>
+             
               </div>
               </div>
 						<div class="box-footer"></div>
 					</div>
-				</div>
+				</div>	
 			</div>
 		</div>
 	</section>
             </div>
 					</div>
-				</div>
 			</section>
 			<!-- /wrapper -->
 	    </section>
@@ -449,8 +540,6 @@
 	</script>
 
 <script type="text/javascript">
-var form = new FormData(document.getElementById("document_form"));
-
 
 $(document).ready(function() {
 	$("#doNextStepBtn").click(function() {
