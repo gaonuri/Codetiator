@@ -41,10 +41,10 @@ public class MypageController {
 	public String my_invest_list(Model model, ProjectVO proVO, InvestVO ivVO) {
 		logger.info("my_invest_list");
 		
-		proVO = MypageService.project_detail(proVO);
-		ivVO = MypageService.invest_detail(ivVO);
+		proVO = service.project_detail(proVO);
+		ivVO = service.invest_detail(ivVO);
 		model.addAttribute("projectVO", proVO);
-		model.addAttribute("projectVO", proVO);
+		model.addAttribute("investVO", ivVO);
 		return "mypage/my_invest_list";
 	}
 	

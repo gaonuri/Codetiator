@@ -17,16 +17,18 @@
 	
 	<select id="InvestList"
 			resultType="kr.co.creator.vo.InvestVO">
-		select  i.invest_date
+			select  i.invest_date
 			, i.project_num
 			, p.project_name
 			, p.rate
 			, i.invest_price
 			, p.refund
-		from invest_list i
-		left outer join project_list p
-        on i.project_num = p.project_num
-		where i.project_num = #{project_num}
+			, p.refund_deadline
+			, p.ach_state
+		from invest_list i, project_list p
+		where i.project_num = p.project_num 
+				and i.user_num = ${i.user_num}
+
 	</select>
 	
 </mapper>

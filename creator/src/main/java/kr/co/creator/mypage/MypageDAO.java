@@ -22,12 +22,12 @@ public class MypageDAO {
 		return list;
 	}//assetList
 
-	public static ProjectVO project_detail(ProjectVO proVO) {
+	public ProjectVO project_detail(ProjectVO proVO) {
 		proVO = sqlSession.selectOne("MypageMapper.InvestList", proVO);
 		return proVO;
 	}
 
-	public static InvestVO invest_detail(InvestVO ivVO) {
+	public InvestVO invest_detail(InvestVO ivVO) {
 		ivVO = sqlSession.selectOne("MypageMapper.InvestList", ivVO);
 		return ivVO;
 	}

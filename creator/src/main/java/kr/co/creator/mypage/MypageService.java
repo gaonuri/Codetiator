@@ -20,13 +20,13 @@ public class MypageService {
 		return list;
 	}//assetsList
 
-	public static ProjectVO project_detail(ProjectVO proVO) {
-		proVO = MypageDAO.project_detail(proVO);
+	public ProjectVO project_detail(ProjectVO proVO) {
+		proVO = dao.project_detail(proVO);
 		return proVO;
 	}//project_detail
 
-	public static InvestVO invest_detail(InvestVO ivVO) {
-		ivVO = MypageDAO.invest_detail(ivVO);
+	public InvestVO invest_detail(InvestVO ivVO) {
+		ivVO = dao.invest_detail(ivVO);
 		return ivVO;
 	}
 }//class

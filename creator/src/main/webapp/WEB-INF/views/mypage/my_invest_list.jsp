@@ -177,7 +177,7 @@
 	        <!-- sidebar menu start-->
 	        <ul class="sidebar-menu" id="nav-accordion">
 	          <li class="mt">
-	            <a href="creator/my_desktop">
+	            <a href="creator/my_dashboard">
 	              <i class="fa fa-dashboard"></i>
 	              <span>대시 보드</span>
 	              </a>
@@ -225,82 +225,57 @@
                 <hr>
                 <thead>
                   <tr>
-                    <th><i class="fa fa-bullhorn"></i> Company</th>
-                    <th class="hidden-phone"><i class="fa fa-question-circle"></i> Descrition</th>
-                    <th><i class="fa fa-bookmark"></i> Profit</th>
-                    <th><i class=" fa fa-edit"></i> Status</th>
+                    <th> 투자일자</th>
+                    <th> 프로젝트번호</th>
+                    <th> 프로젝트명</th>
+                    <th> 금리</th>
+                    <th> 투자금액</th>
+                    <th> 상환예정일</th>
+                    <th> 상환완료일</th>
+                    <th> 상품상태</th>
                     <th></th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
-                    <td>
-                      <a href="basic_table.html#">Company Ltd</a>
-                    </td>
-                    <td class="hidden-phone">Lorem Ipsum dolor</td>
-                    <td>12000.00$ </td>
-                    <td><span class="label label-info label-mini">Due</span></td>
-                    <td>
-                      <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button>
-                      <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
-                      <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
-                    </td>
+                    <td>${investVO.invest_date}</td> <!-- 투자일자 -->
+                    <td>${projectVO.project_num}</td> <!-- 프로젝트 번호 -->
+                    <td>${projectVO.project_name}</td> <!-- 프로젝트 명 -->
+                    <td>${projectVO.project_rate}</td> <!-- 금리 -->
+                    <td>${investVO.invest_price}</td> <!-- 투자금액 -->
+                    <td>${projectVO.project_refund}</td> <!-- 상환예정일 -->
+                    <td>${projectVO.project_refund_deadline}</td> <!-- 상환완료일 -->
+                    <td>${projectVO.project_ach_state}</td> <!-- 상품상태-->
                   </tr>
                   <tr>
-                    <td>
-                      <a href="basic_table.html#">
-                        Dashio co
-                        </a>
-                    </td>
-                    <td class="hidden-phone">Lorem Ipsum dolor</td>
-                    <td>17900.00$ </td>
-                    <td><span class="label label-warning label-mini">Due</span></td>
-                    <td>
-                      <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button>
-                      <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
-                      <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
-                    </td>
+                    <td>${investVO.invest_date}</td> <!-- 투자일자 -->
+                    <td>${projectVO.project_num}</td> <!-- 프로젝트 번호 -->
+                    <td>${projectVO.project_name}</td> <!-- 프로젝트 명 -->
+                    <td>${projectVO.project_rate}</td> <!-- 금리 -->
+                    <td>${investVO.invest_price}</td> <!-- 투자금액 -->
+                    <td>${projectVO.project_refund}</td> <!-- 상환예정일 -->
+                    <td>${projectVO.project_refund_deadline}</td> <!-- 상환완료일 -->
+                    <td>${projectVO.project_ach_state}</td> <!-- 상품상태-->
                   </tr>
                   <tr>
-                    <td>
-                      <a href="basic_table.html#">
-                        Another Co
-                        </a>
-                    </td>
-                    <td class="hidden-phone">Lorem Ipsum dolor</td>
-                    <td>14400.00$ </td>
-                    <td><span class="label label-success label-mini">Paid</span></td>
-                    <td>
-                      <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button>
-                      <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
-                      <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
-                    </td>
+                    <td>${investVO.invest_date}</td> <!-- 투자일자 -->
+                    <td>${projectVO.project_num}</td> <!-- 프로젝트 번호 -->
+                    <td>${projectVO.project_name}</td> <!-- 프로젝트 명 -->
+                    <td>${projectVO.project_rate}</td> <!-- 금리 -->
+                    <td>${investVO.invest_price}</td> <!-- 투자금액 -->
+                    <td>${projectVO.project_refund}</td> <!-- 상환예정일 -->
+                    <td>${projectVO.project_refund_deadline}</td> <!-- 상환완료일 -->
+                    <td>${projectVO.project_ach_state}</td> <!-- 상품상태-->
                   </tr>
                   <tr>
-                    <td>
-                      <a href="basic_table.html#">Dashio ext</a>
-                    </td>
-                    <td class="hidden-phone">Lorem Ipsum dolor</td>
-                    <td>22000.50$ </td>
-                    <td><span class="label label-success label-mini">Paid</span></td>
-                    <td>
-                      <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button>
-                      <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
-                      <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <a href="basic_table.html#">Total Ltd</a>
-                    </td>
-                    <td class="hidden-phone">Lorem Ipsum dolor</td>
-                    <td>12120.00$ </td>
-                    <td><span class="label label-warning label-mini">Due</span></td>
-                    <td>
-                      <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button>
-                      <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
-                      <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
-                    </td>
+                    <td>${investVO.invest_date}</td> <!-- 투자일자 -->
+                    <td>${projectVO.project_num}</td> <!-- 프로젝트 번호 -->
+                    <td>${projectVO.project_name}</td> <!-- 프로젝트 명 -->
+                    <td>${projectVO.project_rate}</td> <!-- 금리 -->
+                    <td>${investVO.invest_price}</td> <!-- 투자금액 -->
+                    <td>${projectVO.project_refund}</td> <!-- 상환예정일 -->
+                    <td>${projectVO.project_refund_deadline}</td> <!-- 상환완료일 -->
+                    <td>${projectVO.project_ach_state}</td> <!-- 상품상태-->
                   </tr>
                 </tbody>
               </table>
