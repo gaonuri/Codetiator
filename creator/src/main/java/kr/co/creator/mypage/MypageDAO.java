@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import kr.co.creator.vo.InvestVO;
+import kr.co.creator.vo.ProjectVO;
 
 @Repository
 public class MypageDAO {
@@ -14,9 +15,20 @@ public class MypageDAO {
 	@Autowired
 	SqlSession sqlSession;
 
-	public List<InvestVO> investList() {
+	public List<InvestVO> assetsList() {
 		List<InvestVO> list = null;
-//		list = sqlSession.selectList("");
+		list = sqlSession.selectList(
+							"MypageMapper.assetsList");
 		return list;
-	}//investlist
+	}//assetList
+
+	public ProjectVO project_detail(ProjectVO proVO) {
+		proVO = sqlSession.selectOne("MypageMapper.InvestList", proVO);
+		return proVO;
+	}
+
+	public InvestVO invest_detail(InvestVO ivVO) {
+		ivVO = sqlSession.selectOne("MypageMapper.InvestList", ivVO);
+		return ivVO;
+	} 
 }//class

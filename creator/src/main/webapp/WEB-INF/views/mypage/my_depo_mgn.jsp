@@ -11,7 +11,7 @@
   <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
   <title>Dashio - Bootstrap Admin Template</title>
 
-  <!-- Favicons -->
+  <!-- Favicons --> 
   <link href="${pageContext.request.contextPath}/resources/bootstrap/img/favicon.png" rel="icon">
   <link href="${pageContext.request.contextPath}/resources/bootstrap/img/apple-touch-icon.png" rel="apple-touch-icon">
 

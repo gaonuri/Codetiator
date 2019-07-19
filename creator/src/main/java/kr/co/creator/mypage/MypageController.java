@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import kr.co.creator.vo.InvestVO;
+import kr.co.creator.vo.ProjectVO;
 
 @Controller
 public class MypageController {
@@ -24,8 +25,8 @@ public class MypageController {
 	public String list(Model model) {
 		logger.info("my_dashboard");
 		List<InvestVO> list = null;
-		list = service.investList();
-		model.addAttribute("investList", list);
+		list = service.assetsList();
+		model.addAttribute("assetsList", list);
 		return "mypage/my_dashboard";
 	}
 	
@@ -37,9 +38,13 @@ public class MypageController {
 	}
 	
 	@RequestMapping(value = "/my_invest_list", method = RequestMethod.GET)
-	public String my_invest_list() {
+	public String my_invest_list(Model model, ProjectVO proVO, InvestVO ivVO) {
 		logger.info("my_invest_list");
-				
+		
+		proVO = service.project_detail(proVO);
+		ivVO = service.invest_detail(ivVO);
+		model.addAttribute("projectVO", proVO);
+		model.addAttribute("investVO", ivVO);
 		return "mypage/my_invest_list";
 	}
 	

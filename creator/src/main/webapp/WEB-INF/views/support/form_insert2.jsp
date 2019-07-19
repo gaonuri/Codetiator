@@ -16,7 +16,7 @@ $(document).ready(function() {
 			alert("제목을 확인하세요.");
 			return;
 		}
-		$.post("${pageContext.request.contextPath}/support/insert"
+		$.post("${pageContext.request.contextPath}/support/insert2"
 				,{
 					title:$("#title").val()
 					,notice_contents:$("#cnts").val()
@@ -42,7 +42,7 @@ $(document).ready(function() {
 <body>
 
 <br><br>
-<h1>새소식 등록</h1>
+<h1>운영 사항 등록</h1>
 <form id="form_write" enctype="multipart/form-data">
 	<br><br>제목 :
 	<input type="text" id="title" name="title"
