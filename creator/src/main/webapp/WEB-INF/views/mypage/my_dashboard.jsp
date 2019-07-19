@@ -10,7 +10,7 @@
 	<meta name="author" content="Dashboard">
 	<meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
 	<title>Dashio - Bootstrap Admin Template</title>
-	<script src="../resources/jquery/jquery-3.4.1.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/jquery/jquery-3.4.1.js"></script>
 	
 	<!-- Favicons -->
 	<link href="${pageContext.request.contextPath}/resources/bootstrap/img/favicon.png" rel="icon">
@@ -173,22 +173,6 @@
 
 	   <!--sidebar start-->
 	    <aside>
-	   	<div class="row mt">
-          <div class="col-lg-6 col-md-6 col-sm-6">
-             <div class="custom-box">
-				<h2>홍길동</h2>
-                <ul class="pricing">
-                  <li>150 Mb Storage</li>
-                  <li>1 Domain</li>
-                  <li>2 Sub Domains</li>
-                  <li>3 MySQL DBs</li>
-                  <li>2 Emails</li>
-                  <li>WordPress Installation</li>
-                  <li>24/7 Support</li>
-                </ul>
-                <a class="btn btn-theme" href="#">Order Now</a>
-              </div>
-          </div>
 	      <div id="sidebar" class="nav-collapse">
 	        <!-- sidebar menu start-->
 	        <ul class="sidebar-menu" id="nav-accordion">
@@ -240,61 +224,109 @@
             	 <div class="card-body">
             	 <button id="btn_invest" type="button" class="btn btn-default">나의 투자</button>
             	 <!-- row -->
-			        <div class="row mt">
-			          <div class="col-md-12">
-			            <div class="content-panel">
-			              <table class="table table-striped table-advance table-hover">
-			                <h4><i class="fa fa-angle-right"></i> Advanced Table</h4>
-			                <hr>
-			                <thead>
-			                  <tr>
-			                    <th><i class="fa fa-bullhorn"></i> Company</th>
-			                    <th class="hidden-phone"><i class="fa fa-question-circle"></i> Descrition</th>
-			                    <th><i class="fa fa-bookmark"></i> Profit</th>
-			                    <th><i class=" fa fa-edit"></i> Status</th>
-			                    <th></th>
-			                  </tr>
-			                </thead>
-			                <tbody>
-			                  <tr>
-			                    <td>
-			                      <a href="basic_table.html#">Company Ltd</a>
-			                    </td>
-			                    <td class="hidden-phone">Lorem Ipsum dolor</td>
-			                    <td>12000.00$ </td>
-			                    <td><span class="label label-info label-mini">Due</span></td>
-			                  </tr>
-			                </tbody>
-			                <c:forEach items="${investlist}" var="vo" varStatus="status">
-							<tbody>
-								<tr>
-									<td><a href="support_invest_list?notice_num=${vo.invest_num}">${vo.invest_num}</a></td>
-									<td>${vo.notice_date}</td>
-								</tr>
-							</tbody>
-						</c:forEach>
-			              </table>
+			        
 			            </div>
 			            <!-- /content-panel -->
 			          </div>
 			          <!-- /col-md-12 -->
 			        </div>
 			        <!-- /row -->
-            	 
-            	 
-            	 
-            	 
-            	 
-            	 
-            	 
-            	 
-            	 
-            	 
-            	 
-            	 
-            	 
-            	 
             	 <a href="#" class="btn btn-primary">나의 자산</a>
+            	 <div class="row">
+													<div class="col-md-6 rightLine">
+														<div class="title">
+															<font class="font-purple">
+																●
+															</font> 자산 요약
+														</div>
+														<div class="row height statsText">
+															<div class="col-xs-12 col-sm-12 col-md-12">
+																<div class="row">
+																	<div class="col-xs-7 col-sm-7 col-md-7">
+																		총 예치금&nbsp;&nbsp;
+																		<span class="glyphicon glyphicon-question-sign hover" style="font-size: 12px;" tabindex="0" data-toggle="tooltip" data-placement="auto" data-trigger="hover" title="" data-original-title="=기본 예치금 +자동투자 예치금"></span>
+																	</div>
+																	<div class="col-xs-5 col-sm-5 col-md-5 text-right">
+																		0 원
+																	</div>
+																</div>
+																<div class="row" style="margin-top: 5px;">
+																	<div class="col-xs-7 col-sm-7 col-md-7">
+																		상환 예정 원금&nbsp;&nbsp;
+																		<span class="glyphicon glyphicon-question-sign hover" style="font-size: 12px;" tabindex="0" data-toggle="tooltip" data-placement="auto" data-trigger="hover" title="" data-original-title="부실없이 정상 상환을 가정한 예상 원금"></span>
+																	</div>
+																	<div class="col-xs-5 col-sm-5 col-md-5 text-right">
+																		<span name="REST_PRNCPL_DSTRBTN_AMT">0</span> 원
+																	</div>
+																</div>
+																<div class="row" style="margin-top: 5px;">
+																	<div class="col-xs-7 col-sm-7 col-md-7">
+																		투자 대기 금액&nbsp;&nbsp;
+																		<span class="glyphicon glyphicon-question-sign hover" style="font-size: 12px;" tabindex="0" data-toggle="tooltip" data-placement="auto" data-trigger="hover" title="" data-original-title="투자금액이 차입자에게 전달되기 전 시점에서의 금액 "></span>
+																	</div>
+																	<div class="col-xs-5 col-sm-5 col-md-5 text-right">
+																		<span name="INVEST_REQ_AMT">0</span> 원
+																	</div>
+																</div>
+																
+																<hr>
+																
+																<div class="row">
+																	<div class="col-xs-7 col-sm-7 col-md-7">
+																		총 자산
+																	</div>
+																	<div class="col-xs-5 col-sm-5 col-md-5 text-right">
+																		<span class="font-purple"><strong>
+																			<span name="TOTAL_ASSET_AMT">0</span> <font size="2">원</font>
+																		</strong></span>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+													
+													<div class="col-md-6">
+														<div class="title">
+															<font class="font-purple">
+																●
+															</font> 예치금 요약
+														</div>
+														<div class="row height statsText">
+															<div class="col-xs-12 col-sm-12 col-md-12">
+																<div class="row">
+																	<div class="col-xs-6 col-sm-6 col-md-6">
+																		기본 예치금
+																	</div>
+																	<div class="col-xs-6 col-sm-6 col-md-6 text-right">
+																		0 원
+																	</div>
+																</div>
+																<div class="row" style="margin-top: 30px;">
+																	<div class="col-xs-6 col-sm-6 col-md-6">
+																		자동투자 예치금
+																	</div>
+																	<div class="col-xs-6 col-sm-6 col-md-6 text-right">
+																		0 원
+																	</div>
+																</div>
+																
+																<hr>
+																
+																<div class="row">
+																	<div class="col-xs-6 col-sm-6 col-md-6">
+																		총 예치금
+																	</div>
+																	<div class="col-xs-6 col-sm-6 col-md-6 text-right">
+																		<span class="font-purple"><strong>
+																			0 <font size="2">원</font>
+																		</strong></span>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+													
+												</div>
                  </div>
               </div>
           </div>
@@ -369,70 +401,6 @@
 	<!--script for this page-->
 	<script src="${pageContext.request.contextPath}/resources/bootstrap/lib/sparkline-chart.js"></script>
 	<script src="${pageContext.request.contextPath}/resources/bootstrap/lib/zabuto_calendar.js"></script>
-	<script type="text/javascript">
-  /*
-	$(document).ready(function() {
-      var unique_id = $.gritter.add({
-        // (string | mandatory) the heading of the notification
-        title: 'Welcome to Dashio!',
-        // (string | mandatory) the text inside the notification
-        text: 'Hover me to enable the Close Button. You can hide the left sidebar clicking on the button next to the logo. Developed by <a href="http://alvarez.is" target="_blank" style="color:#4ECDC4">Alvarez.is</a>.',
-        // (string | optional) the image to display on the left
-        image: '${pageContext.request.contextPath}/resources/bootstrap/img/ui-sam.jpg',
-        // (bool | optional) if you want it to fade out on its own or just sit there
-        sticky: false,
-        // (int | optional) the time you want it to be alive for before fading out
-        time: 8000,
-        // (string | optional) the class name you want to apply to that specific message
-        class_name: 'my-sticky-class'
-      });
-
-      return false;
-    });
-  */
-	</script>
-	<script type="application/javascript">
-    $(document).ready(function() {
-      $("#date-popover").popover({
-        html: true,
-        trigger: "manual"
-      });
-      $("#date-popover").hide();
-      $("#date-popover").click(function(e) {
-        $(this).hide();
-      });
-
-      $("#my-calendar").zabuto_calendar({
-        action: function() {
-          return myDateFunction(this.id, false);
-        },
-        action_nav: function() {
-          return myNavFunction(this.id);
-        },
-        ajax: {
-          url: "show_data.php?action=1",
-          modal: true
-        },
-        legend: [{
-            type: "text",
-            label: "Special event",
-            badge: "00"
-          },
-          {
-            type: "block",
-            label: "Regular event",
-          }
-        ]
-      });
-    });
-
-    function myNavFunction(id) {
-      $("#date-popover").hide();
-      var nav = $("#" + id).data("navigation");
-      var to = $("#" + id).data("to");
-      console.log('nav ' + nav + ' to: ' + to.month + '/' + to.year);
-    }
-	</script>
 </body>
 
 </html>

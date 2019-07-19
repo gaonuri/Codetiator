@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kr.co.creator.vo.NoticeVO;
+import kr.co.creator.vo.Notice_operationVO;
 
 @Service
 public class SupportService {

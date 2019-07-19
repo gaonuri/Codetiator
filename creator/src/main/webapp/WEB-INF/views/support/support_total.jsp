@@ -209,37 +209,6 @@
          		 <!-- /col-md-12 -->
         	</div>
         	<!-- row -->
-=======
-      <section class="wrapper">
-        <div class="row">
-          <div class="col-md-10">
-            <div class="content-panel">
-            <div class="btn-group">
-                <button id="btn_total" type="button" class="btn btn-default">전체</button>
-                <button id="btn_new" type="button" class="btn btn-default">새소식</button>
-                <button id="btn_operation" type="button" class="btn btn-default">운영사항</button>
-              </div>
-              <hr>
-              <table class="table">
-                <c:forEach items="${supportlist}" var="vo" varStatus="status">
-					<tbody>
-						<tr>
-							<td><a href="./support?notice_num=${vo.notice_num}">${vo.notice_num}</a></td>
-							<td>${vo.title}</td>
-							<td>${vo.notice_date}</td>
-						</tr>
-					</tbody>
-				</c:forEach>
-              </table>
-            </div>
-          </div>
-          <!-- /col-md-12 -->
-        </div>
-        <!-- row -->
-        <br><br>
-			<button id="btn_write">글쓰기</button>
-			<br><br>
->>>>>>> branch 'master' of https://github.com/gaonuri/Codetiator.git
       </section>
     </section>
     <!-- /MAIN CONTENT -->

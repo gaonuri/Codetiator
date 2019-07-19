@@ -28,7 +28,7 @@ public class SupportDAO {
 		count = sqlSession.insert("SupportMapper.supportInsert2", vo);
 		System.out.println("dao - count : "+ count);
 		return count;
-	}
+	}//supportInsert2
 
 	public List<NoticeVO> supportList() {
 		List<NoticeVO> support = null;

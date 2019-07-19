@@ -5,7 +5,7 @@
  
 <mapper namespace="MypageMapper">
 
-<select id="assetsList"
+	<select id="assetsList"
 			resultType="kr.co.creator.vo.InvestVO">
 		select invest_num
 			, project_num
@@ -13,6 +13,20 @@
 			, invest_date
 			FROM invest_list
 			order by invest_date desc
+	</select>
+	
+	<select id="InvestList"
+			resultType="kr.co.creator.vo.InvestVO">
+		select  i.invest_date
+			, i.project_num
+			, p.project_name
+			, p.rate
+			, i.invest_price
+			, p.refund
+		from invest_list i
+		left outer join project_list p
+        on i.project_num = p.project_num
+		where i.project_num = #{project_num}
 	</select>
 	
 </mapper>

@@ -90,7 +90,6 @@ public class SupportController {
 	out.close();
 	}//boardInsert
 	
-<<<<<<< HEAD
 	@RequestMapping(value="/support/insert2"
 			,method=RequestMethod.POST)
 	public void supportInsert2(NoticeVO vo, PrintWriter out) {
@@ -131,8 +130,6 @@ public class SupportController {
 	return "support/support_operation_detail";
 	}//support_new_detail
 	
-=======
->>>>>>> branch 'master' of https://github.com/gaonuri/Codetiator.git
 //	@RequestMapping(value="/support/formu"
 //			,method=RequestMethod.GET)
 //	public String formUpdate(NoticeVO vo, Model model) {
