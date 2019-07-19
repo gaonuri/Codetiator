@@ -46,7 +46,7 @@
 	        *********************************************************************************************************************************************************** -->
 	    
 	    <!--header start-->
-	   	    <%@ include file="./header.jsp" %>
+	   	    <%@ include file="../header.jsp" %>
 	    <!--header end-->
 	    
 	    <!-- **********************************************************************************************************************************************************
@@ -62,7 +62,20 @@
 					</div>
 					<!-- page end -->
 				</div>
-			</section>
+				
+				<h2>이메일 보내기</h2>
+				<form method="post" action="${path}/login/send.do">
+				발신자 이름 : <input name="senderName"><br>
+				발신자 이메일 주소 : <input name="senderMailㅣ"><br>
+				수신자 이메일 주소 : <input name="receiveMail"><br>
+				제목 : <input name="subject"><br>
+				내용 : <textarea rows="5" cols="80" name="message"></textarea><br>
+				<input type="submit" value="전송">
+				</form>
+				<span style="color:red;">${message}</span>
+				
+				
+		</section>
 			<!-- /wrapper -->
 	    </section>
 	    <!-- /MAIN CONTENT -->

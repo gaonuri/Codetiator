@@ -7,9 +7,13 @@ public class EmailDTO {
 	private String receiveMail;
 	private String subject;
 	private String message;
+	
 	public String getSenderName() {
 		return senderName;
 	}
+	public void setSenderName(String senderName) {
+		this.senderName = senderName;
+	}	
 	public String getSenderMail() {
 		return senderMail;
 	}
@@ -34,15 +38,14 @@ public class EmailDTO {
 	public void setMessage(String message) {
 		this.message = message;
 	}
-	public void setSenderName(String senderName) {
-		this.senderName = senderName;
+
+	@Override
+	public String toString() {
+		return "EmailDTO [senderName=" + senderName + ", senderMail=" + senderMail + ", subject =" + subject + ", message=" + message + "]";
 	}
 	
 	
-}
+}//class
 	
-
-
-
 
 
