@@ -5,6 +5,12 @@
  
 <mapper namespace="InvestMapper">
 	
+	<select id="accountDetail" resultType="kr.co.creator.vo.AccountVO">
+		select	*
+		from	account_list
+		where	user_num = #{user_num}
+	</select>
+	
 	<select id="investList" resultType="kr.co.creator.vo.ProjectVO">
 		select	*
 		from	project_list

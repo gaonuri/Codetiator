@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import kr.co.creator.vo.AccountVO;
 import kr.co.creator.vo.GuaranteeVO;
 import kr.co.creator.vo.ProjectVO;
 
@@ -22,13 +23,16 @@ public class InvestController {
 	InvestService investService;
 	
 	@RequestMapping(value = "/invest", method = RequestMethod.GET)
-	public String invest() {
+	public String invest(Model model, AccountVO vo) {
 		logger.info("invest");
-		
-		investService.invest();
+
+		System.out.println("Controller1111111111 : " + vo);
+		vo = investService.invest(vo);
+		System.out.println("Controller2222222222 : " + vo);
+		model.addAttribute("accountVO", vo);
 		
 		return "invest/invest";
-	}
+	}//invest
 	
 	@RequestMapping(value = "/invest_guide", method = RequestMethod.GET)
 	public String invest_guide() {

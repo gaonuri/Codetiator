@@ -9,6 +9,7 @@ encoding//src/main/java/kr/co/creator/invest/InvestService.java=UTF-8
 encoding//src/main/java/kr/co/creator/join/JoinController.java=UTF-8
 encoding//src/main/java/kr/co/creator/join/JoinDAO.java=UTF-8
 encoding//src/main/java/kr/co/creator/join/JoinService.java=UTF-8
+encoding//src/main/java/kr/co/creator/login/EmailController.java=UTF-8
 encoding//src/main/java/kr/co/creator/login/LoginDAO.java=UTF-8
 encoding//src/main/java/kr/co/creator/login/LoginService.java=UTF-8
 encoding//src/main/java/kr/co/creator/main/MainController.java=UTF-8

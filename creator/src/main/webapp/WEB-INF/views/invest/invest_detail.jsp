@@ -35,9 +35,13 @@
 	======================================================= -->	
 	<script type="text/javascript">
 	$(document).ready(function() {
-		$("#investBtn").click(function() {
-			location.href="${pageContext.request.contextPath}/invest";
-		});//investBtn
+		$("#investBtn1").click(function() {
+			location.href = "${pageContext.request.contextPath}/invest?user_num=${userVO.user_num}";
+		});//investBtn1
+		
+		$("#investBtn2").click(function() {
+			alert()
+		});//investBtn2
 	});//ready
 	</script>
 </head>
@@ -47,124 +51,9 @@
 	    <!-- **********************************************************************************************************************************************************
 	        TOP BAR CONTENT & NOTIFICATIONS
 	        *********************************************************************************************************************************************************** -->
-	    <!--header start-->
-	    <header class="header black-bg">
-			<!--logo start-->
-			<a href="./main" class="logo"><img id="logoImage" alt="로고" src="${pageContext.request.contextPath}/resources/img/ner.jpg" width="200px" height="30px"></a>
-			<!--logo end-->
-			<div class="nav notify-row top-menu" id="top_menu">
-				<!--  notification start -->
-				<ul class="nav pull-right top-menu">
-					<!-- settings start -->
-					
-					<!-- 회사소개 start -->
-					<li><a href="./loan_guide">회사소개</a></li>
-					<!-- 회사소개 end -->
-					
-					<!-- 대출 start -->
-					<li class="dropdown">
-						<a data-toggle="dropdown" class="dropdown-toggle" href="#">
-							대출
-						</a>
-						<ul class="dropdown-menu extended tasks-bar">
-							<div class="notify-arrow notify-arrow-green"></div>
-							<li>
-								<a href="./loan_guide">대출안내</a>
-							</li>
-							<li>
-								<a href="./loan/getloan">대출하기</a>
-							</li>
-						</ul>
-					</li>
-	          		<!-- 대출 end -->
-	          
-	          		<!-- inbox dropdown start-->
-	         		<li class="dropdown">
-						<a data-toggle="dropdown" class="dropdown-toggle" href="#">
-							투자
-						</a>
-						<ul class="dropdown-menu extended tasks-bar">
-							<div class="notify-arrow notify-arrow-black"></div>
-							<li>
-								<a href="./invest_guide">투자안내</a>
-							</li>
-							<li>
-								<a href="./invest_list">투자하기</a>
-							</li>
-							<li>
-								<a href="./invest_finish">완료된투자</a>
-							</li>
-						</ul>
-					</li>
-	          		<!-- 투자 end -->
-	          
-	          
-					<!-- 고객지원 start-->
-					<li id="header_notification_bar" class="dropdown">
-						<a data-toggle="dropdown" class="dropdown-toggle" href="#">
-							고객지원
-						</a>
-						<ul class="dropdown-menu extended notification">
-							<div class="notify-arrow"></div>
-							<li>
-								<a href="./faq">FAQ</a>
-							</li>
-							<li>
-								<a href="./support">이용약관</a>
-							</li>
-							<li>
-								<a href="./policy">개인정보</a>
-							</li>
-							<li>
-								<a href="./inquiry">1:1문의</a>
-							</li>
-							<li>
-								<a href="./support_total">공지사항</a>
-							</li>
-						</ul>
-					</li>
-					<!-- 고객지원 end -->
-					
-					<!-- 마이페이지 start-->
-					<li id="header_notification_bar" class="dropdown">
-						<a data-toggle="dropdown" class="dropdown-toggle" href="#">
-							마이페이지
-						</a>
-						<ul class="dropdown-menu extended notification">
-							<div class="notify-arrow notify-arrow-yellow"></div>
-							<li>
-								<a href="./my_dashboard">대시보드</a>
-							</li>
-							<li>
-								<a href="./my_invest_list">투자내역</a>
-							</li>
-							<li>
-								<a href="./my_loan_list">대출내역</a>
-							</li>
-							<li>
-								<a href="./my_depo_mgn">예치금관리</a>
-							</li>
-							<li>
-								<a href="./my_modify">회원정보수정</a>
-							</li>
-						</ul>
-					</li>
-					<!-- 마이페이지 end -->
-					
-					<!-- 로그아웃 start -->
-					<li><a href="./loan_guide">로그아웃</a></li>
-					<!-- 로그아웃 end -->
-				</ul>
-				<!--  notification end -->
-			</div>
-			<div class="top-menu">
-				<ul class="nav pull-right top-menu">
-					<li><a class="logout" href="/creator/join">회원가입</a></li>
-				</ul>
-			</div>
-	    </header>
-	    <!--header end-->
-	   
+		<!--header start-->
+		<%@ include file="../header.jsp" %>
+		<!--header end-->
 	   
 	    <!-- **********************************************************************************************************************************************************
 	        MAIN CONTENT
@@ -179,6 +68,7 @@
 					<div class="col-xs-12 col-sm-12 col-md-offset-1 col-md-10 col">
 						<div class="card" style="float: right; border: solid 1px black">
 							<div class="card-body">
+								<h1>${userVO.user_num}</h1>
 								<table>
 									<tr>
 										<td>${projectVO.current_price / projectVO.price * 100}%</td>
@@ -192,8 +82,8 @@
 										<td>${projectVO.repay_method}</td>
 									</tr>
 									<tr>
-										<th>연 수익률</th>
-										<td>${projectVO.yield}</td>
+										<th>금리</th>
+										<td>${projectVO.rate}</td>
 									</tr>
 									<tr>
 										<td>투자기간</td>
@@ -204,7 +94,17 @@
 										<td>500만원</td>
 									</tr>
 									<tr>
-										<td><input type="button" id="investBtn" value="투자신청"/></td>
+										<td>
+											<c:choose>
+												<c:when test="${userVO != null && userVO.user_num != '' && userVO.user_num != null || 
+																busiUserVO != null && busiUserVO.busi_num != '' && busiUserVO.busi_num != null}">
+													<input type="button" id="investBtn1" value="투자신청"/>
+												</c:when>
+												<c:otherwise>
+													<input type="button" id="investBtn2" value="투자신청"/>
+												</c:otherwise>
+											</c:choose>
+										</td>
 									</tr>
 								</table>
 							</div>
@@ -394,6 +294,8 @@
 	    </section>
 	    <!-- /MAIN CONTENT -->
 	    <!--main content end-->
+		
+		<input type="hidden" id="user_num" value="${userVO.user_num}" />
 		
 		<!--footer start-->
 		<footer class="site-footer">

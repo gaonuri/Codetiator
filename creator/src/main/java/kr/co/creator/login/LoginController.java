@@ -41,7 +41,7 @@ public class LoginController {
 		int successCnt = 0;
 		if(vo != null && vo.getUser_num() != null && !vo.getUser_num().equals("")) {
 			successCnt = 1;
-			session.setAttribute("Login_ss", vo);
+			session.setAttribute("userVO", vo);
 		} 
 		out.print(successCnt);
 		out.close();
@@ -54,7 +54,7 @@ public class LoginController {
 		int successCnt = 0;
 		if(vo != null && vo.getBusi_num() != null && !vo.getBusi_num().equals("")) {
 			successCnt = 1;
-			session.setAttribute("Login_sss", vo);
+			session.setAttribute("busiUserVO", vo);
 		}
 		out.print(successCnt);
 		out.close();
@@ -83,5 +83,7 @@ public class LoginController {
 		out.flush();
 		out.close();
 	}//findPwdChk
+	
+	
 	
 }//class

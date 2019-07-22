@@ -11,6 +11,7 @@
 	<meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
 	<title>Dashio - Bootstrap Admin Template</title>
 	<script src="${pageContext.request.contextPath}/resources/jquery/jquery-3.4.1.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/ckeditor/ckeditor.js"></script>
 	
 	<!-- Favicons -->
 	<link href="${pageContext.request.contextPath}/resources/bootstrap/img/favicon.png" rel="icon">
@@ -33,6 +34,9 @@
 	  Author: TemplateMag.com
 	  License: https://templatemag.com/license/
 	======================================================= -->
+	
+
+
 </head>
 
 <body>
@@ -40,61 +44,42 @@
 	    <!-- **********************************************************************************************************************************************************
 	        TOP BAR CONTENT & NOTIFICATIONS
 	        *********************************************************************************************************************************************************** -->
-		<!--header start-->
-		<%@ include file="../header.jsp" %>
-		<!--header end-->
-	   
+	    
+	    <!--header start-->
+	   	    <%@ include file="../header.jsp" %>
+	    <!--header end-->
+	    
 	    <!-- **********************************************************************************************************************************************************
 	        MAIN CONTENT
 	        *********************************************************************************************************************************************************** -->
 		<!--main content start-->
 		<section id="main-content">
-			<section class="wrapper">
-				<h3><i class="fa fa-angle-right"></i>완료된 투자상품</h3>
-				<div class="row mb">
-					<!-- page start-->
-					<div class="content-panel">
+			<section class="wrapper site-min-height">
+				<div class="row mt">
+					<!-- page start -->
+					<div class="col-lg-12">
 					
-						<!-- 투자리스트 start -->
-						<div class="adv-table">
-	 						<table cellpadding="0" cellspacing="0" border="0" class="display table table-bordered" id="hidden-table-info">
-								<thead>
-						            <tr>
-										<th class="col">상품명</th>
-										<th class="col">등급</th>
-										<th class="col">연 수익률</th>
-										<th class="col">기간</th>
-										<th class="col">모집금액</th>
-										<th class="col">상환방식</th>
-										<th class="col">모집현황</th>
-										<th class="col">모집상태</th>
-									</tr>
-								</thead>
-								<c:forEach items="${investFinish}" var="vo" varStatus="status">
-										<tr>
-											<td><a href="./invest_detail?project_num=${vo.project_num}">${vo.project_name}</a></td>
-											<td>${vo.grade}</td>
-											<td>${vo.yield}%</td>
-											<td>${vo.refund}개월</td>
-											<td>${vo.price}만원</td>
-											<td>${vo.repay_method}</td>
-											<td>${vo.ach_rate}</td>
-											<td>${vo.ach_state}</td>
-										</tr>
-								</c:forEach>
-							</table>
-						</div>
-						<!-- 투자리스트 end -->
-						
 					</div>
-					<!-- page end-->
+					<!-- page end -->
 				</div>
-				<!-- /row -->
-			</section>
-			<!-- /wrapper -->
+				
+				<h2>이메일 보내기</h2>
+				<form method="post" action="${path}/login/send.do">
+				발신자 이름 : <input name="senderName"><br>
+				발신자 이메일 주소 : <input name="senderMailㅣ"><br>
+				수신자 이메일 주소 : <input name="receiveMail"><br>
+				제목 : <input name="subject"><br>
+				내용 : <textarea rows="5" cols="80" name="message"></textarea><br>
+				<input type="submit" value="전송">
+				</form>
+				<span style="color:red;">${message}</span>
+				
+				
 		</section>
-		<!-- /MAIN CONTENT -->
-		<!--main content end-->
+			<!-- /wrapper -->
+	    </section>
+	    <!-- /MAIN CONTENT -->
+	    <!--main content end-->
 		
 		<!--footer start-->
 		<footer class="site-footer">
@@ -159,61 +144,7 @@
 	<!--script for this page-->
 	<script src="${pageContext.request.contextPath}/resources/bootstrap/lib/sparkline-chart.js"></script>
 	<script src="${pageContext.request.contextPath}/resources/bootstrap/lib/zabuto_calendar.js"></script>
-	
-	<!-- 게시판 -->
-	<!-- js placed at the end of the document so the pages load faster -->
-	<script type="text/javascript" language="javascript" src="${pageContext.request.contextPath}/resources/bootstrap/lib/advanced-datatable/js/jquery.js"></script>
-	<script type="text/javascript" language="javascript" src="${pageContext.request.contextPath}/resources/bootstrap/lib/advanced-datatable/js/jquery.dataTables.js"></script>
-	<script type="text/javascript" src="lib/advanced-datatable/js/DT_bootstrap.js"></script>
-	<!--script for this page-->
-	<script type="text/javascript">
-	$(document).ready(function() {
-		/*
-		 * Insert a 'details' column to the table
-		 */
-		var nCloneTh = document.createElement('th');
-		var nCloneTd = document.createElement('td');
-		nCloneTd.className = "center";
-		
-		$('#hidden-table-info thead tr').each(function() {
-		  this.insertBefore(nCloneTh, this.childNodes[0]);
-		});
-		
-		$('#hidden-table-info tbody tr').each(function() {
-		  this.insertBefore(nCloneTd.cloneNode(true), this.childNodes[0]);
-		});
 
-		/*
-		 * Initialse DataTables, with no sorting on the 'details' column
-		 */
-		var oTable = $('#hidden-table-info').dataTable({
-			"aoColumnDefs": [{
-			  "bSortable": false,
-			  "aTargets": [0]
-			}],
-			"aaSorting": [
-			  [1, 'asc']
-			]
-		});
-
-		/* Add event listener for opening and closing details
-		 * Note that the indicator for showing which row is open is not controlled by DataTables,
-		 * rather it is done here
-		 */
-		$('#hidden-table-info tbody td img').live('click', function() {
-			var nTr = $(this).parents('tr')[0];
-			if (oTable.fnIsOpen(nTr)) {
-				/* This row is already open - close it */
-				this.src = "lib/advanced-datatable/media/images/details_open.png";
-				oTable.fnClose(nTr);
-			} else {
-				/* Open this row */
-				this.src = "lib/advanced-datatable/images/details_close.png";
-				oTable.fnOpen(nTr, fnFormatDetails(oTable, nTr), 'details');
-			}
-		});
-    });
-	</script>
 </body>
 
 </html>
