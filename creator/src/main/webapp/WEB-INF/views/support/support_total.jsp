@@ -183,28 +183,89 @@
 	        *********************************************************************************************************************************************************** -->
 		<!--main content start-->
     <section id="main-content">
-<<<<<<< HEAD
      	 <section class="wrapper">
        	 	<div class="row">
          		 <div class="col-md-10">
-            		<div class="content-panel">
-            		<div class="btn-group">
-		                <button id="btn_total" type="button" class="btn btn-default">전체</button>
-		                <button id="btn_new" type="button" class="btn btn-default">새소식</button>
-		                <button id="btn_operation" type="button" class="btn btn-default">운영사항</button>
-              		</div>
-		            <table class="table">
-		                <c:forEach items="${supportlist}" var="vo" varStatus="status">
-							<tbody>
-								<tr>
-									<td><a href="support_total_detail?notice_num=${vo.notice_num}">${vo.notice_num}</a></td>
-									<td><a href="support_total_detail?notice_num=${vo.notice_num}">${vo.title}</a></td>
-									<td>${vo.notice_date}</td>
-								</tr>
-							</tbody>
-						</c:forEach>
-		            </table>
-		            </div>
+            		<div class="row content-panel">
+            			<div class="col-lg-3">
+							<div class="panel-heading">
+								<ul class="nav nav-tabs nav-justified">
+									<li class="active">
+										<a data-toggle="tab" href="#total">전체</a>
+									</li>
+									<li >
+										<a data-toggle="tab" href="#new">새소식</a>
+									</li>
+									<li >
+										<a data-toggle="tab" href="#operation">운영사항</a>
+									</li>
+								</ul>
+							</div>
+						 </div>	
+			            <!-- /panel-heading -->
+							<div class="panel-body">
+								<div class="tab-content">
+									<div id="total" class="tab-pane active">
+								    	<form role="form" class="form-horizontal">
+									   		<div class="row">
+										   		 <table class="table">
+									                <c:forEach items="${supportlist}" var="vo" varStatus="status">
+														<tbody>
+															<tr>
+																<td><a href="support_total_detail?notice_num=${vo.notice_num}">${vo.notice_num}</a></td>
+																<td><a href="support_total_detail?notice_num=${vo.notice_num}">${vo.title}</a></td>
+																<td>${vo.notice_date}</td>
+															</tr>
+														</tbody>
+													</c:forEach>
+									            </table>
+											</div>
+								    	</form>
+									</div>
+									<!-- =========전체 -->
+									
+								<div id="new" class="tab-pane">
+							    	<form role="form" class="form-horizontal">
+									   		<div class="row">
+										   		 <table class="table">
+									                <c:forEach items="${supportlist2}" var="vo" varStatus="status">
+														<tbody>
+															<tr>
+																<td><a href="support_new_detail?notice_num=${vo.notice_num}">${vo.notice_num}</a></td>
+																<td><a href="support_new_detail?notice_num=${vo.notice_num}">${vo.title}</a></td>
+																<td>${vo.notice_date}</td>
+															</tr>
+														</tbody>
+													</c:forEach>
+									            </table>
+											</div>
+								    	</form>
+									</div>
+								<!-- =========전체 -->
+								
+								<div id="operation" class="tab-pane">
+							    	<form role="form" class="form-horizontal">
+									   		<div class="row">
+										   		 <table class="table">
+									                <c:forEach items="${supportlist3}" var="vo" varStatus="status">
+														<tbody>
+															<tr>
+																<td><a href="support_operation_detail?notice_num=${vo.notice_num}">${vo.notice_num}</a></td>
+																<td><a href="support_operation_detail?notice_num=${vo.notice_num}">${vo.title}</a></td>
+																<td>${vo.notice_date}</td>
+															</tr>
+														</tbody>
+													</c:forEach>
+									            </table>
+											</div>
+								    	</form>
+								</div>
+								<!-- =========전체 -->
+									
+								</div>
+							</div>	
+			            
+		             </div>
 		          </div>
          		 <!-- /col-md-12 -->
         	</div>
