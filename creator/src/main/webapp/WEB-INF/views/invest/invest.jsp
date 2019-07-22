@@ -36,38 +36,57 @@
 	<script type="text/javascript">
 	$(document).ready(function() {
 		var temp = 0;
+		var add = 0;
+		var deposit = parseInt($("#inputDeposit771").val());
+		var confirmYN = false;
 		
 		$("#amtPlus100_771").click(function() {
-			temp = parseInt($("#inputAmt771").val());
-			temp += 100;
-			$("#inputAmt771").val(temp);
+			addDeposit(100);
 		});//amtPlus100_771
+		
 		$("#amtPlus50_771").click(function() {
-			temp = parseInt($("#inputAmt771").val());
-			temp += 50;
-			$("#inputAmt771").val(temp);
+			addDeposit(50);
 		});//amtPlus50_771
+		
 		$("#amtPlus10_771").click(function() {
-			temp = parseInt($("#inputAmt771").val());
-			temp += 10;
-			$("#inputAmt771").val(temp);
+			addDeposit(10);
 		});//amtPlus10_771
+		
 		$("#amtPlus5_771").click(function() {
-			temp = parseInt($("#inputAmt771").val());
-			temp += 5;
-			$("#inputAmt771").val(temp);
+			addDeposit(5);
 		});//amtPlus5_771
+		
 		$("#amtPlus1_771").click(function() {
-			temp = parseInt($("#inputAmt771").val());
-			temp += 1;
-			$("#inputAmt771").val(temp);
+			addDeposit(1);
 		});//amtPlus1_771
+		
 		$("#amtPlusAll_771").click(function() {
-			$("#inputAmt771").val() = $("#inputDeposit771").val();
+			$("#inputAmt771").val($("#inputDeposit771").val());
 		});//amtPlusAll_771
+		
 		$("#amtReset_771").click(function() {
 			$("#inputAmt771").val("0");
 		});//amtReset_771
+		
+		$("#inputAmt771").blur(function() {
+			$("#investAmtL").text($("#inputAmt771").val());
+			$("#intrstAmtL").text($("#inputAmt771").val() * 0.15);
+		});
+
+		function addDeposit(add) {
+			if(deposit > 0) {
+				temp = parseInt($("#inputAmt771").val());
+				temp += add;
+				$("#inputAmt771").val(temp);
+			} else {
+				confirmYN = confirm("투자 가능 예치금이 부족합니다. 예치금 관리 페이지로 이동하시겠습니까?");
+				if(confirmYN == true) {
+					location.href = "${pageContext.request.contextPath}/my_depo_mgn";
+				} else {
+					return;
+				}//if
+			}//if
+		}//addDeposit
 	});//ready
 	</script>
 </head>
@@ -77,124 +96,9 @@
 	    <!-- **********************************************************************************************************************************************************
 	        TOP BAR CONTENT & NOTIFICATIONS
 	        *********************************************************************************************************************************************************** -->
-	    <!--header start-->
-	    <header class="header black-bg">
-			<!--logo start-->
-			<a href="./main" class="logo"><img id="logoImage" alt="로고" src="${pageContext.request.contextPath}/resources/img/ner.jpg" width="200px" height="30px"></a>
-			<!--logo end-->
-			<div class="nav notify-row top-menu" id="top_menu">
-				<!--  notification start -->
-				<ul class="nav pull-right top-menu">
-					<!-- settings start -->
-					
-					<!-- 회사소개 start -->
-					<li><a href="./loan_guide">회사소개</a></li>
-					<!-- 회사소개 end -->
-					
-					<!-- 대출 start -->
-					<li class="dropdown">
-						<a data-toggle="dropdown" class="dropdown-toggle" href="#">
-							대출
-						</a>
-						<ul class="dropdown-menu extended tasks-bar">
-							<div class="notify-arrow notify-arrow-green"></div>
-							<li>
-								<a href="./loan_guide">대출안내</a>
-							</li>
-							<li>
-								<a href="./loan/getloan">대출하기</a>
-							</li>
-						</ul>
-					</li>
-	          		<!-- 대출 end -->
-	          
-	          		<!-- inbox dropdown start-->
-	         		<li class="dropdown">
-						<a data-toggle="dropdown" class="dropdown-toggle" href="#">
-							투자
-						</a>
-						<ul class="dropdown-menu extended tasks-bar">
-							<div class="notify-arrow notify-arrow-black"></div>
-							<li>
-								<a href="./invest_guide">투자안내</a>
-							</li>
-							<li>
-								<a href="./invest_list">투자하기</a>
-							</li>
-							<li>
-								<a href="./invest_finish">완료된투자</a>
-							</li>
-						</ul>
-					</li>
-	          		<!-- 투자 end -->
-	          
-	          
-					<!-- 고객지원 start-->
-					<li id="header_notification_bar" class="dropdown">
-						<a data-toggle="dropdown" class="dropdown-toggle" href="#">
-							고객지원
-						</a>
-						<ul class="dropdown-menu extended notification">
-							<div class="notify-arrow"></div>
-							<li>
-								<a href="./faq">FAQ</a>
-							</li>
-							<li>
-								<a href="./support">이용약관</a>
-							</li>
-							<li>
-								<a href="./policy">개인정보</a>
-							</li>
-							<li>
-								<a href="./inquiry">1:1문의</a>
-							</li>
-							<li>
-								<a href="./support_total">공지사항</a>
-							</li>
-						</ul>
-					</li>
-					<!-- 고객지원 end -->
-					
-					<!-- 마이페이지 start-->
-					<li id="header_notification_bar" class="dropdown">
-						<a data-toggle="dropdown" class="dropdown-toggle" href="#">
-							마이페이지
-						</a>
-						<ul class="dropdown-menu extended notification">
-							<div class="notify-arrow notify-arrow-yellow"></div>
-							<li>
-								<a href="./my_dashboard">대시보드</a>
-							</li>
-							<li>
-								<a href="./my_invest_list">투자내역</a>
-							</li>
-							<li>
-								<a href="./my_loan_list">대출내역</a>
-							</li>
-							<li>
-								<a href="./my_depo_mgn">예치금관리</a>
-							</li>
-							<li>
-								<a href="./my_modify">회원정보수정</a>
-							</li>
-						</ul>
-					</li>
-					<!-- 마이페이지 end -->
-					
-					<!-- 로그아웃 start -->
-					<li><a href="./loan_guide">로그아웃</a></li>
-					<!-- 로그아웃 end -->
-				</ul>
-				<!--  notification end -->
-			</div>
-			<div class="top-menu">
-				<ul class="nav pull-right top-menu">
-					<li><a class="logout" href="/creator/join">회원가입</a></li>
-				</ul>
-			</div>
-	    </header>
-	    <!--header end-->
-	   
+		<!--header start-->
+		<%@ include file="../header.jsp" %>
+		<!--header end-->
 	   
 	    <!-- **********************************************************************************************************************************************************
 	        MAIN CONTENT
@@ -439,8 +343,8 @@
 																	</div>
 																	<div class="col-xs-6 col-sm-4 col-md-4 col-lg-3 col">
 																		<div class="form-group has-feedback inputForm" id="inputDepositDiv">
-																			<input type="text" class="form-control text-right" id="inputDeposit771" name="inputDeposit" aria-describedby="inputDepositStatus" value="0" readonly="readonly">
-																			<span class="form-control-feedback" aria-hidden="true">원</span>
+																			<input type="text" class="form-control text-right" id="inputDeposit771" name="inputDeposit" aria-describedby="inputDepositStatus" value="${accountVO.deposit}" readonly="readonly">
+																			<span class="form-control-feedback" aria-hidden="true">만원</span>
 																			<span id="inputDepositStatus" class="sr-only">(success)</span>
 																			<input type="hidden" id="reqDeposit771" name="reqDeposit" value="0">
 																		</div>
@@ -449,7 +353,7 @@
 																	</div>
 																	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-4 col">
 																		<div class="inputDepositText">
-																			투자 가능 예치금 : <span class="font-purple" name="availDeposit" id="availDeposit771&quot;">0</span><font size="1">원</font>
+																			투자 가능 예치금 : <span class="font-purple" name="availDeposit" id="availDeposit771&quot;">0</span><font size="1">만원</font>
 																			<div id="brrwrLmtGuideDiv" class="display-none">
 																				(동일차입자 상품에 투자하신 적이 있습니다.)
 																			</div>
@@ -512,7 +416,7 @@
 															</thead>
 															<tbody>
 																<tr>
-																	<td><span id="investAmtL" class="">0</span><font size="1">원</font></td>
+																	<td><span id="investAmtL" class="font-blue">0</span><font size="1">만원</font></td>
 																	<td><span id="intrstAmtL" class="font-blue">0</span><font size="1">원</font></td>
 																	<td><span id="taxAmtL" class="font-red">0</span><font size="1">원</font></td>
 																	<td><span id="benefitAmtL" class="font-blue">0</span><font size="1">원</font></td>
