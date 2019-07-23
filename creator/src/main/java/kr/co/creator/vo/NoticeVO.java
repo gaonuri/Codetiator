@@ -2,7 +2,7 @@ package kr.co.creator.vo;
 
 // 공지사항
 public class NoticeVO {
-	private String notice_num;			// 공지사항번호
+	private String notice_num;			// 공지사항 번호
 	private String img;					// 사진
 	private String title;				// 제목
 	private String notice_contents;		// 공지사항내용
