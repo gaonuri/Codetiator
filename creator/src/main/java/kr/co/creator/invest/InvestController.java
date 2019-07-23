@@ -22,14 +22,28 @@ public class InvestController {
 	@Autowired
 	InvestService investService;
 	
+//	@RequestMapping(value = "/invest", method = RequestMethod.GET)
+//	public String invest(Model model, AccountVO vo) {
+//		logger.info("invest");
+//
+//		System.out.println("Controller1111111111 : " + vo);
+//		vo = investService.invest(vo);
+//		System.out.println("Controller2222222222 : " + vo);
+//		model.addAttribute("accountVO", vo);
+//		
+//		return "invest/invest";
+//	}//invest
+	
 	@RequestMapping(value = "/invest", method = RequestMethod.GET)
-	public String invest(Model model, AccountVO vo) {
+	public String invest(Model model, AccountVO AccVO, ProjectVO proVO) {
 		logger.info("invest");
 
-		System.out.println("Controller1111111111 : " + vo);
-		vo = investService.invest(vo);
-		System.out.println("Controller2222222222 : " + vo);
-		model.addAttribute("accountVO", vo);
+		System.out.println("Controller1111111111 : " + AccVO);
+		AccVO = investService.acount_detail(AccVO);
+		proVO = investService.project_detail(proVO);
+		System.out.println("Controller2222222222 : " + AccVO);
+		model.addAttribute("accountVO", AccVO);
+		model.addAttribute("projectVO", proVO);
 		
 		return "invest/invest";
 	}//invest

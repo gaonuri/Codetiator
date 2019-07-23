@@ -68,7 +68,6 @@
 					<div class="col-xs-12 col-sm-12 col-md-offset-1 col-md-10 col">
 						<div class="card" style="float: right; border: solid 1px black">
 							<div class="card-body">
-								<h1>${userVO.user_num}</h1>
 								<table>
 									<tr>
 										<td>${projectVO.current_price / projectVO.price * 100}%</td>
