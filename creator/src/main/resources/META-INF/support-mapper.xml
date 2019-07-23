@@ -52,7 +52,7 @@
 			order by notice_date desc
 	</select>
 	
-	<select id="totalDetail"
+	<select id="noticeDetail"
 			parameterType="kr.co.creator.vo.NoticeVO"
 			resultType="kr.co.creator.vo.NoticeVO">
 		select *

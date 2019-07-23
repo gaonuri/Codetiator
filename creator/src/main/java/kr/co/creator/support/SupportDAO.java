@@ -51,21 +51,9 @@ public class SupportDAO {
 		return support;
 	}//supportList3
 
-	public NoticeVO totalDetail(NoticeVO vo) {
+	public NoticeVO noticeDetail(NoticeVO vo) {
 		vo = sqlSession.selectOne(
-				"SupportMapper.totalDetail", vo);
-		return vo;
-	}//totalDetail
-
-	public NoticeVO newDetail(NoticeVO vo) {
-		vo = sqlSession.selectOne(
-				"SupportMapper.totalDetail", vo);
-		return vo;
-	}//totalDetail
-
-	public NoticeVO operationDetail(NoticeVO vo) {
-		vo = sqlSession.selectOne(
-				"SupportMapper.totalDetail", vo);
+				"SupportMapper.noticeDetail", vo);
 		return vo;
 	}//totalDetail
 

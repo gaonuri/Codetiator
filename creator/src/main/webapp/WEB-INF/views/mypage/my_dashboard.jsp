@@ -34,7 +34,7 @@
 	  License: https://templatemag.com/license/
 	======================================================= -->
 </head>
-
+     
 <body>
 	<section id="container">
 	    <!-- **********************************************************************************************************************************************************
@@ -49,7 +49,7 @@
 				<!--  notification start -->
 				<ul class="nav pull-right top-menu">
 					<!-- settings start -->
-					
+					  
 					<!-- 회사소개 start -->
 					<li><a href="./loan_guide">회사소개</a></li>
 					<!-- 회사소개 end -->
@@ -214,130 +214,303 @@
 	    <!-- **********************************************************************************************************************************************************
 	        MAIN CONTENT
 	        *********************************************************************************************************************************************************** -->
-		<!--main content start-->
-    <section id="main-content">
-      <section class="wrapper">
-        <!-- BASIC FORM ELELEMNTS -->
-
-          <div class="col-lg-6 col-md-6 col-sm-6">
-			  <div class="card">
-            	 <div class="card-body">
-            	 <button id="btn_invest" type="button" class="btn btn-default">나의 투자</button>
-            	 <!-- row -->
-			        
-			            </div>
-			            <!-- /content-panel -->
-			          </div>
-			          <!-- /col-md-12 -->
-			        </div>
-			        <!-- /row -->
-            	 <a href="#" class="btn btn-primary">나의 자산</a>
-            	 <div class="row">
-													<div class="col-md-6 rightLine">
-														<div class="title">
-															<font class="font-purple">
-																●
-															</font> 자산 요약
-														</div>
-														<div class="row height statsText">
-															<div class="col-xs-12 col-sm-12 col-md-12">
-																<div class="row">
-																	<div class="col-xs-7 col-sm-7 col-md-7">
-																		총 예치금&nbsp;&nbsp;
-																		<span class="glyphicon glyphicon-question-sign hover" style="font-size: 12px;" tabindex="0" data-toggle="tooltip" data-placement="auto" data-trigger="hover" title="" data-original-title="=기본 예치금 +자동투자 예치금"></span>
-																	</div>
-																	<div class="col-xs-5 col-sm-5 col-md-5 text-right">
-																		0 원
-																	</div>
-																</div>
-																<div class="row" style="margin-top: 5px;">
-																	<div class="col-xs-7 col-sm-7 col-md-7">
-																		상환 예정 원금&nbsp;&nbsp;
-																		<span class="glyphicon glyphicon-question-sign hover" style="font-size: 12px;" tabindex="0" data-toggle="tooltip" data-placement="auto" data-trigger="hover" title="" data-original-title="부실없이 정상 상환을 가정한 예상 원금"></span>
-																	</div>
-																	<div class="col-xs-5 col-sm-5 col-md-5 text-right">
-																		<span name="REST_PRNCPL_DSTRBTN_AMT">0</span> 원
-																	</div>
-																</div>
-																<div class="row" style="margin-top: 5px;">
-																	<div class="col-xs-7 col-sm-7 col-md-7">
-																		투자 대기 금액&nbsp;&nbsp;
-																		<span class="glyphicon glyphicon-question-sign hover" style="font-size: 12px;" tabindex="0" data-toggle="tooltip" data-placement="auto" data-trigger="hover" title="" data-original-title="투자금액이 차입자에게 전달되기 전 시점에서의 금액 "></span>
-																	</div>
-																	<div class="col-xs-5 col-sm-5 col-md-5 text-right">
-																		<span name="INVEST_REQ_AMT">0</span> 원
-																	</div>
-																</div>
-																
-																<hr>
-																
-																<div class="row">
-																	<div class="col-xs-7 col-sm-7 col-md-7">
-																		총 자산
-																	</div>
-																	<div class="col-xs-5 col-sm-5 col-md-5 text-right">
-																		<span class="font-purple"><strong>
-																			<span name="TOTAL_ASSET_AMT">0</span> <font size="2">원</font>
-																		</strong></span>
-																	</div>
-																</div>
-															</div>
-														</div>
-													</div>
-													
-													<div class="col-md-6">
-														<div class="title">
-															<font class="font-purple">
-																●
-															</font> 예치금 요약
-														</div>
-														<div class="row height statsText">
-															<div class="col-xs-12 col-sm-12 col-md-12">
-																<div class="row">
-																	<div class="col-xs-6 col-sm-6 col-md-6">
-																		기본 예치금
-																	</div>
-																	<div class="col-xs-6 col-sm-6 col-md-6 text-right">
-																		0 원
-																	</div>
-																</div>
-																<div class="row" style="margin-top: 30px;">
-																	<div class="col-xs-6 col-sm-6 col-md-6">
-																		자동투자 예치금
-																	</div>
-																	<div class="col-xs-6 col-sm-6 col-md-6 text-right">
-																		0 원
-																	</div>
-																</div>
-																
-																<hr>
-																
-																<div class="row">
-																	<div class="col-xs-6 col-sm-6 col-md-6">
-																		총 예치금
-																	</div>
-																	<div class="col-xs-6 col-sm-6 col-md-6 text-right">
-																		<span class="font-purple"><strong>
-																			0 <font size="2">원</font>
-																		</strong></span>
-																	</div>
-																</div>
-															</div>
-														</div>
-													</div>
-													
-												</div>
-                 </div>
-              </div>
-          </div>
-        <!-- /row -->
-
-
-        <!-- /row -->
+		<section id="main-content">
+     	 <section class="wrapper">
+       	 	<div class="row">
+         		 <div class="col-md-12">
+            		<div class="content-panel">
+	            		<div class="panel-heading">
+	            			<div class="col-lg-2">
+								<ul class="nav nav-tabs nav-justified">
+									<li class="active">
+										<a data-toggle="tab" href="#invest">나의투자</a>
+									</li>
+									<li >
+										<a data-toggle="tab" href="#depo">나의자산</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+			            <div class="tab-content">
+						<div id="invest" class="tab-pane active">
+					    	<form role="form" class="form-horizontal">
+						   		<div class="row">
+						   		<div class="col-md-12">
+						    	<div class="investDetail">
+								<div class="row">
+									<div class="col-xs-12 col-sm-6 col-md-6">
+										<div class="title">
+											<font class="font-purple">
+												●
+											</font> 투자 채권 목록
+										</div>
+									</div>
+									<div class="col-xs-12 col-sm-6 col-md-6 text-right">
+										<button type="button" class="btn btn-purple-transparent btn-gradiation" onclick="location.href='/mypage/monthRepaySchedule'">
+											월별 상환일정 <i class="glyphicon glyphicon-calendar"></i>
+										</button>
+										<a id="btnExport">
+											<button type="button" class="btn btn-purple-transparent btn-gradiation">
+												EXCEL <i class="glyphicon glyphicon-download-alt"></i>
+											</button>
+										</a>
+									</div>
+								</div>
+								
+								<div class="row row-cat">
+									<div class="btn-group cate" data-toggle="buttons">
+										<div class="col-xs-6 col-sm-2 col">
+											<label class="btn labelBtn-purple btn-block" id="investCatLabel00">
+												전체<span id="investListCntA"></span>
+											</label>
+										</div>
+										<div class="col-xs-4 col-sm-2 col">
+											<label class="btn labelBtn-purple btn-block checked" id="investCatLabel01">
+												투자신청<span id="investListCntB"></span>
+											</label>
+										</div>
+										<div class="col-xs-4 col-sm-2 col">
+											<label class="btn labelBtn-purple btn-block checked" id="investCatLabel02">
+												상환중<span id="investListCntC"></span>
+											</label>
+										</div>
+										<div class="col-xs-4 col-sm-2 col">
+											<label class="btn labelBtn-purple btn-block checked" id="investCatLabel03">
+												상환완료<span id="investListCntD"></span>
+											</label>
+										</div>
+										<div class="col-xs-4 col-sm-2 col">
+											<label class="btn labelBtn-purple btn-block checked" id="investCatLabel04">
+												연체중<span id="investListCntE"></span>
+											</label>
+										</div>
+										<div class="col-xs-4 col-sm-2 col">
+											<label class="btn labelBtn-purple btn-block checked" id="investCatLabel05">
+												부도<span id="investListCntF"></span>
+											</label>
+										</div>
+									</div>
+								</div>
+								
+								<div class="row investList" style="margin-top: 10px;" style="margin-left: 10px;">
+									<div class="col-xs-10 col">
+										<table class="table">
+											<thead>
+												<tr>
+													<th scope="col" class="clickable" name="investListSortTitle" id="investListSortTitleINVEST_YMD">
+														투자일자<span name="investListSortDesc" id="investListSortDescINVEST_YMD"></span>
+													</th>
+													<th scope="col" class="clickable" name="investListSortTitle" id="investListSortTitleBANNER_TITLE">
+														상품별호수<span name="investListSortDesc" id="investListSortDescBANNER_TITLE"></span>
+													</th>
+													<th scope="col" class="clickable" name="investListSortTitle" id="investListSortTitleLOAN_NM">
+														상품명<span name="investListSortDesc" id="investListSortDescLOAN_NM"></span>
+													</th>
+													<th scope="col" class="clickable" name="investListSortTitle" id="investListSortTitleINVEST_RATE">
+														금리(%)<span name="investListSortDesc" id="investListSortDescINVEST_RATE"></span>
+													</th>
+													<th scope="col" class="clickable" name="investListSortTitle" id="investListSortTitleINVEST_AMT">
+														투자금액<span name="investListSortDesc" id="investListSortDescINVEST_AMT"></span>
+													</th>
+													<th scope="col" colspan="2" class="clickable" name="investListSortTitle" id="investListSortTitleRND_CNT">
+														상환차수<span name="investListSortDesc" id="investListSortDescRND_CNT"></span>
+													</th>
+													<th scope="col" class="clickable" name="investListSortTitle" id="investListSortTitleNEXT_DSTRBTN_DATE">
+														상환예정일<span name="investListSortDesc" id="investListSortDescNEXT_DSTRBTN_DATE"></span>
+													</th>
+													<th scope="col" class="clickable" name="investListSortTitle" id="investListSortTitleMAX_DSTRBTN_DATE">
+														상환완료일<span name="investListSortDesc" id="investListSortDescMAX_DSTRBTN_DATE"></span>
+													</th>
+													<th scope="col" class="clickable" name="investListSortTitle" id="investListSortTitleREPAY_STATS_CD">
+														상품상태<span name="investListSortDesc" id="investListSortDescREPAY_STATS_CD"></span>
+													</th>
+												</tr>
+											</thead>
+											<tbody id="investListBody"></tbody>
+										</table>
+									</div>
+								</div>
+								
+								<div class="row investThum" style="margin-top: 10px;" id="investThum"></div>
+								
+								<!-- 
+								<div class="row" style="margin-top: 10px;" id="nextPageDiv">
+									<div class="col-xs-12 col-sm-12 col-md-12">
+										<div class="alarm-box-bottom">
+											<a href='javascript:(void(0));' onclick='fn_selectNextPage()' id="nextPageBtn" class="display-none">
+												<i class="glyphicon glyphicon-menu-down"></i>
+											</a>
+											<a href='javascript:(void(0));' onclick='fn_resetPage()' id="resetPageBtn" class="display-none">
+												<i class="glyphicon glyphicon-menu-up"></i>
+											</a>
+										</div>
+									</div>
+								</div>
+								 -->
+								
+								<table id="tblExport" style="display:none;" class="tblExport">
+									<thead>
+										<tr>
+											<th scope="col">투자일자</th>
+											<th scope="col">상품별호수</th>
+											<th scope="col">상품명</th>
+											<th scope="col">금리</th>
+											<th scope="col">투자금액</th>
+											<th scope="col">상환회차</th>
+											<th scope="col">만기회차</th>
+											<th scope="col">상환예정일</th>
+											<th scope="col">상환완료일</th>
+											<th scope="col">상품상태</th>
+										</tr>
+									</thead>
+									<tbody>
+									</tbody>
+								</table>
+								<div class="row" style="margin-top: 10px;">
+									<div class="col-xs-12 col-md-push-6 col-md-6" style="margin-top: 5px;">
+										<form id="investListSrchForm" class="text-right" onsubmit="return false;">
+											<div style="display: inline-block;">
+												<input type="text" class="form-control srchText" name="SRCH_TEXT" style="min-width: 260px;" onkeypress="fn_hitEnterKey(event, 'investList')" placeholder="상품명, 상품ID 또는 상품별호수로 검색" maxlength="20">
+											</div>
+											<div style="display: inline-block;">
+												<button type="button" class="btn btn-purple-transparent" id="investListSrchTextBtn">
+													<i class="glyphicon glyphicon-search"></i>
+												</button>
+											</div>
+											<div class="clearfix"></div>
+										</form>
+									</div>
+									<div class="col-xs-12 col-md-pull-6 col-md-6 text-left" style="margin-top: 5px;">
+										<ul class="pagination pagination-sm margin-0" id="investListPAGE_NAVI"></ul>
+									</div>
+								</div>
+							</div>
+			           		   </div>
+							   </div>
+					    	</form>
+						</div>
+						<!-- =========전체 -->	
+						<div id="depo" class="tab-pane">
+					    	<form role="form" class="form-horizontal">
+						   		<div class="row">
+						   		<div class="col-md-12">
+						   		<div class="row">
+						<div class="col-md-4">
+							<div class="title">
+								<font class="font-purple">
+									●
+								</font> 자산 요약
+							</div>
+							<div class="row height statsText">
+								<div class="col-xs-12 col-sm-12 col-md-12">
+									<div class="row">
+										<div class="col-xs-7 col-sm-7 col-md-7">
+											총 예치금&nbsp;&nbsp;
+											<span class="glyphicon glyphicon-question-sign hover" style="font-size: 12px;" tabindex="0" data-toggle="tooltip" data-placement="auto" data-trigger="hover" title="" data-original-title="=기본 예치금 +자동투자 예치금"></span>
+										</div>
+										<div class="col-xs-5 col-sm-5 col-md-5 text-right">
+											0 원
+										</div>
+									</div>
+									<div class="row" style="margin-top: 5px;">
+										<div class="col-xs-7 col-sm-7 col-md-7">
+											상환 예정 원금&nbsp;&nbsp;
+											<span class="glyphicon glyphicon-question-sign hover" style="font-size: 12px;" tabindex="0" data-toggle="tooltip" data-placement="auto" data-trigger="hover" title="" data-original-title="부실없이 정상 상환을 가정한 예상 원금"></span>
+										</div>
+										<div class="col-xs-5 col-sm-5 col-md-5 text-right">
+											<span name="REST_PRNCPL_DSTRBTN_AMT">0</span> 원
+										</div>
+									</div>
+									<div class="row" style="margin-top: 5px;">
+										<div class="col-xs-7 col-sm-7 col-md-7">
+											투자 대기 금액&nbsp;&nbsp;
+											<span class="glyphicon glyphicon-question-sign hover" style="font-size: 12px;" tabindex="0" data-toggle="tooltip" data-placement="auto" data-trigger="hover" title="" data-original-title="투자금액이 차입자에게 전달되기 전 시점에서의 금액 "></span>
+										</div>
+										<div class="col-xs-5 col-sm-5 col-md-5 text-right">
+											<span name="INVEST_REQ_AMT">0</span> 원
+										</div>
+									</div>
+									
+									<hr>
+									
+									<div class="row">
+										<div class="col-xs-7 col-sm-7 col-md-7">
+											총 자산
+										</div>
+										<div class="col-xs-5 col-sm-5 col-md-5 text-right">
+											<span class="font-purple"><strong>
+												<span name="TOTAL_ASSET_AMT">0</span> <font size="2">원</font>
+											</strong></span>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					<div class="col-md-6">
+						<div class="title">
+							<font class="font-purple">
+								●
+							</font> 예치금 요약
+						</div>
+						<div class="row height statsText">
+							<div class="col-xs-12 col-sm-12 col-md-12">
+								<div class="row">
+									<div class="col-xs-6 col-sm-6 col-md-6">
+										기본 예치금
+									</div>
+									<div class="col-xs-6 col-sm-6 col-md-6 text-right">
+										0 원
+									</div>
+								</div>
+								<div class="row" style="margin-top: 30px;">
+									<div class="col-xs-6 col-sm-6 col-md-6">
+										자동투자 예치금
+									</div>
+									<div class="col-xs-6 col-sm-6 col-md-6 text-right">
+										0 원
+									</div>
+								</div>
+								<hr>
+								<div class="row">
+									<div class="col-xs-6 col-sm-6 col-md-6">
+										총 예치금
+									</div>
+									<div class="col-xs-6 col-sm-6 col-md-6 text-right">
+										<span class="font-purple"><strong>
+											0 <font size="2">원</font>
+										</strong></span>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+						    	<table class="table">
+					                <c:forEach items="${supportlist}" var="vo" varStatus="status">
+										<tbody>
+											<tr>
+												<td><a href="support_total_detail?notice_num=${vo.notice_num}">${vo.notice_num}</a></td>
+												<td><a href="support_total_detail?notice_num=${vo.notice_num}">${vo.title}</a></td>
+												<td>${vo.notice_date}</td>
+											</tr>
+										</tbody>
+									</c:forEach>
+			           		   </table>
+			           		   </div>
+							   </div>
+					    	</form>
+						</div>
+						<!-- =========새소식 -->
+					</div>
+				</div>
+            </div>
+        </div>
+        <!-- row -->
       </section>
-      <!-- /wrapper -->
     </section>
-    <!-- /MAIN CONTENT -->
+    
+    
+		
 		<!--footer start-->
 		<footer class="site-footer">
 			<div class="container">
