@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import kr.co.creator.vo.AccountVO;
 import kr.co.creator.vo.GuaranteeVO;
 import kr.co.creator.vo.ProjectVO;
 
@@ -15,9 +16,13 @@ public class InvestDAO {
 	@Autowired
 	SqlSession sqlSession;
 
-	public void invest() {
-		//sqlSession.selectList("InvestMapper.");
-	}
+	public AccountVO invest(AccountVO vo) {
+		System.out.println("Service111111111 : " + vo);
+		vo = sqlSession.selectOne("InvestMapper.accountDetail", vo);
+		System.out.println("Service222222222 : " + vo);
+		
+		return vo;
+	}//invest
 
 	public List<ProjectVO> invest_list() {
 		List<ProjectVO> list = null;
