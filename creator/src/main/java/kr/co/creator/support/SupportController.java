@@ -103,32 +103,14 @@ public class SupportController {
 	}//boardInsert
 	
 	
-	@RequestMapping(value="/support_total_detail"
+	@RequestMapping(value="/support_notice_detail"
 			,method=RequestMethod.GET)
 	public String supportDatail(NoticeVO vo, Model model) {
-	logger.info("total_detail");
-	vo = service.totalDetail(vo);
-	model.addAttribute("total_detailVO", vo);
-	return "support/support_total_detail";
+	logger.info("supportDatail");
+	vo = service.noticeDetail(vo);
+	model.addAttribute("detailVO", vo);
+	return "support/support_notice_detail";
 	}//support_total_detail
-	
-	@RequestMapping(value="/support_new_detail"
-			,method=RequestMethod.GET)
-	public String newDatail(NoticeVO vo, Model model) {
-	logger.info("new_detail");
-	vo = service.newDetail(vo);
-	model.addAttribute("new_detailVO", vo);
-	return "support/support_new_detail";
-	}//support_new_detail
-	
-	@RequestMapping(value="/support_operation_detail"
-			,method=RequestMethod.GET)
-	public String operationDatail(NoticeVO vo, Model model) {
-	logger.info("operation_detail");
-	vo = service.operationDetail(vo);
-	model.addAttribute("operation_detailVO", vo);
-	return "support/support_operation_detail";
-	}//support_new_detail
 	
 //	@RequestMapping(value="/support/formu"
 //			,method=RequestMethod.GET)

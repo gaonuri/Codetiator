@@ -22,7 +22,6 @@ public class MypageService {
 
 	public ProjectVO project_detail(ProjectVO proVO) {
 		proVO = dao.project_detail(proVO);
-		proVO = dao.project_detail(proVO);
 		return proVO;
 	}//project_detail
 
