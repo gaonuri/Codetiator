@@ -15,12 +15,19 @@ public class InvestService {
 	@Autowired
 	InvestDAO investDAO;
 
-	public AccountVO invest(AccountVO vo) {
-		System.out.println("DAO111111111 : " + vo);
-		vo = investDAO.invest(vo);
-		System.out.println("DAO222222222 : " + vo);
-		return vo;
-	}//invest
+//	public AccountVO invest(AccountVO vo) {
+//		System.out.println("DAO111111111 : " + vo);
+//		vo = investDAO.invest(vo);
+//		System.out.println("DAO222222222 : " + vo);
+//		return vo;
+//	}//invest
+
+	public AccountVO acount_detail(AccountVO accVO) {
+		System.out.println("DAO111111111 : " + accVO);
+		accVO = investDAO.acount_detail(accVO);
+		System.out.println("DAO222222222 : " + accVO);
+		return accVO;
+	}
 
 	public List<ProjectVO> invest_list() {
 		List<ProjectVO> list = null;

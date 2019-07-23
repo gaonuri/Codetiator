@@ -4,7 +4,7 @@
 	    <!--header start-->
 	    <header class="header black-bg">
 			<!--logo start-->
-			<a href="./main" class="logo"><img id="logoImage" alt="로고" src="${pageContext.request.contextPath}/resources/img/ner.jpg" width="200px" height="30px"></a>
+			<a href="${pageContext.request.contextPath}/main" class="logo"><img id="logoImage" alt="로고" src="${pageContext.request.contextPath}/resources/img/ner.jpg" width="200px" height="30px"></a>
 			<!--logo end-->
 			<div class="nav notify-row top-menu" id="top_menu">
 				<!--  notification start -->
@@ -12,7 +12,7 @@
 					<!-- settings start -->
 					 
 					<!-- 회사소개 start -->
-					<li><a href="./loan_guide">회사소개</a></li>
+					<li><a href="${pageContext.request.contextPath}/intro">회사소개</a></li>
 					<!-- 회사소개 end -->
 					
 					<!-- 대출 start -->
@@ -23,10 +23,10 @@
 						<ul class="dropdown-menu extended tasks-bar">
 							<div class="notify-arrow notify-arrow-green"></div>
 							<li>
-								<a href="./loan_guide">대출안내</a>
+								<a href="${pageContext.request.contextPath}/loan_guide">대출안내</a>
 							</li>
 							<li>
-								<a href="./loan/getloan">대출하기</a>
+								<a href="${pageContext.request.contextPath}/loan/getloan">대출하기</a>
 							</li>
 						</ul>
 					</li>
@@ -40,13 +40,13 @@
 						<ul class="dropdown-menu extended tasks-bar">
 							<div class="notify-arrow notify-arrow-black"></div>
 							<li>
-								<a href="./invest_guide">투자안내</a>
+								<a href="${pageContext.request.contextPath}/invest_guide">투자안내</a>
 							</li>
 							<li>
-								<a href="./invest_list">투자하기</a>
+								<a href="${pageContext.request.contextPath}/invest_list">투자하기</a>
 							</li>
 							<li>
-								<a href="./invest_finish">완료된투자</a>
+								<a href="${pageContext.request.contextPath}/invest_finish">완료된투자</a>
 							</li>
 						</ul>
 					</li>
@@ -61,19 +61,19 @@
 						<ul class="dropdown-menu extended notification">
 							<div class="notify-arrow"></div>
 							<li>
-								<a href="./faq">FAQ</a>
+								<a href="${pageContext.request.contextPath}/faq">FAQ</a>
 							</li>
 							<li>
-								<a href="./support">이용약관</a>
+								<a href="${pageContext.request.contextPath}/support">이용약관</a>
 							</li>
 							<li>
-								<a href="./policy">개인정보</a>
+								<a href="${pageContext.request.contextPath}/policy">개인정보</a>
 							</li>
 							<li>
-								<a href="./inquiry">1:1문의</a>
+								<a href="${pageContext.request.contextPath}/inquiry">1:1문의</a>
 							</li>
 							<li>
-								<a href="./support_total">공지사항</a>
+								<a href="${pageContext.request.contextPath}/support_total">공지사항</a>
 							</li>
 						</ul>
 					</li>
@@ -93,19 +93,19 @@
 								<ul class="dropdown-menu extended notification">
 									<div class="notify-arrow notify-arrow-yellow"></div>
 									<li>
-										<a href="./my_dashboard">대시보드</a>
+										<a href="${pageContext.request.contextPath}/my_dashboard">대시보드</a>
 									</li>
 									<li>
-										<a href="./my_invest_list">투자내역</a>
+										<a href="${pageContext.request.contextPath}/my_invest_list">투자내역</a>
 									</li>
 									<li>
-										<a href="./my_loan_list">대출내역</a>
+										<a href="${pageContext.request.contextPath}/my_loan_list">대출내역</a>
 									</li>
 									<li>
-										<a href="./my_depo_mgn">예치금관리</a>
+										<a href="${pageContext.request.contextPath}/my_depo_mgn">예치금관리</a>
 									</li>
 									<li>
-										<a href="./my_modify">회원정보수정</a>
+										<a href="${pageContext.request.contextPath}/my_modify">회원정보수정</a>
 									</li>
 								</ul>
 							</li>						
@@ -118,7 +118,7 @@
 					<c:choose>
 						<c:when test="${userVO != null && userVO.user_num != '' || busiUserVO != null && busiUserVO.busi_num != ''}">
 							<li>
-								<a href="./logout">로그아웃</a>
+								<a href="${pageContext.request.contextPath}/logout">로그아웃</a>
 							</li>
 						</c:when>
 						<c:otherwise>

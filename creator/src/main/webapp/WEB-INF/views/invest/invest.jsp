@@ -122,7 +122,7 @@
 							{},
 							function(data, status) {
 								
-							}, //call back function
+							}//call back function
 						);//post
 				} else {
 					return;
@@ -305,29 +305,29 @@
 																	<div class="col-xs-9 col-sm-5 col-md-5 col">
 																		<div class="row">
 																			<div class="col-xs-10 col-sm-10 col-md-10 col">
-																				<div class="name" id="loanNm771">[부동산] 경기도 파주시 문산읍 토지</div>
+																				<div class="name" id="loanNm771">${projectVO.project_name}</div>
 																			</div>
 																		</div>
 																	</div>
 																	<div class="col-xs-3 col-sm-1 col-md-1 col">
 																		<div class="grade">
-																			<span id="grade771">MA1</span>
+																			<span id="grade771">${projectVO.grade}</span>
 																		</div>
 																	</div>
 																	<div class="clearfix visible-xs-block"></div>
 																	<div class="col-xs-3 col-sm-1 col-md-1 col">
 																		<div class="rate">
-																			<span id="rate771">13.0</span><font size="1">%</font>
+																			<span id="rate771">${projectVO.rate}</span><font size="1">%</font>
 																		</div>
 																	</div>
 																	<div class="col-xs-3 col-sm-1 col-md-1 col">
 																		<div class="period">
-																			<span id="period771">9</span><font size="1">개월</font>
+																			<span id="period771">${projectVO.rate}</span><font size="1">개월</font>
 																		</div>
 																	</div>
 																	<div class="col-xs-3 col-sm-2 col-md-2 col">
 																		<div class="amt">
-																			<span id="investOkAmt771">11828</span><font size="1">만원</font>
+																			<span id="investOkAmt771">${projectVO.price - projectVO.current_price}</span><font size="1">만원</font>
 																		</div>
 																	</div>
 																	<div class="col-xs-3 col-sm-2 col-md-2 col">
@@ -502,9 +502,9 @@
 												</div>
 					
 												<div class="bottomLine">
-													<a href="javascript:(void(0));" onclick="fn_openInvestWarning();" style="position: relative; bottom: 0px;" disabled="disabled">
+													<a href="javascript:(void(0));" id="0" style="position: relative; bottom: 0px;" disabled="disabled">
 														<div style="margin-top: 30px;">
-															투자신청<span></span>
+															투자 신청<span></span>
 															<span>
 																<div><p style="margin-top:0px;text-align: right;">&gt;</p></div>
 															</span>
