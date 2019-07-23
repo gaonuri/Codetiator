@@ -75,7 +75,6 @@
 // 				$("#btn_write").click(function() {
 // 					location.href = "${pageContext.request.contextPath}/support/formi";
 // 				});//btn_write
-			});//ready
 		</script>
 		
 </head>

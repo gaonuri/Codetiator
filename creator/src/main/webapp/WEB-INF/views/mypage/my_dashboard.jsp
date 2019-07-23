@@ -245,16 +245,6 @@
 											</font> 투자 채권 목록
 										</div>
 									</div>
-									<div class="col-xs-12 col-sm-6 col-md-6 text-right">
-										<button type="button" class="btn btn-purple-transparent btn-gradiation" onclick="location.href='/mypage/monthRepaySchedule'">
-											월별 상환일정 <i class="glyphicon glyphicon-calendar"></i>
-										</button>
-										<a id="btnExport">
-											<button type="button" class="btn btn-purple-transparent btn-gradiation">
-												EXCEL <i class="glyphicon glyphicon-download-alt"></i>
-											</button>
-										</a>
-									</div>
 								</div>
 								
 								<div class="row row-cat">
@@ -264,27 +254,27 @@
 												전체<span id="investListCntA"></span>
 											</label>
 										</div>
-										<div class="col-xs-4 col-sm-2 col">
+										<div class="col-xs-6 col-sm-2 col">
 											<label class="btn labelBtn-purple btn-block checked" id="investCatLabel01">
 												투자신청<span id="investListCntB"></span>
 											</label>
 										</div>
-										<div class="col-xs-4 col-sm-2 col">
+										<div class="col-xs-6 col-sm-2 col">
 											<label class="btn labelBtn-purple btn-block checked" id="investCatLabel02">
 												상환중<span id="investListCntC"></span>
 											</label>
 										</div>
-										<div class="col-xs-4 col-sm-2 col">
+										<div class="col-xs-6 col-sm-2 col">
 											<label class="btn labelBtn-purple btn-block checked" id="investCatLabel03">
 												상환완료<span id="investListCntD"></span>
 											</label>
 										</div>
-										<div class="col-xs-4 col-sm-2 col">
+										<div class="col-xs-6 col-sm-2 col">
 											<label class="btn labelBtn-purple btn-block checked" id="investCatLabel04">
 												연체중<span id="investListCntE"></span>
 											</label>
 										</div>
-										<div class="col-xs-4 col-sm-2 col">
+										<div class="col-xs-6 col-sm-2 col">
 											<label class="btn labelBtn-purple btn-block checked" id="investCatLabel05">
 												부도<span id="investListCntF"></span>
 											</label>
@@ -295,43 +285,64 @@
 								<div class="row investList" style="margin-top: 10px;" style="margin-left: 10px;">
 									<div class="col-xs-10 col">
 										<table class="table">
-											<thead>
+												<thead>
+													<tr>
+														<th scope="col"  name="investListSortTitle" id="investListSortTitleINVEST_YMD">
+															투자일자<span name="investListSortDesc" id="investListSortDescINVEST_YMD"></span>
+														</th>
+														<th scope="col" class="clickable" name="investListSortTitle" id="investListSortTitleBANNER_TITLE">
+															프로젝트번호<span name="investListSortDesc" id="investListSortDescBANNER_TITLE"></span>
+														</th>
+														<th scope="col" class="clickable" name="investListSortTitle" id="investListSortTitleLOAN_NM">
+															프로젝트명<span name="investListSortDesc" id="investListSortDescLOAN_NM"></span>
+														</th>
+														<th scope="col" class="clickable" name="investListSortTitle" id="investListSortTitleINVEST_RATE">
+															금리(%)<span name="investListSortDesc" id="investListSortDescINVEST_RATE"></span>
+														</th>
+														<th scope="col" class="clickable" name="investListSortTitle" id="investListSortTitleINVEST_AMT">
+															투자금액<span name="investListSortDesc" id="investListSortDescINVEST_AMT"></span>
+														</th>
+														<th scope="col" colspan="2" class="clickable" name="investListSortTitle" id="investListSortTitleRND_CNT">
+															상환차수<span name="investListSortDesc" id="investListSortDescRND_CNT"></span>
+														</th>
+														<th scope="col" class="clickable" name="investListSortTitle" id="investListSortTitleNEXT_DSTRBTN_DATE">
+															상환예정일<span name="investListSortDesc" id="investListSortDescNEXT_DSTRBTN_DATE"></span>
+														</th>
+														<th scope="col" class="clickable" name="investListSortTitle" id="investListSortTitleMAX_DSTRBTN_DATE">
+															상환완료일<span name="investListSortDesc" id="investListSortDescMAX_DSTRBTN_DATE"></span>
+														</th>
+														<th scope="col" class="clickable" name="investListSortTitle" id="investListSortTitleREPAY_STATS_CD">
+															상품상태<span name="investListSortDesc" id="investListSortDescREPAY_STATS_CD"></span>
+														</th>
+													</tr>
+												</thead>
+											<c:forEach items="${investList}" var="vo" varStatus="status">
 												<tr>
-													<th scope="col" class="clickable" name="investListSortTitle" id="investListSortTitleINVEST_YMD">
-														투자일자<span name="investListSortDesc" id="investListSortDescINVEST_YMD"></span>
-													</th>
-													<th scope="col" class="clickable" name="investListSortTitle" id="investListSortTitleBANNER_TITLE">
-														상품별호수<span name="investListSortDesc" id="investListSortDescBANNER_TITLE"></span>
-													</th>
-													<th scope="col" class="clickable" name="investListSortTitle" id="investListSortTitleLOAN_NM">
-														상품명<span name="investListSortDesc" id="investListSortDescLOAN_NM"></span>
-													</th>
-													<th scope="col" class="clickable" name="investListSortTitle" id="investListSortTitleINVEST_RATE">
-														금리(%)<span name="investListSortDesc" id="investListSortDescINVEST_RATE"></span>
-													</th>
-													<th scope="col" class="clickable" name="investListSortTitle" id="investListSortTitleINVEST_AMT">
-														투자금액<span name="investListSortDesc" id="investListSortDescINVEST_AMT"></span>
-													</th>
-													<th scope="col" colspan="2" class="clickable" name="investListSortTitle" id="investListSortTitleRND_CNT">
-														상환차수<span name="investListSortDesc" id="investListSortDescRND_CNT"></span>
-													</th>
-													<th scope="col" class="clickable" name="investListSortTitle" id="investListSortTitleNEXT_DSTRBTN_DATE">
-														상환예정일<span name="investListSortDesc" id="investListSortDescNEXT_DSTRBTN_DATE"></span>
-													</th>
-													<th scope="col" class="clickable" name="investListSortTitle" id="investListSortTitleMAX_DSTRBTN_DATE">
-														상환완료일<span name="investListSortDesc" id="investListSortDescMAX_DSTRBTN_DATE"></span>
-													</th>
-													<th scope="col" class="clickable" name="investListSortTitle" id="investListSortTitleREPAY_STATS_CD">
-														상품상태<span name="investListSortDesc" id="investListSortDescREPAY_STATS_CD"></span>
-													</th>
+													<td>${vo.invest_date}</td>
+													<td>${vo.project_num}</td>
+													<td>${vo.project_name}</td>
+													<td>${vo.rate}%</td>
+													<td>${vo.invest_price}</td>
+													<td>${vo.refund_count}</td>
+													<td>${vo.refund}</td>
+													<td>${vo.refund_deadline}</td>
+													<td>${vo.ach_state}</td>
+													<td>
+<%-- 														<c:choose> --%>
+<%-- 															<c:when test="${vo.ach_state == '준비중'}"> --%>
+<!-- 																<button id="state">준비중</button> -->
+<%-- 															</c:when> --%>
+<%-- 															<c:otherwise> --%>
+<%-- 																${vo.ach_state} --%>
+<%-- 															</c:otherwise> --%>
+<%-- 														</c:choose> --%>
+													</td>
 												</tr>
-											</thead>
-											<tbody id="investListBody"></tbody>
+											</c:forEach>
 										</table>
 									</div>
 								</div>
-								
-								<div class="row investThum" style="margin-top: 10px;" id="investThum"></div>
+							<div class="row investThum" style="margin-top: 10px;" id="investThum"></div>
 								
 								<!-- 
 								<div class="row" style="margin-top: 10px;" id="nextPageDiv">
@@ -351,20 +362,19 @@
 								<table id="tblExport" style="display:none;" class="tblExport">
 									<thead>
 										<tr>
-											<th scope="col">투자일자</th>
-											<th scope="col">상품별호수</th>
-											<th scope="col">상품명</th>
-											<th scope="col">금리</th>
-											<th scope="col">투자금액</th>
-											<th scope="col">상환회차</th>
-											<th scope="col">만기회차</th>
-											<th scope="col">상환예정일</th>
-											<th scope="col">상환완료일</th>
-											<th scope="col">상품상태</th>
+											<th class="col">투자일자</th>
+											<th class="col">상품별호수</th>
+											<th class="col">상품명</th>
+											<th class="col">금리</th>
+											<th class="col">투자금액</th>
+											<th class="col">상환회차</th>
+											<th class="col">만기회차</th>
+											<th class="col">상환예정일</th>
+											<th class="col">상환완료일</th>
+											<th class="col">상품상태</th>
 										</tr>
 									</thead>
-									<tbody>
-									</tbody>
+									
 								</table>
 								<div class="row" style="margin-top: 10px;">
 									<div class="col-xs-12 col-md-push-6 col-md-6" style="margin-top: 5px;">

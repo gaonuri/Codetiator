@@ -23,11 +23,14 @@ public class MypageController {
 	MypageService service;
 	
 	@RequestMapping(value = "/my_dashboard", method = RequestMethod.GET)
-	public String list(Model model) {
+	public String list(Model model, ProjectVO proVO, InvestVO ivVO) {
 		logger.info("my_dashboard");
-		List<InvestVO> list = null;
-		list = service.assetsList();
-		model.addAttribute("assetsList", list);
+		
+		proVO = service.project_detail(proVO);
+		ivVO = service.invest_detail(ivVO);
+		model.addAttribute("projectVO", proVO);
+		model.addAttribute("investVO", ivVO);
+		
 		return "mypage/my_dashboard";
 	}
 	
@@ -38,9 +41,9 @@ public class MypageController {
 		return "mypage/my_depo_mgn";
 	}
 	
-	@RequestMapping(value = "/my_invest_list", method = RequestMethod.GET)
-	public String my_invest_list(Model model, ProjectVO proVO, InvestVO ivVO) {
-		logger.info("my_invest_list");
+//	@RequestMapping(value = "/my_invest_list", method = RequestMethod.GET)
+//	public String my_invest_list(Model modelVO) {
+//		logger.info("my_invest_list");
 //		vo = SqlSession.selectOne(MypageMapper.InvestList, vo);
 //		int successCnt = 0;
 //		if(vo != null && vo.getMbr_no() != null && !vo.getMbr_no().equals("")) {
@@ -48,21 +51,21 @@ public class MypageController {
 //			session.setAttribute("usrSesn", vo);
 //		}
 //		out.print(successCnt);
-//		
-//		
-//		scan
+//	
+//
+//	scan
 //		int count = 0;
 //		if(count == 1) {
 //			
 //		} else if (count == 2) {
 //			
 //		}
-		proVO = service.project_detail(proVO);
-		ivVO = service.invest_detail(ivVO);
-		model.addAttribute("projectVO", proVO);
-		model.addAttribute("investVO", ivVO);
-		return "mypage/my_invest_list";
-	}
+//		proVO = service.project_detail(proVO);
+//		ivVO = service.invest_detail(ivVO);
+//		model.addAttribute("projectVO", proVO);
+//		model.addAttribute("investVO", ivVO);
+//		return "mypage/my_invest_list";
+//	}
 	
 	@RequestMapping(value = "/my_loan_list", method = RequestMethod.GET)
 	public String my_loan_list() {
