@@ -38,26 +38,34 @@
 		var temp = 0;
 		var add = 0;
 		var deposit = parseInt($("#inputDeposit771").val());
+		var invest 	= parseInt($("#inputAmt771").val());
+		var intrst 	= invest * 0.15;
+		var tax 	= intrst * 0.25;
+		var benefit = invest + intrst - tax;
 		var confirmYN = false;
 		
 		$("#amtPlus100_771").click(function() {
-			addDeposit(100);
+			addDeposit(1000000);
+			var invest 	= parseInt($("#inputAmt771").val());
+			var intrst 	= invest * 0.15;
+			var tax 	= intrst * 0.25;
+			var benefit = invest + intrst - tax;
 		});//amtPlus100_771
 		
 		$("#amtPlus50_771").click(function() {
-			addDeposit(50);
+			addDeposit(500000);
 		});//amtPlus50_771
 		
 		$("#amtPlus10_771").click(function() {
-			addDeposit(10);
+			addDeposit(100000);
 		});//amtPlus10_771
 		
 		$("#amtPlus5_771").click(function() {
-			addDeposit(5);
+			addDeposit(50000);
 		});//amtPlus5_771
 		
 		$("#amtPlus1_771").click(function() {
-			addDeposit(1);
+			addDeposit(10000);
 		});//amtPlus1_771
 		
 		$("#amtPlusAll_771").click(function() {
@@ -69,15 +77,30 @@
 		});//amtReset_771
 		
 		$("#inputAmt771").blur(function() {
-			$("#investAmtL").text($("#inputAmt771").val());
-			$("#intrstAmtL").text($("#inputAmt771").val() * 0.15);
+			var invest 	= parseInt($("#inputAmt771").val());
+			var intrst 	= invest * 0.15;
+			var tax 	= intrst * 0.25;
+			var benefit = invest + intrst - tax;
+			
+			$("#investAmtL").text(invest);
+			$("#intrstAmtL").text(intrst);
+			$("#taxAmtL").text(tax);
+			$("#benefitAmtL").text(benefit);
 		});
 
 		function addDeposit(add) {
 			if(deposit > 0) {
 				temp = parseInt($("#inputAmt771").val());
 				temp += add;
+				intrst 	= temp * 0.15;
+				tax 	= intrst * 0.25;
+				benefit = invest + intrst - tax;
+				
 				$("#inputAmt771").val(temp);
+				$("#investAmtL").text(temp);
+				$("#intrstAmtL").text(intrst);
+				$("#taxAmtL").text(tax);
+				$("#benefitAmtL").text(benefit);
 			} else {
 				confirmYN = confirm("투자 가능 예치금이 부족합니다. 예치금 관리 페이지로 이동하시겠습니까?");
 				if(confirmYN == true) {
@@ -87,6 +110,27 @@
 				}//if
 			}//if
 		}//addDeposit
+		
+		$("#agreeCheckbox").checked("checked");
+		
+		function fn_openInvestWarning() {
+			if($("#agreeCheckbox").val == "Y") {
+				var confirmYN = false;
+				confirmYN = confirm("정말 투자하시겠습니까?");
+				if(confirmYN == true) {
+					$.get("",
+							{},
+							function(data, status) {
+								
+							}, //call back function
+						);//post
+				} else {
+					return;
+				}
+			} else {
+				alert("약관에 동의해주시기 바랍니다.");
+			}//if
+		}//fn_openInvestWarning
 	});//ready
 	</script>
 </head>
@@ -317,7 +361,7 @@
 																	<div class="col-xs-6 col-sm-4 col-md-4 col-lg-3 col">
 																		<div class="form-group has-feedback inputForm" id="inputAmtDiv">
 																			<input type="text" class="form-control text-right" id="inputAmt771" name="inputAmt" aria-describedby="inputAmtStatus" value="0">
-																			<span class="form-control-feedback" aria-hidden="true">만원</span>
+																			<span class="form-control-feedback" aria-hidden="true">원</span>
 																			<span id="inputAmtStatus" class="sr-only">(success)</span>
 																			<input type="hidden" id="reqAmt771" name="reqAmt" value="0">
 																		</div>
@@ -332,6 +376,7 @@
 																				<span name="amtPlus1" id="amtPlus1_771">+1만</span>
 																				<span name="amtPlusAll" id="amtPlusAll_771">전액</span>
 																				<span name="amtReset" id="amtReset_771" class="gray">정정</span>
+																				<br><span>금액을 1만원이상, 만원단위로 입력해주시기 바랍니다.</span>
 																			</div>
 																		</form>
 																	</div>
@@ -344,7 +389,7 @@
 																	<div class="col-xs-6 col-sm-4 col-md-4 col-lg-3 col">
 																		<div class="form-group has-feedback inputForm" id="inputDepositDiv">
 																			<input type="text" class="form-control text-right" id="inputDeposit771" name="inputDeposit" aria-describedby="inputDepositStatus" value="${accountVO.deposit}" readonly="readonly">
-																			<span class="form-control-feedback" aria-hidden="true">만원</span>
+																			<span class="form-control-feedback" aria-hidden="true">원</span>
 																			<span id="inputDepositStatus" class="sr-only">(success)</span>
 																			<input type="hidden" id="reqDeposit771" name="reqDeposit" value="0">
 																		</div>
@@ -353,7 +398,7 @@
 																	</div>
 																	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-4 col">
 																		<div class="inputDepositText">
-																			투자 가능 예치금 : <span class="font-purple" name="availDeposit" id="availDeposit771&quot;">0</span><font size="1">만원</font>
+																			투자 가능 예치금 : <span class="font-purple" name="availDeposit" id="availDeposit771&quot;">0</span><font size="1">원</font>
 																			<div id="brrwrLmtGuideDiv" class="display-none">
 																				(동일차입자 상품에 투자하신 적이 있습니다.)
 																			</div>
@@ -416,7 +461,7 @@
 															</thead>
 															<tbody>
 																<tr>
-																	<td><span id="investAmtL" class="font-blue">0</span><font size="1">만원</font></td>
+																	<td><span id="investAmtL" class="font-blue">0</span><font size="1">원</font></td>
 																	<td><span id="intrstAmtL" class="font-blue">0</span><font size="1">원</font></td>
 																	<td><span id="taxAmtL" class="font-red">0</span><font size="1">원</font></td>
 																	<td><span id="benefitAmtL" class="font-blue">0</span><font size="1">원</font></td>
@@ -459,7 +504,7 @@
 												<div class="bottomLine">
 													<a href="javascript:(void(0));" onclick="fn_openInvestWarning();" style="position: relative; bottom: 0px;" disabled="disabled">
 														<div style="margin-top: 30px;">
-															투자 신청<span></span>
+															투자신청<span></span>
 															<span>
 																<div><p style="margin-top:0px;text-align: right;">&gt;</p></div>
 															</span>

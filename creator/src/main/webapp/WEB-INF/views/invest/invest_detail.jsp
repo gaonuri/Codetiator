@@ -36,11 +36,11 @@
 	<script type="text/javascript">
 	$(document).ready(function() {
 		$("#investBtn1").click(function() {
-			location.href = "${pageContext.request.contextPath}/invest?user_num=${userVO.user_num}";
+			location.href = "${pageContext.request.contextPath}/invest?user_num=${userVO.user_num}&project_num=${projectVO.project_num}";
 		});//investBtn1
 		
 		$("#investBtn2").click(function() {
-			alert()
+			alert("로그인 하시기 바랍니다.");
 		});//investBtn2
 	});//ready
 	</script>
