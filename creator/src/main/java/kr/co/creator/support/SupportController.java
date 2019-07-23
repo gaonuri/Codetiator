@@ -44,33 +44,24 @@ public class SupportController {
 //		return "support/inquiry";
 //	}
 //	
-	@RequestMapping(value = "/support_total", method = RequestMethod.GET)
+	@RequestMapping(value = "/support", method = RequestMethod.GET)
 	public String support(Model model) {
 		logger.info("support");
 		List<NoticeVO> support = null;
 		support = service.supportList();
 		model.addAttribute("supportlist", support);
-		return "support/support_total";
+		return "support/support";
 	}
 
-	@RequestMapping(value = "/support_new", method = RequestMethod.GET)
-	public String support2(Model model) {
-		logger.info("support2");
+	@RequestMapping(value = "/support_sebu", method = RequestMethod.GET)
+	public String support2(Model model, NoticeVO vo) {
+		logger.info("support_sebu");
 		List<NoticeVO> support = null;
-		support = service.supportList2();
+		support = service.supportList2(vo);
 		model.addAttribute("supportlist2", support);
 		return "support/support_new";
 	}
-	
-	@RequestMapping(value = "/support_operation", method = RequestMethod.GET)
-	public String support3(Model model) {
-		logger.info("support3");
-		List<NoticeVO> support = null;
-		support = service.supportList3();
-		model.addAttribute("supportlist3", support);
-		return "support/support_operation";
-	}
-	
+
 	@RequestMapping(value="/support/formi"
 			,method=RequestMethod.GET)
 	public String formInsert() {
