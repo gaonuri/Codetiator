@@ -36,11 +36,11 @@
 	<script type="text/javascript">
 	$(document).ready(function() {
 		$("#investBtn1").click(function() {
-			location.href = "${pageContext.request.contextPath}/invest?user_num=${userVO.user_num}";
+			location.href = "${pageContext.request.contextPath}/invest?user_num=${userVO.user_num}&project_num=${projectVO.project_num}";
 		});//investBtn1
 		
 		$("#investBtn2").click(function() {
-			alert()
+			alert("로그인 하시기 바랍니다.");
 		});//investBtn2
 	});//ready
 	</script>
@@ -68,7 +68,6 @@
 					<div class="col-xs-12 col-sm-12 col-md-offset-1 col-md-10 col">
 						<div class="card" style="float: right; border: solid 1px black">
 							<div class="card-body">
-								<h1>${userVO.user_num}</h1>
 								<table>
 									<tr>
 										<td>${projectVO.current_price / projectVO.price * 100}%</td>

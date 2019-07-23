@@ -35,24 +35,16 @@
 	</select>
 	
 	<select id="supportList2"
-			resultType="kr.co.creator.vo.NoticeVO">
+			parameterType="kr.co.creator.vo.NoticeVO" resultType="kr.co.creator.vo.NoticeVO">
 		select notice_num
 			, title
 			, notice_date
 			FROM notice
+			where notice_type = #{notice_type}
 			order by notice_date desc
 	</select>
 	
-	<select id="supportList3"
-			resultType="kr.co.creator.vo.NoticeVO">
-		select notice_num
-			, title
-			, notice_date
-			FROM notice_operation
-			order by notice_date desc
-	</select>
-	
-	<select id="totalDetail"
+	<select id="noticeDetail"
 			parameterType="kr.co.creator.vo.NoticeVO"
 			resultType="kr.co.creator.vo.NoticeVO">
 		select *

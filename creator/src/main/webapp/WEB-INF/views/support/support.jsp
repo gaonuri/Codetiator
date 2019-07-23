@@ -39,22 +39,42 @@
 				$("#btn_write").click(function() {
 					location.href = "${pageContext.request.contextPath}/support/formi";
 				});//btn_write
-			});//ready
-			$(document).ready(function() {
-				$("#btn_total").click(function() {
-					location.href = "${pageContext.request.contextPath}/support_total";
-				});//btn_write
-			});//ready
-			$(document).ready(function() {
-				$("#btn_new").click(function() {
-					location.href = "${pageContext.request.contextPath}/support_new";
-				});//btn_write
-			});//ready
-			$(document).ready(function() {
-				$("#btn_operation").click(function() {
-					location.href = "${pageContext.request.contextPath}/support_operation";
-				});//btn_write
-			});//ready
+				
+				$("#newtab").click(function() {
+					$.get("/support/support"
+						,{
+							notice_type:$("#newtab").val()
+						}//data
+						,function(data,status) {
+							if(status == "success") {
+							
+							}//if
+						}//function
+					);//get
+				
+				$("#operationtab").click(function() {
+					$.get("/support/support"
+						,{
+							notice_type:$("#operationtab").val()
+						}//data
+						,function(data,status) {
+							if(status == "success") {
+							
+							}//if
+						}//function
+					);//get
+				});
+// 				$("#btn_new").click(function() {
+// 					location.href = "${pageContext.request.contextPath}/support_new";
+// 				});//btn_write
+
+// 				$("#btn_operation").click(function() {
+// 					location.href = "${pageContext.request.contextPath}/support_operation";
+// 				});//btn_write
+				
+// 				$("#btn_write").click(function() {
+// 					location.href = "${pageContext.request.contextPath}/support/formi";
+// 				});//btn_write
 		</script>
 		
 </head>
@@ -145,19 +165,19 @@
 						<ul class="dropdown-menu extended notification">
 							<div class="notify-arrow notify-arrow-yellow"></div>
 							<li>
-								<a href="./my_dashboard">대시보드</a>
+								<a href="./my_dashboard">대시 보드</a>
 							</li>
 							<li>
-								<a href="./my_invest_list">투자내역</a>
+								<a href="./my_invest_list">투자 내역</a>
 							</li>
 							<li>
-								<a href="./my_loan_list">대출내역</a>
+								<a href="./my_loan_list">대출 내역</a>
 							</li>
 							<li>
-								<a href="./my_depo_mgn">예치금관리</a>
+								<a href="./my_depo_mgn">예치금 관리</a>
 							</li>
 							<li>
-								<a href="./my_modify">회원정보수정</a>
+								<a href="./my_modify">기본 정보 수정</a>
 							</li>
 						</ul>
 					</li>
@@ -186,90 +206,88 @@
      	 <section class="wrapper">
        	 	<div class="row">
          		 <div class="col-md-10">
-            		<div class="row content-panel">
-            			<div class="col-lg-3">
-							<div class="panel-heading">
+	         		 <div class="row content-panel">
+						<div class="panel-heading">
+							<div class="col-lg-3">
 								<ul class="nav nav-tabs nav-justified">
 									<li class="active">
-										<a data-toggle="tab" href="#total">전체</a>
+										<a data-toggle="tab" href="#totaltab">전체</a>
 									</li>
 									<li >
-										<a data-toggle="tab" href="#new">새소식</a>
+										<a data-toggle="tab" href="#newtab">새소식</a>
 									</li>
 									<li >
-										<a data-toggle="tab" href="#operation">운영사항</a>
+										<a data-toggle="tab" href="#operationtab">운영사항</a>
 									</li>
 								</ul>
-							</div>
-						 </div>	
-			            <!-- /panel-heading -->
-							<div class="panel-body">
-								<div class="tab-content">
-									<div id="total" class="tab-pane active">
-								    	<form role="form" class="form-horizontal">
-									   		<div class="row">
-										   		 <table class="table">
-									                <c:forEach items="${supportlist}" var="vo" varStatus="status">
-														<tbody>
-															<tr>
-																<td><a href="support_total_detail?notice_num=${vo.notice_num}">${vo.notice_num}</a></td>
-																<td><a href="support_total_detail?notice_num=${vo.notice_num}">${vo.title}</a></td>
-																<td>${vo.notice_date}</td>
-															</tr>
-														</tbody>
-													</c:forEach>
-									            </table>
-											</div>
-								    	</form>
-									</div>
-									<!-- =========전체 -->
-									
-								<div id="new" class="tab-pane">
-							    	<form role="form" class="form-horizontal">
-									   		<div class="row">
-										   		 <table class="table">
-									                <c:forEach items="${supportlist2}" var="vo" varStatus="status">
-														<tbody>
-															<tr>
-																<td><a href="support_new_detail?notice_num=${vo.notice_num}">${vo.notice_num}</a></td>
-																<td><a href="support_new_detail?notice_num=${vo.notice_num}">${vo.title}</a></td>
-																<td>${vo.notice_date}</td>
-															</tr>
-														</tbody>
-													</c:forEach>
-									            </table>
-											</div>
-								    	</form>
-									</div>
-								<!-- =========전체 -->
-								
-								<div id="operation" class="tab-pane">
-							    	<form role="form" class="form-horizontal">
-									   		<div class="row">
-										   		 <table class="table">
-									                <c:forEach items="${supportlist3}" var="vo" varStatus="status">
-														<tbody>
-															<tr>
-																<td><a href="support_operation_detail?notice_num=${vo.notice_num}">${vo.notice_num}</a></td>
-																<td><a href="support_operation_detail?notice_num=${vo.notice_num}">${vo.title}</a></td>
-																<td>${vo.notice_date}</td>
-															</tr>
-														</tbody>
-													</c:forEach>
-									            </table>
-											</div>
-								    	</form>
-								</div>
-								<!-- =========전체 -->
-									
-								</div>
 							</div>	
-			            
-		             </div>
-		          </div>
-         		 <!-- /col-md-12 -->
-        	</div>
-        	<!-- row -->
+						</div>
+				            <div class="tab-content">
+							<div id="totaltab" class="tab-pane active">
+						    	<form role="form" class="form-horizontal">
+							   		<div class="row">
+								   		<div class="col-md-12">
+									    	<table class="table">
+								                <c:forEach items="${supportlist}" var="vo" varStatus="status">
+													<tbody>
+														<tr>
+															<td><a href="support_total_detail?notice_num=${vo.notice_num}">${vo.notice_num}</a></td>
+															<td><a href="support_total_detail?notice_num=${vo.notice_num}">${vo.title}</a></td>
+															<td>${vo.notice_date}</td>
+														</tr>
+													</tbody>
+												</c:forEach>
+						           		   </table>
+					           		   </div>
+								   </div>
+						    	</form>
+							</div>
+							<!-- =========전체 -->	
+							<div id="newtab" class="tab-pane">
+						    	<form role="form" class="form-horizontal">
+							   		<div class="row">
+								   		<div class="col-md-12">
+									    	<table class="table">
+								                <c:forEach items="${supportlist2}" var="vo" varStatus="status">
+													<tbody>
+														<tr>
+															<td><a href="support_total_detail?notice_num=${vo.notice_num}">${vo.notice_num}</a></td>
+															<td><a href="support_total_detail?notice_num=${vo.notice_num}">${vo.title}</a></td>
+															<td>${vo.notice_date}</td>
+														</tr>
+													</tbody>
+												</c:forEach>
+						           		   </table>
+					           		   </div>
+								   </div>
+						    	</form>
+							</div>
+							<!-- =========새소식 -->
+							<div id="operationtab" class="tab-pane ">
+						    	<form role="form" class="form-horizontal">
+							   		<div class="row">
+								   		<div class="col-md-12">
+									    	<table class="table">
+								                <c:forEach items="${supportlist2}" var="vo" varStatus="status">
+													<tbody>
+														<tr>
+															<td><a href="support_total_detail?notice_num=${vo.notice_num}">${vo.notice_num}</a></td>
+															<td><a href="support_total_detail?notice_num=${vo.notice_num}">${vo.title}</a></td>
+															<td>${vo.notice_date}</td>
+														</tr>
+													</tbody>
+												</c:forEach>
+						           		   </table>
+					           		   </div>
+								   </div>
+						    	</form>
+							</div>
+						<!-- =========운영사항 -->
+						</div>
+					</div>
+				</div>
+            </div>
+        <!-- row -->
       </section>
     </section>
     <!-- /MAIN CONTENT -->

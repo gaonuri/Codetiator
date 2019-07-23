@@ -37,35 +37,16 @@ public class SupportDAO {
 		return support;
 	}//supportList
 	
-	public List<NoticeVO> supportList2() {
+	public List<NoticeVO> supportList2(NoticeVO vo) {
 		List<NoticeVO> support = null;
 		support = sqlSession.selectList(
-							"SupportMapper.supportList2");
+							"SupportMapper.supportList2", vo);
 		return support;
 	}//supportList2
 	
-	public List<NoticeVO> supportList3() {
-		List<NoticeVO> support = null;
-		support = sqlSession.selectList(
-							"SupportMapper.supportList3");
-		return support;
-	}//supportList3
-
-	public NoticeVO totalDetail(NoticeVO vo) {
+	public NoticeVO noticeDetail(NoticeVO vo) {
 		vo = sqlSession.selectOne(
-				"SupportMapper.totalDetail", vo);
-		return vo;
-	}//totalDetail
-
-	public NoticeVO newDetail(NoticeVO vo) {
-		vo = sqlSession.selectOne(
-				"SupportMapper.totalDetail", vo);
-		return vo;
-	}//totalDetail
-
-	public NoticeVO operationDetail(NoticeVO vo) {
-		vo = sqlSession.selectOne(
-				"SupportMapper.totalDetail", vo);
+				"SupportMapper.noticeDetail", vo);
 		return vo;
 	}//totalDetail
 

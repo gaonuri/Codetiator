@@ -15,20 +15,14 @@ public class MypageDAO {
 	@Autowired
 	SqlSession sqlSession;
 
-	public List<InvestVO> assetsList() {
-		List<InvestVO> list = null;
-		list = sqlSession.selectList(
-							"MypageMapper.assetsList");
-		return list;
-	}//assetList
 
 	public ProjectVO project_detail(ProjectVO proVO) {
-		proVO = sqlSession.selectOne("MypageMapper.InvestList", proVO);
+		proVO = sqlSession.selectOne("MypageMapper.projectlist", proVO);
 		return proVO;
 	}
 
 	public InvestVO invest_detail(InvestVO ivVO) {
-		ivVO = sqlSession.selectOne("MypageMapper.InvestList", ivVO);
+		ivVO = sqlSession.selectOne("MypageMapper.investlist", ivVO);
 		return ivVO;
 	} 
 }//class
