@@ -122,7 +122,7 @@
 							</li>
 						</c:when>
 						<c:otherwise>
-							<li><a class="loginss" href="./join">회원가입</a></li>
+							<li><a class="loginss" href="${pageContext.request.contextPath}/join">회원가입</a></li>
 						</c:otherwise>
 					</c:choose>
 				
