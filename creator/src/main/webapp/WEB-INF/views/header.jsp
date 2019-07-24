@@ -125,6 +125,8 @@
 							<li><a class="loginss" href="${pageContext.request.contextPath}/join">회원가입</a></li>
 						</c:otherwise>
 					</c:choose>
+					
+					<li><a href="${pageContext.request.contextPath}/account_list">관리자</a></li>
 				
 					<!-- 로그아웃 end -->
 				</ul>
