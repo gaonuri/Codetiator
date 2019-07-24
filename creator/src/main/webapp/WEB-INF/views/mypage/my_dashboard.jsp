@@ -287,9 +287,7 @@
 										<table class="table">
 												<thead>
 													<tr>
-														<th scope="col"  name="investListSortTitle" id="investListSortTitleINVEST_YMD">
-															투자일자<span name="investListSortDesc" id="investListSortDescINVEST_YMD"></span>
-														</th>
+														<th class="col">투자일자</th>
 														<th scope="col" class="clickable" name="investListSortTitle" id="investListSortTitleBANNER_TITLE">
 															프로젝트번호<span name="investListSortDesc" id="investListSortDescBANNER_TITLE"></span>
 														</th>

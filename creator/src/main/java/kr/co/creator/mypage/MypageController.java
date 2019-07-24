@@ -2,6 +2,8 @@ package kr.co.creator.mypage;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.apache.ibatis.session.SqlSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,6 +17,7 @@ import kr.co.creator.vo.InvestVO;
 import kr.co.creator.vo.MypageVO;
 import kr.co.creator.vo.NoticeVO;
 import kr.co.creator.vo.ProjectVO;
+import kr.co.creator.vo.UserVO;
 
 @Controller
 public class MypageController {
@@ -25,21 +28,22 @@ public class MypageController {
 	MypageService service;
 	
 	@RequestMapping(value = "/my_dashboard", method = RequestMethod.GET)
-	public String list(Model model, MypageVO userVO, MypageVO busiVO) {
+	public String list(HttpSession session, Model model, MypageVO userVO) {
 		logger.info("my_dashboard");
 		List<MypageVO> invest = null;   // 전체
-//		
-//		if(개인) {
+
+		UserVO uvo = (UserVO)session.getAttribute("userVO");
+		session.getAttribute("busiUserVO");
+		//		if(개인) {
 //			
 //			userVO.setUser_num("사용자번호");	
 //		}else if(기업) {
-//			userVO.setUser_num("기업회원번호");	
+//			busiVO.setbusi_num("기업회원번호");	
 //			
 //		}
-		invest = service.invest_detail(userVO);
 		
 		userVO.setUser_num("user_num");
-		invest = service.invest_detail(userVO);
+		invest = service.invest_detail(uvo);
 		
 		return "mypage/my_dashboard";
 	}

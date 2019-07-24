@@ -26,7 +26,7 @@ $(document).ready(function() {
 					if(status == "success"){
 						if(data > 0){
 							alert("등록 되었습니다.");
-							location.href="${pageContext.request.contextPath}/support_total";
+							location.href="${pageContext.request.contextPath}/support";
 						} else {
 							alert("잠시 후에 다시 시도해 주세요.");
 						}

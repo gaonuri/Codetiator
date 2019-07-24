@@ -12,7 +12,7 @@ public class MypageVO {
 	private String repay_count;			// ?긽?솚李⑥닔
 	private String invest_date;		// �닾�옄�궇吏�
 	private String user_num;			// (李몄“)?쑀??踰덊샇
-	private String busi_num;			// (李몄“)踰뺤씤?쑀??踰덊샇
+	private String busi_num;			// (李몄“)踰뺤씤?쑀??踰덊샇	
 	
 	public String getInvest_date() {
 		return invest_date;
