@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import kr.co.creator.vo.AccountVO;
 import kr.co.creator.vo.GuaranteeVO;
 import kr.co.creator.vo.ProjectVO;
+import kr.co.creator.vo.UserVO;
 
 @Service
 public class InvestService {
@@ -54,4 +55,10 @@ public class InvestService {
 		
 		return list;
 	}//invest_finish
+
+	public int deposit_update(UserVO vo) {
+		int count = 0;
+		count = investDAO.deposit_update(vo);
+		return count;
+	}//deposit_update
 }//class

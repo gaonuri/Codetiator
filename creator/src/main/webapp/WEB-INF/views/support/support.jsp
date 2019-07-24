@@ -222,6 +222,7 @@
 								</ul>
 							</div>	
 						</div>
+						<!-- =========전체 -->	
 				            <div class="tab-content">
 							<div id="totaltab" class="tab-pane active">
 						    	<form role="form" class="form-horizontal">
@@ -229,28 +230,10 @@
 								   		<div class="col-md-12">
 									    	<table class="table">
 								                <c:forEach items="${supportlist}" var="vo" varStatus="status">
+         <!-- 1씩증가 하는법 물어보기  -->     				<c:set var="seq" value="1" />
 													<tbody>
 														<tr>
-															<td><a href="support_total_detail?notice_num=${vo.notice_num}">${vo.notice_num}</a></td>
-															<td><a href="support_total_detail?notice_num=${vo.notice_num}">${vo.title}</a></td>
-															<td>${vo.notice_date}</td>
-														</tr>
-													</tbody>
-												</c:forEach>
-						           		   </table>
-					           		   </div>
-								   </div>
-						    	</form>
-							</div>
-							<!-- =========전체 -->	
-							<div id="newtab" class="tab-pane">
-						    	<form role="form" class="form-horizontal">
-							   		<div class="row">
-								   		<div class="col-md-12">
-									    	<table class="table">
-								                <c:forEach items="${supportlist2}" var="vo" varStatus="status">
-													<tbody>
-														<tr>
+														    <td><a href="support_total_detail?notice_num=${vo.notice_num}">${seq}</a></td>
 															<td><a href="support_total_detail?notice_num=${vo.notice_num}">${vo.notice_num}</a></td>
 															<td><a href="support_total_detail?notice_num=${vo.notice_num}">${vo.title}</a></td>
 															<td>${vo.notice_date}</td>
@@ -263,7 +246,7 @@
 						    	</form>
 							</div>
 							<!-- =========새소식 -->
-							<div id="operationtab" class="tab-pane ">
+							<div id="newtab" class="tab-pane">
 						    	<form role="form" class="form-horizontal">
 							   		<div class="row">
 								   		<div class="col-md-12">
@@ -271,8 +254,8 @@
 								                <c:forEach items="${supportlist2}" var="vo" varStatus="status">
 													<tbody>
 														<tr>
-															<td><a href="support_total_detail?notice_num=${vo.notice_num}">${vo.notice_num}</a></td>
-															<td><a href="support_total_detail?notice_num=${vo.notice_num}">${vo.title}</a></td>
+															<td><a href="support_new_detail?notice_num=${vo.notice_num}">${vo.notice_num}</a></td>
+															<td><a href="support_new_detail?notice_num=${vo.notice_num}">${vo.title}</a></td>
 															<td>${vo.notice_date}</td>
 														</tr>
 													</tbody>
@@ -282,7 +265,26 @@
 								   </div>
 						    	</form>
 							</div>
-						<!-- =========운영사항 -->
+							<!-- =========운영사항 -->
+							<div id="operationtab" class="tab-pane ">
+						    	<form role="form" class="form-horizontal">
+							   		<div class="row">
+								   		<div class="col-md-12">
+									    	<table class="table">
+								                <c:forEach items="${supportlist3}" var="vo" varStatus="status">
+													<tbody>
+														<tr>
+															<td><a href="support_operation_detail?notice_num=${vo.notice_num}">${vo.notice_num}</a></td>
+															<td><a href="support_operation_detail?notice_num=${vo.notice_num}">${vo.title}</a></td>
+															<td>${vo.notice_date}</td>
+														</tr>
+													</tbody>
+												</c:forEach>
+						           		   </table>
+					           		   </div>
+								   </div>
+						    	</form>
+							</div>
 						</div>
 					</div>
 				</div>

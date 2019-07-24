@@ -40,7 +40,7 @@ public class SupportDAO {
 	public List<NoticeVO> supportList2(NoticeVO vo) {
 		List<NoticeVO> support = null;
 		support = sqlSession.selectList(
-							"SupportMapper.supportList2", vo);
+							"SupportMapper.supportList2", vo.getNotice_type());
 		return support;
 	}//supportList2
 	

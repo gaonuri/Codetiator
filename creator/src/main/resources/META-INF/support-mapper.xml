@@ -35,7 +35,8 @@
 	</select>
 	
 	<select id="supportList2"
-			parameterType="kr.co.creator.vo.NoticeVO" resultType="kr.co.creator.vo.NoticeVO">
+			parameterType="kr.co.creator.vo.NoticeVO" 
+			resultType="kr.co.creator.vo.NoticeVO">
 		select notice_num
 			, title
 			, notice_date
