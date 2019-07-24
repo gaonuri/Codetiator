@@ -34,13 +34,6 @@ public class MypageController {
 
 		UserVO uvo = (UserVO)session.getAttribute("userVO");
 		session.getAttribute("busiUserVO");
-		//		if(개인) {
-//			
-//			userVO.setUser_num("사용자번호");	
-//		}else if(기업) {
-//			busiVO.setbusi_num("기업회원번호");	
-//			
-//		}
 		
 		userVO.setUser_num("user_num");
 		invest = service.invest_detail(uvo);
