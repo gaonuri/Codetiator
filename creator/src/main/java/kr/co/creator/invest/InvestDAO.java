@@ -18,9 +18,9 @@ public class InvestDAO {
 	SqlSession sqlSession;
 
 //	public AccountVO invest(AccountVO vo) {
-//		System.out.println("Service111111111 : " + vo);
+//		System.out.println("DAO111111111 : " + vo);
 //		vo = sqlSession.selectOne("InvestMapper.accountDetail", vo);
-//		System.out.println("Service222222222 : " + vo);
+//		System.out.println("DAO222222222 : " + vo);
 //		
 //		return vo;
 //	}//invest
@@ -49,16 +49,18 @@ public class InvestDAO {
 		return guaVO;
 	}//guarantee_detail
 
-	public List<ProjectVO> invest_finish() {
+	public List<ProjectVO> invest_finished() {
 		List<ProjectVO> list = null;
 		list = sqlSession.selectList("InvestMapper.investFinish");
 		
 		return list;
-	}//invest_finish
+	}//invest_finished
 
-	public int deposit_update(UserVO vo) {
+	public int deposit_update(AccountVO accVO) {
 		int count = 0;
-		count = sqlSession.update("InvestMapper.depositUpdate", vo);
+		System.out.println("DAO11111111111 : " + accVO);
+		count = sqlSession.update("InvestMapper.depositUpdate", accVO);
+		System.out.println("DAO22222222222 : " + accVO);
 		return count;
-	}
+	}//deposit_update
 }//class
