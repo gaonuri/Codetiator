@@ -84,8 +84,8 @@
 					
 					<!-- 로그아웃 start -->
 					
+<!-- 					이프문해야함 admin -->
 					<c:choose>
-					
 						<c:when test="${memberVO != null && memberVO.user_num != '' || memberVO != null && memberVO.busi_num != ''}">
 							<li id="header_notification_bar" class="dropdown">
 								<a data-toggle="dropdown" class="dropdown-toggle" href="#">
