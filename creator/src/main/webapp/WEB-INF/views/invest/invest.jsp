@@ -105,8 +105,10 @@
 			$("#benefitAmtL").text(benefit);
 		}
 		
+		
 		$("#invest_offer").click(function() {
-			alert("실행");
+			$("#deposit").val(deposit - invest);
+			alert(deposit - invest);
 // 			if($("#agreeCheckbox").val == "Y") {
 // 				var confirmYN = false;
 // 				confirmYN = confirm("정말 투자하시겠습니까?");
@@ -117,11 +119,12 @@
 								deposit:$("#deposit").val()
 							},
 							function(data, status) {
+								alert(data); alert(status);
 								if(status == "success") {
 									if(data == -1) {
 										alert("오류");
 									}else if(data > 0) {
-										
+										location.href="${pageContext.request.contextPath}/invest_finish?user_num=${memberVO.user_num}";
 									} else {
 										alert("관리자 : 02-5555-7777");
 									} 
@@ -392,26 +395,18 @@
 																
 																<div class="row" id="depositDiv">
 																	<div class="col-xs-6 col-sm-8 col-md-8 col-lg-3 col">
-																		<div class="inputDepositTitle">예치금 사용</div>
+																		<div class="inputDepositTitle">투자 가능 예치금</div>
 																	</div>
 																	<div class="col-xs-6 col-sm-4 col-md-4 col-lg-3 col">
 																		<div class="form-group has-feedback inputForm" id="inputDepositDiv">
 																			<input type="text" class="form-control text-right" id="inputDeposit771" name="inputDeposit" aria-describedby="inputDepositStatus" value="${accountVO.deposit}" readonly="readonly">
-																			<input type="hidden" value="" />
+																			<input type="hidden" id="deposit" value="" />
 																			<span class="form-control-feedback" aria-hidden="true">원</span>
 																			<span id="inputDepositStatus" class="sr-only">(success)</span>
 																			<input type="hidden" id="reqDeposit771" name="reqDeposit" value="0">
 																		</div>
 																	</div>
 																	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-2 col">
-																	</div>
-																	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-4 col">
-																		<div class="inputDepositText">
-																			투자 가능 예치금 : <span class="font-purple" name="availDeposit" id="availDeposit771&quot;">0</span><font size="1">원</font>
-																			<div id="brrwrLmtGuideDiv" class="display-none">
-																				(동일차입자 상품에 투자하신 적이 있습니다.)
-																			</div>
-																		</div>
 																	</div>
 																</div>
 																
@@ -456,8 +451,8 @@
 																●
 															</font> 투자 요약
 														</div>
-														<input type="hidden" id="rate" value="${projectVO.rate}" />		<!-- 금리 -->
-														<input type="hidden" id="user_num" value="${userVO.user_num}" />		<!-- 유저번호 -->
+														<input type="hidden" id="rate" value="${projectVO.rate}" />				<!-- 금리 -->
+														<input type="hidden" id="user_num" value="${memberVO.user_num}" />		<!-- 유저번호 -->
 														<table class="table" id="summaryTableL">
 															<thead>
 																<tr>

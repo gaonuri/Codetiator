@@ -5,8 +5,8 @@
 
 <head>
 
-<script src="${pageContext.request.contextPath}/resources/jquery/jquery-3.4.1.js"></script>
-<script src="${pageContext.request.contextPath}/resources/ckeditor/ckeditor.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/jquery/jquery-3.4.1.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/ckeditor/ckeditor.js"></script>
 
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -39,15 +39,15 @@
 	
 <script type="text/javascript">
 
-var chkemail = '';
-
 //id check
-
 $(document).ready(function(){
+	var chkemail = '';
+
 	$("#email").blur(function(){
 		var emailStd = /([a-z0-9]{1,20}\@)([a-z]{1,20}\.)([a-z]{1,10})/gi;
+		
 		if($.trim($("#email").val()) != $(this).val().match(emailStd)){
-			alert("옳바르지 않은 이메일 입니다.");
+			alert("올바르지 않은 이메일 입니다.");
 			return;
 		}
 		$.post(
@@ -75,15 +75,15 @@ $(document).ready(function(){
 			return;
 		}
 		$.post(
-				"./findpwdchk"
+				"./sendnewpassword"
 				,{
-					email:$("#email").val(),
+					email:$("#email").val()
 				}
 				,function(data,status){
 					if(status == "success"){
 						if(data > 0){
 							alert("해당 이메일로 임시비밀번호를 발송했습니다.");
-							location.href="/creator/main";
+							location.href="/creator/findpwd";
 						} else if(data == 0){
 							alert("존재하지 않는 이메일 입니다.");
 						} else {
@@ -136,7 +136,9 @@ $(document).ready(function(){
 	</div>
 	<div class="form-group">
 		<div class="col-sm-10 col-lg-offset-3" id="findpwd_btn">
-			<button type="submit" class="btn btn-theme" >비밀번호 초기화</button>
+		
+			<button id="findpwd_btn" class="btn btn-theme" >비밀번호 초기화</button>
+
 		</div>
 	</div>	
 <!-- 	<div class="form-send"> -->
@@ -153,7 +155,6 @@ $(document).ready(function(){
 	    </section>
 	    <!-- /MAIN CONTENT -->
 	    <!--main content end-->
-		
 		<!--footer start-->
 		<footer class="site-footer">
 			<div class="container">

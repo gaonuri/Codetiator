@@ -15,7 +15,6 @@ public class InvestVO {
 		this.user_num = invest_num;
 		this.invest_price = invest_price;
 		this.invest_date = invest_date;
-		
 		this.user_num = user_num;
 		this.busi_num = busi_num;
 		this.project_num = project_num;

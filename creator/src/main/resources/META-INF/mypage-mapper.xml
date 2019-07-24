@@ -15,20 +15,36 @@
 			order by invest_date desc
 	</select>
 	
-	<select id="InvestList"
-			resultType="kr.co.creator.vo.InvestVO">
-			select  i.invest_date
-			, i.project_num
-			, p.project_name
-			, p.rate
-			, i.invest_price
-			, p.refund
-			, p.refund_deadline
-			, p.ach_state
-		from invest_list i, project_list p
-		where i.project_num = p.project_num 
-				and i.user_num = ${i.user_num}
-	</select>
+<!-- 		<select id="InvestList" -->
+<!-- 				parameterType="kr.co.creator.vo.MypageVO" -->
+<!-- 				resultType="kr.co.creator.vo.MypageVO"> -->
+<!-- 				select  -->
+<!-- 				p.project_num project_num -->
+<!-- 				, p.project_name project_name -->
+<!-- 				, p.rate rate -->
+<!-- 				, p.refund_count -->
+<!-- 				, p.refund refund -->
+<!-- 				, p.refund_deadline refund_deadline -->
+<!-- 				, p.ach_state ach_state -->
+<!-- 			from project_list p -->
+<!-- 		</select> -->
+	
+		<select id="InvestList"
+				parameterType="kr.co.creator.vo.MypageVO"
+				resultType="kr.co.creator.vo.MypageVO">
+				select  i.invest_date invest_date
+				, p.project_num project_num
+				, p.project_name project_name
+				, p.rate rate
+				, i.invest_price invest_price
+				, p.refund_count
+				, p.refund refund
+				, p.refund_deadline refund_deadline
+				, p.ach_state ach_state
+			from invest_list i, project_list p
+			where i.project_num = p.project_num 
+					and i.user_num = 5
+		</select>
 	
 		<select id="projectlist"
 			resultType="kr.co.creator.vo.InvestVO">
