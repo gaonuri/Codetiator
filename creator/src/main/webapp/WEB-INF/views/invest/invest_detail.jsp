@@ -97,8 +97,7 @@
 									<tr>
 										<td>
 											<c:choose>
-												<c:when test="${userVO != null && userVO.user_num != '' && userVO.user_num != null || 
-																busiUserVO != null && busiUserVO.busi_num != '' && busiUserVO.busi_num != null}">
+												<c:when test="${memberVO != null && memberVO.user_num != '' && memberVO.user_num != null}">
 													<input type="button" id="investBtn1" value="투자신청"/>
 												</c:when>
 												<c:otherwise>

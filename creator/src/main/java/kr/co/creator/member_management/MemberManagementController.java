@@ -21,7 +21,7 @@ public class MemberManagementController {
 		
 		service.user_mgt();
 		
-		return "member_management/user_member_mgn";
+		return "member_management/user_member_mgt";
 	}//user_mgt
 	
 	
@@ -29,7 +29,7 @@ public class MemberManagementController {
 	public String busi_user_mgt() {
 		logger.info("busi_user_mgt");
 				
-		return "member_management/busi_user_member_mgn";
+		return "member_management/busi_user_member_mgt";
 	}//busi_user_mgt
 	
 }//class

@@ -85,10 +85,11 @@
 					<!-- 로그아웃 start -->
 					
 					<c:choose>
-						<c:when test="${userVO != null && userVO.user_num != '' || busiUserVO != null && busiUserVO.busi_num != ''}">
+					
+						<c:when test="${memberVO != null && memberVO.user_num != '' || memberVO != null && memberVO.busi_num != ''}">
 							<li id="header_notification_bar" class="dropdown">
 								<a data-toggle="dropdown" class="dropdown-toggle" href="#">
-									${userVO.user_name}${busiUserVO.manager_name}님
+									${memberVO.user_name}${memberVO.manager_name}님
 								</a>
 								<ul class="dropdown-menu extended notification">
 									<div class="notify-arrow notify-arrow-green"></div>
@@ -116,7 +117,7 @@
 					</c:choose>
 					
 					<c:choose>
-						<c:when test="${userVO != null && userVO.user_num != '' || busiUserVO != null && busiUserVO.busi_num != ''}">
+						<c:when test="${memberVO != null && memberVO.user_num != '' || memberVO != null && memberVO.busi_num != ''}">
 							<li>
 								<a href="${pageContext.request.contextPath}/logout">로그아웃</a>
 							</li>
