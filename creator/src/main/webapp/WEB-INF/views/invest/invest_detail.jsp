@@ -41,6 +41,7 @@
 		
 		$("#investBtn2").click(function() {
 			alert("로그인 하시기 바랍니다.");
+			location.href = "${pageContext.request.contextPath}/login";
 		});//investBtn2
 	});//ready
 	</script>
@@ -51,129 +52,10 @@
 	    <!-- **********************************************************************************************************************************************************
 	        TOP BAR CONTENT & NOTIFICATIONS
 	        *********************************************************************************************************************************************************** -->
-<<<<<<< HEAD
-	    <!--header start-->
-	    <header class="header black-bg">
-			<!--logo start-->
-			<a href="./main" class="logo"><img id="logoImage" alt="로고" src="${pageContext.request.contextPath}/resources/img/ner.jpg" width="200px" height="30px"></a>
-			<!--logo end-->
-			<div class="nav notify-row top-menu" id="top_menu">
-				<!--  notification start -->
-				<ul class="nav pull-right top-menu">
-					<!-- settings start -->
-					
-					<!-- 회사소개 start -->
-					<li><a href="./loan_guide">회사소개</a></li>
-					<!-- 회사소개 end -->
-					
-					<!-- 대출 start -->
-					<li class="dropdown">
-						<a data-toggle="dropdown" class="dropdown-toggle" href="#">
-							대출
-						</a>
-						<ul class="dropdown-menu extended tasks-bar">
-							<div class="notify-arrow notify-arrow-green"></div>
-							<li>
-								<a href="./loan_guide">대출안내</a>
-							</li>
-							<li>
-								<a href="./loan/getloan">대출하기</a>
-							</li>
-						</ul>
-					</li>
-	          		<!-- 대출 end -->
-	          
-	          		<!-- inbox dropdown start-->
-	         		<li class="dropdown">
-						<a data-toggle="dropdown" class="dropdown-toggle" href="#">
-							투자
-						</a>
-						<ul class="dropdown-menu extended tasks-bar">
-							<div class="notify-arrow notify-arrow-black"></div>
-							<li>
-								<a href="./invest_guide">투자안내</a>
-							</li>
-							<li>
-								<a href="./invest_list">투자하기</a>
-							</li>
-							<li>
-								<a href="./invest_finish">완료된투자</a>
-							</li>
-						</ul>
-					</li>
-	          		<!-- 투자 end -->
 
-					<!-- 고객지원 start-->
-					<li id="header_notification_bar" class="dropdown">
-						<a data-toggle="dropdown" class="dropdown-toggle" href="#">
-							고객지원
-						</a>
-						<ul class="dropdown-menu extended notification">
-							<div class="notify-arrow"></div>
-							<li>
-								<a href="./faq">FAQ</a>
-							</li>
-							<li>
-								<a href="./support">이용약관</a>
-							</li>
-							<li>
-								<a href="./policy">개인정보</a>
-							</li>
-							<li>
-								<a href="./inquiry">1:1문의</a>
-							</li>
-							<li>
-								<a href="./support_total">공지사항</a>
-							</li>
-						</ul>
-					</li>
-					<!-- 고객지원 end -->
-					
-					<!-- 마이페이지 start-->
-					<li id="header_notification_bar" class="dropdown">
-						<a data-toggle="dropdown" class="dropdown-toggle" href="#">
-							마이페이지
-						</a>
-						<ul class="dropdown-menu extended notification">
-							<div class="notify-arrow notify-arrow-yellow"></div>
-							<li>
-								<a href="./my_dashboard">대시보드</a>
-							</li>
-							<li>
-								<a href="./my_invest_list">투자내역</a>
-							</li>
-							<li>
-								<a href="./my_loan_list">대출내역</a>
-							</li>
-							<li>
-								<a href="./my_depo_mgn">예치금관리</a>
-							</li>
-							<li>
-								<a href="./my_modify">회원정보수정</a>
-							</li>
-						</ul>
-					</li>
-					<!-- 마이페이지 end -->
-					
-					<!-- 로그아웃 start -->
-					<li><a href="./loan_guide">로그아웃</a></li>
-					<!-- 로그아웃 end -->
-				</ul>
-				<!--  notification end -->
-			</div>
-			<div class="top-menu">
-				<ul class="nav pull-right top-menu">
-					<li><a class="logout" href="/creator/join">회원가입</a></li>
-				</ul>
-			</div>
-	    </header>
-	    <!--header end-->
-	   
-=======
 		<!--header start-->
 		<%@ include file="../header.jsp" %>
 		<!--header end-->
->>>>>>> branch 'master' of https://github.com/gaonuri/Codetiator.git
 	   
 	    <!-- **********************************************************************************************************************************************************
 	        MAIN CONTENT
@@ -388,6 +270,189 @@
 						<!-- 참고파일 end -->
 						
 						<!-- 자주묻는질문 start -->
+						<div>
+							<hr>
+							<div class="row">
+								<div class="investCont_tit col-md-12">
+									<b>|</b>&nbsp;자주 묻는 질문
+								</div>
+								<div class="col-md-12" style=" margin-top:20px;">
+									<div class="tab-content">
+										<div role="tabpanel" class="tab-pane fade in active" id="investTab">
+											<div class="wrap" id="investFaqWrap investDetail_FAQ">
+												<div class="panel-group" id="investFaqAccordion" role="tablist" aria-multiselectable="true">
+													<div class="panel panel-default">
+														<div class="panel-heading" role="tab" id="investFaqHeading1">
+															<h4 class="panel-title" id="FAQhead">
+																<a data-toggle="collapse" data-parent="#investFaqAccordion" href="#investFaqCollapse1" aria-expanded="false" aria-controls="investFaqCollapse1" class="collapsed">
+																	Q1. 투자는 어떻게 하나요?
+																</a>
+															</h4>
+														</div>
+														<div id="investFaqCollapse1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="investFaqHeading1" aria-expanded="false" style="height: 0px;">
+															<div id="FAQbody" class="panel-body">
+																투자를 희망하는 회원님은 다음과 같은 과정을 통해 투자에 참여하실 수 있습니다.?
+																<br><br>
+																1. 회원가입하기<br>
+																2. [마이페이지]→[예치금 관리]에서 ‘예치금 계좌 발급받기’<br>
+																3. 예치금 입금하기<br>
+																4. 투자하기(수동투자 혹은 자동투자)<br>
+																5. 원리금 상환<br>
+																<br>자세한 내용은 <a href="/invest/guide" target="_blank">'투자안내'</a>를 참고하시기 바랍니다.
+															</div>
+														</div>
+													</div>
+													<div class="panel panel-default">
+														<div class="panel-heading" role="tab" id="investFaqHeading2">
+															<h4 class="panel-title" id="FAQhead">
+																<a data-toggle="collapse" data-parent="#investFaqAccordion" href="#investFaqCollapse2" aria-expanded="false" aria-controls="investFaqCollapse2" class="collapsed">
+																	Q2. 자동투자는 무엇인가요?
+																</a>
+															</h4>
+														</div>
+														<div id="investFaqCollapse2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="investFaqHeading2" aria-expanded="false" style="height: 0px;">
+															<div id="FAQbody" class="panel-body">
+																자동투자는 고객님께서 설정한 조건에 따라 상품 오픈 30분전에 자동으로 투자가 되는 시스템으로, 설정방법은 아래와 같습니다.
+																<br><br>
+																● 자동투자 설정방법 ●<br>
+																1. [마이페이지]→[자동투자 설정] 우측 상단[OFF]에서 [ON]으로 변경합니다.<br>
+																2. 자동투자 예치금 설정: 자동투자로 운영하고 싶은 총 금액을 입력합니다.<br>
+																3. 자동투자 1회 실행 금액을 입력합니다.<br>
+																4. 자동투자 상세 설정 후 화면 우측 상단의 ‘조건저장’ 버튼을 누릅니다. <br>
+																<br><br>
+																▶ [자동투자 테스트]를 통해 오픈예정 상품에 맞는 조건을 손쉽게 설정할 수 있습니다. <br>
+																▶ 자동투자는 오픈시간 30분 전 1회만 실행되므로, 그 이후에 자동 투자를 설정하여도 자동 투자가 이루어지지 않습니다. 
+															</div>
+														</div>
+													</div>
+													<div class="panel panel-default">
+														<div class="panel-heading" role="tab" id="investFaqHeading3">
+															<h4 class="panel-title" id="FAQhead">
+																<a data-toggle="collapse" data-parent="#investFaqAccordion" href="#investFaqCollapse3" aria-expanded="false" aria-controls="investFaqCollapse3" class="collapsed">
+																	Q3. 이자수익에 적용되는 세율은 몇 % 인가요?
+																</a>
+															</h4>
+														</div>
+														<div id="investFaqCollapse3" class="panel-collapse collapse" role="tabpanel" aria-labelledby="investFaqHeading3" aria-expanded="false" style="height: 0px;">
+															<div id="FAQbody" class="panel-body">
+																투자 시 발생된 이자수익은 과세대상입니다. 현행 세법에 따라 비영업대금에 대한 이익은 이자소득으로 간주되어 25%의 세율이 적용됩니다. (소득세법 제16조 제1항 제11) 여기에 주민세가 2.5% 추가되어 총 27.5%를 세금으로 원천징수 하고있습니다. 미드레이트에서는 회원님의 이자 수익에대해서 납세금을 납부하며, 세후의 순수익에 대하여 회원님의 예치금 계좌로 입금해 드립니다.
+															</div>
+														</div>
+													</div>
+													<div class="panel panel-default">
+															<div class="panel-heading" role="tab" id="investFaqHeading4">
+															<h4 class="panel-title" id="FAQhead">
+																<a data-toggle="collapse" data-parent="#investFaqAccordion" href="#investFaqCollapse4" aria-expanded="false" aria-controls="investFaqCollapse4" class="collapsed">
+																	Q4. 가이드라인에 따른 투자한도 상향은 어떻게 하나요?
+																</a>
+															</h4>
+														</div>
+														<div id="investFaqCollapse4" class="panel-collapse collapse" role="tabpanel" aria-labelledby="investFaqHeading4" aria-expanded="false" style="height: 0px;">
+															<div id="FAQbody" class="panel-body">
+																금융위원회의 “P2P대출 가이드라인 개정안”에 따라 현재 일반 개인투자자는 총투자금액 2,000만원, 동일차입자 500만원의 투자한도가 적용됩니다. (단, 부동산 상품은 총투자한도 최대 1,000만원) 따라서 투자한도 상향을 원하시는 고객님들은 아래의 조건 참고하셔서 고객센터로 서류 제출해주시기 바랍니다.
+																<br><br>
+																● 소득적격 개인투자자 (총투자한도 4,000만원, 동일차입자 2,000만원)<br>
+																택1) 종합소득 과세표준 확정신고서 &amp; 종합소득세 신고서 접수증<br>
+																택2) 근로소득원천징수영수증 (근로소득만 증빙하는 경우)<br>
+																<br><br>
+																● 개인전문투자자 (한도 제한없음)<br>
+																서류) 금융투자협회 지정 전문투자자 확인증<br>
+																<br><br>
+																● 법인투자자 (한도 제한없음)<br>
+																택1) 사업자 등록증 사본<br>
+																택2) 법인등록증 &amp; 법인통장 사본<br>
+																<br><br>
+																자세한 내용은 공지사항을 참고하여 주시기 바랍니다.
+															</div>
+														</div>
+													</div>
+													<div class="panel panel-default">
+														<div class="panel-heading" role="tab" id="investFaqHeading5">
+															<h4 class="panel-title" id="FAQhead">
+																<a data-toggle="collapse" data-parent="#investFaqAccordion" href="#investFaqCollapse5" aria-expanded="false" aria-controls="investFaqCollapse5" class="collapsed">
+																	Q5. 미성년자도 투자가 가능한가요?
+																</a>
+															</h4>
+														</div>
+														<div id="investFaqCollapse5" class="panel-collapse collapse" role="tabpanel" aria-labelledby="investFaqHeading5" aria-expanded="false">
+															<div id="FAQbody" class="panel-body">
+																네. 투자가 가능합니다. 19세 미만의 미성년자 회원의 경우 아래의 절차에 따라 서비스 이용이 가능하며, 법정대리인의 동의절차 등 관련서류 제출 및 승인과정이 필요합니다. 
+																<br><br>
+																● 가입 및 투자절차<br>
+																 1. 개인회원 가입<br>
+																 2. 가상계좌 발급 시 본인 인증 확인 요청<br>
+																 3. 필요서류 제출 및 관리자 승인(이메일 또는 우편 발송)<br>
+																 4. 서류 확인 및 관리자 승인<br>
+																 5. 서비스 이용
+																<br><br>
+																●  필요서류<br>
+																 1. 법정대리인 동의서(*공지사항 첨부양식)<br>
+																 2. 가족관계 확인이 가능한 주민등록등본or가족관계증명서<br>
+																 3. 법정대리인 신분증 사본<br>
+																 4. 미성년자 계좌 사본
+																<br><br>
+																* 이메일 주소: contact@midrate.co.kr<br>
+																* 우편 주소: (우)06131 서울특별시 강남구 논현로95길 12, 4층
+															</div>
+														</div>
+													</div>
+													<div class="panel panel-default">
+														<div class="panel-heading" role="tab" id="investFaqHeading6">
+															<h4 class="panel-title" id="FAQhead">
+																<a data-toggle="collapse" data-parent="#investFaqAccordion" href="#investFaqCollapse6" aria-expanded="false" aria-controls="investFaqCollapse6" class="collapsed">
+																	Q6. 투자 시 종합 소득세 신고는 어떻게 하나요?
+																</a>
+															</h4>
+														</div>
+														<div id="investFaqCollapse6" class="panel-collapse collapse" role="tabpanel" aria-labelledby="investFaqHeading6" aria-expanded="false">
+															<div id="FAQbody" class="panel-body">
+																투자 회원님의 이자소득에 대한 세금은 미드레이트에서 원천징수합니다. 따라서 별도로 소득 신고를 하실 필요가 없습니다.
+															</div>
+														</div>
+													</div>
+													<div class="panel panel-default">
+														<div class="panel-heading" role="tab" id="investFaqHeading7">
+															<h4 class="panel-title" id="FAQhead">
+																<a data-toggle="collapse" data-parent="#investFaqAccordion" href="#investFaqCollapse7" aria-expanded="false" aria-controls="investFaqCollapse7" class="collapsed">
+																	Q7. 미드레이트에 투자하면 원금이 보장되나요?
+																</a>
+															</h4>
+														</div>
+														<div id="investFaqCollapse7" class="panel-collapse collapse" role="tabpanel" aria-labelledby="investFaqHeading7" aria-expanded="false">
+															<div id="FAQbody" class="panel-body">
+																미드레이트의 투자상품은 원금이 보장되지 않습니다. 미드레이트와 같은 P2P대출 플랫폼에서의 투자는 현행 법률상 '유사수신행위의 규제에 관한 법률'에 의해 원금과 수익을 보장할 수 없으며, '원금 보장이 안됨'을 명시하지 않는 것은 법률 위반입니다.
+																미드레이트는 이에 대해 충분한 사전 고지 의무를 다하고자 합니다.
+																투자고객님은 이를 인지하시고 신중한 결정 부탁드립니다. 다만, 미드레이트는 자체신용평가시스템을 통해 대출고객의 신용도를 세밀하고 정밀하게 평가하여 리스크를 낮추고 있습니다.
+																투자고객님께서는 반드시 분산투자를 통해 부도에 대한 위험을 낮추실 수 있습니다. 분산투자가 어렵게 느껴지는 투자회원님을 위해 미드레이트에서는 자동 투자 시스템을 마련하였습니다.
+															</div>
+														</div>
+													</div>
+													<div class="panel panel-default">
+														<div class="panel-heading" role="tab" id="investFaqHeading8">
+															<h4 class="panel-title" id="FAQhead">
+																<a data-toggle="collapse" data-parent="#investFaqAccordion" href="#investFaqCollapse8" aria-expanded="false" aria-controls="investFaqCollapse8" class="collapsed">
+																	Q8. 차입자가 돈을 갚지 않으면 어떻게 되나요?
+																</a>
+															</h4>
+														</div>
+														<div id="investFaqCollapse8" class="panel-collapse collapse" role="tabpanel" aria-labelledby="investFaqHeading8" aria-expanded="false">
+															<div id="FAQbody" class="panel-body">
+																㈜미드레이트대부가 채권추심을 합니다. ㈜미드레이트대부는 채권자로서 채권추심을 대행하여 투자고객의 자산 보호에 최선을 다하며, 전화, 문자메시지, 방문 등 적법한 절차에 따른 추심 과정을 진행하게 됩니다. 
+																2개월 동안은 ㈜미드레이트대부에서 자체추심을 진행하며, 2개월 이상 연체될 경우 채권추심업체에 의뢰하여 추심업무를 이행하게 됩니다. 
+																차입자의 연체일수가 장기화되어 6개월 이상 연체된다면 부실채권을 매각하며, 투자금의 일부를 회수합니다. 
+																미회수분에 대해서는 대손처리되어 원금 손실이 있을 수 있습니다. 참고로, P2P금융업체는 원금이 보장되지 않음을 명시해야 하며, 
+																이를 고객에게 적극적으로 알려야 할 의무가 있습니다. 이를 지키지 않는 것은 유사수신행위의 규제에 관한 법률 위반입니다. 
+																다만, 미드레이트는 단일 채권에 대한 투자금액 상한선을 정하는 등 분산투자를 권유해드리고 있으며, 분산투자가 이루어졌을 때 대손율은 약 1% 내외로 예상하고 있습니다.
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
 						<!-- 자주묻는질문 end -->
 						
 						<!-- 투자시 위험 안내 start -->

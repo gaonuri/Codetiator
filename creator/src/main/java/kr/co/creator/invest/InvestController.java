@@ -37,14 +37,14 @@ public class InvestController {
 //	}//invest
 	
 	@RequestMapping(value = "/invest", method = RequestMethod.GET)
-	public String invest(Model model, AccountVO AccVO, ProjectVO proVO) {
+	public String invest(Model model, AccountVO accVO, ProjectVO proVO) {
 		logger.info("invest");
 
-		System.out.println("Controller1111111111 : " + AccVO);
-		AccVO = investService.acount_detail(AccVO);
+		System.out.println("Controller1111111111 : " + accVO);
+		accVO = investService.acount_detail(accVO);
 		proVO = investService.project_detail(proVO);
-		System.out.println("Controller2222222222 : " + AccVO);
-		model.addAttribute("accountVO", AccVO);
+		System.out.println("Controller2222222222 : " + accVO);
+		model.addAttribute("accountVO", accVO);
 		model.addAttribute("projectVO", proVO);
 		
 		return "invest/invest";
@@ -80,24 +80,33 @@ public class InvestController {
 		return "invest/invest_detail";
 	}//invest_detail
 	
-	@RequestMapping(value = "/invest_finish", method = RequestMethod.GET)
-	public String invest_finish(Model model) {
-		logger.info("invest_finish");
+	@RequestMapping(value = "/invest_finished", method = RequestMethod.GET)
+	public String invest_finished(Model model) {
+		logger.info("invest_finished");
 		
 		List<ProjectVO> list = null;
-		list = investService.invest_finish();
-		model.addAttribute("investFinish", list);
+		list = investService.invest_finished();
+		model.addAttribute("investFinished", list);
 		
-		return "invest/invest_finish";
+		return "invest/invest_finished";
 	}//invest_finish
 	
 	@RequestMapping(value = "/deposit_update", method = RequestMethod.POST)
-	public void deposit_update(Model model, PrintWriter out, UserVO vo) {
+	public void deposit_update(Model model, PrintWriter out, AccountVO accVO) {
 		logger.info("deposit_update");
+		System.out.println("Controller1111111111 : " + accVO);
 		int count = 0;
-		count = investService.deposit_update(vo);
+		count = investService.deposit_update(accVO);
 		out.print(count);
 		//out.flush();
 		out.close();
 	}//deposit_update
+	
+	@RequestMapping(value = "/invest_finish", method = RequestMethod.GET)
+	public String invest_finish(Model model, AccountVO accVO) {
+		logger.info("invest_finish");
+		accVO = investService.acount_detail(accVO);
+		model.addAttribute("accountVO", accVO);
+		return "invest/invest_finish";
+	}//invest_finish
 }//class
