@@ -85,7 +85,7 @@
 					<!-- 로그아웃 start -->
 					
 					<c:choose>
-					<c
+					
 						<c:when test="${memberVO != null && memberVO.user_num != '' || memberVO != null && memberVO.busi_num != ''}">
 							<li id="header_notification_bar" class="dropdown">
 								<a data-toggle="dropdown" class="dropdown-toggle" href="#">
