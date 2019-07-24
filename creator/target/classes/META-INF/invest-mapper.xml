@@ -46,4 +46,22 @@
 			set deposit = #{deposit}
 			where user_num = #{user_num}
 	</update>
+	
+<!-- 	<select id=""> -->
+<!-- 		SELECT SUM(invest_price)  -->
+<!-- 		FROM invest_list i, project_list p  -->
+<!-- 		WHERE i.project_num = p.project_num  -->
+<!-- 		AND p.busi_num = #{busi_num}  -->
+<!-- 		AND i.user_num = #{user_num}  -->
+<!-- 		AND p.ach_state = '투자하기' -->
+<!-- 	</select> -->
+	
+	<select id="">
+		SELECT sum(i.invest_price), p.busi_num
+		FROM invest_list i, project_list p
+		where i.user_num = 5
+		AND i.project_num = p.project_num
+		AND p.ach_state = '투자하기' 
+		GROUP BY p.busi_num
+	</select>
 </mapper>

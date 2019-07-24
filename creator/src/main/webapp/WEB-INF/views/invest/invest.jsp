@@ -124,7 +124,7 @@
 									if(data == -1) {
 										alert("오류");
 									}else if(data > 0) {
-										location.href="${pageContext.request.contextPath}/invest_finish?user_num=${userVO.user_num}";
+										location.href="${pageContext.request.contextPath}/invest_finish?user_num=${memberVO.user_num}";
 									} else {
 										alert("관리자 : 02-5555-7777");
 									} 
@@ -452,7 +452,7 @@
 															</font> 투자 요약
 														</div>
 														<input type="hidden" id="rate" value="${projectVO.rate}" />				<!-- 금리 -->
-														<input type="hidden" id="user_num" value="${userVO.user_num}" />		<!-- 유저번호 -->
+														<input type="hidden" id="user_num" value="${memberVO.user_num}" />		<!-- 유저번호 -->
 														<table class="table" id="summaryTableL">
 															<thead>
 																<tr>

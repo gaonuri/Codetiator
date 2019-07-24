@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import kr.co.creator.vo.InvestVO;
+import kr.co.creator.vo.MemberVO;
 import kr.co.creator.vo.MypageVO;
 import kr.co.creator.vo.NoticeVO;
 import kr.co.creator.vo.ProjectVO;
@@ -28,22 +29,22 @@ public class MypageController {
 	MypageService service;
 	
 	@RequestMapping(value = "/my_dashboard", method = RequestMethod.GET)
-	public String list(HttpSession session, Model model, MypageVO userVO) {
+	public String list(HttpSession session, Model model, MemberVO userVO, MypageVO myVO) {
 		logger.info("my_dashboard");
-		List<MypageVO> invest = null;   // 전체
-
-		UserVO uvo = (UserVO)session.getAttribute("userVO");
+		userVO = (MemberVO)session.getAttribute("userVO");
+		System.out.println("MemverVO");
 		session.getAttribute("busiUserVO");
-		//		if(개인) {
-//			
-//			userVO.setUser_num("사용자번호");	
-//		}else if(기업) {
-//			busiVO.setbusi_num("기업회원번호");	
-//			
-//		}
+		System.out.println("Controller 111111111111111111111111 : " + userVO);
 		
-		userVO.setUser_num("user_num");
-		invest = service.invest_detail(uvo);
+		List<MypageVO> invest = null;
+		invest = service.invest_detail();
+		model.addAttribute("investList", invest);
+		
+//		userVO.setUser_num("user_num");
+//		
+//		userVO.setBusi_num("busi_num");
+//		service.invest_detail(userVO);
+//		
 		
 		return "mypage/my_dashboard";
 	}

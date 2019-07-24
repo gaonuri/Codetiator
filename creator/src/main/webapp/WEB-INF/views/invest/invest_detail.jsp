@@ -36,7 +36,7 @@
 	<script type="text/javascript">
 	$(document).ready(function() {
 		$("#investBtn1").click(function() {
-			location.href = "${pageContext.request.contextPath}/invest?user_num=${userVO.user_num}&project_num=${projectVO.project_num}";
+			location.href = "${pageContext.request.contextPath}/invest?user_num=${memberVO.user_num}&project_num=${projectVO.project_num}";
 		});//investBtn1
 		
 		$("#investBtn2").click(function() {

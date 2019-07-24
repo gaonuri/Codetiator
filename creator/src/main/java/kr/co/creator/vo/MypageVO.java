@@ -4,7 +4,7 @@ package kr.co.creator.vo;
 public class MypageVO {
 	private String project_num;			// ?봽濡쒖젥?듃踰덊샇
 	private String project_name;		// ?씠由?
-	private String deadline;			// ?궓??湲곌컙
+	private String refund_deadline;			// ?궓??湲곌컙
 	private String refund;				// ?긽?솚湲곌컙
 	private String ach_state;			// 紐⑥쭛?긽?깭
 	private String rate;				// 湲덈━
@@ -12,8 +12,28 @@ public class MypageVO {
 	private String repay_count;			// ?긽?솚李⑥닔
 	private String invest_date;		// �닾�옄�궇吏�
 	private String user_num;			// (李몄“)?쑀??踰덊샇
-	private String busi_num;			// (李몄“)踰뺤씤?쑀??踰덊샇	
+	private String busi_num;		// (李몄“)踰뺤씤?쑀??踰덊샇
+	private String invest_price;
+	private String refund_count;
 	
+	public String getRefund_count() {
+		return refund_count;
+	}
+	public void setRefund_count(String refund_count) {
+		this.refund_count = refund_count;
+	}
+	public String getRefund_deadline() {
+		return refund_deadline;
+	}
+	public void setRefund_deadline(String refund_deadline) {
+		this.refund_deadline = refund_deadline;
+	}
+	public String getInvest_price() {
+		return invest_price;
+	}
+	public void setInvest_price(String invest_price) {
+		this.invest_price = invest_price;
+	}
 	public String getInvest_date() {
 		return invest_date;
 	}
@@ -31,12 +51,6 @@ public class MypageVO {
 	}
 	public void setProject_name(String project_name) {
 		this.project_name = project_name;
-	}
-	public String getDeadline() {
-		return deadline;
-	}
-	public void setDeadline(String deadline) {
-		this.deadline = deadline;
 	}
 	public String getRefund() {
 		return refund;
