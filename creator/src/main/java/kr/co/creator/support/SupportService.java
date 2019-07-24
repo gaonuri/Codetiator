@@ -31,17 +31,11 @@ public class SupportService {
 		return support;
 	}//supportList
 
-	public List<NoticeVO> supportList2() {
+	public List<NoticeVO> supportList2(NoticeVO vo) {
 		List<NoticeVO> support = null;
-		support = dao.supportList2();
+		support = dao.supportList2(vo);
 		return support;
 	}//supportList2
-	
-	public List<NoticeVO> supportList3() {
-		List<NoticeVO> support = null;
-		support = dao.supportList3();
-		return support;
-	}//supportList3
 
 	public NoticeVO noticeDetail(NoticeVO vo) {
 		vo = dao.noticeDetail(vo);

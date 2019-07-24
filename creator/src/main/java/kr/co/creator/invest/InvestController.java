@@ -1,5 +1,6 @@
 package kr.co.creator.invest;
 
+import java.io.PrintWriter;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import kr.co.creator.vo.AccountVO;
 import kr.co.creator.vo.GuaranteeVO;
 import kr.co.creator.vo.ProjectVO;
+import kr.co.creator.vo.UserVO;
 
 @Controller
 public class InvestController {
@@ -88,4 +90,14 @@ public class InvestController {
 		
 		return "invest/invest_finish";
 	}//invest_finish
+	
+	@RequestMapping(value = "/deposit_update", method = RequestMethod.POST)
+	public void deposit_update(Model model, PrintWriter out, UserVO vo) {
+		logger.info("deposit_update");
+		int count = 0;
+		count = investService.deposit_update(vo);
+		out.print(count);
+		//out.flush();
+		out.close();
+	}//deposit_update
 }//class

@@ -44,33 +44,39 @@ public class SupportController {
 //		return "support/inquiry";
 //	}
 //	
-	@RequestMapping(value = "/support_total", method = RequestMethod.GET)
-	public String support(Model model) {
+	@RequestMapping(value = "/support", method = RequestMethod.GET)
+	public String support(Model model, NoticeVO vo) {
 		logger.info("support");
-		List<NoticeVO> support = null;
+		List<NoticeVO> support = null;   // 전체
+		List<NoticeVO> support2 = null;  // 새소식
+		List<NoticeVO> support3 = null;  // 운영사항
+		
+		
 		support = service.supportList();
+		
+		vo.setNotice_type("새소식");
+		support2 = service.supportList2(vo);
+		
+		vo.setNotice_type("운영사항");
+		support3 = service.supportList2(vo);
+		
+		
 		model.addAttribute("supportlist", support);
-		return "support/support_total";
+		model.addAttribute("supportlist2", support2);
+		model.addAttribute("supportlist3", support3);
+		
+		return "support/support";
 	}
 
-	@RequestMapping(value = "/support_new", method = RequestMethod.GET)
-	public String support2(Model model) {
-		logger.info("support2");
+	@RequestMapping(value = "/support_sebu", method = RequestMethod.GET)
+	public String support2(Model model, NoticeVO vo) {
+		logger.info("support_sebu");
 		List<NoticeVO> support = null;
-		support = service.supportList2();
+		support = service.supportList2(vo);
 		model.addAttribute("supportlist2", support);
 		return "support/support_new";
 	}
-	
-	@RequestMapping(value = "/support_operation", method = RequestMethod.GET)
-	public String support3(Model model) {
-		logger.info("support3");
-		List<NoticeVO> support = null;
-		support = service.supportList3();
-		model.addAttribute("supportlist3", support);
-		return "support/support_operation";
-	}
-	
+
 	@RequestMapping(value="/support/formi"
 			,method=RequestMethod.GET)
 	public String formInsert() {

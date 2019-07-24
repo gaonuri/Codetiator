@@ -42,7 +42,7 @@
 			, p.ach_state
 		from invest_list i, project_list p
 		where i.project_num = p.project_num 
-				and i.user_num = ${i.user_num}
+				and i.user_num = ${i.busi_num}
 	</select>
 	
 </mapper>
