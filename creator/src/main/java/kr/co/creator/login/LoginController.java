@@ -47,7 +47,6 @@ public class LoginController {
 		if(vo != null && vo.getUser_num() != null && !vo.getUser_num().equals("")) {
 			successCnt = 1;
 			session.setAttribute("memberVO", vo);
-			
 		} 
 		out.print(successCnt);
 		out.close();
