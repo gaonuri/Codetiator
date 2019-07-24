@@ -17,9 +17,9 @@ public class InvestService {
 	InvestDAO investDAO;
 
 //	public AccountVO invest(AccountVO vo) {
-//		System.out.println("DAO111111111 : " + vo);
+//		System.out.println("Service111111111 : " + vo);
 //		vo = investDAO.invest(vo);
-//		System.out.println("DAO222222222 : " + vo);
+//		System.out.println("Service222222222 : " + vo);
 //		return vo;
 //	}//invest
 
@@ -49,16 +49,16 @@ public class InvestService {
 		return guaVO;
 	}//guarantee_detail
 
-	public List<ProjectVO> invest_finish() {
+	public List<ProjectVO> invest_finished() {
 		List<ProjectVO> list = null;
-		list = investDAO.invest_finish();
+		list = investDAO.invest_finished();
 		
 		return list;
-	}//invest_finish
+	}//invest_finished
 
-	public int deposit_update(UserVO vo) {
+	public int deposit_update(AccountVO accVO) {
 		int count = 0;
-		count = investDAO.deposit_update(vo);
+		count = investDAO.deposit_update(accVO);
 		return count;
 	}//deposit_update
 }//class

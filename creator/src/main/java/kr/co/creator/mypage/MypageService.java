@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import kr.co.creator.vo.InvestVO;
 import kr.co.creator.vo.MypageVO;
 import kr.co.creator.vo.ProjectVO;
+import kr.co.creator.vo.UserVO;
 
 @Service
 public class MypageService {
@@ -15,15 +16,9 @@ public class MypageService {
 	@Autowired
 	MypageDAO dao;
 
-	public List<MypageVO> invest_detail(MypageVO userVO) {
+	public List<MypageVO> invest_detail(UserVO uvo) {
 		List<MypageVO> invest = null;
-		invest = dao.invest_detail(userVO);
-		return invest;
-	}
-	
-	public List<MypageVO> invest_detail2(MypageVO busiVO) {
-		List<MypageVO> invest = null;
-		invest = dao.invest_detail(busiVO);
+		invest = dao.invest_detail(uvo);
 		return invest;
 	}
 }//class

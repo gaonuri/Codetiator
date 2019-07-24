@@ -36,35 +36,32 @@
 	<script type="text/javascript">
 	$(document).ready(function() {
 		var temp = 0;
+		var add = 0;
+		var deposit = parseInt($("#inputDeposit771").val());
+		var invest 	= parseInt($("#inputAmt771").val());
+		var intrst 	= invest * $("#rate").val() * 0.01;
+		var tax 	= intrst * 0.25;
+		var benefit = invest + intrst - tax;
+		var confirmYN = false;
 		
 		$("#amtPlus100_771").click(function() {
-			temp = parseInt($("#inputAmt771").val());
-			temp += 100;
-			$("#inputAmt771").val(temp);
+			addDeposit(1000000);
 		});//amtPlus100_771
 		
 		$("#amtPlus50_771").click(function() {
-			temp = parseInt($("#inputAmt771").val());
-			temp += 50;
-			$("#inputAmt771").val(temp);
+			addDeposit(500000);
 		});//amtPlus50_771
 		
 		$("#amtPlus10_771").click(function() {
-			temp = parseInt($("#inputAmt771").val());
-			temp += 10;
-			$("#inputAmt771").val(temp);
+			addDeposit(100000);
 		});//amtPlus10_771
 		
 		$("#amtPlus5_771").click(function() {
-			temp = parseInt($("#inputAmt771").val());
-			temp += 5;
-			$("#inputAmt771").val(temp);
+			addDeposit(50000);
 		});//amtPlus5_771
 		
 		$("#amtPlus1_771").click(function() {
-			temp = parseInt($("#inputAmt771").val());
-			temp += 1;
-			$("#inputAmt771").val(temp);
+			addDeposit(10000);
 		});//amtPlus1_771
 		
 		$("#amtPlusAll_771").click(function() {
@@ -74,6 +71,77 @@
 		$("#amtReset_771").click(function() {
 			$("#inputAmt771").val("0");
 		});//amtReset_771
+		
+		$("#inputAmt771").blur(function() {
+			calculating();
+		});
+
+		function addDeposit(add) {
+			if(deposit > 0) {
+				temp = parseInt($("#inputAmt771").val());
+				temp += add;
+				
+				$("#inputAmt771").val(temp);
+				calculating();
+			} else {
+				confirmYN = confirm("투자 가능 예치금이 부족합니다. 예치금 관리 페이지로 이동하시겠습니까?");
+				if(confirmYN == true) {
+					location.href = "${pageContext.request.contextPath}/my_depo_mgn";
+				} else {
+					return;
+				}//if
+			}//if
+		}//addDeposit
+		
+		function calculating() {
+			invest 	= parseInt($("#inputAmt771").val());
+			intrst 	= invest * $("#rate").val() * 0.01;
+			tax 	= intrst * 0.25;
+			benefit = invest + intrst - tax;
+			
+			$("#investAmtL").text(invest);
+			$("#intrstAmtL").text(intrst);
+			$("#taxAmtL").text(tax);
+			$("#benefitAmtL").text(benefit);
+		}
+		
+		
+		$("#invest_offer").click(function() {
+			$("#deposit").val(deposit - invest);
+			alert(deposit - invest);
+// 			if($("#agreeCheckbox").val == "Y") {
+// 				var confirmYN = false;
+// 				confirmYN = confirm("정말 투자하시겠습니까?");
+// 				if(confirmYN == true) {
+					$.post("${pageContext.request.contextPath}/deposit_update",
+							{
+								user_num:$("#user_num").val(),
+								deposit:$("#deposit").val()
+							},
+							function(data, status) {
+								alert(data); alert(status);
+								if(status == "success") {
+									if(data == -1) {
+										alert("오류");
+									}else if(data > 0) {
+										location.href="${pageContext.request.contextPath}/invest_finish?user_num=${userVO.user_num}";
+									} else {
+										alert("관리자 : 02-5555-7777");
+									} 
+								} else if (status == "error") {
+									alert("잠시후 다시 시도해 주세요.");
+								} else {
+									alert("관리자 : 02-5555-7777");
+								}
+							}//call back function
+						);//post
+// 				} else {
+// 					return;
+// 				}
+// 			} else {
+// 				alert("약관에 동의해주시기 바랍니다.");
+//			}//if
+		});//invest_offer
 	});//ready
 	</script>
 </head>
@@ -248,29 +316,29 @@
 																	<div class="col-xs-9 col-sm-5 col-md-5 col">
 																		<div class="row">
 																			<div class="col-xs-10 col-sm-10 col-md-10 col">
-																				<div class="name" id="loanNm771">[부동산] 경기도 파주시 문산읍 토지</div>
+																				<div class="name" id="loanNm771">${projectVO.project_name}</div>
 																			</div>
 																		</div>
 																	</div>
 																	<div class="col-xs-3 col-sm-1 col-md-1 col">
 																		<div class="grade">
-																			<span id="grade771">MA1</span>
+																			<span id="grade771">${projectVO.grade}</span>
 																		</div>
 																	</div>
 																	<div class="clearfix visible-xs-block"></div>
 																	<div class="col-xs-3 col-sm-1 col-md-1 col">
 																		<div class="rate">
-																			<span id="rate771">13.0</span><font size="1">%</font>
+																			<span id="rate771">${projectVO.rate}</span><font size="1">%</font>
 																		</div>
 																	</div>
 																	<div class="col-xs-3 col-sm-1 col-md-1 col">
 																		<div class="period">
-																			<span id="period771">9</span><font size="1">개월</font>
+																			<span id="period771">${projectVO.rate}</span><font size="1">개월</font>
 																		</div>
 																	</div>
 																	<div class="col-xs-3 col-sm-2 col-md-2 col">
 																		<div class="amt">
-																			<span id="investOkAmt771">11828</span><font size="1">만원</font>
+																			<span id="investOkAmt771">${projectVO.price - projectVO.current_price}</span><font size="1">만원</font>
 																		</div>
 																	</div>
 																	<div class="col-xs-3 col-sm-2 col-md-2 col">
@@ -304,7 +372,7 @@
 																	<div class="col-xs-6 col-sm-4 col-md-4 col-lg-3 col">
 																		<div class="form-group has-feedback inputForm" id="inputAmtDiv">
 																			<input type="text" class="form-control text-right" id="inputAmt771" name="inputAmt" aria-describedby="inputAmtStatus" value="0">
-																			<span class="form-control-feedback" aria-hidden="true">만원</span>
+																			<span class="form-control-feedback" aria-hidden="true">원</span>
 																			<span id="inputAmtStatus" class="sr-only">(success)</span>
 																			<input type="hidden" id="reqAmt771" name="reqAmt" value="0">
 																		</div>
@@ -319,6 +387,7 @@
 																				<span name="amtPlus1" id="amtPlus1_771">+1만</span>
 																				<span name="amtPlusAll" id="amtPlusAll_771">전액</span>
 																				<span name="amtReset" id="amtReset_771" class="gray">정정</span>
+																				<br><span>금액을 1만원이상, 만원단위로 입력해주시기 바랍니다.</span>
 																			</div>
 																		</form>
 																	</div>
@@ -326,11 +395,12 @@
 																
 																<div class="row" id="depositDiv">
 																	<div class="col-xs-6 col-sm-8 col-md-8 col-lg-3 col">
-																		<div class="inputDepositTitle">예치금 사용</div>
+																		<div class="inputDepositTitle">투자 가능 예치금</div>
 																	</div>
 																	<div class="col-xs-6 col-sm-4 col-md-4 col-lg-3 col">
 																		<div class="form-group has-feedback inputForm" id="inputDepositDiv">
-																			<input type="text" class="form-control text-right" id="inputDeposit771" name="inputDeposit" aria-describedby="inputDepositStatus" value="0" readonly="readonly">
+																			<input type="text" class="form-control text-right" id="inputDeposit771" name="inputDeposit" aria-describedby="inputDepositStatus" value="${accountVO.deposit}" readonly="readonly">
+																			<input type="hidden" id="deposit" value="" />
 																			<span class="form-control-feedback" aria-hidden="true">원</span>
 																			<span id="inputDepositStatus" class="sr-only">(success)</span>
 																			<input type="hidden" id="reqDeposit771" name="reqDeposit" value="0">
@@ -389,6 +459,8 @@
 																●
 															</font> 투자 요약
 														</div>
+														<input type="hidden" id="rate" value="${projectVO.rate}" />				<!-- 금리 -->
+														<input type="hidden" id="user_num" value="${userVO.user_num}" />		<!-- 유저번호 -->
 														<table class="table" id="summaryTableL">
 															<thead>
 																<tr>
@@ -403,7 +475,7 @@
 															</thead>
 															<tbody>
 																<tr>
-																	<td><span id="investAmtL" class="">0</span><font size="1">원</font></td>
+																	<td><span id="investAmtL" class="font-blue">0</span><font size="1">원</font></td>
 																	<td><span id="intrstAmtL" class="font-blue">0</span><font size="1">원</font></td>
 																	<td><span id="taxAmtL" class="font-red">0</span><font size="1">원</font></td>
 																	<td><span id="benefitAmtL" class="font-blue">0</span><font size="1">원</font></td>
@@ -444,14 +516,15 @@
 												</div>
 					
 												<div class="bottomLine">
-													<a href="javascript:(void(0));" onclick="fn_openInvestWarning();" style="position: relative; bottom: 0px;" disabled="disabled">
-														<div style="margin-top: 30px;">
-															투자 신청<span></span>
-															<span>
-																<div><p style="margin-top:0px;text-align: right;">&gt;</p></div>
-															</span>
-														</div>
-													</a>
+													<button id="invest_offer">투자 신청</button>
+<!-- 													<a href="javascript:(void(0));" onclick="fn_openInvestWarning();" style="position: relative; bottom: 0px;" disabled="disabled"> -->
+<!-- 														<div style="margin-top: 30px;"> -->
+<!-- 															투자 신청<span></span> -->
+<!-- 															<span> -->
+<!-- 																<div><p style="margin-top:0px;text-align: right;">&gt;</p></div> -->
+<!-- 															</span> -->
+<!-- 														</div> -->
+<!-- 													</a> -->
 												</div>
 												<div class="bottomLine">
 													<p>투자 신청시 <a href="" target="_blank">개인정보 처리방침</a> 및 

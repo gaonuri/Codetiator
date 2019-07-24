@@ -38,7 +38,7 @@
 							투자
 						</a>
 						<ul class="dropdown-menu extended tasks-bar">
-							<div class="notify-arrow notify-arrow-black"></div>
+							<div class="notify-arrow notify-arrow-green"></div>
 							<li>
 								<a href="${pageContext.request.contextPath}/invest_guide">투자안내</a>
 							</li>
@@ -46,7 +46,7 @@
 								<a href="${pageContext.request.contextPath}/invest_list">투자하기</a>
 							</li>
 							<li>
-								<a href="${pageContext.request.contextPath}/invest_finish">완료된투자</a>
+								<a href="${pageContext.request.contextPath}/invest_finished">완료된투자</a>
 							</li>
 						</ul>
 					</li>
@@ -59,7 +59,7 @@
 							고객지원
 						</a>
 						<ul class="dropdown-menu extended notification">
-							<div class="notify-arrow"></div>
+							<div class="notify-arrow notify-arrow-green"></div>
 							<li>
 								<a href="${pageContext.request.contextPath}/faq">FAQ</a>
 							</li>
@@ -92,7 +92,7 @@
 									${memberVO.user_name}${memberVO.manager_name}님
 								</a>
 								<ul class="dropdown-menu extended notification">
-									<div class="notify-arrow notify-arrow-yellow"></div>
+									<div class="notify-arrow notify-arrow-green"></div>
 									<li>
 										<a href="${pageContext.request.contextPath}/my_dashboard">대시보드</a>
 									</li>

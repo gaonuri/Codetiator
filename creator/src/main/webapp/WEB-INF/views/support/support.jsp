@@ -36,9 +36,16 @@
 	======================================================= -->
 		<script type="text/javascript">
 			$(document).ready(function() {
-				$("#btn_write").click(function() {
+				$("#write_new").click(function() {
 					location.href = "${pageContext.request.contextPath}/support/formi";
 				});//btn_write
+			});
+				
+			$(document).ready(function() {
+				$("#write_op").click(function() {
+					location.href = "${pageContext.request.contextPath}/support/formi2";
+				});//btn_write2
+			});
 				
 				$("#newtab").click(function() {
 					$.get("/support/support"
@@ -51,6 +58,7 @@
 							}//if
 						}//function
 					);//get
+				});
 				
 				$("#operationtab").click(function() {
 					$.get("/support/support"
@@ -64,17 +72,6 @@
 						}//function
 					);//get
 				});
-// 				$("#btn_new").click(function() {
-// 					location.href = "${pageContext.request.contextPath}/support_new";
-// 				});//btn_write
-
-// 				$("#btn_operation").click(function() {
-// 					location.href = "${pageContext.request.contextPath}/support_operation";
-// 				});//btn_write
-				
-// 				$("#btn_write").click(function() {
-// 					location.href = "${pageContext.request.contextPath}/support/formi";
-// 				});//btn_write
 		</script>
 		
 </head>
@@ -230,11 +227,11 @@
 								   		<div class="col-md-12">
 									    	<table class="table">
 								                <c:forEach items="${supportlist}" var="vo" varStatus="status">
-         <!-- 1씩증가 하는법 물어보기  -->     				<c:set var="seq" value="1" />
+         <!-- 1씩증가 하는법 물어보기  -->     		  <c:set var="seq" value="1" />
 													<tbody>
 														<tr>
 														    <td><a href="support_total_detail?notice_num=${vo.notice_num}">${seq}</a></td>
-															<td><a href="support_total_detail?notice_num=${vo.notice_num}">${vo.notice_num}</a></td>
+<%-- 															<td><a href="support_total_detail?notice_num=${vo.notice_num}">${vo.notice_num}</a></td> --%>
 															<td><a href="support_total_detail?notice_num=${vo.notice_num}">${vo.title}</a></td>
 															<td>${vo.notice_date}</td>
 														</tr>
@@ -261,6 +258,12 @@
 													</tbody>
 												</c:forEach>
 						           		   </table>
+						           		   <div class="row">
+						           		   <div class="col-sm-11"></div>
+						           		   	 <div class="col-sm-1">
+						           		  	 <button type="button" id="write_new" class="btn btn-default">글쓰기</button>
+						           		  	 </div>
+						           		   </div>
 					           		   </div>
 								   </div>
 						    	</form>
@@ -281,6 +284,12 @@
 													</tbody>
 												</c:forEach>
 						           		   </table>
+						           		   <div class="row">
+						           		   <div class="col-sm-11"></div>
+						           		   	 <div class="col-sm-1">
+						           		  	 <button type="button"  id="write_op" class="btn btn-default">글쓰기</button>
+						           		  	 </div>
+						           		   </div>
 					           		   </div>
 								   </div>
 						    	</form>
