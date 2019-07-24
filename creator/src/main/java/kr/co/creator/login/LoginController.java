@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import kr.co.creator.vo.Busi_userVO;
 import kr.co.creator.vo.FindPwdVO;
+import kr.co.creator.vo.MemberVO;
 import kr.co.creator.vo.UserVO;
 
 @Controller
@@ -39,26 +40,27 @@ public class LoginController {
 	}//login
 
 	@RequestMapping(value="/loginuser", method=RequestMethod.POST)
-	public void loginUser(UserVO vo, HttpSession session, PrintWriter out) {
+	public void loginUser(MemberVO vo, HttpSession session, PrintWriter out) {
 		logger.info("=== loginUser ===");
 		vo = sqlSession.selectOne("LoginMapper.loginUser", vo);
 		int successCnt = 0;
 		if(vo != null && vo.getUser_num() != null && !vo.getUser_num().equals("")) {
 			successCnt = 1;
-			session.setAttribute("userVO", vo);
+			session.setAttribute("memberVO", vo);
+			
 		} 
 		out.print(successCnt);
 		out.close();
 	}//loginUser
 
 	@RequestMapping(value="/loginbusi", method=RequestMethod.POST)
-	public void loginBusi(Busi_userVO vo, HttpSession session, PrintWriter out) {
+	public void loginBusi(MemberVO vo, HttpSession session, PrintWriter out) {
 		logger.info("=== loginBusi ===");
 		vo = sqlSession.selectOne("LoginMapper.loginBusi", vo);
 		int successCnt = 0;
 		if(vo != null && vo.getBusi_num() != null && !vo.getBusi_num().equals("")) {
 			successCnt = 1;
-			session.setAttribute("busiUserVO", vo);
+			session.setAttribute("memberVO", vo);
 		}
 		out.print(successCnt);
 		out.close();
@@ -117,6 +119,8 @@ public class LoginController {
 	
 }//class
 
+
+//			userVO  busiUserVO
 //			form.setSubject("안녕하세요" + vo.getUser_name() + "님 임시비밀번호를 확인해 주세요");
 //			form.setSubject("안녕하세요 임시비밀번호를 확인해 주세요");
 //			vo = sqlSession.selectOne("LoginMapper.selectName", vo);
