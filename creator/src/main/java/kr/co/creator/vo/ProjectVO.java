@@ -25,6 +25,7 @@ public class ProjectVO {
 	private String loan_class;			// 대출구분
 	private String loan_type;			// 대출유형
 	private String repay_method;		// 상환방식
+	private String repay_count;			// 상환차수
 	
 	private String user_num;			// (참조)유저번호
 	private String busi_num;			// (참조)법인유저번호
@@ -236,4 +237,10 @@ public class ProjectVO {
 	public void setBusi_num(String busi_num) {
 		this.busi_num = busi_num;
 	}//busi_num
+	public String getRepay_count() {
+		return repay_count;
+	}
+	public void setRepay_count(String repay_count) {
+		this.repay_count = repay_count;
+	}//repay_count
 }//class

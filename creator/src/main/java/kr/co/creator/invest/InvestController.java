@@ -1,5 +1,6 @@
 package kr.co.creator.invest;
 
+import java.io.PrintWriter;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -10,8 +11,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import kr.co.creator.vo.AccountVO;
 import kr.co.creator.vo.GuaranteeVO;
 import kr.co.creator.vo.ProjectVO;
+import kr.co.creator.vo.UserVO;
 
 @Controller
 public class InvestController {
@@ -21,14 +24,31 @@ public class InvestController {
 	@Autowired
 	InvestService investService;
 	
+//	@RequestMapping(value = "/invest", method = RequestMethod.GET)
+//	public String invest(Model model, AccountVO vo) {
+//		logger.info("invest");
+//
+//		System.out.println("Controller1111111111 : " + vo);
+//		vo = investService.invest(vo);
+//		System.out.println("Controller2222222222 : " + vo);
+//		model.addAttribute("accountVO", vo);
+//		
+//		return "invest/invest";
+//	}//invest
+	
 	@RequestMapping(value = "/invest", method = RequestMethod.GET)
-	public String invest() {
+	public String invest(Model model, AccountVO AccVO, ProjectVO proVO) {
 		logger.info("invest");
-		
-		investService.invest();
+
+		System.out.println("Controller1111111111 : " + AccVO);
+		AccVO = investService.acount_detail(AccVO);
+		proVO = investService.project_detail(proVO);
+		System.out.println("Controller2222222222 : " + AccVO);
+		model.addAttribute("accountVO", AccVO);
+		model.addAttribute("projectVO", proVO);
 		
 		return "invest/invest";
-	}
+	}//invest
 	
 	@RequestMapping(value = "/invest_guide", method = RequestMethod.GET)
 	public String invest_guide() {
@@ -70,4 +90,14 @@ public class InvestController {
 		
 		return "invest/invest_finish";
 	}//invest_finish
+	
+	@RequestMapping(value = "/deposit_update", method = RequestMethod.POST)
+	public void deposit_update(Model model, PrintWriter out, UserVO vo) {
+		logger.info("deposit_update");
+		int count = 0;
+		count = investService.deposit_update(vo);
+		out.print(count);
+		//out.flush();
+		out.close();
+	}//deposit_update
 }//class

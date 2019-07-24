@@ -5,6 +5,12 @@
  
 <mapper namespace="InvestMapper">
 	
+	<select id="accountDetail" resultType="kr.co.creator.vo.AccountVO">
+		select	*
+		from	account_list
+		where	user_num = #{user_num}
+	</select>
+	
 	<select id="investList" resultType="kr.co.creator.vo.ProjectVO">
 		select	*
 		from	project_list
@@ -35,4 +41,9 @@
 		where	ach_state = "상환완료" || ach_state = "중도상환"
 	</select>
 	
+	<update id="depositUpdate" parameterType="kr.co.creator.vo.AccountVO">
+		update account_list
+			set deposit = #{deposit}
+			where user_num = #{user_num}
+	</update>
 </mapper>

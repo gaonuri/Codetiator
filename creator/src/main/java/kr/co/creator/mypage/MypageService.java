@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kr.co.creator.vo.InvestVO;
+import kr.co.creator.vo.MypageVO;
 import kr.co.creator.vo.ProjectVO;
 
 @Service
@@ -14,19 +15,15 @@ public class MypageService {
 	@Autowired
 	MypageDAO dao;
 
-	public List<InvestVO> assetsList() {
-		List<InvestVO> list = null;
-		list = dao.assetsList();
-		return list;
-	}//assetsList
-
-	public ProjectVO project_detail(ProjectVO proVO) {
-		proVO = dao.project_detail(proVO);
-		return proVO;
-	}//project_detail
-
-	public InvestVO invest_detail(InvestVO ivVO) {
-		ivVO = dao.invest_detail(ivVO);
-		return ivVO;
+	public List<MypageVO> invest_detail(MypageVO userVO) {
+		List<MypageVO> invest = null;
+		invest = dao.invest_detail(userVO);
+		return invest;
+	}
+	
+	public List<MypageVO> invest_detail2(MypageVO busiVO) {
+		List<MypageVO> invest = null;
+		invest = dao.invest_detail(busiVO);
+		return invest;
 	}
 }//class

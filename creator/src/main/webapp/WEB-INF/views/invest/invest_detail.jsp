@@ -35,9 +35,13 @@
 	======================================================= -->	
 	<script type="text/javascript">
 	$(document).ready(function() {
-		$("#investBtn").click(function() {
-			location.href="${pageContext.request.contextPath}/invest";
-		});//investBtn
+		$("#investBtn1").click(function() {
+			location.href = "${pageContext.request.contextPath}/invest?user_num=${userVO.user_num}&project_num=${projectVO.project_num}";
+		});//investBtn1
+		
+		$("#investBtn2").click(function() {
+			alert("로그인 하시기 바랍니다.");
+		});//investBtn2
 	});//ready
 	</script>
 </head>
@@ -47,6 +51,7 @@
 	    <!-- **********************************************************************************************************************************************************
 	        TOP BAR CONTENT & NOTIFICATIONS
 	        *********************************************************************************************************************************************************** -->
+<<<<<<< HEAD
 	    <!--header start-->
 	    <header class="header black-bg">
 			<!--logo start-->
@@ -164,6 +169,11 @@
 	    </header>
 	    <!--header end-->
 	   
+=======
+		<!--header start-->
+		<%@ include file="../header.jsp" %>
+		<!--header end-->
+>>>>>>> branch 'master' of https://github.com/gaonuri/Codetiator.git
 	   
 	    <!-- **********************************************************************************************************************************************************
 	        MAIN CONTENT
@@ -191,8 +201,8 @@
 										<td>${projectVO.repay_method}</td>
 									</tr>
 									<tr>
-										<th>연 수익률</th>
-										<td>${projectVO.yield}</td>
+										<th>금리</th>
+										<td>${projectVO.rate}</td>
 									</tr>
 									<tr>
 										<td>투자기간</td>
@@ -203,7 +213,17 @@
 										<td>500만원</td>
 									</tr>
 									<tr>
-										<td><input type="button" id="investBtn" value="투자신청"/></td>
+										<td>
+											<c:choose>
+												<c:when test="${userVO != null && userVO.user_num != '' && userVO.user_num != null || 
+																busiUserVO != null && busiUserVO.busi_num != '' && busiUserVO.busi_num != null}">
+													<input type="button" id="investBtn1" value="투자신청"/>
+												</c:when>
+												<c:otherwise>
+													<input type="button" id="investBtn2" value="투자신청"/>
+												</c:otherwise>
+											</c:choose>
+										</td>
 									</tr>
 								</table>
 							</div>
@@ -393,6 +413,8 @@
 	    </section>
 	    <!-- /MAIN CONTENT -->
 	    <!--main content end-->
+		
+		<input type="hidden" id="user_num" value="${userVO.user_num}" />
 		
 		<!--footer start-->
 		<footer class="site-footer">
