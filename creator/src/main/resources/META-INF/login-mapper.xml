@@ -18,7 +18,29 @@
 	</select>
 	
 	<select id="findPwdChk" parameterType="java.lang.String" resultType="int">
-		select count(*) from user_list where email=#{email}
-	</select> 
+	     select count(*) 
+	     from user_list 
+	     where email=#{email}
+ 	</select>
+	
+	<update id="updatePwd" parameterType="kr.co.creator.vo.FindPwdVO">
+		update user_list
+		set user_password = #{newPassword} 
+		where email = #{email}
+	</update>
+	
+	<select id="selectName" parameterType="java.lang.String" resultType="java.lang.String">
+		select user_name
+		from user_list
+		where email = #{email}
+	</select>
+	
+	<select id="selectEmail" parameterType="kr.co.creator.vo.FindPwdVO" resultType="kr.co.creator.vo.FindPwdVO">
+		select email
+		from user_list
+		where user_name = #{user_name}
+	</select>
+	
+
 	 
 </mapper>
