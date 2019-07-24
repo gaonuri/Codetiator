@@ -496,9 +496,7 @@
 	<!--script for this page-->
 	<script src="${pageContext.request.contextPath}/resources/bootstrap/lib/sparkline-chart.js"></script>
 	<script src="${pageContext.request.contextPath}/resources/bootstrap/lib/zabuto_calendar.js"></script>
-<<<<<<< HEAD
-	
-=======
+
 	<script type="text/javascript">
   /*
 	$(document).ready(function() {
@@ -563,7 +561,6 @@
       console.log('nav ' + nav + ' to: ' + to.month + '/' + to.year);
     }
 	</script>
->>>>>>> branch 'master' of https://github.com/gaonuri/Codetiator.git
 </body>
 
 </html>

@@ -97,8 +97,7 @@
 						</ul>
 					</li>
 	          		<!-- 투자 end -->
-	          
-	          
+
 					<!-- 고객지원 start-->
 					<li id="header_notification_bar" class="dropdown">
 						<a data-toggle="dropdown" class="dropdown-toggle" href="#">

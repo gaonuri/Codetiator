@@ -7,15 +7,33 @@ public class FindPwdVO {
 	private String email;						// 이메일
 	private String busi_num;					// 법인 유저번호
 	private String manager_email;				// 담당자 이메일
+	private String user_password;
+	private String user_name;
+	private String newPassword;
 	
 	public FindPwdVO() {}	//constructor
-	public FindPwdVO(String user_num, String email, String busi_num, String manager_email ) {
+	public FindPwdVO(String user_num, String email, String busi_num, String manager_email, String user_password, String user_name, String newPassword) {
 		this.user_num = user_num;
 		this.email = email;
 		this.busi_num = busi_num;
 		this.manager_email = manager_email;
+		this.user_password = user_password;
+		this.user_name = user_name;
+		this.newPassword = newPassword;
 	}//constructor
 	
+	public String getUser_name() {
+		return user_name;
+	}
+	public void setUser_name(String user_name) {
+		this.user_name = user_name;
+	}
+	public String getUser_password() {
+		return user_password;
+	}
+	public void setUser_password(String user_password) {
+		this.user_password = user_password;
+	}
 	public String getUser_num() {
 		return user_num;
 	}
@@ -40,6 +58,12 @@ public class FindPwdVO {
 	}
 	public void setManager_email(String manager_email) {
 		this.manager_email = manager_email;
+	}
+	public String getNewPassword() {
+		return newPassword;
+	}
+	public void setNewPassword(String newPassword) {
+		this.newPassword = newPassword;
 	}
 	
 	
