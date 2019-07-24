@@ -16,7 +16,8 @@
 	</select>
 	
 	<select id="InvestList"
-			resultType="kr.co.creator.vo.InvestVO">
+			parameterType="kr.co.creator.vo.UserVO"
+			resultType="kr.co.creator.vo.MypageVO">
 			select  i.invest_date
 			, i.project_num
 			, p.project_name
@@ -27,7 +28,7 @@
 			, p.ach_state
 		from invest_list i, project_list p
 		where i.project_num = p.project_num 
-				and i.user_num = ${i.user_num}
+				and i.user_num = ${user_num}
 	</select>
 	
 		<select id="projectlist"
