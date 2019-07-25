@@ -37,21 +37,23 @@
 $(document).ready(function() {
 	$("#un_btn").click(function(){
 	if($.trim($("#user_password").val()) == ""){
-		alert("비밀번호를 확인하세요.");
+		alert("비밀번호를 입력하세요.");
 		$("#user_password").focus();
 		return;
 	}//user_paswword
-	$.post("./loginuser"
-			,{
-			user_password:$("#user_password").val()
-			}
-			,function(data,status){
+	$.post(
+			"./mypagemodify",
+			{
+			user_password:$("#user_password").val(),
+			email:$("#email").val()
+			},
+			function(data,status){
+				alert("aaa");
 				if(status == "success"){
 					if(data > 0){
-						alert("로그인 되었습니다.");
 						location.href="/creator/modify_detail";
 					} else if(data == 0){
-						alert("존재하지 비밀번호 입니다.");
+						alert("비밀번호를 확인해 주세요.");
 					} else {
 						alert("잠시 후, 다시 시도해 주세요.");
 					}
@@ -59,7 +61,7 @@ $(document).ready(function() {
 					alert("시스템 관리자에게 문의 바랍니다.");
 				}
 			}
-	);//post
+		);//post
 	});//click
 });//ready
 </script>
@@ -143,16 +145,10 @@ $(document).ready(function() {
 											</div>	
 										</div>
 										<div class="col-sm-10 col-lg-offset-3">
-											<input type="text" class="btn btn-theme" id="un_btn" value="잠금 해제" />
+											<input type="submit" class="btn btn-theme" id="un_btn" value="잠금 해제" />
 										</div>
 									</div>
 						    	</form>
-						    	<div class="col-md-offset-1">
-						    		<a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
-									<a>비밀번호를 잊으셨나요?</a>
-									<a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
-									<a class="" href="./findpwd">비밀번호 찾기</a>
-						    	</div>	    	
 							</div>
 						</div>
 					</div>
