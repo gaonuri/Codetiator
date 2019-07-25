@@ -25,7 +25,7 @@ import kr.co.creator.vo.UserVO;
 public class MypageController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(MypageController.class);
-	//김도엽 test1 testtest
+	//김도엽 test1 testtestsss
 	@Autowired
 	SqlSession sqlSession;
 	
