@@ -114,6 +114,7 @@
 						<div class="card" style="width:800px;">
 							<div class="card-header">
 								상품요약
+								<h1>${investVO.price}</h1>
 							</div>
 							<div class="card-body">
 								<table>

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import kr.co.creator.vo.AccountVO;
 import kr.co.creator.vo.GuaranteeVO;
+import kr.co.creator.vo.InvestVO;
 import kr.co.creator.vo.ProjectVO;
 import kr.co.creator.vo.UserVO;
 
@@ -64,4 +65,10 @@ public class InvestDAO {
 		System.out.println("DAO22222222222 : " + accVO);
 		return count;
 	}//deposit_update
+
+	public InvestVO invest_detail(InvestVO inVO) {
+		inVO = sqlSession.selectOne("InvestMapper.investDetail", inVO);
+		
+		return inVO;
+	}//invest_detail
 }//class

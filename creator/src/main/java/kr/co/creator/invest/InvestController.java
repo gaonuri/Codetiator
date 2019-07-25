@@ -3,6 +3,8 @@ package kr.co.creator.invest;
 import java.io.PrintWriter;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import kr.co.creator.vo.AccountVO;
 import kr.co.creator.vo.GuaranteeVO;
+import kr.co.creator.vo.InvestVO;
 import kr.co.creator.vo.ProjectVO;
 import kr.co.creator.vo.UserVO;
 
@@ -69,13 +72,16 @@ public class InvestController {
 	}//invest_list
 	
 	@RequestMapping(value = "/invest_detail", method = RequestMethod.GET)
-	public String invest_detail(Model model, ProjectVO proVO, GuaranteeVO guaVO) {
+	public String invest_detail(Model model, HttpSession session, ProjectVO proVO, GuaranteeVO guaVO, InvestVO inVO) {
 		logger.info("invest_detail");
 		
 		proVO = investService.project_detail(proVO);
 		guaVO = investService.guarantee_detail(proVO, guaVO);
+		inVO  = investService.invest_detail(inVO);
+		
 		model.addAttribute("projectVO", proVO);
 		model.addAttribute("guaranteeVO", guaVO);
+		session.setAttribute("investVO", inVO);
 		
 		return "invest/invest_detail";
 	}//invest_detail
@@ -105,6 +111,7 @@ public class InvestController {
 	@RequestMapping(value = "/invest_finish", method = RequestMethod.GET)
 	public String invest_finish(Model model, AccountVO accVO) {
 		logger.info("invest_finish");
+		accVO = investService.acount_detail(accVO);
 		accVO = investService.acount_detail(accVO);
 		model.addAttribute("accountVO", accVO);
 		return "invest/invest_finish";
