@@ -55,7 +55,7 @@ public class InvestController {
 		logger.info("invest_guide");
 		
 		return "invest/invest_guide";
-	}
+	}//invest_guide
 	
 	@RequestMapping(value = "/invest_list", method = RequestMethod.GET)
 	public String invest_list(Model model) {

@@ -36,7 +36,7 @@
 	<script type="text/javascript">
 	$(document).ready(function() {
 		$("#investBtn1").click(function() {
-			location.href = "${pageContext.request.contextPath}/invest?user_num=${memberVO.user_num}&project_num=${projectVO.project_num}";
+			location.href = "${pageContext.request.contextPath}/invest?user_num=${memberVO.user_num}&busi_num=${memberVO.busi_num}&project_num=${projectVO.project_num}";
 		});//investBtn1
 		
 		$("#investBtn2").click(function() {
@@ -97,7 +97,7 @@
 									<tr>
 										<td>
 											<c:choose>
-												<c:when test="${memberVO != null && memberVO.user_num != '' && memberVO.user_num != null}">
+												<c:when test="${memberVO != null && (memberVO.user_num != '' && memberVO.user_num != null) || (memberVO.busi_num != '' && memberVO.busi_num != null)}">
 													<input type="button" id="investBtn1" value="투자신청"/>
 												</c:when>
 												<c:otherwise>

@@ -31,10 +31,10 @@ public class MypageController {
 	@RequestMapping(value = "/my_dashboard", method = RequestMethod.GET)
 	public String list(HttpSession session, Model model, MemberVO userVO, MypageVO myVO) {
 		logger.info("my_dashboard");
-		userVO = (MemberVO)session.getAttribute("userVO");
-		System.out.println("MemverVO");
-		session.getAttribute("busiUserVO");
-		System.out.println("Controller 111111111111111111111111 : " + userVO);
+//		userVO = (MemberVO)session.getAttribute("userVO");
+//		System.out.println("MemverVO");
+//		session.getAttribute("busiUserVO");
+//		System.out.println("Controller 111111111111111111111111 : " + userVO);
 		
 		List<MypageVO> invest = null;
 		invest = service.invest_detail();
@@ -96,10 +96,11 @@ public class MypageController {
 		return "mypage/my_modify";
 	}
 	
-//	@RequestMapping(value = "/my_", method = RequestMethod.GET)
-//	public String my_modify() {
-//		logger.info("my_modify");
-//				
-//		return "mypage/my_modify";
-//	
+	@RequestMapping(value = "/modify_detail", method = RequestMethod.GET)
+	public String modify_detail() {
+		logger.info("modify_detail");
+				
+		return "mypage/modify_detail";
+	}
+	
 }//class
