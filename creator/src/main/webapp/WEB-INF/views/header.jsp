@@ -84,8 +84,8 @@
 					
 					<!-- 로그아웃 start -->
 					
+<!-- 					이프문해야함 admin -->
 					<c:choose>
-					
 						<c:when test="${memberVO != null && memberVO.user_num != '' || memberVO != null && memberVO.busi_num != ''}">
 							<li id="header_notification_bar" class="dropdown">
 								<a data-toggle="dropdown" class="dropdown-toggle" href="#">
@@ -127,7 +127,19 @@
 						</c:otherwise>
 					</c:choose>
 					
-					<li><a href="${pageContext.request.contextPath}/account_list">관리자</a></li>
+					<c:choose>
+						<c:when test="${memberVO.user_num == '1'}">
+							<li>
+								<a href="${pageContext.request.contextPath}/account_list">관리자</a>
+							</li>
+						</c:when>
+						<c:otherwise>
+							<li>
+							</li>
+						</c:otherwise>
+					</c:choose>
+					
+					
 				
 					<!-- 로그아웃 end -->
 				</ul>
