@@ -43,7 +43,7 @@ $(document).ready(function() {
 	}//user_paswword
 	$.post("./loginuser"
 			,{
-				,user_password:$("#user_password").val()
+				user_password:$("#user_password").val()
 			}
 			,function(data,status){
 				if(status == "success"){

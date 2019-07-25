@@ -87,6 +87,11 @@
 <!-- 					이프문해야함 admin -->
 					<c:choose>
 						<c:when test="${memberVO != null && memberVO.user_num != '' || memberVO != null && memberVO.busi_num != ''}">
+							<c:choose>
+							<c:when test="${memberVO.user_num == '1'}">
+								<li><a>${memberVO.user_name}님</a></li>
+							</c:when>
+							<c:otherwise>
 							<li id="header_notification_bar" class="dropdown">
 								<a data-toggle="dropdown" class="dropdown-toggle" href="#">
 									${memberVO.user_name}${memberVO.manager_name}님
@@ -110,6 +115,8 @@
 									</li>
 								</ul>
 							</li>						
+							</c:otherwise>
+							</c:choose>
 						</c:when>
 						<c:otherwise>
 							<li><a class="loginss" href="${pageContext.request.contextPath}/login">로그인</a></li>
@@ -134,8 +141,7 @@
 							</li>
 						</c:when>
 						<c:otherwise>
-							<li>
-							</li>
+							<li></li>
 						</c:otherwise>
 					</c:choose>
 					

@@ -61,4 +61,10 @@
 				and i.user_num = ${i.busi_num}
 	</select>
 	
+	<select id="MyPageModify" parameterType="kr.co.creator.vo.MemberVO" resultType="kr.co.creator.vo.MemberVO">
+		select user_num, email, user_name
+		from user_list
+		where email=#{email} and user_password=#{user_password}
+	</select>
+	
 </mapper>

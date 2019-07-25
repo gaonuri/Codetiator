@@ -50,7 +50,7 @@
 	        <!-- sidebar menu start-->
 	        <ul class="sidebar-menu" id="nav-accordion">
 	          <li class="mt">
-	            <a href="creator/my_desktop">
+	            <a href="/creator/my_dashboard">
 	              <i class="fa fa-dashboard"></i>
 	              <span>대시 보드</span>
 	              </a>
