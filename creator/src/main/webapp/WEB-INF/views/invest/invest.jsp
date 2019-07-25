@@ -106,7 +106,7 @@
 		}
 		
 		
-		$("#invest_offer").click(function() {
+		$("#invest_offer_u").click(function() {
 			$("#deposit").val(deposit - invest);
 			alert(deposit - invest);
 // 			if($("#agreeCheckbox").val == "Y") {
@@ -141,7 +141,46 @@
 // 			} else {
 // 				alert("약관에 동의해주시기 바랍니다.");
 //			}//if
-		});//invest_offer
+		});//invest_offer_u
+		
+		
+		$("#invest_offer_b").click(function() {
+			$("#deposit").val(deposit - invest);
+			alert(deposit - invest);
+// 			if($("#agreeCheckbox").val == "Y") {
+// 				var confirmYN = false;
+// 				confirmYN = confirm("정말 투자하시겠습니까?");
+// 				if(confirmYN == true) {
+					$.post("${pageContext.request.contextPath}/deposit_update",
+							{
+								busi_num:$("#busi_num").val(),
+								deposit:$("#deposit").val()
+							},
+							function(data, status) {
+								alert(data); alert(status);
+								if(status == "success") {
+									if(data == -1) {
+										alert("오류");
+									}else if(data > 0) {
+										location.href="${pageContext.request.contextPath}/invest_finish?busi_num=${memberVO.busi_num}";
+									} else {
+										alert("관리자 : 02-5555-7777");
+									} 
+								} else if (status == "error") {
+									alert("잠시후 다시 시도해 주세요.");
+								} else {
+									alert("관리자 : 02-5555-7777");
+								}
+							}//call back function
+						);//post
+// 				} else {
+// 					return;
+// 				}
+// 			} else {
+// 				alert("약관에 동의해주시기 바랍니다.");
+//			}//if
+		});//invest_offer_b
+		
 	});//ready
 	</script>
 </head>
@@ -243,14 +282,14 @@
 																	<div class="investLmtTitle">
 																		<strong>총 투자한도</strong>
 																		<span class="glyphicon glyphicon-question-sign hover" style="font-size: 12px;" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="auto bottom" data-html="true" data-content="<strong>금융위원회의 P2P대출 가이드라인 준수를 위해 투자자구분별 투자한도가 적용됩니다.</strong>
-																							<br>1. 개인투자자
-																							<br> - 동일차입자 500만원, 총 2,000만원
-																							<br> ※ 단 부동산 상품이면 총 1,000만원
-																							<br>2. 소득요건을 구비한 개인투자자
-																							<br> - 동일차입자 2,000만원, 총 4,000만원
-																							<br>3. 개인전문투자자 : 제한없음 
-																							<br>4. 법인투자자 : 제한없음
-																							<br>※ 2017년 5월 29일 이전 투자는 해당없음" data-original-title="" title="">
+																			<br>1. 개인투자자
+																			<br> - 동일차입자 500만원, 총 2,000만원
+																			<br> ※ 단 부동산 상품이면 총 1,000만원
+																			<br>2. 소득요건을 구비한 개인투자자
+																			<br> - 동일차입자 2,000만원, 총 4,000만원
+																			<br>3. 개인전문투자자 : 제한없음 
+																			<br>4. 법인투자자 : 제한없음
+																			<br>※ 2017년 5월 29일 이전 투자는 해당없음" data-original-title="" title="">
 																		</span>
 																	</div>
 																	<hr>
@@ -453,6 +492,7 @@
 														</div>
 														<input type="hidden" id="rate" value="${projectVO.rate}" />				<!-- 금리 -->
 														<input type="hidden" id="user_num" value="${memberVO.user_num}" />		<!-- 유저번호 -->
+														<input type="hidden" id="busi_num" value="${memberVO.busi_num}" />		<!-- 법인유저번호 -->
 														<table class="table" id="summaryTableL">
 															<thead>
 																<tr>
@@ -508,7 +548,15 @@
 												</div>
 					
 												<div class="bottomLine">
-													<button id="invest_offer">투자 신청</button>
+													<c:choose>
+														<c:when test="${memberVO.user_num != null}">
+															<button id="invest_offer_u">투자 신청</button>
+														</c:when>
+														<c:when test="${memberVO.busi_num != null}">
+															<button id="invest_offer_b">투자 신청</button>
+														</c:when>
+													</c:choose>													
+													
 <!-- 													<a href="javascript:(void(0));" onclick="fn_openInvestWarning();" style="position: relative; bottom: 0px;" disabled="disabled"> -->
 <!-- 														<div style="margin-top: 30px;"> -->
 <!-- 															투자 신청<span></span> -->

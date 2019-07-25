@@ -27,8 +27,9 @@ public class InvestDAO {
 
 	public AccountVO acount_detail(AccountVO accVO) {
 		accVO = sqlSession.selectOne("InvestMapper.accountDetail", accVO);
+		
 		return accVO;
-	}
+	}//acount_detail
 
 	public List<ProjectVO> invest_list() {
 		List<ProjectVO> list = null;
