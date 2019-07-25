@@ -1,5 +1,6 @@
 package kr.co.creator.mypage;
 
+import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -24,6 +25,9 @@ import kr.co.creator.vo.UserVO;
 public class MypageController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(MypageController.class);
+	
+	@Autowired
+	SqlSession sqlSession;
 	
 	@Autowired
 	MypageService service;
@@ -96,11 +100,28 @@ public class MypageController {
 		return "mypage/my_modify";
 	}
 	
-	@RequestMapping(value = "/modify_detail", method = RequestMethod.GET)
+	@RequestMapping(value="/mypagemodify", method=RequestMethod.POST)
+	public void myPageModify(MemberVO vo, HttpSession session, PrintWriter out) {
+		logger.info("=== myPageModify ===");
+		vo = sqlSession.selectOne("MypageMapper.MyPageModify", vo);
+		int successCnt = 0;
+		if(vo != null && vo.getUser_num() != null && !vo.getUser_num().equals("")) {
+			successCnt = 1;
+			session.setAttribute("memberVO", vo);
+		} 
+		out.print(successCnt);
+		out.close();
+	}//myPageModify
+	
+	@RequestMapping(value = "/modify_detail", method = RequestMethod.POST)
 	public String modify_detail() {
 		logger.info("modify_detail");
-				
+		
 		return "mypage/modify_detail";
 	}
 	
 }//class
+
+
+
+
