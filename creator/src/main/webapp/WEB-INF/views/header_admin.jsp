@@ -80,35 +80,38 @@
 					
 					<!-- 로그인 start -->
 					<c:choose>
-						<c:when test="${userVO != null && userVO.user_num != '' || busiUserVO != null && busiUserVO.busi_num != ''}">
+						<c:when test="${memberVO.user_num == '1'}">
 							<li id="header_notification_bar" class="dropdown">
 								<a data-toggle="dropdown" class="dropdown-toggle" href="#">
-									${userVO.user_name}${busiUserVO.manager_name}님
+									${memberVO.user_name}님
 								</a>
 							</li>						
 						</c:when>
 						<c:otherwise>
-							<li><a class="loginss" href="./login">로그인</a></li>
+							<li>
+							</li>
 						</c:otherwise>
 					</c:choose>
 					
 					<c:choose>
-						<c:when test="${userVO != null && userVO.user_num != '' || busiUserVO != null && busiUserVO.busi_num != ''}">
+						<c:when test="${memberVO.user_num == '1'}">
 							<li>
 								<a href="${pageContext.request.contextPath}/logout">로그아웃</a>
 							</li>
 						</c:when>
 						<c:otherwise>
-							<li><a class="loginss" href="${pageContext.request.contextPath}/main">홈페이지</a></li>
+							<li>
+							</li>
 						</c:otherwise>
 					</c:choose>
 					<!-- 로그아웃 end -->
+					<c:choose>
+						<c:when test="${memberVO.user_num == '1'}">
+							<li><a class="loginss" href="${pageContext.request.contextPath}/main">홈페이지</a></li>					
+						</c:when>
+					</c:choose>
 				</ul>
-				
-				
 				<!--  notification end -->
-				
-				
 			</div>
 			<div class="top-menu">
 			</div>
