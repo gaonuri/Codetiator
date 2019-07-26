@@ -119,7 +119,7 @@
 							</c:choose>
 						</c:when>
 						<c:otherwise>
-							<li><a class="loginss" href="./login">로그인</a></li>
+							<li><a class="loginss" href="${pageContext.request.contextPath}/login">로그인</a></li>
 						</c:otherwise>
 					</c:choose>
 					

@@ -47,12 +47,12 @@
 			where user_num = #{user_num} || busi_num = #{busi_num} 
 	</update>
 	
-	<select id="borrowerPrice">
-		SELECT SUM(invest_price) 
-		FROM invest_list i, project_list p 
+	<select id="investDetail" parameterType="kr.co.creator.vo.InvestVO" resultType="kr.co.creator.vo.InvestVO">
+		SELECT SUM(invest_price) price, p.busi_num 
+		FROM invest_list i, project_list p  
 		WHERE i.project_num = p.project_num 
-		AND p.busi_num = #{busi_num} 
-		AND i.user_num = #{user_num} || i.busi_num = #{busi_num}
+		AND p.busi_num = #{p_busi_num} 
+		AND i.user_num = #{user_num} || i.busi_num = #{busi_num} 
 		AND p.ach_state = '투자하기'
 	</select>
 	
