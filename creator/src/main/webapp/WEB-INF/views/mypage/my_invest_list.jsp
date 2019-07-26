@@ -34,7 +34,7 @@
 	  License: https://templatemag.com/license/
 	======================================================= -->
 </head>
-
+     
 <body>
 	<section id="container">
 	    <!-- **********************************************************************************************************************************************************
@@ -87,81 +87,166 @@
 	    <!-- **********************************************************************************************************************************************************
 	        MAIN CONTENT
 	        *********************************************************************************************************************************************************** -->
-		<!--main content start-->
-    <section id="main-content">
-      <section class="wrapper">
-        <div class="row mt">
-          <div class="col-md-12">
-            <div class="content-panel">
-              <table class="table table-striped table-advance table-hover">
-                <h4><i class="fa fa-angle-right"></i> Advanced Table</h4>
-                <hr>
-                <thead>
-                  <tr>
-                    <th> 투자일자</th>
-                    <th> 프로젝트번호</th>
-                    <th> 프로젝트명</th>
-                    <th> 금리</th>
-                    <th> 투자금액</th>
-                    <th> 상환예정일</th>
-                    <th> 상환완료일</th>
-                    <th> 상품상태</th>
-                    <th></th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>${investVO.invest_date}</td> <!-- 투자일자 -->
-                    <td>${projectVO.project_num}</td> <!-- 프로젝트 번호 -->
-                    <td>${projectVO.project_name}</td> <!-- 프로젝트 명 -->
-                    <td>${projectVO.project_rate}</td> <!-- 금리 -->
-                    <td>${investVO.invest_price}</td> <!-- 투자금액 -->
-                    <td>${projectVO.project_refund}</td> <!-- 상환예정일 -->
-                    <td>${projectVO.project_refund_deadline}</td> <!-- 상환완료일 -->
-                    <td>${projectVO.project_ach_state}</td> <!-- 상품상태-->
-                  </tr>
-                  <tr>
-                    <td>${investVO.invest_date}</td> <!-- 투자일자 -->
-                    <td>${projectVO.project_num}</td> <!-- 프로젝트 번호 -->
-                    <td>${projectVO.project_name}</td> <!-- 프로젝트 명 -->
-                    <td>${projectVO.project_rate}</td> <!-- 금리 -->
-                    <td>${investVO.invest_price}</td> <!-- 투자금액 -->
-                    <td>${projectVO.project_refund}</td> <!-- 상환예정일 -->
-                    <td>${projectVO.project_refund_deadline}</td> <!-- 상환완료일 -->
-                    <td>${projectVO.project_ach_state}</td> <!-- 상품상태-->
-                  </tr>
-                  <tr>
-                    <td>${investVO.invest_date}</td> <!-- 투자일자 -->
-                    <td>${projectVO.project_num}</td> <!-- 프로젝트 번호 -->
-                    <td>${projectVO.project_name}</td> <!-- 프로젝트 명 -->
-                    <td>${projectVO.project_rate}</td> <!-- 금리 -->
-                    <td>${investVO.invest_price}</td> <!-- 투자금액 -->
-                    <td>${projectVO.project_refund}</td> <!-- 상환예정일 -->
-                    <td>${projectVO.project_refund_deadline}</td> <!-- 상환완료일 -->
-                    <td>${projectVO.project_ach_state}</td> <!-- 상품상태-->
-                  </tr>
-                  <tr>
-                    <td>${investVO.invest_date}</td> <!-- 투자일자 -->
-                    <td>${projectVO.project_num}</td> <!-- 프로젝트 번호 -->
-                    <td>${projectVO.project_name}</td> <!-- 프로젝트 명 -->
-                    <td>${projectVO.project_rate}</td> <!-- 금리 -->
-                    <td>${investVO.invest_price}</td> <!-- 투자금액 -->
-                    <td>${projectVO.project_refund}</td> <!-- 상환예정일 -->
-                    <td>${projectVO.project_refund_deadline}</td> <!-- 상환완료일 -->
-                    <td>${projectVO.project_ach_state}</td> <!-- 상품상태-->
-                  </tr>
-                </tbody>
-              </table>
+		<section id="main-content">
+     	 <section class="wrapper">
+       	 	<div class="row">
+         		 <div class="col-md-12">
+            		<div class="content-panel">
+	            		<div class="panel-heading">
+	            			<div class="col-lg-2">
+								<ul class="nav nav-tabs nav-justified">
+									<li class="active">
+										<a data-toggle="tab">나의투자</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+			            <div class="tab-content">
+						<div id="invest" class="tab-pane active">
+					    	<form role="form" class="form-horizontal">
+						   		<div class="row">
+						   		<div class="col-md-12">
+						    	<div class="investDetail">
+								<div class="row">
+									<div class="col-xs-12 col-sm-6 col-md-6">
+										<div class="title">
+											<a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+											<font class="font-purple">
+												●
+											</font> 투자 채권 목록
+										</div>
+									</div>
+								</div>
+								<a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+								
+								<div class="row investList" style="margin-top: 10px;" style="margin-left: 10px;">
+									<div class="col-xs-10 col">
+										<table class="table">
+												<thead>
+													<tr>
+														<th class="col">투자일자</th>
+														<th scope="col" class="clickable" name="investListSortTitle" id="investListSortTitleBANNER_TITLE">
+															프로젝트번호<span name="investListSortDesc" id="investListSortDescBANNER_TITLE"></span>
+														</th>
+														<th scope="col" class="clickable" name="investListSortTitle" id="investListSortTitleLOAN_NM">
+															프로젝트명<span name="investListSortDesc" id="investListSortDescLOAN_NM"></span>
+														</th>
+														<th scope="col" class="clickable" name="investListSortTitle" id="investListSortTitleINVEST_RATE">
+															금리(%)<span name="investListSortDesc" id="investListSortDescINVEST_RATE"></span>
+														</th>
+														<th scope="col" class="clickable" name="investListSortTitle" id="investListSortTitleINVEST_AMT">
+															투자금액<span name="investListSortDesc" id="investListSortDescINVEST_AMT"></span>
+														</th>
+														<th scope="col" colspan="clickable" class="clickable" name="investListSortTitle" id="investListSortTitleRND_CNT">
+															상환차수<span name="investListSortDesc" id="investListSortDescRND_CNT"></span>
+														</th>
+														<th scope="col" class="clickable" name="investListSortTitle" id="investListSortTitleMAX_DSTRBTN_DATE">
+															상환예정일<span name="investListSortDesc" id="investListSortDescMAX_DSTRBTN_DATE"></span>
+														</th>
+														<th scope="col" class="clickable" name="investListSortTitle" id="investListSortTitleMAX_DSTRBTN_DATE">
+															상환완료일<span name="investListSortDesc" id="investListSortDescMAX_DSTRBTN_DATE"></span>
+														</th>
+														<th scope="col" class="clickable" name="investListSortTitle" id="investListSortTitleREPAY_STATS_CD">
+															상품상태<span name="investListSortDesc" id="investListSortDescREPAY_STATS_CD"></span>
+														</th>
+													</tr>
+												</thead>
+											<c:forEach items="${investList}" var="vo" varStatus="status">
+												<tr>
+													<c:if test="${memberVO.user_num != null}">
+													</c:if>
+													<td>${vo.invest_date}</td>
+													<td>${vo.project_num}</td>
+													<td>${vo.project_name}</td>
+													<td>${vo.rate}%</td>
+													<td>${vo.invest_price}</td>
+													<td>${vo.refund_count}</td>
+													<td>${vo.refund}</td>
+													<td>${vo.refund_deadline}</td>
+													<td>${vo.ach_state}</td>
+													<td>
+<%-- 														<c:choose> --%>
+<%-- 															<c:when test="${vo.ach_state == '준비중'}"> --%>
+<!-- 																<button id="state">준비중</button> -->
+<%-- 															</c:when> --%>
+<%-- 															<c:otherwise> --%>
+<%-- 																${vo.ach_state} --%>
+<%-- 															</c:otherwise> --%>
+<%-- 														</c:choose> --%>
+													</td>
+												</tr>
+											</c:forEach>
+										</table>
+									</div>
+								</div>
+							<div class="row investThum" style="margin-top: 10px;" id="investThum"></div>
+								
+								<!-- 
+								<div class="row" style="margin-top: 10px;" id="nextPageDiv">
+									<div class="col-xs-12 col-sm-12 col-md-12">
+										<div class="alarm-box-bottom">
+											<a href='javascript:(void(0));' onclick='fn_selectNextPage()' id="nextPageBtn" class="display-none">
+												<i class="glyphicon glyphicon-menu-down"></i>
+											</a>
+											<a href='javascript:(void(0));' onclick='fn_resetPage()' id="resetPageBtn" class="display-none">
+												<i class="glyphicon glyphicon-menu-up"></i>
+											</a>
+										</div>
+									</div>
+								</div>
+								 -->
+								
+								<table id="tblExport" style="display:none;" class="tblExport">
+									<thead>
+										<tr>
+											<th class="col">투자일자</th>
+											<th class="col">상품별호수</th>
+											<th class="col">상품명</th>
+											<th class="col">금리</th>
+											<th class="col">투자금액</th>
+											<th class="col">상환회차</th>
+											<th class="col">만기회차</th>
+											<th class="col">상환예정일</th>
+											<th class="col">상환완료일</th>
+											<th class="col">상품상태</th>
+										</tr>
+									</thead>
+									
+								</table>
+								<div class="row" style="margin-top: 10px;">
+									<div class="col-xs-12 col-md-push-6 col-md-6" style="margin-top: 5px;">
+										<form id="investListSrchForm" class="text-right" onsubmit="return false;">
+											<div style="display: inline-block;">
+												<input type="text" class="form-control srchText" name="SRCH_TEXT" style="min-width: 260px;" onkeypress="fn_hitEnterKey(event, 'investList')" placeholder="상품명, 상품ID 또는 상품별호수로 검색" maxlength="20">
+											</div>
+											<div style="display: inline-block;">
+												<button type="button" class="btn btn-purple-transparent" id="investListSrchTextBtn">
+													<i class="glyphicon glyphicon-search"></i>
+												</button>
+											</div>
+											<div class="clearfix"></div>
+										</form>
+									</div>
+									<div class="col-xs-12 col-md-pull-6 col-md-6 text-left" style="margin-top: 5px;">
+										<ul class="pagination pagination-sm margin-0" id="investListPAGE_NAVI"></ul>
+									</div>
+								</div>
+							</div>
+			           		   </div>
+							   </div>
+					    	</form>
+						</div>
+						<!-- =========전체 -->	
+					</div>
+				</div>
             </div>
-            <!-- /content-panel -->
-          </div>
-          <!-- /col-md-12 -->
         </div>
-        <!-- /row -->
+        <!-- row -->
       </section>
     </section>
-    <!-- /MAIN CONTENT -->
-    <!--main content end-->
+    
+    
+		
 		<!--footer start-->
 		<footer class="site-footer">
 			<div class="container">
@@ -225,70 +310,6 @@
 	<!--script for this page-->
 	<script src="${pageContext.request.contextPath}/resources/bootstrap/lib/sparkline-chart.js"></script>
 	<script src="${pageContext.request.contextPath}/resources/bootstrap/lib/zabuto_calendar.js"></script>
-	<script type="text/javascript">
-  /*
-	$(document).ready(function() {
-      var unique_id = $.gritter.add({
-        // (string | mandatory) the heading of the notification
-        title: 'Welcome to Dashio!',
-        // (string | mandatory) the text inside the notification
-        text: 'Hover me to enable the Close Button. You can hide the left sidebar clicking on the button next to the logo. Developed by <a href="http://alvarez.is" target="_blank" style="color:#4ECDC4">Alvarez.is</a>.',
-        // (string | optional) the image to display on the left
-        image: '${pageContext.request.contextPath}/resources/bootstrap/img/ui-sam.jpg',
-        // (bool | optional) if you want it to fade out on its own or just sit there
-        sticky: false,
-        // (int | optional) the time you want it to be alive for before fading out
-        time: 8000,
-        // (string | optional) the class name you want to apply to that specific message
-        class_name: 'my-sticky-class'
-      });
-
-      return false;
-    });
-  */
-	</script>
-	<script type="application/javascript">
-    $(document).ready(function() {
-      $("#date-popover").popover({
-        html: true,
-        trigger: "manual"
-      });
-      $("#date-popover").hide();
-      $("#date-popover").click(function(e) {
-        $(this).hide();
-      });
-
-      $("#my-calendar").zabuto_calendar({
-        action: function() {
-          return myDateFunction(this.id, false);
-        },
-        action_nav: function() {
-          return myNavFunction(this.id);
-        },
-        ajax: {
-          url: "show_data.php?action=1",
-          modal: true
-        },
-        legend: [{
-            type: "text",
-            label: "Special event",
-            badge: "00"
-          },
-          {
-            type: "block",
-            label: "Regular event",
-          }
-        ]
-      });
-    });
-
-    function myNavFunction(id) {
-      $("#date-popover").hide();
-      var nav = $("#" + id).data("navigation");
-      var to = $("#" + id).data("to");
-      console.log('nav ' + nav + ' to: ' + to.month + '/' + to.year);
-    }
-	</script>
 </body>
 
 </html>

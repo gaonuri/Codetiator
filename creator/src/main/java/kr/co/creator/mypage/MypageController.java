@@ -35,7 +35,7 @@ public class MypageController {
 	@RequestMapping(value = "/my_dashboard", method = RequestMethod.GET)
 	public String list(HttpSession session, Model model, MemberVO userVO, MypageVO myVO) {
 		logger.info("my_dashboard");
-		myVO = (MypageVO)session.getAttribute("memberVO");
+		userVO = (MemberVO)session.getAttribute("memberVO");
 		List<MypageVO> invest = null;
 		invest = service.invest_detail(userVO);
 		model.addAttribute("investList", invest);
@@ -49,36 +49,23 @@ public class MypageController {
 		return "mypage/my_depo_mgn";
 	}
 	
-//	@RequestMapping(value = "/my_invest_list", method = RequestMethod.GET)
-//	public String my_invest_list(Model modelVO) {
-//		logger.info("my_invest_list");
-//		vo = SqlSession.selectOne(MypageMapper.InvestList, vo);
-//		int successCnt = 0;
-//		if(vo != null && vo.getMbr_no() != null && !vo.getMbr_no().equals("")) {
-//			successCnt = 1;
-//			session.setAttribute("usrSesn", vo);
-//		}
-//		out.print(successCnt);
-//	
-//
-//	scan
-//		int count = 0;
-//		if(count == 1) {
-//			
-//		} else if (count == 2) {
-//			
-//		}
-//		proVO = service.project_detail(proVO);
-//		ivVO = service.invest_detail(ivVO);
-//		model.addAttribute("projectVO", proVO);
-//		model.addAttribute("investVO", ivVO);
-//		return "mypage/my_invest_list";
-//	}
+	@RequestMapping(value = "/my_invest_list", method = RequestMethod.GET)
+	public String invest(HttpSession session, Model model, MemberVO userVO, MypageVO myVO) {
+		logger.info("my_dashboard");
+		userVO = (MemberVO)session.getAttribute("memberVO");
+		List<MypageVO> invest = null;
+		invest = service.invest_detail(userVO);
+		model.addAttribute("investList", invest);
+		return "mypage/my_invest_list";
+	}
 	
 	@RequestMapping(value = "/my_loan_list", method = RequestMethod.GET)
-	public String my_loan_list() {
+	public String loan(HttpSession session, Model model, MemberVO userVO, ProjectVO proVO) {
 		logger.info("my_loan_list");
-				
+		userVO = (MemberVO)session.getAttribute("memberVO");
+		List<ProjectVO> loan= null;
+		loan = service.loan_list(userVO);
+		model.addAttribute("loanlist",loan);
 		return "mypage/my_loan_list";
 	}
 	

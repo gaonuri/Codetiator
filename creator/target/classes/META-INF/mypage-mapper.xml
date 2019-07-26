@@ -43,22 +43,20 @@
 				, p.ach_state 
 			from invest_list i, project_list p
 			where i.project_num = p.project_num 
-					and i.user_num = #{i.user_num}
+					and i.user_num = #{user_num}
 		</select>
 	
-		<select id="projectlist"
+		<select id="loanlist"
 			resultType="kr.co.creator.vo.InvestVO">
-			select  i.invest_date
-			, i.project_num
-			, p.project_name
-			, p.rate
-			, i.invest_price
-			, p.refund
-			, p.refund_deadline
-			, p.ach_state
-		from invest_list i, project_list p
-		where i.project_num = p.project_num 
-				and i.user_num = ${i.busi_num}
+			select  a.account_name
+			, a.bank_name
+			, a.bank_num
+			, a.deposit
+			, i.input_history
+			, i.output_history
+		from account_list a, in_out i
+		where a.account_num = i.account_num 
+				and a.user_num = #{a.user_num}
 	</select>
 	
 	<select id="MyPageModify" parameterType="kr.co.creator.vo.MemberVO" resultType="kr.co.creator.vo.MemberVO">
