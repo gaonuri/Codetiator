@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import kr.co.creator.vo.AccountVO;
 import kr.co.creator.vo.GuaranteeVO;
 import kr.co.creator.vo.InvestVO;
+import kr.co.creator.vo.MemberVO;
 import kr.co.creator.vo.ProjectVO;
 import kr.co.creator.vo.UserVO;
 
@@ -40,9 +41,12 @@ public class InvestController {
 //	}//invest
 	
 	@RequestMapping(value = "/invest", method = RequestMethod.GET)
-	public String invest(Model model, AccountVO accVO, ProjectVO proVO) {
+	public String invest(Model model, MemberVO memberVO, AccountVO accVO, ProjectVO proVO) {
 		logger.info("invest");
-
+		
+		if(memberVO == null || memberVO.getUser_num().equals("") || memberVO.getBusi_num().equals("")) {
+			return "login/login";
+		}
 		System.out.println("Controller1111111111 : " + accVO);
 		accVO = investService.acount_detail(accVO);
 		proVO = investService.project_detail(proVO);
@@ -77,12 +81,14 @@ public class InvestController {
 		
 		proVO = investService.project_detail(proVO);
 		guaVO = investService.guarantee_detail(proVO, guaVO);
+		System.out.println("Controller1111111111111111111111111111111 : " + inVO);
 		inVO  = investService.invest_detail(inVO);
 		
 		model.addAttribute("projectVO", proVO);
 		model.addAttribute("guaranteeVO", guaVO);
-		session.setAttribute("investVO", inVO);
-		
+		session.setAttribute("sess_investVO", inVO);
+		//System.out.println("Controller2222222222222222222222222222222 : " + inVO.getInvest_price());
+		//System.out.println("Controller2222222222222222222222222222222 : " + ((InvestVO)session.getAttribute("sess_investVO")).getInvest_price());
 		return "invest/invest_detail";
 	}//invest_detail
 	
@@ -100,6 +106,7 @@ public class InvestController {
 	@RequestMapping(value = "/deposit_update", method = RequestMethod.POST)
 	public void deposit_update(Model model, PrintWriter out, AccountVO accVO) {
 		logger.info("deposit_update");
+		
 		System.out.println("Controller1111111111 : " + accVO);
 		int count = 0;
 		count = investService.deposit_update(accVO);
@@ -109,8 +116,11 @@ public class InvestController {
 	}//deposit_update
 	
 	@RequestMapping(value = "/invest_finish", method = RequestMethod.GET)
-	public String invest_finish(Model model, AccountVO accVO) {
+	public String invest_finish(Model model,MemberVO memberVO, AccountVO accVO) {
 		logger.info("invest_finish");
+		if(memberVO == null || memberVO.getUser_num().equals("") || memberVO.getBusi_num().equals("")) {
+			return "login/login";
+		}
 		accVO = investService.acount_detail(accVO);
 		accVO = investService.acount_detail(accVO);
 		model.addAttribute("accountVO", accVO);

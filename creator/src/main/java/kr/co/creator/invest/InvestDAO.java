@@ -67,7 +67,9 @@ public class InvestDAO {
 	}//deposit_update
 
 	public InvestVO invest_detail(InvestVO inVO) {
+		System.out.println("DAO11111111111111111 : " + inVO);
 		inVO = sqlSession.selectOne("InvestMapper.investDetail", inVO);
+		System.out.println("DAO22222222222222222 : " + inVO);
 		
 		return inVO;
 	}//invest_detail

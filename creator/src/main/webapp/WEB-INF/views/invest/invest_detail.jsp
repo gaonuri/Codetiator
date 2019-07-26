@@ -92,7 +92,8 @@
 									</tr>
 									<tr>
 										<td>투자한도</td>
-										<td>500만원</td>
+										<td>${500 - sess_investVO.getInvest_price()}만원</td>
+<%-- 										<td>${500 - sess_investVO.invest_price}만원</td> --%>
 									</tr>
 									<tr>
 										<td>
@@ -114,7 +115,6 @@
 						<div class="card" style="width:800px;">
 							<div class="card-header">
 								상품요약
-								<h1>${investVO.price}</h1>
 							</div>
 							<div class="card-body">
 								<table>
@@ -137,7 +137,7 @@
 								<table style="float:left;">
 									<tr>
 										<th>담보물건 정보</th>
-									</tr>							
+									</tr>
 									<tr>
 										<td>유형</td>
 										<td>${guaranteeVO.guarantee_type}</td>
