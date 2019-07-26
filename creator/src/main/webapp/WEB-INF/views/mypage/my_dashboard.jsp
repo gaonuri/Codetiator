@@ -190,7 +190,9 @@
 												</thead>
 											<c:forEach items="${investList}" var="vo" varStatus="status">
 												<tr>
-													<td><a>${vo.invest_date}</a></td>
+													<c:when test="${memberVO.user_num != null}">
+													<a>${vo.invest_date}</a>
+													</c:when>
 													<td>${vo.project_num}</td>
 													<td>${vo.project_name}</td>
 													<td>${vo.rate}%</td>
@@ -368,15 +370,15 @@
 					</div>
 				</div>
 						    	<table class="table">
-					                <c:forEach items="${supportlist}" var="vo" varStatus="status">
-										<tbody>
-											<tr>
-												<td><a href="support_total_detail?notice_num=${vo.notice_num}">${vo.notice_num}</a></td>
-												<td><a href="support_total_detail?notice_num=${vo.notice_num}">${vo.title}</a></td>
-												<td>${vo.notice_date}</td>
-											</tr>
-										</tbody>
-									</c:forEach>
+<%-- 					                <c:forEach items="${supportlist}" var="vo" varStatus="status"> --%>
+<!-- 										<tbody> -->
+<!-- 											<tr> -->
+<%-- 												<td><a href="support_total_detail?notice_num=${vo.notice_num}">${vo.notice_num}</a></td> --%>
+<%-- 												<td><a href="support_total_detail?notice_num=${vo.notice_num}">${vo.title}</a></td> --%>
+<%-- 												<td>${vo.notice_date}</td> --%>
+<!-- 											</tr> -->
+<!-- 										</tbody> -->
+<%-- 									</c:forEach> --%>
 			           		   </table>
 			           		   </div>
 							   </div>

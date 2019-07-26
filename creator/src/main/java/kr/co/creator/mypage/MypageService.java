@@ -14,9 +14,9 @@ public class MypageService {
 	@Autowired
 	MypageDAO dao;
 
-	public List<MypageVO> invest_detail() {
+	public List<MypageVO> invest_detail(MemberVO userVO) {
 		List<MypageVO> invest = null;
-		invest = dao.invest_detail();
+		invest = dao.invest_detail(userVO);
 		return invest;
 	}
 }//class

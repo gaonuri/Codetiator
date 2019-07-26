@@ -91,7 +91,7 @@
 			<section class="wrapper">
 				<div class="container">
 					<div class="row">
-						<div class="col-sm-12 col-sm-9 col col-box">red</div>
+						<div class="col-sm-12 col-sm-9 col col-box"><h1>ㅍㅍㅍㅍㅍㅍㅍ</h1></div>
 					</div>
 				</div>
 		
