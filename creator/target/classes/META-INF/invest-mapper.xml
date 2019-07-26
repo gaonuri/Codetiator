@@ -48,7 +48,7 @@
 	</update>
 	
 	<select id="investDetail" parameterType="kr.co.creator.vo.InvestVO" resultType="kr.co.creator.vo.InvestVO">
-		SELECT SUM(invest_price) price, p.busi_num 
+		SELECT SUM(invest_price) invest_price, p.busi_num 
 		FROM invest_list i, project_list p  
 		WHERE i.project_num = p.project_num 
 		AND p.busi_num = #{p_busi_num} 
