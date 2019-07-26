@@ -26,7 +26,7 @@
 								<a href="${pageContext.request.contextPath}/loan_guide">대출안내</a>
 							</li>
 							<li>
-								<a href="${pageContext.request.contextPath}/loan/getloan">대출하기</a>
+								<a href="${pageContext.request.contextPath}/getloan">대출하기</a>
 							</li>
 						</ul>
 					</li>
