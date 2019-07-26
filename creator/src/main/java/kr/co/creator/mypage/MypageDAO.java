@@ -20,9 +20,13 @@ public class MypageDAO {
 
 	public List<MypageVO> invest_detail(MemberVO userVO) {
 		List<MypageVO> invest = null;
-		System.out.println("DAO 2222222222222222222222222222222 : " + userVO);
 		invest = sqlSession.selectList("MypageMapper.InvestList", userVO);
-		System.out.println("DAO 3333333333333333333333333333333 : " + userVO);
 		return invest;
+	}
+
+	public List<ProjectVO> loan_list(MemberVO userVO) {
+		List<ProjectVO> loan = null;
+		loan = sqlSession.selectList("MypageMapper.loanlist", userVO);
+		return loan;
 	} 
 }//class

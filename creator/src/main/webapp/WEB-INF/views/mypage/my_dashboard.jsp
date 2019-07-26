@@ -115,46 +115,12 @@
 										<div class="title">
 											<a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
 											<font class="font-purple">
-												●
-											</font> 투자 채권 목록
+												● 투자 채권 목록
+											</font> 
 										</div>
 									</div>
 								</div>
 								<a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
-								<div class="row row-cat">
-									<div class="btn-group cate" data-toggle="buttons">
-										<div class="col-xs-6 col-sm-2 col">
-											<label class="btn labelBtn-purple btn-block" id="investCatLabel00">
-												전체<span id="investListCntA"></span>
-											</label>
-										</div>
-										<div class="col-xs-6 col-sm-2 col">
-											<label class="btn labelBtn-purple btn-block checked" id="investCatLabel01">
-												투자신청<span id="investListCntB"></span>
-											</label>
-										</div>
-										<div class="col-xs-6 col-sm-2 col">
-											<label class="btn labelBtn-purple btn-block checked" id="investCatLabel02">
-												상환중<span id="investListCntC"></span>
-											</label>
-										</div>
-										<div class="col-xs-6 col-sm-2 col">
-											<label class="btn labelBtn-purple btn-block checked" id="investCatLabel03">
-												상환완료<span id="investListCntD"></span>
-											</label>
-										</div>
-										<div class="col-xs-6 col-sm-2 col">
-											<label class="btn labelBtn-purple btn-block checked" id="investCatLabel04">
-												연체중<span id="investListCntE"></span>
-											</label>
-										</div>
-										<div class="col-xs-6 col-sm-2 col">
-											<label class="btn labelBtn-purple btn-block checked" id="investCatLabel05">
-												부도<span id="investListCntF"></span>
-											</label>
-										</div>
-									</div>
-								</div>
 								
 								<div class="row investList" style="margin-top: 10px;" style="margin-left: 10px;">
 									<div class="col-xs-10 col">
@@ -174,11 +140,11 @@
 														<th scope="col" class="clickable" name="investListSortTitle" id="investListSortTitleINVEST_AMT">
 															투자금액<span name="investListSortDesc" id="investListSortDescINVEST_AMT"></span>
 														</th>
-														<th scope="col" colspan="2" class="clickable" name="investListSortTitle" id="investListSortTitleRND_CNT">
+														<th scope="col" colspan="clickable" class="clickable" name="investListSortTitle" id="investListSortTitleRND_CNT">
 															상환차수<span name="investListSortDesc" id="investListSortDescRND_CNT"></span>
 														</th>
-														<th scope="col" class="clickable" name="investListSortTitle" id="investListSortTitleNEXT_DSTRBTN_DATE">
-															상환예정일<span name="investListSortDesc" id="investListSortDescNEXT_DSTRBTN_DATE"></span>
+														<th scope="col" class="clickable" name="investListSortTitle" id="investListSortTitleMAX_DSTRBTN_DATE">
+															상환예정일<span name="investListSortDesc" id="investListSortDescMAX_DSTRBTN_DATE"></span>
 														</th>
 														<th scope="col" class="clickable" name="investListSortTitle" id="investListSortTitleMAX_DSTRBTN_DATE">
 															상환완료일<span name="investListSortDesc" id="investListSortDescMAX_DSTRBTN_DATE"></span>
@@ -190,9 +156,9 @@
 												</thead>
 											<c:forEach items="${investList}" var="vo" varStatus="status">
 												<tr>
-													<c:when test="${memberVO.user_num != null}">
-													<a>${vo.invest_date}</a>
-													</c:when>
+													<c:if test="${memberVO.user_num != null}">
+													</c:if>
+													<td>${vo.invest_date}</td>
 													<td>${vo.project_num}</td>
 													<td>${vo.project_name}</td>
 													<td>${vo.rate}%</td>
@@ -277,111 +243,111 @@
 						<div id="depo" class="tab-pane">
 					    	<form role="form" class="form-horizontal">
 						   		<div class="row">
-						   		<div class="col-md-12">
-						   		<div class="row">
-						<div class="col-md-4">
-							<div class="title">
-								<font class="font-purple">
-									●
-								</font> 자산 요약
-							</div>
-							<div class="row height statsText">
-								<div class="col-xs-12 col-sm-12 col-md-12">
-									<div class="row">
-										<div class="col-xs-7 col-sm-7 col-md-7">
-											총 예치금&nbsp;&nbsp;
-											<span class="glyphicon glyphicon-question-sign hover" style="font-size: 12px;" tabindex="0" data-toggle="tooltip" data-placement="auto" data-trigger="hover" title="" data-original-title="=기본 예치금 +자동투자 예치금"></span>
+						   			<div class="col-md-12">
+								   		<div class="row">
+											<div class="col-md-4">
+												<div class="title">
+													<font class="font-purple">
+														●
+													</font> 자산 요약
+												</div>
+												<div class="row height statsText">
+													<div class="col-xs-12 col-sm-12 col-md-12">
+														<div class="row">
+															<div class="col-xs-7 col-sm-7 col-md-7">
+																총 예치금&nbsp;&nbsp;
+																<span class="glyphicon glyphicon-question-sign hover" style="font-size: 12px;" tabindex="0" data-toggle="tooltip" data-placement="auto" data-trigger="hover" title="" data-original-title="=기본 예치금 +자동투자 예치금"></span>
+															</div>
+															<div class="col-xs-5 col-sm-5 col-md-5 text-right">
+																0 원
+															</div>
+														</div>
+														<div class="row" style="margin-top: 5px;">
+															<div class="col-xs-7 col-sm-7 col-md-7">
+																상환 예정 원금&nbsp;&nbsp;
+																<span class="glyphicon glyphicon-question-sign hover" style="font-size: 12px;" tabindex="0" data-toggle="tooltip" data-placement="auto" data-trigger="hover" title="" data-original-title="부실없이 정상 상환을 가정한 예상 원금"></span>
+															</div>
+															<div class="col-xs-5 col-sm-5 col-md-5 text-right">
+																<span name="REST_PRNCPL_DSTRBTN_AMT">0</span> 원
+															</div>
+														</div>
+														<div class="row" style="margin-top: 5px;">
+															<div class="col-xs-7 col-sm-7 col-md-7">
+																투자 대기 금액&nbsp;&nbsp;
+																<span class="glyphicon glyphicon-question-sign hover" style="font-size: 12px;" tabindex="0" data-toggle="tooltip" data-placement="auto" data-trigger="hover" title="" data-original-title="투자금액이 차입자에게 전달되기 전 시점에서의 금액 "></span>
+															</div>
+															<div class="col-xs-5 col-sm-5 col-md-5 text-right">
+																<span name="INVEST_REQ_AMT">0</span> 원
+															</div>
+														</div>
+														
+														<hr>
+														
+														<div class="row">
+															<div class="col-xs-7 col-sm-7 col-md-7">
+																총 자산
+															</div>
+															<div class="col-xs-5 col-sm-5 col-md-5 text-right">
+																<span class="font-purple"><strong>
+																	<span name="TOTAL_ASSET_AMT">0</span> <font size="2">원</font>
+																</strong></span>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										<div class="col-md-6">
+											<div class="title">
+												<font class="font-purple">
+													●
+												</font> 예치금 요약
+											</div>
+											<div class="row height statsText">
+												<div class="col-xs-12 col-sm-12 col-md-12">
+													<div class="row">
+														<div class="col-xs-6 col-sm-6 col-md-6">
+															기본 예치금
+														</div>
+														<div class="col-xs-6 col-sm-6 col-md-6 text-right">
+															0 원
+														</div>
+													</div>
+													<div class="row" style="margin-top: 30px;">
+														<div class="col-xs-6 col-sm-6 col-md-6">
+															자동투자 예치금
+														</div>
+														<div class="col-xs-6 col-sm-6 col-md-6 text-right">
+															0 원
+														</div>
+													</div>
+													<hr>
+													<div class="row">
+														<div class="col-xs-6 col-sm-6 col-md-6">
+															총 예치금
+														</div>
+														<div class="col-xs-6 col-sm-6 col-md-6 text-right">
+															<span class="font-purple"><strong>
+																0 <font size="2">원</font>
+															</strong></span>
+														</div>
+													</div>
+												</div>
+											</div>
 										</div>
-										<div class="col-xs-5 col-sm-5 col-md-5 text-right">
-											0 원
-										</div>
 									</div>
-									<div class="row" style="margin-top: 5px;">
-										<div class="col-xs-7 col-sm-7 col-md-7">
-											상환 예정 원금&nbsp;&nbsp;
-											<span class="glyphicon glyphicon-question-sign hover" style="font-size: 12px;" tabindex="0" data-toggle="tooltip" data-placement="auto" data-trigger="hover" title="" data-original-title="부실없이 정상 상환을 가정한 예상 원금"></span>
-										</div>
-										<div class="col-xs-5 col-sm-5 col-md-5 text-right">
-											<span name="REST_PRNCPL_DSTRBTN_AMT">0</span> 원
-										</div>
-									</div>
-									<div class="row" style="margin-top: 5px;">
-										<div class="col-xs-7 col-sm-7 col-md-7">
-											투자 대기 금액&nbsp;&nbsp;
-											<span class="glyphicon glyphicon-question-sign hover" style="font-size: 12px;" tabindex="0" data-toggle="tooltip" data-placement="auto" data-trigger="hover" title="" data-original-title="투자금액이 차입자에게 전달되기 전 시점에서의 금액 "></span>
-										</div>
-										<div class="col-xs-5 col-sm-5 col-md-5 text-right">
-											<span name="INVEST_REQ_AMT">0</span> 원
-										</div>
-									</div>
-									
-									<hr>
-									
-									<div class="row">
-										<div class="col-xs-7 col-sm-7 col-md-7">
-											총 자산
-										</div>
-										<div class="col-xs-5 col-sm-5 col-md-5 text-right">
-											<span class="font-purple"><strong>
-												<span name="TOTAL_ASSET_AMT">0</span> <font size="2">원</font>
-											</strong></span>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					<div class="col-md-6">
-						<div class="title">
-							<font class="font-purple">
-								●
-							</font> 예치금 요약
-						</div>
-						<div class="row height statsText">
-							<div class="col-xs-12 col-sm-12 col-md-12">
-								<div class="row">
-									<div class="col-xs-6 col-sm-6 col-md-6">
-										기본 예치금
-									</div>
-									<div class="col-xs-6 col-sm-6 col-md-6 text-right">
-										0 원
-									</div>
-								</div>
-								<div class="row" style="margin-top: 30px;">
-									<div class="col-xs-6 col-sm-6 col-md-6">
-										자동투자 예치금
-									</div>
-									<div class="col-xs-6 col-sm-6 col-md-6 text-right">
-										0 원
-									</div>
-								</div>
-								<hr>
-								<div class="row">
-									<div class="col-xs-6 col-sm-6 col-md-6">
-										총 예치금
-									</div>
-									<div class="col-xs-6 col-sm-6 col-md-6 text-right">
-										<span class="font-purple"><strong>
-											0 <font size="2">원</font>
-										</strong></span>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-						    	<table class="table">
-<%-- 					                <c:forEach items="${supportlist}" var="vo" varStatus="status"> --%>
-<!-- 										<tbody> -->
-<!-- 											<tr> -->
-<%-- 												<td><a href="support_total_detail?notice_num=${vo.notice_num}">${vo.notice_num}</a></td> --%>
-<%-- 												<td><a href="support_total_detail?notice_num=${vo.notice_num}">${vo.title}</a></td> --%>
-<%-- 												<td>${vo.notice_date}</td> --%>
-<!-- 											</tr> -->
-<!-- 										</tbody> -->
-<%-- 									</c:forEach> --%>
-			           		   </table>
-			           		   </div>
-							   </div>
+							    	<table class="table">
+	<%-- 					                <c:forEach items="${supportlist}" var="vo" varStatus="status"> --%>
+	<!-- 										<tbody> -->
+	<!-- 											<tr> -->
+	<%-- 												<td><a href="support_total_detail?notice_num=${vo.notice_num}">${vo.notice_num}</a></td> --%>
+	<%-- 												<td><a href="support_total_detail?notice_num=${vo.notice_num}">${vo.title}</a></td> --%>
+	<%-- 												<td>${vo.notice_date}</td> --%>
+	<!-- 											</tr> -->
+	<!-- 										</tbody> -->
+	<%-- 									</c:forEach> --%>
+				           		   </table>
+			           		   	</div>
+							  </div>
 					    	</form>
 						</div>
 						<!-- =========새소식 -->
