@@ -25,7 +25,7 @@ import kr.co.creator.vo.UserVO;
 public class MypageController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(MypageController.class);
-	//김도엽 test1 testtestsss
+	
 	@Autowired
 	SqlSession sqlSession;
 	
@@ -35,21 +35,10 @@ public class MypageController {
 	@RequestMapping(value = "/my_dashboard", method = RequestMethod.GET)
 	public String list(HttpSession session, Model model, MemberVO userVO, MypageVO myVO) {
 		logger.info("my_dashboard");
-//		userVO = (MemberVO)session.getAttribute("userVO");
-//		System.out.println("MemverVO");
-//		session.getAttribute("busiUserVO");
-//		System.out.println("Controller 111111111111111111111111 : " + userVO);
-		
+		myVO = (MypageVO)session.getAttribute("memberVO");
 		List<MypageVO> invest = null;
-		invest = service.invest_detail();
+		invest = service.invest_detail(userVO);
 		model.addAttribute("investList", invest);
-		
-//		userVO.setUser_num("user_num");
-//		
-//		userVO.setBusi_num("busi_num");
-//		service.invest_detail(userVO);
-//		
-		
 		return "mypage/my_dashboard";
 	}
 	

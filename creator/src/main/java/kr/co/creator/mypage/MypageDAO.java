@@ -18,11 +18,11 @@ public class MypageDAO {
 	@Autowired
 	SqlSession sqlSession;
 
-	public List<MypageVO> invest_detail() {
+	public List<MypageVO> invest_detail(MemberVO userVO) {
 		List<MypageVO> invest = null;
-		System.out.println("DAO 2222222222222222222222222222222 : ");
-		invest = sqlSession.selectList("MypageMapper.InvestList");
-		System.out.println("DAO 3333333333333333333333333333333 : ");
+		System.out.println("DAO 2222222222222222222222222222222 : " + userVO);
+		invest = sqlSession.selectList("MypageMapper.InvestList", userVO);
+		System.out.println("DAO 3333333333333333333333333333333 : " + userVO);
 		return invest;
 	} 
 }//class

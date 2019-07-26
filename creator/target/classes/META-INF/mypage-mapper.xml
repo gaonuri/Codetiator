@@ -30,20 +30,20 @@
 <!-- 		</select> -->
 	
 		<select id="InvestList"
-				parameterType="kr.co.creator.vo.MypageVO"
+				parameterType="kr.co.creator.vo.MemberVO"
 				resultType="kr.co.creator.vo.MypageVO">
-				select  i.invest_date invest_date
-				, p.project_num project_num
-				, p.project_name project_name
-				, p.rate rate
-				, i.invest_price invest_price
-				, p.refund_count
-				, p.refund refund
-				, p.refund_deadline refund_deadline
-				, p.ach_state ach_state
+				select  i.invest_date 
+				, p.project_num 
+				, p.project_name 
+				, p.rate rate 
+				, i.invest_price 
+				, p.refund_count 
+				, p.refund refund 
+				, p.refund_deadline 
+				, p.ach_state 
 			from invest_list i, project_list p
 			where i.project_num = p.project_num 
-					and i.user_num = 5
+					and i.user_num = #{i.user_num}
 		</select>
 	
 		<select id="projectlist"
