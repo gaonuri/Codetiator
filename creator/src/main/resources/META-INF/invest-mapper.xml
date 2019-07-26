@@ -47,6 +47,18 @@
 			where user_num = #{user_num} || busi_num = #{busi_num} 
 	</update>
 	
+	<update id="currentPriceUpdate" parameterType="kr.co.creator.vo.ProjectVO">
+		update project_list
+			set current_price = #{current_price}
+			where project_num = #{project_num}
+	</update>
+	
+	<insert id="investPriceInsert" parameterType="kr.co.creator.vo.InvestVO">
+		INSERT INTO invest_list 
+		(invest_price, invest_date, user_num, busi_num, project_num) 
+		VALUE(#{invest_price}, NOW(), #{user_num}, #{busi_num}, #{project_num}) 
+	</insert>
+	
 	<select id="investDetail" parameterType="kr.co.creator.vo.InvestVO" resultType="kr.co.creator.vo.InvestVO">
 		SELECT SUM(invest_price) invest_price, p.busi_num 
 		FROM invest_list i, project_list p  
