@@ -21,19 +21,12 @@ public class MypageService {
 		invest = dao.invest_detail(userVO);
 		return invest;
 	}
-<<<<<<< HEAD
 	
 	public int myPageModify(MemberVO vo) {
 		int cnt = 0;
 		cnt = dao.myPageModify(vo);
 		return cnt; 
 	}//MemberVO	
-	
-}//class
-
-
-
-=======
 
 	public List<ProjectVO> loan_list(MemberVO userVO) {
 		List<ProjectVO> loan = null;
@@ -41,4 +34,3 @@ public class MypageService {
 		return null;
 	}
 }//class
->>>>>>> branch 'master' of https://github.com/gaonuri/Codetiator.git
