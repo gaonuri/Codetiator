@@ -33,6 +33,21 @@
 	  Author: TemplateMag.com
 	  License: https://templatemag.com/license/
 	======================================================= -->
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$("#state_u").click(function() {
+				location.href="${pageContext.request.contextPath}/invest_detail?project_num=${vo.project_num}&user_num=${memberVO.user_num}";
+			});
+			
+			$("#state_b").click(function() {
+				location.href="${pageContext.request.contextPath}/invest_detail?project_num=${vo.project_num}&busi_num=${memberVO.busi_num}";
+			});
+			
+			$("#state_n").click(function() {
+				location.href="${pageContext.request.contextPath}/login";
+			});
+		});
+	</script>
 </head>
 
 <body>
@@ -75,13 +90,13 @@
 											<td>
 												<c:choose>
 													<c:when test="${memberVO.user_num != null}">
-														<a href="./invest_detail?project_num=${vo.project_num}&user_num=${memberVO.user_num}">${vo.project_name}</a>
+														<a href="${pageContext.request.contextPath}/invest_detail?project_num=${vo.project_num}&p_busi_num=${vo.busi_num}&user_num=${memberVO.user_num}">${vo.project_name}</a>
 													</c:when>
 													<c:when test="${memberVO.busi_num != null}">
-														<a href="./invest_detail?project_num=${vo.project_num}&busi_num=${memberVO.busi_num}">${vo.project_name}</a>
+														<a href="${pageContext.request.contextPath}/invest_detail?project_num=${vo.project_num}&p_busi_num=${vo.busi_num}&busi_num=${memberVO.busi_num}">${vo.project_name}</a>
 													</c:when>
 													<c:otherwise>
-														<a href="./invest_detail?project_num=${vo.project_num}">${vo.project_name}</a>
+														<a href="${pageContext.request.contextPath}/invest_detail?project_num=${vo.project_num}">${vo.project_name}</a>
 													</c:otherwise>
 												</c:choose>
 											</td>
@@ -93,8 +108,18 @@
 											<td>${vo.ach_rate}</td>
 											<td>
 												<c:choose>
-													<c:when test="${vo.ach_state == '준비중'}">
-														<button id="state">준비중</button>
+													<c:when test="${vo.ach_state == '투자하기'}">
+														<c:choose>
+															<c:when test="${memberVO.user_num != null}">
+																<button id="state_u">${vo.ach_state}</button>
+															</c:when>
+															<c:when test="${memberVO.busi_num != null}">
+																<button id="state_b">${vo.ach_state}</button>
+															</c:when>
+															<c:otherwise>
+																<button id="state_n">${vo.ach_state}</button>
+															</c:otherwise>
+														</c:choose>
 													</c:when>
 													<c:otherwise>
 														${vo.ach_state}

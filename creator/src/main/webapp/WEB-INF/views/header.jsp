@@ -26,7 +26,7 @@
 								<a href="${pageContext.request.contextPath}/loan_guide">대출안내</a>
 							</li>
 							<li>
-								<a href="${pageContext.request.contextPath}/loan/getloan">대출하기</a>
+								<a href="${pageContext.request.contextPath}/getloan">대출하기</a>
 							</li>
 						</ul>
 					</li>
@@ -119,7 +119,7 @@
 							</c:choose>
 						</c:when>
 						<c:otherwise>
-							<li><a class="loginss" href="./login">로그인</a></li>
+							<li><a class="loginss" href="${pageContext.request.contextPath}/login">로그인</a></li>
 						</c:otherwise>
 					</c:choose>
 					

@@ -47,17 +47,17 @@ public class SupportController {
 	@RequestMapping(value = "/support", method = RequestMethod.GET)
 	public String support(Model model, NoticeVO vo) {
 		logger.info("support");
-		List<NoticeVO> support = null;   // ÀüÃ¼
-		List<NoticeVO> support2 = null;  // »õ¼Ò½Ä
-		List<NoticeVO> support3 = null;  // ¿î¿µ»çÇ×
+		List<NoticeVO> support = null;   // ï¿½ï¿½Ã¼
+		List<NoticeVO> support2 = null;  // ï¿½ï¿½ï¿½Ò½ï¿½
+		List<NoticeVO> support3 = null;  // ï¿½î¿µï¿½ï¿½ï¿½ï¿½
 		
 		
 		support = service.supportList();
 		
-		vo.setNotice_type("»õ¼Ò½Ä");
+		vo.setNotice_type("1");
 		support2 = service.supportList2(vo);
 		
-		vo.setNotice_type("¿î¿µ»çÇ×");
+		vo.setNotice_type("2");
 		support3 = service.supportList2(vo);
 		
 		
@@ -109,13 +109,13 @@ public class SupportController {
 	}//boardInsert
 	
 	
-	@RequestMapping(value="/support_notice_detail"
+	@RequestMapping(value="/support_total_detail"
 			,method=RequestMethod.GET)
 	public String supportDatail(NoticeVO vo, Model model) {
 	logger.info("supportDatail");
 	vo = service.noticeDetail(vo);
 	model.addAttribute("detailVO", vo);
-	return "support/support_notice_detail";
+	return "support/support_total_detail";
 	}//support_total_detail
 	
 //	@RequestMapping(value="/support/formu"

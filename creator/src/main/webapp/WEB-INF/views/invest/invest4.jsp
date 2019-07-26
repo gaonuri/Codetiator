@@ -502,7 +502,7 @@
 																		세금(-) <span class="glyphicon glyphicon-question-sign hover" style="font-size: 12px;" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="auto bottom" data-html="true" data-content="실제 회차별 상환 이자에 따른 세금은 원 단위로 절삭되기 때문에 표기된 값보다 적을 수 있습니다." data-original-title="" title="">
 																		</span>
 																	</th>
-																	<th scope="col">수익금(+)</th>
+																	<th scope="col">입금액(+)</th>
 																</tr>
 															</thead>
 															<tbody>
