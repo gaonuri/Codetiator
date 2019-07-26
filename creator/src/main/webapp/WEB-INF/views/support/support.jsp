@@ -231,7 +231,7 @@
 													<tbody>
 														<tr>
 														    <td><a href="support_total_detail?notice_num=${vo.notice_num}">${seq}</a></td>
-															<td><a href="support_total_detail?notice_num=${vo.notice_num}">${vo.notice_num}</a></td>
+<%-- 															<td><a href="support_total_detail?notice_num=${vo.notice_num}">${vo.notice_num}</a></td> --%>
 															<td><a href="support_total_detail?notice_num=${vo.notice_num}">${vo.title}</a></td>
 															<td>${vo.notice_date}</td>
 														</tr>
