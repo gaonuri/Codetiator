@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import kr.co.creator.vo.FindPwdVO;
 import kr.co.creator.vo.MemberVO;
 import kr.co.creator.vo.MypageVO;
 
@@ -19,4 +20,14 @@ public class MypageService {
 		invest = dao.invest_detail();
 		return invest;
 	}
+	
+	public int myPageModify(MemberVO vo) {
+		int cnt = 0;
+		cnt = dao.myPageModify(vo);
+		return cnt; 
+	}//MemberVO	
+	
 }//class
+
+
+

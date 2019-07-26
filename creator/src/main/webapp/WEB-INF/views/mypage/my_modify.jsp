@@ -44,11 +44,9 @@ $(document).ready(function() {
 	$.post(
 			"./mypagemodify",
 			{
-			user_password:$("#user_password").val(),
-			email:$("#email").val()
+			user_password:$("#user_password").val()
 			},
 			function(data,status){
-				alert("aaa");
 				if(status == "success"){
 					if(data > 0){
 						location.href="/creator/modify_detail";
@@ -144,9 +142,14 @@ $(document).ready(function() {
 												</div>
 											</div>	
 										</div>
-										<div class="col-sm-10 col-lg-offset-3">
-											<input type="submit" class="btn btn-theme" id="un_btn" value="잠금 해제" />
-										</div>
+											<c:choose>
+												<c:when test="${memberVO != null && (memberVO.user_num != '' && memberVO.user_num != null) || (memberVO.busi_num != '' && memberVO.busi_num != null)}">
+													<div class="col-sm-10 col-lg-offset-3">
+														<button type="button" class="btn btn-theme" id="un_btn" ">잠금 해제</button>
+													</div>
+												</c:when>
+											</c:choose>
+
 									</div>
 						    	</form>
 							</div>

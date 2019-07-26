@@ -14,6 +14,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import kr.co.creator.invest.InvestService;
+import kr.co.creator.login.EmailForm;
+import kr.co.creator.login.FindUtil;
+import kr.co.creator.vo.FindPwdVO;
 import kr.co.creator.vo.InvestVO;
 import kr.co.creator.vo.MemberVO;
 import kr.co.creator.vo.MypageVO;
@@ -110,10 +114,28 @@ public class MypageController {
 			session.setAttribute("memberVO", vo);
 		} 
 		out.print(successCnt);
-		out.close();
+		out.flush();
+		out.close();		
 	}//myPageModify
 	
-	@RequestMapping(value = "/modify_detail", method = RequestMethod.POST)
+	@RequestMapping(value = "/mypagepwd", method = RequestMethod.POST)
+	public void MyPagePwd(PrintWriter out, MemberVO vo, Model model) throws Exception {
+		logger.info("=== MyPagePwd ===");
+		int successCnt = 0;
+		successCnt = service.myPageModify(vo);
+		if(successCnt > 0) {
+			String bust_name, user_name;
+			bust_name = sqlSession.selectOne("MypageMapper.MyPageModify", vo);
+			user_name = sqlSession.selectOne("MypageMapper.MyPageModify", vo);
+			vo.setBusi_num(bust_name);
+			vo.setUser_name(user_name);
+		}
+		out.print(successCnt);
+		out.flush();
+		out.close();
+	}//MyPagePwd
+	
+	@RequestMapping(value = "/modify_detail", method = RequestMethod.GET)
 	public String modify_detail() {
 		logger.info("modify_detail");
 		
