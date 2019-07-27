@@ -5,20 +5,42 @@
  
 <mapper namespace="LoginMapper">
 	
-	<select id="loginUser" parameterType="kr.co.creator.vo.UserVO" resultType="kr.co.creator.vo.UserVO">
+	<select id="loginUser" parameterType="kr.co.creator.vo.MemberVO" resultType="kr.co.creator.vo.MemberVO">
 		select user_num, email, user_name
 		from user_list
 		where email=#{email} and user_password=#{user_password}
 	</select>
 	
-	<select id="loginBusi" parameterType="kr.co.creator.vo.Busi_userVO"	resultType="kr.co.creator.vo.Busi_userVO">
+	<select id="loginBusi" parameterType="kr.co.creator.vo.MemberVO"	resultType="kr.co.creator.vo.MemberVO">
 		select busi_num, busi_resi_num, manager_name
 		from busi_user_list
 		where busi_resi_num=#{busi_resi_num} and busi_password=#{busi_password}
 	</select>
 	
 	<select id="findPwdChk" parameterType="java.lang.String" resultType="int">
-		select count(*) from user_list where email=#{email}
-	</select> 
+	     select count(*) 
+	     from user_list 
+	     where email=#{email}
+ 	</select>
+	
+	<update id="updatePwd" parameterType="kr.co.creator.vo.FindPwdVO">
+		update user_list
+		set user_password = #{newPassword} 
+		where email = #{email}
+	</update>
+	
+	<select id="selectName" parameterType="java.lang.String" resultType="java.lang.String">
+		select user_name
+		from user_list
+		where email = #{email}
+	</select>
+	
+	<select id="selectEmail" parameterType="kr.co.creator.vo.FindPwdVO" resultType="kr.co.creator.vo.FindPwdVO">
+		select email
+		from user_list
+		where user_name = #{user_name}
+	</select>
+	
+
 	 
 </mapper>

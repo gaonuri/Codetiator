@@ -26,7 +26,7 @@
 								<a href="${pageContext.request.contextPath}/loan_guide">대출안내</a>
 							</li>
 							<li>
-								<a href="${pageContext.request.contextPath}/loan/getloan">대출하기</a>
+								<a href="${pageContext.request.contextPath}/getloan">대출하기</a>
 							</li>
 						</ul>
 					</li>
@@ -38,7 +38,7 @@
 							투자
 						</a>
 						<ul class="dropdown-menu extended tasks-bar">
-							<div class="notify-arrow notify-arrow-black"></div>
+							<div class="notify-arrow notify-arrow-green"></div>
 							<li>
 								<a href="${pageContext.request.contextPath}/invest_guide">투자안내</a>
 							</li>
@@ -46,7 +46,7 @@
 								<a href="${pageContext.request.contextPath}/invest_list">투자하기</a>
 							</li>
 							<li>
-								<a href="${pageContext.request.contextPath}/invest_finish">완료된투자</a>
+								<a href="${pageContext.request.contextPath}/invest_finished">완료된투자</a>
 							</li>
 						</ul>
 					</li>
@@ -59,7 +59,7 @@
 							고객지원
 						</a>
 						<ul class="dropdown-menu extended notification">
-							<div class="notify-arrow"></div>
+							<div class="notify-arrow notify-arrow-green"></div>
 							<li>
 								<a href="${pageContext.request.contextPath}/faq">FAQ</a>
 							</li>
@@ -84,14 +84,20 @@
 					
 					<!-- 로그아웃 start -->
 					
+<!-- 					이프문해야함 admin -->
 					<c:choose>
-						<c:when test="${userVO != null && userVO.user_num != '' || busiUserVO != null && busiUserVO.busi_num != ''}">
+						<c:when test="${memberVO != null && memberVO.user_num != '' || memberVO != null && memberVO.busi_num != ''}">
+							<c:choose>
+							<c:when test="${memberVO.user_num == '1'}">
+								<li><a>${memberVO.user_name}님</a></li>
+							</c:when>
+							<c:otherwise>
 							<li id="header_notification_bar" class="dropdown">
 								<a data-toggle="dropdown" class="dropdown-toggle" href="#">
-									${userVO.user_name}${busiUserVO.manager_name}님
+									${memberVO.user_name}${memberVO.manager_name}님
 								</a>
 								<ul class="dropdown-menu extended notification">
-									<div class="notify-arrow notify-arrow-yellow"></div>
+									<div class="notify-arrow notify-arrow-green"></div>
 									<li>
 										<a href="${pageContext.request.contextPath}/my_dashboard">대시보드</a>
 									</li>
@@ -109,22 +115,37 @@
 									</li>
 								</ul>
 							</li>						
+							</c:otherwise>
+							</c:choose>
 						</c:when>
 						<c:otherwise>
-							<li><a class="loginss" href="./login">로그인</a></li>
+							<li><a class="loginss" href="${pageContext.request.contextPath}/login">로그인</a></li>
 						</c:otherwise>
 					</c:choose>
 					
 					<c:choose>
-						<c:when test="${userVO != null && userVO.user_num != '' || busiUserVO != null && busiUserVO.busi_num != ''}">
+						<c:when test="${memberVO != null && memberVO.user_num != '' || memberVO != null && memberVO.busi_num != ''}">
 							<li>
 								<a href="${pageContext.request.contextPath}/logout">로그아웃</a>
 							</li>
 						</c:when>
 						<c:otherwise>
-							<li><a class="loginss" href="./join">회원가입</a></li>
+							<li><a class="loginss" href="${pageContext.request.contextPath}/join">회원가입</a></li>
 						</c:otherwise>
 					</c:choose>
+					
+					<c:choose>
+						<c:when test="${memberVO.user_num == '1'}">
+							<li>
+								<a href="${pageContext.request.contextPath}/account_list">관리자</a>
+							</li>
+						</c:when>
+						<c:otherwise>
+							<li></li>
+						</c:otherwise>
+					</c:choose>
+					
+					
 				
 					<!-- 로그아웃 end -->
 				</ul>
