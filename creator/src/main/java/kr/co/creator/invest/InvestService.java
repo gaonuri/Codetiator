@@ -25,9 +25,9 @@ public class InvestService {
 //	}//invest
 
 	public AccountVO acount_detail(AccountVO accVO) {
-		System.out.println("DAO111111111 : " + accVO);
+		System.out.println("Service111111111 : " + accVO);
 		accVO = investDAO.acount_detail(accVO);
-		System.out.println("DAO222222222 : " + accVO);
+		System.out.println("Service222222222 : " + accVO);
 		
 		return accVO;
 	}//acount_detail

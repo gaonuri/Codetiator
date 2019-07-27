@@ -36,11 +36,11 @@
 	<script type="text/javascript">
 		$(document).ready(function() {
 			$("#state_u").click(function() {
-				location.href="${pageContext.request.contextPath}/invest_detail?project_num=${vo.project_num}&user_num=${memberVO.user_num}";
+				location.href="${pageContext.request.contextPath}/invest_detail?project_num=$('#project_num').val()&user_num=${memberVO.user_num}";
 			});
 			
 			$("#state_b").click(function() {
-				location.href="${pageContext.request.contextPath}/invest_detail?project_num=${vo.project_num}&busi_num=${memberVO.busi_num}";
+				location.href="${pageContext.request.contextPath}/invest_detail?project_num=$('#project_num').val()&busi_num=${memberVO.busi_num}";
 			});
 			
 			$("#state_n").click(function() {
@@ -69,7 +69,6 @@
 				<div class="row mb">
 					<!-- page start-->
 					<div class="content-panel">
-						
 						<!-- 투자리스트 start -->
 						<div class="adv-table">
 	 						<table cellpadding="0" cellspacing="0" border="1" class="display table table-bordered" id="hidden-table-info">
@@ -88,6 +87,7 @@
 								<c:forEach items="${investList}" var="vo" varStatus="status">
 										<tr>
 											<td>
+												<input id="project_num" type="hidden" value="${vo.project_num}" />
 												<c:choose>
 													<c:when test="${memberVO.user_num != null}">
 														<a href="${pageContext.request.contextPath}/invest_detail?project_num=${vo.project_num}&p_busi_num=${vo.busi_num}&user_num=${memberVO.user_num}">${vo.project_name}</a>

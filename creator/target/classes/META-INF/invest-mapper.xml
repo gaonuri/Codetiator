@@ -64,7 +64,7 @@
 		FROM invest_list i, project_list p  
 		WHERE i.project_num = p.project_num 
 		AND p.busi_num = #{p_busi_num} 
-		AND i.user_num = #{user_num} || i.busi_num = #{busi_num} 
+		AND (i.user_num = #{user_num} OR i.busi_num = #{busi_num}) 
 		AND p.ach_state = '투자하기'
 	</select>
 	
