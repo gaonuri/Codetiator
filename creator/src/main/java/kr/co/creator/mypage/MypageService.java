@@ -22,15 +22,23 @@ public class MypageService {
 		return invest;
 	}
 	
+	public List<ProjectVO> loan_list(MemberVO userVO) {
+		List<ProjectVO> loan = null;
+		loan = dao.loan_list(userVO);
+		return loan;
+	}
+	
+	public List<MypageVO> depo_log(MemberVO userVO) {
+		List<MypageVO> depo = null;
+		depo = dao.depolog(userVO);
+		return depo;
+	}
+	
 	public int myPageModify(MemberVO vo) {
 		int cnt = 0;
 		cnt = dao.myPageModify(vo);
 		return cnt; 
 	}//MemberVO	
 
-	public List<ProjectVO> loan_list(MemberVO userVO) {
-		List<ProjectVO> loan = null;
-		loan = dao.loan_list(userVO);
-		return null;
-	}
+
 }//class

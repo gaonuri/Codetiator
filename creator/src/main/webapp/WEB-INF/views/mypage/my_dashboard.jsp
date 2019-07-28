@@ -128,8 +128,8 @@
 												<thead>
 													<tr>
 														<th class="col">투자일자</th>
-														<th scope="col" class="clickable" name="investListSortTitle" id="investListSortTitleBANNER_TITLE">
-															프로젝트번호<span name="investListSortDesc" id="investListSortDescBANNER_TITLE"></span>
+														<th scope="col" class="clickable"  >
+															프로젝트번호
 														</th>
 														<th scope="col" class="clickable" name="investListSortTitle" id="investListSortTitleLOAN_NM">
 															프로젝트명<span name="investListSortDesc" id="investListSortDescLOAN_NM"></span>

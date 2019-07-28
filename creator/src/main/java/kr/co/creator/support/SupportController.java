@@ -38,7 +38,7 @@ public class SupportController {
 //	}
 //	
 //	@RequestMapping(value = "/inquiry", method = RequestMethod.GET)
-//	public String inquiry() {
+//	public String inquiry() { 
 //		logger.info("inquiry");
 //				
 //		return "support/inquiry";
