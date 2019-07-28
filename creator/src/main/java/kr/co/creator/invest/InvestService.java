@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import kr.co.creator.vo.AccountVO;
 import kr.co.creator.vo.GuaranteeVO;
+import kr.co.creator.vo.InvestVO;
 import kr.co.creator.vo.ProjectVO;
 import kr.co.creator.vo.UserVO;
 
@@ -24,11 +25,12 @@ public class InvestService {
 //	}//invest
 
 	public AccountVO acount_detail(AccountVO accVO) {
-		System.out.println("DAO111111111 : " + accVO);
+		System.out.println("Service111111111 : " + accVO);
 		accVO = investDAO.acount_detail(accVO);
-		System.out.println("DAO222222222 : " + accVO);
+		System.out.println("Service222222222 : " + accVO);
+		
 		return accVO;
-	}
+	}//acount_detail
 
 	public List<ProjectVO> invest_list() {
 		List<ProjectVO> list = null;
@@ -43,8 +45,8 @@ public class InvestService {
 		return proVO;
 	}//project_detail
 
-	public GuaranteeVO guarantee_detail(ProjectVO proVO, GuaranteeVO guaVO) {
-		guaVO = investDAO.guarantee_detail(proVO, guaVO);
+	public GuaranteeVO guarantee_detail(GuaranteeVO guaVO) {
+		guaVO = investDAO.guarantee_detail(guaVO);
 		
 		return guaVO;
 	}//guarantee_detail
@@ -59,6 +61,27 @@ public class InvestService {
 	public int deposit_update(AccountVO accVO) {
 		int count = 0;
 		count = investDAO.deposit_update(accVO);
+		
 		return count;
 	}//deposit_update
+
+	public int current_price_update(ProjectVO proVO) {
+		int count = 0;
+		count = investDAO.current_price_update(proVO);
+		
+		return count;
+	}//current_price_update
+
+	public int invest_price_insert(InvestVO inVO) {
+		int count = 0;
+		count = investDAO.invest_price_insert(inVO);
+		
+		return count;
+	}//invest_price_insert
+
+	public InvestVO invest_detail(InvestVO inVO) {
+		inVO = investDAO.invest_detail(inVO);
+		
+		return inVO;
+	}//invest_detail
 }//class

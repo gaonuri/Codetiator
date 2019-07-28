@@ -43,7 +43,7 @@ $(document).ready(function() {
 	}//user_paswword
 	$.post("./loginuser"
 			,{
-				,user_password:$("#user_password").val()
+				user_password:$("#user_password").val()
 			}
 			,function(data,status){
 				if(status == "success"){
@@ -71,134 +71,7 @@ $(document).ready(function() {
 	        TOP BAR CONTENT & NOTIFICATIONS
 	        *********************************************************************************************************************************************************** -->
 	    <!--header start-->
-	    <header class="header black-bg">
-			<!--logo start-->
-			<a href="./main" class="logo"><img id="logoImage" alt="로고" src="${pageContext.request.contextPath}/resources/img/ner.jpg" width="200px" height="30px"></a>
-			<!--logo end-->
-			<div class="nav notify-row top-menu" id="top_menu">
-				<!--  notification start -->
-				<ul class="nav pull-right top-menu">
-					<!-- settings start -->
-					  
-					<!-- 회사소개 start -->
-					<li><a href="./loan_guide">회사소개</a></li>
-					<!-- 회사소개 end -->
-					
-					<!-- 대출 start -->
-					<li class="dropdown">
-						<a data-toggle="dropdown" class="dropdown-toggle" href="#">
-							대출
-						</a>
-						<ul class="dropdown-menu extended tasks-bar">
-							<div class="notify-arrow notify-arrow-green"></div>
-							<li>
-								<a href="./loan_guide">대출안내</a>
-							</li>
-							<li>
-								<a href="./loan/getloan">대출하기</a>
-							</li>
-						</ul>
-					</li>
-	          		<!-- 대출 end -->
-	          
-	          		<!-- inbox dropdown start-->
-	         		<li class="dropdown">
-						<a data-toggle="dropdown" class="dropdown-toggle" href="#">
-							투자
-						</a>
-						<ul class="dropdown-menu extended tasks-bar">
-							<div class="notify-arrow notify-arrow-black"></div>
-							<li>
-								<a href="./invest_guide">투자안내</a>
-							</li>
-							<li>
-								<a href="./invest_list">투자하기</a>
-							</li>
-							<li>
-								<a href="./invest_finish">완료된투자</a>
-							</li>
-						</ul>
-					</li>
-	          		<!-- 투자 end -->
-	          
-	          
-					<!-- 고객지원 start-->
-					<li id="header_notification_bar" class="dropdown">
-						<a data-toggle="dropdown" class="dropdown-toggle" href="#">
-							고객지원
-						</a>
-						<ul class="dropdown-menu extended notification">
-							<div class="notify-arrow"></div>
-							<li>
-								<a href="./faq">FAQ</a>
-							</li>
-							<li>
-								<a href="./support">이용약관</a>
-							</li>
-							<li>
-								<a href="./policy">개인정보</a>
-							</li>
-							<li>
-								<a href="./inquiry">1:1문의</a>
-							</li>
-						</ul>
-					</li>
-					<!-- 고객지원 end -->
-					
-					<!-- 마이페이지 start-->
-					<!-- 마이페이지 end -->
-					
-					<!-- 로그아웃 start -->
-					
-					<c:choose>
-						<c:when test="${Login_ss != null && Login_ss.user_num != '' || Login_sss != null && Login_sss.busi_num != ''}">
-							<li id="header_notification_bar" class="dropdown">
-								<a data-toggle="dropdown" class="dropdown-toggle" href="#">
-									${Login_ss.user_name}${Login_sss.manager_name}님
-								</a>
-								<ul class="dropdown-menu extended notification">
-									<div class="notify-arrow notify-arrow-yellow"></div>
-									<li>
-										<a href="./my_dashboard">대시보드</a>
-									</li>
-									<li>
-										<a href="./my_invest_list">투자내역</a>
-									</li>
-									<li>
-										<a href="./my_loan_list">대출내역</a>
-									</li>
-									<li>
-										<a href="./my_depo_mgn">예치금관리</a>
-									</li>
-									<li>
-										<a href="./my_modify">회원정보수정</a>
-									</li>
-								</ul>
-							</li>						
-						</c:when>
-						<c:otherwise>
-							<li><a class="loginss" href="./login">로그인</a></li>
-						</c:otherwise>
-					</c:choose>
-					
-					<c:choose>
-						<c:when test="${Login_ss != null && Login_ss.user_num != '' || Login_sss != null && Login_sss.busi_num != ''}">
-							<li>
-								<a href="./logout">로그아웃</a>
-							</li>
-						</c:when>
-						<c:otherwise>
-							<li><a class="loginss" href="./join">회원가입</a></li>
-						</c:otherwise>
-					</c:choose>
-				
-					<!-- 로그아웃 end -->
-				</ul>
-				<!--  notification end -->
-			</div>
-			<div class="top-menu">
-			</div>
-	    </header>
+		<%@ include file="../header.jsp" %>
 	    <!--header end-->
 
 	   <!--sidebar start-->
@@ -244,53 +117,252 @@ $(document).ready(function() {
 	    <!-- **********************************************************************************************************************************************************
 	        MAIN CONTENT
 	        *********************************************************************************************************************************************************** -->
+<!--    =======================================================    -->	        
 <section id="main-content">
 	<section class="wrapper">
-			<div class="container">
-				<div class="col-md-offset-3">
-				<img src="${pageContext.request.contextPath}/resources/img/test_logo.jpg" alt="login_img">
-				</div>
-			</div>
-				<!-- =============logo -->
-					
-			<div class="col-lg-4 mt col-md-offset-3">
-				<div class="row content-panel">
-			    <!-- /panel-heading -->
-					<div class="panel-body">
-						<div class="tab-content">
-							<div id="usertab" class="tab-pane active">
-						    	<form role="form" class="form-horizontal">
-							   		<div class="row">
-								    	<div class="col-md col-md-offset-2  ">
-											<div class="form-group">
-												<div class="col-sm-10">
-												<h5>회원님의 정보를 수정하려면 비밀번호를 입력해주세요.</h5>
-													<input type="password" class="form-control" id="user_password" placeholder="*비밀번호">
-												</div>
-											</div>	
-										</div>
-										<div class="col-sm-10 col-lg-offset-3">
-											<input type="text" class="btn btn-theme" id="un_btn" value="잠금 해제" />
-										</div>
-									</div>
-						    	</form>
-						    	<div class="col-md-offset-1">
-						    		<a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
-									<a>비밀번호를 잊으셨나요?</a>
-									<a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
-									<a class="" href="./findpwd">비밀번호 찾기</a>
-						    	</div>	    	
-							</div>
-						</div>
+          <div class="row mt">
+            <div class="col-lg-6">
+              <div class="content-panel">
+                <h4><i class="fa fa-angle-right"></i> 고객정보</h4>
+				<hr>
+                <div class="panel-body text-center">
+                <table class="table condition-table">
+					<tbody>
+					<tr>
+					<td class="condition-title">이름</td>
+						<td class="condition-content">
+							<input type="text" class="form-control" id="cusNm" maxlength="50" value="김도엽">
+						</td>
+						<td>
+							<button type="button" class="btn btn-purple-transparent" onclick="fn_updateCusNm()" id="updateCusNmBtn">변경</button>
+						</td>
+					</tr>
+					<tr>
+					<td class="condition-title">이메일</td>
+						<td class="condition-content">
+							<input type="text" class="form-control" id="email" maxlength="50" value="whitesky1203@naver.com">
+						</td>
+						<td>
+							<button type="button" class="btn btn-purple-transparent" onclick="fn_updateEmail()" id="updateEmailBtn">변경</button>
+						</td>
+					</tr>
+					<tr>
+					<td class="condition-title">휴대전화번호</td>
+						<td class="condition-content">
+							<input type="text" class="form-control" id="mpNo" maxlength="50" readonly="readonly" value="010-1111-2111">
+							<input type="hidden" id="ci">
+						</td>
+						<td>
+							<button type="button" class="btn btn-purple-transparent" onclick="fn_checkNiceCert()" id="updateCusNmBtn">변경</button>
+						</td>
+						<td>
+							<!-- 본인인증 서비스 팝업을 호출하기 위해서는 다음과 같은 form이 필요합니다. -->
+							<form name="form_chk" method="post">
+								<input type="hidden" name="m" value="checkplusSerivce">	<!-- 필수 데이타로, 누락하시면 안됩니다. -->
+								<input type="hidden" id="EncodeData" name="EncodeData" value="">	<!-- 위에서 업체정보를 암호화 한 데이타입니다. -->
+							</form>
+						</td>
+					</tr>
+					<tr>
+					<td class="condition-title">주민등록번호</td>
+						<td class="condition-content">901203-*******</td>
+					<td></td>
+					</tr>
+					<tr>
+					<td colspan="2" class="condition-content">
+						<p>
+						<span class="font-red"><strong>※ 왜 주민등록번호가 필요한가요?</strong></span><br>
+						<font size="2">
+							주민등록번호는 현행 세법상 원천징수 납부에 사용됩니다. 입력하지 않아도 
+							대출상품 투자를 제외한 사이트 이용은 가능하며 최초 투자시 한 번만 등록하시면 됩니다.
+						</font>
+						</p>
+					</td>
+					<td></td>
+					</tr>
+					</tbody>
+				</table>
+               	</div>
+			  </div>
+            </div>
+            
+<!--    =======================================================    -->
+
+            <div class="col-lg-6">
+              <div class="content-panel">
+                <h4><i class="fa fa-angle-right"></i> 계좌정보</h4>
+                <hr>
+                <div class="panel-body text-center">
+					<table class="table condition-table">
+						<tbody>
+						<tr>
+							<td class="condition-title">출금 시 기본 예치금을 수취할 은행계좌 정보를 등록해주세요.</td>
+							<td></td>
+						</tr>		
+						<tr>
+							<td class="condition-title">은행명
+							<br><br><span><font size="2">반드시 본인명의 계좌 은행을 선택해주세요.</font></span><br>
+							</td>
+							<td class="condition-content">
+								<select id="cusBankCdSelect" class="form-control" name="cusBankCd">
+									<option value="">선택하세요</option>
+										<option value="002">산업은행</option><option value="003">기업은행</option>
+										<option value="004">국민은행</option><option value="007">수협중앙회</option>
+										<option value="008">수출입은행</option><option value="010">농협</option>
+										<option value="011">농협중앙회</option><option value="012">지역농·축협</option>
+										<option value="020">우리은행</option><option value="023">SC제일은행</option>
+										<option value="027">한국씨티은행</option><option value="031">대구은행</option>
+										<option value="032">부산은행</option><option value="034">광주은행</option>
+										<option value="035">제주은행</option><option value="037">전북은행</option>
+										<option value="039">경남은행</option><option value="045">새마을금고중앙회</option>
+										<option value="048">신협중앙회</option><option value="050">상호저축은행</option>
+										<option value="052">모건스탠리은행</option><option value="054">HSBC은행</option>
+										<option value="055">도이치은행</option><option value="057">제이피모간체이스은행</option>
+										<option value="058">미즈호은행</option><option value="059">미쓰비시도쿄UFJ은행</option>
+										<option value="060">BOA은행</option><option value="061">비엔피파리바은행</option>
+										<option value="062">중국공상은행</option><option value="063">중국은행</option>
+										<option value="065">대화은행</option><option value="066">교통은행</option>
+										<option value="071">우체국</option><option value="081">KEB하나은행</option>
+										<option value="088">신한은행</option><option value="089">케이뱅크</option>
+										<option value="090">카카오뱅크</option><option value="096">한국전자금융(주)</option>
+										<option value="102">대신저축은행</option><option value="103">에스비아이저축은행</option>
+										<option value="104">에이치케이저축은행</option><option value="105">웰컴저축은행</option>
+										<option value="209">유안타증권</option><option value="218">KB증권</option>
+										<option value="221">골든브릿지투자증권</option><option value="222">한양증권</option>
+										<option value="223">리딩투자증권</option><option value="224">BNK투자증권</option>
+										<option value="225">IBK투자증권</option><option value="227">KTB투자증권</option>
+										<option value="238">미래에셋대우</option><option value="240">삼성증권</option>
+										<option value="243">한국투자증권</option><option value="247">NH투자증권</option>
+										<option value="261">교보증권</option><option value="262">하이투자증권</option>
+										<option value="263">HMC투자증권</option><option value="264">키움증권</option>
+										<option value="265">이베스트투자증권</option><option value="266">SK증권</option>
+										<option value="267">대신증권</option><option value="269">한화투자증권</option>
+										<option value="270">하나금융투자</option><option value="278">신한금융투자</option>
+										<option value="279">동부증권</option><option value="280">유진투자증권</option>
+										<option value="287">메리츠종합금융증권</option><option value="290">부국증권</option>
+										<option value="291">신영증권</option><option value="292">케이프투자증권</option>
+										<option value="293">한국증권금융</option><option value="294">펀드온라인코리아</option>
+										<option value="295">우리종합금융</option><option value="296">삼성선물</option>
+										<option value="297">외환선물</option><option value="298">현대선물</option>
+								</select>
+							</td>
+						</tr>
+						<tr>
+							<td class="condition-title">계좌번호
+							<br><br><p><font size="2">계좌번호를 정확히 입력해주세요.</font></p>
+							</td>
+							<td class="condition-content">
+								<input type="text" class="form-control" id="cusAccount" maxlength="14">
+							</td>
+							<td></td>
+						</tr>
+						
+						<tr>
+							<td></td>
+							<td></td>
+						</tr>
+						</tbody>
+					</table>
+					<div class="autoConditionSet" >
+						<button type="button" class="btn btn-purple-transparent btn-block" onclick="fn_updateCusAccount()" id="updateCusAccountBtn">계좌 정보 저장</button>
 					</div>
-				</div>
-			</div>			
-						<!-- ===================================================================== body-->		
+					<br><br>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+<!--    =======================================================    -->
+          
+          <div class="row mt">
+            <div class="col-lg-6">
+              <div class="content-panel">
+                <h4><i class="fa fa-angle-right"></i> 비밀번호 재설정</h4>
+                <hr>
+                <div class="panel-body text-center">
+                
+					<table class="table condition-table">
+						<tbody>
+						<tr>
+							<td class="condition-title">크리에이터가 추천하는 비밀번호 변경주기는 6개월입니다.</td>
+							<td></td>
+						</tr>		
+						<tr>
+							<td class="condition-title">기존 비밀번호
+							</td>
+							<td class="condition-content">
+							<input type="text" class="form-control" id="cusAccount" maxlength="14">
+							</td>
+						</tr>
+						<tr>
+							<td class="condition-title">새 비밀번호
+							</td>
+							<td class="condition-content">
+								<input type="text" class="form-control" id="cusAccount" maxlength="14">
+							</td>
+							<td></td>
+						</tr>
+						
+						<tr>
+							<td class="condition-title">비밀번호 확인
+							</td>
+							<td class="condition-content">
+								<input type="text" class="form-control" id="cusAccount" maxlength="14">
+							</td>						
+							<td></td>
+						</tr>
+						</tbody>
+					</table>
+					<div class="autoConditionSet" >
+						<button type="button" class="btn btn-purple-transparent btn-block" onclick="fn_updateCusAccount()" id="updateCusAccountBtn">새 비밀번호 저장</button>
+					</div>
+					<br><br>                
+                
+                </div>
+              </div>
+            </div>
+            
+<!--    =======================================================    -->
+            
+            
+            <div class="col-lg-6">
+              <div class="content-panel">
+                <h4><i class="fa fa-angle-right"></i>접속이력</h4>
+				<hr>
+                <div class="panel-body text-center">
+                
+					<table class="table condition-table">
+		                <thead>
+		                  <tr>
+		                    <th>로그인 일시</th>
+		                    <th>로그아웃 일시</th>
+		                  </tr>
+		                </thead>
+						<tbody>
+						
+	                  	<tr>
+	                    <td>1</td>
+	                    <td>Mark</td>
+						</tr>						
+						<tr>
+							<td class="condition-title">최근 4회 동안 접속하신 정보입니다.</td>
+							<td></td>
+						</tr>		
+						</tbody>
+					</table>
+					<div class="autoConditionSet" >
+						<button type="button" class="btn btn-purple-transparent btn-block" onclick="fn_updateCusAccount()" id="updateCusAccountBtn">회원 탈퇴</button>
+					</div>
+					<br><br>                  
+                
+                </div>
+              </div>
+            </div>
+          </div>
 	</section>
-</section>
-    
-    
-		
+</section>    
+<!--    =======================================================    -->    	
+	
 		<!--footer start-->
 		<footer class="site-footer">
 			<div class="container">
@@ -356,4 +428,19 @@ $(document).ready(function() {
 	<script src="${pageContext.request.contextPath}/resources/bootstrap/lib/zabuto_calendar.js"></script>
 </body>
 
+
+
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+

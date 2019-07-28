@@ -37,21 +37,21 @@
 $(document).ready(function() {
 	$("#un_btn").click(function(){
 	if($.trim($("#user_password").val()) == ""){
-		alert("비밀번호를 확인하세요.");
+		alert("비밀번호를 입력하세요.");
 		$("#user_password").focus();
 		return;
 	}//user_paswword
-	$.post("./loginuser"
-			,{
-				,user_password:$("#user_password").val()
-			}
-			,function(data,status){
+	$.post(
+			"./mypagemodify",
+			{
+			user_password:$("#user_password").val()
+			},
+			function(data,status){
 				if(status == "success"){
 					if(data > 0){
-						alert("로그인 되었습니다.");
-						location.href="/creator/main";
+						location.href="/creator/modify_detail";
 					} else if(data == 0){
-						alert("존재하지 비밀번호 입니다.");
+						alert("비밀번호를 확인해 주세요.");
 					} else {
 						alert("잠시 후, 다시 시도해 주세요.");
 					}
@@ -59,7 +59,7 @@ $(document).ready(function() {
 					alert("시스템 관리자에게 문의 바랍니다.");
 				}
 			}
-	);//post
+		);//post
 	});//click
 });//ready
 </script>
@@ -71,134 +71,7 @@ $(document).ready(function() {
 	        TOP BAR CONTENT & NOTIFICATIONS
 	        *********************************************************************************************************************************************************** -->
 	    <!--header start-->
-	    <header class="header black-bg">
-			<!--logo start-->
-			<a href="./main" class="logo"><img id="logoImage" alt="로고" src="${pageContext.request.contextPath}/resources/img/ner.jpg" width="200px" height="30px"></a>
-			<!--logo end-->
-			<div class="nav notify-row top-menu" id="top_menu">
-				<!--  notification start -->
-				<ul class="nav pull-right top-menu">
-					<!-- settings start -->
-					  
-					<!-- 회사소개 start -->
-					<li><a href="./loan_guide">회사소개</a></li>
-					<!-- 회사소개 end -->
-					
-					<!-- 대출 start -->
-					<li class="dropdown">
-						<a data-toggle="dropdown" class="dropdown-toggle" href="#">
-							대출
-						</a>
-						<ul class="dropdown-menu extended tasks-bar">
-							<div class="notify-arrow notify-arrow-green"></div>
-							<li>
-								<a href="./loan_guide">대출안내</a>
-							</li>
-							<li>
-								<a href="./loan/getloan">대출하기</a>
-							</li>
-						</ul>
-					</li>
-	          		<!-- 대출 end -->
-	          
-	          		<!-- inbox dropdown start-->
-	         		<li class="dropdown">
-						<a data-toggle="dropdown" class="dropdown-toggle" href="#">
-							투자
-						</a>
-						<ul class="dropdown-menu extended tasks-bar">
-							<div class="notify-arrow notify-arrow-black"></div>
-							<li>
-								<a href="./invest_guide">투자안내</a>
-							</li>
-							<li>
-								<a href="./invest_list">투자하기</a>
-							</li>
-							<li>
-								<a href="./invest_finish">완료된투자</a>
-							</li>
-						</ul>
-					</li>
-	          		<!-- 투자 end -->
-	          
-	          
-					<!-- 고객지원 start-->
-					<li id="header_notification_bar" class="dropdown">
-						<a data-toggle="dropdown" class="dropdown-toggle" href="#">
-							고객지원
-						</a>
-						<ul class="dropdown-menu extended notification">
-							<div class="notify-arrow"></div>
-							<li>
-								<a href="./faq">FAQ</a>
-							</li>
-							<li>
-								<a href="./support">이용약관</a>
-							</li>
-							<li>
-								<a href="./policy">개인정보</a>
-							</li>
-							<li>
-								<a href="./inquiry">1:1문의</a>
-							</li>
-						</ul>
-					</li>
-					<!-- 고객지원 end -->
-					
-					<!-- 마이페이지 start-->
-					<!-- 마이페이지 end -->
-					
-					<!-- 로그아웃 start -->
-					
-					<c:choose>
-						<c:when test="${Login_ss != null && Login_ss.user_num != '' || Login_sss != null && Login_sss.busi_num != ''}">
-							<li id="header_notification_bar" class="dropdown">
-								<a data-toggle="dropdown" class="dropdown-toggle" href="#">
-									${Login_ss.user_name}${Login_sss.manager_name}님
-								</a>
-								<ul class="dropdown-menu extended notification">
-									<div class="notify-arrow notify-arrow-yellow"></div>
-									<li>
-										<a href="./my_dashboard">대시보드</a>
-									</li>
-									<li>
-										<a href="./my_invest_list">투자내역</a>
-									</li>
-									<li>
-										<a href="./my_loan_list">대출내역</a>
-									</li>
-									<li>
-										<a href="./my_depo_mgn">예치금관리</a>
-									</li>
-									<li>
-										<a href="./my_modify">회원정보수정</a>
-									</li>
-								</ul>
-							</li>						
-						</c:when>
-						<c:otherwise>
-							<li><a class="loginss" href="./login">로그인</a></li>
-						</c:otherwise>
-					</c:choose>
-					
-					<c:choose>
-						<c:when test="${Login_ss != null && Login_ss.user_num != '' || Login_sss != null && Login_sss.busi_num != ''}">
-							<li>
-								<a href="./logout">로그아웃</a>
-							</li>
-						</c:when>
-						<c:otherwise>
-							<li><a class="loginss" href="./join">회원가입</a></li>
-						</c:otherwise>
-					</c:choose>
-				
-					<!-- 로그아웃 end -->
-				</ul>
-				<!--  notification end -->
-			</div>
-			<div class="top-menu">
-			</div>
-	    </header>
+	    <%@ include file="../header.jsp" %>
 	    <!--header end-->
 
 	   <!--sidebar start-->
@@ -207,7 +80,7 @@ $(document).ready(function() {
 	        <!-- sidebar menu start-->
 	        <ul class="sidebar-menu" id="nav-accordion">
 	          <li class="mt">
-	            <a href="creator/my_desktop">
+	            <a href="/creator/my_dashboard">
 	              <i class="fa fa-dashboard"></i>
 	              <span>대시 보드</span>
 	              </a>
@@ -269,17 +142,16 @@ $(document).ready(function() {
 												</div>
 											</div>	
 										</div>
-										<div class="col-sm-10 col-lg-offset-3">
-											<input type="text" class="btn btn-theme" id="un_btn" value="잠금 해제" />
-										</div>
+											<c:choose>
+												<c:when test="${memberVO != null && (memberVO.user_num != '' && memberVO.user_num != null) || (memberVO.busi_num != '' && memberVO.busi_num != null)}">
+													<div class="col-sm-10 col-lg-offset-3">
+														<button type="button" class="btn btn-theme" id="un_btn" ">잠금 해제</button>
+													</div>
+												</c:when>
+											</c:choose>
+
 									</div>
 						    	</form>
-						    	<div class="col-md-offset-1">
-						    		<a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
-									<a>비밀번호를 잊으셨나요?</a>
-									<a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
-									<a class="" href="./findpwd">비밀번호 찾기</a>
-						    	</div>	    	
 							</div>
 						</div>
 					</div>

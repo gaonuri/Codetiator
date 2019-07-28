@@ -30,35 +30,45 @@
 <!-- 		</select> -->
 	
 		<select id="InvestList"
-				parameterType="kr.co.creator.vo.MypageVO"
+				parameterType="kr.co.creator.vo.MemberVO"
 				resultType="kr.co.creator.vo.MypageVO">
-				select  i.invest_date invest_date
-				, p.project_num project_num
-				, p.project_name project_name
-				, p.rate rate
-				, i.invest_price invest_price
-				, p.refund_count
-				, p.refund refund
-				, p.refund_deadline refund_deadline
-				, p.ach_state ach_state
+				select  i.invest_date 
+				, p.project_num 
+				, p.project_name 
+				, p.rate rate 
+				, i.invest_price 
+				, p.refund_count 
+				, p.refund refund 
+				, p.refund_deadline 
+				, p.ach_state 
 			from invest_list i, project_list p
 			where i.project_num = p.project_num 
-					and i.user_num = 5
+					and i.user_num = #{user_num}
 		</select>
 	
-		<select id="projectlist"
+		<select id="loanlist"
 			resultType="kr.co.creator.vo.InvestVO">
-			select  i.invest_date
-			, i.project_num
-			, p.project_name
-			, p.rate
-			, i.invest_price
-			, p.refund
-			, p.refund_deadline
-			, p.ach_state
-		from invest_list i, project_list p
-		where i.project_num = p.project_num 
-				and i.user_num = ${i.busi_num}
+			select  a.account_name
+			, a.bank_name
+			, a.bank_num
+			, a.deposit
+			, i.input_history
+			, i.output_history
+		from account_list a, in_out i
+		where a.account_num = i.account_num 
+				and a.user_num = #{a.user_num}
 	</select>
+	
+	<select id="MyPagePwd" parameterType="kr.co.creator.vo.MemberVO" resultType="kr.co.creator.vo.MemberVO">
+		select user_num, email, user_name
+		from user_list
+		where email=#{email} and user_password=#{user_password}
+	</select>
+	
+	<select id="MyPageModify" parameterType="java.lang.String" resultType="int">
+	     select count(*) 
+	     from user_list 
+	     where user_password = #{user_password}
+ 	</select>
 	
 </mapper>

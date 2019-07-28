@@ -26,7 +26,7 @@
 								<a href="${pageContext.request.contextPath}/loan_guide">대출안내</a>
 							</li>
 							<li>
-								<a href="${pageContext.request.contextPath}/loan/getloan">대출하기</a>
+								<a href="${pageContext.request.contextPath}/getloan">대출하기</a>
 							</li>
 						</ul>
 					</li>
@@ -87,6 +87,11 @@
 <!-- 					이프문해야함 admin -->
 					<c:choose>
 						<c:when test="${memberVO != null && memberVO.user_num != '' || memberVO != null && memberVO.busi_num != ''}">
+							<c:choose>
+							<c:when test="${memberVO.user_num == '1'}">
+								<li><a>${memberVO.user_name}님</a></li>
+							</c:when>
+							<c:otherwise>
 							<li id="header_notification_bar" class="dropdown">
 								<a data-toggle="dropdown" class="dropdown-toggle" href="#">
 									${memberVO.user_name}${memberVO.manager_name}님
@@ -110,9 +115,11 @@
 									</li>
 								</ul>
 							</li>						
+							</c:otherwise>
+							</c:choose>
 						</c:when>
 						<c:otherwise>
-							<li><a class="loginss" href="./login">로그인</a></li>
+							<li><a class="loginss" href="${pageContext.request.contextPath}/login">로그인</a></li>
 						</c:otherwise>
 					</c:choose>
 					
@@ -127,7 +134,18 @@
 						</c:otherwise>
 					</c:choose>
 					
-					<li><a href="${pageContext.request.contextPath}/account_list">관리자</a></li>
+					<c:choose>
+						<c:when test="${memberVO.user_num == '1'}">
+							<li>
+								<a href="${pageContext.request.contextPath}/account_list">관리자</a>
+							</li>
+						</c:when>
+						<c:otherwise>
+							<li></li>
+						</c:otherwise>
+					</c:choose>
+					
+					
 				
 					<!-- 로그아웃 end -->
 				</ul>

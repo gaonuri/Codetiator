@@ -36,7 +36,7 @@
 	<script type="text/javascript">
 	$(document).ready(function() {
 		$("#investBtn1").click(function() {
-			location.href = "${pageContext.request.contextPath}/invest?user_num=${memberVO.user_num}&project_num=${projectVO.project_num}";
+			location.href = "${pageContext.request.contextPath}/invest?user_num=${memberVO.user_num}&busi_num=${memberVO.busi_num}&project_num=${projectVO.project_num}";
 		});//investBtn1
 		
 		$("#investBtn2").click(function() {
@@ -70,34 +70,34 @@
 					<div class="col-xs-12 col-sm-12 col-md-offset-1 col-md-10 col">
 						<div class="card" style="float: right; border: solid 1px black">
 							<div class="card-body">
-								<table>
+								<table style="text-align: center;">
 									<tr>
-										<td>${projectVO.current_price / projectVO.price * 100}%</td>
+										<td>
+											<div>
+												<canvas width="30" height="30">${projectVO.current_price / projectVO.price * 100}%</canvas>
+											</div>
+										</td>
 									</tr>
 									<tr>
-										<td>${projectVO.current_price}</td>
-										<td>${projectVO.price}</td>
+										<td>${projectVO.current_price}만원 / ${projectVO.price}만원</td>
 									</tr>
 									<tr>
-										<td>상환방식</td>
-										<td>${projectVO.repay_method}</td>
+										<td>상환방식 ${projectVO.repay_method}</td>
 									</tr>
 									<tr>
-										<th>금리</th>
-										<td>${projectVO.rate}</td>
+										<td>금리 ${projectVO.rate}%</td>
 									</tr>
 									<tr>
-										<td>투자기간</td>
-										<td>${projectVO.refund}</td>
+										<td>투자기간 ${projectVO.refund}개월</td>
 									</tr>
 									<tr>
-										<td>투자한도</td>
-										<td>500만원</td>
+										<td>${500 - inVO.invest_price}만원</td>
+<%-- 										<td>투자한도 ${500 - inVO.getInvest_price()}만원</td> --%>
 									</tr>
 									<tr>
 										<td>
 											<c:choose>
-												<c:when test="${memberVO != null && memberVO.user_num != '' && memberVO.user_num != null}">
+												<c:when test="${memberVO != null && (memberVO.user_num != '' && memberVO.user_num != null) || (memberVO.busi_num != '' && memberVO.busi_num != null)}">
 													<input type="button" id="investBtn1" value="투자신청"/>
 												</c:when>
 												<c:otherwise>
@@ -116,7 +116,7 @@
 								상품요약
 							</div>
 							<div class="card-body">
-								<table>
+								<table border="1">
 									<tr>
 										<th>기본정보</th>
 									</tr>
@@ -128,15 +128,15 @@
 									</tr>
 									<tr>
 										<td>${guaranteeVO.guarantee_type}</td>
-										<td>${projectVO.refund}</td>
-										<td>${projectVO.price}</td>
-										<td>${projectVO.guarantee_price}</td>
+										<td>${projectVO.refund}개월</td>
+										<td>${projectVO.price}만원</td>
+										<td>${projectVO.guarantee_price}만원</td>
 									</tr>
 								</table>
-								<table style="float:left;">
+								<table border="1" style="float:left;">
 									<tr>
 										<th>담보물건 정보</th>
-									</tr>							
+									</tr>
 									<tr>
 										<td>유형</td>
 										<td>${guaranteeVO.guarantee_type}</td>
@@ -154,7 +154,7 @@
 										<td>근저당부질권</td>
 									</tr>
 								</table>
-								<table style="float:right;">
+								<table border="1" style="float:right;">
 									<tr>
 										<th>차주 정보</th>
 									</tr>							
@@ -218,7 +218,7 @@
 								상환계획
 							</div>
 							<div class="card-body">
-								<table>
+								<table border="1">
 									<tr>
 										<td>자체상환 - 고정적 수익을 바탕으로 자체상환 계획</td>
 									</tr>
@@ -239,7 +239,7 @@
 								투자자보호
 							</div>
 							<div class="card-body">
-								<table>
+								<table border="1">
 									<tr>
 										<td>담보권</td>
 										<td>인출조건</td>
@@ -476,9 +476,8 @@
 			<!-- /wrapper -->
 	    </section>
 	    <!-- /MAIN CONTENT -->
+	    <input type="hidden" id="user_num" value="${memberVO.user_num}" />
 	    <!--main content end-->
-		
-		<input type="hidden" id="user_num" value="${userVO.user_num}" />
 		
 		<!--footer start-->
 		<footer class="site-footer">

@@ -33,6 +33,21 @@
 	  Author: TemplateMag.com
 	  License: https://templatemag.com/license/
 	======================================================= -->
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$("#state_u").click(function() {
+				location.href="${pageContext.request.contextPath}/invest_detail?project_num=$('#project_num').val()&user_num=${memberVO.user_num}";
+			});
+			
+			$("#state_b").click(function() {
+				location.href="${pageContext.request.contextPath}/invest_detail?project_num=$('#project_num').val()&busi_num=${memberVO.busi_num}";
+			});
+			
+			$("#state_n").click(function() {
+				location.href="${pageContext.request.contextPath}/login";
+			});
+		});
+	</script>
 </head>
 
 <body>
@@ -48,16 +63,15 @@
 	        MAIN CONTENT
 	        *********************************************************************************************************************************************************** -->
 		<!--main content start-->
-		<section id="main-content">
+		<section>
 			<section class="wrapper">
 				<h3><i class="fa fa-angle-right"></i> 투자상품</h3>
 				<div class="row mb">
 					<!-- page start-->
 					<div class="content-panel">
-						
 						<!-- 투자리스트 start -->
 						<div class="adv-table">
-	 						<table cellpadding="0" cellspacing="0" border="0" class="display table table-bordered" id="hidden-table-info">
+	 						<table cellpadding="0" cellspacing="0" border="1" class="display table table-bordered" id="hidden-table-info">
 								<thead>
 						            <tr>
 										<th class="col">상품명</th>
@@ -72,7 +86,20 @@
 								</thead>
 								<c:forEach items="${investList}" var="vo" varStatus="status">
 										<tr>
-											<td><a href="./invest_detail?project_num=${vo.project_num}">${vo.project_name}</a></td>
+											<td>
+												<input id="project_num" type="hidden" value="${vo.project_num}" />
+												<c:choose>
+													<c:when test="${memberVO.user_num != null}">
+														<a href="${pageContext.request.contextPath}/invest_detail?project_num=${vo.project_num}&p_busi_num=${vo.busi_num}&user_num=${memberVO.user_num}">${vo.project_name}</a>
+													</c:when>
+													<c:when test="${memberVO.busi_num != null}">
+														<a href="${pageContext.request.contextPath}/invest_detail?project_num=${vo.project_num}&p_busi_num=${vo.busi_num}&busi_num=${memberVO.busi_num}">${vo.project_name}</a>
+													</c:when>
+													<c:otherwise>
+														<a href="${pageContext.request.contextPath}/invest_detail?project_num=${vo.project_num}">${vo.project_name}</a>
+													</c:otherwise>
+												</c:choose>
+											</td>
 											<td>${vo.grade}</td>
 											<td>${vo.rate}%</td>
 											<td>${vo.refund}개월</td>
@@ -81,8 +108,18 @@
 											<td>${vo.ach_rate}</td>
 											<td>
 												<c:choose>
-													<c:when test="${vo.ach_state == '준비중'}">
-														<button id="state">준비중</button>
+													<c:when test="${vo.ach_state == '투자하기'}">
+														<c:choose>
+															<c:when test="${memberVO.user_num != null}">
+																<button id="state_u">${vo.ach_state}</button>
+															</c:when>
+															<c:when test="${memberVO.busi_num != null}">
+																<button id="state_b">${vo.ach_state}</button>
+															</c:when>
+															<c:otherwise>
+																<button id="state_n">${vo.ach_state}</button>
+															</c:otherwise>
+														</c:choose>
 													</c:when>
 													<c:otherwise>
 														${vo.ach_state}
