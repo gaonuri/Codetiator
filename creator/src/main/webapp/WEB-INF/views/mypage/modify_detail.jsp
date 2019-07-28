@@ -163,11 +163,17 @@ $(document).ready(function() {
 							</form>
 						</td>
 					</tr>
+					
+					<c:forEach items="${memberList}" var="vo" varStatus="status">
 					<tr>
-					<td class="condition-title">주민등록번호</td>
-						<td class="condition-content">901203-*******</td>
-					<td></td>
+						<c:if test="${memberListVO.user_num != null}">
+						</c:if>
+						<td class="condition-title">주민등록번호</td>
+							<td class="condition-content">${vo.jumin}</td>
+						<td></td>
 					</tr>
+					</c:forEach>
+					
 					<tr>
 					<td colspan="2" class="condition-content">
 						<p>
@@ -343,7 +349,15 @@ $(document).ready(function() {
 	                  	<tr>
 	                    <td>1</td>
 	                    <td>Mark</td>
-						</tr>						
+						</tr>
+	                  	<tr>
+	                    <td>1</td>
+	                    <td>Mark</td>
+						</tr>
+	                  	<tr>
+	                    <td>1</td>
+	                    <td>Mark</td>
+						</tr>
 						<tr>
 							<td class="condition-title">최근 4회 동안 접속하신 정보입니다.</td>
 							<td></td>

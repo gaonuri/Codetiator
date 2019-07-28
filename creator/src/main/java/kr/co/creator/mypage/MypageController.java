@@ -83,33 +83,16 @@ public class MypageController {
 	@RequestMapping(value="/mypagemodify", method=RequestMethod.POST)
 	public void myPageModify(MemberVO vo, HttpSession session, PrintWriter out) {
 		logger.info("=== myPageModify ===");
-		vo = sqlSession.selectOne("MypageMapper.MyPageModify", vo);
+		vo.getUser_num();
+//		vo = sqlSession.selectOne("MypageMapper.MyPageModify", vo);
 		int successCnt = 0;
-		if(vo != null && vo.getUser_num() != null && !vo.getUser_num().equals("")) {
+		if(vo != null && vo.getUser_password() != null && !vo.getUser_password().equals("")) {
 			successCnt = 1;
-			session.setAttribute("memberVO", vo);
+			session.setAttribute("mypageVO", vo);
 		} 
 		out.print(successCnt);
-		out.flush();
 		out.close();		
 	}//myPageModify
-	
-	@RequestMapping(value = "/mypagepwd", method = RequestMethod.POST)
-	public void MyPagePwd(PrintWriter out, MemberVO vo, Model model) throws Exception {
-		logger.info("=== MyPagePwd ===");
-		int successCnt = 0;
-		successCnt = service.myPageModify(vo);
-		if(successCnt > 0) {
-			String bust_name, user_name;
-			bust_name = sqlSession.selectOne("MypageMapper.MyPageModify", vo);
-			user_name = sqlSession.selectOne("MypageMapper.MyPageModify", vo);
-			vo.setBusi_num(bust_name);
-			vo.setUser_name(user_name);
-		}
-		out.print(successCnt);
-		out.flush();
-		out.close();
-	}//MyPagePwd
 	
 	@RequestMapping(value = "/modify_detail", method = RequestMethod.GET)
 	public String modify_detail() {

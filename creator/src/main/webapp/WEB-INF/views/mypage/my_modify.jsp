@@ -44,12 +44,13 @@ $(document).ready(function() {
 	$.post(
 			"./mypagemodify",
 			{
+			user_num:$("#user_num").val(),
 			user_password:$("#user_password").val()
 			},
 			function(data,status){
 				if(status == "success"){
 					if(data > 0){
-						location.href="/creator/modify_detail";
+						location.href="${pageContext.request.contextPath}/modify_detail";
 					} else if(data == 0){
 						alert("비밀번호를 확인해 주세요.");
 					} else {
@@ -145,11 +146,13 @@ $(document).ready(function() {
 											<c:choose>
 												<c:when test="${memberVO != null && (memberVO.user_num != '' && memberVO.user_num != null) || (memberVO.busi_num != '' && memberVO.busi_num != null)}">
 													<div class="col-sm-10 col-lg-offset-3">
-														<button type="button" class="btn btn-theme" id="un_btn" ">잠금 해제</button>
+														<input type="button" class="btn btn-theme" id="un_btn" value="잠금 해제"/>
 													</div>
 												</c:when>
+												<c:otherwise>
+													<input type="button" class="btn btn-theme" id="un_btn1" value="잠금 해제"/>
+												</c:otherwise>
 											</c:choose>
-
 									</div>
 						    	</form>
 							</div>
@@ -160,6 +163,7 @@ $(document).ready(function() {
 						<!-- ===================================================================== body-->		
 	</section>
 </section>
+    
     
     
 		
