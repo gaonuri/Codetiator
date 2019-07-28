@@ -14,16 +14,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import kr.co.creator.invest.InvestService;
-import kr.co.creator.login.EmailForm;
-import kr.co.creator.login.FindUtil;
-import kr.co.creator.vo.FindPwdVO;
-import kr.co.creator.vo.InvestVO;
+import kr.co.creator.vo.AccountVO;
 import kr.co.creator.vo.MemberVO;
 import kr.co.creator.vo.MypageVO;
-import kr.co.creator.vo.NoticeVO;
 import kr.co.creator.vo.ProjectVO;
-import kr.co.creator.vo.UserVO;
 
 @Controller
 public class MypageController {
@@ -69,8 +63,18 @@ public class MypageController {
 		userVO = (MemberVO)session.getAttribute("memberVO");
 		List<ProjectVO> loan= null;
 		loan = service.loan_list(userVO);
-		model.addAttribute("loanlist",loan);
+		model.addAttribute("loanList",loan);
 		return "mypage/my_loan_list";
+	}
+	
+	@RequestMapping(value = "/my_depo_mgn", method = RequestMethod.GET)
+	public String my_modify(HttpSession session, Model model, MemberVO userVO, MypageVO myVO) {
+		logger.info("my_depo_mgn");
+		userVO = (MemberVO)session.getAttribute("memberVO");
+		List<MypageVO> depo= null;
+		depo = service.depo_log(userVO);
+		model.addAttribute("DepoLog", depo);
+		return "mypage/my_depo_mgn";
 	}
 	
 	@RequestMapping(value = "/my_modify", method = RequestMethod.GET)

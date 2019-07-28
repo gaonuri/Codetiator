@@ -31,11 +31,21 @@ public class MypageDAO {
 		return loan;
 	} 
 	
+	
+	public List<MypageVO> depolog(MemberVO userVO) {
+		List<MypageVO> depo = null;
+		depo = sqlSession.selectList("MypageMapper.DepoLog", userVO);
+		return depo;
+	}
+	
+	
+	
 	public int myPageModify(MemberVO vo) {
 		int cnt = 0;
 		cnt = sqlSession.selectOne("MypageMapper.MyPageModify", vo);
 		return cnt;
 	}//myPageModify
+
 	
 }//class
 
