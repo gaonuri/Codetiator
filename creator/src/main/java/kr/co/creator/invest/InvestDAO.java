@@ -18,13 +18,13 @@ public class InvestDAO {
 	@Autowired
 	SqlSession sqlSession;
 
-//	public AccountVO invest(AccountVO vo) {
-//		System.out.println("DAO111111111 : " + vo);
-//		vo = sqlSession.selectOne("InvestMapper.accountDetail", vo);
-//		System.out.println("DAO222222222 : " + vo);
-//		
-//		return vo;
-//	}//invest
+	public AccountVO invest(AccountVO vo) {
+		System.out.println("DAO111111111 : " + vo);
+		vo = sqlSession.selectOne("InvestMapper.accountDetail", vo);
+		System.out.println("DAO222222222 : " + vo);
+		
+		return vo;
+	}//invest
 
 	public AccountVO acount_detail(AccountVO accVO) {
 		accVO = sqlSession.selectOne("InvestMapper.accountDetail", accVO);

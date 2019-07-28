@@ -91,8 +91,8 @@
 										<td>투자기간 ${projectVO.refund}개월</td>
 									</tr>
 									<tr>
-										<td>투자한도 ${500 - inVO.getInvest_price()}만원</td>
-<%-- 										<td>${500 - inVO.invest_price}만원</td> --%>
+										<td>${500 - inVO.invest_price}만원</td>
+<%-- 										<td>투자한도 ${500 - inVO.getInvest_price()}만원</td> --%>
 									</tr>
 									<tr>
 										<td>
@@ -128,7 +128,7 @@
 									</tr>
 									<tr>
 										<td>${guaranteeVO.guarantee_type}</td>
-										<td>${projectVO.refund}</td>
+										<td>${projectVO.refund}개월</td>
 										<td>${projectVO.price}만원</td>
 										<td>${projectVO.guarantee_price}만원</td>
 									</tr>
@@ -476,9 +476,8 @@
 			<!-- /wrapper -->
 	    </section>
 	    <!-- /MAIN CONTENT -->
+	    <input type="hidden" id="user_num" value="${memberVO.user_num}" />
 	    <!--main content end-->
-		
-		<input type="hidden" id="user_num" value="${userVO.user_num}" />
 		
 		<!--footer start-->
 		<footer class="site-footer">
