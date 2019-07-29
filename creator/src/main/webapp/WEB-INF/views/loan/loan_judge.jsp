@@ -88,7 +88,7 @@
 .title {
     font-size: 26pt;
     font-weight: 500;
-    color: #732173;
+    color: #fff;
     text-shadow: 1px 1px 1px #bf9bcb;
     letter-spacing: -0.5pt;
     line-height: 1.2;
@@ -97,6 +97,9 @@
     color: #fff;
     position: relative;
     padding: 60px 20px 30px 20px;
+}
+.titles {
+	color: #000;
 }
 .btn {
     display: inline-block;
@@ -149,7 +152,7 @@
     font-size: 13;
     line-height: 100px;
     color: #fff;
-    background-color: #712594;
+    background-color: blue;
     -webkit-transition: all 0.6s ease-in-out;
     transition: all 0.6s ease-in-out;
 }
@@ -368,7 +371,7 @@
 										</div>
 									</div>
 								</div>
-								<div class="title" style="font-size: 15pt;">
+								<div class="titles" style="font-size: 15pt;">
 									심사중
 								</div>
 								<div class="line"></div>
@@ -542,23 +545,8 @@
 <script type="text/javascript">
 
 $(document).ready(function() {
-	$("#doNextStepBtn").click(function() {
-		$.post("/loan/sub_document_process"
-			,{
-				dvo:form
-			}//data
-			,function(data,status) {
-				if(status == "success") {
-					if(data > 0){
-						location.href = "${pageContext.request.contextPath}/loan/loan_judge";
-					} else {
-						alert("잠시 후 다시 시도해 주세요.");
-					}
-				} else {
-					alert("admin : 02-5555-7777");
-				}
-			}//function
-		);//get
+	$("#loanReqBtn2").click(function() {
+		location.href = "${pageContext.request.contextPath}/main";
 	});//click
 });//ready
 </script>

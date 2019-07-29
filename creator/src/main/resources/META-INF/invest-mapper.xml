@@ -10,13 +10,6 @@
 		from	project_list
 	</select>
 	
-<!-- 	<select id="investDetail" parameterType="kr.co.creator.vo.ProjectVO" resultType="kr.co.creator.vo.ProjectVO"> -->
-<!-- 		SELECT *  -->
-<!-- 		FROM project_list LEFT OUTER JOIN guarantee  -->
-<!-- 		ON project_list.project_num = guarantee.project_num  -->
-<!-- 		WHERE project_list.project_num = #{project_num} -->
-<!-- 	</select> -->
-	
 	<select id="projectDetail" parameterType="kr.co.creator.vo.ProjectVO" resultType="kr.co.creator.vo.ProjectVO">
 		select	*
 		from	project_list 

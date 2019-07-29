@@ -77,7 +77,7 @@
 .title {
     font-size: 26pt;
     font-weight: 500;
-    color: #732173;
+    color: #fff;
     text-shadow: 1px 1px 1px #bf9bcb;
     letter-spacing: -0.5pt;
     line-height: 1.2;
@@ -538,7 +538,7 @@ li {
 <script type="text/javascript">
 	$(document).ready(function() {
 		$("#loanReqBtn2").click(function() {
-			location.href = "${pageContext.request.contextPath}/loan/applyloan";
+			location.href = "${pageContext.request.contextPath}/applyloan";
 		});//btn_write
 	});//ready
 </script>
@@ -585,11 +585,6 @@ li {
     }
 	</script>
 	<script type="text/javascript">
-	$(document).ready(function() {
-		$("#loanReqBtn").click(function() {
-			location.href = "${pageContext.request.contextPath}/loan/getloan";
-		});
-	});
 	
 	$(function() {
 		

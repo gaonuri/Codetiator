@@ -88,7 +88,7 @@
 .title {
     font-size: 26pt;
     font-weight: 500;
-    color: #732173;
+    color: #fff;
     text-shadow: 1px 1px 1px #bf9bcb;
     letter-spacing: -0.5pt;
     line-height: 1.2;
@@ -203,7 +203,7 @@
     color: #fff;
     background-color: #02863A;
 }
-.col-lg-4 {
+.col-lg-a4 {
     width: 33.33333333%;
     margin-left: 450px;
 }
@@ -378,17 +378,17 @@
 			<section class="wrapper site-min-height">
 				<div class="row mt">
 					<div class="col-lg-12">
-						<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+						<div class="col-lg-a4 col-md-4 col-sm-4 col-xs-12">
               <div class="custom-box">
                 <div class="servicetitle">
                   <h4>심사완료!</h4>
                   <br>
-                  <h2>펀딩을 시작합니다</h2>
+                  <h4>펀딩을 시작합니다</h4>
                   <hr>
                 </div>
                 <div class="fa-hover col-md-3 col-sm-4" style="padding-left: 0px;padding-right: 175px;height: 30px;"><a href="font_awesome.html#phone" style="padding-left: 0px; padding-right: 10px;"><i class="fa fa-phone"></i>전화:02-1234-5678</a></div>
                 <div class="fa-hover col-md-3 col-sm-4" style="padding-right: 70px;padding-left: 0px;height: 50px;"><a href="font_awesome.html#"><i class="fa fa-envelope"></i>대출/투자 문의 : contact@creator.co.kr</a></div>
-                <button class="loan_int_btn mr-green" id="loanReqBtn2" style="width:200px; height: 36px;margin-left: 280px;margin-right: 248px;margin-top: 150px;">
+                <button class="loan_int_btn mr-green" id="loanReqBtn2" style="width:200px; height: 36px;margin-top: 150px;">
 								돌아가기<span class="mr-cap"></span>
 								<span class="mr-angle">
 									<div>
@@ -498,6 +498,13 @@
 
       return false;
     });
+	</script>
+	<script type="text/javascript">
+	$(document).ready(function() {
+		$(loanReqBtn2).click(function() {
+			location.href = "${pageContext.request.contextPath}/main";
+		})
+	})
 	</script>
 	<script type="application/javascript">
     $(document).ready(function() {

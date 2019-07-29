@@ -25,6 +25,7 @@ public class ProjectVO {
 	private String loan_class;			// 대출구분
 	private String loan_type;			// 대출유형
 	private String repay_method;		// 상환방식
+	private String judge_status;		// 심사상태
 	
 	private String user_num;			// (참조)유저번호
 	private String busi_num;			// (참조)법인유저번호
@@ -236,4 +237,10 @@ public class ProjectVO {
 	public void setBusi_num(String busi_num) {
 		this.busi_num = busi_num;
 	}//busi_num
+	public String getJudge_status() {
+		return judge_status;
+	}
+	public void setJudge_status(String judge_status) {
+		this.judge_status = judge_status;
+	}
 }//class
