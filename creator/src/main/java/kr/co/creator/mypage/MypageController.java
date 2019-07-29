@@ -14,16 +14,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import kr.co.creator.invest.InvestService;
-import kr.co.creator.login.EmailForm;
-import kr.co.creator.login.FindUtil;
-import kr.co.creator.vo.FindPwdVO;
-import kr.co.creator.vo.InvestVO;
+import kr.co.creator.vo.AccountVO;
+import kr.co.creator.vo.InOutVO;
 import kr.co.creator.vo.MemberVO;
 import kr.co.creator.vo.MypageVO;
-import kr.co.creator.vo.NoticeVO;
 import kr.co.creator.vo.ProjectVO;
-import kr.co.creator.vo.UserVO;
 
 @Controller
 public class MypageController {
@@ -46,13 +41,6 @@ public class MypageController {
 		return "mypage/my_dashboard";
 	}
 	
-	@RequestMapping(value = "/my_depo_mgn", method = RequestMethod.GET)
-	public String my_depo_mgn() {
-		logger.info("my_depo_mgn");
-				
-		return "mypage/my_depo_mgn";
-	}
-	
 	@RequestMapping(value = "/my_invest_list", method = RequestMethod.GET)
 	public String invest(HttpSession session, Model model, MemberVO userVO, MypageVO myVO) {
 		logger.info("my_dashboard");
@@ -69,47 +57,49 @@ public class MypageController {
 		userVO = (MemberVO)session.getAttribute("memberVO");
 		List<ProjectVO> loan= null;
 		loan = service.loan_list(userVO);
-		model.addAttribute("loanlist",loan);
+		model.addAttribute("loanList",loan);
 		return "mypage/my_loan_list";
 	}
 	
-	@RequestMapping(value = "/my_modify", method = RequestMethod.GET)
-	public String my_modify() {
-		logger.info("my_modify");
-				
-		return "mypage/my_modify";
+	@RequestMapping(value = "/my_depo_mgn", method = RequestMethod.GET)
+	public String my_modify(HttpSession session, Model model, MemberVO userVO, AccountVO accVO, InOutVO ioVO) {
+		logger.info("my_depo_mgn");
+		userVO = (MemberVO)session.getAttribute("memberVO");
+		accVO = service.account(userVO, accVO);
+		ioVO = service.inout(userVO, ioVO);
+		
+		model.addAttribute("Account", accVO);
+		model.addAttribute("Inout",ioVO);
+		return "mypage/my_depo_mgn";
 	}
 	
-	@RequestMapping(value="/mypagemodify", method=RequestMethod.POST)
-	public void myPageModify(MemberVO vo, HttpSession session, PrintWriter out) {
-		logger.info("=== myPageModify ===");
-		vo = sqlSession.selectOne("MypageMapper.MyPageModify", vo);
+	@RequestMapping(value="/mypagemodifyU", method=RequestMethod.POST)
+	public void myPageModifyU(MemberVO vo, HttpSession session, PrintWriter out) {
+		logger.info("=== myPageModifyU ===");
+		vo = sqlSession.selectOne("MypageMapper.MyPageModifyU", vo);
 		int successCnt = 0;
+//		successCnt = service.myPageModify(vo);
 		if(vo != null && vo.getUser_num() != null && !vo.getUser_num().equals("")) {
 			successCnt = 1;
-			session.setAttribute("memberVO", vo);
+			session.setAttribute("mypageVO", vo);
 		} 
 		out.print(successCnt);
-		out.flush();
 		out.close();		
-	}//myPageModify
+	}//myPageModifyU
 	
-	@RequestMapping(value = "/mypagepwd", method = RequestMethod.POST)
-	public void MyPagePwd(PrintWriter out, MemberVO vo, Model model) throws Exception {
-		logger.info("=== MyPagePwd ===");
+	@RequestMapping(value="/mypagemodifyB", method=RequestMethod.POST)
+	public void myPageModifyB(MemberVO vo, HttpSession session, PrintWriter out) {
+		logger.info("=== myPageModifyB ===");
+		vo = sqlSession.selectOne("MypageMapper.MyPageModifyB", vo);
 		int successCnt = 0;
-		successCnt = service.myPageModify(vo);
-		if(successCnt > 0) {
-			String bust_name, user_name;
-			bust_name = sqlSession.selectOne("MypageMapper.MyPageModify", vo);
-			user_name = sqlSession.selectOne("MypageMapper.MyPageModify", vo);
-			vo.setBusi_num(bust_name);
-			vo.setUser_name(user_name);
+//		successCnt = service.myPageModify(vo);
+		if(vo != null && vo.getBusi_num() != null && !vo.getBusi_num().equals("")) {
+			successCnt = 1;
+			session.setAttribute("mypageVO", vo);
 		}
 		out.print(successCnt);
-		out.flush();
-		out.close();
-	}//MyPagePwd
+		out.close();		
+	}//myPageModifyB
 	
 	@RequestMapping(value = "/modify_detail", method = RequestMethod.GET)
 	public String modify_detail() {
@@ -118,8 +108,7 @@ public class MypageController {
 		return "mypage/modify_detail";
 	}
 	
+	
 }//class
-
-
 
 

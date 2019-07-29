@@ -10,7 +10,7 @@
 	<meta name="author" content="Dashboard">
 	<meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
 	<title>Dashio - Bootstrap Admin Template</title>
-	<script src="../resources/jquery/jquery-3.4.1.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/jquery/jquery-3.4.1.js"></script>
 	<!-- Favicons -->
 	<link href="${pageContext.request.contextPath}/resources/bootstrap/img/favicon.png" rel="icon">
 	<link href="${pageContext.request.contextPath}/resources/bootstrap/img/apple-touch-icon.png" rel="apple-touch-icon">
@@ -25,7 +25,7 @@
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/bootstrap/lib/bootstrap-datepicker/css/datepicker.css" />
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/bootstrap/lib/bootstrap-daterangepicker/daterangepicker.css" />
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/bootstrap/lib/bootstrap-timepicker/compiled/timepicker.css" />
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/bootstrap/lib/bootstrap-datetimepicker/datertimepicker.css" />
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/bootstrap/lib/bootstrap-datetimepicker/css/datetimepicker.css" />
 	<!-- Custom styles for this template -->
 	<link href="${pageContext.request.contextPath}/resources/bootstrap/css/style.css" rel="stylesheet">
 	<link href="${pageContext.request.contextPath}/resources/bootstrap/css/style-responsive.css" rel="stylesheet">
@@ -85,10 +85,13 @@
 .text-center {
     text-align: center;
 }
+.titles {
+	color: #000;
+}
 .title {
     font-size: 26pt;
     font-weight: 500;
-    color: #732173;
+    color: #fff;
     text-shadow: 1px 1px 1px #bf9bcb;
     letter-spacing: -0.5pt;
     line-height: 1.2;
@@ -124,6 +127,7 @@
     text-align: center;
 }
 </style>
+
 </head>
 <body>
 
@@ -288,13 +292,13 @@
 										</div>
 									</div>
 								</div>
-								<div class="title" style="font-size: 15pt;">
+								<div class="titles" style="font-size: 15pt;">
 									서류제출
 								</div>
 								<div class="line"></div>
 							</div>
             <div class="form-panel">
-              <form id="document_form" class="form-horizontal style-form">
+              <form id="document_form" class="form-horizontal style-form" enctype="multipart/form-data">
                 <div class="form-group last">
                   <label class="control-label col-md-3">신분증 사본</label>
                   <div class="col-md-9">
@@ -307,7 +311,7 @@
                         <span class="btn btn-theme02 btn-file">
                           <span class="fileupload-new"><i class="fa fa-paperclip"></i> 사진 선택</span>
                         <span class="fileupload-exists"><i class="fa fa-undo"></i> 사진 변경</span>
-                        <input type="file" class="default" name="copy_id"/>
+                        <input type="file" class="default" id="copy_id" name="copy_id" />
                         </span>
                       </div>
                     </div>
@@ -539,29 +543,30 @@
       console.log('nav ' + nav + ' to: ' + to.month + '/' + to.year);
     }
 	</script>
-
+<!-- form.append("aaa",$("#aaa").val()); -->
 <script type="text/javascript">
-var form = new FormData(document.getElementById("document_form"));
-
-
 $(document).ready(function() {
+	$.ajaxSetup({cache:false});
 	$("#doNextStepBtn").click(function() {
-		$.post("/loan/sub_document_process"
-			,{
-				dvo:form
-			}//data
-			,function(data,status) {
-				if(status == "success") {
-					if(data > 0){
-						location.href = "${pageContext.request.contextPath}/loan/loan_judge";
-					} else {
-						alert("잠시 후 다시 시도해 주세요.");
-					}
+		var form = new FormData(document.getElementById("document_form"));
+		$.ajax({
+			url:"${pageContext.request.contextPath}/sub_document_process"
+			,data:form
+			,dataType:'json'
+			,processData:false
+			,contentType:false
+			,type:"POST"
+			,success:function(result){alert(result);
+				if(result > 0){
+					location.href = "${pageContext.request.contextPath}/loan_judge";
 				} else {
-					alert("admin : 02-5555-7777");
+					alert("잠시 후 다시 시도해 주세요.");
 				}
-			}//function
-		);//get
+			}
+				,error:function(xhr){
+					alert("fail");
+				}
+			});//ajax
 	});//click
 });//ready
 </script>

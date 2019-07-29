@@ -6,13 +6,13 @@
 <mapper namespace="LoginMapper">
 	
 	<select id="loginUser" parameterType="kr.co.creator.vo.MemberVO" resultType="kr.co.creator.vo.MemberVO">
-		select user_num, email, user_name
+		select * 
 		from user_list
 		where email=#{email} and user_password=#{user_password}
 	</select>
 	
-	<select id="loginBusi" parameterType="kr.co.creator.vo.MemberVO"	resultType="kr.co.creator.vo.MemberVO">
-		select busi_num, busi_resi_num, manager_name
+	<select id="loginBusi" parameterType="kr.co.creator.vo.MemberVO" resultType="kr.co.creator.vo.MemberVO">
+		select * 
 		from busi_user_list
 		where busi_resi_num=#{busi_resi_num} and busi_password=#{busi_password}
 	</select>
@@ -41,6 +41,14 @@
 		where user_name = #{user_name}
 	</select>
 	
-
+	<select id="userList" resultType="kr.co.creator.vo.MemberListVO">
+		select	*
+		from	user_list
+	</select>
+	
+	<select id="busiUserList" resultType="kr.co.creator.vo.MemberListVO">
+		select	*
+		from	busi_user_list
+	</select>
 	 
 </mapper>

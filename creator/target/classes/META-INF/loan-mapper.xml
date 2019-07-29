@@ -4,5 +4,59 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  
 <mapper namespace="LoanMapper">
+
+	<insert id="documentInsert"
+			parameterType="kr.co.creator.vo.DocumentVO">
+		insert into document ( busi_regi
+							, jumin_chobon
+							, cer_ingam
+							, cer_budong
+							, cer_dong
+							,cer_income
+							,cer_vat
+							,cer_other
+							,copy_id
+							,copy_bankbook
+							,chk_select
+							,project_num)
+		values( #{busi_regi}
+				, #{jumin_chobon}
+				, #{cer_ingam}
+				, #{cer_budong}
+				, #{cer_dong}
+				, #{cer_income}
+				, #{cer_vat}
+				, #{cer_other}
+				, #{copy_id}
+				, #{copy_bankbook}
+				, #{chk_select}
+				, #{project_num})
+		<selectKey resultType="String" keyProperty="document_num" order="AFTER">
+			SELECT LAST_INSERT_ID()
+		</selectKey>
+	</insert>
+
+	<insert id="insert_project"
+			parameterType="kr.co.creator.vo.ProjectVO">
+			INSERT INTO project_list (img, project_name, price, en_date)
+			VALUES (#{img}, now())
+		<selectKey resultType="String" keyProperty="project_num" order="AFTER">
+			SELECT LAST_INSERT_ID()
+		</selectKey>
+	</insert>
 	
+	<insert id="insert_guarantee" parameterType="kr.co.creator.vo.GuaranteeVO">
+		INSERT INTO guarantee (guarantee_type, guarantee_img, guarantee_name, debtor_type
+								business_type, object_type, connoisseur, supply_area, exclusive_area, 
+								area, map, location, scale, comple_year, quote, code, reference_file1, 
+								reference_file2, reference_file3)
+		VALUES (#{guarantee_type}, #{guarantee_img}, #{guarantee_name}, #{debtor_type}, #{business_type}, #{object_type}, #{connoisseur}, 
+				#{supply_area}, #{exclusive_area}, #{area}, #{map}, #{location}, #{scale}, #{comple_year}, #{quote}, 
+				#{code}, #{reference_file1}, #{reference_file2}, #{reference_file3})
+		<selectKey resultType="String" keyProperty="guarantee_num" order="AFTER">
+			SELECT LAST_INSERT_ID()
+		</selectKey>
+		
+	</insert>
+
 </mapper>

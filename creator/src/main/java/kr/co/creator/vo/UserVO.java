@@ -12,14 +12,14 @@ public class UserVO {
 	private String user_chk_email;				// 이메일 수신 여부
 	private String user_terms_of_service;		// 이용약관
 	private String user_privacy_policy_agree;	// 개인정보처리동의	
-	private String join_date;					// 가입일
-	private String login_time;					// 접속이력
+	private String user_join_date;					// 가입일
+	private String user_login_time;					// 접속이력
 	private String user_phone_key;				// 휴대폰인증
 	
 	public UserVO() {}	//constructor
 	public UserVO(	String user_num, String email, String user_password, String user_name, String jumin, 
 					String phone, String addr, String user_chk_email, String user_terms_of_service, String user_privacy_policy_agree, 
-					String join_date, String login_time, String user_phone_key) {
+					String user_join_date, String user_login_time, String user_phone_key) {
 		this.user_num = user_num;
 		this.email = email;
 		this.user_password = user_password;
@@ -30,8 +30,8 @@ public class UserVO {
 		this.user_chk_email = user_chk_email;
 		this.user_terms_of_service = user_terms_of_service;
 		this.user_privacy_policy_agree = user_privacy_policy_agree;
-		this.join_date = join_date;
-		this.login_time = login_time;
+		this.user_join_date = user_join_date;
+		this.user_login_time = user_login_time;
 		this.user_phone_key = user_phone_key;
 	}//constructor
 	
@@ -100,11 +100,11 @@ public class UserVO {
 	public void setUser_privacy_policy_agree(String user_privacy_policy_agree) {
 		this.user_privacy_policy_agree = user_privacy_policy_agree;
 	}//user_privacy_policy_agree
-	public String getJoin_date() {
-		return join_date;
+	public String getUser_join_date() {
+		return user_join_date;
 	}
-	public void setJoin_date(String join_date) {
-		this.join_date = join_date;
+	public void setUser_join_date(String user_join_date) {
+		this.user_join_date = user_join_date;
 	}//join_date
 	public String getUser_phone_key() {
 		return user_phone_key;
@@ -113,11 +113,11 @@ public class UserVO {
 		this.user_phone_key = user_phone_key;
 	}//user_phone_key
 	
-	public String getLogin_time() {
-		return login_time;
+	public String getUser_login_time() {
+		return user_login_time;
 	}
-	public void setLogin_time(String login_time) {
-		this.login_time = login_time;
+	public void setUser_login_time(String user_login_time) {
+		this.user_login_time = user_login_time;
 	}//login_time
 	
 }//class

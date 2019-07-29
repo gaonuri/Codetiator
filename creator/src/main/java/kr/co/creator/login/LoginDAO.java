@@ -1,10 +1,15 @@
 package kr.co.creator.login;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import kr.co.creator.vo.FindPwdVO;
+import kr.co.creator.vo.MemberListVO;
+import kr.co.creator.vo.MemberVO;
+import kr.co.creator.vo.ProjectVO;
 
 @Repository
 public class LoginDAO {
@@ -24,11 +29,16 @@ public class LoginDAO {
 		return cnt;
 	}//updatePwd
 
-//	public int selectName(FindPwdVO vo) {
-//		int cnt = 0;
-//		cnt = sqlSession.selectOne("LoginMapper.selectName", vo);
-//		return cnt;
-//	}
+	public List<MemberListVO> user_list() {
+		List<MemberListVO> list = null;
+		list = sqlSession.selectList("LoginMapper.userList");
+		return list;
+	}//user_list
 	
+	public List<MemberListVO> busi_user_list() {
+		List<MemberListVO> list = null;
+		list = sqlSession.selectList("LoginMapper.busiUserList");
+		return list;
+	}//busi_user_list
 	
 }//class

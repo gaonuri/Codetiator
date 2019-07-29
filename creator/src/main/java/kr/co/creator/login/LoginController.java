@@ -1,6 +1,7 @@
 package kr.co.creator.login;
 
 import java.io.PrintWriter;
+import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
@@ -15,7 +16,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import kr.co.creator.vo.Busi_userVO;
 import kr.co.creator.vo.FindPwdVO;
+import kr.co.creator.vo.MemberListVO;
 import kr.co.creator.vo.MemberVO;
+import kr.co.creator.vo.ProjectVO;
 import kr.co.creator.vo.UserVO;
 
 @Controller
@@ -47,8 +50,7 @@ public class LoginController {
 		if(vo != null && vo.getUser_num() != null && !vo.getUser_num().equals("")) {
 			successCnt = 1;
 			session.setAttribute("memberVO", vo);
-			session.setAttribute("memberVOa", vo);
-			session.setAttribute("sess_memberVO", vo);
+			session.setAttribute("memVO", vo);
 		} 
 		out.print(successCnt);
 		out.close();
@@ -62,6 +64,7 @@ public class LoginController {
 		if(vo != null && vo.getBusi_num() != null && !vo.getBusi_num().equals("")) {
 			successCnt = 1;
 			session.setAttribute("memberVO", vo);
+			session.setAttribute("memVO", vo);
 		}
 		out.print(successCnt);
 		out.close();
@@ -118,15 +121,26 @@ public class LoginController {
 		out.close();
 	}//sendNewPassword
 	
+	@RequestMapping(value = "/user_list", method = RequestMethod.GET)
+	public String user_list(Model model) {
+		logger.info("user_list");
+		
+		List<MemberListVO> list = null;
+		list = loginService.user_list();
+		model.addAttribute("memberList", list);
+		return "mypage/modify_detail";
+	}//user_list
+	
+	@RequestMapping(value = "/busi_user_list", method = RequestMethod.GET)
+	public String busi_user_list(Model model) {
+		logger.info("busi_user_list");
+		
+		List<MemberListVO> list = null;
+		list = loginService.busi_user_list();
+		model.addAttribute("memberList", list);
+		return "mypage/modify_detail";
+	}//busi_user_list
+	
 }//class
 
-
-//			userVO  busiUserVO
-//			form.setSubject("안녕하세요" + vo.getUser_name() + "님 임시비밀번호를 확인해 주세요");
-//			form.setSubject("안녕하세요 임시비밀번호를 확인해 주세요");
-//			vo = sqlSession.selectOne("LoginMapper.selectName", vo);
-//			System.out.println(vo.getUser_name());
-//			System.out.println(vo.getEmail());
-//			System.out.println(newPassword);
-//			vo = sqlSession.selectOne("LoginMapper.selectEmail", vo);
 
