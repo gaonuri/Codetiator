@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import kr.co.creator.vo.AccountVO;
+import kr.co.creator.vo.InOutVO;
 import kr.co.creator.vo.MemberVO;
 import kr.co.creator.vo.MypageVO;
 import kr.co.creator.vo.ProjectVO;
@@ -61,20 +62,15 @@ public class MypageController {
 	}
 	
 	@RequestMapping(value = "/my_depo_mgn", method = RequestMethod.GET)
-	public String my_modify(HttpSession session, Model model, MemberVO userVO, MypageVO myVO) {
+	public String my_modify(HttpSession session, Model model, MemberVO userVO, AccountVO accVO, InOutVO ioVO) {
 		logger.info("my_depo_mgn");
 		userVO = (MemberVO)session.getAttribute("memberVO");
-		List<MypageVO> depo= null;
-		depo = service.depo_log(userVO);
-		model.addAttribute("DepoLog", depo);
+		accVO = service.account(userVO, accVO);
+		ioVO = service.inout(userVO, ioVO);
+		
+		model.addAttribute("Account", accVO);
+		model.addAttribute("Inout",ioVO);
 		return "mypage/my_depo_mgn";
-	}
-	
-	@RequestMapping(value = "/my_modify", method = RequestMethod.GET)
-	public String my_modify() {
-		logger.info("my_modify");
-				
-		return "mypage/my_modify";
 	}
 	
 	@RequestMapping(value="/mypagemodify", method=RequestMethod.POST)

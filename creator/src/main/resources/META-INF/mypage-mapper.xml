@@ -33,7 +33,7 @@
 	</select>
 	
 	<select id="loanList"
-		resultType="kr.co.creator.vo.InvestVO">
+		resultType="kr.co.creator.vo.ProjectVO">
 		select  a.account_name
 		, a.bank_name
 		, a.bank_num
@@ -45,21 +45,25 @@
 			and a.user_num = #{user_num}
 	</select>
 	
-<!-- 나의 자산 - 예치금, 투자대기금, user_num 어떻게 join할건지 확인하기  -->
-	<select id="DepoLog"
-		resultType="kr.co.creator.vo.InvestVO">
-		select  a.account_name
+	<select id="Account"
+		resultType="kr.co.creator.vo.AccountVO">
+		select a.account_name
 		, a.bank_name
 		, a.bank_num
 		, a.deposit
-		, i.input_history
-		, i.output_history
-		from account_list a, in_out i
-		where a.account_num = i.account_num 
-			and a.user_num = #{user_num}
+		from account_list a
+		where a.user_num = #{user_num}
 	</select>
 	
-	
+	<select id="Inout"
+		parameterType="kr.co.creator.vo.MemberVO"
+		resultType="kr.co.creator.vo.InOutVO">
+		select sum(input_history) input_history, sum(output_history) output_history 
+			FROM in_out i, account_list a 
+			WHERE i.account_num = a.account_num 
+			AND a.user_num = #{user_num}
+	</select>
+
 	<select id="MyPageModify" parameterType="java.lang.String" resultType="kr.co.creator.vo.MypageVO">
 		select user_num
 		from user_list

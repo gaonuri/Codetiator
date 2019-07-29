@@ -5,7 +5,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import kr.co.creator.vo.AccountVO;
 import kr.co.creator.vo.FindPwdVO;
+import kr.co.creator.vo.InOutVO;
 import kr.co.creator.vo.MemberVO;
 import kr.co.creator.vo.MypageVO;
 import kr.co.creator.vo.ProjectVO;
@@ -27,11 +29,15 @@ public class MypageService {
 		loan = dao.loan_list(userVO);
 		return loan;
 	}
+
+	public AccountVO account(MemberVO userVO,AccountVO accVO) {
+		accVO = dao.account(userVO, accVO);
+		return accVO;
+	}
 	
-	public List<MypageVO> depo_log(MemberVO userVO) {
-		List<MypageVO> depo = null;
-		depo = dao.depolog(userVO);
-		return depo;
+	public InOutVO inout(MemberVO userVO, InOutVO ioVO) {
+		ioVO = (InOutVO) dao.inout(userVO, ioVO);
+		return ioVO;
 	}
 	
 	public int myPageModify(MemberVO vo) {
@@ -39,6 +45,8 @@ public class MypageService {
 		cnt = dao.myPageModify(vo);
 		return cnt; 
 	}//MemberVO	
+
+
 
 
 }//class
