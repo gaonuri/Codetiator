@@ -40,12 +40,12 @@ public class MypageController {
 		return "mypage/my_dashboard";
 	}
 	
-	@RequestMapping(value = "/my_depo_mgn", method = RequestMethod.GET)
-	public String my_depo_mgn() {
-		logger.info("my_depo_mgn");
-				
-		return "mypage/my_depo_mgn";
-	}
+//	@RequestMapping(value = "/my_depo_mgn", method = RequestMethod.GET)
+//	public String my_depo_mgn() {
+//		logger.info("my_depo_mgn");
+//				
+//		return "mypage/my_depo_mgn";
+//	}
 	
 	@RequestMapping(value = "/my_invest_list", method = RequestMethod.GET)
 	public String invest(HttpSession session, Model model, MemberVO userVO, MypageVO myVO) {
@@ -84,19 +84,33 @@ public class MypageController {
 		return "mypage/my_modify";
 	}
 	
-	@RequestMapping(value="/mypagemodify", method=RequestMethod.POST)
-	public void myPageModify(MemberVO vo, HttpSession session, PrintWriter out) {
-		logger.info("=== myPageModify ===");
-		vo.getUser_num();
-//		vo = sqlSession.selectOne("MypageMapper.MyPageModify", vo);
+	@RequestMapping(value="/mypagemodifyU", method=RequestMethod.POST)
+	public void myPageModifyU(MemberVO vo, HttpSession session, PrintWriter out) {
+		logger.info("=== myPageModifyU ===");
+		vo = sqlSession.selectOne("MypageMapper.MyPageModifyU", vo);
 		int successCnt = 0;
-		if(vo != null && vo.getUser_password() != null && !vo.getUser_password().equals("")) {
+//		successCnt = service.myPageModify(vo);
+		if(vo != null && vo.getUser_num() != null && !vo.getUser_num().equals("")) {
 			successCnt = 1;
 			session.setAttribute("mypageVO", vo);
 		} 
 		out.print(successCnt);
 		out.close();		
-	}//myPageModify
+	}//myPageModifyU
+	
+	@RequestMapping(value="/mypagemodifyB", method=RequestMethod.POST)
+	public void myPageModifyB(MemberVO vo, HttpSession session, PrintWriter out) {
+		logger.info("=== myPageModifyB ===");
+		vo = sqlSession.selectOne("MypageMapper.MyPageModifyB", vo);
+		int successCnt = 0;
+//		successCnt = service.myPageModify(vo);
+		if(vo != null && vo.getBusi_num() != null && !vo.getBusi_num().equals("")) {
+			successCnt = 1;
+			session.setAttribute("mypageVO", vo);
+		}
+		out.print(successCnt);
+		out.close();		
+	}//myPageModifyB
 	
 	@RequestMapping(value = "/modify_detail", method = RequestMethod.GET)
 	public String modify_detail() {

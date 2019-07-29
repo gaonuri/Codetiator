@@ -10,10 +10,12 @@ public class MemberVO {
 	private String manager_name;				// 담당자명
 	private String user_password;				// 비밀번호
 	private String busi_password;				// 사업자 비밀번호
+	private String manager_email;
 	private String i;							// 모르는 변수
 	
 	public MemberVO() {}	//constructor
-	public MemberVO(String user_num, String email, String user_name, String busi_num, String busi_resi_num, String manager_name, String user_password, String busi_password) {
+	public MemberVO(String user_num, String email, String user_name, String busi_num, String busi_resi_num, 
+					String manager_name, String user_password, String busi_password, String manager_email) {
 		this.user_num = user_num;
 		this.email = email;
 		this.user_name = user_name;
@@ -22,6 +24,7 @@ public class MemberVO {
 		this.manager_name = manager_name;
 		this.user_password = user_password;
 		this.busi_password = busi_password;
+		this.manager_email = manager_email;
 	}//constructor
 	
 	
@@ -78,6 +81,12 @@ public class MemberVO {
 	}
 	public void setI(String i) {
 		this.i = i;
+	}
+	public String getManager_email() {
+		return manager_email;
+	}
+	public void setManager_email(String manager_email) {
+		this.manager_email = manager_email;
 	}
 	
 	

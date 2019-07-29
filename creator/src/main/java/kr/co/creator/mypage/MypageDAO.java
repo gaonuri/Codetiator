@@ -39,12 +39,17 @@ public class MypageDAO {
 	}
 	
 	
-	
-	public int myPageModify(MemberVO vo) {
+	public int myPageModifyU(MemberVO vo) {
 		int cnt = 0;
-		cnt = sqlSession.selectOne("MypageMapper.MyPageModify", vo);
+		cnt = sqlSession.selectOne("MypageMapper.MyPageModifyU", vo);
 		return cnt;
-	}//myPageModify
+	}//myPageModifyU
+	
+	public int myPageModifyB(MemberVO vo) {
+		int cnt = 0;
+		cnt = sqlSession.selectOne("MypageMapper.MyPageModifyB", vo);
+		return cnt;
+	}//myPageModifyB
 
 	
 }//class

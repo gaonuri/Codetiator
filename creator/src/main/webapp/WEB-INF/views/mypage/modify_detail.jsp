@@ -34,34 +34,6 @@
 	  License: https://templatemag.com/license/
 	======================================================= -->
 <script type="text/javascript">
-$(document).ready(function() {
-	$("#un_btn").click(function(){
-	if($.trim($("#user_password").val()) == ""){
-		alert("비밀번호를 확인하세요.");
-		$("#user_password").focus();
-		return;
-	}//user_paswword
-	$.post("./loginuser"
-			,{
-				user_password:$("#user_password").val()
-			}
-			,function(data,status){
-				if(status == "success"){
-					if(data > 0){
-						alert("로그인 되었습니다.");
-						location.href="/creator/main";
-					} else if(data == 0){
-						alert("존재하지 비밀번호 입니다.");
-					} else {
-						alert("잠시 후, 다시 시도해 주세요.");
-					}
-				} else {
-					alert("시스템 관리자에게 문의 바랍니다.");
-				}
-			}
-	);//post
-	});//click
-});//ready
 </script>
 </head>
      
@@ -166,10 +138,12 @@ $(document).ready(function() {
 					
 					<c:forEach items="${memberList}" var="vo" varStatus="status">
 					<tr>
-						<c:if test="${memberListVO.user_num != null}">
-						</c:if>
 						<td class="condition-title">주민등록번호</td>
-							<td class="condition-content">${vo.jumin}</td>
+						<c:choose>
+							<c:when test="${memberVO.user_num != null}">
+								<td class="condition-content">${vo.jumin}</td>
+							</c:when>
+						</c:choose>
 						<td></td>
 					</tr>
 					</c:forEach>

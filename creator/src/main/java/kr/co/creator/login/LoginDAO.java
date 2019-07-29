@@ -37,7 +37,7 @@ public class LoginDAO {
 	
 	public List<MemberListVO> busi_user_list() {
 		List<MemberListVO> list = null;
-		list = sqlSession.selectList("LoginMapper.userBusiList");
+		list = sqlSession.selectList("LoginMapper.busiUserList");
 		return list;
 	}//busi_user_list
 	
