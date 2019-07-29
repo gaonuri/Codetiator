@@ -40,176 +40,29 @@
 	    <!-- **********************************************************************************************************************************************************
 	        TOP BAR CONTENT & NOTIFICATIONS
 	        *********************************************************************************************************************************************************** -->
-	    <!--header start-->
-	    <header class="header black-bg">
-			<!--logo start-->
-			<a href="./main" class="logo"><img id="logoImage" alt="로고" src="${pageContext.request.contextPath}/resources/img/ner.jpg" width="200px" height="30px"></a>
-			<!--logo end-->
-			<div class="nav notify-row top-menu" id="top_menu">
-				<!--  notification start -->
-				<ul class="nav pull-right top-menu">
-					<!-- settings start -->
-					
-					<!-- 회사소개 start -->
-					<li><a href="./loan_guide">회사소개</a></li>
-					<!-- 회사소개 end -->
-					
-					<!-- 대출 start -->
-					<li class="dropdown">
-						<a data-toggle="dropdown" class="dropdown-toggle" href="#">
-							대출
-						</a>
-						<ul class="dropdown-menu extended tasks-bar">
-							<div class="notify-arrow notify-arrow-green"></div>
-							<li>
-								<a href="./loan_guide">대출안내</a>
-							</li>
-							<li>
-								<a href="./loan/getloan">대출하기</a>
-							</li>
-						</ul>
-					</li>
-	          		<!-- 대출 end -->
-	          
-	          		<!-- inbox dropdown start-->
-	         		<li class="dropdown">
-						<a data-toggle="dropdown" class="dropdown-toggle" href="#">
-							투자
-						</a>
-						<ul class="dropdown-menu extended tasks-bar">
-							<div class="notify-arrow notify-arrow-black"></div>
-							<li>
-								<a href="./invest_guide">투자안내</a>
-							</li>
-							<li>
-								<a href="./invest_list">투자하기</a>
-							</li>
-							<li>
-								<a href="./invest_finish">완료된투자</a>
-							</li>
-						</ul>
-					</li>
-	          		<!-- 투자 end -->
-	          
-	          
-					<!-- 고객지원 start-->
-					<li id="header_notification_bar" class="dropdown">
-						<a data-toggle="dropdown" class="dropdown-toggle" href="#">
-							고객지원
-						</a>
-						<ul class="dropdown-menu extended notification">
-							<div class="notify-arrow"></div>
-							<li>
-								<a href="./faq">FAQ</a>
-							</li>
-							<li>
-								<a href="./support">이용약관</a>
-							</li>
-							<li>
-								<a href="./policy">개인정보</a>
-							</li>
-							<li>
-								<a href="./inquiry">1:1문의</a>
-							</li>
-							<li>
-								<a href="./support_total">공지사항</a>
-							</li>
-						</ul>
-					</li>
-					<!-- 고객지원 end -->
-					
-					<!-- 마이페이지 start-->
-					<li id="header_notification_bar" class="dropdown">
-						<a data-toggle="dropdown" class="dropdown-toggle" href="#">
-							마이페이지
-						</a>
-						<ul class="dropdown-menu extended notification">
-							<div class="notify-arrow notify-arrow-yellow"></div>
-							<li>
-								<a href="./my_dashboard">대시보드</a>
-							</li>
-							<li>
-								<a href="./my_invest_list">투자내역</a>
-							</li>
-							<li>
-								<a href="./my_loan_list">대출내역</a>
-							</li>
-							<li>
-								<a href="./my_depo_mgn">예치금관리</a>
-							</li>
-							<li>
-								<a href="./my_modify">회원정보수정</a>
-							</li>
-						</ul>
-					</li>
-					<!-- 마이페이지 end -->
-					
-					<!-- 로그아웃 start -->
-					<li><a href="./loan_guide">로그아웃</a></li>
-					<!-- 로그아웃 end -->
-				</ul>
-				<!--  notification end -->
-			</div>
-			<div class="top-menu">
-				<ul class="nav pull-right top-menu">
-					<li><a class="logout" href="/creator/join">회원가입</a></li>
-				</ul>
-			</div>
-	    </header>
-	    <!--header end-->
-	   
+		<!--header start-->
+		<%@ include file="../header.jsp" %>
+		<!--header end-->
 	   
 	    <!-- **********************************************************************************************************************************************************
 	        MAIN CONTENT
 	        *********************************************************************************************************************************************************** -->
 		<!--main content start-->
 		<section id="main-content">
-			<section class="wrapper">
-				<h3><i class="fa fa-angle-right"></i>완료된 투자상품</h3>
-				<div class="row mb">
-					<!-- page start-->
-					<div class="content-panel">
-					
-						<!-- 투자리스트 start -->
-						<div class="adv-table">
-	 						<table cellpadding="0" cellspacing="0" border="0" class="display table table-bordered" id="hidden-table-info">
-								<thead>
-						            <tr>
-										<th class="col">상품명</th>
-										<th class="col">등급</th>
-										<th class="col">연 수익률</th>
-										<th class="col">기간</th>
-										<th class="col">모집금액</th>
-										<th class="col">상환방식</th>
-										<th class="col">모집현황</th>
-										<th class="col">모집상태</th>
-									</tr>
-								</thead>
-								<c:forEach items="${investFinish}" var="vo" varStatus="status">
-										<tr>
-											<td><a href="./invest_detail?project_num=${vo.project_num}">${vo.project_name}</a></td>
-											<td>${vo.grade}</td>
-											<td>${vo.yield}%</td>
-											<td>${vo.refund}개월</td>
-											<td>${vo.price}만원</td>
-											<td>${vo.repay_method}</td>
-											<td>${vo.ach_rate}</td>
-											<td>${vo.ach_state}</td>
-										</tr>
-								</c:forEach>
-							</table>
-						</div>
-						<!-- 투자리스트 end -->
-						
+			<section class="wrapper site-min-height">
+				<div class="row mt">
+					<!-- page start -->
+					<div class="col-lg-12">
+						<div>나의 남은 예치금<span><input type="text" value="${accountVO.deposit}" readonly="readonly"></span></div>
+						<a href="${pageContext.request.contextPath}/main">메인화면으로 돌아가기</a>
 					</div>
-					<!-- page end-->
+					<!-- page end -->
 				</div>
-				<!-- /row -->
 			</section>
 			<!-- /wrapper -->
-		</section>
-		<!-- /MAIN CONTENT -->
-		<!--main content end-->
+	    </section>
+	    <!-- /MAIN CONTENT -->
+	    <!--main content end-->
 		
 		<!--footer start-->
 		<footer class="site-footer">
@@ -275,60 +128,6 @@
 	<script src="${pageContext.request.contextPath}/resources/bootstrap/lib/sparkline-chart.js"></script>
 	<script src="${pageContext.request.contextPath}/resources/bootstrap/lib/zabuto_calendar.js"></script>
 	
-	<!-- 게시판 -->
-	<!-- js placed at the end of the document so the pages load faster -->
-	<script type="text/javascript" language="javascript" src="${pageContext.request.contextPath}/resources/bootstrap/lib/advanced-datatable/js/jquery.js"></script>
-	<script type="text/javascript" language="javascript" src="${pageContext.request.contextPath}/resources/bootstrap/lib/advanced-datatable/js/jquery.dataTables.js"></script>
-	<script type="text/javascript" src="lib/advanced-datatable/js/DT_bootstrap.js"></script>
-	<!--script for this page-->
-	<script type="text/javascript">
-	$(document).ready(function() {
-		/*
-		 * Insert a 'details' column to the table
-		 */
-		var nCloneTh = document.createElement('th');
-		var nCloneTd = document.createElement('td');
-		nCloneTd.className = "center";
-		
-		$('#hidden-table-info thead tr').each(function() {
-		  this.insertBefore(nCloneTh, this.childNodes[0]);
-		});
-		
-		$('#hidden-table-info tbody tr').each(function() {
-		  this.insertBefore(nCloneTd.cloneNode(true), this.childNodes[0]);
-		});
-
-		/*
-		 * Initialse DataTables, with no sorting on the 'details' column
-		 */
-		var oTable = $('#hidden-table-info').dataTable({
-			"aoColumnDefs": [{
-			  "bSortable": false,
-			  "aTargets": [0]
-			}],
-			"aaSorting": [
-			  [1, 'asc']
-			]
-		});
-
-		/* Add event listener for opening and closing details
-		 * Note that the indicator for showing which row is open is not controlled by DataTables,
-		 * rather it is done here
-		 */
-		$('#hidden-table-info tbody td img').live('click', function() {
-			var nTr = $(this).parents('tr')[0];
-			if (oTable.fnIsOpen(nTr)) {
-				/* This row is already open - close it */
-				this.src = "lib/advanced-datatable/media/images/details_open.png";
-				oTable.fnClose(nTr);
-			} else {
-				/* Open this row */
-				this.src = "lib/advanced-datatable/images/details_close.png";
-				oTable.fnOpen(nTr, fnFormatDetails(oTable, nTr), 'details');
-			}
-		});
-    });
-	</script>
 </body>
 
 </html>

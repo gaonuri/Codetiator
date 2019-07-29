@@ -24,8 +24,8 @@ public class Busi_userVO {
 	private String busi_chk_email;				// 이메일 수신 여부
 	private String busi_terms_of_service;		// 이용약관
 	private String busi_privacy_policy_agree;	// 개인정보처리동의
-	private String join_date;					// 가입일
-	private String login_time;					// 로그인 이력
+	private String busi_join_date;					// 가입일
+	private String busi_login_time;					// 로그인 이력
 	private String busi_phone_key;				// 휴대폰 인증
 	
 	public Busi_userVO() {}	//constructor
@@ -33,7 +33,7 @@ public class Busi_userVO {
 						String cor_num, String homepage, String address, String pre_phone, String fax_num, 
 						String manager_name, String manager_birth, String manager_email, String office_num, String manager_phone, 
 						String manager_fax_num, String manager_task, String manager_rank, String manager_depart, String busi_chk_email, 
-						String busi_terms_of_service, String busi_privacy_policy_agree, String join_date, String login_time, String busi_phone_key) {
+						String busi_terms_of_service, String busi_privacy_policy_agree, String busi_join_date, String busi_login_time, String busi_phone_key) {
 		this.busi_num = busi_num;
 		this.busi_resi_num = busi_resi_num;
 		this.busi_password = busi_password;
@@ -56,8 +56,8 @@ public class Busi_userVO {
 		this.busi_chk_email = busi_chk_email;
 		this.busi_terms_of_service = busi_terms_of_service;
 		this.busi_privacy_policy_agree = busi_privacy_policy_agree;
-		this.join_date = join_date;
-		this.login_time = login_time;
+		this.busi_join_date = busi_join_date;
+		this.busi_login_time = busi_login_time;
 		this.busi_phone_key = busi_phone_key;
 	}//constructor
 	
@@ -213,17 +213,17 @@ public class Busi_userVO {
 		this.busi_privacy_policy_agree = busi_privacy_policy_agree;
 	}//busi_privacy_policy_agree
 	
-	public String getJoin_date() {
-		return join_date;
+	public String getBusi_join_date() {
+		return busi_join_date;
 	}
-	public void setJoin_date(String join_date) {
-		this.join_date = join_date;
+	public void setBusi_join_date(String busi_join_date) {
+		this.busi_join_date = busi_join_date;
 	}//join_date
-	public String getLogin_time() {
-		return login_time;
+	public String getBusi_login_time() {
+		return busi_login_time;
 	}
-	public void setLogin_time(String login_time) {
-		this.login_time = login_time;
+	public void setBusi_login_time(String busi_login_time) {
+		this.busi_login_time = busi_login_time;
 	}//login_time
 	public String getBusi_phone_key() {
 		return busi_phone_key;

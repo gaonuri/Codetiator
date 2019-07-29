@@ -5,6 +5,12 @@
  
 <mapper namespace="InvestMapper">
 	
+	<select id="accountDetail" resultType="kr.co.creator.vo.AccountVO">
+		select	*
+		from	account_list
+		where	user_num = #{user_num} || busi_num = #{busi_num} 
+	</select>
+	
 	<select id="investList" resultType="kr.co.creator.vo.ProjectVO">
 		select	*
 		from	project_list
@@ -28,4 +34,39 @@
 		where	ach_state = "상환완료" || ach_state = "중도상환"
 	</select>
 	
+	<update id="depositUpdate" parameterType="kr.co.creator.vo.AccountVO">
+		update account_list
+			set deposit = #{deposit}
+			where user_num = #{user_num} || busi_num = #{busi_num} 
+	</update>
+	
+	<update id="currentPriceUpdate" parameterType="kr.co.creator.vo.ProjectVO">
+		update project_list
+			set current_price = #{current_price}
+			where project_num = #{project_num}
+	</update>
+	
+	<insert id="investPriceInsert" parameterType="kr.co.creator.vo.InvestVO">
+		INSERT INTO invest_list 
+		(invest_price, invest_date, user_num, busi_num, project_num) 
+		VALUE(#{invest_price}, NOW(), #{user_num}, #{busi_num}, #{project_num}) 
+	</insert>
+	
+	<select id="investDetail" parameterType="kr.co.creator.vo.InvestVO" resultType="kr.co.creator.vo.InvestVO">
+		SELECT SUM(invest_price) invest_price, p.busi_num 
+		FROM invest_list i, project_list p  
+		WHERE i.project_num = p.project_num 
+		AND p.busi_num = #{p_busi_num} 
+		AND (i.user_num = #{user_num} OR i.busi_num = #{busi_num}) 
+		AND p.ach_state = '투자하기'
+	</select>
+	
+<!-- 	<select id=""> -->
+<!-- 		SELECT sum(i.invest_price), p.busi_num -->
+<!-- 		FROM invest_list i, project_list p -->
+<!-- 		where i.user_num = #{user_num} -->
+<!-- 		AND i.project_num = p.project_num -->
+<!-- 		AND p.ach_state = '투자하기'  -->
+<!-- 		GROUP BY p.busi_num -->
+<!-- 	</select> -->
 </mapper>

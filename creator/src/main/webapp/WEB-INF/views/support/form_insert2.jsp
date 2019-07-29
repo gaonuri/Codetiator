@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>form_insert5.jsp</title>
+<title>form_insert2.jsp</title>
 <script src="../resources/jquery/jquery-3.4.1.js"></script>
 <script src="https://cdn.ckeditor.com/4.12.1/basic/ckeditor.js"></script>
 <script>

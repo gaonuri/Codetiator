@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kr.co.creator.vo.NoticeVO;
-import kr.co.creator.vo.Notice_operationVO;
 
 @Service
 public class SupportService {
@@ -32,32 +31,15 @@ public class SupportService {
 		return support;
 	}//supportList
 
-	public List<NoticeVO> supportList2() {
+	public List<NoticeVO> supportList2(NoticeVO vo) {
 		List<NoticeVO> support = null;
-		support = dao.supportList2();
+		support = dao.supportList2(vo);
 		return support;
 	}//supportList2
-	
-	public List<NoticeVO> supportList3() {
-		List<NoticeVO> support = null;
-		support = dao.supportList3();
-		return support;
-	}//supportList3
 
-	public NoticeVO totalDetail(NoticeVO vo) {
-		vo = dao.totalDetail(vo);
+	public NoticeVO noticeDetail(NoticeVO vo) {
+		vo = dao.noticeDetail(vo);
 		return vo;
 	}//totalDetail
-
-	public NoticeVO newDetail(NoticeVO vo) {
-		vo = dao.newDetail(vo);
-		return vo;
-	}//newDetail
-
-	public NoticeVO operationDetail(NoticeVO vo) {
-		vo = dao.operationDetail(vo);
-		return vo;
-	}//operationDetail
-
 	
 }//class

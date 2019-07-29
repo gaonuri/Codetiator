@@ -40,124 +40,9 @@
 	    <!-- **********************************************************************************************************************************************************
 	        TOP BAR CONTENT & NOTIFICATIONS
 	        *********************************************************************************************************************************************************** -->
-	    <!--header start-->
-	    <header class="header black-bg">
-			<!--logo start-->
-			<a href="./main" class="logo"><img id="logoImage" alt="로고" src="${pageContext.request.contextPath}/resources/img/ner.jpg" width="200px" height="30px"></a>
-			<!--logo end-->
-			<div class="nav notify-row top-menu" id="top_menu">
-				<!--  notification start -->
-				<ul class="nav pull-right top-menu">
-					<!-- settings start -->
-					
-					<!-- 회사소개 start -->
-					<li><a href="./loan_guide">회사소개</a></li>
-					<!-- 회사소개 end -->
-					
-					<!-- 대출 start -->
-					<li class="dropdown">
-						<a data-toggle="dropdown" class="dropdown-toggle" href="#">
-							대출
-						</a>
-						<ul class="dropdown-menu extended tasks-bar">
-							<div class="notify-arrow notify-arrow-green"></div>
-							<li>
-								<a href="./loan_guide">대출안내</a>
-							</li>
-							<li>
-								<a href="./loan/getloan">대출하기</a>
-							</li>
-						</ul>
-					</li>
-	          		<!-- 대출 end -->
-	          
-	          		<!-- inbox dropdown start-->
-	         		<li class="dropdown">
-						<a data-toggle="dropdown" class="dropdown-toggle" href="#">
-							투자
-						</a>
-						<ul class="dropdown-menu extended tasks-bar">
-							<div class="notify-arrow notify-arrow-black"></div>
-							<li>
-								<a href="./invest_guide">투자안내</a>
-							</li>
-							<li>
-								<a href="./invest_list">투자하기</a>
-							</li>
-							<li>
-								<a href="./invest_finish">완료된투자</a>
-							</li>
-						</ul>
-					</li>
-	          		<!-- 투자 end -->
-	          
-	          
-					<!-- 고객지원 start-->
-					<li id="header_notification_bar" class="dropdown">
-						<a data-toggle="dropdown" class="dropdown-toggle" href="#">
-							고객지원
-						</a>
-						<ul class="dropdown-menu extended notification">
-							<div class="notify-arrow"></div>
-							<li>
-								<a href="./faq">FAQ</a>
-							</li>
-							<li>
-								<a href="./support">이용약관</a>
-							</li>
-							<li>
-								<a href="./policy">개인정보</a>
-							</li>
-							<li>
-								<a href="./inquiry">1:1문의</a>
-							</li>
-							<li>
-								<a href="./support_total">공지사항</a>
-							</li>
-						</ul>
-					</li>
-					<!-- 고객지원 end -->
-					
-					<!-- 마이페이지 start-->
-					<li id="header_notification_bar" class="dropdown">
-						<a data-toggle="dropdown" class="dropdown-toggle" href="#">
-							마이페이지
-						</a>
-						<ul class="dropdown-menu extended notification">
-							<div class="notify-arrow notify-arrow-yellow"></div>
-							<li>
-								<a href="./my_dashboard">대시보드</a>
-							</li>
-							<li>
-								<a href="./my_invest_list">투자내역</a>
-							</li>
-							<li>
-								<a href="./my_loan_list">대출내역</a>
-							</li>
-							<li>
-								<a href="./my_depo_mgn">예치금관리</a>
-							</li>
-							<li>
-								<a href="./my_modify">회원정보수정</a>
-							</li>
-						</ul>
-					</li>
-					<!-- 마이페이지 end -->
-					
-					<!-- 로그아웃 start -->
-					<li><a href="./loan_guide">로그아웃</a></li>
-					<!-- 로그아웃 end -->
-				</ul>
-				<!--  notification end -->
-			</div>
-			<div class="top-menu">
-				<ul class="nav pull-right top-menu">
-					<li><a class="logout" href="/creator/join">회원가입</a></li>
-				</ul>
-			</div>
-	    </header>
-	    <!--header end-->
-	   
+		<!--header start-->
+		<%@ include file="../header.jsp" %>
+		<!--header end-->
 	   
 	    <!-- **********************************************************************************************************************************************************
 	        MAIN CONTENT
@@ -168,7 +53,254 @@
 				<div class="row mt">
 					<!-- page start -->
 					<div class="col-lg-12">
-						
+						<div class="row content-panel">
+              <div class="panel-heading">
+                <ul class="nav nav-tabs nav-justified">
+                  <li class="active">
+                    <a data-toggle="tab" href="#tab_01">개인신용</a>
+                  </li>
+                  <li>
+                    <a data-toggle="tab" href="#tab_02">사업자신용</a>
+                  </li>
+                  <li>
+                    <a data-toggle="tab" href="#tab_03">부동산담보</a>
+                  </li>
+                  <li>
+                    <a data-toggle="tab" href="#tab_04">동산담보</a>
+                  </li>
+                </ul>
+              </div>
+              <!-- /panel-heading -->
+              <div class="panel-body">
+                <div class="tab-content">
+                  <div id="tab_01" class="tab-pane active">
+                    <div class="row">
+                      <div class="col-md-12">
+                        <section>
+									<ul class="tab1 tabTit">
+										<li class="chkIMG">
+											<img src="/images/investV2/Icon_investIntro_chkPT.png">
+										</li>
+										<li class="chk_tit_IMG">
+											<b>개인신용</b>을 이용한 대출을 원하는 차입자입니다.
+										</li>
+									</ul>	
+									<ul class="tab1 grade">
+										<li class="gradeIMG col-xs-12 col-sm-4 col-md-4">
+											<b>신용평가</b><br>
+											●&nbsp;●&nbsp;●&nbsp;●&nbsp;●
+										</li>
+										<li class="gradeIMG col-xs-12 col-sm-4 col-md-4">
+											<b>사업성/담보평가</b><br>
+											●&nbsp;○&nbsp;○&nbsp;○&nbsp;○
+										</li>
+										<li class="gradeIMG col-xs-12 col-sm-4 col-md-4">
+											<b>투자자보호</b><br>
+											연대보증, 담보
+										</li>
+									</ul>
+									<ul class="tab1 tabCont">
+										<li>
+											투자기간은 1개월부터 최대 24개월까지 가능하며,
+											투자 원금과 이자를 매달마다 받는 원리금 균등 상환방식과 대출기간 동안 이자만 상환받고 만기일에 원리금을 모두 상환받는 만기일시 상환 방식이 있습니다.
+											<br><br>
+											예시는 아래와 같습니다.
+										</li>
+									</ul>
+									<div class="bgGR">
+										<span class="tab1 tabCont bgGRTit">투자금액 1,000만 원, 투자금리 연12%, 기간 1년 상품에 투자 시</span>
+										<ul class="tab1 tabCont">
+											<li class="bgGRcircle mg20">
+												원리금 균등 상환
+											</li>
+											<li class="mg20">
+												매월 상환금 &nbsp;&nbsp;: &nbsp;&nbsp;888,488원 &nbsp;&nbsp;|&nbsp;&nbsp; 최종상환금 : 10,661,855원
+											</li>
+										</ul>
+										<ul class="tab1 tabCont">
+											<li class="bgGRcircle mg20">
+												만기 일시 상환
+											</li>
+											<li class="mg20">
+												매월 상환금 &nbsp;&nbsp;: &nbsp;&nbsp;100,000원&nbsp;&nbsp; | &nbsp;&nbsp;최종상환금 : 11,200,000원
+											</li>
+										</ul>
+									</div>
+									<ul class="tab1 tabCont">
+										<li>
+											원리금 균등 상환방식은 매달 원금이 상환됨에 따라 이자도 감소하여 총 투자수익은 만기일시 상환보다 약 40%정도 적습니다. 만기일시 상환방식은 차입자가 만기일에 원금을 한번에 상환해야 하는 부담이 있지만 원리금 균등 상환 방식에 비해 투자수익은 높은 편입니다.
+										</li>
+									</ul>
+								</section>
+                      </div>
+                      <!-- /col-md-12 -->
+                    </div>
+                    <!-- /tab_01 -->
+                  </div>
+                  <!-- /tab-pane -->
+                  <div id="tab_02" class="tab-pane">
+                    <div class="row">
+                      <div class="col-md-12">
+                        <section>
+									<ul class="tab2 tabTit">
+										<li class="chkIMG">
+											<img src="/images/investV2/Icon_investIntro_chkPT.png">
+										</li>
+										<li class="chk_tit_IMG">
+											<b>개인신용</b>과 함께 <b>사업성 평가</b>를 통한 사업자 신용 대출을 원하는 차입자입니다.
+										</li>
+									</ul>	
+									<ul class="tab2 grade">
+										<li class="gradeIMG col-xs-12 col-sm-4 col-md-4">
+											<b>신용평가</b><br>
+											●&nbsp;●&nbsp;●&nbsp;●&nbsp;○
+										</li>
+										<li class="gradeIMG col-xs-12 col-sm-4 col-md-4">
+											<b>사업성/담보평가</b><br>
+											●&nbsp;●&nbsp;●&nbsp;○&nbsp;○
+										</li>
+										<li class="gradeIMG lsTxt col-xs-12 col-sm-4 col-md-4">
+											<b>투자자보호</b><br>
+											사업장/채권양도담보, 연대보증 등
+										</li>
+									</ul>
+									<ul class="tab2 tabCont">
+										<li>
+											투자기간은 1개월부터 최대 24개월 까지 가능하며, 기본적인 개인신용 평가와 함께 사업성 분석, 상권분석, 유동인구 분석을 통해 적정 금리와 한도를 제시합니다.
+											<br>
+										</li>
+										<li>
+											투자수익과 함께 투자금액에 따른 리워드 제공이 포함된 상품들이 비교적 많은 편입니다.
+										</li>
+										<li>
+											투자자 보호에 있어 차입자 부실 발생 시 운영하는 사업장의 양도담보, 매출채권, 보증금등의 채권양도 담보와 연대보증을 설정합니다.
+										</li>
+									</ul>
+								</section>
+                      </div>
+                      <!-- /col-md-12 -->
+                    </div>
+                    <!-- /row -->
+                  </div>
+                  <!-- /tab-pane -->
+                  <div id="tab_03" class="tab-pane">
+                    <div class="row">
+                      <div class="col-md-12">
+                       <section>
+									<ul class="tab3 tabTit">
+										<li class="chkIMG">
+											<img src="/images/investV2/Icon_investIntro_chkPT.png">
+										</li>
+										<li class="chk_tit_IMG">
+											<b>개인신용</b>과 <b>본인 명의 부동산 담보</b>를 이용한 대출을 원하는 차입자입니다.
+										</li>
+									</ul>	
+									<ul class="tab3 grade">
+										<li class="gradeIMG col-xs-12 col-sm-4 col-md-4">
+											<b>신용평가</b><br>
+											●&nbsp;●&nbsp;●&nbsp;○&nbsp;○
+										</li>
+										<li class="gradeIMG col-xs-12 col-sm-4 col-md-4">
+											<b>사업성/담보평가</b><br>
+											●&nbsp;●&nbsp;●&nbsp;●&nbsp;●
+										</li>
+										<li class="gradeIMG col-xs-12 col-sm-4 col-md-4">
+											<b>투자자보호</b><br>
+											담보물매각을 통한 원금 회수
+										</li>
+									</ul>
+									<ul class="tab3 tabCont">
+										<li>
+											투자기간은 1개월부터 최대 24개월 까지 가능하며,차입자의 빠른 자금순환을 통해 비교적 짧은 기간(2개월 - 12개월)에 투자금액을 회수할 수 있습니다.
+											<br>
+										</li>
+										<li>
+											담보물에 정확한 가치평가가 중요한 상품으로 시세 거래 사이트를 통한 정확한 가치 파악(현재가치+미래가치)과 등기부 등본 상의 권리 분석을 통하여 적정 한도와 금리를 제시합니다.
+										</li>
+									</ul>
+									<div class="bgGR">
+										<span class="tab3 tabCont bgGRTit">투자금액 1,000만 원, 투자금리 연 12%, 기간 1년 상품, 6개월 상품에 투자 시(만기일시 상환조건)</span>
+										<ul class="tab1 tabCont">
+											<li class="bgGRcircle mg20">
+												기간 1년
+											</li>
+											<li class="mg20">
+												매월 상환금 : 100,000원 | 최종상환금 : 11,200,000원
+											</li>
+										</ul>
+										<ul class="tab1 tabCont">
+											<li class="bgGRcircle mg20">
+												기간 6개월
+											</li>
+											<li class="mg20">
+												매월 상환금 : 100,000원 | 최종상환금 : 10,600,000원
+											</li>
+										</ul>
+									</div>
+									<ul class="tab1 tabCont">
+										<li>
+											투자자 보호에 있어 차입자 부실 발생 시 담보물을 경매, 매입보증업체에 매각하여 원금을 회수합니다.
+										</li>
+									</ul>
+								</section>
+                      </div>
+                      <!-- /col-md-12 -->
+                    </div>
+                    <!-- /row -->
+                  </div>
+                  <!-- /tab-pane -->
+                  
+                  <!-- /tab-pane -->
+                  <div id="tab_04" class="tab-pane">
+                    <div class="row">
+                      <div class="col-md-12">
+                        <section>
+									<ul class="tab4 tabTit">
+										<li class="chkIMG">
+											<img src="/images/investV2/Icon_investIntro_chkPT.png">
+										</li>
+										<li class="chk_tit_IMG">
+											<b>개인신용</b>과 <b>본인 명의 동산 담보</b>를 이용한 대출을 원하는 차입자입니다.
+										</li>
+									</ul>	
+									<ul class="tab4 grade">
+										<li class="gradeIMG col-xs-12 col-sm-4 col-md-4">
+											<b>신용평가</b><br>
+											●&nbsp;●&nbsp;●&nbsp;○&nbsp;○
+										</li>
+										<li class="gradeIMG col-xs-12 col-sm-4 col-md-4">
+											<b>사업성/담보평가</b><br>●&nbsp;●&nbsp;●&nbsp;●&nbsp;●
+										</li>
+										<li class="gradeIMG col-xs-12 col-sm-4 col-md-4">
+											<b>투자자보호</b><br>
+											담보물매각을 통한 원금 회수
+										</li>
+									</ul>
+									<ul class="tab4 tabCont">
+										<li>
+											투자기간은 1개월부터 최대 24개월 까지 가능하며, 차입자의 빠른 자금순환을 통해 비교적 짧은 기간(1개월 ~ 5개월)에 투자금액을 회수할 수 있습니다.
+											<br>
+										</li>
+										<li>
+											감정평가업체를 통해 정확한 담보물 감정평가가 이루어지며, 투자기간 동안 담보물이 따로 유용되지 않도록 만기일까지 제 3의 장소 내 격리공간(금고)에 안전하게 보관합니다.
+											<br>
+										</li>
+										<li>
+											투자자 보호에 있어 차입자 부실 발생 시 담보물을 경매, 매입보증업체에 매각하여 원금을 회수합니다.
+										</li>
+									</ul>
+								</section>
+                      </div>
+                      <!-- /col-md-12 -->
+                    </div>
+                    <!-- /row -->
+                  </div>
+                </div>
+                <!-- /tab-content -->
+              </div>
+              <!-- /panel-body -->
+			            </div>
+			            <!-- /col-lg-12 -->
 					</div>
 					<!-- page end -->
 				</div>

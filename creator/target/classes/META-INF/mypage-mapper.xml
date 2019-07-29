@@ -16,17 +16,67 @@
 	</select>
 	
 	<select id="InvestList"
-			resultType="kr.co.creator.vo.InvestVO">
-		select  i.invest_date
-			, i.project_num
-			, p.project_name
-			, p.rate
-			, i.invest_price
-			, p.refund
-		from invest_list i
-		left outer join project_list p
-        on i.project_num = p.project_num
-		where i.project_num = #{project_num}
+			parameterType="kr.co.creator.vo.MemberVO"
+			resultType="kr.co.creator.vo.MypageVO">
+			select  i.invest_date 
+			, p.project_num 
+			, p.project_name 
+			, p.rate rate 
+			, i.invest_price 
+			, p.refund_count 
+			, p.refund refund 
+			, p.refund_deadline 
+			, p.ach_state 
+			from invest_list i, project_list p
+			where i.project_num = p.project_num 
+				and i.user_num = #{user_num}
 	</select>
 	
+	<select id="loanList"
+		resultType="kr.co.creator.vo.ProjectVO">
+		select  a.account_name
+		, a.bank_name
+		, a.bank_num
+		, a.deposit
+		, i.input_history
+		, i.output_history
+		from account_list a, in_out i
+		where a.account_num = i.account_num 
+			and a.user_num = #{user_num}
+	</select>
+	
+	<select id="Account"
+		resultType="kr.co.creator.vo.AccountVO">
+		select a.account_name
+		, a.bank_name
+		, a.bank_num
+		, a.deposit
+		from account_list a
+		where a.user_num = #{user_num}
+	</select>
+	
+	<select id="Inout"
+		parameterType="kr.co.creator.vo.MemberVO"
+		resultType="kr.co.creator.vo.InOutVO">
+		select sum(input_history) input_history, sum(output_history) output_history 
+			FROM in_out i, account_list a 
+			WHERE i.account_num = a.account_num 
+			AND a.user_num = #{user_num}
+	</select>
+
+	<select id="MyPageModifyU" parameterType="kr.co.creator.vo.MemberVO" resultType="kr.co.creator.vo.MemberVO">
+		select *
+		from user_list
+		where user_password = #{user_password}
+	</select>
+	
+	<select id="MyPageModifyB" parameterType="kr.co.creator.vo.MemberVO" resultType="kr.co.creator.vo.MemberVO">
+		select *
+		from busi_user_list
+		where busi_password = #{busi_password}
+	</select>
+	
+	
 </mapper>
+
+

@@ -34,141 +34,14 @@
 	  License: https://templatemag.com/license/
 	======================================================= -->
 </head>
-
+     
 <body>
 	<section id="container">
 	    <!-- **********************************************************************************************************************************************************
 	        TOP BAR CONTENT & NOTIFICATIONS
 	        *********************************************************************************************************************************************************** -->
 	    <!--header start-->
-	    <header class="header black-bg">
-			<!--logo start-->
-			<a href="./main" class="logo"><img id="logoImage" alt="로고" src="${pageContext.request.contextPath}/resources/img/ner.jpg" width="200px" height="30px"></a>
-			<!--logo end-->
-			<div class="nav notify-row top-menu" id="top_menu">
-				<!--  notification start -->
-				<ul class="nav pull-right top-menu">
-					<!-- settings start -->
-					
-					<!-- 회사소개 start -->
-					<li><a href="./loan_guide">회사소개</a></li>
-					<!-- 회사소개 end -->
-					
-					<!-- 대출 start -->
-					<li class="dropdown">
-						<a data-toggle="dropdown" class="dropdown-toggle" href="#">
-							대출
-						</a>
-						<ul class="dropdown-menu extended tasks-bar">
-							<div class="notify-arrow notify-arrow-green"></div>
-							<li>
-								<a href="./loan_guide">대출안내</a>
-							</li>
-							<li>
-								<a href="./loan/getloan">대출하기</a>
-							</li>
-						</ul>
-					</li>
-	          		<!-- 대출 end -->
-	          
-	          		<!-- inbox dropdown start-->
-	         		<li class="dropdown">
-						<a data-toggle="dropdown" class="dropdown-toggle" href="#">
-							투자
-						</a>
-						<ul class="dropdown-menu extended tasks-bar">
-							<div class="notify-arrow notify-arrow-black"></div>
-							<li>
-								<a href="./invest_guide">투자안내</a>
-							</li>
-							<li>
-								<a href="./invest_list">투자하기</a>
-							</li>
-							<li>
-								<a href="./invest_finish">완료된투자</a>
-							</li>
-						</ul>
-					</li>
-	          		<!-- 투자 end -->
-	          
-	          
-					<!-- 고객지원 start-->
-					<li id="header_notification_bar" class="dropdown">
-						<a data-toggle="dropdown" class="dropdown-toggle" href="#">
-							고객지원
-						</a>
-						<ul class="dropdown-menu extended notification">
-							<div class="notify-arrow"></div>
-							<li>
-								<a href="./faq">FAQ</a>
-							</li>
-							<li>
-								<a href="./support">이용약관</a>
-							</li>
-							<li>
-								<a href="./policy">개인정보</a>
-							</li>
-							<li>
-								<a href="./inquiry">1:1문의</a>
-							</li>
-						</ul>
-					</li>
-					<!-- 고객지원 end -->
-					
-					<!-- 마이페이지 start-->
-					<!-- 마이페이지 end -->
-					
-					<!-- 로그아웃 start -->
-					
-					<c:choose>
-						<c:when test="${Login_ss != null && Login_ss.user_num != '' || Login_sss != null && Login_sss.busi_num != ''}">
-							<li id="header_notification_bar" class="dropdown">
-								<a data-toggle="dropdown" class="dropdown-toggle" href="#">
-									${Login_ss.user_name}${Login_sss.manager_name}님
-								</a>
-								<ul class="dropdown-menu extended notification">
-									<div class="notify-arrow notify-arrow-yellow"></div>
-									<li>
-										<a href="./my_dashboard">대시보드</a>
-									</li>
-									<li>
-										<a href="./my_invest_list">투자내역</a>
-									</li>
-									<li>
-										<a href="./my_loan_list">대출내역</a>
-									</li>
-									<li>
-										<a href="./my_depo_mgn">예치금관리</a>
-									</li>
-									<li>
-										<a href="./my_modify">회원정보수정</a>
-									</li>
-								</ul>
-							</li>						
-						</c:when>
-						<c:otherwise>
-							<li><a class="loginss" href="./login">로그인</a></li>
-						</c:otherwise>
-					</c:choose>
-					
-					<c:choose>
-						<c:when test="${Login_ss != null && Login_ss.user_num != '' || Login_sss != null && Login_sss.busi_num != ''}">
-							<li>
-								<a href="./logout">로그아웃</a>
-							</li>
-						</c:when>
-						<c:otherwise>
-							<li><a class="loginss" href="./join">회원가입</a></li>
-						</c:otherwise>
-					</c:choose>
-				
-					<!-- 로그아웃 end -->
-				</ul>
-				<!--  notification end -->
-			</div>
-			<div class="top-menu">
-			</div>
-	    </header>
+	    <%@ include file="../header.jsp" %>
 	    <!--header end-->
 
 	   <!--sidebar start-->
@@ -177,7 +50,7 @@
 	        <!-- sidebar menu start-->
 	        <ul class="sidebar-menu" id="nav-accordion">
 	          <li class="mt">
-	            <a href="creator/my_desktop">
+	            <a href="/creator/my_dashboard">
 	              <i class="fa fa-dashboard"></i>
 	              <span>대시 보드</span>
 	              </a>
@@ -214,130 +87,280 @@
 	    <!-- **********************************************************************************************************************************************************
 	        MAIN CONTENT
 	        *********************************************************************************************************************************************************** -->
-		<!--main content start-->
-    <section id="main-content">
-      <section class="wrapper">
-        <!-- BASIC FORM ELELEMNTS -->
-
-          <div class="col-lg-6 col-md-6 col-sm-6">
-			  <div class="card">
-            	 <div class="card-body">
-            	 <button id="btn_invest" type="button" class="btn btn-default">나의 투자</button>
-            	 <!-- row -->
-			        
-			            </div>
-			            <!-- /content-panel -->
-			          </div>
-			          <!-- /col-md-12 -->
-			        </div>
-			        <!-- /row -->
-            	 <a href="#" class="btn btn-primary">나의 자산</a>
-            	 <div class="row">
-													<div class="col-md-6 rightLine">
-														<div class="title">
-															<font class="font-purple">
-																●
-															</font> 자산 요약
-														</div>
-														<div class="row height statsText">
-															<div class="col-xs-12 col-sm-12 col-md-12">
-																<div class="row">
-																	<div class="col-xs-7 col-sm-7 col-md-7">
-																		총 예치금&nbsp;&nbsp;
-																		<span class="glyphicon glyphicon-question-sign hover" style="font-size: 12px;" tabindex="0" data-toggle="tooltip" data-placement="auto" data-trigger="hover" title="" data-original-title="=기본 예치금 +자동투자 예치금"></span>
-																	</div>
-																	<div class="col-xs-5 col-sm-5 col-md-5 text-right">
-																		0 원
-																	</div>
-																</div>
-																<div class="row" style="margin-top: 5px;">
-																	<div class="col-xs-7 col-sm-7 col-md-7">
-																		상환 예정 원금&nbsp;&nbsp;
-																		<span class="glyphicon glyphicon-question-sign hover" style="font-size: 12px;" tabindex="0" data-toggle="tooltip" data-placement="auto" data-trigger="hover" title="" data-original-title="부실없이 정상 상환을 가정한 예상 원금"></span>
-																	</div>
-																	<div class="col-xs-5 col-sm-5 col-md-5 text-right">
-																		<span name="REST_PRNCPL_DSTRBTN_AMT">0</span> 원
-																	</div>
-																</div>
-																<div class="row" style="margin-top: 5px;">
-																	<div class="col-xs-7 col-sm-7 col-md-7">
-																		투자 대기 금액&nbsp;&nbsp;
-																		<span class="glyphicon glyphicon-question-sign hover" style="font-size: 12px;" tabindex="0" data-toggle="tooltip" data-placement="auto" data-trigger="hover" title="" data-original-title="투자금액이 차입자에게 전달되기 전 시점에서의 금액 "></span>
-																	</div>
-																	<div class="col-xs-5 col-sm-5 col-md-5 text-right">
-																		<span name="INVEST_REQ_AMT">0</span> 원
-																	</div>
-																</div>
-																
-																<hr>
-																
-																<div class="row">
-																	<div class="col-xs-7 col-sm-7 col-md-7">
-																		총 자산
-																	</div>
-																	<div class="col-xs-5 col-sm-5 col-md-5 text-right">
-																		<span class="font-purple"><strong>
-																			<span name="TOTAL_ASSET_AMT">0</span> <font size="2">원</font>
-																		</strong></span>
-																	</div>
-																</div>
-															</div>
-														</div>
-													</div>
-													
-													<div class="col-md-6">
-														<div class="title">
-															<font class="font-purple">
-																●
-															</font> 예치금 요약
-														</div>
-														<div class="row height statsText">
-															<div class="col-xs-12 col-sm-12 col-md-12">
-																<div class="row">
-																	<div class="col-xs-6 col-sm-6 col-md-6">
-																		기본 예치금
-																	</div>
-																	<div class="col-xs-6 col-sm-6 col-md-6 text-right">
-																		0 원
-																	</div>
-																</div>
-																<div class="row" style="margin-top: 30px;">
-																	<div class="col-xs-6 col-sm-6 col-md-6">
-																		자동투자 예치금
-																	</div>
-																	<div class="col-xs-6 col-sm-6 col-md-6 text-right">
-																		0 원
-																	</div>
-																</div>
-																
-																<hr>
-																
-																<div class="row">
-																	<div class="col-xs-6 col-sm-6 col-md-6">
-																		총 예치금
-																	</div>
-																	<div class="col-xs-6 col-sm-6 col-md-6 text-right">
-																		<span class="font-purple"><strong>
-																			0 <font size="2">원</font>
-																		</strong></span>
-																	</div>
-																</div>
-															</div>
-														</div>
-													</div>
-													
+		<section id="main-content">
+     	 <section class="wrapper">
+       	 	<div class="row">
+         		 <div class="col-md-12">
+            		<div class="content-panel">
+	            		<div class="panel-heading">
+	            			<div class="col-lg-2">
+								<ul class="nav nav-tabs nav-justified">
+									<li class="active">
+										<a data-toggle="tab" href="#invest">나의투자</a>
+									</li>
+									<li >
+										<a data-toggle="tab" href="#depo">나의자산</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+			            <div class="tab-content">
+						<div id="invest" class="tab-pane active">
+					    	<form role="form" class="form-horizontal">
+						   		<div class="row">
+						   		<div class="col-md-12">
+						    	<div class="investDetail">
+								<div class="row">
+									<div class="col-xs-12 col-sm-6 col-md-6">
+										<div class="title">
+											<a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+											<font class="font-purple">
+												● 투자 채권 목록
+											</font> 
+										</div>
+									</div>
+								</div>
+								<a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+								
+								<div class="row investList" style="margin-top: 10px;" style="margin-left: 10px;">
+									<div class="col-xs-10 col">
+										<table class="table">
+												<thead>
+													<tr>
+														<th class="col">투자일자</th>
+														<th scope="col" class="clickable"  >
+															프로젝트번호
+														</th>
+														<th scope="col" class="clickable" name="investListSortTitle" id="investListSortTitleLOAN_NM">
+															프로젝트명<span name="investListSortDesc" id="investListSortDescLOAN_NM"></span>
+														</th>
+														<th scope="col" class="clickable" name="investListSortTitle" id="investListSortTitleINVEST_RATE">
+															금리(%)<span name="investListSortDesc" id="investListSortDescINVEST_RATE"></span>
+														</th>
+														<th scope="col" class="clickable" name="investListSortTitle" id="investListSortTitleINVEST_AMT">
+															투자금액<span name="investListSortDesc" id="investListSortDescINVEST_AMT"></span>
+														</th>
+														<th scope="col" colspan="clickable" class="clickable" name="investListSortTitle" id="investListSortTitleRND_CNT">
+															상환차수<span name="investListSortDesc" id="investListSortDescRND_CNT"></span>
+														</th>
+														<th scope="col" class="clickable" name="investListSortTitle" id="investListSortTitleMAX_DSTRBTN_DATE">
+															상환예정일<span name="investListSortDesc" id="investListSortDescMAX_DSTRBTN_DATE"></span>
+														</th>
+														<th scope="col" class="clickable" name="investListSortTitle" id="investListSortTitleMAX_DSTRBTN_DATE">
+															상환완료일<span name="investListSortDesc" id="investListSortDescMAX_DSTRBTN_DATE"></span>
+														</th>
+														<th scope="col" class="clickable" name="investListSortTitle" id="investListSortTitleREPAY_STATS_CD">
+															상품상태<span name="investListSortDesc" id="investListSortDescREPAY_STATS_CD"></span>
+														</th>
+													</tr>
+												</thead>
+											<c:forEach items="${investList}" var="vo" varStatus="status">
+												<tr>
+													<c:if test="${memberVO.user_num != null}">
+													</c:if>
+													<td>${vo.invest_date}</td>
+													<td>${vo.project_num}</td>
+													<td>${vo.project_name}</td>
+													<td>${vo.rate}%</td>
+													<td>${vo.invest_price}</td>
+													<td>${vo.refund_count}</td>
+													<td>${vo.refund}</td>
+													<td>${vo.refund_deadline}</td>
+													<td>${vo.ach_state}</td>
+													<td>
+<%-- 														<c:choose> --%>
+<%-- 															<c:when test="${vo.ach_state == '준비중'}"> --%>
+<!-- 																<button id="state">준비중</button> -->
+<%-- 															</c:when> --%>
+<%-- 															<c:otherwise> --%>
+<%-- 																${vo.ach_state} --%>
+<%-- 															</c:otherwise> --%>
+<%-- 														</c:choose> --%>
+													</td>
+												</tr>
+											</c:forEach>
+										</table>
+									</div>
+								</div>
+							<div class="row investThum" style="margin-top: 10px;" id="investThum"></div>
+								
+								<!-- 
+								<div class="row" style="margin-top: 10px;" id="nextPageDiv">
+									<div class="col-xs-12 col-sm-12 col-md-12">
+										<div class="alarm-box-bottom">
+											<a href='javascript:(void(0));' onclick='fn_selectNextPage()' id="nextPageBtn" class="display-none">
+												<i class="glyphicon glyphicon-menu-down"></i>
+											</a>
+											<a href='javascript:(void(0));' onclick='fn_resetPage()' id="resetPageBtn" class="display-none">
+												<i class="glyphicon glyphicon-menu-up"></i>
+											</a>
+										</div>
+									</div>
+								</div>
+								 -->
+								
+								<table id="tblExport" style="display:none;" class="tblExport">
+									<thead>
+										<tr>
+											<th class="col">투자일자</th>
+											<th class="col">상품별호수</th>
+											<th class="col">상품명</th>
+											<th class="col">금리</th>
+											<th class="col">투자금액</th>
+											<th class="col">상환회차</th>
+											<th class="col">만기회차</th>
+											<th class="col">상환예정일</th>
+											<th class="col">상환완료일</th>
+											<th class="col">상품상태</th>
+										</tr>
+									</thead>
+									
+								</table>
+								<div class="row" style="margin-top: 10px;">
+									<div class="col-xs-12 col-md-push-6 col-md-6" style="margin-top: 5px;">
+										<form id="investListSrchForm" class="text-right" onsubmit="return false;">
+											<div style="display: inline-block;">
+												<input type="text" class="form-control srchText" name="SRCH_TEXT" style="min-width: 260px;" onkeypress="fn_hitEnterKey(event, 'investList')" placeholder="상품명, 상품ID 또는 상품별호수로 검색" maxlength="20">
+											</div>
+											<div style="display: inline-block;">
+												<button type="button" class="btn btn-purple-transparent" id="investListSrchTextBtn">
+													<i class="glyphicon glyphicon-search"></i>
+												</button>
+											</div>
+											<div class="clearfix"></div>
+										</form>
+									</div>
+									<div class="col-xs-12 col-md-pull-6 col-md-6 text-left" style="margin-top: 5px;">
+										<ul class="pagination pagination-sm margin-0" id="investListPAGE_NAVI"></ul>
+									</div>
+								</div>
+							</div>
+			           		   </div>
+							   </div>
+					    	</form>
+						</div>
+						<!-- =========전체 -->	
+						<div id="depo" class="tab-pane">
+					    	<form role="form" class="form-horizontal">
+						   		<div class="row">
+						   			<div class="col-md-12">
+								   		<div class="row">
+											<div class="col-md-4">
+												<div class="title">
+													<font class="font-purple">
+														●
+													</font> 자산 요약
 												</div>
-                 </div>
-              </div>
-          </div>
-        <!-- /row -->
-
-
-        <!-- /row -->
+												<div class="row height statsText">
+													<div class="col-xs-12 col-sm-12 col-md-12">
+														<div class="row">
+															<div class="col-xs-7 col-sm-7 col-md-7">
+																총 예치금&nbsp;&nbsp;
+																<span class="glyphicon glyphicon-question-sign hover" style="font-size: 12px;" tabindex="0" data-toggle="tooltip" data-placement="auto" data-trigger="hover" title="" data-original-title="=기본 예치금 +자동투자 예치금"></span>
+															</div>
+															<div class="col-xs-5 col-sm-5 col-md-5 text-right">
+																0 원
+															</div>
+														</div>
+														<div class="row" style="margin-top: 5px;">
+															<div class="col-xs-7 col-sm-7 col-md-7">
+																상환 예정 원금&nbsp;&nbsp;
+																<span class="glyphicon glyphicon-question-sign hover" style="font-size: 12px;" tabindex="0" data-toggle="tooltip" data-placement="auto" data-trigger="hover" title="" data-original-title="부실없이 정상 상환을 가정한 예상 원금"></span>
+															</div>
+															<div class="col-xs-5 col-sm-5 col-md-5 text-right">
+																<span name="REST_PRNCPL_DSTRBTN_AMT">0</span> 원
+															</div>
+														</div>
+														<div class="row" style="margin-top: 5px;">
+															<div class="col-xs-7 col-sm-7 col-md-7">
+																투자 대기 금액&nbsp;&nbsp;
+																<span class="glyphicon glyphicon-question-sign hover" style="font-size: 12px;" tabindex="0" data-toggle="tooltip" data-placement="auto" data-trigger="hover" title="" data-original-title="투자금액이 차입자에게 전달되기 전 시점에서의 금액 "></span>
+															</div>
+															<div class="col-xs-5 col-sm-5 col-md-5 text-right">
+																<span name="INVEST_REQ_AMT">0</span> 원
+															</div>
+														</div>
+														
+														<hr>
+														
+														<div class="row">
+															<div class="col-xs-7 col-sm-7 col-md-7">
+																총 자산
+															</div>
+															<div class="col-xs-5 col-sm-5 col-md-5 text-right">
+																<span class="font-purple"><strong>
+																	<span name="TOTAL_ASSET_AMT">0</span> <font size="2">원</font>
+																</strong></span>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										<div class="col-md-6">
+											<div class="title">
+												<font class="font-purple">
+													●
+												</font> 예치금 요약
+											</div>
+											<div class="row height statsText">
+												<div class="col-xs-12 col-sm-12 col-md-12">
+													<div class="row">
+														<div class="col-xs-6 col-sm-6 col-md-6">
+															기본 예치금
+														</div>
+														<div class="col-xs-6 col-sm-6 col-md-6 text-right">
+															0 원
+														</div>
+													</div>
+													<div class="row" style="margin-top: 30px;">
+														<div class="col-xs-6 col-sm-6 col-md-6">
+															자동투자 예치금
+														</div>
+														<div class="col-xs-6 col-sm-6 col-md-6 text-right">
+															0 원
+														</div>
+													</div>
+													<hr>
+													<div class="row">
+														<div class="col-xs-6 col-sm-6 col-md-6">
+															총 예치금
+														</div>
+														<div class="col-xs-6 col-sm-6 col-md-6 text-right">
+															<span class="font-purple"><strong>
+																0 <font size="2">원</font>
+															</strong></span>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+							    	<table class="table">
+	<%-- 					                <c:forEach items="${supportlist}" var="vo" varStatus="status"> --%>
+	<!-- 										<tbody> -->
+	<!-- 											<tr> -->
+	<%-- 												<td><a href="support_total_detail?notice_num=${vo.notice_num}">${vo.notice_num}</a></td> --%>
+	<%-- 												<td><a href="support_total_detail?notice_num=${vo.notice_num}">${vo.title}</a></td> --%>
+	<%-- 												<td>${vo.notice_date}</td> --%>
+	<!-- 											</tr> -->
+	<!-- 										</tbody> -->
+	<%-- 									</c:forEach> --%>
+				           		   </table>
+			           		   	</div>
+							  </div>
+					    	</form>
+						</div>
+						<!-- =========새소식 -->
+					</div>
+				</div>
+            </div>
+        </div>
+        <!-- row -->
       </section>
-      <!-- /wrapper -->
     </section>
-    <!-- /MAIN CONTENT -->
+    
+    
+		
 		<!--footer start-->
 		<footer class="site-footer">
 			<div class="container">

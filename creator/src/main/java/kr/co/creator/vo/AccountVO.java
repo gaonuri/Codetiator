@@ -18,7 +18,6 @@ public class AccountVO {
 		this.bank_name = bank_name;
 		this.bank_num = bank_num;
 		this.deposit = deposit;
-		
 		this.user_num = user_num;
 		this.busi_num = busi_num;
 	}//constructor

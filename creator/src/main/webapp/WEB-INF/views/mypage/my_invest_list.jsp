@@ -34,141 +34,14 @@
 	  License: https://templatemag.com/license/
 	======================================================= -->
 </head>
-
+     
 <body>
 	<section id="container">
 	    <!-- **********************************************************************************************************************************************************
 	        TOP BAR CONTENT & NOTIFICATIONS
 	        *********************************************************************************************************************************************************** -->
 	    <!--header start-->
-	    <header class="header black-bg">
-			<!--logo start-->
-			<a href="./main" class="logo"><img id="logoImage" alt="로고" src="${pageContext.request.contextPath}/resources/img/ner.jpg" width="200px" height="30px"></a>
-			<!--logo end-->
-			<div class="nav notify-row top-menu" id="top_menu">
-				<!--  notification start -->
-				<ul class="nav pull-right top-menu">
-					<!-- settings start -->
-					
-					<!-- 회사소개 start -->
-					<li><a href="./loan_guide">회사소개</a></li>
-					<!-- 회사소개 end -->
-					
-					<!-- 대출 start -->
-					<li class="dropdown">
-						<a data-toggle="dropdown" class="dropdown-toggle" href="#">
-							대출
-						</a>
-						<ul class="dropdown-menu extended tasks-bar">
-							<div class="notify-arrow notify-arrow-green"></div>
-							<li>
-								<a href="./loan_guide">대출안내</a>
-							</li>
-							<li>
-								<a href="./loan/getloan">대출하기</a>
-							</li>
-						</ul>
-					</li>
-	          		<!-- 대출 end -->
-	          
-	          		<!-- inbox dropdown start-->
-	         		<li class="dropdown">
-						<a data-toggle="dropdown" class="dropdown-toggle" href="#">
-							투자
-						</a>
-						<ul class="dropdown-menu extended tasks-bar">
-							<div class="notify-arrow notify-arrow-black"></div>
-							<li>
-								<a href="./invest_guide">투자안내</a>
-							</li>
-							<li>
-								<a href="./invest_list">투자하기</a>
-							</li>
-							<li>
-								<a href="./invest_finish">완료된투자</a>
-							</li>
-						</ul>
-					</li>
-	          		<!-- 투자 end -->
-	          
-	          
-					<!-- 고객지원 start-->
-					<li id="header_notification_bar" class="dropdown">
-						<a data-toggle="dropdown" class="dropdown-toggle" href="#">
-							고객지원
-						</a>
-						<ul class="dropdown-menu extended notification">
-							<div class="notify-arrow"></div>
-							<li>
-								<a href="./faq">FAQ</a>
-							</li>
-							<li>
-								<a href="./support">이용약관</a>
-							</li>
-							<li>
-								<a href="./policy">개인정보</a>
-							</li>
-							<li>
-								<a href="./inquiry">1:1문의</a>
-							</li>
-						</ul>
-					</li>
-					<!-- 고객지원 end -->
-					
-					<!-- 마이페이지 start-->
-					<!-- 마이페이지 end -->
-					
-					<!-- 로그아웃 start -->
-					
-					<c:choose>
-						<c:when test="${Login_ss != null && Login_ss.user_num != '' || Login_sss != null && Login_sss.busi_num != ''}">
-							<li id="header_notification_bar" class="dropdown">
-								<a data-toggle="dropdown" class="dropdown-toggle" href="#">
-									${Login_ss.user_name}${Login_sss.manager_name}님
-								</a>
-								<ul class="dropdown-menu extended notification">
-									<div class="notify-arrow notify-arrow-yellow"></div>
-									<li>
-										<a href="./my_dashboard">대시보드</a>
-									</li>
-									<li>
-										<a href="./my_invest_list">투자내역</a>
-									</li>
-									<li>
-										<a href="./my_loan_list">대출내역</a>
-									</li>
-									<li>
-										<a href="./my_depo_mgn">예치금관리</a>
-									</li>
-									<li>
-										<a href="./my_modify">회원정보수정</a>
-									</li>
-								</ul>
-							</li>						
-						</c:when>
-						<c:otherwise>
-							<li><a class="loginss" href="./login">로그인</a></li>
-						</c:otherwise>
-					</c:choose>
-					
-					<c:choose>
-						<c:when test="${Login_ss != null && Login_ss.user_num != '' || Login_sss != null && Login_sss.busi_num != ''}">
-							<li>
-								<a href="./logout">로그아웃</a>
-							</li>
-						</c:when>
-						<c:otherwise>
-							<li><a class="loginss" href="./join">회원가입</a></li>
-						</c:otherwise>
-					</c:choose>
-				
-					<!-- 로그아웃 end -->
-				</ul>
-				<!--  notification end -->
-			</div>
-			<div class="top-menu">
-			</div>
-	    </header>
+	    <%@ include file="../header.jsp" %>
 	    <!--header end-->
 
 	   <!--sidebar start-->
@@ -177,7 +50,7 @@
 	        <!-- sidebar menu start-->
 	        <ul class="sidebar-menu" id="nav-accordion">
 	          <li class="mt">
-	            <a href="creator/my_desktop">
+	            <a href="/creator/my_dashboard">
 	              <i class="fa fa-dashboard"></i>
 	              <span>대시 보드</span>
 	              </a>
@@ -214,106 +87,166 @@
 	    <!-- **********************************************************************************************************************************************************
 	        MAIN CONTENT
 	        *********************************************************************************************************************************************************** -->
-		<!--main content start-->
-    <section id="main-content">
-      <section class="wrapper">
-        <div class="row mt">
-          <div class="col-md-12">
-            <div class="content-panel">
-              <table class="table table-striped table-advance table-hover">
-                <h4><i class="fa fa-angle-right"></i> Advanced Table</h4>
-                <hr>
-                <thead>
-                  <tr>
-                    <th><i class="fa fa-bullhorn"></i> Company</th>
-                    <th class="hidden-phone"><i class="fa fa-question-circle"></i> Descrition</th>
-                    <th><i class="fa fa-bookmark"></i> Profit</th>
-                    <th><i class=" fa fa-edit"></i> Status</th>
-                    <th></th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>
-                      <a href="basic_table.html#">Company Ltd</a>
-                    </td>
-                    <td class="hidden-phone">Lorem Ipsum dolor</td>
-                    <td>12000.00$ </td>
-                    <td><span class="label label-info label-mini">Due</span></td>
-                    <td>
-                      <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button>
-                      <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
-                      <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <a href="basic_table.html#">
-                        Dashio co
-                        </a>
-                    </td>
-                    <td class="hidden-phone">Lorem Ipsum dolor</td>
-                    <td>17900.00$ </td>
-                    <td><span class="label label-warning label-mini">Due</span></td>
-                    <td>
-                      <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button>
-                      <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
-                      <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <a href="basic_table.html#">
-                        Another Co
-                        </a>
-                    </td>
-                    <td class="hidden-phone">Lorem Ipsum dolor</td>
-                    <td>14400.00$ </td>
-                    <td><span class="label label-success label-mini">Paid</span></td>
-                    <td>
-                      <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button>
-                      <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
-                      <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <a href="basic_table.html#">Dashio ext</a>
-                    </td>
-                    <td class="hidden-phone">Lorem Ipsum dolor</td>
-                    <td>22000.50$ </td>
-                    <td><span class="label label-success label-mini">Paid</span></td>
-                    <td>
-                      <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button>
-                      <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
-                      <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <a href="basic_table.html#">Total Ltd</a>
-                    </td>
-                    <td class="hidden-phone">Lorem Ipsum dolor</td>
-                    <td>12120.00$ </td>
-                    <td><span class="label label-warning label-mini">Due</span></td>
-                    <td>
-                      <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button>
-                      <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
-                      <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
+		<section id="main-content">
+     	 <section class="wrapper">
+       	 	<div class="row">
+         		 <div class="col-md-12">
+            		<div class="content-panel">
+	            		<div class="panel-heading">
+	            			<div class="col-lg-2">
+								<ul class="nav nav-tabs nav-justified">
+									<li class="active">
+										<a data-toggle="tab">나의투자</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+			            <div class="tab-content">
+						<div id="invest" class="tab-pane active">
+					    	<form role="form" class="form-horizontal">
+						   		<div class="row">
+						   		<div class="col-md-12">
+						    	<div class="investDetail">
+								<div class="row">
+									<div class="col-xs-12 col-sm-6 col-md-6">
+										<div class="title">
+											<a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+											<font class="font-purple">
+												●
+											</font> 투자 채권 목록
+										</div>
+									</div>
+								</div>
+								<a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+								
+								<div class="row investList" style="margin-top: 10px;" style="margin-left: 10px;">
+									<div class="col-xs-10 col">
+										<table class="table">
+												<thead>
+													<tr>
+														<th class="col">투자일자</th>
+														<th scope="col" class="clickable" name="investListSortTitle" id="investListSortTitleBANNER_TITLE">
+															프로젝트번호<span name="investListSortDesc" id="investListSortDescBANNER_TITLE"></span>
+														</th>
+														<th scope="col" class="clickable" name="investListSortTitle" id="investListSortTitleLOAN_NM">
+															프로젝트명<span name="investListSortDesc" id="investListSortDescLOAN_NM"></span>
+														</th>
+														<th scope="col" class="clickable" name="investListSortTitle" id="investListSortTitleINVEST_RATE">
+															금리(%)<span name="investListSortDesc" id="investListSortDescINVEST_RATE"></span>
+														</th>
+														<th scope="col" class="clickable" name="investListSortTitle" id="investListSortTitleINVEST_AMT">
+															투자금액<span name="investListSortDesc" id="investListSortDescINVEST_AMT"></span>
+														</th>
+														<th scope="col" colspan="clickable" class="clickable" name="investListSortTitle" id="investListSortTitleRND_CNT">
+															상환차수<span name="investListSortDesc" id="investListSortDescRND_CNT"></span>
+														</th>
+														<th scope="col" class="clickable" name="investListSortTitle" id="investListSortTitleMAX_DSTRBTN_DATE">
+															상환예정일<span name="investListSortDesc" id="investListSortDescMAX_DSTRBTN_DATE"></span>
+														</th>
+														<th scope="col" class="clickable" name="investListSortTitle" id="investListSortTitleMAX_DSTRBTN_DATE">
+															상환완료일<span name="investListSortDesc" id="investListSortDescMAX_DSTRBTN_DATE"></span>
+														</th>
+														<th scope="col" class="clickable" name="investListSortTitle" id="investListSortTitleREPAY_STATS_CD">
+															상품상태<span name="investListSortDesc" id="investListSortDescREPAY_STATS_CD"></span>
+														</th>
+													</tr>
+												</thead>
+											<c:forEach items="${investList}" var="vo" varStatus="status">
+												<tr>
+													<c:if test="${memberVO.user_num != null}">
+													</c:if>
+													<td>${vo.invest_date}</td>
+													<td>${vo.project_num}</td>
+													<td>${vo.project_name}</td>
+													<td>${vo.rate}%</td>
+													<td>${vo.invest_price}</td>
+													<td>${vo.refund_count}</td>
+													<td>${vo.refund}</td>
+													<td>${vo.refund_deadline}</td>
+													<td>${vo.ach_state}</td>
+													<td>
+<%-- 														<c:choose> --%>
+<%-- 															<c:when test="${vo.ach_state == '준비중'}"> --%>
+<!-- 																<button id="state">준비중</button> -->
+<%-- 															</c:when> --%>
+<%-- 															<c:otherwise> --%>
+<%-- 																${vo.ach_state} --%>
+<%-- 															</c:otherwise> --%>
+<%-- 														</c:choose> --%>
+													</td>
+												</tr>
+											</c:forEach>
+										</table>
+									</div>
+								</div>
+							<div class="row investThum" style="margin-top: 10px;" id="investThum"></div>
+								
+								<!-- 
+								<div class="row" style="margin-top: 10px;" id="nextPageDiv">
+									<div class="col-xs-12 col-sm-12 col-md-12">
+										<div class="alarm-box-bottom">
+											<a href='javascript:(void(0));' onclick='fn_selectNextPage()' id="nextPageBtn" class="display-none">
+												<i class="glyphicon glyphicon-menu-down"></i>
+											</a>
+											<a href='javascript:(void(0));' onclick='fn_resetPage()' id="resetPageBtn" class="display-none">
+												<i class="glyphicon glyphicon-menu-up"></i>
+											</a>
+										</div>
+									</div>
+								</div>
+								 -->
+								
+								<table id="tblExport" style="display:none;" class="tblExport">
+									<thead>
+										<tr>
+											<th class="col">투자일자</th>
+											<th class="col">상품별호수</th>
+											<th class="col">상품명</th>
+											<th class="col">금리</th>
+											<th class="col">투자금액</th>
+											<th class="col">상환회차</th>
+											<th class="col">만기회차</th>
+											<th class="col">상환예정일</th>
+											<th class="col">상환완료일</th>
+											<th class="col">상품상태</th>
+										</tr>
+									</thead>
+									
+								</table>
+								<div class="row" style="margin-top: 10px;">
+									<div class="col-xs-12 col-md-push-6 col-md-6" style="margin-top: 5px;">
+										<form id="investListSrchForm" class="text-right" onsubmit="return false;">
+											<div style="display: inline-block;">
+												<input type="text" class="form-control srchText" name="SRCH_TEXT" style="min-width: 260px;" onkeypress="fn_hitEnterKey(event, 'investList')" placeholder="상품명, 상품ID 또는 상품별호수로 검색" maxlength="20">
+											</div>
+											<div style="display: inline-block;">
+												<button type="button" class="btn btn-purple-transparent" id="investListSrchTextBtn">
+													<i class="glyphicon glyphicon-search"></i>
+												</button>
+											</div>
+											<div class="clearfix"></div>
+										</form>
+									</div>
+									<div class="col-xs-12 col-md-pull-6 col-md-6 text-left" style="margin-top: 5px;">
+										<ul class="pagination pagination-sm margin-0" id="investListPAGE_NAVI"></ul>
+									</div>
+								</div>
+							</div>
+			           		   </div>
+							   </div>
+					    	</form>
+						</div>
+						<!-- =========전체 -->	
+					</div>
+				</div>
             </div>
-            <!-- /content-panel -->
-          </div>
-          <!-- /col-md-12 -->
         </div>
-        <!-- /row -->
+        <!-- row -->
       </section>
     </section>
-    <!-- /MAIN CONTENT -->
-    <!--main content end-->
+    
+    
+		
 		<!--footer start-->
 		<footer class="site-footer">
 			<div class="container">
@@ -377,70 +310,6 @@
 	<!--script for this page-->
 	<script src="${pageContext.request.contextPath}/resources/bootstrap/lib/sparkline-chart.js"></script>
 	<script src="${pageContext.request.contextPath}/resources/bootstrap/lib/zabuto_calendar.js"></script>
-	<script type="text/javascript">
-  /*
-	$(document).ready(function() {
-      var unique_id = $.gritter.add({
-        // (string | mandatory) the heading of the notification
-        title: 'Welcome to Dashio!',
-        // (string | mandatory) the text inside the notification
-        text: 'Hover me to enable the Close Button. You can hide the left sidebar clicking on the button next to the logo. Developed by <a href="http://alvarez.is" target="_blank" style="color:#4ECDC4">Alvarez.is</a>.',
-        // (string | optional) the image to display on the left
-        image: '${pageContext.request.contextPath}/resources/bootstrap/img/ui-sam.jpg',
-        // (bool | optional) if you want it to fade out on its own or just sit there
-        sticky: false,
-        // (int | optional) the time you want it to be alive for before fading out
-        time: 8000,
-        // (string | optional) the class name you want to apply to that specific message
-        class_name: 'my-sticky-class'
-      });
-
-      return false;
-    });
-  */
-	</script>
-	<script type="application/javascript">
-    $(document).ready(function() {
-      $("#date-popover").popover({
-        html: true,
-        trigger: "manual"
-      });
-      $("#date-popover").hide();
-      $("#date-popover").click(function(e) {
-        $(this).hide();
-      });
-
-      $("#my-calendar").zabuto_calendar({
-        action: function() {
-          return myDateFunction(this.id, false);
-        },
-        action_nav: function() {
-          return myNavFunction(this.id);
-        },
-        ajax: {
-          url: "show_data.php?action=1",
-          modal: true
-        },
-        legend: [{
-            type: "text",
-            label: "Special event",
-            badge: "00"
-          },
-          {
-            type: "block",
-            label: "Regular event",
-          }
-        ]
-      });
-    });
-
-    function myNavFunction(id) {
-      $("#date-popover").hide();
-      var nav = $("#" + id).data("navigation");
-      var to = $("#" + id).data("to");
-      console.log('nav ' + nav + ' to: ' + to.month + '/' + to.year);
-    }
-	</script>
 </body>
 
 </html>

@@ -33,6 +33,21 @@
 	  Author: TemplateMag.com
 	  License: https://templatemag.com/license/
 	======================================================= -->
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$("#state_u").click(function() {
+				location.href="${pageContext.request.contextPath}/invest_detail?project_num=$('#project_num').val()&user_num=${memberVO.user_num}";
+			});
+			
+			$("#state_b").click(function() {
+				location.href="${pageContext.request.contextPath}/invest_detail?project_num=$('#project_num').val()&busi_num=${memberVO.busi_num}";
+			});
+			
+			$("#state_n").click(function() {
+				location.href="${pageContext.request.contextPath}/login";
+			});
+		});
+	</script>
 </head>
 
 <body>
@@ -41,143 +56,27 @@
 	        TOP BAR CONTENT & NOTIFICATIONS
 	        *********************************************************************************************************************************************************** -->
 	    <!--header start-->
-	    <header class="header black-bg">
-			<!--logo start-->
-			<a href="./main" class="logo"><img id="logoImage" alt="로고" src="${pageContext.request.contextPath}/resources/img/ner.jpg" width="200px" height="30px"></a>
-			<!--logo end-->
-			<div class="nav notify-row top-menu" id="top_menu">
-				<!--  notification start -->
-				<ul class="nav pull-right top-menu">
-					<!-- settings start -->
-					
-					<!-- 회사소개 start -->
-					<li><a href="./loan_guide">회사소개</a></li>
-					<!-- 회사소개 end -->
-					
-					<!-- 대출 start -->
-					<li class="dropdown">
-						<a data-toggle="dropdown" class="dropdown-toggle" href="#">
-							대출
-						</a>
-						<ul class="dropdown-menu extended tasks-bar">
-							<div class="notify-arrow notify-arrow-green"></div>
-							<li>
-								<a href="./loan_guide">대출안내</a>
-							</li>
-							<li>
-								<a href="./loan/getloan">대출하기</a>
-							</li>
-						</ul>
-					</li>
-	          		<!-- 대출 end -->
-	          
-	          		<!-- inbox dropdown start-->
-	         		<li class="dropdown">
-						<a data-toggle="dropdown" class="dropdown-toggle" href="#">
-							투자
-						</a>
-						<ul class="dropdown-menu extended tasks-bar">
-							<div class="notify-arrow notify-arrow-black"></div>
-							<li>
-								<a href="./invest_guide">투자안내</a>
-							</li>
-							<li>
-								<a href="./invest_list">투자하기</a>
-							</li>
-							<li>
-								<a href="./invest_finish">완료된투자</a>
-							</li>
-						</ul>
-					</li>
-	          		<!-- 투자 end -->
-	          
-	          
-					<!-- 고객지원 start-->
-					<li id="header_notification_bar" class="dropdown">
-						<a data-toggle="dropdown" class="dropdown-toggle" href="#">
-							고객지원
-						</a>
-						<ul class="dropdown-menu extended notification">
-							<div class="notify-arrow"></div>
-							<li>
-								<a href="./faq">FAQ</a>
-							</li>
-							<li>
-								<a href="./support">이용약관</a>
-							</li>
-							<li>
-								<a href="./policy">개인정보</a>
-							</li>
-							<li>
-								<a href="./inquiry">1:1문의</a>
-							</li>
-							<li>
-								<a href="./support_total">공지사항</a>
-							</li>
-						</ul>
-					</li>
-					<!-- 고객지원 end -->
-					
-					<!-- 마이페이지 start-->
-					<li id="header_notification_bar" class="dropdown">
-						<a data-toggle="dropdown" class="dropdown-toggle" href="#">
-							마이페이지
-						</a>
-						<ul class="dropdown-menu extended notification">
-							<div class="notify-arrow notify-arrow-yellow"></div>
-							<li>
-								<a href="./my_dashboard">대시보드</a>
-							</li>
-							<li>
-								<a href="./my_invest_list">투자내역</a>
-							</li>
-							<li>
-								<a href="./my_loan_list">대출내역</a>
-							</li>
-							<li>
-								<a href="./my_depo_mgn">예치금관리</a>
-							</li>
-							<li>
-								<a href="./my_modify">회원정보수정</a>
-							</li>
-						</ul>
-					</li>
-					<!-- 마이페이지 end -->
-					
-					<!-- 로그아웃 start -->
-					<li><a href="./loan_guide">로그아웃</a></li>
-					<!-- 로그아웃 end -->
-				</ul>
-				<!--  notification end -->
-			</div>
-			<div class="top-menu">
-				<ul class="nav pull-right top-menu">
-					<li><a class="logout" href="/creator/join">회원가입</a></li>
-				</ul>
-			</div>
-	    </header>
+		<%@ include file="../header.jsp" %>
 	    <!--header end-->
-	   
 	   
 	    <!-- **********************************************************************************************************************************************************
 	        MAIN CONTENT
 	        *********************************************************************************************************************************************************** -->
 		<!--main content start-->
-		<section id="main-content">
+		<section>
 			<section class="wrapper">
 				<h3><i class="fa fa-angle-right"></i> 투자상품</h3>
 				<div class="row mb">
 					<!-- page start-->
 					<div class="content-panel">
-						
 						<!-- 투자리스트 start -->
 						<div class="adv-table">
-	 						<table cellpadding="0" cellspacing="0" border="0" class="display table table-bordered" id="hidden-table-info">
+	 						<table cellpadding="0" cellspacing="0" border="1" class="display table table-bordered" id="hidden-table-info">
 								<thead>
 						            <tr>
 										<th class="col">상품명</th>
 										<th class="col">등급</th>
-										<th class="col">연 수익률</th>
+										<th class="col">금리</th>
 										<th class="col">기간</th>
 										<th class="col">모집금액</th>
 										<th class="col">상환방식</th>
@@ -187,17 +86,40 @@
 								</thead>
 								<c:forEach items="${investList}" var="vo" varStatus="status">
 										<tr>
-											<td><a href="./invest_detail?project_num=${vo.project_num}">${vo.project_name}</a></td>
+											<td>
+												<input id="project_num" type="hidden" value="${vo.project_num}" />
+												<c:choose>
+													<c:when test="${memberVO.user_num != null}">
+														<a href="${pageContext.request.contextPath}/invest_detail?project_num=${vo.project_num}&p_busi_num=${vo.busi_num}&user_num=${memberVO.user_num}">${vo.project_name}u</a>
+													</c:when>
+													<c:when test="${memberVO.busi_num != null}">
+														<a href="${pageContext.request.contextPath}/invest_detail?project_num=${vo.project_num}&p_busi_num=${vo.busi_num}&busi_num=${memberVO.busi_num}">${vo.project_name}b</a>
+													</c:when>
+													<c:otherwise>
+														<a href="${pageContext.request.contextPath}/invest_detail?project_num=${vo.project_num}">${vo.project_name}</a>
+													</c:otherwise>
+												</c:choose>
+											</td>
 											<td>${vo.grade}</td>
-											<td>${vo.yield}%</td>
+											<td>${vo.rate}%</td>
 											<td>${vo.refund}개월</td>
 											<td>${vo.price}만원</td>
 											<td>${vo.repay_method}</td>
 											<td>${vo.ach_rate}</td>
 											<td>
 												<c:choose>
-													<c:when test="${vo.ach_state == '준비중'}">
-														<button id="state">준비중</button>
+													<c:when test="${vo.ach_state == '투자하기'}">
+														<c:choose>
+															<c:when test="${memberVO.user_num != null}">
+																<button id="state_u">${vo.ach_state}</button>
+															</c:when>
+															<c:when test="${memberVO.busi_num != null}">
+																<button id="state_b">${vo.ach_state}</button>
+															</c:when>
+															<c:otherwise>
+																<button id="state_n">${vo.ach_state}</button>
+															</c:otherwise>
+														</c:choose>
 													</c:when>
 													<c:otherwise>
 														${vo.ach_state}

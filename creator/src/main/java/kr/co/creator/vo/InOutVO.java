@@ -5,7 +5,14 @@ public class InOutVO {
 	private String in_out_num;		// 입출금번호
 	private String input_history;	// 입금내역
 	private String output_history;	// 출금내역
+	private String user_num; // 유저 번호
 	
+	public String getUser_num() {
+		return user_num;
+	}
+	public void setUser_num(String user_num) {
+		this.user_num = user_num;
+	}
 	private String account_num;		// (참조)계좌순서
 	
 	public InOutVO() {}	//constructor

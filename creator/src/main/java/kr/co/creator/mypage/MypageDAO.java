@@ -6,8 +6,14 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import kr.co.creator.vo.AccountVO;
+import kr.co.creator.vo.FindPwdVO;
+import kr.co.creator.vo.InOutVO;
 import kr.co.creator.vo.InvestVO;
+import kr.co.creator.vo.MemberVO;
+import kr.co.creator.vo.MypageVO;
 import kr.co.creator.vo.ProjectVO;
+import kr.co.creator.vo.UserVO;
 
 @Repository
 public class MypageDAO {
@@ -15,20 +21,41 @@ public class MypageDAO {
 	@Autowired
 	SqlSession sqlSession;
 
-	public List<InvestVO> assetsList() {
-		List<InvestVO> list = null;
-		list = sqlSession.selectList(
-							"MypageMapper.assetsList");
-		return list;
-	}//assetList
-
-	public ProjectVO project_detail(ProjectVO proVO) {
-		proVO = sqlSession.selectOne("MypageMapper.InvestList", proVO);
-		return proVO;
+	public List<MypageVO> invest_detail(MemberVO userVO) {
+		List<MypageVO> invest = null;
+		invest = sqlSession.selectList("MypageMapper.InvestList", userVO);
+		return invest;
 	}
 
-	public InvestVO invest_detail(InvestVO ivVO) {
-		ivVO = sqlSession.selectOne("MypageMapper.InvestList", ivVO);
-		return ivVO;
+	public List<ProjectVO> loan_list(MemberVO userVO) {
+		List<ProjectVO> loan = null;
+		loan = sqlSession.selectList("MypageMapper.loanlist", userVO);
+		return loan;
 	} 
+	
+	public AccountVO account(MemberVO userVO, AccountVO accVO) {
+		accVO = sqlSession.selectOne("MypageMapper.Account", accVO);
+		return accVO;
+	}
+	
+	public InOutVO inout(MemberVO userVO, InOutVO ioVO) {
+		ioVO = sqlSession.selectOne("MypageMapper.Inout", userVO);
+		return ioVO;
+	}
+	
+	public int myPageModifyU(MemberVO vo) {
+		int cnt = 0;
+		cnt = sqlSession.selectOne("MypageMapper.MyPageModifyU", vo);
+		return cnt;
+	}//myPageModifyU
+	
+	public int myPageModifyB(MemberVO vo) {
+		int cnt = 0;
+		cnt = sqlSession.selectOne("MypageMapper.MyPageModifyB", vo);
+		return cnt;
+	}//myPageModifyB
+
+	
 }//class
+
+
