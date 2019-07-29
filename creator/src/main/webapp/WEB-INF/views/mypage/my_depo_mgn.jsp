@@ -132,7 +132,7 @@
 																	은행
 																</div>
 																<div class="col-xs-7 col-sm-7 col-md-7 withdraw-content">
-																	농협
+																	${Account.bank_name}
 																</div>
 															</div>
 															<div class="row" style="margin-top: 10px;">
@@ -140,7 +140,7 @@
 																	입금계좌
 																</div>
 																<div class="col-xs-7 col-sm-7 col-md-7 withdraw-content">
-																	<span class="font-purple" id="vtAcntNoSpan">790-1688-5573-251</span>
+																	<span class="font-purple" id="vtAcntNoSpan">${Account.bank_num}</span>
 																</div>
 															</div>
 														</div>
