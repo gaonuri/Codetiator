@@ -38,16 +38,27 @@ public class MypageDAO {
 		return accVO;
 	}
 	
+<<<<<<< HEAD
 	public InOutVO inout(MemberVO userVO, InOutVO ioVO) {
 		ioVO = sqlSession.selectOne("MypageMapper.Inout", userVO);
 		return ioVO;
 	}
 	
 	public int myPageModify(MemberVO vo) {
+=======
+	
+	public int myPageModifyU(MemberVO vo) {
+>>>>>>> branch 'master' of https://github.com/gaonuri/Codetiator.git
 		int cnt = 0;
-		cnt = sqlSession.selectOne("MypageMapper.MyPageModify", vo);
+		cnt = sqlSession.selectOne("MypageMapper.MyPageModifyU", vo);
 		return cnt;
-	}//myPageModify
+	}//myPageModifyU
+	
+	public int myPageModifyB(MemberVO vo) {
+		int cnt = 0;
+		cnt = sqlSession.selectOne("MypageMapper.MyPageModifyB", vo);
+		return cnt;
+	}//myPageModifyB
 
 
 	

@@ -36,17 +36,15 @@
 	<script type="text/javascript">
 	$(document).ready(function() {
 		var temp = 0;
-		var add  = 0;
+		var add = 0;
+		var current_price = parseInt($("#current_price").val() * 10000);
+		var invest_price = parseInt($("#invest_price").val());
 		var deposit = parseInt($("#inputDeposit771").val());
 		var invest 	= parseInt($("#inputAmt771").val());
 		var intrst 	= invest * $("#rate").val() * 0.01;
-		var limit	= parseInt($("#invest_limit").val());
 		var tax 	= parseInt(intrst * 0.275);
 		var benefit = invest + intrst - tax;
 		var confirmYN = false;
-		var check = $("input:checkbox[id=agreeCheckbox]:checked").is(":checked");
-
-
 		
 		$("#amtPlus100_771").click(function() {
 			addDeposit(1000000);
@@ -69,29 +67,14 @@
 		});//amtPlus1_771
 		
 		$("#amtPlusAll_771").click(function() {
-			$("#inputAmt771").val($("#invest_limit").val());
-			calculating();
+			$("#inputAmt771").val($("#inputDeposit771").val());
 		});//amtPlusAll_771
 		
 		$("#amtReset_771").click(function() {
 			$("#inputAmt771").val("0");
-			calculating();
 		});//amtReset_771
 		
-		$("#inputAmt771").keyup(function(event) {
-			//alert(event.keyCode);
-			$("#inputAmt771").val(
-				$("#inputAmt771").val().replace(/[^0-9\.]/g,'')
-			);//한글 입력 방지
-		});//pass.keydown
-		
-		$("#inputAmt771").keyup(function() {
-			invest = parseInt($("#inputAmt771").val());
-			//alert("invest : " + invest); alert("limit : " + limit);
-			if(invest > limit) {
-				alert("동일 차입자에게 투자한도 이상의 투자를 할 수 없습니다.");
-				$("#inputAmt771").val($("#invest_limit").val());
-			}
+		$("#inputAmt771").blur(function() {
 			calculating();
 		});
 
@@ -100,19 +83,8 @@
 				temp = parseInt($("#inputAmt771").val());
 				temp += add;
 				
-				if(temp > limit) {
-					alert("동일 차입자에게 투자한도 이상의 투자를 할 수 없습니다.");
-				} else {
-					$("#inputAmt771").val(temp);
-					calculating();
-				}
-			} else if(temp > deposit) {
-				confirmYN = confirm("투자 가능 예치금이 부족합니다. 예치금 관리 페이지로 이동하시겠습니까?");
-				if(confirmYN == true) {
-					location.href = "${pageContext.request.contextPath}/my_depo_mgn";
-				} else {
-					return;
-				}//if
+				$("#inputAmt771").val(temp);
+				calculating();
 			} else {
 				confirmYN = confirm("투자 가능 예치금이 부족합니다. 예치금 관리 페이지로 이동하시겠습니까?");
 				if(confirmYN == true) {
@@ -128,27 +100,30 @@
 			intrst 	= invest * $("#rate").val() * 0.01;
 			tax 	= parseInt(intrst * 0.275);
 			benefit = invest + intrst - tax;
-
+			
 			$("#investAmtL").text(invest);
 			$("#intrstAmtL").text(intrst);
 			$("#taxAmtL").text(tax);
 			$("#benefitAmtL").text(benefit);
-		}//calculating
+		}
+		
 		
 		$("#invest_offer_u").click(function() {
-			$("#deposit").val(deposit - invest);
-			alert(deposit - invest);
-			//alert($("input:checkbox[id=agreeCheckbox]:checked").is(":checked"));
-			check = $("input:checkbox[id=agreeCheckbox]:checked").is(":checked");
-			
-			if(check == true) {
-				var confirmYN = false;
-				confirmYN = confirm("정말 투자하시겠습니까?");
-				if(confirmYN == true) {
+			$("#current_price").val((ccurrent_price + invest) / 10000);
+			$("#deposit").val(deposit - invest);		
+			alert("current_price : " + parseInt(current_price + invest) / 10000);
+			alert("invest_price : " + invest_price);
+			alert("deposit : " + parseInt(deposit - invest));
+// 			if($("#agreeCheckbox").val == "Y") {
+// 				var confirmYN = false;
+// 				confirmYN = confirm("정말 투자하시겠습니까?");
+// 				if(confirmYN == true) {
 					$.post("${pageContext.request.contextPath}/deposit_update",
 							{
 								user_num:$("#user_num").val(),
-								deposit:$("#deposit").val()
+								project_num:$("#project_num").val(),
+								current_price:$("#current_price").val(),
+								invest_price:$("#invest_price").val()
 							},
 							function(data, status) {
 								alert(data); alert(status);
@@ -167,27 +142,31 @@
 								}
 							}//call back function
 						);//post
-				} else {
-					return;
-				}
-			} else {
-				alert("약관에 동의해주시기 바랍니다.");
-			}//if
+// 				} else {
+// 					return;
+// 				}
+// 			} else {
+// 				alert("약관에 동의해주시기 바랍니다.");
+//			}//if
 		});//invest_offer_u
 		
+		
 		$("#invest_offer_b").click(function() {
-			$("#deposit").val(deposit - invest);
-			alert(deposit - invest);
-			check = $("input:checkbox[id=agreeCheckbox]:checked").is(":checked");
-			
-			if(check == true) {
-				var confirmYN = false;
-				confirmYN = confirm("정말 투자하시겠습니까?");
-				if(confirmYN == true) {
+			$("#current_price").val((ccurrent_price + invest) / 10000);
+			$("#deposit").val(deposit - invest);		
+			alert("current_price : " + parseInt(current_price + invest) / 10000);
+			alert("invest_price : " + invest_price);
+			alert("deposit : " + parseInt(deposit - invest));
+// 			if($("#agreeCheckbox").val == "Y") {
+// 				var confirmYN = false;
+// 				confirmYN = confirm("정말 투자하시겠습니까?");
+// 				if(confirmYN == true) {
 					$.post("${pageContext.request.contextPath}/deposit_update",
 							{
 								busi_num:$("#busi_num").val(),
-								deposit:$("#deposit").val()
+								deposit:$("#deposit").val(),
+								current_price:$("#current_price").val(),
+								invest_price:$("#invest_price").val()
 							},
 							function(data, status) {
 								alert(data); alert(status);
@@ -206,12 +185,12 @@
 								}
 							}//call back function
 						);//post
-				} else {
-					return;
-				}
-			} else {
-				alert("약관에 동의해주시기 바랍니다.");
-			}//if
+// 				} else {
+// 					return;
+// 				}
+// 			} else {
+// 				alert("약관에 동의해주시기 바랍니다.");
+//			}//if
 		});//invest_offer_b
 		
 	});//ready
@@ -224,7 +203,7 @@
 	        TOP BAR CONTENT & NOTIFICATIONS
 	        *********************************************************************************************************************************************************** -->
 		<!--header start-->
-		<%@ include file="../header.jsp" %>
+		<%@ include file="./header.jsp" %>
 		<!--header end-->
 	   
 	    <!-- **********************************************************************************************************************************************************
@@ -244,6 +223,7 @@
 											<div class="box-header"></div>
 											<div class="box-body">
 												<div class="box-wrap">
+											
 													<div class="top">
 														<div class="title">
 															투자신청서
@@ -302,13 +282,38 @@
 																</form>
 															</div>
 														</div>
+														
 														<div class="title">
 															<font class="font-purple">
 																●
 															</font> 투자한도 현황
 														</div>
 														<div class="row" id="investLmt">
-															<div class="col-xs-12 col-sm-12 col-md-12 investLmt">
+															<div class="col-xs-6 col-sm-6 col-md-6 investLmt">
+																<div class="wrap">
+																	<div class="investLmtTitle">
+																		<strong>총 투자한도</strong>
+																		<span class="glyphicon glyphicon-question-sign hover" style="font-size: 12px;" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="auto bottom" data-html="true" data-content="<strong>금융위원회의 P2P대출 가이드라인 준수를 위해 투자자구분별 투자한도가 적용됩니다.</strong>
+																			<br>1. 개인투자자
+																			<br> - 동일차입자 500만원, 총 2,000만원
+																			<br> ※ 단 부동산 상품이면 총 1,000만원
+																			<br>2. 소득요건을 구비한 개인투자자
+																			<br> - 동일차입자 2,000만원, 총 4,000만원
+																			<br>3. 개인전문투자자 : 제한없음 
+																			<br>4. 법인투자자 : 제한없음
+																			<br>※ 2017년 5월 29일 이전 투자는 해당없음" data-original-title="" title="">
+																		</span>
+																	</div>
+																	<hr>
+																	<div class="investLmtContent display-none" id="invstrTypeOn" style="display: block;">
+																		<strong><span id="invstrTypeLmtAmt">1,000</span>만원</strong> / <span id="invstrTypeLmtMaxAmt">1,000</span>만원
+																	</div>
+																	<div class="investLmtContent display-none" id="invstrTypeOff">
+																		<strong>제한 없음</strong>
+																	</div>
+																</div>
+															</div>
+															<div class="col-xs-6 col-sm-6 col-md-6 investLmt">
 																<div class="wrap">
 																	<div class="investLmtTitle">
 																		<strong>동일차입자 한도</strong>
@@ -329,6 +334,7 @@
 																●
 															</font> 투자 채권
 														</div>
+														
 														<div class="goodlist-title">
 															<div class="row">
 																<div class="col-sm-5 col-md-5">
@@ -476,13 +482,12 @@
 																	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-4 col">
 																		<div class="inputAutoDepositText">
 																			현재 자동투자예치금 <span class="glyphicon glyphicon-question-sign hover" style="font-size: 12px;" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="auto bottom" data-html="true" data-content="투자 신청에 사용하기 위해 자동투자예치금을 기본예치금으로 즉시 이동시킵니다." data-original-title="" title="">
-																			</span> : <span class="font-purple" name="availAutoDeposit" id="availAutoDeposit771">0</span><font size="1">원</font>
+																					</span> : <span class="font-purple" name="availAutoDeposit" id="availAutoDeposit771">0</span><font size="1">원</font>
 																		</div>
 																	</div>
 																</div>
-															</div>
+															</div>	
 														</div>
-														
 														<div class="title">
 															<font class="font-purple">
 																●
@@ -509,6 +514,23 @@
 																</tr>
 															</tbody>
 														</table>
+														
+														<!-- hidden value -->
+														<input type="hidden" id="reqDeposit771" name="reqDeposit" value="0">
+														<input type="hidden" name="repayAmt" id="repayAmt771" value="164625000">
+														<input type="hidden" name="loanAmt" id="loanAmt771" value="150000000">
+														<input type="hidden" name="umbrellarRate" id="umbrellarRate771" value="0.0">
+														<input type="hidden" name="umbrellarAplyYn" id="umbrellarAplyYn771" value="N">
+														<input type="hidden" name="brrwrAmt" id="brrwrAmt771" value="5000000">
+														<input type="hidden" id="deposit" value="" />								<!-- 예치금 -->
+														<input type="hidden" id="rate" value="${projectVO.rate}" />					<!-- 금리 -->
+														<input type="hidden" id="user_num" value="${memberVO.user_num}" />			<!-- 유저번호 -->
+														<input type="hidden" id="busi_num" value="${memberVO.busi_num}" />			<!-- 법인유저번호 -->
+														<input type="hidden" id="project_num" value="${projectVO.project_num}">		<!-- 프로젝트번호 -->
+														<input type="hidden" id="current_price" value="${projectVO.current_price}">	<!-- 현재금액 -->
+														<input type="hidden" id="invest_price" value="${inVO.invest_price}">		<!-- 투자금액 -->
+														<!-- hidden value -->
+														
 														<div>
 															투자시 주의사항 안내
 														</div>
@@ -520,7 +542,7 @@
 																<li>투자 신청 취소는 해당 채권의 투자 모집이 마감되기 이전까지만 가능합니다. 마감 후에는 취소가 불가능합니다.</li>
 																<li>매월 상환일에 상환금액에서 당사 서비스 이용료를 제외한 나머지 금액을 입금해드립니다. 또한 상환기간 중 차입자의 사정으로 중도 상환이 발생할 경우 SMS를 통해 상환일정 및 상환금에 대해 안내해드립니다.</li>
 																<li>투자 상환금은 나의 예치금 계좌로 입금해드립니다.</li>
-																<li>차입자가 대출을 취소할 경우, 투자금은 '기본 예치금' 으로 회수됩니다.</li>
+																<li>차입자가 대출을 취소할 경우, 투자금은 '기본 예치금' 또는 '자동투자 예치금'으로 회수됩니다.</li>
 															</ol>
 														</div>
 														
@@ -552,8 +574,8 @@
 <!-- 													</a> -->
 												</div>
 												<div class="bottomLine">
-													<p>투자 신청시 <a href="${pageContext.request.contextPath}/privacy_policy" target="_blank">개인정보 처리방침</a> 및 
-													<a href="${pageContext.request.contextPath}/investor_terms_service" target="_blank">투자자 이용약관</a>에 동의하게 됩니다.</p>
+													<p>투자 신청시 <a href="" target="_blank">개인정보 처리방침</a> 및 
+													<a href="" target="_blank">투자자 이용약관</a>에 동의하게 됩니다.</p>
 												</div>
 											</div>
 											<div class="box-footer"></div>
@@ -569,24 +591,6 @@
 			<!-- /wrapper -->
 	    </section>
 	    <!-- /MAIN CONTENT -->
-	    
-	    <!-- hidden value -->
-		<input type="hidden" id="reqAmt771" name="reqAmt" value="0">
-		<input type="hidden" name="repayAmt" id="repayAmt771" value="164625000">
-		<input type="hidden" name="loanAmt" id="loanAmt771" value="150000000">
-		<input type="hidden" name="umbrellarRate" id="umbrellarRate771" value="0.0">
-		<input type="hidden" name="umbrellarAplyYn" id="umbrellarAplyYn771" value="N">
-		<input type="hidden" name="brrwrAmt" id="brrwrAmt771" value="5000000">
-		<input type="hidden" id="deposit" value="" />											<!-- 예치금 -->
-		<input type="hidden" id="rate" value="${projectVO.rate}" />								<!-- 금리 -->
-		<input type="hidden" id="user_num" value="${memberVO.user_num}" />						<!-- 유저번호 -->
-		<input type="hidden" id="busi_num" value="${memberVO.busi_num}" />						<!-- 법인유저번호 -->
-		<input type="hidden" id="project_num" value="${projectVO.project_num}">					<!-- 프로젝트번호 -->
-	    <input type="hidden" id="current_price" value="${projectVO.current_price}" />			<!-- 현재 모금액 -->
-	    <input type="hidden" id="invest_price" value="${inVO.invest_price}">					<!-- 투자금액 -->
-	    <input type="hidden" id="invest_limit" value="${(500 - inVO.invest_price) * 10000}" />	<!-- 투자한도 -->
-	    <!-- hidden value -->
-	    
 	    <!--main content end-->
 		
 		<!--footer start-->

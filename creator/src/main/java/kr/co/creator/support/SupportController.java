@@ -77,14 +77,14 @@ public class SupportController {
 		return "support/support_new";
 	}
 
-	@RequestMapping(value="/support/formi"
+	@RequestMapping(value="/formi"
 			,method=RequestMethod.GET)
 	public String formInsert() {
 	logger.info("formInsert");
 	return "support/form_insert";
 	}//supportInsert
 	
-	@RequestMapping(value="/support/insert"
+	@RequestMapping(value="/insert"
 			,method=RequestMethod.POST)
 	public void supportInsert(NoticeVO vo, PrintWriter out) {
 	System.out.println("supportInsert");
@@ -96,7 +96,7 @@ public class SupportController {
 	out.close();
 	}//boardInsert
 	
-	@RequestMapping(value="/support/insert2"
+	@RequestMapping(value="/insert2"
 			,method=RequestMethod.POST)
 	public void supportInsert2(NoticeVO vo, PrintWriter out) {
 	System.out.println("supportInsert");
@@ -108,6 +108,19 @@ public class SupportController {
 	out.close();
 	}//boardInsert
 	
+	@RequestMapping(value="/privacy_policy" ,method=RequestMethod.GET)
+	public String privacy_policy() {
+	logger.info("privacy_policy");
+	
+	return "support/privacy_policy";
+	}//policy
+	
+	@RequestMapping(value="/investor_terms_service" ,method=RequestMethod.GET)
+	public String investor_terms_service() {
+	logger.info("investor_terms_service");
+	
+	return "support/investor_terms_service";
+	}//investor_terms_service
 	
 	@RequestMapping(value="/support_total_detail"
 			,method=RequestMethod.GET)

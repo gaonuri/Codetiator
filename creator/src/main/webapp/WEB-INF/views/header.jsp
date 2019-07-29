@@ -102,27 +102,27 @@
 					<c:choose>
 						<c:when test="${memberVO != null && memberVO.user_num != '' || memberVO != null && memberVO.busi_num != ''}">
 							<c:choose>
-							<c:when test="${memberVO.user_num == '1'}">
-								<li><a>${memberVO.user_name}님</a></li>
+							<c:when test="${memVO.user_num == '1'}">
+								<li><a>${memVO.user_name}님</a></li>
 							</c:when>
 							<c:otherwise>
 							<li id="header_notification_bar" class="dropdown">
 								<a data-toggle="dropdown" class="dropdown-toggle" href="#">
-									${memberVO.user_name}${memberVO.manager_name}님
+									${memVO.user_name}${memVO.manager_name}님
 								</a>
 								<ul class="dropdown-menu extended notification">
 									<div class="notify-arrow notify-arrow-green"></div>
 									<li>
-										<a href="${pageContext.request.contextPath}/my_dashboard">대시보드</a>
+										<a href="${pageContext.request.contextPath}/my_dashboard?user_num=${memberVO.user_num}&busi_num=${memberVO.busi_num}">대시보드</a>
 									</li>
 									<li>
-										<a href="${pageContext.request.contextPath}/my_invest_list">투자내역</a>
+										<a href="${pageContext.request.contextPath}/my_invest_list?user_num=${memberVO.user_num}&busi_num=${memberVO.busi_num}">투자내역</a>
 									</li>
 									<li>
-										<a href="${pageContext.request.contextPath}/my_loan_list">대출내역</a>
+										<a href="${pageContext.request.contextPath}/my_loan_list?user_num=${memberVO.user_num}&busi_num=${memberVO.busi_num}">대출내역</a>
 									</li>
 									<li>
-										<a href="${pageContext.request.contextPath}/my_depo_mgn">예치금관리</a>
+										<a href="${pageContext.request.contextPath}/my_depo_mgn?user_num=${memberVO.user_num}&busi_num=${memberVO.busi_num}">예치금관리</a>
 									</li>
 									<li>
 										<a href="${pageContext.request.contextPath}/my_modify?user_num=${memberVO.user_num}&busi_num=${memberVO.busi_num}">회원정보수정</a>

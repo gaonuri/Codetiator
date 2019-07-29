@@ -40,11 +40,17 @@ public class MypageService {
 		return ioVO;
 	}
 	
-	public int myPageModify(MemberVO vo) {
+	public int myPageModifyU(MemberVO vo) {
 		int cnt = 0;
-		cnt = dao.myPageModify(vo);
+		cnt = dao.myPageModifyU(vo);
 		return cnt; 
-	}//MemberVO	
+	}//myPageModifyU	
+	
+	public int myPageModifyB(MemberVO vo) {
+		int cnt = 0;
+		cnt = dao.myPageModifyB(vo);
+		return cnt; 
+	}//myPageModifyB	
 
 
 
