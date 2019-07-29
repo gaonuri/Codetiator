@@ -55,7 +55,6 @@
 		where a.user_num = #{user_num}
 	</select>
 	
-<<<<<<< HEAD
 	<select id="Inout"
 		parameterType="kr.co.creator.vo.MemberVO"
 		resultType="kr.co.creator.vo.InOutVO">
@@ -65,13 +64,8 @@
 			AND a.user_num = #{user_num}
 	</select>
 
-	<select id="MyPageModify" parameterType="java.lang.String" resultType="kr.co.creator.vo.MypageVO">
-		select user_num
-=======
-	
 	<select id="MyPageModifyU" parameterType="kr.co.creator.vo.MemberVO" resultType="kr.co.creator.vo.MemberVO">
 		select *
->>>>>>> branch 'master' of https://github.com/gaonuri/Codetiator.git
 		from user_list
 		where user_password = #{user_password}
 	</select>
