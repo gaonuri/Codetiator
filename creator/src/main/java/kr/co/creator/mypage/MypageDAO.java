@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import kr.co.creator.vo.FindPwdVO;
 import kr.co.creator.vo.InvestVO;
 import kr.co.creator.vo.MemberVO;
 import kr.co.creator.vo.MypageVO;
@@ -29,4 +30,24 @@ public class MypageDAO {
 		loan = sqlSession.selectList("MypageMapper.loanlist", userVO);
 		return loan;
 	} 
+	
+	
+	public List<MypageVO> depolog(MemberVO userVO) {
+		List<MypageVO> depo = null;
+		depo = sqlSession.selectList("MypageMapper.DepoLog", userVO);
+		return depo;
+	}
+	
+	
+	
+	public int myPageModify(MemberVO vo) {
+		int cnt = 0;
+		cnt = sqlSession.selectOne("MypageMapper.MyPageModify", vo);
+		return cnt;
+	}//myPageModify
+
+	
 }//class
+
+
+

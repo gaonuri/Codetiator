@@ -1,9 +1,14 @@
 package kr.co.creator.login;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kr.co.creator.vo.FindPwdVO;
+import kr.co.creator.vo.MemberListVO;
+import kr.co.creator.vo.MemberVO;
+import kr.co.creator.vo.ProjectVO;
 
 @Service
 public class LoginService {
@@ -24,13 +29,17 @@ public class LoginService {
 		return cnt;
 	}//updatePwd
 
-//	public int selectName(FindPwdVO vo) {
-//		int cnt = 0;
-//		cnt = loginDAO.selectName(vo);
-//		return cnt;
-//	}
+	public List<MemberListVO> user_list() {
+		List<MemberListVO> list = null;
+		list = loginDAO.user_list();
+		return list;
+	}//user_list
 	
-	
+	public List<MemberListVO> busi_user_list() {
+		List<MemberListVO> list = null;
+		list = loginDAO.busi_user_list();
+		return list;
+	}//busi_user_list
 	
 	
 }//class

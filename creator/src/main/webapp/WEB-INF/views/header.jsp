@@ -84,6 +84,20 @@
 					
 					<!-- 로그아웃 start -->
 					
+					<input id="project_num" type="hidden" value="${vo.project_num}" />
+<c:choose>
+	<c:when test="${memberVO.user_num != null}">
+		<a href="${pageContext.request.contextPath}/invest_detail?project_num=${vo.project_num}&p_busi_num=${vo.busi_num}&user_num=${memberVO.user_num}">${vo.project_name}</a>
+	</c:when>
+	<c:when test="${memberVO.busi_num != null}">
+		<a href="${pageContext.request.contextPath}/invest_detail?project_num=${vo.project_num}&p_busi_num=${vo.busi_num}&busi_num=${memberVO.busi_num}">${vo.project_name}</a>
+	</c:when>
+	<c:otherwise>
+		<a href="${pageContext.request.contextPath}/invest_detail?project_num=${vo.project_num}">${vo.project_name}</a>
+	</c:otherwise>
+</c:choose>
+					
+					
 <!-- 					이프문해야함 admin -->
 					<c:choose>
 						<c:when test="${memberVO != null && memberVO.user_num != '' || memberVO != null && memberVO.busi_num != ''}">
@@ -111,7 +125,7 @@
 										<a href="${pageContext.request.contextPath}/my_depo_mgn">예치금관리</a>
 									</li>
 									<li>
-										<a href="${pageContext.request.contextPath}/my_modify">회원정보수정</a>
+										<a href="${pageContext.request.contextPath}/my_modify?user_num=${memberVO.user_num}&busi_num=${memberVO.busi_num}">회원정보수정</a>
 									</li>
 								</ul>
 							</li>						

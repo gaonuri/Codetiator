@@ -41,6 +41,14 @@
 		where user_name = #{user_name}
 	</select>
 	
-
+	<select id="userList" resultType="kr.co.creator.vo.MemberVO">
+		select	*
+		from	user_list
+	</select>
+	
+	<select id="userBusiList" resultType="kr.co.creator.vo.MemberVO">
+		select	*
+		from	user_busi_list
+	</select>
 	 
 </mapper>

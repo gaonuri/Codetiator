@@ -117,282 +117,266 @@ $(document).ready(function() {
 	    <!-- **********************************************************************************************************************************************************
 	        MAIN CONTENT
 	        *********************************************************************************************************************************************************** -->
-	<section id="main-content">
-		<section class="wrapper">
-			<div class="col-xs-12 col-sm-12">
-				<div class="row">
-					<!-- 고객정보 -->
-					<div class="col-xs-12 col-sm-6 rightLine">
-						<div class="editCusInfo">
-							<div class="title">
-								<font class="font-purple">
-									●
-								</font> 고객 정보
-							</div>
-							<div class="subTitle" style="margin-top: 5px;">
-							</div>
-							<table class="table condition-table">
-								<tbody><tr>
-										<td class="condition-title">이름</td>
-										<td class="condition-content">
-											<input type="text" class="form-control" id="cusNm" maxlength="50" value="김도엽">
-											<button type="button" class="btn btn-purple-transparent" onclick="fn_updateCusNm()" id="updateCusNmBtn">변경</button>
-										</td>
-									</tr>
-									<tr>
-										<td class="condition-title">이메일</td>
-										<td class="condition-content">
-											<input type="text" class="form-control" id="email" maxlength="50" value="whitesky1203@naver.com">
-											<button type="button" class="btn btn-purple-transparent" onclick="fn_updateEmail()" id="updateEmailBtn">변경</button>
-										</td>
-									</tr>
-									<tr>
-										<td class="condition-title">
-											휴대전화번호
-										</td>
-										<td class="condition-content">
-											<input type="text" class="form-control" id="mpNo" maxlength="50" readonly="">
-											<input type="hidden" id="ci">
-											<button type="button" class="btn btn-purple-transparent" onclick="fn_checkNiceCert()" id="updateCusNmBtn">
-												변경
-											</button>
-											<!-- 본인인증 서비스 팝업을 호출하기 위해서는 다음과 같은 form이 필요합니다. -->
-											<form name="form_chk" method="post">
-												<input type="hidden" name="m" value="checkplusSerivce">	<!-- 필수 데이타로, 누락하시면 안됩니다. -->
-												<input type="hidden" id="EncodeData" name="EncodeData" value="">	<!-- 위에서 업체정보를 암호화 한 데이타입니다. -->
-											</form>
-										</td>
-									</tr>
-									<tr>
-										<td class="condition-title">
-												주민등록번호
-										</td>
-										<td class="condition-content">
-													901203-*******
-										</td>
-									</tr>
-									<tr>
-										<td colspan="2" class="condition-content">
-											<p>
-													<span class="font-red"><strong>※ 왜 주민등록번호가 필요한가요?</strong></span>
-													<br>
-													<font size="2">
-														주민등록번호는 현행 세법상 원천징수 납부에 사용됩니다. 입력하지 않아도 대출상품 투자를 제외한 사이트 이용은 가능하며 최초 투자시 한 번만 등록하시면 됩니다.
-													</font>
-											</p>
-										</td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
+<!--    =======================================================    -->	        
+<section id="main-content">
+	<section class="wrapper">
+          <div class="row mt">
+            <div class="col-lg-6">
+              <div class="content-panel">
+                <h4><i class="fa fa-angle-right"></i> 고객정보</h4>
+				<hr>
+                <div class="panel-body text-center">
+                <table class="table condition-table">
+					<tbody>
+					<tr>
+					<td class="condition-title">이름</td>
+						<td class="condition-content">
+							<input type="text" class="form-control" id="cusNm" maxlength="50" value="김도엽">
+						</td>
+						<td>
+							<button type="button" class="btn btn-purple-transparent" onclick="fn_updateCusNm()" id="updateCusNmBtn">변경</button>
+						</td>
+					</tr>
+					<tr>
+					<td class="condition-title">이메일</td>
+						<td class="condition-content">
+							<input type="text" class="form-control" id="email" maxlength="50" value="whitesky1203@naver.com">
+						</td>
+						<td>
+							<button type="button" class="btn btn-purple-transparent" onclick="fn_updateEmail()" id="updateEmailBtn">변경</button>
+						</td>
+					</tr>
+					<tr>
+					<td class="condition-title">휴대전화번호</td>
+						<td class="condition-content">
+							<input type="text" class="form-control" id="mpNo" maxlength="50" readonly="readonly" value="010-1111-2111">
+							<input type="hidden" id="ci">
+						</td>
+						<td>
+							<button type="button" class="btn btn-purple-transparent" onclick="fn_checkNiceCert()" id="updateCusNmBtn">변경</button>
+						</td>
+						<td>
+							<!-- 본인인증 서비스 팝업을 호출하기 위해서는 다음과 같은 form이 필요합니다. -->
+							<form name="form_chk" method="post">
+								<input type="hidden" name="m" value="checkplusSerivce">	<!-- 필수 데이타로, 누락하시면 안됩니다. -->
+								<input type="hidden" id="EncodeData" name="EncodeData" value="">	<!-- 위에서 업체정보를 암호화 한 데이타입니다. -->
+							</form>
+						</td>
+					</tr>
+					
+					<c:forEach items="${memberList}" var="vo" varStatus="status">
+					<tr>
+						<c:if test="${memberListVO.user_num != null}">
+						</c:if>
+						<td class="condition-title">주민등록번호</td>
+							<td class="condition-content">${vo.jumin}</td>
+						<td></td>
+					</tr>
+					</c:forEach>
+					
+					<tr>
+					<td colspan="2" class="condition-content">
+						<p>
+						<span class="font-red"><strong>※ 왜 주민등록번호가 필요한가요?</strong></span><br>
+						<font size="2">
+							주민등록번호는 현행 세법상 원천징수 납부에 사용됩니다. 입력하지 않아도 
+							대출상품 투자를 제외한 사이트 이용은 가능하며 최초 투자시 한 번만 등록하시면 됩니다.
+						</font>
+						</p>
+					</td>
+					<td></td>
+					</tr>
+					</tbody>
+				</table>
+               	</div>
+			  </div>
+            </div>
+            
+<!--    =======================================================    -->
+
+            <div class="col-lg-6">
+              <div class="content-panel">
+                <h4><i class="fa fa-angle-right"></i> 계좌정보</h4>
+                <hr>
+                <div class="panel-body text-center">
+					<table class="table condition-table">
+						<tbody>
+						<tr>
+							<td class="condition-title">출금 시 기본 예치금을 수취할 은행계좌 정보를 등록해주세요.</td>
+							<td></td>
+						</tr>		
+						<tr>
+							<td class="condition-title">은행명
+							<br><br><span><font size="2">반드시 본인명의 계좌 은행을 선택해주세요.</font></span><br>
+							</td>
+							<td class="condition-content">
+								<select id="cusBankCdSelect" class="form-control" name="cusBankCd">
+									<option value="">선택하세요</option>
+										<option value="002">산업은행</option><option value="003">기업은행</option>
+										<option value="004">국민은행</option><option value="007">수협중앙회</option>
+										<option value="008">수출입은행</option><option value="010">농협</option>
+										<option value="011">농협중앙회</option><option value="012">지역농·축협</option>
+										<option value="020">우리은행</option><option value="023">SC제일은행</option>
+										<option value="027">한국씨티은행</option><option value="031">대구은행</option>
+										<option value="032">부산은행</option><option value="034">광주은행</option>
+										<option value="035">제주은행</option><option value="037">전북은행</option>
+										<option value="039">경남은행</option><option value="045">새마을금고중앙회</option>
+										<option value="048">신협중앙회</option><option value="050">상호저축은행</option>
+										<option value="052">모건스탠리은행</option><option value="054">HSBC은행</option>
+										<option value="055">도이치은행</option><option value="057">제이피모간체이스은행</option>
+										<option value="058">미즈호은행</option><option value="059">미쓰비시도쿄UFJ은행</option>
+										<option value="060">BOA은행</option><option value="061">비엔피파리바은행</option>
+										<option value="062">중국공상은행</option><option value="063">중국은행</option>
+										<option value="065">대화은행</option><option value="066">교통은행</option>
+										<option value="071">우체국</option><option value="081">KEB하나은행</option>
+										<option value="088">신한은행</option><option value="089">케이뱅크</option>
+										<option value="090">카카오뱅크</option><option value="096">한국전자금융(주)</option>
+										<option value="102">대신저축은행</option><option value="103">에스비아이저축은행</option>
+										<option value="104">에이치케이저축은행</option><option value="105">웰컴저축은행</option>
+										<option value="209">유안타증권</option><option value="218">KB증권</option>
+										<option value="221">골든브릿지투자증권</option><option value="222">한양증권</option>
+										<option value="223">리딩투자증권</option><option value="224">BNK투자증권</option>
+										<option value="225">IBK투자증권</option><option value="227">KTB투자증권</option>
+										<option value="238">미래에셋대우</option><option value="240">삼성증권</option>
+										<option value="243">한국투자증권</option><option value="247">NH투자증권</option>
+										<option value="261">교보증권</option><option value="262">하이투자증권</option>
+										<option value="263">HMC투자증권</option><option value="264">키움증권</option>
+										<option value="265">이베스트투자증권</option><option value="266">SK증권</option>
+										<option value="267">대신증권</option><option value="269">한화투자증권</option>
+										<option value="270">하나금융투자</option><option value="278">신한금융투자</option>
+										<option value="279">동부증권</option><option value="280">유진투자증권</option>
+										<option value="287">메리츠종합금융증권</option><option value="290">부국증권</option>
+										<option value="291">신영증권</option><option value="292">케이프투자증권</option>
+										<option value="293">한국증권금융</option><option value="294">펀드온라인코리아</option>
+										<option value="295">우리종합금융</option><option value="296">삼성선물</option>
+										<option value="297">외환선물</option><option value="298">현대선물</option>
+								</select>
+							</td>
+						</tr>
+						<tr>
+							<td class="condition-title">계좌번호
+							<br><br><p><font size="2">계좌번호를 정확히 입력해주세요.</font></p>
+							</td>
+							<td class="condition-content">
+								<input type="text" class="form-control" id="cusAccount" maxlength="14">
+							</td>
+							<td></td>
+						</tr>
+						
+						<tr>
+							<td></td>
+							<td></td>
+						</tr>
+						</tbody>
+					</table>
+					<div class="autoConditionSet" >
+						<button type="button" class="btn btn-purple-transparent btn-block" onclick="fn_updateCusAccount()" id="updateCusAccountBtn">계좌 정보 저장</button>
 					</div>
-					<div class="col-xs-12 xd">
-						<hr>
+					<br><br>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+<!--    =======================================================    -->
+          
+          <div class="row mt">
+            <div class="col-lg-6">
+              <div class="content-panel">
+                <h4><i class="fa fa-angle-right"></i> 비밀번호 재설정</h4>
+                <hr>
+                <div class="panel-body text-center">
+                
+					<table class="table condition-table">
+						<tbody>
+						<tr>
+							<td class="condition-title">크리에이터가 추천하는 비밀번호 변경주기는 6개월입니다.</td>
+							<td></td>
+						</tr>		
+						<tr>
+							<td class="condition-title">기존 비밀번호
+							</td>
+							<td class="condition-content">
+							<input type="text" class="form-control" id="cusAccount" maxlength="14">
+							</td>
+						</tr>
+						<tr>
+							<td class="condition-title">새 비밀번호
+							</td>
+							<td class="condition-content">
+								<input type="text" class="form-control" id="cusAccount" maxlength="14">
+							</td>
+							<td></td>
+						</tr>
+						
+						<tr>
+							<td class="condition-title">비밀번호 확인
+							</td>
+							<td class="condition-content">
+								<input type="text" class="form-control" id="cusAccount" maxlength="14">
+							</td>						
+							<td></td>
+						</tr>
+						</tbody>
+					</table>
+					<div class="autoConditionSet" >
+						<button type="button" class="btn btn-purple-transparent btn-block" onclick="fn_updateCusAccount()" id="updateCusAccountBtn">새 비밀번호 저장</button>
 					</div>
-					<!-- 계좌정보 -->
-					<div class="col-xs-12 col-sm-6">
-						<div class="editCusInfo">
-							<div class="title">
-								<font class="font-purple">
-									●
-								</font> 계좌 정보
-							</div>
-							<div class="subTitle" style="margin-top: 5px;">
-								출금 시 기본 예치금을 수취할 은행계좌 정보를 등록해주세요.
-							</div>
-							<table class="table condition-table">
-								<tbody><tr>
-									<td class="condition-title">은행명</td>
-									<td class="condition-content">
-										<select id="cusBankCdSelect" class="form-control" name="cusBankCd">
-											<option value="">선택하세요</option>
-														<option value="002">산업은행</option>
-													
-														<option value="003">기업은행</option>
-													
-														<option value="004">국민은행</option>
-													
-														<option value="007">수협중앙회</option>
-													
-														<option value="008">수출입은행</option>
-													
-														<option value="010">농협</option>
-													
-														<option value="011">농협중앙회</option>
-													
-														<option value="012">지역농·축협</option>
-													
-														<option value="020">우리은행</option>
-													
-														<option value="023">SC제일은행</option>
-													
-														<option value="027">한국씨티은행</option>
-													
-														<option value="031">대구은행</option>
-													
-														<option value="032">부산은행</option>
-													
-														<option value="034">광주은행</option>
-													
-														<option value="035">제주은행</option>
-													
-														<option value="037">전북은행</option>
-													
-														<option value="039">경남은행</option>
-													
-														<option value="045">새마을금고중앙회</option>
-													
-														<option value="048">신협중앙회</option>
-													
-														<option value="050">상호저축은행</option>
-													
-														<option value="052">모건스탠리은행</option>
-													
-														<option value="054">HSBC은행</option>
-													
-														<option value="055">도이치은행</option>
-													
-														<option value="057">제이피모간체이스은행</option>
-													
-														<option value="058">미즈호은행</option>
-													
-														<option value="059">미쓰비시도쿄UFJ은행</option>
-													
-														<option value="060">BOA은행</option>
-													
-														<option value="061">비엔피파리바은행</option>
-													
-														<option value="062">중국공상은행</option>
-													
-														<option value="063">중국은행</option>
-													
-														<option value="065">대화은행</option>
-													
-														<option value="066">교통은행</option>
-													
-														<option value="071">우체국</option>
-													
-														<option value="081">KEB하나은행</option>
-													
-														<option value="088">신한은행</option>
-													
-														<option value="089">케이뱅크</option>
-													
-														<option value="090">카카오뱅크</option>
-													
-														<option value="096">한국전자금융(주)</option>
-													
-														<option value="102">대신저축은행</option>
-													
-														<option value="103">에스비아이저축은행</option>
-													
-														<option value="104">에이치케이저축은행</option>
-													
-														<option value="105">웰컴저축은행</option>
-													
-														<option value="209">유안타증권</option>
-													
-														<option value="218">KB증권</option>
-													
-														<option value="221">골든브릿지투자증권</option>
-													
-														<option value="222">한양증권</option>
-													
-														<option value="223">리딩투자증권</option>
-													
-														<option value="224">BNK투자증권</option>
-													
-														<option value="225">IBK투자증권</option>
-													
-														<option value="227">KTB투자증권</option>
-													
-														<option value="238">미래에셋대우</option>
-													
-														<option value="240">삼성증권</option>
-													
-														<option value="243">한국투자증권</option>
-													
-														<option value="247">NH투자증권</option>
-													
-														<option value="261">교보증권</option>
-													
-														<option value="262">하이투자증권</option>
-													
-														<option value="263">HMC투자증권</option>
-													
-														<option value="264">키움증권</option>
-													
-														<option value="265">이베스트투자증권</option>
-													
-														<option value="266">SK증권</option>
-													
-														<option value="267">대신증권</option>
-													
-														<option value="269">한화투자증권</option>
-													
-														<option value="270">하나금융투자</option>
-													
-														<option value="278">신한금융투자</option>
-													
-														<option value="279">동부증권</option>
-													
-														<option value="280">유진투자증권</option>
-													
-														<option value="287">메리츠종합금융증권</option>
-													
-														<option value="290">부국증권</option>
-													
-														<option value="291">신영증권</option>
-													
-														<option value="292">케이프투자증권</option>
-													
-														<option value="293">한국증권금융</option>
-													
-														<option value="294">펀드온라인코리아</option>
-													
-														<option value="295">우리종합금융</option>
-													
-														<option value="296">삼성선물</option>
-													
-														<option value="297">외환선물</option>
-													
-														<option value="298">현대선물</option>
-										</select>
-									</td>
-								</tr>
-								<tr>
-									<td colspan="2" class="condition-content">
-										<p>
-											<font size="2">반드시 본인명의 계좌 은행을 선택해주세요.</font>
-										</p>
-									</td>
-								</tr>
-								<tr>
-									<td class="condition-title">계좌번호</td>
-									<td class="condition-content">
-										<input type="text" class="form-control" id="cusAccount" maxlength="14">
-									</td>
-								</tr>
-								<tr>
-									<td colspan="2" class="condition-content">
-										<p>
-											<font size="2">계좌번호를 정확히 입력해주세요.</font>
-										</p>
-									</td>
-								</tr>
-							</tbody></table>
-							<div class="autoConditionSet">
-								<button type="button" class="btn btn-purple-transparent btn-block" onclick="fn_updateCusAccount()" id="updateCusAccountBtn">계좌 정보 저장</button>
-							</div>
-						</div>
+					<br><br>                
+                
+                </div>
+              </div>
+            </div>
+            
+<!--    =======================================================    -->
+            
+            
+            <div class="col-lg-6">
+              <div class="content-panel">
+                <h4><i class="fa fa-angle-right"></i>접속이력</h4>
+				<hr>
+                <div class="panel-body text-center">
+                
+					<table class="table condition-table">
+		                <thead>
+		                  <tr>
+		                    <th>로그인 일시</th>
+		                    <th>로그아웃 일시</th>
+		                  </tr>
+		                </thead>
+						<tbody>
+						
+	                  	<tr>
+	                    <td>1</td>
+	                    <td>Mark</td>
+						</tr>
+	                  	<tr>
+	                    <td>1</td>
+	                    <td>Mark</td>
+						</tr>
+	                  	<tr>
+	                    <td>1</td>
+	                    <td>Mark</td>
+						</tr>
+						<tr>
+							<td class="condition-title">최근 4회 동안 접속하신 정보입니다.</td>
+							<td></td>
+						</tr>		
+						</tbody>
+					</table>
+					<div class="autoConditionSet" >
+						<button type="button" class="btn btn-purple-transparent btn-block" onclick="fn_updateCusAccount()" id="updateCusAccountBtn">회원 탈퇴</button>
 					</div>
-				</div>
-			</div>
-		</section>
+					<br><br>                  
+                
+                </div>
+              </div>
+            </div>
+          </div>
 	</section>
-    
-    
-		
+</section>    
+<!--    =======================================================    -->    	
+	
 		<!--footer start-->
 		<footer class="site-footer">
 			<div class="container">
@@ -458,4 +442,19 @@ $(document).ready(function() {
 	<script src="${pageContext.request.contextPath}/resources/bootstrap/lib/zabuto_calendar.js"></script>
 </body>
 
+
+
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
