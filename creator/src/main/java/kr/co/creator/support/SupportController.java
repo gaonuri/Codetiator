@@ -47,9 +47,9 @@ public class SupportController {
 	@RequestMapping(value = "/support", method = RequestMethod.GET)
 	public String support(Model model, NoticeVO vo) {
 		logger.info("support");
-		List<NoticeVO> support = null;   // ��ü
-		List<NoticeVO> support2 = null;  // ���ҽ�
-		List<NoticeVO> support3 = null;  // �����
+		List<NoticeVO> support = null;   // 전체
+		List<NoticeVO> support2 = null;  // 새소식
+		List<NoticeVO> support3 = null;  // 운영사항
 		
 		
 		support = service.supportList();

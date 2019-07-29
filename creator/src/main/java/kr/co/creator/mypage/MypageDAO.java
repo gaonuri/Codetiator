@@ -6,7 +6,9 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import kr.co.creator.vo.AccountVO;
 import kr.co.creator.vo.FindPwdVO;
+import kr.co.creator.vo.InOutVO;
 import kr.co.creator.vo.InvestVO;
 import kr.co.creator.vo.MemberVO;
 import kr.co.creator.vo.MypageVO;
@@ -31,15 +33,22 @@ public class MypageDAO {
 		return loan;
 	} 
 	
-	
-	public List<MypageVO> depolog(MemberVO userVO) {
-		List<MypageVO> depo = null;
-		depo = sqlSession.selectList("MypageMapper.DepoLog", userVO);
-		return depo;
+	public AccountVO account(MemberVO userVO, AccountVO accVO) {
+		accVO = sqlSession.selectOne("MypageMapper.Account", accVO);
+		return accVO;
 	}
 	
+<<<<<<< HEAD
+	public InOutVO inout(MemberVO userVO, InOutVO ioVO) {
+		ioVO = sqlSession.selectOne("MypageMapper.Inout", userVO);
+		return ioVO;
+	}
+	
+	public int myPageModify(MemberVO vo) {
+=======
 	
 	public int myPageModifyU(MemberVO vo) {
+>>>>>>> branch 'master' of https://github.com/gaonuri/Codetiator.git
 		int cnt = 0;
 		cnt = sqlSession.selectOne("MypageMapper.MyPageModifyU", vo);
 		return cnt;
@@ -50,6 +59,7 @@ public class MypageDAO {
 		cnt = sqlSession.selectOne("MypageMapper.MyPageModifyB", vo);
 		return cnt;
 	}//myPageModifyB
+
 
 	
 }//class

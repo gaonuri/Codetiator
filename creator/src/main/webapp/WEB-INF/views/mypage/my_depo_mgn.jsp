@@ -124,7 +124,7 @@
 																	예금주
 																</div>
 																<div class="col-xs-7 col-sm-7 col-md-7 withdraw-content">
-																	<font size="2">크리에이터</font>${vo.account_name}
+																	<font size="1">크리에이터</font>${Account.account_name}
 																</div>
 															</div>
 															<div class="row" style="margin-top: 10px;">
@@ -196,7 +196,7 @@
 																		기본 예치금
 																	</div>
 																	<div class="col-xs-6 col-sm-6 col-md-6 text-right">
-																		${vo.deposit} 원
+																		${Account.deposit} 원
 																	</div>
 																</div>
 																<div class="row" style="margin-top: 10px;">
@@ -205,7 +205,7 @@
 																	</div>
 																	<div class="col-xs-6 col-sm-6 col-md-6 text-right">
 																		<span class="font-purple"><strong>
-																			${vo.deposit} <font size="2">원</font>
+																			${Account.deposit} <font size="2">원</font>
 																		</strong></span>
 																	</div>
 																</div>
@@ -226,7 +226,7 @@
 																		입금 총액
 																	</div>
 																	<div class="col-xs-6 col-sm-6 col-md-6 text-right">
-																		<span name="DEPOSIT_AMT_SUM">0</span> 원
+																		<span name="DEPOSIT_AMT_SUM">${Inout.input_history}</span> 원
 																	</div>
 																</div>
 																<div class="row" style="margin-top: 10px;">
@@ -234,7 +234,7 @@
 																		출금 총액
 																	</div>
 																	<div class="col-xs-6 col-sm-6 col-md-6 text-right">
-																		<span name="WTHDRW_AMT_SUM">0</span> 원
+																		<span name="WTHDRW_AMT_SUM">${Inout.output_history}</span> 원
 																	</div>
 																</div>
 																<div class="row" style="margin-top: 10px;">
@@ -265,7 +265,6 @@
 																	●
 																</font> 나의 계좌로 출금
 															</div>
-														<c:forEach items="${DepoLog}" var="vo" varStatus="status">
 															<div class="withdraw-wrap">
 																<div class="row" style="margin-top: 20px;">
 																	<div class="col-xs-4 col-sm-4 col-md-4 withdraw-title">
@@ -314,7 +313,6 @@
 																	</div>
 																</div>
 															</div>
-														</c:forEach>
 														</div>
 														<div class="col-sm-6 col-md-6">
 															<div class="withdraw-box">

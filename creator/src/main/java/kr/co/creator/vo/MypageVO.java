@@ -15,7 +15,50 @@ public class MypageVO {
 	private String busi_num;		// (李몄“)踰뺤씤?쑀??踰덊샇
 	private String invest_price;
 	private String refund_count;
+	private String account_name;
+	private String bank_num;
+	private String bank_name;
+	private String deposit;
+	private String input_history;
+	private String output_history;
 	
+	
+	public String getAccount_name() {
+		return account_name;
+	}
+	public void setAccount_name(String account_name) {
+		this.account_name = account_name;
+	}
+	public String getBank_num() {
+		return bank_num;
+	}
+	public void setBank_num(String bank_num) {
+		this.bank_num = bank_num;
+	}
+	public String getBank_name() {
+		return bank_name;
+	}
+	public void setBank_name(String bank_name) {
+		this.bank_name = bank_name;
+	}
+	public String getDeposit() {
+		return deposit;
+	}
+	public void setDeposit(String deposit) {
+		this.deposit = deposit;
+	}
+	public String getInput_history() {
+		return input_history;
+	}
+	public void setInput_history(String input_history) {
+		this.input_history = input_history;
+	}
+	public String getOutput_history() {
+		return output_history;
+	}
+	public void setOutput_history(String output_history) {
+		this.output_history = output_history;
+	}
 	public String getRefund_count() {
 		return refund_count;
 	}
