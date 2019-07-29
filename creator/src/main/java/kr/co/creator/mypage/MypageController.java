@@ -41,13 +41,6 @@ public class MypageController {
 		return "mypage/my_dashboard";
 	}
 	
-	@RequestMapping(value = "/my_depo_mgn", method = RequestMethod.GET)
-	public String my_depo_mgn() {
-		logger.info("my_depo_mgn");
-				
-		return "mypage/my_depo_mgn";
-	}
-	
 	@RequestMapping(value = "/my_invest_list", method = RequestMethod.GET)
 	public String invest(HttpSession session, Model model, MemberVO userVO, MypageVO myVO) {
 		logger.info("my_dashboard");
@@ -80,25 +73,11 @@ public class MypageController {
 		return "mypage/my_depo_mgn";
 	}
 	
-<<<<<<< HEAD
-	@RequestMapping(value="/mypagemodify", method=RequestMethod.POST)
-	public void myPageModify(MemberVO vo, HttpSession session, PrintWriter out) {
-		logger.info("=== myPageModify ===");
-		vo.getUser_num();
-//		vo = sqlSession.selectOne("MypageMapper.MyPageModify", vo);
-=======
-	@RequestMapping(value = "/my_modify", method = RequestMethod.GET)
-	public String my_modify() {
-		logger.info("my_modify");
-				
-		return "mypage/my_modify";
-	}
 	
 	@RequestMapping(value="/mypagemodifyU", method=RequestMethod.POST)
 	public void myPageModifyU(MemberVO vo, HttpSession session, PrintWriter out) {
 		logger.info("=== myPageModifyU ===");
 		vo = sqlSession.selectOne("MypageMapper.MyPageModifyU", vo);
->>>>>>> branch 'master' of https://github.com/gaonuri/Codetiator.git
 		int successCnt = 0;
 //		successCnt = service.myPageModify(vo);
 		if(vo != null && vo.getUser_num() != null && !vo.getUser_num().equals("")) {
