@@ -64,13 +64,11 @@
 			AND a.user_num = #{user_num}
 	</select>
 
-	
 	<select id="MyPageModifyU" parameterType="kr.co.creator.vo.MemberVO" resultType="kr.co.creator.vo.MemberVO">
 		select *
 		from user_list
 		where user_password = #{user_password}
 	</select>
-	
 	
 	<select id="MyPageModifyB" parameterType="kr.co.creator.vo.MemberVO" resultType="kr.co.creator.vo.MemberVO">
 		select *
@@ -78,7 +76,7 @@
 		where busi_password = #{busi_password}
 	</select>
 	
+	
 </mapper>
-
 
 

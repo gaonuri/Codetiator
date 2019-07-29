@@ -53,6 +53,6 @@ public class MypageService {
 	}//myPageModifyB	
 
 
-
-
 }//class
+
+
