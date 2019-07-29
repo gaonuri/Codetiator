@@ -36,11 +36,13 @@
 	<script type="text/javascript">
 		$(document).ready(function() {
 			$("#state_u").click(function() {
-				location.href="${pageContext.request.contextPath}/invest_detail?project_num=$('#project_num').val()&user_num=${memberVO.user_num}";
+				alert("u");
+				location.href="${pageContext.request.contextPath}/invest_detail?project_num=${proVO.project_num}&user_num=${memVO.user_num}";
 			});
 			
 			$("#state_b").click(function() {
-				location.href="${pageContext.request.contextPath}/invest_detail?project_num=$('#project_num').val()&busi_num=${memberVO.busi_num}";
+				alert("b");
+				location.href="${pageContext.request.contextPath}/invest_detail?project_num=${proVO.project_num}&busi_num=${memVO.busi_num}";
 			});
 			
 			$("#state_n").click(function() {
@@ -89,11 +91,11 @@
 											<td>
 												<input id="project_num" type="hidden" value="${vo.project_num}" />
 												<c:choose>
-													<c:when test="${memberVO.user_num != null}">
-														<a href="${pageContext.request.contextPath}/invest_detail?project_num=${vo.project_num}&p_busi_num=${vo.busi_num}&user_num=${memberVO.user_num}">${vo.project_name}u</a>
+													<c:when test="${memVO.user_num != null}">
+														<a href="${pageContext.request.contextPath}/invest_detail?project_num=${vo.project_num}&p_busi_num=${vo.busi_num}&user_num=${memVO.user_num}">${vo.project_name}u</a>
 													</c:when>
-													<c:when test="${memberVO.busi_num != null}">
-														<a href="${pageContext.request.contextPath}/invest_detail?project_num=${vo.project_num}&p_busi_num=${vo.busi_num}&busi_num=${memberVO.busi_num}">${vo.project_name}b</a>
+													<c:when test="${memVO.busi_num != null}">
+														<a href="${pageContext.request.contextPath}/invest_detail?project_num=${vo.project_num}&p_busi_num=${vo.busi_num}&busi_num=${memVO.busi_num}">${vo.project_name}b</a>
 													</c:when>
 													<c:otherwise>
 														<a href="${pageContext.request.contextPath}/invest_detail?project_num=${vo.project_num}">${vo.project_name}</a>
@@ -110,10 +112,10 @@
 												<c:choose>
 													<c:when test="${vo.ach_state == '투자하기'}">
 														<c:choose>
-															<c:when test="${memberVO.user_num != null}">
+															<c:when test="${memVO.user_num != null}">
 																<button id="state_u">${vo.ach_state}</button>
 															</c:when>
-															<c:when test="${memberVO.busi_num != null}">
+															<c:when test="${memVO.busi_num != null}">
 																<button id="state_b">${vo.ach_state}</button>
 															</c:when>
 															<c:otherwise>

@@ -25,20 +25,18 @@ public class ProjectVO {
 	private String loan_class;			// 대출구분
 	private String loan_type;			// 대출유형
 	private String repay_method;		// 상환방식
-<<<<<<< HEAD
-	private String judge_status;		// 심사상태
-=======
 	private String repay_count;			// 상환차수
->>>>>>> branch 'master' of https://github.com/gaonuri/Codetiator.git
+	private String judge_status;		// 심사상태
 	
 	private String user_num;			// (참조)유저번호
 	private String busi_num;			// (참조)법인유저번호
 	
 	public ProjectVO() {}	//constructor
-	public ProjectVO(	String project_num, String img, String project_name, String current_price, String price, String guarantee_price, 
-						String deadline, String refund, String ach_rate, String customer, String type, String genre, String yield, String grade, 
-						String more_information, String en_date, String rate, String loan_period, String loan_amount, 
-						String loan_class, String loan_type, String repay_method, String user_num, String busi_num) {
+	public ProjectVO(	String project_num, String img, String project_name, String current_price, String price, 
+						String guarantee_price, String deadline, String refund, String ach_rate, String customer, 
+						String type, String genre, String yield, String grade, String more_information, String en_date, 
+						String rate, String loan_period, String loan_amount, String loan_class, String loan_type, 
+						String repay_method, String repay_count, String judge_status, String user_num, String busi_num) {
 		this.project_num = project_num;
 		this.img = img;
 		this.project_name = project_name;
@@ -60,6 +58,8 @@ public class ProjectVO {
 		this.loan_class = loan_class;
 		this.loan_type = loan_type;
 		this.repay_method = repay_method;
+		this.repay_count = repay_count;
+		this.judge_status = judge_status;
 		
 		this.user_num = user_num;
 		this.busi_num = busi_num;
@@ -225,6 +225,20 @@ public class ProjectVO {
 	public void setRepay_method(String repay_method) {
 		this.repay_method = repay_method;
 	}//repay_method
+
+	public String getRepay_count() {
+		return repay_count;
+	}
+	public void setRepay_count(String repay_count) {
+		this.repay_count = repay_count;
+	}//repay_count
+
+	public String getJudge_status() {
+		return judge_status;
+	}
+	public void setJudge_status(String judge_status) {
+		this.judge_status = judge_status;
+	}//judge_status
 	
 	
 	//참조
@@ -241,19 +255,4 @@ public class ProjectVO {
 	public void setBusi_num(String busi_num) {
 		this.busi_num = busi_num;
 	}//busi_num
-<<<<<<< HEAD
-	public String getJudge_status() {
-		return judge_status;
-	}
-	public void setJudge_status(String judge_status) {
-		this.judge_status = judge_status;
-	}
-=======
-	public String getRepay_count() {
-		return repay_count;
-	}
-	public void setRepay_count(String repay_count) {
-		this.repay_count = repay_count;
-	}//repay_count
->>>>>>> branch 'master' of https://github.com/gaonuri/Codetiator.git
 }//class
