@@ -37,6 +37,8 @@
 	$(document).ready(function() {
 		var temp = 0;
 		var add  = 0;
+		var current_price = parseInt($("#current_price").val() * 10000);
+		var invest_price = parseInt($("#invest_price").val());
 		var deposit = parseInt($("#inputDeposit771").val());
 		var invest 	= parseInt($("#inputAmt771").val());
 		var intrst 	= invest * $("#rate").val() * 0.01;
@@ -69,7 +71,13 @@
 		});//amtPlus1_771
 		
 		$("#amtPlusAll_771").click(function() {
-			$("#inputAmt771").val($("#invest_limit").val());
+			deposit = parseInt($("#inputDeposit771").val());
+			limit = parseInt($("#invest_limit").val());
+			if(deposit > limit) {
+				$("#inputAmt771").val($("#invest_limit").val());
+			} else {
+				$("#inputAmt771").val($("#inputDeposit771").val());
+			}
 			calculating();
 		});//amtPlusAll_771
 		
@@ -99,20 +107,21 @@
 			if(deposit > 0) {
 				temp = parseInt($("#inputAmt771").val());
 				temp += add;
-				
+				//deposit = parseInt($("#inputDeposit771").val());
+				//alert(temp);alert(deposit);
 				if(temp > limit) {
 					alert("동일 차입자에게 투자한도 이상의 투자를 할 수 없습니다.");
+				} else if(temp > deposit) {
+					confirmYN = confirm("투자 가능 예치금이 부족합니다. 예치금 관리 페이지로 이동하시겠습니까?");
+					if(confirmYN == true) {
+						location.href = "${pageContext.request.contextPath}/my_depo_mgn";
+					} else {
+						return;
+					}//if
 				} else {
 					$("#inputAmt771").val(temp);
 					calculating();
 				}
-			} else if(temp > deposit) {
-				confirmYN = confirm("투자 가능 예치금이 부족합니다. 예치금 관리 페이지로 이동하시겠습니까?");
-				if(confirmYN == true) {
-					location.href = "${pageContext.request.contextPath}/my_depo_mgn";
-				} else {
-					return;
-				}//if
 			} else {
 				confirmYN = confirm("투자 가능 예치금이 부족합니다. 예치금 관리 페이지로 이동하시겠습니까?");
 				if(confirmYN == true) {
@@ -136,8 +145,12 @@
 		}//calculating
 		
 		$("#invest_offer_u").click(function() {
+			$("#current_price").val((current_price + invest) / 10000);
 			$("#deposit").val(deposit - invest);
-			alert(deposit - invest);
+			$("#invest_price").val(invest);
+			//alert("current_price : " + parseInt(current_price + invest) / 10000);
+			alert("deposit : " + parseInt(deposit - invest));
+			alert("invest_price : " + invest);
 			//alert($("input:checkbox[id=agreeCheckbox]:checked").is(":checked"));
 			check = $("input:checkbox[id=agreeCheckbox]:checked").is(":checked");
 			
@@ -148,7 +161,9 @@
 					$.post("${pageContext.request.contextPath}/deposit_update",
 							{
 								user_num:$("#user_num").val(),
-								deposit:$("#deposit").val()
+								deposit:$("#deposit").val(),
+								invest_price:$("#invest_price").val(),
+								current_price:$("#current_price").val()
 							},
 							function(data, status) {
 								alert(data); alert(status);
@@ -535,10 +550,10 @@
 												<div class="bottomLine">
 													<c:choose>
 														<c:when test="${memberVO.user_num != null}">
-															<button id="invest_offer_u">투자 신청</button>
+															<button id="invest_offer_u">투자 신청u</button>
 														</c:when>
 														<c:when test="${memberVO.busi_num != null}">
-															<button id="invest_offer_b">투자 신청</button>
+															<button id="invest_offer_b">투자 신청b</button>
 														</c:when>
 													</c:choose>													
 													
@@ -582,12 +597,12 @@
 		<input type="hidden" id="user_num" value="${memberVO.user_num}" />						<!-- 유저번호 -->
 		<input type="hidden" id="busi_num" value="${memberVO.busi_num}" />						<!-- 법인유저번호 -->
 		<input type="hidden" id="project_num" value="${projectVO.project_num}">					<!-- 프로젝트번호 -->
-	    <input type="hidden" id="current_price" value="${projectVO.current_price}" />			<!-- 현재 모금액 -->
+	    <input type="hidden" id="current_price" value="${projectVO.current_price}" />			<!-- 현재모금액 -->
 	    <input type="hidden" id="invest_price" value="${inVO.invest_price}">					<!-- 투자금액 -->
 	    <input type="hidden" id="invest_limit" value="${(500 - inVO.invest_price) * 10000}" />	<!-- 투자한도 -->
 	    <!-- hidden value -->
 	    
-	    <!--main content end-->
+    <!--main content end-->
 		
 		<!--footer start-->
 		<footer class="site-footer">
