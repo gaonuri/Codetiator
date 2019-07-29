@@ -40,13 +40,6 @@ public class MypageController {
 		return "mypage/my_dashboard";
 	}
 	
-	@RequestMapping(value = "/my_depo_mgn", method = RequestMethod.GET)
-	public String my_depo_mgn() {
-		logger.info("my_depo_mgn");
-				
-		return "mypage/my_depo_mgn";
-	}
-	
 	@RequestMapping(value = "/my_invest_list", method = RequestMethod.GET)
 	public String invest(HttpSession session, Model model, MemberVO userVO, MypageVO myVO) {
 		logger.info("my_dashboard");
