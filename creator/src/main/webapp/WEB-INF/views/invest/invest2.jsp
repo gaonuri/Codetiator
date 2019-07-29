@@ -69,7 +69,13 @@
 		});//amtPlus1_771
 		
 		$("#amtPlusAll_771").click(function() {
-			$("#inputAmt771").val($("#invest_limit").val());
+			deposit = parseInt($("#inputDeposit771").val());
+			limit = parseInt($("#invest_limit").val());
+			if(deposit > limit) {
+				$("#inputAmt771").val($("#invest_limit").val());
+			} else {
+				$("#inputAmt771").val($("#inputDeposit771").val());
+			}
 			calculating();
 		});//amtPlusAll_771
 		
@@ -99,9 +105,17 @@
 			if(deposit > 0) {
 				temp = parseInt($("#inputAmt771").val());
 				temp += add;
-				
+				//deposit = parseInt($("#inputDeposit771").val());
+				//alert(temp);alert(deposit);
 				if(temp > limit) {
 					alert("동일 차입자에게 투자한도 이상의 투자를 할 수 없습니다.");
+				} else if(temp > deposit) {
+					confirmYN = confirm("투자 가능 예치금이 부족합니다. 예치금 관리 페이지로 이동하시겠습니까?");
+					if(confirmYN == true) {
+						location.href = "${pageContext.request.contextPath}/my_depo_mgn";
+					} else {
+						return;
+					}//if
 				} else {
 					$("#inputAmt771").val(temp);
 					calculating();
@@ -131,6 +145,8 @@
 		$("#invest_offer_u").click(function() {
 			$("#deposit").val(deposit - invest);
 			alert(deposit - invest);
+			//alert($("input:checkbox[id=agreeCheckbox]:checked").is(":checked"));
+			check = $("input:checkbox[id=agreeCheckbox]:checked").is(":checked");
 			
 			if(check == true) {
 				var confirmYN = false;
@@ -170,6 +186,7 @@
 			$("#deposit").val(deposit - invest);
 			alert(deposit - invest);
 			check = $("input:checkbox[id=agreeCheckbox]:checked").is(":checked");
+			
 			if(check == true) {
 				var confirmYN = false;
 				confirmYN = confirm("정말 투자하시겠습니까?");
