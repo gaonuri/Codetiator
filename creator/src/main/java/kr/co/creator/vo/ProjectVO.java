@@ -24,10 +24,11 @@ public class ProjectVO {
 	private String loan_amount;			// 대출계좌
 	private String loan_class;			// 대출구분
 	private String loan_type;			// 대출유형
+
 	private String repay_method;		// 상환방식
 	private String repay_count;			// 상환차수
 	private String judge_status;		// 심사상태
-	
+
 	private String user_num;			// (참조)유저번호
 	private String busi_num;			// (참조)법인유저번호
 	
