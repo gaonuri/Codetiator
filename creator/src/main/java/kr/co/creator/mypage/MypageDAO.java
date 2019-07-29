@@ -43,7 +43,10 @@ public class MypageDAO {
 		return ioVO;
 	}
 	
+<<<<<<< HEAD
 	
+=======
+>>>>>>> branch 'master' of https://github.com/gaonuri/Codetiator.git
 	public int myPageModifyU(MemberVO vo) {
 		int cnt = 0;
 		cnt = sqlSession.selectOne("MypageMapper.MyPageModifyU", vo);
@@ -55,7 +58,6 @@ public class MypageDAO {
 		cnt = sqlSession.selectOne("MypageMapper.MyPageModifyB", vo);
 		return cnt;
 	}//myPageModifyB
-
 
 	
 }//class

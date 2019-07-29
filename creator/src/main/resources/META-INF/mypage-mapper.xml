@@ -64,6 +64,10 @@
 			AND a.user_num = #{user_num}
 	</select>
 
+<<<<<<< HEAD
+=======
+	
+>>>>>>> branch 'master' of https://github.com/gaonuri/Codetiator.git
 	<select id="MyPageModifyU" parameterType="kr.co.creator.vo.MemberVO" resultType="kr.co.creator.vo.MemberVO">
 		select *
 		from user_list

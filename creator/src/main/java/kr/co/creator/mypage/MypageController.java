@@ -73,6 +73,10 @@ public class MypageController {
 		return "mypage/my_depo_mgn";
 	}
 	
+<<<<<<< HEAD
+=======
+	
+>>>>>>> branch 'master' of https://github.com/gaonuri/Codetiator.git
 	@RequestMapping(value="/mypagemodifyU", method=RequestMethod.POST)
 	public void myPageModifyU(MemberVO vo, HttpSession session, PrintWriter out) {
 		logger.info("=== myPageModifyU ===");
