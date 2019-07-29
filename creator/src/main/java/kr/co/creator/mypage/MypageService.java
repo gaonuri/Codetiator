@@ -52,7 +52,7 @@ public class MypageService {
 		return cnt; 
 	}//myPageModifyB	
 
-
+	
 }//class
 
 
