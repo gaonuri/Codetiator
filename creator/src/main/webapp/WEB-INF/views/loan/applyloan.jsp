@@ -276,11 +276,11 @@
 									<dd>
 										<div class="name-text">
 										<c:choose>
-											<c:when test="${Login_ss != null && Login_ss.user_name != null && Login_ss.user_name != ''}">
-												${Login_ss.user_name}
+											<c:when test="${memVO != null && memVO.user_name != null && memVO.user_name != ''}">
+												${memVO.user_name}
 											</c:when>
 											<c:otherwise>
-												${Login_sss.manager_name}
+												${memVO.manager_name}
 											</c:otherwise>
 										</c:choose>
 										</div>
@@ -309,16 +309,17 @@
 									</dd>
 									<dt>휴대전화</dt>
 									<dd>
-											<div class="form-group">
-												<input type="text" class="form-control mpNo-text" id="mpNoText" maxlength="11" 
-												value="<c:choose>
-															<c:when test="${Login_ss != null && Login_ss.phone != null && Login_ss.phone != ''}">
-																${Login_ss.phone}
+											<div class="form-group" style="margin-bottom: 0px;">
+											
+												<c:choose>
+															<c:when test="${memVO != null && memVO.phone != null && memVO.phone != ''}">
+																${memVO.phone}
 															</c:when>
 															<c:otherwise>
-																${Login_sss.manager_phone}
+																${memVO.manager_phone}
 															</c:otherwise>
-														</c:choose>" disabled="disabled">
+												</c:choose>
+											
 												
 												<!--
 												<button type="button" class="btn btn-purple-transparent" onclick="fn_doCert()" style="vertical-align: inherit;" id="certBtn">
@@ -860,9 +861,9 @@
 			showMonthAfterYear: true, //년 뒤에 월 표시
 		});*/
 		
-		var loginCusGbCd = "01";
+		var loginCusGbCd = "1";
 		var str = "";
-		if(loginCusGbCd == "01") {	// 일반회원
+		if(loginCusGbCd == "1") {	// 일반회원
 			//str += "<option value=\"01\">개인신용</option>";
 			str += "<option value=\"02\">개인담보</option>";
 			str += "<option value=\"03\">개인사업자신용</option>";

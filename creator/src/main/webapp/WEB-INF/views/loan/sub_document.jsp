@@ -329,7 +329,7 @@
                         <span class="btn btn-theme02 btn-file">
                           <span class="fileupload-new"><i class="fa fa-paperclip"></i> 사진 선택</span>
                         <span class="fileupload-exists"><i class="fa fa-undo"></i> 사진 변경</span>
-                        <input type="file" class="default" name="copy_bankbook"/>
+                        <input type="file" class="default" id="bank_img" name="copy_bankbook"/>
                         </span>
                       </div>
                     </div>
@@ -338,19 +338,19 @@
                   <div class="form-group">
                   	<label class="control-label col-md-3">사업자 등록증</label>
                   	<div class="col-md-4">
-                    	<input type="file" class="default" name="busi_regi"/>
+                    	<input type="file" class="default" id="busi_regi" name="busi_regi"/>
                     </div>
                   </div>
                   <div class="form-group">
                   	<label class="control-label col-md-3">주민등록 초본</label>
                   	<div class="col-md-4">
-                    	<input type="file" class="default" name="jumin_chobon"/>
+                    	<input type="file" class="default" id="jumin_chobon" name="jumin_chobon"/>
                     </div>
                   </div>
                   <div class="form-group">
                   	<label class="control-label col-md-3">인감증명서</label>
                   	<div class="col-md-4">
-                    	<input type="file" class="default" name="cer_ingam"/>
+                    	<input type="file" class="default" id="cer_ingam" name="cer_ingam"/>
                     </div>
                   </div>
                   <div class="form-group">
@@ -548,6 +548,27 @@
 $(document).ready(function() {
 	$.ajaxSetup({cache:false});
 	$("#doNextStepBtn").click(function() {
+		var img = $("#copy_id").val();
+		var bank_img = $("#bank_img").val();
+		var busi_regi = $("#busi_regi").val();
+		var jumin_chobon = $("#jumin_chobon").val();
+		var cer_ingam = $("#cer_ingam").val();
+		if(img == "") {
+			alert("신분증 사진을 올려주세요.");
+			$("#copy_id").focus();
+		} else if(bank_img == "") {
+			alert("통장사본을 올려주세요.");
+			$("#bank_img").focus();
+		} else if(busi_regi == "") {
+			alert("사업자등록증을 올려주세요.");
+			$("#busi_regi").focus();
+		} else if(jumin_chobon == "") {
+			alert("주민등록초본을 올려주세요.");
+			$("#jumin_chobon").focus();
+		} else if(cer_ingam == "") {
+			alert("인감증명서를 올려주세요.");
+			$("#cer_ingam").focus();
+		}
 		var form = new FormData(document.getElementById("document_form"));
 		$.ajax({
 			url:"${pageContext.request.contextPath}/sub_document_process"

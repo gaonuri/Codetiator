@@ -49,8 +49,14 @@ public class LoginController {
 		int successCnt = 0;
 		if(vo != null && vo.getUser_num() != null && !vo.getUser_num().equals("")) {
 			successCnt = 1;
+			int loginCusGbCd = 1;
 			session.setAttribute("memberVO", vo);
 			session.setAttribute("memVO", vo);
+<<<<<<< HEAD
+			session.setAttribute("mypageVO", vo);
+=======
+			session.setAttribute("loginCusGbCd", loginCusGbCd);
+>>>>>>> branch 'master' of https://github.com/gaonuri/Codetiator.git
 		} 
 		out.print(successCnt);
 		out.close();
@@ -63,8 +69,14 @@ public class LoginController {
 		int successCnt = 0;
 		if(vo != null && vo.getBusi_num() != null && !vo.getBusi_num().equals("")) {
 			successCnt = 1;
+			int loginCusGbCd = 2;
 			session.setAttribute("memberVO", vo);
 			session.setAttribute("memVO", vo);
+<<<<<<< HEAD
+			session.setAttribute("mypageVO", vo);
+=======
+			session.setAttribute("loginCusGbCd", loginCusGbCd);
+>>>>>>> branch 'master' of https://github.com/gaonuri/Codetiator.git
 		}
 		out.print(successCnt);
 		out.close();
@@ -128,7 +140,7 @@ public class LoginController {
 		List<MemberListVO> list = null;
 		list = loginService.user_list();
 		model.addAttribute("memberList", list);
-		return "mypage/modify_detail";
+		return "login/login";
 	}//user_list
 	
 	@RequestMapping(value = "/busi_user_list", method = RequestMethod.GET)
@@ -138,7 +150,7 @@ public class LoginController {
 		List<MemberListVO> list = null;
 		list = loginService.busi_user_list();
 		model.addAttribute("memberList", list);
-		return "mypage/modify_detail";
+		return "login/login";
 	}//busi_user_list
 	
 }//class

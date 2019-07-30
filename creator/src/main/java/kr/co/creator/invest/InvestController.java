@@ -129,6 +129,7 @@ public class InvestController {
 		proVO = investService.project_detail(proVO);
 		model.addAttribute("accVO", accVO);
 		model.addAttribute("proVO", proVO);
+
 		return "invest/invest_finish";
 	}//invest_finish
 }//class
