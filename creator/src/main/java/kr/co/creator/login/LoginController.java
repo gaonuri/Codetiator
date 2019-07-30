@@ -49,8 +49,10 @@ public class LoginController {
 		int successCnt = 0;
 		if(vo != null && vo.getUser_num() != null && !vo.getUser_num().equals("")) {
 			successCnt = 1;
+			int loginCusGbCd = 1;
 			session.setAttribute("memberVO", vo);
 			session.setAttribute("memVO", vo);
+			session.setAttribute("loginCusGbCd", loginCusGbCd);
 		} 
 		out.print(successCnt);
 		out.close();
@@ -63,8 +65,10 @@ public class LoginController {
 		int successCnt = 0;
 		if(vo != null && vo.getBusi_num() != null && !vo.getBusi_num().equals("")) {
 			successCnt = 1;
+			int loginCusGbCd = 2;
 			session.setAttribute("memberVO", vo);
 			session.setAttribute("memVO", vo);
+			session.setAttribute("loginCusGbCd", loginCusGbCd);
 		}
 		out.print(successCnt);
 		out.close();
