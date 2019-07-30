@@ -126,13 +126,10 @@ public class InvestController {
 //			return "login/login";
 //		}
 		accVO = investService.acount_detail(accVO);
-<<<<<<< HEAD
 		model.addAttribute("accountVO", accVO);
-=======
 		proVO = investService.project_detail(proVO);
 		model.addAttribute("accVO", accVO);
 		model.addAttribute("proVO", proVO);
->>>>>>> branch 'master' of https://github.com/gaonuri/Codetiator.git
 		return "invest/invest_finish";
 	}//invest_finish
 }//class

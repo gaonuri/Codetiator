@@ -33,6 +33,7 @@
 	  Author: TemplateMag.com
 	  License: https://templatemag.com/license/
 	======================================================= -->
+	
 	<script type="text/javascript">
 	$(document).ready(function() {
 		var temp = 0;
@@ -43,28 +44,20 @@
 		var invest 	= parseInt($("#inputAmt771").val());
 		var intrst 	= invest * $("#rate").val() * 0.01;
 		var limit	= parseInt($("#invest_limit").val());
-		var tax 	= parseInt(intrst * 0.275);
-		var benefit = invest + intrst - tax;
 		var confirmYN = false;
 		var check = $("input:checkbox[id=agreeCheckbox]:checked").is(":checked");
 
 
 		
 		$("#amtPlus100_771").click(function() {
-			addDeposit(1000000);
+			tmpInt = parseInt($("#withdrawAmt").val()) + 100;
+			//addDeposit(1000000);
+			$("#withdrawAmt").val(tmpInt);
 		});//amtPlus100_771
 		
 		$("#amtPlus10_771").click(function() {
 			addDeposit(100000);
 		});//amtPlus10_771
-		
-		$("#amtPlus5_771").click(function() {
-			addDeposit(50000);
-		});//amtPlus5_771
-		
-		$("#amtPlus1_771").click(function() {
-			addDeposit(10000);
-		});//amtPlus1_771
 		
 		$("#amtPlusAll_771").click(function() {
 			deposit = parseInt($("#inputDeposit771").val());
@@ -292,54 +285,61 @@
 									<div class="box left">
 										<div class="row">
 											<div class="col-xs-12 col-sm-offset-1 col-sm-10 col-md-offset-1 col-md-10">
-												<div class="row" id="vtAcntNDiv" style="display: none;">
-													<div class="col-xs-12 col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8">
-														<div style="padding:60px 0 10px 0; font-size: 18px; font-weight: bold;">
-															투자 신청을 위해 예치금 계좌를 발급해 주세요.
-														</div>
-														<div style="padding:20px 0;">
-														
-															<button type="button" class="btn btn-purple-transparent btn-block" onclick="fn_checkNiceCert()">
-																예치금 계좌 발급을 위해 본인 인증하기
-															</button>
-														
-														
-														</div>
-													</div>
-												</div>
-												<div class="row" id="vtAcntYDiv" style="">
-													<div class="col-xs-12 col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8">
-														<div style="padding:60px 0 10px 0; font-size: 18px; font-weight: bold;">
-															예치금 계좌정보
-														</div>
-														<div class="withdraw-wrap">
-															<div class="row" style="margin-top: 20px;">
-																<div class="col-xs-5 col-sm-5 col-md-5 withdraw-title">
-																	예금주
+												<c:choose>
+													<c:when test="${Account == null || Account.account_name == null || Account.account_name == ''}">
+														<div class="row" id="vtAcntNDiv" style="display: none;">
+															<div class="col-xs-12 col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8">
+																<div style="padding:60px 0 10px 0; font-size: 18px; font-weight: bold;">
+																	투자 신청을 위해 예치금 계좌를 발급해 주세요.
 																</div>
-																<div class="col-xs-7 col-sm-7 col-md-7 withdraw-content">
-																	<font size="1">크리에이터</font>${Account.account_name}
-																</div>
-															</div>
-															<div class="row" style="margin-top: 10px;">
-																<div class="col-xs-5 col-sm-5 col-md-5 withdraw-title">
-																	은행
-																</div>
-																<div class="col-xs-7 col-sm-7 col-md-7 withdraw-content">
-																	${Account.bank_name}
-																</div>
-															</div>
-															<div class="row" style="margin-top: 10px;">
-																<div class="col-xs-5 col-sm-5 col-md-5 withdraw-title">
-																	입금계좌
-																</div>
-																<div class="col-xs-7 col-sm-7 col-md-7 withdraw-content">
-																	<span class="font-purple" id="vtAcntNoSpan">${Account.bank_num}</span>
+																<div style="padding:20px 0;">
+																
+																	<button type="button" class="btn btn-purple-transparent btn-block" onclick="fn_checkNiceCert()">
+																		예치금 계좌 발급을 위해 본인 인증하기
+																	</button>
+																
+																
 																</div>
 															</div>
 														</div>
-													</div>
-												</div>
+													</c:when>
+													<c:otherwise>
+														<div class="row" id="vtAcntYDiv" style="">
+															<div class="col-xs-12 col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8">
+																<div style="padding:60px 0 10px 0; font-size: 18px; font-weight: bold;">
+																	예치금 계좌정보
+																</div>
+																<div class="withdraw-wrap">
+																	<div class="row" style="margin-top: 20px;">
+																		<div class="col-xs-5 col-sm-5 col-md-5 withdraw-title">
+																			예금주
+																		</div>
+																		<div class="col-xs-7 col-sm-7 col-md-7 withdraw-content">
+																			<font size="1">크리에이터</font>${Account.account_name}
+																		</div>
+																	</div>
+																	<div class="row" style="margin-top: 10px;">
+																		<div class="col-xs-5 col-sm-5 col-md-5 withdraw-title">
+																			은행
+																		</div>
+																		<div class="col-xs-7 col-sm-7 col-md-7 withdraw-content">
+																			${Account.bank_name}
+																		</div>
+																	</div>
+																	<div class="row" style="margin-top: 10px;">
+																		<div class="col-xs-5 col-sm-5 col-md-5 withdraw-title">
+																			입금계좌
+																		</div>
+																		<div class="col-xs-7 col-sm-7 col-md-7 withdraw-content">
+																			<span class="font-purple" id="vtAcntNoSpan">${Account.bank_num}</span>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</c:otherwise>
+												</c:choose>
+												
 												<hr>
 												<div class="row">
 													<div class="col-xs-12 col-sm-offset-1 col-sm-10 col-md-offset-1 col-md-10">
@@ -436,7 +436,7 @@
 																		출금 대기금액
 																	</div>
 																	<div class="col-xs-6 col-sm-6 col-md-6 text-right">
-																		<span name="WTHDRW_REQ_AMT_SUM">0</span> 원
+																		<span name="WTHDRW_REQ_AMT_SUM">${Account.deposit}</span> 원
 																	</div>
 																</div>
 															</div>
