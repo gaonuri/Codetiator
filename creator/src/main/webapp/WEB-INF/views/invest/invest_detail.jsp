@@ -36,7 +36,7 @@
 	<script type="text/javascript">
 	$(document).ready(function() {
 		$("#investBtn1").click(function() {
-			location.href = "${pageContext.request.contextPath}/invest?user_num=${memberVO.user_num}&busi_num=${memberVO.busi_num}&project_num=${projectVO.project_num}";
+			location.href = "${pageContext.request.contextPath}/invest?user_num=${memVO.user_num}&busi_num=${memVO.busi_num}&project_num=${proVO.project_num}";
 		});//investBtn1
 		
 		$("#investBtn2").click(function() {
@@ -64,8 +64,8 @@
 		<section id="main-content">
 			<section class="wrapper site-min-height">
 				<div class="row mt">
-				<div style="background-color: orange; width: 60px; text-align: center; color: white; font-size: 15px;">${projectVO.ach_state}</div>
-				<div style="width: 200px; color: black; font-size: 25px;">${projectVO.project_name}</div>
+				<div style="background-color: orange; width: 60px; text-align: center; color: white; font-size: 15px;">${proVO.ach_state}</div>
+				<div style="width: 200px; color: black; font-size: 25px;">${proVO.project_name}</div>
 					<!-- page start -->
 					<div class="col-xs-12 col-sm-12 col-md-offset-1 col-md-10 col">
 						<div class="card" style="float: right; border: solid 1px black">
@@ -74,21 +74,21 @@
 									<tr>
 										<td>
 											<div>
-												<canvas width="30" height="30">${projectVO.current_price / projectVO.price * 100}%</canvas>
+												<canvas width="30" height="30">${proVO.current_price / proVO.price * 100}%</canvas>
 											</div>
 										</td>
 									</tr>
 									<tr>
-										<td>${projectVO.current_price}만원 / ${projectVO.price}만원</td>
+										<td>${proVO.current_price}만원 / ${proVO.price}만원</td>
 									</tr>
 									<tr>
-										<td>상환방식 ${projectVO.repay_method}</td>
+										<td>상환방식 ${proVO.repay_method}</td>
 									</tr>
 									<tr>
-										<td>금리 ${projectVO.rate}%</td>
+										<td>금리 ${proVO.rate}%</td>
 									</tr>
 									<tr>
-										<td>투자기간 ${projectVO.refund}개월</td>
+										<td>투자기간 ${proVO.refund}개월</td>
 									</tr>
 									<tr>
 										<td>${500 - inVO.invest_price}만원</td>
@@ -97,7 +97,7 @@
 									<tr>
 										<td>
 											<c:choose>
-												<c:when test="${memberVO != null && (memberVO.user_num != '' && memberVO.user_num != null) || (memberVO.busi_num != '' && memberVO.busi_num != null)}">
+												<c:when test="${memVO != null && (memVO.user_num != '' && memVO.user_num != null) || (memVO.busi_num != '' && memVO.busi_num != null)}">
 													<input type="button" id="investBtn1" value="투자신청"/>
 												</c:when>
 												<c:otherwise>
@@ -127,10 +127,10 @@
 										<td>대출잔액</td>
 									</tr>
 									<tr>
-										<td>${guaranteeVO.guarantee_type}</td>
-										<td>${projectVO.refund}개월</td>
-										<td>${projectVO.price}만원</td>
-										<td>${projectVO.guarantee_price}만원</td>
+										<td>${guaVO.guarantee_type}</td>
+										<td>${proVO.refund}개월</td>
+										<td>${proVO.price}만원</td>
+										<td>${proVO.guarantee_price}만원</td>
 									</tr>
 								</table>
 								<table border="1" style="float:left;">
@@ -139,15 +139,15 @@
 									</tr>
 									<tr>
 										<td>유형</td>
-										<td>${guaranteeVO.guarantee_type}</td>
+										<td>${guaVO.guarantee_type}</td>
 									</tr>
 									<tr>
 										<td>공급/전용</td>
-										<td>${guaranteeVO.supply_area} / ${guaranteeVO.exclusive_area}</td>
+										<td>${guaVO.supply_area} / ${guaVO.exclusive_area}</td>
 									</tr>
 									<tr>
 										<td>LTV</td>
-										<td>${projectVO.price / guaranteeVO.connoisseur * 100}%</td>
+										<td>${proVO.price / guaVO.connoisseur * 100}%</td>
 									</tr>
 									<tr>
 										<td>담보권</td>
@@ -160,11 +160,11 @@
 									</tr>							
 									<tr>
 										<td>유형</td>
-										<td>${guaranteeVO.debtor_type}</td>
+										<td>${guaVO.debtor_type}</td>
 									</tr>
 									<tr>
 										<td>업종</td>
-										<td>${guaranteeVO.business_type}</td>
+										<td>${guaVO.business_type}</td>
 									</tr>
 									<tr>
 										<td>대출목적</td>
@@ -188,9 +188,9 @@
 										<td>외부 감정가</td>
 									</tr>
 									<tr>
-										<td>${guaranteeVO.object_type}</td>
-										<td>${guaranteeVO.area}</td>
-										<td>${guaranteeVO.connoisseur}</td>
+										<td>${guaVO.object_type}</td>
+										<td>${guaVO.area}</td>
+										<td>${guaVO.connoisseur}</td>
 									</tr>
 									<tr>
 										<td>선순위 금액</td>
@@ -199,15 +199,15 @@
 									</tr>
 									<tr>
 										<td>모른다</td>
-										<td>${projectVO.price / guaranteeVO.connoisseur * 100}%</td>
+										<td>${proVO.price / guaVO.connoisseur * 100}%</td>
 										<td>150%</td>
 									</tr>
 								</table>
 								<div style="border: solid 1px black; width:800px; height:400px;">
-									${guaranteeVO.guarantee_img}
+									${guaVO.guarantee_img}
 								</div>
 								<div id="map" style="width:800px;height:300px;"></div>
-								<div style="">소재지 : ${guaranteeVO.location}</div>
+								<div style="">소재지 : ${guaVO.location}</div>
 							</div>
 						</div>
 						<!-- 담보상세 end -->
@@ -476,7 +476,7 @@
 			<!-- /wrapper -->
 	    </section>
 	    <!-- /MAIN CONTENT -->
-	    <input type="hidden" id="user_num" value="${memberVO.user_num}" />
+	    <input type="hidden" id="user_num" value="${memVO.user_num}" />
 	    <!--main content end-->
 		
 		<!--footer start-->

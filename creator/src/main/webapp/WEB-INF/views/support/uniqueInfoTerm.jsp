@@ -10,7 +10,7 @@
 	<meta name="author" content="Dashboard">
 	<meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
 	<title>Dashio - Bootstrap Admin Template</title>
-	<script src="${pageContext.request.contextPath}/resources/jquery/jquery-3.4.1.js"></script>
+	<script src="../resources/jquery/jquery-3.4.1.js"></script>
 	<!-- Favicons -->
 	<link href="${pageContext.request.contextPath}/resources/bootstrap/img/favicon.png" rel="icon">
 	<link href="${pageContext.request.contextPath}/resources/bootstrap/img/apple-touch-icon.png" rel="apple-touch-icon">
@@ -21,11 +21,6 @@
 	<link href="${pageContext.request.contextPath}/resources/bootstrap/lib/font-awesome/css/font-awesome.css" rel="stylesheet" />
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/bootstrap/css/zabuto_calendar.css">
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/bootstrap/lib/gritter/css/jquery.gritter.css" />
-	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/bootstrap/lib/bootstrap-fileupload/bootstrap-fileupload.css" />
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/bootstrap/lib/bootstrap-datepicker/css/datepicker.css" />
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/bootstrap/lib/bootstrap-daterangepicker/daterangepicker.css" />
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/bootstrap/lib/bootstrap-timepicker/compiled/timepicker.css" />
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/bootstrap/lib/bootstrap-datetimepicker/css/datetimepicker.css" />
 	<!-- Custom styles for this template -->
 	<link href="${pageContext.request.contextPath}/resources/bootstrap/css/style.css" rel="stylesheet">
 	<link href="${pageContext.request.contextPath}/resources/bootstrap/css/style-responsive.css" rel="stylesheet">
@@ -37,7 +32,8 @@
 	  Author: TemplateMag.com
 	  License: https://templatemag.com/license/
 	======================================================= -->
-	<style>
+</head>
+<style >
 #content .step {
     padding: 0px 10px 60px 10px;
 }
@@ -46,14 +42,7 @@
     font-weight: bold;
     color: #fff;
 }
-#loanGuide-banner {
-    background: url(${pageContext.request.contextPath}/resources/bootstrap/img/blog-bg.jpg)no-repeat center center fixed;
-    background-size: cover;
-    background-attachment: fixed;
-    width: 100%;
-    height: 80px;
-    padding: 100px 0 200px 0;
-}
+
 #content .step .wrap .item {
     padding: 10px 20px;
     border-style: solid;
@@ -85,9 +74,6 @@
 .text-center {
     text-align: center;
 }
-.titles {
-	color: #000;
-}
 .title {
     font-size: 26pt;
     font-weight: 500;
@@ -95,40 +81,50 @@
     text-shadow: 1px 1px 1px #bf9bcb;
     letter-spacing: -0.5pt;
     line-height: 1.2;
+    text-align: center;
 }
 .section-body {
-    color: #fff;
+    color: #000;
     position: relative;
     padding: 60px 20px 30px 20px;
-}
-.btn {
-    display: inline-block;
-    padding: 6px 12px;
-    margin-bottom: 0;
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 1.42857143;
-    text-align: center;
-    white-space: nowrap;
-    vertical-align: middle;
-    -ms-touch-action: manipulation;
-    touch-action: manipulation;
-    cursor: pointer;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    background-image: none;
-    border: 1px solid transparent;
-    border-radius: 4px;
 }
 .top {
     padding: 30px 0px;
     text-align: center;
 }
-</style>
+.dl-horizontal dd {
+	    margin-left: 80px;
+}
+.dl-horizontal dt {
+	    width: 70px;
+}
+.container {
+    width: 1170px;
+}
+.row {
+    margin-right: -15px;
+    margin-left: -15px;
+}
+.col-md-12 {
+    width: 100%;
+    float: left;
+}
+.wrap {
+    padding: 35px 100px 111px 100px;
+}
+.box {
+    border-color: #d9d9de;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 4px;
+    padding: 20px 40px;
+    background-color: #fff;
+    font-size: 16px;
+    overflow: scroll;
+    max-height: 500px;
+}
 
-</head>
+</style>
 <body>
 
 	<section id="container">
@@ -249,15 +245,13 @@
 			</div>
 	    </header>
 	    <!--header end-->
-	    
-	    <section id="loanGuide-banner" class="text-center">
+	   <section id="loanGuide-banner" class="text-center">
 			<div class="overlay">
 				<div class="section-body">
-					<span class="title">서류제출</span>
+					<span class="title">고유식별번호 수집-이용 동의</span>
 				</div>
 			</div>
 		</section>
-	   
 	   
 	    <!-- **********************************************************************************************************************************************************
 	        MAIN CONTENT
@@ -267,141 +261,50 @@
 			<section class="wrapper site-min-height">
 				<div class="row mt">
 					<div class="col-lg-12">
-					<section id="content">
+
 <div class="container">
-			<div class="row" style="width: 800px;">
-				<div class="col-md-offset-2 col-md-8 col">
-					<div class="form" style="width: 750px;">
-						<div class="box-header"></div>
-						<div class="box-body">
-							<div class="box-wrap">
-							<div class="top">
-								<div class="step">
-									<div class="wrap">
-										<div class="item">
-											대출신청
-										</div>
-										<div class="item">
-											추가정보
-										</div>
-										<div class="item active">
-											서류제출
-										</div>
-										<div class="item">
-											대출심사
-										</div>
-									</div>
-								</div>
-								<div class="titles" style="font-size: 15pt;">
-									서류제출
-								</div>
-								<div class="line"></div>
+			<div class="section-body">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="wrap">
+							<div class="box">
+								<strong>
+								주식회사 크리에이터 귀중
+								<br>
+								<br>본인은 신용인증송부서비스를 위해 귀사가 아래와 같이 본인의 고유식별정보를 수집 및 이용하는 데 동의합니다.
+								</strong>
+								<br>
+								<br>회사는 「신용정보의 이용 및 보호에 관한 법률」에 근거하여 별도로 주민등록번호를 수집하고 있습니다.
+								<br>
+								<br>1. 고유식별정보의 수집 및 이용 항목
+								<br>- 주민등록번호(외국인등록번호)
+								<br>
+								<br>2. 수집 및 이용 목적
+								<br>- "이용자"의 신용정보의 조회
+								<br>- "이용자"의 본인 확인
+								<br>- "이용자"의 거래 내역 입증
+								<br>
+								<br>3. 보유 및 이용기간
+								<br>- "이용자"의 서비스 이용 목적이 달성되면 지체 없이 파기되며, 다만 관계법령에 따라 보유의무가 존재하는 경우 암호화하여 보관합니다.
+								<br>
+								<br>4. 동의 거부 및 동의 거부 시의 불이익
+								<br>- "이용자"가 고유식별정보 수집 및 이용에 동의하지 않을 경우 신용인증송부서비스 이용이 제한될 수 있습니다.
 							</div>
-            <div class="form-panel">
-              <form id="document_form" class="form-horizontal style-form" enctype="multipart/form-data">
-                <div class="form-group last">
-                  <label class="control-label col-md-3">신분증 사본</label>
-                  <div class="col-md-9">
-                    <div class="fileupload fileupload-new" data-provides="fileupload">
-                      <div class="fileupload-new thumbnail" style="width: 200px; height: 150px;">
-                        <img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&text=no+image" alt="" />
-                      </div>
-                      <div class="fileupload-preview fileupload-exists thumbnail" style="max-width: 200px; max-height: 150px; line-height: 20px;"></div>
-                      <div>
-                        <span class="btn btn-theme02 btn-file">
-                          <span class="fileupload-new"><i class="fa fa-paperclip"></i> 사진 선택</span>
-                        <span class="fileupload-exists"><i class="fa fa-undo"></i> 사진 변경</span>
-                        <input type="file" class="default" id="copy_id" name="copy_id" />
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="form-group last">
-                  <label class="control-label col-md-3">통장 사본</label>
-                  <div class="col-md-9">
-                    <div class="fileupload fileupload-new" data-provides="fileupload">
-                      <div class="fileupload-new thumbnail" style="width: 200px; height: 150px;">
-                        <img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&text=no+image" alt="" />
-                      </div>
-                      <div class="fileupload-preview fileupload-exists thumbnail" style="max-width: 200px; max-height: 150px; line-height: 20px;"></div>
-                      <div>
-                        <span class="btn btn-theme02 btn-file">
-                          <span class="fileupload-new"><i class="fa fa-paperclip"></i> 사진 선택</span>
-                        <span class="fileupload-exists"><i class="fa fa-undo"></i> 사진 변경</span>
-                        <input type="file" class="default" name="copy_bankbook"/>
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                  <div class="form-group">
-                  	<label class="control-label col-md-3">사업자 등록증</label>
-                  	<div class="col-md-4">
-                    	<input type="file" class="default" name="busi_regi"/>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                  	<label class="control-label col-md-3">주민등록 초본</label>
-                  	<div class="col-md-4">
-                    	<input type="file" class="default" name="jumin_chobon"/>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                  	<label class="control-label col-md-3">인감증명서</label>
-                  	<div class="col-md-4">
-                    	<input type="file" class="default" name="cer_ingam"/>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                  	<label class="control-label col-md-3">부동산증명서(선택)</label>
-                  	<div class="col-md-4">
-                    	<input type="file" class="default" name="cer_budong"/>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                  	<label class="control-label col-md-3">동산증명서(선택)</label>
-                  	<div class="col-md-4">
-                    	<input type="file" class="default" name="cer_dong"/>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                  	<label class="control-label col-md-3">소득금액증명원(선택)</label>
-                  	<div class="col-md-4">
-                    	<input type="file" class="default" name="cer_income"/>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                  	<label class="control-label col-md-3">부가가치세과세증명원(선택)</label>
-                  	<div class="col-md-4">
-                    	<input type="file" class="default" name="cer_vat"/>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                  	<label class="control-label col-md-3">기타증명서(선택)</label>
-                  	<div class="col-md-4">
-                    	<input type="file" class="default" name="cer_other"/>
-                    </div>
-                  </div>
-                  <div class="bottom">
-								<input type="button" class="btn btn-purple-transparent btn-block" id="doNextStepBtn"
-										value="서류 제출" />
-<!-- 									<button type="submit" class="btn btn-purple-transparent btn-block" id="doNextStepBtn">본인 인증 및 대출 가능여부 확인</button> -->
-									<p>※ 대출심사 결격사유 : 최근 현금서비스 3회 이상 이용 고객 및 기타 당사가 규정하는 채무불이행 사유가 있는 고객.</p>
-									<div class="page" style="text-align: right;">3/4</div>
-				</div>
-              </form>
-             	 </div>
-              </div>
-              </div>
-						<div class="box-footer"></div>
+							<hr>
+							<div class="row">
+								<div class="col-md-push-8 col-md-4">
+									<select class="form-control" id="termHisSelect">
+										<option value="">이전 약관보기</option>
+										<option value="20180227">2018년 2월 27일</option>
+									</select>
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</section>
-            </div>
-					</div>
+</div>
 				</div>
 			</section>
 			<!-- /wrapper -->
@@ -472,15 +375,6 @@
 	<!--script for this page-->
 	<script src="${pageContext.request.contextPath}/resources/bootstrap/lib/sparkline-chart.js"></script>
 	<script src="${pageContext.request.contextPath}/resources/bootstrap/lib/zabuto_calendar.js"></script>
-	<script src="${pageContext.request.contextPath}/resources/bootstrap/lib/jquery-ui-1.9.2.custom.min.js"></script>
-  	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/bootstrap/lib/bootstrap-fileupload/bootstrap-fileupload.js"></script>
-  	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/bootstrap/lib/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
-  	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/bootstrap/lib/bootstrap-daterangepicker/date.js"></script>
-  	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/bootstrap/lib/bootstrap-daterangepicker/daterangepicker.js"></script>
-  	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/bootstrap/lib/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"></script>
- 	 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/bootstrap/lib/bootstrap-daterangepicker/moment.min.js"></script>
-  	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/bootstrap/lib/bootstrap-timepicker/js/bootstrap-timepicker.js"></script>
-  	<script src="${pageContext.request.contextPath}/resources/bootstrap/lib/advanced-form-components.js"></script>
 	<script type="text/javascript">
     $(document).ready(function() {
       var unique_id = $.gritter.add({
@@ -543,32 +437,22 @@
       console.log('nav ' + nav + ' to: ' + to.month + '/' + to.year);
     }
 	</script>
-<!-- form.append("aaa",$("#aaa").val()); -->
-<script type="text/javascript">
-$(document).ready(function() {
-	$.ajaxSetup({cache:false});
-	$("#doNextStepBtn").click(function() {
-		var form = new FormData(document.getElementById("document_form"));
-		$.ajax({
-			url:"${pageContext.request.contextPath}/sub_document_process"
-			,data:form
-			,dataType:'json'
-			,processData:false
-			,contentType:false
-			,type:"POST"
-			,success:function(result){alert(result);
-				if(result > 0){
-					location.href = "${pageContext.request.contextPath}/loan_judge";
-				} else {
-					alert("잠시 후 다시 시도해 주세요.");
-				}
-			}
-				,error:function(xhr){
-					alert("fail");
-				}
-			});//ajax
-	});//click
-});//ready
-</script>
+	<script type="text/javascript">
+	$(document).ready(function() {
+		$("#loanReqBtn").click(function() {
+			location.href = "${pageContext.request.contextPath}/loan/getloan";
+		});
+	});
+
+	
+	
+	window.name ="Parent_window";
+	function fn_openNicePopup(){
+		window.open('', 'popupChk', 'width=500, height=550, top=100, left=100, fullscreen=no, menubar=no, status=no, toolbar=no, titlebar=yes, location=no, scrollbar=no');
+		document.form_chk.action = "https://nice.checkplus.co.kr/CheckPlusSafekeyModel/checkplus.cb";
+		document.form_chk.target = "popupChk";
+		document.form_chk.submit();
+	}
+	</script>
 </body>
 </html>

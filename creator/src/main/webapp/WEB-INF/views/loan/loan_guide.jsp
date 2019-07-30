@@ -52,16 +52,12 @@
     color: #712594;
     display: inline;
 }
-
-.container {
-    width: 1170px;
-}
-
 .container {
     padding-right: 15px;
     padding-left: 15px;
     margin-right: auto;
     margin-left: auto;
+    width: 1170px;
 }
 #loanGuide-banner {
     background: url(${pageContext.request.contextPath}/resources/bootstrap/img/blog-bg.jpg)no-repeat center center fixed;
@@ -77,7 +73,7 @@
 .title {
     font-size: 26pt;
     font-weight: 500;
-    color: #732173;
+    color: #fff;
     text-shadow: 1px 1px 1px #bf9bcb;
     letter-spacing: -0.5pt;
     line-height: 1.2;
@@ -98,6 +94,119 @@
 .dl-horizontal dt {
 	    width: 70px;
 }
+#procedure {
+    padding: 41px 0 111px 0;
+    background-color: #fff;
+}
+.text-center {
+    text-align: center;
+}
+.section-body {
+    padding: 0 15px;
+}
+.loan_int_tit {
+    font-size: 21pt;
+    font-weight: 500;
+    color: #333;
+    margin-top: 70px;
+    margin-bottom: 45px;
+    text-align: center;
+    letter-spacing: -0.2pt;
+    /* text-shadow: 0px 0px 1px #777; */
+}
+.row {
+    margin-right: -15px;
+    margin-left: -15px;
+    margin-bottom: 120px;
+}
+.procedure {
+    padding: 40px 0 0 0;
+}
+.col-md-offset-1 {
+    margin-left: 8.33333333%;
+}
+.col-md-2 {
+    width: 16.66666667%;
+    float: left;
+}
+.step {
+    position: relative;
+}
+img {
+    vertical-align: middle;
+    border: 0;
+}
+.arrow {
+    position: absolute;
+    top: 40px;
+    right: -15px;
+    display: block;
+}
+h4{
+    font-size: 15px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-family: inherit;
+    font-weight: 500;
+    line-height: 1.1;
+    color: black;
+    display: block;
+    margin-block-start: 1.33em;
+    margin-block-end: 1.33em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+strong {
+    font-weight: bold;
+}
+.number {
+    display: none;
+}
+.mainTop_btn {
+    width: 26%;
+    height: 36px;
+    font-size: 17px;
+    margin: 5% 37% 0 37%;
+}
+.mr-cap {
+    color: #fff;
+    background-color: #02863A;
+    width: 20px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    float: right;
+    height: 100%;
+}
+.mr-angle {
+	color: #fff;
+    background-color: #02863A;
+    margin-right: -10px;
+    width: 20px;
+    text-align: right;
+    float: right;
+    transform: skew(-30deg);
+    -webkit-transform: skew(-30deg);
+    -ms-transform: skew(-30deg);
+    height: 100%;
+}
+p {
+    color: #fff;
+    margin: 0 0 10px;
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+.mr-green {
+    color: #fff;
+    background-color: #01C351;
+    text-align: center;
+    font-weight: 600;
+    margin-left: auto;
+    margin-right: auto;
+    border: 2px solid #01C351;
+}
 </style>
 <body>
 
@@ -108,7 +217,7 @@
 	    <!--header start-->
 	    <header class="header black-bg">
 			<!--logo start-->
-			<a href="./main" class="logo"><img id="logoImage" alt="로고" src="${pageContext.request.contextPath}/resources/img/ner.jpg" width="200px" height="30px"></a>
+			<a href="${pageContext.request.contextPath}/main" class="logo"><img id="logoImage" alt="로고" src="${pageContext.request.contextPath}/resources/img/ner.jpg" width="200px" height="30px"></a>
 			<!--logo end-->
 			<div class="nav notify-row top-menu" id="top_menu">
 				<!--  notification start -->
@@ -127,10 +236,10 @@
 						<ul class="dropdown-menu extended tasks-bar">
 							<div class="notify-arrow notify-arrow-green"></div>
 							<li>
-								<a href="./loan_guide">대출안내</a>
+								<a href="${pageContext.request.contextPath}/loan_guide">대출안내</a>
 							</li>
 							<li>
-								<a href="./loan/getloan">대출하기</a>
+								<a href="${pageContext.request.contextPath}/loan/getloan">대출하기</a>
 							</li>
 						</ul>
 					</li>
@@ -144,13 +253,13 @@
 						<ul class="dropdown-menu extended tasks-bar">
 							<div class="notify-arrow notify-arrow-black"></div>
 							<li>
-								<a href="./invest_guide">투자안내</a>
+								<a href="${pageContext.request.contextPath}/invest_guide">투자안내</a>
 							</li>
 							<li>
-								<a href="./invest_list">투자하기</a>
+								<a href="${pageContext.request.contextPath}/invest_list">투자하기</a>
 							</li>
 							<li>
-								<a href="./invest_finish">완료된투자</a>
+								<a href="${pageContext.request.contextPath}/invest_finish">완료된투자</a>
 							</li>
 						</ul>
 					</li>
@@ -165,16 +274,16 @@
 						<ul class="dropdown-menu extended notification">
 							<div class="notify-arrow"></div>
 							<li>
-								<a href="./faq">FAQ</a>
+								<a href="${pageContext.request.contextPath}/faq">FAQ</a>
 							</li>
 							<li>
-								<a href="./support">이용약관</a>
+								<a href="${pageContext.request.contextPath}/support">이용약관</a>
 							</li>
 							<li>
-								<a href="./policy">개인정보</a>
+								<a href="${pageContext.request.contextPath}/policy">개인정보</a>
 							</li>
 							<li>
-								<a href="./inquiry">1:1문의</a>
+								<a href="${pageContext.request.contextPath}/inquiry">1:1문의</a>
 							</li>
 						</ul>
 					</li>
@@ -188,10 +297,10 @@
 						<ul class="dropdown-menu extended notification">
 							<div class="notify-arrow notify-arrow-yellow"></div>
 							<li>
-								<a href="./my_dashboard">대시보드</a>
+								<a href="${pageContext.request.contextPath}/my_dashboard">대시보드</a>
 							</li>
 							<li>
-								<a href="./my_invest_list">투자내역</a>
+								<a href="${pageContext.request.contextPath}/my_invest_list">투자내역</a>
 							</li>
 							<li>
 								<a href="./my_loan_list">대출내역</a>
@@ -231,12 +340,8 @@
 	        MAIN CONTENT
 	        *********************************************************************************************************************************************************** -->
 		<!--main content start-->
-		<section id="main-content">
-			<section class="wrapper site-min-height">
-				<div class="row mt">
-					<div class="col-lg-12">
-
-<div class="container">
+<section id="procedure" class="text-center">
+		<div class="container">
 			<div class="center">
 				<div class="loan_int_tit">대출 절차</div>
 			</div>
@@ -247,10 +352,10 @@
 							<!-- 
 							<img src="/images/loan/img_loan_procedure_loan_application.png">
 							-->
-							<img src="${pageContext.request.contextPath}/resources/loanV2/img_loan_process_01.png">
+							<img src="${pageContext.request.contextPath}/resources/img/img_loan_process_01.png">
 						</div>
 						<div class="arrow">
-							<img src="${pageContext.request.contextPath}/resources/loanV2/img_next.png">
+							<img src="${pageContext.request.contextPath}/resources/img//img_next.png">
 						</div>
 						<h4><strong><span class="number">1.&nbsp;</span>대출 신청</strong></h4>
 					</div>
@@ -259,11 +364,11 @@
 							<!-- 
 							<img src="/images/loan/img_loan_procedure_add_info.png">
 							-->
-							<img src="${pageContext.request.contextPath}/resources/loanV2/img_loan_process_02.png">
+							<img src="${pageContext.request.contextPath}/resources/img/img_loan_process_02.png">
 						</div>
 						<h4><strong><span class="number">2.&nbsp;</span>추가정보</strong></h4>
 						<div class="arrow pc">
-							<img src="${pageContext.request.contextPath}/resources/loanV2/img_next.png">
+							<img src="${pageContext.request.contextPath}/resources/img/img_next.png">
 						</div>
 					</div>
 					<div class="col-xs-6 col-sm-6 col-md-2 procedure">
@@ -271,11 +376,11 @@
 							<!--  
 							<img src="/images/loan/img_loan_procedure_judge.png">
 							-->
-							<img src="${pageContext.request.contextPath}/resources/loanV2/img_loan_process_03.png">
+							<img src="${pageContext.request.contextPath}/resources/img/img_loan_process_03.png">
 						</div>
 						<h4><strong><span class="number">3.&nbsp;</span>서류심사</strong></h4>
 						<div class="arrow">
-							<img src="${pageContext.request.contextPath}/resources/loanV2/img_next.png">
+							<img src="${pageContext.request.contextPath}/resources/img/img_next.png">
 						</div>
 					</div>
 					<div class="col-xs-6 col-sm-6 col-md-2 procedure">
@@ -283,11 +388,11 @@
 							<!--  
 							<img src="/images/loan/img_loan_procedure_dealopen.png">
 							-->
-							<img src="${pageContext.request.contextPath}/resources/loanV2/img_loan_process_04.png">
+							<img src="${pageContext.request.contextPath}/resources/img/img_loan_process_04.png">
 						</div>
 						<h4><strong><span class="number">4.&nbsp;</span>상품오픈</strong></h4>
 						<div class="arrow">
-							<img src="${pageContext.request.contextPath}/resources/loanV2/img_next.png">
+							<img src="${pageContext.request.contextPath}/resources/img/img_next.png">
 						</div>
 					</div>
 					<div class="col-xs-6 col-sm-6 col-md-2 procedure">
@@ -295,21 +400,20 @@
 							<!--  
 							<img src="/images/loan/img_loan_procedure_approval.png">
 							-->
-							<img src="${pageContext.request.contextPath}/resources/loanV2/img_loan_process_05.png">
+							<img src="${pageContext.request.contextPath}/resources/img/img_loan_process_05.png">
 						</div>
 						<h4><strong><span class="number">5.&nbsp;</span>대출 실행</strong></h4>
 					</div>
 				</div>
 				<div class="mr-green mainTop_btn" id="loanReqBtn">
 					대출신청<span class="mr-cap"></span>
+					<span class="mr-angle">
+						<div style="-webkit-transform: skew(30deg); line-height: 0px"><p>&gt;</p></div>
+					</span>
 				</div>
 			</div>
 		</div>
-</div>
-				</div>
-			</section>
-			<!-- /wrapper -->
-	    </section>
+	</section>
 	    <!-- /MAIN CONTENT -->
 	    <!--main content end-->
 		
@@ -441,7 +545,7 @@
 	<script type="text/javascript">
 	$(document).ready(function() {
 		$("#loanReqBtn").click(function() {
-			location.href = "${pageContext.request.contextPath}/loan/getloan";
+			location.href = "${pageContext.request.contextPath}/getloan";
 		});
 	});
 
