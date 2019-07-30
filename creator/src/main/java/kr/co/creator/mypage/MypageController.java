@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import kr.co.creator.vo.AccountVO;
 import kr.co.creator.vo.InOutVO;
+import kr.co.creator.vo.MemberListVO;
 import kr.co.creator.vo.MemberVO;
 import kr.co.creator.vo.MypageVO;
 import kr.co.creator.vo.ProjectVO;
@@ -73,32 +74,36 @@ public class MypageController {
 		return "mypage/my_depo_mgn";
 	}
 	
-	@RequestMapping(value="/mypagemodifyU", method=RequestMethod.POST)
-	public void myPageModifyU(MemberVO vo, HttpSession session, PrintWriter out) {
+	@RequestMapping(value = "/mypagemodifyu", method = RequestMethod.POST)
+	public void myPageModifyU(HttpSession session, PrintWriter out, MemberListVO vo) {
 		logger.info("=== myPageModifyU ===");
 		vo = sqlSession.selectOne("MypageMapper.MyPageModifyU", vo);
-		int successCnt = 0;
+		System.out.println("@@@@@@@@@@@@@@ :" + vo );
+		int cnt = 0;
 //		successCnt = service.myPageModify(vo);
 		if(vo != null && vo.getUser_num() != null && !vo.getUser_num().equals("")) {
-			successCnt = 1;
-			session.setAttribute("mypageVO", vo);
+			cnt = 1;
+			session.setAttribute("mypagedetail", vo);
 		} 
-		out.print(successCnt);
-		out.close();		
+		out.print(cnt);
+		out.flush();
+		out.close();	
 	}//myPageModifyU
 	
-	@RequestMapping(value="/mypagemodifyB", method=RequestMethod.POST)
-	public void myPageModifyB(MemberVO vo, HttpSession session, PrintWriter out) {
+	@RequestMapping(value="/mypagemodifyb", method=RequestMethod.POST)
+	public void myPageModifyB(HttpSession session, PrintWriter out, MemberListVO vo) {
 		logger.info("=== myPageModifyB ===");
 		vo = sqlSession.selectOne("MypageMapper.MyPageModifyB", vo);
-		int successCnt = 0;
+		System.out.println("@@@@@@@@@@@@@@ :" + vo );
+		int cnt = 0;
 //		successCnt = service.myPageModify(vo);
 		if(vo != null && vo.getBusi_num() != null && !vo.getBusi_num().equals("")) {
-			successCnt = 1;
-			session.setAttribute("mypageVO", vo);
+			cnt = 1;
+			session.setAttribute("mypagedetail", vo);
 		}
-		out.print(successCnt);
-		out.close();		
+		out.print(cnt);
+		out.flush();
+		out.close();	
 	}//myPageModifyB
 	
 	@RequestMapping(value = "/modify_detail", method = RequestMethod.GET)
@@ -114,6 +119,7 @@ public class MypageController {
 		
 		return "mypage/my_modify";
 	}
+	
 	
 	
 }//class

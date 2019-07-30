@@ -51,6 +51,7 @@ public class LoginController {
 			successCnt = 1;
 			session.setAttribute("memberVO", vo);
 			session.setAttribute("memVO", vo);
+			session.setAttribute("mypageVO", vo);
 		} 
 		out.print(successCnt);
 		out.close();
@@ -65,6 +66,7 @@ public class LoginController {
 			successCnt = 1;
 			session.setAttribute("memberVO", vo);
 			session.setAttribute("memVO", vo);
+			session.setAttribute("mypageVO", vo);
 		}
 		out.print(successCnt);
 		out.close();
@@ -128,7 +130,7 @@ public class LoginController {
 		List<MemberListVO> list = null;
 		list = loginService.user_list();
 		model.addAttribute("memberList", list);
-		return "mypage/modify_detail";
+		return "login/login";
 	}//user_list
 	
 	@RequestMapping(value = "/busi_user_list", method = RequestMethod.GET)
@@ -138,7 +140,7 @@ public class LoginController {
 		List<MemberListVO> list = null;
 		list = loginService.busi_user_list();
 		model.addAttribute("memberList", list);
-		return "mypage/modify_detail";
+		return "login/login";
 	}//busi_user_list
 	
 }//class

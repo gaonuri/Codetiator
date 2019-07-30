@@ -123,7 +123,6 @@ public class InvestController {
 //			return "login/login";
 //		}
 		accVO = investService.acount_detail(accVO);
-		accVO = investService.acount_detail(accVO);
 		model.addAttribute("accountVO", accVO);
 		return "invest/invest_finish";
 	}//invest_finish
