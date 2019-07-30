@@ -145,12 +145,15 @@
 		}//calculating
 		
 		$("#invest_offer_u").click(function() {
-			$("#current_price").val((current_price + invest) / 10000);
 			$("#deposit").val(deposit - invest);
-			$("#invest_price").val(invest);
-			//alert("current_price : " + parseInt(current_price + invest) / 10000);
-			alert("deposit : " + parseInt(deposit - invest));
-			alert("invest_price : " + invest);
+			$("#invest_price").val(invest / 10000);
+			$("#current_price").val((current_price + invest) / 10000);
+			$("#project_num").val(${proVO.project_num});
+// 			alert("deposit : " + parseInt(deposit - invest));
+// 			alert("invest_price : " + $("#invest_price").val());
+// 			alert("current_price : " + $("#current_price").val());
+			alert("project_num : " + $("#project_num").val());
+			
 			//alert($("input:checkbox[id=agreeCheckbox]:checked").is(":checked"));
 			check = $("input:checkbox[id=agreeCheckbox]:checked").is(":checked");
 			
@@ -162,6 +165,7 @@
 							{
 								user_num:$("#user_num").val(),
 								deposit:$("#deposit").val(),
+								project_num:$("#project_num").val(),
 								invest_price:$("#invest_price").val(),
 								current_price:$("#current_price").val()
 							},
@@ -171,7 +175,7 @@
 									if(data == -1) {
 										alert("오류");
 									}else if(data > 0) {
-										location.href="${pageContext.request.contextPath}/invest_finish?user_num=${memberVO.user_num}";
+										location.href="${pageContext.request.contextPath}/invest_finish?user_num=${memVO.user_num}";
 									} else {
 										alert("관리자 : 02-5555-7777");
 									} 
@@ -192,7 +196,14 @@
 		
 		$("#invest_offer_b").click(function() {
 			$("#deposit").val(deposit - invest);
-			alert(deposit - invest);
+			$("#invest_price").val(invest / 10000);
+			$("#current_price").val((current_price + invest) / 10000);
+			$("#project_num").val(${proVO.project_num});
+// 			alert("deposit : " + parseInt(deposit - invest));
+// 			alert("invest_price : " + $("#invest_price").val());
+// 			alert("current_price : " + $("#current_price").val());
+			alert("project_num : " + $("#project_num").val());
+			
 			check = $("input:checkbox[id=agreeCheckbox]:checked").is(":checked");
 			
 			if(check == true) {
@@ -202,7 +213,10 @@
 					$.post("${pageContext.request.contextPath}/deposit_update",
 							{
 								busi_num:$("#busi_num").val(),
-								deposit:$("#deposit").val()
+								deposit:$("#deposit").val(),
+								project_num:$("#project_num").val(),
+								invest_price:$("#invest_price").val(),
+								current_price:$("#current_price").val()
 							},
 							function(data, status) {
 								alert(data); alert(status);
@@ -210,7 +224,7 @@
 									if(data == -1) {
 										alert("오류");
 									}else if(data > 0) {
-										location.href="${pageContext.request.contextPath}/invest_finish?busi_num=${memberVO.busi_num}";
+										location.href="${pageContext.request.contextPath}/invest_finish?busi_num=${memVO.busi_num}";
 									} else {
 										alert("관리자 : 02-5555-7777");
 									} 
@@ -228,7 +242,6 @@
 				alert("약관에 동의해주시기 바랍니다.");
 			}//if
 		});//invest_offer_b
-		
 	});//ready
 	</script>
 </head>
@@ -349,7 +362,7 @@
 																<div class="col-sm-5 col-md-5">
 																	<div class="row" id="popoverPlaceL">
 																		<div class="col-xs-10 col-sm-10 col-md-10 col">
-																			<div class="name">상품명</div>
+																			<div class="name">상품명 <span>번호 ${proVO.project_num}</span></div>
 																		</div>
 																	</div>
 																</div>
@@ -376,29 +389,29 @@
 																	<div class="col-xs-9 col-sm-5 col-md-5 col">
 																		<div class="row">
 																			<div class="col-xs-10 col-sm-10 col-md-10 col">
-																				<div class="name" id="loanNm771">${projectVO.project_name}</div>
+																				<div class="name" id="loanNm771">${proVO.project_name}</div>
 																			</div>
 																		</div>
 																	</div>
 																	<div class="col-xs-3 col-sm-1 col-md-1 col">
 																		<div class="grade">
-																			<span id="grade771">${projectVO.grade}</span>
+																			<span id="grade771">${proVO.grade}</span>
 																		</div>
 																	</div>
 																	<div class="clearfix visible-xs-block"></div>
 																	<div class="col-xs-3 col-sm-1 col-md-1 col">
 																		<div class="rate">
-																			<span id="rate771">${projectVO.rate}</span><font size="1">%</font>
+																			<span id="rate771">${proVO.rate}</span><font size="1">%</font>
 																		</div>
 																	</div>
 																	<div class="col-xs-3 col-sm-1 col-md-1 col">
 																		<div class="period">
-																			<span id="period771">${projectVO.rate}</span><font size="1">개월</font>
+																			<span id="period771">${proVO.rate}</span><font size="1">개월</font>
 																		</div>
 																	</div>
 																	<div class="col-xs-3 col-sm-2 col-md-2 col">
 																		<div class="amt">
-																			<span id="investOkAmt771">${projectVO.price - projectVO.current_price}</span><font size="1">만원</font>
+																			<span id="investOkAmt771">${proVO.price - proVO.current_price}</span><font size="1">만원</font>
 																		</div>
 																	</div>
 																	<div class="col-xs-3 col-sm-2 col-md-2 col">
@@ -458,7 +471,7 @@
 																	</div>
 																	<div class="col-xs-6 col-sm-4 col-md-4 col-lg-3 col">
 																		<div class="form-group has-feedback inputForm" id="inputDepositDiv">
-																			<input type="text" class="form-control text-right" id="inputDeposit771" name="inputDeposit" aria-describedby="inputDepositStatus" value="${accountVO.deposit}" readonly="readonly">
+																			<input type="text" class="form-control text-right" id="inputDeposit771" name="inputDeposit" aria-describedby="inputDepositStatus" value="${accVO.deposit}" readonly="readonly">
 																			<span class="form-control-feedback" aria-hidden="true">원</span>
 																			<span id="inputDepositStatus" class="sr-only">(success)</span>
 																		</div>
@@ -549,10 +562,10 @@
 					
 												<div class="bottomLine">
 													<c:choose>
-														<c:when test="${memberVO.user_num != null}">
+														<c:when test="${memVO.user_num != null}">
 															<button id="invest_offer_u">투자 신청u</button>
 														</c:when>
-														<c:when test="${memberVO.busi_num != null}">
+														<c:when test="${memVO.busi_num != null}">
 															<button id="invest_offer_b">투자 신청b</button>
 														</c:when>
 													</c:choose>													
@@ -593,11 +606,11 @@
 		<input type="hidden" name="umbrellarAplyYn" id="umbrellarAplyYn771" value="N">
 		<input type="hidden" name="brrwrAmt" id="brrwrAmt771" value="5000000">
 		<input type="hidden" id="deposit" value="" />											<!-- 예치금 -->
-		<input type="hidden" id="rate" value="${projectVO.rate}" />								<!-- 금리 -->
-		<input type="hidden" id="user_num" value="${memberVO.user_num}" />						<!-- 유저번호 -->
-		<input type="hidden" id="busi_num" value="${memberVO.busi_num}" />						<!-- 법인유저번호 -->
-		<input type="hidden" id="project_num" value="${projectVO.project_num}">					<!-- 프로젝트번호 -->
-	    <input type="hidden" id="current_price" value="${projectVO.current_price}" />			<!-- 현재모금액 -->
+		<input type="hidden" id="rate" value="${proVO.rate}" />									<!-- 금리 -->
+		<input type="hidden" id="user_num" value="${memVO.user_num}" />							<!-- 유저번호 -->
+		<input type="hidden" id="busi_num" value="${memVO.busi_num}" />							<!-- 법인유저번호 -->
+		<input type="hidden" id="project_num" value="${proVO.project_num}">						<!-- 프로젝트번호 -->
+	    <input type="hidden" id="current_price" value="${proVO.current_price}" />				<!-- 현재모금액 -->
 	    <input type="hidden" id="invest_price" value="${inVO.invest_price}">					<!-- 투자금액 -->
 	    <input type="hidden" id="invest_limit" value="${(500 - inVO.invest_price) * 10000}" />	<!-- 투자한도 -->
 	    <!-- hidden value -->

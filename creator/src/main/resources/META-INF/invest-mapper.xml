@@ -5,15 +5,15 @@
  
 <mapper namespace="InvestMapper">
 	
+	<select id="investList" resultType="kr.co.creator.vo.ProjectVO">
+		select	*
+		from	project_list
+	</select>
+	
 	<select id="accountDetail" resultType="kr.co.creator.vo.AccountVO">
 		select	*
 		from	account_list
 		where	user_num = #{user_num} || busi_num = #{busi_num} 
-	</select>
-	
-	<select id="investList" resultType="kr.co.creator.vo.ProjectVO">
-		select	*
-		from	project_list
 	</select>
 	
 	<select id="projectDetail" parameterType="kr.co.creator.vo.ProjectVO" resultType="kr.co.creator.vo.ProjectVO">
@@ -36,14 +36,14 @@
 	
 	<update id="depositUpdate" parameterType="kr.co.creator.vo.AccountVO">
 		update account_list
-			set deposit = #{deposit}
-			where user_num = #{user_num} || busi_num = #{busi_num} 
+		set deposit = #{deposit}
+		where user_num = #{user_num} || busi_num = #{busi_num} 
 	</update>
 	
 	<update id="currentPriceUpdate" parameterType="kr.co.creator.vo.ProjectVO">
 		update project_list
-			set current_price = #{current_price}
-			where project_num = #{project_num}
+		set current_price = #{current_price}
+		where project_num = #{project_num}
 	</update>
 	
 	<insert id="investPriceInsert" parameterType="kr.co.creator.vo.InvestVO">

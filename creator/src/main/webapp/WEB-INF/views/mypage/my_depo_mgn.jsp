@@ -33,6 +33,200 @@
 	  Author: TemplateMag.com
 	  License: https://templatemag.com/license/
 	======================================================= -->
+	<script type="text/javascript">
+	$(document).ready(function() {
+		var temp = 0;
+		var add  = 0;
+		var current_price = parseInt($("#current_price").val() * 10000);
+		var invest_price = parseInt($("#invest_price").val());
+		var deposit = parseInt($("#inputDeposit771").val());
+		var invest 	= parseInt($("#inputAmt771").val());
+		var intrst 	= invest * $("#rate").val() * 0.01;
+		var limit	= parseInt($("#invest_limit").val());
+		var tax 	= parseInt(intrst * 0.275);
+		var benefit = invest + intrst - tax;
+		var confirmYN = false;
+		var check = $("input:checkbox[id=agreeCheckbox]:checked").is(":checked");
+
+
+		
+		$("#amtPlus100_771").click(function() {
+			addDeposit(1000000);
+		});//amtPlus100_771
+		
+		$("#amtPlus10_771").click(function() {
+			addDeposit(100000);
+		});//amtPlus10_771
+		
+		$("#amtPlus5_771").click(function() {
+			addDeposit(50000);
+		});//amtPlus5_771
+		
+		$("#amtPlus1_771").click(function() {
+			addDeposit(10000);
+		});//amtPlus1_771
+		
+		$("#amtPlusAll_771").click(function() {
+			deposit = parseInt($("#inputDeposit771").val());
+			limit = parseInt($("#invest_limit").val());
+			if(deposit > limit) {
+				$("#inputAmt771").val($("#invest_limit").val());
+			} else {
+				$("#inputAmt771").val($("#inputDeposit771").val());
+			}
+			calculating();
+		});//amtPlusAll_771
+		
+		$("#amtReset_771").click(function() {
+			$("#inputAmt771").val("0");
+			calculating();
+		});//amtReset_771
+		
+		$("#inputAmt771").keyup(function(event) {
+			//alert(event.keyCode);
+			$("#inputAmt771").val(
+				$("#inputAmt771").val().replace(/[^0-9\.]/g,'')
+			);//한글 입력 방지
+		});//pass.keydown
+		
+		$("#inputAmt771").keyup(function() {
+			invest = parseInt($("#inputAmt771").val());
+			//alert("invest : " + invest); alert("limit : " + limit);
+			if(invest > limit) {
+				alert("동일 차입자에게 투자한도 이상의 투자를 할 수 없습니다.");
+				$("#inputAmt771").val($("#invest_limit").val());
+			}
+			calculating();
+		});
+
+		function addDeposit(add) {
+			if(deposit > 0) {
+				temp = parseInt($("#inputAmt771").val());
+				temp += add;
+				//deposit = parseInt($("#inputDeposit771").val());
+				//alert(temp);alert(deposit);
+				if(temp > limit) {
+					alert("동일 차입자에게 투자한도 이상의 투자를 할 수 없습니다.");
+				} else if(temp > deposit) {
+					confirmYN = confirm("투자 가능 예치금이 부족합니다. 예치금 관리 페이지로 이동하시겠습니까?");
+					if(confirmYN == true) {
+						location.href = "${pageContext.request.contextPath}/my_depo_mgn";
+					} else {
+						return;
+					}//if
+				} else {
+					$("#inputAmt771").val(temp);
+					calculating();
+				}
+			} else {
+				confirmYN = confirm("투자 가능 예치금이 부족합니다. 예치금 관리 페이지로 이동하시겠습니까?");
+				if(confirmYN == true) {
+					location.href = "${pageContext.request.contextPath}/my_depo_mgn";
+				} else {
+					return;
+				}//if
+			}//if
+		}//addDeposit
+		
+		function calculating() {
+			invest 	= parseInt($("#inputAmt771").val());
+			intrst 	= invest * $("#rate").val() * 0.01;
+			tax 	= parseInt(intrst * 0.275);
+			benefit = invest + intrst - tax;
+
+			$("#investAmtL").text(invest);
+			$("#intrstAmtL").text(intrst);
+			$("#taxAmtL").text(tax);
+			$("#benefitAmtL").text(benefit);
+		}//calculating
+		
+		$("#invest_offer_u").click(function() {
+			$("#current_price").val((current_price + invest) / 10000);
+			$("#deposit").val(deposit - invest);
+			$("#invest_price").val(invest);
+			//alert("current_price : " + parseInt(current_price + invest) / 10000);
+			alert("deposit : " + parseInt(deposit - invest));
+			alert("invest_price : " + invest);
+			//alert($("input:checkbox[id=agreeCheckbox]:checked").is(":checked"));
+			check = $("input:checkbox[id=agreeCheckbox]:checked").is(":checked");
+			
+			if(check == true) {
+				var confirmYN = false;
+				confirmYN = confirm("정말 투자하시겠습니까?");
+				if(confirmYN == true) {
+					$.post("${pageContext.request.contextPath}/deposit_update",
+							{
+								user_num:$("#user_num").val(),
+								deposit:$("#deposit").val(),
+								invest_price:$("#invest_price").val(),
+								current_price:$("#current_price").val()
+							},
+							function(data, status) {
+								alert(data); alert(status);
+								if(status == "success") {
+									if(data == -1) {
+										alert("오류");
+									}else if(data > 0) {
+										location.href="${pageContext.request.contextPath}/invest_finish?user_num=${memberVO.user_num}";
+									} else {
+										alert("관리자 : 02-5555-7777");
+									} 
+								} else if (status == "error") {
+									alert("잠시후 다시 시도해 주세요.");
+								} else {
+									alert("관리자 : 02-5555-7777");
+								}
+							}//call back function
+						);//post
+				} else {
+					return;
+				}
+			} else {
+				alert("약관에 동의해주시기 바랍니다.");
+			}//if
+		});//invest_offer_u
+		
+		$("#invest_offer_b").click(function() {
+			$("#deposit").val(deposit - invest);
+			alert(deposit - invest);
+			check = $("input:checkbox[id=agreeCheckbox]:checked").is(":checked");
+			
+			if(check == true) {
+				var confirmYN = false;
+				confirmYN = confirm("정말 투자하시겠습니까?");
+				if(confirmYN == true) {
+					$.post("${pageContext.request.contextPath}/deposit_update",
+							{
+								busi_num:$("#busi_num").val(),
+								deposit:$("#deposit").val()
+							},
+							function(data, status) {
+								alert(data); alert(status);
+								if(status == "success") {
+									if(data == -1) {
+										alert("오류");
+									}else if(data > 0) {
+										location.href="${pageContext.request.contextPath}/invest_finish?busi_num=${memberVO.busi_num}";
+									} else {
+										alert("관리자 : 02-5555-7777");
+									} 
+								} else if (status == "error") {
+									alert("잠시후 다시 시도해 주세요.");
+								} else {
+									alert("관리자 : 02-5555-7777");
+								}
+							}//call back function
+						);//post
+				} else {
+					return;
+				}
+			} else {
+				alert("약관에 동의해주시기 바랍니다.");
+			}//if
+		});//invest_offer_b
+		
+	});//ready
+	</script>
 </head>
      
 <body>
@@ -331,10 +525,10 @@
 																</div>
 																<div class="row" style="margin-top: 10px;">
 																	<div class="col-md-12 text-center">
-																		<button class="btn btn-default" type="button" onclick="fn_setWithdrawAmt('all')">+전체</button>
-																		<button class="btn btn-default" type="button" onclick="fn_setWithdrawAmt('100')">+100만</button>
-																		<button class="btn btn-default" type="button" onclick="fn_setWithdrawAmt('10')">+10만</button>
-																		<button class="btn btn-default" type="button" onclick="fn_setWithdrawAmt('0')">정정</button>
+																		<button name="amtPlusAll" id="amtPlusAll_771">+전체</button>
+																		<button name="amtPlus100" id="amtPlus100_771">+100만</button>
+																		<button name="amtPlus10" id="amtPlus10_771">+10만</button>
+																		<button name="amtReset" id="amtReset_771" class="gray">정정</button>
 																	</div>
 																</div>
 																<div class="row" style="margin-top: 10px;">

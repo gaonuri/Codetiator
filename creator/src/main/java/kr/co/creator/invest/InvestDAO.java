@@ -60,30 +60,30 @@ public class InvestDAO {
 
 	public int deposit_update(AccountVO accVO) {
 		int count = 0;
-		System.out.println("DAO11111111111 : " + accVO);
+		//System.out.println("DAO11111111111 : " + accVO);
 		count = sqlSession.update("InvestMapper.depositUpdate", accVO);
-		System.out.println("DAO22222222222 : " + accVO);
+		//System.out.println("DAO22222222222 : " + accVO);
 		
 		return count;
 	}//deposit_update
 
-	public int current_price_update(ProjectVO proVO) {
-		int count = 0;
-		System.out.println("DAO11111111111 : " + proVO);
-		count = sqlSession.update("InvestMapper.currentPriceUpdate", proVO);
-		System.out.println("DAO22222222222 : " + proVO);
-		
-		return count;
-	}//current_price_update
-
 	public int invest_price_insert(InvestVO inVO) {
 		int count = 0;
-		System.out.println("DAO11111111111 : " + inVO);
+		System.out.println("invest_price_insert_DAO22222222222222222222222222222222 : " + inVO);
 		count = sqlSession.insert("InvestMapper.investPriceInsert", inVO);
-		System.out.println("DAO22222222222 : " + inVO);
+		System.out.println("invest_price_insert_DAO33333333333333333333333333333333 : " + inVO);
 		
 		return count;
 	}//invest_price_insert
+
+	public int current_price_update(ProjectVO proVO) {
+		int count = 0;
+		System.out.println("current_price_update_DAO5555555555555555555555555555555 : " + proVO);
+		count = sqlSession.update("InvestMapper.currentPriceUpdate", proVO);
+		System.out.println("current_price_update_DAO6666666666666666666666666666666 : " + proVO);
+		
+		return count;
+	}//current_price_update
 
 	public InvestVO invest_detail(InvestVO inVO) {
 		System.out.println("DAO11111111111111111 : " + inVO);

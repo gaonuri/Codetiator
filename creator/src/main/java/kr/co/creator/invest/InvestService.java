@@ -65,19 +65,19 @@ public class InvestService {
 		return count;
 	}//deposit_update
 
-	public int current_price_update(ProjectVO proVO) {
-		int count = 0;
-		count = investDAO.current_price_update(proVO);
-		
-		return count;
-	}//current_price_update
-
 	public int invest_price_insert(InvestVO inVO) {
 		int count = 0;
 		count = investDAO.invest_price_insert(inVO);
 		
 		return count;
 	}//invest_price_insert
+
+	public int current_price_update(ProjectVO proVO) {
+		int count = 0;
+		count = investDAO.current_price_update(proVO);
+		
+		return count;
+	}//current_price_update
 
 	public InvestVO invest_detail(InvestVO inVO) {
 		inVO = investDAO.invest_detail(inVO);
