@@ -50,8 +50,8 @@ public class InvestController {
 		accVO = investService.acount_detail(accVO);
 		proVO = investService.project_detail(proVO);
 		System.out.println("Controller2222222222 : " + accVO);
-		model.addAttribute("accountVO", accVO);
-		model.addAttribute("projectVO", proVO);
+		model.addAttribute("accVO", accVO);
+		model.addAttribute("proVO", proVO);
 		
 		return "invest/invest";
 	}//invest
@@ -64,12 +64,14 @@ public class InvestController {
 	}//invest_guide
 	
 	@RequestMapping(value = "/invest_list", method = RequestMethod.GET)
-	public String invest_list(Model model) {
+	public String invest_list(Model model, ProjectVO proVO) {
 		logger.info("invest_list");
 		
 		List<ProjectVO> list = null;
 		list = investService.invest_list();
+		proVO = investService.project_detail(proVO);
 		model.addAttribute("investList", list);
+		model.addAttribute("proVO", proVO);
 		
 		return "invest/invest_list";
 	}//invest_list
@@ -83,8 +85,8 @@ public class InvestController {
 		System.out.println("Controller1111111111111111111111111111111 : " + inVO);
 		inVO  = investService.invest_detail(inVO);
 		
-		model.addAttribute("projectVO", proVO);
-		model.addAttribute("guaranteeVO", guaVO);
+		model.addAttribute("proVO", proVO);
+		model.addAttribute("guaVO", guaVO);
 		session.setAttribute("inVO", inVO);
 		//System.out.println("Controller2222222222222222222222222222222 : " + inVO.getInvest_price());
 		//System.out.println("Controller2222222222222222222222222222222 : " + ((InvestVO)session.getAttribute("sess_investVO")).getInvest_price());
@@ -103,28 +105,30 @@ public class InvestController {
 	}//invest_finish
 	
 	@RequestMapping(value = "/deposit_update", method = RequestMethod.POST)
-	public void deposit_update(Model model, PrintWriter out, AccountVO accVO, ProjectVO proVO, InvestVO inVO) {
+	public void deposit_update(Model model, PrintWriter out, AccountVO accVO, InvestVO inVO ,ProjectVO proVO) {
 		logger.info("deposit_update");
 		
-		System.out.println("Controller1111111111 : " + accVO);
 		int count = 0;
 		count = investService.deposit_update(accVO);
-		count = count + investService.current_price_update(proVO);
+		System.out.println("deposit_update_Controller111111111111111111111111111111 : " + accVO);
 		count = count + investService.invest_price_insert(inVO);
+		System.out.println("deposit_update_Controller444444444444444444444444444444 : " + accVO);
+		count = count + investService.current_price_update(proVO);
 		out.print(count);
 		//out.flush();
 		out.close();
 	}//deposit_update
 	
 	@RequestMapping(value = "/invest_finish", method = RequestMethod.GET)
-	public String invest_finish(Model model,MemberVO memberVO, AccountVO accVO) {
+	public String invest_finish(Model model,MemberVO memberVO, AccountVO accVO, ProjectVO proVO) {
 		logger.info("invest_finish");
 //		if(memberVO == null || memberVO.getUser_num().equals("") || memberVO.getBusi_num().equals("")) {
 //			return "login/login";
 //		}
 		accVO = investService.acount_detail(accVO);
-		accVO = investService.acount_detail(accVO);
-		model.addAttribute("accountVO", accVO);
+		proVO = investService.project_detail(proVO);
+		model.addAttribute("accVO", accVO);
+		model.addAttribute("proVO", proVO);
 		return "invest/invest_finish";
 	}//invest_finish
 }//class

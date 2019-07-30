@@ -88,10 +88,13 @@
 .title {
     font-size: 26pt;
     font-weight: 500;
-    color: #732173;
+    color: #fff;
     text-shadow: 1px 1px 1px #bf9bcb;
     letter-spacing: -0.5pt;
     line-height: 1.2;
+}
+.titles {
+	color: #000;
 }
 .section-body {
     color: #fff;
@@ -124,6 +127,7 @@
     text-align: center;
 }
 </style>
+
 </head>
 <body>
 
@@ -288,7 +292,7 @@
 										</div>
 									</div>
 								</div>
-								<div class="title" style="font-size: 15pt;">
+								<div class="titles" style="font-size: 15pt;">
 									추가정보
 								</div>
 								<div class="line"></div>
@@ -384,7 +388,7 @@
 										value="프로젝트 제출" />
 <!-- 									<button type="submit" class="btn btn-purple-transparent btn-block" id="doNextStepBtn">본인 인증 및 대출 가능여부 확인</button> -->
 									<p>※ 대출심사 결격사유 : 최근 현금서비스 3회 이상 이용 고객 및 기타 당사가 규정하는 채무불이행 사유가 있는 고객.</p>
-									<div class="page" style="text-align: right;">3/4</div>
+									<div class="page" style="text-align: right;">2/4</div>
 				</div>
               </form>
              	 </div>
@@ -543,7 +547,7 @@
 <script type="text/javascript">
 $(document).ready(function() {
 	$("#doNextStepBtn").click(function() {
-		location.href = "${pageContext.request.contextPath}/loan/sub_document";
+		location.href = "${pageContext.request.contextPath}/sub_document";
 	});//click
 });//ready
 </script>
