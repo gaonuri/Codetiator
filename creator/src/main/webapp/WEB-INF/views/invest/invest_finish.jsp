@@ -12,7 +12,6 @@
 	<title>Dashio - Bootstrap Admin Template</title>
 	<script src="${pageContext.request.contextPath}/resources/jquery/jquery-3.4.1.js"></script>
 	
-	<!-- Favicons -->
 	<link href="${pageContext.request.contextPath}/resources/bootstrap/img/favicon.png" rel="icon">
 	<link href="${pageContext.request.contextPath}/resources/bootstrap/img/apple-touch-icon.png" rel="apple-touch-icon">
 	
@@ -53,7 +52,9 @@
 				<div class="row mt">
 					<!-- page start -->
 					<div class="col-lg-12">
-						<div>나의 남은 예치금<span><input type="text" value="${accountVO.deposit}" readonly="readonly"></span></div>
+						<div>나의 남은 예치금<span><input type="text" value="${accVO.deposit}" readonly="readonly"></span></div>
+						<div>투자금<span><input type="text" value="${inVO.invest_price}" readonly="readonly"></span></div>
+						<div>${proVO.project_num}번 프로젝트 현재 모금액<span><input type="text" value="${proVO.current_price}" readonly="readonly"></span></div>
 						<a href="${pageContext.request.contextPath}/main">메인화면으로 돌아가기</a>
 					</div>
 					<!-- page end -->

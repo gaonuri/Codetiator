@@ -38,8 +38,10 @@
 
 	<insert id="insert_project"
 			parameterType="kr.co.creator.vo.ProjectVO">
-			INSERT INTO project_list (img, project_name, price, en_date)
-			VALUES (#{img}, now())
+			INSERT INTO project_list (img, project_name, price, refund, type, genre, grade, more_information, en_date,
+										loan_period, loan_amount, loan_class, loan_type, repay_method, judge_status, repay_count)
+			VALUES (#{img}, #{project_name}, #{price}, #{refund}, #{type}, #{genre}, #{grade}, #{more_information}, now(),
+					#{loan_period}, #{loan_amount}, #{loan_class}, #{loan_type}, #{repay_method}, 1, #{loan_history})
 		<selectKey resultType="String" keyProperty="project_num" order="AFTER">
 			SELECT LAST_INSERT_ID()
 		</selectKey>
@@ -58,5 +60,11 @@
 		</selectKey>
 		
 	</insert>
+	
+	<select id="RepaySelect" parameterType="kr.co.creator.vo.RepayVO" resultType="kr.co.creator.vo.RepayVO">
+		SELECT count(loan_history) repay_count
+		FROM repay_list
+		WHERE repay_num = #{repay_num}
+	</select>
 
 </mapper>
