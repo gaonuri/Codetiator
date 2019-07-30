@@ -56,47 +56,125 @@
 						<!--  FOURTH ROW OF PANELS -->
 						<div class="row">
 							<!-- PROJECT PANEL -->
-							<div class="col-md-4">
-								<a href="${pageContext.request.contextPath}/invest_detail?project_num=1">
-									<div>
-										<img src="${pageContext.request.contextPath}/resources/img/ner.jpg" width="400px" />
-									</div>
-									<div>
-										<table style="border-left: 1px; border-right: 1px; width: 400px">
-											<tr>
-												<td class="date">시작일</td>
-											</tr>
-											<tr>
-												<td class="project-name">프로젝트명</td>
-											</tr>
-											<tr>
-												<td witdh="400px">
-													<!--  ANIMATED PROGRESS BARS -->
-									 				<div class="progress progress-striped active">
-									  					<div class="progress-bar" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 45%">
-									  						45%
-														</div>
-													</div>
-										            <!-- /showback -->
-									            </td>
-											</tr>
-										</table>
-										<table width="400px">
-											<tr>
-												<td class="infomation">등급</td>
-												<td class="infomation">연수익률</td>
-												<td class="infomation">기간</td>
-												<td class="infomation">모집금액</td>
-												<td class="infomation">상환방식</td>
-											</tr>
-										</table>
-									</div>
-								</a>
+							<div class="col-xs-4 col-md-4">
+								<c:choose>
+									<c:when test="${memVO.user_num != null}">
+										<a href="${pageContext.request.contextPath}/invest_detail?project_num=1&p_busi_num=2&user_num=${memVO.user_num}">
+											<div>
+												<img alt="" src="${pageContext.request.contextPath}/resources/img/ner.jpg" width="400px">
+											</div>
+											<div>
+												<table style="border-left: 1px; border-right: 1px; width: 400px">
+													<tr>
+														<td class="date">시작일</td>
+													</tr>
+													<tr>
+														<td class="project-name">프로젝트명</td>
+													</tr>
+													<tr>
+														<td witdh="400px">
+															<!--  ANIMATED PROGRESS BARS -->
+											 				<div class="progress progress-striped active">
+											  					<div class="progress-bar" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 45%">
+											  						45%
+																</div>
+															</div>
+												            <!-- /showback -->
+											            </td>
+													</tr>
+												</table>
+												<table width="400px">
+													<tr>
+														<td class="infomation">등급</td>
+														<td class="infomation">연수익률</td>
+														<td class="infomation">기간</td>
+														<td class="infomation">모집금액</td>
+														<td class="infomation">상환방식</td>
+													</tr>
+												</table>
+											</div>
+										</a>
+									</c:when>
+									<c:when test="${memVO.busi_num != null}">
+										<a href="${pageContext.request.contextPath}/invest_detail?project_num=${vo.project_num}&p_busi_num=${vo.busi_num}&busi_num=${memVO.busi_num}">
+											<div>
+												<img alt="" src="${pageContext.request.contextPath}/resources/img/ner.jpg" width="400px">
+											</div>
+											<div>
+												<table style="border-left: 1px; border-right: 1px; width: 400px">
+													<tr>
+														<td class="date">시작일</td>
+													</tr>
+													<tr>
+														<td class="project-name">프로젝트명</td>
+													</tr>
+													<tr>
+														<td witdh="400px">
+															<!--  ANIMATED PROGRESS BARS -->
+											 				<div class="progress progress-striped active">
+											  					<div class="progress-bar" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 45%">
+											  						45%
+																</div>
+															</div>
+												            <!-- /showback -->
+											            </td>
+													</tr>
+												</table>
+												<table width="400px">
+													<tr>
+														<td class="infomation">등급</td>
+														<td class="infomation">연수익률</td>
+														<td class="infomation">기간</td>
+														<td class="infomation">모집금액</td>
+														<td class="infomation">상환방식</td>
+													</tr>
+												</table>
+											</div>
+										</a>
+									</c:when>
+									<c:otherwise>
+										<a href="${pageContext.request.contextPath}/invest_detail?project_num=${vo.project_num}">
+											<div>
+												<img alt="" src="${pageContext.request.contextPath}/resources/img/ner.jpg" width="400px">
+											</div>
+											<div>
+												<table style="border-left: 1px; border-right: 1px; width: 400px">
+													<tr>
+														<td class="date">시작일</td>
+													</tr>
+													<tr>
+														<td class="project-name">프로젝트명</td>
+													</tr>
+													<tr>
+														<td witdh="400px">
+															<!--  ANIMATED PROGRESS BARS -->
+											 				<div class="progress progress-striped active">
+											  					<div class="progress-bar" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 45%">
+											  						45%
+																</div>
+															</div>
+												            <!-- /showback -->
+											            </td>
+													</tr>
+												</table>
+												<table width="400px">
+													<tr>
+														<td class="infomation">등급</td>
+														<td class="infomation">연수익률</td>
+														<td class="infomation">기간</td>
+														<td class="infomation">모집금액</td>
+														<td class="infomation">상환방식</td>
+													</tr>
+												</table>
+											</div>
+										</a>
+									</c:otherwise>
+								</c:choose>
 							</div>
 							<!-- PROJECT PANEL -->
 							
 							<!-- PROJECT PANEL -->
-							<div class="col-md-4">
+							<div class="col-xs-4 col-md-4">
 								<a href="${pageContext.request.contextPath}/invest_detail?project_num=${proVO.project_num}">
 									<div>
 										<img alt="" src="${pageContext.request.contextPath}/resources/img/ner.jpg" width="400px">
@@ -136,7 +214,7 @@
 							<!-- PROJECT PANEL -->
 							
 							<!-- PROJECT PANEL -->
-							<div class="col-md-4">
+							<div class="col-xs-4 col-md-4">
 								<a href="${pageContext.request.contextPath}/invest_detail?project_num=${proVO.project_num}">
 									<div>
 										<img alt="" src="${pageContext.request.contextPath}/resources/img/ner.jpg" width="400px">
@@ -180,7 +258,7 @@
 						<!--  FOURTH ROW OF PANELS -->
 						<div class="row">
 							<!-- PROJECT PANEL -->
-							<div class="col-md-4">
+							<div class="col-xs-4 col-md-4 mb">
 								<a href="${pageContext.request.contextPath}/invest_detail?project_num=${proVO.project_num}">
 									<div>
 										<img alt="" src="${pageContext.request.contextPath}/resources/img/ner.jpg" width="400px">
@@ -220,7 +298,7 @@
 							<!-- PROJECT PANEL -->
 							
 							<!-- PROJECT PANEL -->
-							<div class="col-md-4">
+							<div class="col-xs-4 col-md-4 mb">
 								<a href="${pageContext.request.contextPath}/invest_detail?project_num=${proVO.project_num}">
 									<div>
 										<img alt="" src="${pageContext.request.contextPath}/resources/img/ner.jpg" width="400px">
@@ -260,7 +338,7 @@
 							<!-- PROJECT PANEL -->
 							
 							<!-- PROJECT PANEL -->
-							<div class="col-md-4">
+							<div class="col-xs-4 col-md-4 mb">
 								<a href="${pageContext.request.contextPath}/invest_detail?project_num=${proVO.project_num}">
 									<div>
 										<img alt="" src="${pageContext.request.contextPath}/resources/img/ner.jpg" width="400px">
@@ -304,7 +382,7 @@
 						<!--  FOURTH ROW OF PANELS -->
 						<div class="row">
 							<!-- PROJECT PANEL -->
-							<div class="col-md-4">
+							<div class="col-xs-4 col-md-4 mb">
 								<a href="${pageContext.request.contextPath}/invest_detail?project_num=${proVO.project_num}">
 									<div>
 										<img alt="" src="${pageContext.request.contextPath}/resources/img/ner.jpg" width="400px">
@@ -344,7 +422,7 @@
 							<!-- PROJECT PANEL -->
 							
 							<!-- PROJECT PANEL -->
-							<div class="col-md-4">
+							<div class="col-xs-4 col-md-4 mb">
 								<a href="${pageContext.request.contextPath}/invest_detail?project_num=${proVO.project_num}">
 									<div>
 										<img alt="" src="${pageContext.request.contextPath}/resources/img/ner.jpg" width="400px">
@@ -384,7 +462,7 @@
 							<!-- PROJECT PANEL -->
 							
 							<!-- PROJECT PANEL -->
-							<div class="col-md-4">
+							<div class="col-xs-4 col-md-4 mb">
 								<a href="${pageContext.request.contextPath}/invest_detail?project_num=${proVO.project_num}">
 									<div>
 										<img alt="" src="${pageContext.request.contextPath}/resources/img/ner.jpg" width="400px">
