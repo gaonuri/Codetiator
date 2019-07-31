@@ -33,6 +33,7 @@
 	  Author: TemplateMag.com
 	  License: https://templatemag.com/license/
 	======================================================= -->
+	
 	<script type="text/javascript">
 	$(document).ready(function() {
 		var temp = 0;
@@ -43,188 +44,52 @@
 		var invest 	= parseInt($("#inputAmt771").val());
 		var intrst 	= invest * $("#rate").val() * 0.01;
 		var limit	= parseInt($("#invest_limit").val());
-		var tax 	= parseInt(intrst * 0.275);
-		var benefit = invest + intrst - tax;
 		var confirmYN = false;
 		var check = $("input:checkbox[id=agreeCheckbox]:checked").is(":checked");
 
 
 		
 		$("#amtPlus100_771").click(function() {
-			addDeposit(1000000);
-		});//amtPlus100_771
+			tmpInt = parseInt($("#withdrawAmt").val()) + 1000000;
+			$("#withdrawAmt").val(tmpInt);
+		});//1,000,000원
 		
 		$("#amtPlus10_771").click(function() {
-			addDeposit(100000);
-		});//amtPlus10_771
-		
-		$("#amtPlus5_771").click(function() {
-			addDeposit(50000);
-		});//amtPlus5_771
-		
-		$("#amtPlus1_771").click(function() {
-			addDeposit(10000);
-		});//amtPlus1_771
+			tmpInt = parseInt($("#withdrawAmt").val()) + 100000;
+			$("#withdrawAmt").val(tmpInt);
+		});//100,000원
 		
 		$("#amtPlusAll_771").click(function() {
-			deposit = parseInt($("#inputDeposit771").val());
-			limit = parseInt($("#invest_limit").val());
-			if(deposit > limit) {
-				$("#inputAmt771").val($("#invest_limit").val());
-			} else {
-				$("#inputAmt771").val($("#inputDeposit771").val());
-			}
-			calculating();
-		});//amtPlusAll_771
+			$("#withdrawAmt").val($("#inputDeposit").val());
+		});//전체
 		
 		$("#amtReset_771").click(function() {
-			$("#inputAmt771").val("0");
+			$("#withdrawAmt").val("0");
 			calculating();
-		});//amtReset_771
+		});//정정
 		
-		$("#inputAmt771").keyup(function(event) {
+		$("#withdrawAmt").keyup(function(event) {
 			//alert(event.keyCode);
-			$("#inputAmt771").val(
-				$("#inputAmt771").val().replace(/[^0-9\.]/g,'')
+			$("#withdrawAmt").val(
+				$("#withdrawAmt").val().replace(/[^0-9\.]/g,'')
 			);//한글 입력 방지
 		});//pass.keydown
 		
-		$("#inputAmt771").keyup(function() {
-			invest = parseInt($("#inputAmt771").val());
+		$("#withdrawAmt").keyup(function() {
+			deposit = parseInt($("#withdrawAmt").val());
 			//alert("invest : " + invest); alert("limit : " + limit);
-			if(invest > limit) {
+			if(deposit > limit) {
 				alert("동일 차입자에게 투자한도 이상의 투자를 할 수 없습니다.");
-				$("#inputAmt771").val($("#invest_limit").val());
+				$("#withdrawAmt").val($("#invest_limit").val());
 			}
 			calculating();
-		});
-
-		function addDeposit(add) {
-			if(deposit > 0) {
-				temp = parseInt($("#inputAmt771").val());
-				temp += add;
-				//deposit = parseInt($("#inputDeposit771").val());
-				//alert(temp);alert(deposit);
-				if(temp > limit) {
-					alert("동일 차입자에게 투자한도 이상의 투자를 할 수 없습니다.");
-				} else if(temp > deposit) {
-					confirmYN = confirm("투자 가능 예치금이 부족합니다. 예치금 관리 페이지로 이동하시겠습니까?");
-					if(confirmYN == true) {
-						location.href = "${pageContext.request.contextPath}/my_depo_mgn";
-					} else {
-						return;
-					}//if
-				} else {
-					$("#inputAmt771").val(temp);
-					calculating();
-				}
-			} else {
-				confirmYN = confirm("투자 가능 예치금이 부족합니다. 예치금 관리 페이지로 이동하시겠습니까?");
-				if(confirmYN == true) {
-					location.href = "${pageContext.request.contextPath}/my_depo_mgn";
-				} else {
-					return;
-				}//if
-			}//if
-		}//addDeposit
+		});		
 		
-		function calculating() {
-			invest 	= parseInt($("#inputAmt771").val());
-			intrst 	= invest * $("#rate").val() * 0.01;
-			tax 	= parseInt(intrst * 0.275);
-			benefit = invest + intrst - tax;
-
-			$("#investAmtL").text(invest);
-			$("#intrstAmtL").text(intrst);
-			$("#taxAmtL").text(tax);
-			$("#benefitAmtL").text(benefit);
-		}//calculating
-		
-		$("#invest_offer_u").click(function() {
-			$("#current_price").val((current_price + invest) / 10000);
-			$("#deposit").val(deposit - invest);
-			$("#invest_price").val(invest);
-			//alert("current_price : " + parseInt(current_price + invest) / 10000);
-			alert("deposit : " + parseInt(deposit - invest));
-			alert("invest_price : " + invest);
-			//alert($("input:checkbox[id=agreeCheckbox]:checked").is(":checked"));
-			check = $("input:checkbox[id=agreeCheckbox]:checked").is(":checked");
-			
-			if(check == true) {
-				var confirmYN = false;
-				confirmYN = confirm("정말 투자하시겠습니까?");
-				if(confirmYN == true) {
-					$.post("${pageContext.request.contextPath}/deposit_update",
-							{
-								user_num:$("#user_num").val(),
-								deposit:$("#deposit").val(),
-								invest_price:$("#invest_price").val(),
-								current_price:$("#current_price").val()
-							},
-							function(data, status) {
-								alert(data); alert(status);
-								if(status == "success") {
-									if(data == -1) {
-										alert("오류");
-									}else if(data > 0) {
-										location.href="${pageContext.request.contextPath}/invest_finish?user_num=${memberVO.user_num}";
-									} else {
-										alert("관리자 : 02-5555-7777");
-									} 
-								} else if (status == "error") {
-									alert("잠시후 다시 시도해 주세요.");
-								} else {
-									alert("관리자 : 02-5555-7777");
-								}
-							}//call back function
-						);//post
-				} else {
-					return;
-				}
-			} else {
-				alert("약관에 동의해주시기 바랍니다.");
-			}//if
-		});//invest_offer_u
-		
-		$("#invest_offer_b").click(function() {
-			$("#deposit").val(deposit - invest);
-			alert(deposit - invest);
-			check = $("input:checkbox[id=agreeCheckbox]:checked").is(":checked");
-			
-			if(check == true) {
-				var confirmYN = false;
-				confirmYN = confirm("정말 투자하시겠습니까?");
-				if(confirmYN == true) {
-					$.post("${pageContext.request.contextPath}/deposit_update",
-							{
-								busi_num:$("#busi_num").val(),
-								deposit:$("#deposit").val()
-							},
-							function(data, status) {
-								alert(data); alert(status);
-								if(status == "success") {
-									if(data == -1) {
-										alert("오류");
-									}else if(data > 0) {
-										location.href="${pageContext.request.contextPath}/invest_finish?busi_num=${memberVO.busi_num}";
-									} else {
-										alert("관리자 : 02-5555-7777");
-									} 
-								} else if (status == "error") {
-									alert("잠시후 다시 시도해 주세요.");
-								} else {
-									alert("관리자 : 02-5555-7777");
-								}
-							}//call back function
-						);//post
-				} else {
-					return;
-				}
-			} else {
-				alert("약관에 동의해주시기 바랍니다.");
-			}//if
-		});//invest_offer_b
-		
+		function depositLimit(limit) {
+			if(deposit > limit) {
+				alert("예치금 잔액에 초과한 금액입니다.");
+			}
+		}
 	});//ready
 	</script>
 </head>
@@ -292,54 +157,61 @@
 									<div class="box left">
 										<div class="row">
 											<div class="col-xs-12 col-sm-offset-1 col-sm-10 col-md-offset-1 col-md-10">
-												<div class="row" id="vtAcntNDiv" style="display: none;">
-													<div class="col-xs-12 col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8">
-														<div style="padding:60px 0 10px 0; font-size: 18px; font-weight: bold;">
-															투자 신청을 위해 예치금 계좌를 발급해 주세요.
-														</div>
-														<div style="padding:20px 0;">
-														
-															<button type="button" class="btn btn-purple-transparent btn-block" onclick="fn_checkNiceCert()">
-																예치금 계좌 발급을 위해 본인 인증하기
-															</button>
-														
-														
-														</div>
-													</div>
-												</div>
-												<div class="row" id="vtAcntYDiv" style="">
-													<div class="col-xs-12 col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8">
-														<div style="padding:60px 0 10px 0; font-size: 18px; font-weight: bold;">
-															예치금 계좌정보
-														</div>
-														<div class="withdraw-wrap">
-															<div class="row" style="margin-top: 20px;">
-																<div class="col-xs-5 col-sm-5 col-md-5 withdraw-title">
-																	예금주
+												<c:choose>
+													<c:when test="${acnt == null || acnt.account_name == null || acnt.account_name == ''}">
+														<div class="row" id="vtAcntNDiv">
+															<div class="col-xs-12 col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8">
+																<div style="padding:60px 0 10px 0; font-size: 18px; font-weight: bold;">
+																	투자 신청을 위해 예치금 계좌를 발급해 주세요.
 																</div>
-																<div class="col-xs-7 col-sm-7 col-md-7 withdraw-content">
-																	<font size="1">크리에이터</font>${Account.account_name}
-																</div>
-															</div>
-															<div class="row" style="margin-top: 10px;">
-																<div class="col-xs-5 col-sm-5 col-md-5 withdraw-title">
-																	은행
-																</div>
-																<div class="col-xs-7 col-sm-7 col-md-7 withdraw-content">
-																	${Account.bank_name}
-																</div>
-															</div>
-															<div class="row" style="margin-top: 10px;">
-																<div class="col-xs-5 col-sm-5 col-md-5 withdraw-title">
-																	입금계좌
-																</div>
-																<div class="col-xs-7 col-sm-7 col-md-7 withdraw-content">
-																	<span class="font-purple" id="vtAcntNoSpan">${Account.bank_num}</span>
+																<div style="padding:20px 0;">
+																
+																	<button type="button" class="btn btn-purple-transparent btn-block" onclick="fn_checkNiceCert()">
+																		예치금 계좌 발급을 위해 본인 인증하기
+																	</button>
+																
+																
 																</div>
 															</div>
 														</div>
-													</div>
-												</div>
+													</c:when>
+													<c:otherwise>
+														<div class="row" id="vtAcntYDiv" style="">
+															<div class="col-xs-12 col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8">
+																<div style="padding:60px 0 10px 0; font-size: 18px; font-weight: bold;">
+																	예치금 계좌정보
+																</div>
+																<div class="withdraw-wrap">
+																	<div class="row" style="margin-top: 20px;">
+																		<div class="col-xs-5 col-sm-5 col-md-5 withdraw-title">
+																			예금주
+																		</div>
+																		<div class="col-xs-7 col-sm-7 col-md-7 withdraw-content">
+																			<font size="1">크리에이터</font>${acnt.account_name}
+																		</div>
+																	</div>
+																	<div class="row" style="margin-top: 10px;">
+																		<div class="col-xs-5 col-sm-5 col-md-5 withdraw-title">
+																			은행
+																		</div>
+																		<div class="col-xs-7 col-sm-7 col-md-7 withdraw-content">
+																			${acnt.bank_name}
+																		</div>
+																	</div>
+																	<div class="row" style="margin-top: 10px;">
+																		<div class="col-xs-5 col-sm-5 col-md-5 withdraw-title">
+																			입금계좌
+																		</div>
+																		<div class="col-xs-7 col-sm-7 col-md-7 withdraw-content">
+																			<span class="font-purple" id="vtAcntNoSpan">${acnt.bank_num}</span>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</c:otherwise>
+												</c:choose>
+												
 												<hr>
 												<div class="row">
 													<div class="col-xs-12 col-sm-offset-1 col-sm-10 col-md-offset-1 col-md-10">
@@ -389,17 +261,16 @@
 																	<div class="col-xs-6 col-sm-6 col-md-6">
 																		기본 예치금
 																	</div>
-																	<div class="col-xs-6 col-sm-6 col-md-6 text-right">
-																		${Account.deposit} 원
+																	<div class="col-xs-6 col-sm-6 col-md-6 text-right" id="inputDeposit771" name="inputDeposit">
+																		${acnt.deposit} 원
+																		<input type="hidden" id="inputDeposit" value="${acnt.deposit}" />
 																	</div>
 																</div>
 																<div class="row" style="margin-top: 10px;">
-																	<div class="col-xs-6 col-sm-6 col-md-6">
-																		총 예치금
-																	</div>
+																	<div class="col-xs-6 col-sm-6 col-md-6">총 예치금</div>
 																	<div class="col-xs-6 col-sm-6 col-md-6 text-right">
-																		<span class="font-purple"><strong>
-																			${Account.deposit} <font size="2">원</font>
+																		<span class="font-purple" id="inputDeposit771" name="inputDeposit"><strong>
+																			${acnt.deposit} <font size="2">원</font>
 																		</strong></span>
 																	</div>
 																</div>
@@ -436,7 +307,7 @@
 																		출금 대기금액
 																	</div>
 																	<div class="col-xs-6 col-sm-6 col-md-6 text-right">
-																		<span name="WTHDRW_REQ_AMT_SUM">0</span> 원
+																		<span name="WTHDRW_REQ_AMT_SUM">${acnt.deposit}</span> 원
 																	</div>
 																</div>
 															</div>
@@ -533,13 +404,8 @@
 																</div>
 																<div class="row" style="margin-top: 10px;">
 																	<div class="col-md-12">
-																		<button type="button" class="btn btn-purple-transparent btn-block" id="withdrawReqBtn">기본예치금 출금요청</button>
+																		<button type="button" class="btn btn-purple-transparent btn-block" id="withdrawReqBtn">예치금 출금요청</button>
 																		<input type="hidden" id="WTHDRW_REQ_YN" value="Y">
-																	</div>
-																</div>
-																<div class="row" style="margin-top: 10px;">
-																	<div class="col-md-12">
-																		<button type="button" class="btn btn-purple-transparent btn-block" id="withdrawAllReqBtn">전체예치금 출금요청</button>
 																	</div>
 																</div>
 																<div class="row" style="margin-top: 10px;font-size: 14px;">
@@ -904,6 +770,18 @@
 		</section>
 	</section>
     
+    	<!-- hidden value -->
+		<input type="hidden" id="reqAmt771" name="reqAmt" value="0">
+		<input type="hidden" name="repayAmt" id="repayAmt771" value="164625000">
+		<input type="hidden" name="loanAmt" id="loanAmt771" value="150000000">
+		<input type="hidden" name="umbrellarRate" id="umbrellarRate771" value="0.0">
+		<input type="hidden" name="umbrellarAplyYn" id="umbrellarAplyYn771" value="N">
+		<input type="hidden" name="brrwrAmt" id="brrwrAmt771" value="5000000">
+		<input type="hidden" id="rate" value="${proVO.rate}" />									<!-- 금리 -->
+		<input type="hidden" id="user_num" value="${memVO.user_num}" />							<!-- 유저번호 -->
+		<input type="hidden" id="busi_num" value="${memVO.busi_num}" />							<!-- 법인유저번호 -->
+	    <input type="hidden" id="invest_limit" value="${acnt.deposit}" />					<!-- 예치금한도 -->
+	    <!-- hidden value -->
     
 		
 		<!--footer start-->

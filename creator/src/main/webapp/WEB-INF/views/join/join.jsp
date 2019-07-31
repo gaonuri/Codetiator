@@ -340,14 +340,14 @@ $(document).ready(function(){
 				$("#addrdetail").focus();
 				return;
 			}			
-			if($("#user_privacy_policy_agree").val() == 0){
+			if($("#user_terms_of_service").val() == 0){
 				alert("이용 약관 동의 후 회원 가입 바랍니다.");
-				$("#user_privacy_policy_agree").focus();
+				$("#user_terms_of_service").focus();
 				return;
 			}
-			if($("#user_terms_of_service").val() == 0){
+			if($("#user_privacy_policy_agree").val() == 0){
 				alert("개인 정보 처리 방침 동의 후 회원 가입 바랍니다.");
-				$("#user_terms_of_service").focus();
+				$("#user_privacy_policy_agree").focus();
 				return;
 			}
 // 			alert("aaa");
@@ -363,7 +363,7 @@ $(document).ready(function(){
 						user_chk_email:$("#user_chk_email").val(),
 						user_terms_of_service:$("#user_terms_of_service").val(),
 						user_privacy_policy_agree:$("#user_privacy_policy_agree").val(),
-						join_date:$("#join_date").val()
+						user_join_date:$("#user_join_date").val()
 					},					
 					function(data,status){
 // 						alert("bbb");
@@ -543,7 +543,7 @@ $(document).ready(function(){
 					busi_chk_email:$("#busi_chk_email").val(),
 					busi_terms_of_service:$("#busi_terms_of_service").val(),
 					busi_privacy_policy_agree:$("#busi_privacy_policy_agree").val(),
-					join_date:$("#join_date").val()
+					busi_join_date:$("#busi_join_date").val()
 				},				
 
 				function(data,status){

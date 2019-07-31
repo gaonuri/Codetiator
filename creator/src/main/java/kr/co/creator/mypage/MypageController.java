@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import kr.co.creator.vo.AccountVO;
 import kr.co.creator.vo.InOutVO;
+import kr.co.creator.vo.MemberListVO;
 import kr.co.creator.vo.MemberVO;
 import kr.co.creator.vo.MypageVO;
 import kr.co.creator.vo.ProjectVO;
@@ -62,43 +63,51 @@ public class MypageController {
 	}
 	
 	@RequestMapping(value = "/my_depo_mgn", method = RequestMethod.GET)
-	public String my_modify(HttpSession session, Model model, MemberVO userVO, AccountVO accVO, InOutVO ioVO) {
+	public String my_modify(HttpSession session, Model model, MemberVO userVO) {
 		logger.info("my_depo_mgn");
 		userVO = (MemberVO)session.getAttribute("memberVO");
-		accVO = service.account(userVO, accVO);
-		ioVO = service.inout(userVO, ioVO);
+		AccountVO accVO = null;
+		InOutVO ioVO = null;
+		accVO = service.account(userVO);
+		ioVO = service.inout(userVO);
 		
-		model.addAttribute("Account", accVO);
+		model.addAttribute("acnt", accVO);
 		model.addAttribute("Inout",ioVO);
+		logger.info("my_depo_mgn"+accVO);
+		logger.info("my_depo_mgn"+ioVO);
 		return "mypage/my_depo_mgn";
 	}
 	
-	@RequestMapping(value="/mypagemodifyU", method=RequestMethod.POST)
-	public void myPageModifyU(MemberVO vo, HttpSession session, PrintWriter out) {
+	@RequestMapping(value = "/mypagemodifyu", method = RequestMethod.POST)
+	public void myPageModifyU(HttpSession session, PrintWriter out, MemberListVO vo) {
 		logger.info("=== myPageModifyU ===");
 		vo = sqlSession.selectOne("MypageMapper.MyPageModifyU", vo);
-		int successCnt = 0;
+		System.out.println("@@@@@@@@@@@@@@ :" + vo );
+		int cnt = 0;
 //		successCnt = service.myPageModify(vo);
 		if(vo != null && vo.getUser_num() != null && !vo.getUser_num().equals("")) {
-			successCnt = 1;
-			session.setAttribute("mypageVO", vo);
+			cnt = 1;
+			session.setAttribute("mypagemem", vo);
 		} 
-		out.print(successCnt);
-		out.close();		
+		out.print(cnt);
+		out.flush();
+		out.close();	
 	}//myPageModifyU
 	
-	@RequestMapping(value="/mypagemodifyB", method=RequestMethod.POST)
-	public void myPageModifyB(MemberVO vo, HttpSession session, PrintWriter out) {
+	@RequestMapping(value="/mypagemodifyb", method=RequestMethod.POST)
+	public void myPageModifyB(HttpSession session, PrintWriter out, MemberListVO vo) {
 		logger.info("=== myPageModifyB ===");
 		vo = sqlSession.selectOne("MypageMapper.MyPageModifyB", vo);
-		int successCnt = 0;
+		System.out.println("@@@@@@@@@@@@@@ :" + vo );
+		int cnt = 0;
 //		successCnt = service.myPageModify(vo);
 		if(vo != null && vo.getBusi_num() != null && !vo.getBusi_num().equals("")) {
-			successCnt = 1;
-			session.setAttribute("mypageVO", vo);
+			cnt = 1;
+			session.setAttribute("mypagemem", vo);
 		}
-		out.print(successCnt);
-		out.close();		
+		out.print(cnt);
+		out.flush();
+		out.close();	
 	}//myPageModifyB
 	
 	@RequestMapping(value = "/modify_detail", method = RequestMethod.GET)
@@ -107,6 +116,29 @@ public class MypageController {
 		
 		return "mypage/modify_detail";
 	}
+	
+	@RequestMapping(value = "/my_modify", method = RequestMethod.GET)
+	public String my_modify() {
+		logger.info("my_modify");
+		
+		return "mypage/my_modify";
+	}
+	
+	@RequestMapping(value="/mypagebank", method=RequestMethod.POST)
+	public void myPageBank(HttpSession session, PrintWriter out, AccountVO vo) {
+		logger.info("=== myPageBank ===");
+		vo = sqlSession.selectOne("MypageMapper.MyPageBank", vo);
+		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!! :" + vo );
+		int cnt = 0;
+		if((vo != null && vo.getBusi_num() != null && !vo.getBusi_num().equals("")) 
+				|| (vo != null && vo.getUser_num() != null && !vo.getUser_num().equals(""))) {
+			cnt = 1;
+			session.setAttribute("mypagebank", vo);
+		}
+		out.print(cnt);
+		out.flush();
+		out.close();	
+	}//myPageBank
 	
 	
 }//class
