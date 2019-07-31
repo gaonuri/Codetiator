@@ -81,6 +81,7 @@ $(document).ready(function() {
 			$("#member_password").focus();
 			return;
 		}//user_paswword
+		
 		if(numChk) {
 			$.post(
 					"./mypagemodifyb",
@@ -105,6 +106,7 @@ $(document).ready(function() {
 			}
 	});//click
 });//ready
+
 </script>
 
 </head>
@@ -183,8 +185,6 @@ $(document).ready(function() {
 												<div class="col-sm-10">
 												<h5>회원님의 정보를 수정하려면 비밀번호를 입력해주세요.</h5>
 													<input type="password" class="form-control" id="member_password" placeholder="*비밀번호">
-													<input type="hidden" id="numChk" value="${mypageVO.user_num}"/>
-													<input type="hidden" id="numChk1" value="${mypageVO.busi_num}"/>
 												</div>
 											</div>	
 										</div>
@@ -212,8 +212,9 @@ $(document).ready(function() {
 						<!-- ===================================================================== body-->		
 	</section>
 </section>
-    
-    
+   	<input type="hidden" id="numChk" value="${mypageVO.user_num}"/>
+	<input type="hidden" id="numChk1" value="${mypageVO.busi_num}"/>
+    <input type="hidden" id="numChk2" value="${mypagebank.user_num}"/>
     
 		
 		<!--footer start-->

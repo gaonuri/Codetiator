@@ -26,8 +26,8 @@ public class LoanDAOService {
 		return insert_project_yn;
 	}//insert_project
 	
-	public RepayVO RepaySelect(RepayVO rvo) {
-		rvo = dao.RepaySelect(rvo);
+	public String RepaySelect(RepayVO vo) {
+		String rvo = dao.RepaySelect(vo);
 		return rvo;
 	}
 	

@@ -62,23 +62,29 @@ public class LoanController {
     }
 	
 	@RequestMapping(value = "/addinfo", method = RequestMethod.GET)
-	public String addinfo(HttpSession session, ProjectVO pvo, DocumentVO dvo) throws Exception {
+	public String addinfo(HttpSession session, ProjectVO pvo, DocumentVO2 dvo) throws Exception {
 		if(session.getAttribute("memVO") == null) {
 			return "redirect:/login";
 		}
 		session.setAttribute("ProjectVO", pvo);
-		session.setAttribute("DocumentVO", dvo);
+		session.setAttribute("DocumentVO2", dvo);
 
     	return "loan/addinfo";
     }
 	
+	@RequestMapping(value = "/addinfo_process", method = RequestMethod.GET)
+	public void addinfo_process(HttpSession session, ProjectVO pvo, DocumentVO2 dvo) throws Exception {
+		session.setAttribute("ProjectVO", pvo);
+		session.setAttribute("DocumentVO2", dvo);
+    }
+	
 	@RequestMapping(value = "/sub_document", method = RequestMethod.GET)
-	public String sub_document(HttpSession session, ProjectVO pvo, DocumentVO dvo, GuaranteeVO gvo) throws Exception {
+	public String sub_document(HttpSession session, ProjectVO pvo, DocumentVO2 dvo, GuaranteeVO gvo) throws Exception {
 		if(session.getAttribute("memVO") == null) {
 			return "redirect:/login";
 		}
 		session.setAttribute("ProjectVO", pvo);
-		session.setAttribute("DocumentVO", dvo);
+		session.setAttribute("DocumentVO2", dvo);
 		session.setAttribute("GuaranteeVO", gvo);
 		
     	return "loan/sub_document";
@@ -87,13 +93,13 @@ public class LoanController {
 	@RequestMapping(value = "/sub_document_process", method = RequestMethod.POST)
 	public void sub_document_process(HttpSession session, MemberVO vo, ProjectVO pvo, DocumentVO2 dvo2, RepayVO rvo, GuaranteeVO gvo, PrintWriter out) {
 		MemberVO voFromSession = (MemberVO) session.getAttribute("memVO");
-		if(voFromSession.getUser_num() == null) {
-			pvo.setBusi_num(voFromSession.getBusi_num());//법인 유저 넘버 가져오기
-		} else {
-			pvo.setUser_num(voFromSession.getUser_num());//유저 넘버 가져오기
-		}
-		rvo = loanDAOService.RepaySelect(rvo); //상환내역 불러오기
-		pvo.setLoan_history(rvo.getLoan_history());
+		pvo = (ProjectVO) session.getAttribute("ProjectVO");
+		dvo2 = (DocumentVO2) session.getAttribute("DocumentVO2");
+		gvo = (GuaranteeVO) session.getAttribute("GuaranteeVO");
+		System.out.println("voFromSession.getBusi_num() : " + voFromSession.getBusi_num());
+		pvo.setBusi_num(voFromSession.getBusi_num());//법인 유저 넘버 가져오기
+		String repay_count = loanDAOService.RepaySelect(rvo); //상환내역 불러오기
+		pvo.setRepay_count(repay_count);
 		int insert_project_yn = 0;
 		insert_project_yn = loanDAOService.insert_project(pvo); //프로젝트 DB에 넣기
 		int gnt = 0;

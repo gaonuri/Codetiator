@@ -102,6 +102,15 @@
 			}
 			calculating();
 		});
+		
+		$("#inputAmt771").blur(function() {
+			var str = $("#inputAmt771").val();
+			//alert(str.substr(str.length-4, 4)); 숫자 뒤 4자리가 0000인지 확인
+			
+			if("0000" != str.substr(str.length-4, 4)) {
+				alert("만원 단위로 입력하시기 바랍니다.");
+			}//if
+		});//blur
 
 		function addDeposit(add) {
 			if(deposit > 0) {
@@ -144,55 +153,61 @@
 			$("#benefitAmtL").text(benefit);
 		}//calculating
 		
+	
 		$("#invest_offer_u").click(function() {
-			$("#deposit").val(deposit - invest);
-			$("#invest_price").val(invest / 10000);
-			$("#current_price").val((current_price + invest) / 10000);
-			$("#project_num").val(${proVO.project_num});
-// 			alert("deposit : " + parseInt(deposit - invest));
-// 			alert("invest_price : " + $("#invest_price").val());
-// 			alert("current_price : " + $("#current_price").val());
-			alert("project_num : " + $("#project_num").val());
-			
-			//alert($("input:checkbox[id=agreeCheckbox]:checked").is(":checked"));
-			check = $("input:checkbox[id=agreeCheckbox]:checked").is(":checked");
-			
-			if(check == true) {
-				var confirmYN = false;
-				confirmYN = confirm("정말 투자하시겠습니까?");
-				if(confirmYN == true) {
-					$.post("${pageContext.request.contextPath}/deposit_update",
-							{
-								user_num:$("#user_num").val(),
-								deposit:$("#deposit").val(),
-								project_num:$("#project_num").val(),
-								invest_price:$("#invest_price").val(),
-								current_price:$("#current_price").val()
-							},
-							function(data, status) {
-								alert(data); alert(status);
-								if(status == "success") {
-									if(data == -1) {
-										alert("오류");
-									}else if(data > 0) {
-										location.href="${pageContext.request.contextPath}/invest_finish?user_num=${memVO.user_num}";
+			if(parseInt($("#inputAmt771").val()) == 0) {
+				alert("투자금을 입력하세요."); return;
+			} else {
+				$("#deposit").val(deposit - invest);
+				$("#invest_price").val(invest / 10000);
+				$("#current_price").val((current_price + invest) / 10000);
+				$("#project_num").val(${proVO.project_num});
+	// 			alert("deposit : " + parseInt(deposit - invest));
+	// 			alert("invest_price : " + $("#invest_price").val());
+	// 			alert("current_price : " + $("#current_price").val());
+				alert("project_num : " + $("#project_num").val());
+				
+				//alert($("input:checkbox[id=agreeCheckbox]:checked").is(":checked"));
+				check = $("input:checkbox[id=agreeCheckbox]:checked").is(":checked");
+				
+				if(check == true) {
+					var confirmYN = false;
+					confirmYN = confirm("정말 투자하시겠습니까?");
+					if(confirmYN == true) {
+						$.post("${pageContext.request.contextPath}/deposit_update",
+								{
+									user_num:$("#user_num").val(),
+									deposit:$("#deposit").val(),
+									project_num:$("#project_num").val(),
+									invest_price:$("#invest_price").val(),
+									current_price:$("#current_price").val()
+								},
+								function(data, status) {
+									alert(data); alert(status);
+									if(status == "success") {
+										if(data == -1) {
+											alert("오류");
+										}else if(data > 0) {
+											location.href="${pageContext.request.contextPath}/invest_finish?user_num=${memVO.user_num}";
+										} else {
+											alert("관리자 : 02-5555-7777");
+										} 
+									} else if (status == "error") {
+										alert("잠시후 다시 시도해 주세요.");
 									} else {
 										alert("관리자 : 02-5555-7777");
-									} 
-								} else if (status == "error") {
-									alert("잠시후 다시 시도해 주세요.");
-								} else {
-									alert("관리자 : 02-5555-7777");
-								}
-							}//call back function
-						);//post
+									}
+								}//call back function
+							);//post
+					} else {
+						return;
+					}
 				} else {
-					return;
-				}
-			} else {
-				alert("약관에 동의해주시기 바랍니다.");
+					alert("약관에 동의해주시기 바랍니다.");
+				}//if
 			}//if
 		});//invest_offer_u
+
 		
 		$("#invest_offer_b").click(function() {
 			$("#deposit").val(deposit - invest);
@@ -227,7 +242,7 @@
 										location.href="${pageContext.request.contextPath}/invest_finish?busi_num=${memVO.busi_num}";
 									} else {
 										alert("관리자 : 02-5555-7777");
-									} 
+									}
 								} else if (status == "error") {
 									alert("잠시후 다시 시도해 주세요.");
 								} else {
@@ -569,15 +584,6 @@
 															<button id="invest_offer_b">투자 신청b</button>
 														</c:when>
 													</c:choose>													
-													
-<!-- 													<a href="javascript:(void(0));" onclick="fn_openInvestWarning();" style="position: relative; bottom: 0px;" disabled="disabled"> -->
-<!-- 														<div style="margin-top: 30px;"> -->
-<!-- 															투자 신청<span></span> -->
-<!-- 															<span> -->
-<!-- 																<div><p style="margin-top:0px;text-align: right;">&gt;</p></div> -->
-<!-- 															</span> -->
-<!-- 														</div> -->
-<!-- 													</a> -->
 												</div>
 												<div class="bottomLine">
 													<p>투자 신청시 <a href="${pageContext.request.contextPath}/privacy_policy" target="_blank">개인정보 처리방침</a> 및 
