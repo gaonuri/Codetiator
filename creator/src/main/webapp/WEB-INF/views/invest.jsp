@@ -37,6 +37,8 @@
 	$(document).ready(function() {
 		var temp = 0;
 		var add = 0;
+		var current_price = parseInt($("#current_price").val() * 10000);
+		var invest_price = parseInt($("#invest_price").val());
 		var deposit = parseInt($("#inputDeposit771").val());
 		var invest 	= parseInt($("#inputAmt771").val());
 		var intrst 	= invest * $("#rate").val() * 0.01;
@@ -107,8 +109,11 @@
 		
 		
 		$("#invest_offer_u").click(function() {
-			$("#deposit").val(deposit - invest);
-			alert(deposit - invest);
+			$("#current_price").val((ccurrent_price + invest) / 10000);
+			$("#deposit").val(deposit - invest);		
+			alert("current_price : " + parseInt(current_price + invest) / 10000);
+			alert("invest_price : " + invest_price);
+			alert("deposit : " + parseInt(deposit - invest));
 // 			if($("#agreeCheckbox").val == "Y") {
 // 				var confirmYN = false;
 // 				confirmYN = confirm("정말 투자하시겠습니까?");
@@ -116,7 +121,9 @@
 					$.post("${pageContext.request.contextPath}/deposit_update",
 							{
 								user_num:$("#user_num").val(),
-								deposit:$("#deposit").val()
+								project_num:$("#project_num").val(),
+								current_price:$("#current_price").val(),
+								invest_price:$("#invest_price").val()
 							},
 							function(data, status) {
 								alert(data); alert(status);
@@ -145,8 +152,11 @@
 		
 		
 		$("#invest_offer_b").click(function() {
-			$("#deposit").val(deposit - invest);
-			alert(deposit - invest);
+			$("#current_price").val((ccurrent_price + invest) / 10000);
+			$("#deposit").val(deposit - invest);		
+			alert("current_price : " + parseInt(current_price + invest) / 10000);
+			alert("invest_price : " + invest_price);
+			alert("deposit : " + parseInt(deposit - invest));
 // 			if($("#agreeCheckbox").val == "Y") {
 // 				var confirmYN = false;
 // 				confirmYN = confirm("정말 투자하시겠습니까?");
@@ -154,7 +164,9 @@
 					$.post("${pageContext.request.contextPath}/deposit_update",
 							{
 								busi_num:$("#busi_num").val(),
-								deposit:$("#deposit").val()
+								deposit:$("#deposit").val(),
+								current_price:$("#current_price").val(),
+								invest_price:$("#invest_price").val()
 							},
 							function(data, status) {
 								alert(data); alert(status);
@@ -191,7 +203,7 @@
 	        TOP BAR CONTENT & NOTIFICATIONS
 	        *********************************************************************************************************************************************************** -->
 		<!--header start-->
-		<%@ include file="../header.jsp" %>
+		<%@ include file="./header.jsp" %>
 		<!--header end-->
 	   
 	    <!-- **********************************************************************************************************************************************************
@@ -211,6 +223,7 @@
 											<div class="box-header"></div>
 											<div class="box-body">
 												<div class="box-wrap">
+											
 													<div class="top">
 														<div class="title">
 															투자신청서
@@ -307,7 +320,7 @@
 																	</div>
 																	<hr>
 																	<div class="investLmtContent display-none" id="brrwrOn" style="display: block;">
-																		<strong><span id="brrwrLmtAmtSum">500</span>만원</strong> / <span id="brrwrLmtMaxAmt">500</span>만원
+																		<strong><span id="brrwrLmtAmtSum">${500 - inVO.invest_price}</span>만원</strong> / <span id="brrwrLmtMaxAmt">500</span>만원
 																	</div>
 																	<div class="investLmtContent display-none" id="brrwrOff">
 																		<strong>제한 없음</strong>
@@ -381,7 +394,7 @@
 																	</div>
 																	<div class="col-xs-3 col-sm-2 col-md-2 col">
 																		<div class="amt">
-																			<span name="lmtAmt" id="lmtAmt771" class="font-purple">0</span><font size="1">만원</font>
+																			<span name="lmtAmt" id="lmtAmt771" class="font-purple">${500 - inVO.invest_price}</span><font size="1">만원</font>
 																			 <span class="glyphicon glyphicon-question-sign hover" style="font-size: 12px;" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="auto left" data-html="true" data-content="
 																					총 투자한도 : 
 																					
@@ -412,7 +425,6 @@
 																			<input type="text" class="form-control text-right" id="inputAmt771" name="inputAmt" aria-describedby="inputAmtStatus" value="0">
 																			<span class="form-control-feedback" aria-hidden="true">원</span>
 																			<span id="inputAmtStatus" class="sr-only">(success)</span>
-																			<input type="hidden" id="reqAmt771" name="reqAmt" value="0">
 																		</div>
 																	</div>
 																	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 col">
@@ -438,10 +450,8 @@
 																	<div class="col-xs-6 col-sm-4 col-md-4 col-lg-3 col">
 																		<div class="form-group has-feedback inputForm" id="inputDepositDiv">
 																			<input type="text" class="form-control text-right" id="inputDeposit771" name="inputDeposit" aria-describedby="inputDepositStatus" value="${accountVO.deposit}" readonly="readonly">
-																			<input type="hidden" id="deposit" value="" />
 																			<span class="form-control-feedback" aria-hidden="true">원</span>
 																			<span id="inputDepositStatus" class="sr-only">(success)</span>
-																			<input type="hidden" id="reqDeposit771" name="reqDeposit" value="0">
 																		</div>
 																	</div>
 																	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-2 col">
@@ -477,21 +487,12 @@
 																	</div>
 																</div>
 															</div>	
-															<input type="hidden" name="repayAmt" id="repayAmt771" value="164625000">
-															<input type="hidden" name="loanAmt" id="loanAmt771" value="150000000">
-															<input type="hidden" name="umbrellarRate" id="umbrellarRate771" value="0.0">
-															<input type="hidden" name="umbrellarAplyYn" id="umbrellarAplyYn771" value="N">
-															<input type="hidden" name="brrwrAmt" id="brrwrAmt771" value="5000000">
 														</div>
-														
 														<div class="title">
 															<font class="font-purple">
 																●
 															</font> 투자 요약
 														</div>
-														<input type="hidden" id="rate" value="${projectVO.rate}" />				<!-- 금리 -->
-														<input type="hidden" id="user_num" value="${memberVO.user_num}" />		<!-- 유저번호 -->
-														<input type="hidden" id="busi_num" value="${memberVO.busi_num}" />		<!-- 법인유저번호 -->
 														<table class="table" id="summaryTableL">
 															<thead>
 																<tr>
@@ -513,16 +514,23 @@
 																</tr>
 															</tbody>
 														</table>
-														<!-- 
-														<div class="warning" id="depositWarn">
-															예치금 계좌에 잔여금액이 부족합니다.
-															<br/><br/>
-															<button type="button" class="btn btn-purple-transparent" onclick="gfn_goMypageMenu('5');">
-																즉시 충전하기 &#62;
-															</button>
-															
-														</div>
-														 -->
+														
+														<!-- hidden value -->
+														<input type="hidden" id="reqDeposit771" name="reqDeposit" value="0">
+														<input type="hidden" name="repayAmt" id="repayAmt771" value="164625000">
+														<input type="hidden" name="loanAmt" id="loanAmt771" value="150000000">
+														<input type="hidden" name="umbrellarRate" id="umbrellarRate771" value="0.0">
+														<input type="hidden" name="umbrellarAplyYn" id="umbrellarAplyYn771" value="N">
+														<input type="hidden" name="brrwrAmt" id="brrwrAmt771" value="5000000">
+														<input type="hidden" id="deposit" value="" />								<!-- 예치금 -->
+														<input type="hidden" id="rate" value="${projectVO.rate}" />					<!-- 금리 -->
+														<input type="hidden" id="user_num" value="${memberVO.user_num}" />			<!-- 유저번호 -->
+														<input type="hidden" id="busi_num" value="${memberVO.busi_num}" />			<!-- 법인유저번호 -->
+														<input type="hidden" id="project_num" value="${projectVO.project_num}">		<!-- 프로젝트번호 -->
+														<input type="hidden" id="current_price" value="${projectVO.current_price}">	<!-- 현재금액 -->
+														<input type="hidden" id="invest_price" value="${inVO.invest_price}">		<!-- 투자금액 -->
+														<!-- hidden value -->
+														
 														<div>
 															투자시 주의사항 안내
 														</div>

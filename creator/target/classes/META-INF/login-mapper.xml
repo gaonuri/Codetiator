@@ -6,13 +6,13 @@
 <mapper namespace="LoginMapper">
 	
 	<select id="loginUser" parameterType="kr.co.creator.vo.MemberVO" resultType="kr.co.creator.vo.MemberVO">
-		select user_num, email, user_name
+		select * 
 		from user_list
 		where email=#{email} and user_password=#{user_password}
 	</select>
 	
-	<select id="loginBusi" parameterType="kr.co.creator.vo.MemberVO"	resultType="kr.co.creator.vo.MemberVO">
-		select busi_num, busi_resi_num, manager_name
+	<select id="loginBusi" parameterType="kr.co.creator.vo.MemberVO" resultType="kr.co.creator.vo.MemberVO">
+		select * 
 		from busi_user_list
 		where busi_resi_num=#{busi_resi_num} and busi_password=#{busi_password}
 	</select>
@@ -41,14 +41,22 @@
 		where user_name = #{user_name}
 	</select>
 	
-	<select id="userList" resultType="kr.co.creator.vo.MemberVO">
+	<select id="userList" parameterType="kr.co.creator.vo.MemberListVO">
 		select	*
 		from	user_list
 	</select>
 	
-	<select id="userBusiList" resultType="kr.co.creator.vo.MemberVO">
+	<select id="busiUserList" parameterType="kr.co.creator.vo.MemberListVO">
 		select	*
-		from	user_busi_list
+		from	busi_user_list
 	</select>
+	
+	<insert id="historyTime" parameterType="kr.co.creator.vo.MemberVO" >
+		INSERT INTO history (user_num, busi_num, log_in_out_time, log_in_out_type)
+		VALUES (#{user_num}, #{busi_num}, now(), 1)
+	</insert>
+	
+	
+	
 	 
 </mapper>

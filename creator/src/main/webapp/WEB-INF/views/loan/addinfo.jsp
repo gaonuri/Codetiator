@@ -88,10 +88,13 @@
 .title {
     font-size: 26pt;
     font-weight: 500;
-    color: #732173;
+    color: #fff;
     text-shadow: 1px 1px 1px #bf9bcb;
     letter-spacing: -0.5pt;
     line-height: 1.2;
+}
+.titles {
+	color: #000;
 }
 .section-body {
     color: #fff;
@@ -124,6 +127,7 @@
     text-align: center;
 }
 </style>
+
 </head>
 <body>
 
@@ -131,119 +135,7 @@
 	    <!-- **********************************************************************************************************************************************************
 	        TOP BAR CONTENT & NOTIFICATIONS
 	        *********************************************************************************************************************************************************** -->
-	    <!--header start-->
-	    <header class="header black-bg">
-			<!--logo start-->
-			<a href="./main" class="logo"><img id="logoImage" alt="로고" src="${pageContext.request.contextPath}/resources/img/ner.jpg" width="200px" height="30px"></a>
-			<!--logo end-->
-			<div class="nav notify-row top-menu" id="top_menu">
-				<!--  notification start -->
-				<ul class="nav pull-right top-menu">
-					<!-- settings start -->
-					
-					<!-- 회사소개 start -->
-					<li><a href="./loan_guide">회사소개</a></li>
-					<!-- 회사소개 end -->
-					
-					<!-- 대출 start -->
-					<li class="dropdown">
-						<a data-toggle="dropdown" class="dropdown-toggle" href="#">
-							대출
-						</a>
-						<ul class="dropdown-menu extended tasks-bar">
-							<div class="notify-arrow notify-arrow-green"></div>
-							<li>
-								<a href="./loan_guide">대출안내</a>
-							</li>
-							<li>
-								<a href="./loan/getloan">대출하기</a>
-							</li>
-						</ul>
-					</li>
-	          		<!-- 대출 end -->
-	          
-	          		<!-- inbox dropdown start-->
-	         		<li class="dropdown">
-						<a data-toggle="dropdown" class="dropdown-toggle" href="#">
-							투자
-						</a>
-						<ul class="dropdown-menu extended tasks-bar">
-							<div class="notify-arrow notify-arrow-black"></div>
-							<li>
-								<a href="./invest_guide">투자안내</a>
-							</li>
-							<li>
-								<a href="./invest_list">투자하기</a>
-							</li>
-							<li>
-								<a href="./invest_finish">완료된투자</a>
-							</li>
-						</ul>
-					</li>
-	          		<!-- 투자 end -->
-	          
-	          
-					<!-- 고객지원 start-->
-					<li id="header_notification_bar" class="dropdown">
-						<a data-toggle="dropdown" class="dropdown-toggle" href="#">
-							고객지원
-						</a>
-						<ul class="dropdown-menu extended notification">
-							<div class="notify-arrow"></div>
-							<li>
-								<a href="./faq">FAQ</a>
-							</li>
-							<li>
-								<a href="./support">이용약관</a>
-							</li>
-							<li>
-								<a href="./policy">개인정보</a>
-							</li>
-							<li>
-								<a href="./inquiry">1:1문의</a>
-							</li>
-						</ul>
-					</li>
-					<!-- 고객지원 end -->
-					
-					<!-- 마이페이지 start-->
-					<li id="header_notification_bar" class="dropdown">
-						<a data-toggle="dropdown" class="dropdown-toggle" href="#">
-							마이페이지
-						</a>
-						<ul class="dropdown-menu extended notification">
-							<div class="notify-arrow notify-arrow-yellow"></div>
-							<li>
-								<a href="./my_dashboard">대시보드</a>
-							</li>
-							<li>
-								<a href="./my_invest_list">투자내역</a>
-							</li>
-							<li>
-								<a href="./my_loan_list">대출내역</a>
-							</li>
-							<li>
-								<a href="./my_depo_mgn">예치금관리</a>
-							</li>
-							<li>
-								<a href="./my_modify">회원정보수정</a>
-							</li>
-						</ul>
-					</li>
-					<!-- 마이페이지 end -->
-					
-					<!-- 로그아웃 start -->
-					<li><a href="./loan_guide">로그아웃</a></li>
-					<!-- 로그아웃 end -->
-				</ul>
-				<!--  notification end -->
-			</div>
-			<div class="top-menu">
-				<ul class="nav pull-right top-menu">
-					<li><a class="logout" href="/creator/join">회원가입</a></li>
-				</ul>
-			</div>
-	    </header>
+	    <%@ include file="../header.jsp" %>
 	    <!--header end-->
 	    
 	    <section id="loanGuide-banner" class="text-center">
@@ -288,13 +180,13 @@
 										</div>
 									</div>
 								</div>
-								<div class="title" style="font-size: 15pt;">
+								<div class="titles" style="font-size: 15pt;">
 									추가정보
 								</div>
 								<div class="line"></div>
 							</div>
             <div class="form-panel">
-              <form action="#" class="form-horizontal style-form">
+              <form id="addinfo_form" class="form-horizontal style-form" enctype="multipart/form-data">
                 <div class="form-group last">
                   <label class="control-label col-md-3">Main 이미지</label>
                   <div class="col-md-9">
@@ -307,17 +199,99 @@
                         <span class="btn btn-theme02 btn-file">
                           <span class="fileupload-new"><i class="fa fa-paperclip"></i> 사진 선택</span>
                         <span class="fileupload-exists"><i class="fa fa-undo"></i> 사진 변경</span>
-                        <input type="file" class="default" />
+                        <input type="file" id="main_img" name="img" class="default" />
                         </span>
                       </div>
                     </div>
                   </div>
                 </div>
-                <div class="form-group last">
-                  <label class="control-label col-md-3">통장 사본</label>
+                <div class="form-group">
+               		<label class="control-label col-md-3">프로젝트 이름</label>
+               		<div class="col-md-4">
+                		<input type="text" id="project_name" name="project_name" class="default"/>
+                	</div>
+                </div>
+                  <div class="form-group">
+                  	<label class="control-label col-md-3">모집금액</label>
+                  	<div class="col-md-4">
+                    	<input type="text" id="price" name="price" class="default" />
+                    </div>
+                  </div>
+                  <div class="form-group">
+                  	<label class="control-label col-md-3">상환기간</label>
+                  	<div class="col-md-4">
+                    	<input type="text" id="refund" name="refund" class="default" />
+                    </div>
+                  </div>
+                  <div class="form-group">
+                  	<label class="control-label col-md-3">게임유형</label>
+                  	<div class="col-md-4">
+                  		<select class="form-control loanPurpose-select" id="type" name="type">
+							<option value="">선택하세요</option>
+								<option value="01">PC게임</option>
+								<option value="02">콘솔게임</option>
+								<option value="03">모바일게임</option>
+								<option value="04">VR게임</option>
+						</select>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                  	<label class="control-label col-md-3">장르</label>
+                  	<div class="col-md-4">
+                  		<select class="form-control loanPurpose-select" id="genre" name="genre">
+							<option value="">선택하세요</option>
+								<option value="01">슈팅 게임</option>
+								<option value="02">액션 게임</option>
+								<option value="03">어드벤처 게임</option>
+								<option value="04">시뮬레이션 게임</option>
+								<option value="05">롤 플레잉 게임</option>
+								<option value="06">스포츠 게임</option>
+								<option value="07">FPS 게임</option>
+								<option value="08">AOS 게임</option>
+						</select>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                  	<label class="control-label col-md-3">등급</label>
+                  	<div class="col-md-4">
+                    	<select class="form-control loanPurpose-select" id="grade" name="grade">
+							<option value="">선택하세요</option>
+								<option value="01">7세 이용가</option>
+								<option value="02">12세 이용가</option>
+								<option value="03">15세 이용가</option>
+								<option value="04">18세 이용가</option>
+						</select>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                  	<label class="control-label col-md-3">상세정보</label>
+                  	<div class="col-md-4">
+                    	<input type="text" id="more_information" name="more_information" class="default" />
+                    </div>
+                  </div>
+                  <div class="form-group">
+                  	<label class="control-label col-md-3">대출기간</label>
+                  	<div class="col-md-4">
+                    	<input type="text" id="loan_period" name="loan_period" class="default" />
+                    </div>
+                  </div>
+                  <div class="form-group">
+                  	<label class="control-label col-md-3">대출계좌</label>
+                  	<div class="col-md-4">
+                    	<input type="text" id="loan_amount" name="loan_amount" class="default" />
+                    </div>
+                  </div>
+                  <div class="form-group">
+                  	<label class="control-label col-md-3">대출구분</label>
+                  	<div class="col-md-4">
+                    	<input type="text" id="loan_class" name="loan_class" class="default" />
+                    </div>
+                  </div>
+                  <div class="form-group last">
+                  <label class="control-label col-md-3">담보 이미지</label>
                   <div class="col-md-9">
                     <div class="fileupload fileupload-new" data-provides="fileupload">
-                      <div class="fileupload-new thumbnail" style="width: 200px; height: 150px;">
+                      <div class="fileupload-new thumbnail" style="width: 100%; height: 150px;">
                         <img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&text=no+image" alt="" />
                       </div>
                       <div class="fileupload-preview fileupload-exists thumbnail" style="max-width: 200px; max-height: 150px; line-height: 20px;"></div>
@@ -325,66 +299,134 @@
                         <span class="btn btn-theme02 btn-file">
                           <span class="fileupload-new"><i class="fa fa-paperclip"></i> 사진 선택</span>
                         <span class="fileupload-exists"><i class="fa fa-undo"></i> 사진 변경</span>
-                        <input type="file" class="default" />
+                        <input type="file" id="guarantee_img" name="guarantee_img" class="default" />
                         </span>
                       </div>
                     </div>
                   </div>
                 </div>
-                  <div class="form-group">
-                  	<label class="control-label col-md-3">사업자 등록증</label>
+                <div class="form-group">
+                  	<label class="control-label col-md-3">담보유형</label>
                   	<div class="col-md-4">
-                    	<input type="file" class="default" />
+                    	<input type="text" id="guarantee_type" name="guarantee_type" class="default" />
+                    </div>
+                </div>
+                <div class="form-group">
+                  	<label class="control-label col-md-3">담보명</label>
+                  	<div class="col-md-4">
+                    	<input type="text" id="guarantee_name" name="guarantee_name" class="default" />
+                    </div>
+                </div>
+                <div class="form-group">
+                  	<label class="control-label col-md-3">차주유형</label>
+                  	<div class="col-md-4">
+                    	<select class="form-control loanPurpose-select" id="debtor_type" name="debtor_type">
+							<option value="">선택하세요</option>
+								<option value="01">개인</option>
+								<option value="02">법인</option>
+						</select>
+                    </div>
+                </div>
+                <div class="form-group">
+                  	<label class="control-label col-md-3">차주업종(직종)</label>
+                  	<div class="col-md-4">
+                    	<input type="text" id="business_type" name="business_type" class="default" />
+                    </div>
+                </div>
+                <div class="form-group">
+                  	<label class="control-label col-md-3">물건유형</label>
+                  	<div class="col-md-4">
+                    	<select class="form-control loanPurpose-select" id="object_type" name="object_type">
+							<option value="">선택하세요</option>
+								<option value="01">아파트</option>
+								<option value="02">연립주택</option>
+								<option value="03">토지</option>
+						</select>
+                    </div>
+                </div>
+                <div class="form-group">
+                  	<label class="control-label col-md-3">외부감정가</label>
+                  	<div class="col-md-4">
+                    	<input type="text" id="connoisseur" name="connoisseur" class="default" />
+                    </div>
+                </div>
+                <div class="form-group">
+                  	<label class="control-label col-md-3">공급면적</label>
+                  	<div class="col-md-4">
+                    	<input type="text" id="supply_area" name="supply_area" class="default" />
+                    </div>
+                </div>
+                <div class="form-group">
+                  	<label class="control-label col-md-3">전용면적</label>
+                  	<div class="col-md-4">
+                    	<input type="text" id="exclusive_area" name="exclusive_area" class="default" />
+                    </div>
+                </div>
+                <div class="form-group">
+                  	<label class="control-label col-md-3">면적</label>
+                  	<div class="col-md-4">
+                    	<input type="text" id="area" name="area" class="default" />
+                    </div>
+                </div>
+                <div class="form-group">
+                  	<label class="control-label col-md-3">소재지</label>
+                  	<div class="col-md-4">
+                    	<input type="text" id="location" name="location" class="default" />
+                    </div>
+                </div>
+                <div class="form-group">
+                  	<label class="control-label col-md-3">규모</label>
+                  	<div class="col-md-4">
+                    	<input type="text" id="scale" name="scale" class="default" />
+                    </div>
+                </div>
+                <div class="form-group">
+                  	<label class="control-label col-md-3">준공년도</label>
+                  	<div class="col-md-4">
+                    	<input type="text" id="comple_year" name="comple_year" class="default" />
+                    </div>
+                </div>
+                <div class="form-group">
+                  	<label class="control-label col-md-3">시세</label>
+                  	<div class="col-md-4">
+                    	<input type="text" id="quote" name="quote" class="default" />
+                    </div>
+                </div>
+                <div class="form-group">
+                  	<label class="control-label col-md-3">담보분류</label>
+                  	<div class="col-md-4">
+                    	<select class="form-control loanPurpose-select" id="code" name="code">
+							<option value="">선택하세요</option>
+								<option value="01">부동산담보</option>
+								<option value="02">법인신용</option>
+								<option value="03">개인사업자신용</option>
+						</select>
+                    </div>
+                </div>
+                <div class="form-group">
+                  	<label class="control-label col-md-3">참고파일1</label>
+                  	<div class="col-md-4">
+                    	<input type="file" class="reference_file1" name="reference_file1"/>
                     </div>
                   </div>
                   <div class="form-group">
-                  	<label class="control-label col-md-3">주민등록 초본</label>
+                  	<label class="control-label col-md-3">참고파일2</label>
                   	<div class="col-md-4">
-                    	<input type="file" class="default" />
+                    	<input type="file" class="reference_file2" name="reference_file2"/>
                     </div>
                   </div>
                   <div class="form-group">
-                  	<label class="control-label col-md-3">인감증명서</label>
+                  	<label class="control-label col-md-3">참고파일3</label>
                   	<div class="col-md-4">
-                    	<input type="file" class="default" />
+                    	<input type="file" class="reference_file3" name="reference_file3"/>
                     </div>
                   </div>
-                  <div class="form-group">
-                  	<label class="control-label col-md-3">부동산증명서(선택)</label>
-                  	<div class="col-md-4">
-                    	<input type="file" class="default" />
-                    </div>
-                  </div>
-                  <div class="form-group">
-                  	<label class="control-label col-md-3">동산증명서(선택)</label>
-                  	<div class="col-md-4">
-                    	<input type="file" class="default" />
-                    </div>
-                  </div>
-                  <div class="form-group">
-                  	<label class="control-label col-md-3">소득금액증명원(선택)</label>
-                  	<div class="col-md-4">
-                    	<input type="file" class="default" />
-                    </div>
-                  </div>
-                  <div class="form-group">
-                  	<label class="control-label col-md-3">부가가치세과세증명원(선택)</label>
-                  	<div class="col-md-4">
-                    	<input type="file" class="default" />
-                    </div>
-                  </div>
-                  <div class="form-group">
-                  	<label class="control-label col-md-3">기타증명서(선택)</label>
-                  	<div class="col-md-4">
-                    	<input type="file" class="default" />
-                    </div>
-                  </div>
-                  <div class="bottom">
+                <div class="bottom">
 								<input type="button" class="btn btn-purple-transparent btn-block" id="doNextStepBtn"
 										value="프로젝트 제출" />
 <!-- 									<button type="submit" class="btn btn-purple-transparent btn-block" id="doNextStepBtn">본인 인증 및 대출 가능여부 확인</button> -->
 									<p>※ 대출심사 결격사유 : 최근 현금서비스 3회 이상 이용 고객 및 기타 당사가 규정하는 채무불이행 사유가 있는 고객.</p>
-									<div class="page" style="text-align: right;">3/4</div>
+									<div class="page" style="text-align: right;">2/4</div>
 				</div>
               </form>
              	 </div>
@@ -542,8 +584,73 @@
 
 <script type="text/javascript">
 $(document).ready(function() {
+	$.ajaxSetup({cache:false});
 	$("#doNextStepBtn").click(function() {
-		location.href = "${pageContext.request.contextPath}/loan/sub_document";
+		var main_img = $("#main_img").val();
+		var project_name = $("#project_name").val();
+		var price = $("#price").val();
+		var refund = $("#refund").val();
+		var type = $("#type").val();
+		var genre = $("#genre").val();
+		var grade = $("#grade").val();
+		var more_information = $("#more_information").val();
+		var loan_period = $("#loan_period").val();
+		var loan_amount = $("#loan_amount").val();
+		var loan_class = $("#loan_class").val();
+		if(main_img == "") {
+			alert("메인 사진을 올려주세요.");
+			$("#main_img").focus();
+		} else if(project_name == "") {
+			alert("프로젝트 이름을 작성 해주세요.");
+			$("#project_name").focus();
+		} else if(price == "") {
+			alert("모집금액을 입력 해주세요.");
+			$("#price").focus();
+		} else if(refund == "") {
+			alert("상환기간을 입력 해주세요.");
+			$("#refund").focus();
+		} else if(type == "") {
+			alert("게임유형을 선택 해주세요.");
+			$("#type").focus();
+		} else if(genre == "") {
+			alert("장르를 선택 해주세요.");
+			$("#genre").focus();
+		} else if(grade == "") {
+			alert("등급을 선택 해주세요.");
+			$("#grade").focus();
+		} else if(more_information == "") {
+			alert("상세정보를 입력 해주세요.");
+			$("#more_information").focus();
+		} else if(loan_period == "") {
+			alert("대출기간을 입력 해주세요.");
+			$("#loan_period").focus();
+		} else if(loan_amount == "") {
+			alert("대출계좌를 입력 해주세요.");
+			$("#loan_amount").focus();
+		} else if(loan_class == "") {
+			alert("대출구분을 입력 해주세요.");
+			$("#loan_class").focus();
+		} else {
+			var form = new FormData(document.getElementById("addinfo_form"));
+			$.ajax({
+				url:"${pageContext.request.contextPath}/addinfo_process"
+				,data:form
+				,dataType:'json'
+				,processData:false
+				,contentType:false
+				,type:"POST"
+				,success:function(result){alert(result);
+					if(result > 0){
+						location.href = "${pageContext.request.contextPath}/sub_document";
+					} else {
+						alert("잠시 후 다시 시도해 주세요.");
+					}
+				}
+					,error:function(xhr){
+						alert("fail");
+					}
+				});//ajax
+		}
 	});//click
 });//ready
 </script>

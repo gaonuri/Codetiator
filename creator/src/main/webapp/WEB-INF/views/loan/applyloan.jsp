@@ -77,11 +77,14 @@
 .title {
     font-size: 26pt;
     font-weight: 500;
-    color: #732173;
+    color: #fff;
     text-shadow: 1px 1px 1px #bf9bcb;
     letter-spacing: -0.5pt;
     line-height: 1.2;
     text-align: center;
+}
+.titles {
+	color: #000;
 }
 .section-body {
     color: #fff;
@@ -105,120 +108,7 @@
 	    <!-- **********************************************************************************************************************************************************
 	        TOP BAR CONTENT & NOTIFICATIONS
 	        *********************************************************************************************************************************************************** -->
-	    <!--header start-->
-	    <header class="header black-bg">
-			<!--logo start-->
-			<a href="./main" class="logo"><img id="logoImage" alt="로고" src="${pageContext.request.contextPath}/resources/img/ner.jpg" width="200px" height="30px"></a>
-			<!--logo end-->
-			<div class="nav notify-row top-menu" id="top_menu">
-				<!--  notification start -->
-				<ul class="nav pull-right top-menu">
-					<!-- settings start -->
-					
-					<!-- 회사소개 start -->
-					<li><a href="./loan_guide">회사소개</a></li>
-					<!-- 회사소개 end -->
-					
-					<!-- 대출 start -->
-					<li class="dropdown">
-						<a data-toggle="dropdown" class="dropdown-toggle" href="#">
-							대출
-						</a>
-						<ul class="dropdown-menu extended tasks-bar">
-							<div class="notify-arrow notify-arrow-green"></div>
-							<li>
-								<a href="./loan_guide">대출안내</a>
-							</li>
-							<li>
-								<a href="./loan/getloan">대출하기</a>
-							</li>
-						</ul>
-					</li>
-	          		<!-- 대출 end -->
-	          
-	          		<!-- inbox dropdown start-->
-	         		<li class="dropdown">
-						<a data-toggle="dropdown" class="dropdown-toggle" href="#">
-							투자
-						</a>
-						<ul class="dropdown-menu extended tasks-bar">
-							<div class="notify-arrow notify-arrow-black"></div>
-							<li>
-								<a href="./invest_guide">투자안내</a>
-							</li>
-							<li>
-								<a href="./invest_list">투자하기</a>
-							</li>
-							<li>
-								<a href="./invest_finish">완료된투자</a>
-							</li>
-						</ul>
-					</li>
-	          		<!-- 투자 end -->
-	          
-	          
-					<!-- 고객지원 start-->
-					<li id="header_notification_bar" class="dropdown">
-						<a data-toggle="dropdown" class="dropdown-toggle" href="#">
-							고객지원
-						</a>
-						<ul class="dropdown-menu extended notification">
-							<div class="notify-arrow"></div>
-							<li>
-								<a href="./faq">FAQ</a>
-							</li>
-							<li>
-								<a href="./support">이용약관</a>
-							</li>
-							<li>
-								<a href="./policy">개인정보</a>
-							</li>
-							<li>
-								<a href="./inquiry">1:1문의</a>
-							</li>
-						</ul>
-					</li>
-					<!-- 고객지원 end -->
-					
-					<!-- 마이페이지 start-->
-					<li id="header_notification_bar" class="dropdown">
-						<a data-toggle="dropdown" class="dropdown-toggle" href="#">
-							마이페이지
-						</a>
-						<ul class="dropdown-menu extended notification">
-							<div class="notify-arrow notify-arrow-yellow"></div>
-							<li>
-								<a href="./my_dashboard">대시보드</a>
-							</li>
-							<li>
-								<a href="./my_invest_list">투자내역</a>
-							</li>
-							<li>
-								<a href="./my_loan_list">대출내역</a>
-							</li>
-							<li>
-								<a href="./my_depo_mgn">예치금관리</a>
-							</li>
-							<li>
-								<a href="./my_modify">회원정보수정</a>
-							</li>
-						</ul>
-					</li>
-					<!-- 마이페이지 end -->
-					
-					<!-- 로그아웃 start -->
-					<li><a href="./loan_guide">로그아웃</a></li>
-					<!-- 로그아웃 end -->
-				</ul>
-				<!--  notification end -->
-			</div>
-			<div class="top-menu">
-				<ul class="nav pull-right top-menu">
-					<li><a class="logout" href="/creator/join">회원가입</a></li>
-				</ul>
-			</div>
-	    </header>
-	    <!--header end-->
+	    <%@ include file="../header.jsp" %>
 	   <section id="loanGuide-banner" class="text-center">
 			<div class="overlay">
 				<div class="section-body">
@@ -262,7 +152,7 @@
 										</div>
 									</div>
 								</div>
-								<div class="title" style="font-size: 15pt;">
+								<div class="titles" style="font-size: 15pt;">
 									대출신청서
 								</div>
 								<div class="line"></div>
@@ -272,20 +162,15 @@
 									<dt>이름</dt>
 									<dd>
 										<div class="name-text">
-											${UserVO.name}
+										<c:choose>
+											<c:when test="${memVO != null && memVO.user_name != null && memVO.user_name != ''}">
+												${memVO.user_name}
+											</c:when>
+											<c:otherwise>
+												${memVO.manager_name}
+											</c:otherwise>
+										</c:choose>
 										</div>
-									</dd>
-									<dd>
-										<hr>
-									</dd>
-									<dt>생년월일</dt>
-									<dd>
-											<div class="form-group">
-												<!--
-													<input type="text" class="form-control birthDate-text datepicker" id="birthDateText">
-												 -->
-												<input type="text" class="form-control birthDate-text" id="birthDateText" maxlength="8" value="${UserVO.birth}" disabled="disabled">
-											</div>
 									</dd>
 									<dd>
 										<hr>
@@ -311,8 +196,18 @@
 									</dd>
 									<dt>휴대전화</dt>
 									<dd>
-											<div class="form-group">
-												<input type="text" class="form-control mpNo-text" id="mpNoText" maxlength="11" value="${phone}" disabled="disabled">
+											<div class="form-group" style="margin-bottom: 0px;">
+											
+												<c:choose>
+															<c:when test="${memVO != null && memVO.phone != null && memVO.phone != ''}">
+																${memVO.phone}
+															</c:when>
+															<c:otherwise>
+																${memVO.manager_phone}
+															</c:otherwise>
+												</c:choose>
+											
+												
 												<!--
 												<button type="button" class="btn btn-purple-transparent" onclick="fn_doCert()" style="vertical-align: inherit;" id="certBtn">
 													인증하기
@@ -512,38 +407,38 @@
 											<div class="checkbox">
 												<input type="checkbox" value="Y" id="agree1Checkbox" name="agreeCheckBox">
 												<label for="agree1Checkbox">
-													<a href="${pageContext.request.contextPath}/support/useTerm" target="_blank"><u>서비스 이용약관</u></a>에 동의합니다. (필수)
+													<a href="${pageContext.request.contextPath}/useTerm" target="_blank"><u>서비스 이용약관</u></a>에 동의합니다. (필수)
 												</label>
 											</div>
 											<div class="checkbox">
 												<input type="checkbox" value="Y" id="agree2Checkbox" name="agreeCheckBox">
 												<label for="agree2Checkbox">
-													<a href="${pageContext.request.contextPath}/support/pInfoProvideTerm" target="_blank"><u>개인(신용)정보제공</u></a>에 동의합니다. (필수)
+													<a href="${pageContext.request.contextPath}/pInfoProvideTerm" target="_blank"><u>개인(신용)정보제공</u></a>에 동의합니다. (필수)
 												</label>
 											</div>
 											<div class="checkbox">
 												<input type="checkbox" value="Y" id="agree3Checkbox" name="agreeCheckBox">
 												<label for="agree3Checkbox">
-													<a href="${pageContext.request.contextPath}/support/pInfoInquiryTerm" target="_blank"><u>개인(신용)정보조회</u></a>에 동의합니다. (필수)
+													<a href="${pageContext.request.contextPath}/pInfoInquiryTerm" target="_blank"><u>개인(신용)정보조회</u></a>에 동의합니다. (필수)
 												</label>
 											</div>
 											<div class="checkbox">
 												<input type="checkbox" value="Y" id="agree4Checkbox" name="agreeCheckBox">
 												<label for="agree4Checkbox">
-													<a href="${pageContext.request.contextPath}/support/pInfoUseTerm" target="_blank"><u>개인(신용)정보수집, 이용</u></a>에 동의합니다. (필수)
+													<a href="${pageContext.request.contextPath}/pInfoUseTerm" target="_blank"><u>개인(신용)정보수집, 이용</u></a>에 동의합니다. (필수)
 												</label>
 											</div>
 											
 											<div class="checkbox">
 												<input type="checkbox" value="Y" id="agree5Checkbox" name="agreeCheckBox">
 												<label for="agree5Checkbox">
-													<a href="${pageContext.request.contextPath}/support/uniqueInfoTerm" target="_blank"><u>고유식별정보 처리방침</u></a>에 동의합니다. (필수)
+													<a href="${pageContext.request.contextPath}/uniqueInfoTerm" target="_blank"><u>고유식별정보 처리방침</u></a>에 동의합니다. (필수)
 												</label>
 											</div>
 											<div class="checkbox">
 												<input type="checkbox" value="Y" id="agree6Checkbox" name="chk_select">
 												<label for="agree6Checkbox">
-													<a href="${pageContext.request.contextPath}/support/pInfoSelectedTerm" target="_blank"><u>개인(신용)정보 선택적 수집, 이용 및 제공</u></a>에 동의합니다. (선택)
+													<a href="${pageContext.request.contextPath}/pInfoSelectedTerm" target="_blank"><u>개인(신용)정보 선택적 수집, 이용 및 제공</u></a>에 동의합니다. (선택)
 												</label>
 											</div>
 										</div>
@@ -713,12 +608,68 @@
 	</script>
 	<script type="text/javascript">
 	$(document).ready(function() {
+		$("#loan_period").keyup(function(event) {
+			//alert(event.keyCode);
+			$("#loan_period").val(
+				$("#loan_period").val().replace(/[^0-9\.]/g,'')
+			);//숫자만 입력 되도록
+		});//pass.keydown
+	});//ready
+	</script>
+	<script type="text/javascript">
+	$(document).ready(function() {
 		$("#doNextStepBtn").click(function() {
-			window.open('${pageContext.request.contextPath}/loan/popup','','menubar=no,width=450,height=300');
+			var agree1Checkbox = $("#agree1Checkbox").is(":checked");
+			var agree2Checkbox = $("#agree2Checkbox").is(":checked");
+			var agree3Checkbox = $("#agree3Checkbox").is(":checked");
+			var agree4Checkbox = $("#agree4Checkbox").is(":checked");
+			var agree5Checkbox = $("#agree5Checkbox").is(":checked");
+			var sex = $(':radio[name="sexRadio"]:checked').val();
+			var loanPeriodSelect = $('#loanPeriodSelect').val();
+			var loanAmt = $("#loan_period").val();
+			var loanGb = $("#loan_class").val();
+			var loanType = $("#loanTypeSelect").val();
+			var repayTypeCd = $("#repayTypeCdSelect").val();
+			if(sex == undefined) {
+				alert("성별을 선택하세요.");
+				$(".sexRadio-label").focus();
+			} else if(loanPeriodSelect == "") {
+				alert("대출기간을 선택하세요.");
+				$("#loanPeriodSelect").focus();
+			} else if(loanAmt == "") {
+				alert("대출금액을 입력하세요.");
+				$("#loan_period").focus();
+			} else if(loanGb == "") {
+				alert("대출구분을 선택하세요.");
+				$("#loan_class").focus();
+			} else if(loanType == "") {
+				alert("대출유형을 선택하세요.");
+				$("#loanTypeSelect").focus();
+			} else if(repayTypeCd == "") {
+				alert("상환방식을 선택하세요.");
+				$("#repayTypeCdSelect").focus();
+			} else if(agree1Checkbox == false) {
+				alert("서비스 이용약관에 동의하세요.");
+				$("#agree1Checkbox").focus();
+			} else if(agree2Checkbox == false) {
+				alert("개인(신용)정보제공에 동의하세요.");
+				$("#agree2Checkbox").focus();
+			} else if(agree3Checkbox == false) {
+				alert("개인(신용)정보조회에 동의하세요.");
+				$("#agree3Checkbox").focus();
+			} else if(agree4Checkbox == false) {
+				alert("개인(신용)정보수집,이용에 동의하세요.");
+				$("#agree4Checkbox").focus();
+			} else if(agree5Checkbox == false) {
+				alert("고유식별정보 처리방침에 동의하세요.");
+				$("#agree5Checkbox").focus();
+			} else {
+				window.open('${pageContext.request.contextPath}/popup','','menubar=no,width=450,height=300');
+			}
 		});
 	});
 	function tempFunction() {
-		$("#frmLoan").attr("action","${pageContext.request.contextPath}/loan/addinfo");
+		$("#frmLoan").attr("action","${pageContext.request.contextPath}/addinfo");
 		document.frmLoan.submit();
 	}
 	
@@ -740,9 +691,13 @@
 			if($(this).is(":checked")) {
 				$("input:checkbox[name='agreeCheckBox']").prop("checked", true);
 				$("input:checkbox[name='agreeCheckBox']").attr("checked", true);
+				$("input:checkbox[name='chk_select']").prop("checked", true);
+				$("input:checkbox[name='chk_select']").attr("checked", true);
 			} else {
 				$("input:checkbox[name='agreeCheckBox']").prop("checked", false);
 				$("input:checkbox[name='agreeCheckBox']").attr("checked", false);
+				$("input:checkbox[name='chk_select']").prop("checked", false);
+				$("input:checkbox[name='chk_select']").attr("checked", false);
 			}
 		});
 		
@@ -793,9 +748,9 @@
 			showMonthAfterYear: true, //년 뒤에 월 표시
 		});*/
 		
-		var loginCusGbCd = "01";
+		var loginCusGbCd = ${loginCusGbCd};
 		var str = "";
-		if(loginCusGbCd == "01") {	// 일반회원
+		if(loginCusGbCd == "1") {	// 일반회원
 			//str += "<option value=\"01\">개인신용</option>";
 			str += "<option value=\"02\">개인담보</option>";
 			str += "<option value=\"03\">개인사업자신용</option>";
@@ -844,6 +799,7 @@
 		var agree3 = $('input:checkbox[id="agree3Checkbox"]').is(":checked");
 		var agree4 = $('input:checkbox[id="agree4Checkbox"]').is(":checked");
 		var agree5 = $('input:checkbox[id="agree5Checkbox"]').is(":checked");
+		var agree6 = $('input:checkbox[id="agree6Checkbox"]').is(":checked");
 		
 		var chkBool = true;
 		

@@ -10,7 +10,7 @@
 	<meta name="author" content="Dashboard">
 	<meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
 	<title>Dashio - Bootstrap Admin Template</title>
-	<script src="../resources/jquery/jquery-3.4.1.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/jquery/jquery-3.4.1.js"></script>
 	<!-- Favicons -->
 	<link href="${pageContext.request.contextPath}/resources/bootstrap/img/favicon.png" rel="icon">
 	<link href="${pageContext.request.contextPath}/resources/bootstrap/img/apple-touch-icon.png" rel="apple-touch-icon">
@@ -25,7 +25,7 @@
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/bootstrap/lib/bootstrap-datepicker/css/datepicker.css" />
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/bootstrap/lib/bootstrap-daterangepicker/daterangepicker.css" />
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/bootstrap/lib/bootstrap-timepicker/compiled/timepicker.css" />
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/bootstrap/lib/bootstrap-datetimepicker/datertimepicker.css" />
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/bootstrap/lib/bootstrap-datetimepicker/css/datetimepicker.css" />
 	<!-- Custom styles for this template -->
 	<link href="${pageContext.request.contextPath}/resources/bootstrap/css/style.css" rel="stylesheet">
 	<link href="${pageContext.request.contextPath}/resources/bootstrap/css/style-responsive.css" rel="stylesheet">
@@ -85,10 +85,13 @@
 .text-center {
     text-align: center;
 }
+.titles {
+	color: #000;
+}
 .title {
     font-size: 26pt;
     font-weight: 500;
-    color: #732173;
+    color: #fff;
     text-shadow: 1px 1px 1px #bf9bcb;
     letter-spacing: -0.5pt;
     line-height: 1.2;
@@ -124,6 +127,7 @@
     text-align: center;
 }
 </style>
+
 </head>
 <body>
 
@@ -131,120 +135,7 @@
 	    <!-- **********************************************************************************************************************************************************
 	        TOP BAR CONTENT & NOTIFICATIONS
 	        *********************************************************************************************************************************************************** -->
-	    <!--header start-->
-	    <header class="header black-bg">
-			<!--logo start-->
-			<a href="./main" class="logo"><img id="logoImage" alt="로고" src="${pageContext.request.contextPath}/resources/img/ner.jpg" width="200px" height="30px"></a>
-			<!--logo end-->
-			<div class="nav notify-row top-menu" id="top_menu">
-				<!--  notification start -->
-				<ul class="nav pull-right top-menu">
-					<!-- settings start -->
-					
-					<!-- 회사소개 start -->
-					<li><a href="./loan_guide">회사소개</a></li>
-					<!-- 회사소개 end -->
-					
-					<!-- 대출 start -->
-					<li class="dropdown">
-						<a data-toggle="dropdown" class="dropdown-toggle" href="#">
-							대출
-						</a>
-						<ul class="dropdown-menu extended tasks-bar">
-							<div class="notify-arrow notify-arrow-green"></div>
-							<li>
-								<a href="./loan_guide">대출안내</a>
-							</li>
-							<li>
-								<a href="./loan/getloan">대출하기</a>
-							</li>
-						</ul>
-					</li>
-	          		<!-- 대출 end -->
-	          
-	          		<!-- inbox dropdown start-->
-	         		<li class="dropdown">
-						<a data-toggle="dropdown" class="dropdown-toggle" href="#">
-							투자
-						</a>
-						<ul class="dropdown-menu extended tasks-bar">
-							<div class="notify-arrow notify-arrow-black"></div>
-							<li>
-								<a href="./invest_guide">투자안내</a>
-							</li>
-							<li>
-								<a href="./invest_list">투자하기</a>
-							</li>
-							<li>
-								<a href="./invest_finish">완료된투자</a>
-							</li>
-						</ul>
-					</li>
-	          		<!-- 투자 end -->
-	          
-	          
-					<!-- 고객지원 start-->
-					<li id="header_notification_bar" class="dropdown">
-						<a data-toggle="dropdown" class="dropdown-toggle" href="#">
-							고객지원
-						</a>
-						<ul class="dropdown-menu extended notification">
-							<div class="notify-arrow"></div>
-							<li>
-								<a href="./faq">FAQ</a>
-							</li>
-							<li>
-								<a href="./support">이용약관</a>
-							</li>
-							<li>
-								<a href="./policy">개인정보</a>
-							</li>
-							<li>
-								<a href="./inquiry">1:1문의</a>
-							</li>
-						</ul>
-					</li>
-					<!-- 고객지원 end -->
-					
-					<!-- 마이페이지 start-->
-					<li id="header_notification_bar" class="dropdown">
-						<a data-toggle="dropdown" class="dropdown-toggle" href="#">
-							마이페이지
-						</a>
-						<ul class="dropdown-menu extended notification">
-							<div class="notify-arrow notify-arrow-yellow"></div>
-							<li>
-								<a href="./my_dashboard">대시보드</a>
-							</li>
-							<li>
-								<a href="./my_invest_list">투자내역</a>
-							</li>
-							<li>
-								<a href="./my_loan_list">대출내역</a>
-							</li>
-							<li>
-								<a href="./my_depo_mgn">예치금관리</a>
-							</li>
-							<li>
-								<a href="./my_modify">회원정보수정</a>
-							</li>
-						</ul>
-					</li>
-					<!-- 마이페이지 end -->
-					
-					<!-- 로그아웃 start -->
-					<li><a href="./loan_guide">로그아웃</a></li>
-					<!-- 로그아웃 end -->
-				</ul>
-				<!--  notification end -->
-			</div>
-			<div class="top-menu">
-				<ul class="nav pull-right top-menu">
-					<li><a class="logout" href="/creator/join">회원가입</a></li>
-				</ul>
-			</div>
-	    </header>
-	    <!--header end-->
+	    <%@ include file="../header.jsp" %>
 	    
 	    <section id="loanGuide-banner" class="text-center">
 			<div class="overlay">
@@ -288,13 +179,13 @@
 										</div>
 									</div>
 								</div>
-								<div class="title" style="font-size: 15pt;">
+								<div class="titles" style="font-size: 15pt;">
 									서류제출
 								</div>
 								<div class="line"></div>
 							</div>
             <div class="form-panel">
-              <form id="document_form" class="form-horizontal style-form">
+              <form id="document_form" class="form-horizontal style-form" enctype="multipart/form-data">
                 <div class="form-group last">
                   <label class="control-label col-md-3">신분증 사본</label>
                   <div class="col-md-9">
@@ -307,7 +198,7 @@
                         <span class="btn btn-theme02 btn-file">
                           <span class="fileupload-new"><i class="fa fa-paperclip"></i> 사진 선택</span>
                         <span class="fileupload-exists"><i class="fa fa-undo"></i> 사진 변경</span>
-                        <input type="file" class="default" name="copy_id"/>
+                        <input type="file" class="default" id="copy_id" name="copy_id" />
                         </span>
                       </div>
                     </div>
@@ -325,7 +216,7 @@
                         <span class="btn btn-theme02 btn-file">
                           <span class="fileupload-new"><i class="fa fa-paperclip"></i> 사진 선택</span>
                         <span class="fileupload-exists"><i class="fa fa-undo"></i> 사진 변경</span>
-                        <input type="file" class="default" name="copy_bankbook"/>
+                        <input type="file" class="default" id="bank_img" name="copy_bankbook"/>
                         </span>
                       </div>
                     </div>
@@ -334,19 +225,19 @@
                   <div class="form-group">
                   	<label class="control-label col-md-3">사업자 등록증</label>
                   	<div class="col-md-4">
-                    	<input type="file" class="default" name="busi_regi"/>
+                    	<input type="file" class="default" id="busi_regi" name="busi_regi"/>
                     </div>
                   </div>
                   <div class="form-group">
                   	<label class="control-label col-md-3">주민등록 초본</label>
                   	<div class="col-md-4">
-                    	<input type="file" class="default" name="jumin_chobon"/>
+                    	<input type="file" class="default" id="jumin_chobon" name="jumin_chobon"/>
                     </div>
                   </div>
                   <div class="form-group">
                   	<label class="control-label col-md-3">인감증명서</label>
                   	<div class="col-md-4">
-                    	<input type="file" class="default" name="cer_ingam"/>
+                    	<input type="file" class="default" id="cer_ingam" name="cer_ingam"/>
                     </div>
                   </div>
                   <div class="form-group">
@@ -539,29 +430,52 @@
       console.log('nav ' + nav + ' to: ' + to.month + '/' + to.year);
     }
 	</script>
-
+<!-- form.append("aaa",$("#aaa").val()); -->
 <script type="text/javascript">
-var form = new FormData(document.getElementById("document_form"));
-
-
 $(document).ready(function() {
+	$.ajaxSetup({cache:false});
 	$("#doNextStepBtn").click(function() {
-		$.post("/loan/sub_document_process"
-			,{
-				dvo:form
-			}//data
-			,function(data,status) {
-				if(status == "success") {
-					if(data > 0){
-						location.href = "${pageContext.request.contextPath}/loan/loan_judge";
-					} else {
-						alert("잠시 후 다시 시도해 주세요.");
-					}
+		var img = $("#copy_id").val();
+		var bank_img = $("#bank_img").val();
+		var busi_regi = $("#busi_regi").val();
+		var jumin_chobon = $("#jumin_chobon").val();
+		var cer_ingam = $("#cer_ingam").val();
+		if(img == "") {
+			alert("신분증 사진을 올려주세요.");
+			$("#copy_id").focus();
+		} else if(bank_img == "") {
+			alert("통장사본을 올려주세요.");
+			$("#bank_img").focus();
+		} else if(busi_regi == "") {
+			alert("사업자등록증을 올려주세요.");
+			$("#busi_regi").focus();
+		} else if(jumin_chobon == "") {
+			alert("주민등록초본을 올려주세요.");
+			$("#jumin_chobon").focus();
+		} else if(cer_ingam == "") {
+			alert("인감증명서를 올려주세요.");
+			$("#cer_ingam").focus();
+		} else {
+		var form = new FormData(document.getElementById("document_form"));
+		$.ajax({
+			url:"${pageContext.request.contextPath}/sub_document_process"
+			,data:form
+			,dataType:'json'
+			,processData:false
+			,contentType:false
+			,type:"POST"
+			,success:function(result){alert(result);
+				if(result > 0){
+					location.href = "${pageContext.request.contextPath}/loan_judge";
 				} else {
-					alert("admin : 02-5555-7777");
+					alert("잠시 후 다시 시도해 주세요.");
 				}
-			}//function
-		);//get
+			}
+				,error:function(xhr){
+					alert("fail");
+				}
+			});//ajax
+		}
 	});//click
 });//ready
 </script>

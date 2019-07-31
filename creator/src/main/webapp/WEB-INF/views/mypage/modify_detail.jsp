@@ -33,35 +33,9 @@
 	  Author: TemplateMag.com
 	  License: https://templatemag.com/license/
 	======================================================= -->
+	
 <script type="text/javascript">
-$(document).ready(function() {
-	$("#un_btn").click(function(){
-	if($.trim($("#user_password").val()) == ""){
-		alert("비밀번호를 확인하세요.");
-		$("#user_password").focus();
-		return;
-	}//user_paswword
-	$.post("./loginuser"
-			,{
-				user_password:$("#user_password").val()
-			}
-			,function(data,status){
-				if(status == "success"){
-					if(data > 0){
-						alert("로그인 되었습니다.");
-						location.href="/creator/main";
-					} else if(data == 0){
-						alert("존재하지 비밀번호 입니다.");
-					} else {
-						alert("잠시 후, 다시 시도해 주세요.");
-					}
-				} else {
-					alert("시스템 관리자에게 문의 바랍니다.");
-				}
-			}
-	);//post
-	});//click
-});//ready
+
 </script>
 </head>
      
@@ -131,7 +105,7 @@ $(document).ready(function() {
 					<tr>
 					<td class="condition-title">이름</td>
 						<td class="condition-content">
-							<input type="text" class="form-control" id="cusNm" maxlength="50" value="김도엽">
+							<input type="text" class="form-control" id="cusNm" maxlength="50" value="${mypagemem.user_name}${mypagedetail.manager_name}">
 						</td>
 						<td>
 							<button type="button" class="btn btn-purple-transparent" onclick="fn_updateCusNm()" id="updateCusNmBtn">변경</button>
@@ -140,7 +114,7 @@ $(document).ready(function() {
 					<tr>
 					<td class="condition-title">이메일</td>
 						<td class="condition-content">
-							<input type="text" class="form-control" id="email" maxlength="50" value="whitesky1203@naver.com">
+							<input type="text" class="form-control" id="email" maxlength="50" value="${mypagemem.email}${mypagedetail.manager_email}">
 						</td>
 						<td>
 							<button type="button" class="btn btn-purple-transparent" onclick="fn_updateEmail()" id="updateEmailBtn">변경</button>
@@ -149,7 +123,7 @@ $(document).ready(function() {
 					<tr>
 					<td class="condition-title">휴대전화번호</td>
 						<td class="condition-content">
-							<input type="text" class="form-control" id="mpNo" maxlength="50" readonly="readonly" value="010-1111-2111">
+							<input type="text" class="form-control" id="mpNo" maxlength="50" readonly="readonly" value="${mypagemem.phone}${mypagedetail.manager_phone}">
 							<input type="hidden" id="ci">
 						</td>
 						<td>
@@ -164,15 +138,11 @@ $(document).ready(function() {
 						</td>
 					</tr>
 					
-					<c:forEach items="${memberList}" var="vo" varStatus="status">
 					<tr>
-						<c:if test="${memberListVO.user_num != null}">
-						</c:if>
 						<td class="condition-title">주민등록번호</td>
-							<td class="condition-content">${vo.jumin}</td>
+						<td class="condition-content">${mypagemem.jumin}${mypagemem.manager_birth}</td>
 						<td></td>
 					</tr>
-					</c:forEach>
 					
 					<tr>
 					<td colspan="2" class="condition-content">
@@ -211,7 +181,7 @@ $(document).ready(function() {
 							</td>
 							<td class="condition-content">
 								<select id="cusBankCdSelect" class="form-control" name="cusBankCd">
-									<option value="">선택하세요</option>
+									<option value="">${mypagebank.bank_name}</option>
 										<option value="002">산업은행</option><option value="003">기업은행</option>
 										<option value="004">국민은행</option><option value="007">수협중앙회</option>
 										<option value="008">수출입은행</option><option value="010">농협</option>
@@ -258,7 +228,7 @@ $(document).ready(function() {
 							<br><br><p><font size="2">계좌번호를 정확히 입력해주세요.</font></p>
 							</td>
 							<td class="condition-content">
-								<input type="text" class="form-control" id="cusAccount" maxlength="14">
+								<input type="text" class="form-control" id="cusAccount" maxlength="14" value="${mypagebank.bank_num}">
 							</td>
 							<td></td>
 						</tr>
@@ -271,8 +241,7 @@ $(document).ready(function() {
 					</table>
 					<div class="autoConditionSet" >
 						<button type="button" class="btn btn-purple-transparent btn-block" onclick="fn_updateCusAccount()" id="updateCusAccountBtn">계좌 정보 저장</button>
-					</div>
-					<br><br>
+					</div><br>
                 </div>
               </div>
             </div>
@@ -297,14 +266,14 @@ $(document).ready(function() {
 							<td class="condition-title">기존 비밀번호
 							</td>
 							<td class="condition-content">
-							<input type="text" class="form-control" id="cusAccount" maxlength="14">
+							<input type="password" class="form-control" id="cusAccount" maxlength="14" value="${mypagemem.user_password}${mypagemem.busi_password}">
 							</td>
 						</tr>
 						<tr>
 							<td class="condition-title">새 비밀번호
 							</td>
 							<td class="condition-content">
-								<input type="text" class="form-control" id="cusAccount" maxlength="14">
+								<input type="password" class="form-control" id="cusAccount" maxlength="14">
 							</td>
 							<td></td>
 						</tr>
@@ -313,7 +282,7 @@ $(document).ready(function() {
 							<td class="condition-title">비밀번호 확인
 							</td>
 							<td class="condition-content">
-								<input type="text" class="form-control" id="cusAccount" maxlength="14">
+								<input type="password" class="form-control" id="cusAccount" maxlength="14">
 							</td>						
 							<td></td>
 						</tr>
@@ -347,19 +316,19 @@ $(document).ready(function() {
 						<tbody>
 						
 	                  	<tr>
-	                    <td>1</td>
+	                    <td>${mypagemem.user_login_time}${mypagemem.busi_login_time}</td>
 	                    <td>Mark</td>
 						</tr>
 	                  	<tr>
-	                    <td>1</td>
+	                    <td>${mypagemem.user_login_time}${mypagemem.busi_login_time}</td>
 	                    <td>Mark</td>
 						</tr>
 	                  	<tr>
-	                    <td>1</td>
+	                    <td>${mypagemem.user_login_time}${mypagemem.busi_login_time}</td>
 	                    <td>Mark</td>
 						</tr>
 						<tr>
-							<td class="condition-title">최근 4회 동안 접속하신 정보입니다.</td>
+							<td class="condition-title">최근 3회 동안 접속하신 정보입니다.</td>
 							<td></td>
 						</tr>		
 						</tbody>
@@ -374,7 +343,11 @@ $(document).ready(function() {
             </div>
           </div>
 	</section>
-</section>    
+</section>   
+
+
+
+ 
 <!--    =======================================================    -->    	
 	
 		<!--footer start-->

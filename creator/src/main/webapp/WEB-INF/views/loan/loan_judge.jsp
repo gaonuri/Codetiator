@@ -88,7 +88,7 @@
 .title {
     font-size: 26pt;
     font-weight: 500;
-    color: #732173;
+    color: #fff;
     text-shadow: 1px 1px 1px #bf9bcb;
     letter-spacing: -0.5pt;
     line-height: 1.2;
@@ -97,6 +97,9 @@
     color: #fff;
     position: relative;
     padding: 60px 20px 30px 20px;
+}
+.titles {
+	color: #000;
 }
 .btn {
     display: inline-block;
@@ -123,6 +126,86 @@
     padding: 30px 0px;
     text-align: center;
 }
+.icn-container {
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    border-radius: 500px;
+    text-align: center;
+    margin: 10px 0;
+    font-weight: 600;
+    font-size: 13;
+    line-height: 100px;
+    color: #712594;
+    background-color: #fff;
+    -webkit-transition: all 0.6s ease-in-out;
+    transition: all 0.6s ease-in-out;
+}
+.icn-container-active {
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    border-radius: 500px;
+    text-align: center;
+    margin: 10px 0;
+    font-weight: 600;
+    font-size: 13;
+    line-height: 100px;
+    color: #fff;
+    background-color: blue;
+    -webkit-transition: all 0.6s ease-in-out;
+    transition: all 0.6s ease-in-out;
+}
+.icn-main-container {
+    position: relative;
+}
+.loan_int_btn {
+    width: 200px;
+    height: 36px;
+    outline: 0;
+    margin-top: 40px;
+    margin-bottom: 50px;
+    padding: 0px;
+}
+.mr-green {
+    text-align: center;
+    font-weight: 600;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    border: 2px solid #01C351;
+    line-height: 30px;
+    font-size: 14px;
+}
+.botn {
+	margin-bottom: 0px;
+	color: #fff;
+	margin: 0;
+    padding: 0;
+    vertical-align: middle;
+    border: none
+}
+.mr-cap {
+    color: #fff;
+    background-color: #02863A;
+    width: 20px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    float: right;
+    height: 100%;
+}
+.mr-angle {
+    margin-right: -10px;
+    width: 20px;
+    text-align: right;
+    float: right;
+    transform: skew(-30deg);
+    -webkit-transform: skew(-30deg);
+    -ms-transform: skew(-30deg);
+    height: 100%;
+    color: #fff;
+    background-color: #02863A;
+}
 </style>
 </head>
 <body>
@@ -131,120 +214,7 @@
 	    <!-- **********************************************************************************************************************************************************
 	        TOP BAR CONTENT & NOTIFICATIONS
 	        *********************************************************************************************************************************************************** -->
-	    <!--header start-->
-	    <header class="header black-bg">
-			<!--logo start-->
-			<a href="./main" class="logo"><img id="logoImage" alt="로고" src="${pageContext.request.contextPath}/resources/img/ner.jpg" width="200px" height="30px"></a>
-			<!--logo end-->
-			<div class="nav notify-row top-menu" id="top_menu">
-				<!--  notification start -->
-				<ul class="nav pull-right top-menu">
-					<!-- settings start -->
-					
-					<!-- 회사소개 start -->
-					<li><a href="./loan_guide">회사소개</a></li>
-					<!-- 회사소개 end -->
-					
-					<!-- 대출 start -->
-					<li class="dropdown">
-						<a data-toggle="dropdown" class="dropdown-toggle" href="#">
-							대출
-						</a>
-						<ul class="dropdown-menu extended tasks-bar">
-							<div class="notify-arrow notify-arrow-green"></div>
-							<li>
-								<a href="./loan_guide">대출안내</a>
-							</li>
-							<li>
-								<a href="./loan/getloan">대출하기</a>
-							</li>
-						</ul>
-					</li>
-	          		<!-- 대출 end -->
-	          
-	          		<!-- inbox dropdown start-->
-	         		<li class="dropdown">
-						<a data-toggle="dropdown" class="dropdown-toggle" href="#">
-							투자
-						</a>
-						<ul class="dropdown-menu extended tasks-bar">
-							<div class="notify-arrow notify-arrow-black"></div>
-							<li>
-								<a href="./invest_guide">투자안내</a>
-							</li>
-							<li>
-								<a href="./invest_list">투자하기</a>
-							</li>
-							<li>
-								<a href="./invest_finish">완료된투자</a>
-							</li>
-						</ul>
-					</li>
-	          		<!-- 투자 end -->
-	          
-	          
-					<!-- 고객지원 start-->
-					<li id="header_notification_bar" class="dropdown">
-						<a data-toggle="dropdown" class="dropdown-toggle" href="#">
-							고객지원
-						</a>
-						<ul class="dropdown-menu extended notification">
-							<div class="notify-arrow"></div>
-							<li>
-								<a href="./faq">FAQ</a>
-							</li>
-							<li>
-								<a href="./support">이용약관</a>
-							</li>
-							<li>
-								<a href="./policy">개인정보</a>
-							</li>
-							<li>
-								<a href="./inquiry">1:1문의</a>
-							</li>
-						</ul>
-					</li>
-					<!-- 고객지원 end -->
-					
-					<!-- 마이페이지 start-->
-					<li id="header_notification_bar" class="dropdown">
-						<a data-toggle="dropdown" class="dropdown-toggle" href="#">
-							마이페이지
-						</a>
-						<ul class="dropdown-menu extended notification">
-							<div class="notify-arrow notify-arrow-yellow"></div>
-							<li>
-								<a href="./my_dashboard">대시보드</a>
-							</li>
-							<li>
-								<a href="./my_invest_list">투자내역</a>
-							</li>
-							<li>
-								<a href="./my_loan_list">대출내역</a>
-							</li>
-							<li>
-								<a href="./my_depo_mgn">예치금관리</a>
-							</li>
-							<li>
-								<a href="./my_modify">회원정보수정</a>
-							</li>
-						</ul>
-					</li>
-					<!-- 마이페이지 end -->
-					
-					<!-- 로그아웃 start -->
-					<li><a href="./loan_guide">로그아웃</a></li>
-					<!-- 로그아웃 end -->
-				</ul>
-				<!--  notification end -->
-			</div>
-			<div class="top-menu">
-				<ul class="nav pull-right top-menu">
-					<li><a class="logout" href="/creator/join">회원가입</a></li>
-				</ul>
-			</div>
-	    </header>
-	    <!--header end-->
+	    <%@ include file="../header.jsp" %>
 	    
 	    <section id="loanGuide-banner" class="text-center">
 			<div class="overlay">
@@ -288,25 +258,36 @@
 										</div>
 									</div>
 								</div>
-								<div class="title" style="font-size: 15pt;">
+								<div class="titles" style="font-size: 15pt;">
 									심사중
 								</div>
 								<div class="line"></div>
 							</div>
-            <div class="form-panel">
-
-             	 </div>
+            
+					 <div class="icn-main-container" style="margin-top: 200px;">
+                  		<span class="icn-container-active" style="margin-right: 220px;">인적사항 검토중</span>
+                  		<span class="icn-container" style="margin-right: 220px;">제출서류 검토중</span>
+                  		<span class="icn-container" style="font-size: 10;">최종적격 여부 검토중</span>
+               		 </div>
+               		 <button class="loan_int_btn mr-green" id="loanReqBtn2" style="width:200px; height: 36px;margin-left: 280px;margin-right: 248px;margin-top: 150px;">
+								돌아가기<span class="mr-cap"></span>
+								<span class="mr-angle">
+									<div>
+										<p class="botn">&gt;</p>
+									</div>
+								</span>
+					 </button>
+             
               </div>
               </div>
 						<div class="box-footer"></div>
 					</div>
-				</div>
+				</div>	
 			</div>
 		</div>
 	</section>
             </div>
 					</div>
-				</div>
 			</section>
 			<!-- /wrapper -->
 	    </section>
@@ -449,27 +430,10 @@
 	</script>
 
 <script type="text/javascript">
-var form = new FormData(document.getElementById("document_form"));
-
 
 $(document).ready(function() {
-	$("#doNextStepBtn").click(function() {
-		$.post("/loan/sub_document_process"
-			,{
-				dvo:form
-			}//data
-			,function(data,status) {
-				if(status == "success") {
-					if(data > 0){
-						location.href = "${pageContext.request.contextPath}/loan/loan_judge";
-					} else {
-						alert("잠시 후 다시 시도해 주세요.");
-					}
-				} else {
-					alert("admin : 02-5555-7777");
-				}
-			}//function
-		);//get
+	$("#loanReqBtn2").click(function() {
+		location.href = "${pageContext.request.contextPath}/main";
 	});//click
 });//ready
 </script>

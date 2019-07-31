@@ -36,34 +36,79 @@
 <script type="text/javascript">
 $(document).ready(function() {
 	$("#un_btn").click(function(){
-	if($.trim($("#user_password").val()) == ""){
-		alert("비밀번호를 입력하세요.");
-		$("#user_password").focus();
-		return;
-	}//user_paswword
-	$.post(
-			"./mypagemodify",
-			{
-			user_num:$("#user_num").val(),
-			user_password:$("#user_password").val()
-			},
-			function(data,status){
-				if(status == "success"){
-					if(data > 0){
-						location.href="${pageContext.request.contextPath}/modify_detail";
-					} else if(data == 0){
-						alert("비밀번호를 확인해 주세요.");
-					} else {
-						alert("잠시 후, 다시 시도해 주세요.");
+		var input = $("#member_password").val();
+		var numChk = $("#numChk").val();
+		
+		if($.trim(input) == ""){
+			alert("비밀번호를 입력하세요.");
+			$("#member_password").focus();
+			return;
+		}//user_paswword
+		
+		if(numChk) {
+			$.post(
+					"./mypagemodifyu",
+					{
+						//user_num:hidden으로 가지고 있다가 가는 부분
+						user_num:$("#numChk").val(),
+						user_password:$("#member_password").val()
+					},
+					function(data,status){
+						if(status == "success"){
+							if(data > 0){
+								location.href="${pageContext.request.contextPath}/modify_detail?user_num=${memberVO.user_num}";
+							} else if(data == 0){
+								alert("비밀번호를 확인해 주세요.");
+							} else {
+								alert("잠시 후, 다시 시도해 주세요.");
+							}
+						} else {
+							alert("시스템 관리자에게 문의 바랍니다.");
+						}
 					}
-				} else {
-					alert("시스템 관리자에게 문의 바랍니다.");
-				}
-			}
-		);//post
+				);//post
+			} 
 	});//click
 });//ready
+
+$(document).ready(function() {
+	$("#un_btn1").click(function(){
+		var input = $("#member_password").val();
+		var numChk = $("#numChk1").val();
+		
+		if($.trim($("#member_password").val()) == ""){
+			alert("비밀번호를 입력하세요.");
+			$("#member_password").focus();
+			return;
+		}//user_paswword
+		
+		if(numChk) {
+			$.post(
+					"./mypagemodifyb",
+					{
+						busi_num:$("#numChk1").val(),
+						busi_password:$("#member_password").val()
+					},
+					function(data,status){
+						if(status == "success"){
+							if(data > 0){
+								location.href="${pageContext.request.contextPath}/modify_detail?busi_num=${memberVO.busi_num}";
+							} else if(data == 0){
+								alert("비밀번호를 확인해 주세요.");
+							} else {
+								alert("잠시 후, 다시 시도해 주세요.");
+							}
+						} else {
+							alert("시스템 관리자에게 문의 바랍니다.");
+						}
+					}
+				);//post
+			}
+	});//click
+});//ready
+
 </script>
+
 </head>
      
 <body>
@@ -139,19 +184,23 @@ $(document).ready(function() {
 											<div class="form-group">
 												<div class="col-sm-10">
 												<h5>회원님의 정보를 수정하려면 비밀번호를 입력해주세요.</h5>
-													<input type="password" class="form-control" id="user_password" placeholder="*비밀번호">
+													<input type="password" class="form-control" id="member_password" placeholder="*비밀번호">
 												</div>
 											</div>	
 										</div>
 											<c:choose>
-												<c:when test="${memberVO != null && (memberVO.user_num != '' && memberVO.user_num != null) || (memberVO.busi_num != '' && memberVO.busi_num != null)}">
+												<c:when test="${memberVO != null && (memberVO.user_num != '' && memberVO.user_num != null)}">
 													<div class="col-sm-10 col-lg-offset-3">
 														<input type="button" class="btn btn-theme" id="un_btn" value="잠금 해제"/>
 													</div>
 												</c:when>
-												<c:otherwise>
-													<input type="button" class="btn btn-theme" id="un_btn1" value="잠금 해제"/>
-												</c:otherwise>
+											</c:choose>
+											<c:choose>
+												<c:when test="${memberVO != null && (memberVO.busi_num != '' && memberVO.busi_num != null)}">
+													<div class="col-sm-10 col-lg-offset-3">
+														<input type="button" class="btn btn-theme" id="un_btn1" value="잠금 해제"/>
+													</div>
+												</c:when>												
 											</c:choose>
 									</div>
 						    	</form>
@@ -163,8 +212,9 @@ $(document).ready(function() {
 						<!-- ===================================================================== body-->		
 	</section>
 </section>
-    
-    
+   	<input type="hidden" id="numChk" value="${mypageVO.user_num}"/>
+	<input type="hidden" id="numChk1" value="${mypageVO.busi_num}"/>
+    <input type="hidden" id="numChk2" value="${mypagebank.user_num}"/>
     
 		
 		<!--footer start-->
