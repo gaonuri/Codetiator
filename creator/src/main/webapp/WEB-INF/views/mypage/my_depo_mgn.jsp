@@ -33,7 +33,6 @@
 	  Author: TemplateMag.com
 	  License: https://templatemag.com/license/
 	======================================================= -->
-	
 	<script type="text/javascript">
 	$(document).ready(function() {
 		var temp = 0;
@@ -89,7 +88,11 @@
 			if(deposit > limit) {
 				alert("예치금 잔액에 초과한 금액입니다.");
 			}
-		}
+		}//depositLimit
+		
+		$("#").ready(function() {
+			
+		});
 	});//ready
 	</script>
 </head>
@@ -166,7 +169,7 @@
 																</div>
 																<div style="padding:20px 0;">
 																
-																	<button type="button" class="btn btn-purple-transparent btn-block" onclick="fn_checkNiceCert()">
+																	<button type="button" class="btn btn-purple-transparent btn-block" data-toggle="modal" data-target="#btn_cert" >
 																		예치금 계좌 발급을 위해 본인 인증하기
 																	</button>
 																
@@ -515,7 +518,7 @@
 										<input type="hidden" id="EncodeData" name="EncodeData" value="">	<!-- 위에서 업체정보를 암호화 한 데이타입니다. -->
 									</form>
 						<!-- 예치금 계좌 발급 Modal -->
-						<div class="modal fade" id="vtAcntModal" role="dialog" aria-labelledby="vtAcntModalLabel" aria-hidden="true">
+						<div class="modal fade" id="btn_cert"  name="cert" role="dialog" aria-labelledby="vtAcntModalLabel" aria-hidden="true">
 							<div class="modal-dialog">
 								<div class="modal-content">
 									<div class="modal-header">
@@ -539,7 +542,7 @@
 										<div class="row">
 											<div class="form-group col-xs-5 col-sm-5 col-md-3">
 												<label for="cusNm" class="control-label">예금주</label>
-												<input class="form-control" id="cusNm" type="text" value="김도엽" readonly="">
+												<input class="form-control" id="cusNm" type="text" value="${acnt.account_name}" readonly="">
 											</div>
 											<div class="form-group col-xs-7 col-sm-7 col-md-4">
 												<label for="cusBankCdSelect" class="control-label">은행명</label>
@@ -783,6 +786,30 @@
 	    <input type="hidden" id="invest_limit" value="${acnt.deposit}" />					<!-- 예치금한도 -->
 	    <!-- hidden value -->
     
+		<div class="modal fade" id="eventModal" role="dialog" aria-labelledby="eventModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">×</span>
+					</button>
+					<h4 class="modal-title" id="eventModalLabel">가상계좌 관련기능 제한 안내</h4>
+				</div>
+				<div class="modal-body">
+					<div class="modal-body-img event">
+						<p style="font-size: 16px;">
+							NH오픈플랫폼 서버점검에 따라 <strong>7/17 00~06:00</strong>까지 가상계좌 발급 및 예치금 충전이 제한됩니다.
+						</p>
+					</div>
+				</div>
+				<div class="modal-footer event">
+					<span aria-hidden="true" class="close1day" id="close1day">오늘 하루 이 팝업 열지 않기</span>
+				</div>
+			</div>
+		</div>
+	</div>
+		
+		
 		
 		<!--footer start-->
 		<footer class="site-footer">
