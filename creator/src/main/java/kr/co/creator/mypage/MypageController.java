@@ -83,7 +83,7 @@ public class MypageController {
 //		successCnt = service.myPageModify(vo);
 		if(vo != null && vo.getUser_num() != null && !vo.getUser_num().equals("")) {
 			cnt = 1;
-			session.setAttribute("mypagedetail", vo);
+			session.setAttribute("mypagemem", vo);
 		} 
 		out.print(cnt);
 		out.flush();
@@ -99,7 +99,7 @@ public class MypageController {
 //		successCnt = service.myPageModify(vo);
 		if(vo != null && vo.getBusi_num() != null && !vo.getBusi_num().equals("")) {
 			cnt = 1;
-			session.setAttribute("mypagedetail", vo);
+			session.setAttribute("mypagemem", vo);
 		}
 		out.print(cnt);
 		out.flush();
@@ -120,6 +120,21 @@ public class MypageController {
 		return "mypage/my_modify";
 	}
 	
+	@RequestMapping(value="/mypagebank", method=RequestMethod.POST)
+	public void myPageBank(HttpSession session, PrintWriter out, AccountVO vo) {
+		logger.info("=== myPageBank ===");
+		vo = sqlSession.selectOne("MypageMapper.MyPageBank", vo);
+		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!! :" + vo );
+		int cnt = 0;
+		if((vo != null && vo.getBusi_num() != null && !vo.getBusi_num().equals("")) 
+				|| (vo != null && vo.getUser_num() != null && !vo.getUser_num().equals(""))) {
+			cnt = 1;
+			session.setAttribute("mypagebank", vo);
+		}
+		out.print(cnt);
+		out.flush();
+		out.close();	
+	}//myPageBank
 	
 	
 }//class

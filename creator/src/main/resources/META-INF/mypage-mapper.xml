@@ -76,6 +76,12 @@
 		where busi_num = #{busi_num} and busi_password = #{busi_password}
 	</select>
 	
+	<select id="MyPageBank" parameterType="kr.co.creator.vo.AccountVO" resultType="kr.co.creator.vo.AccountVO">
+		select * 
+		from account_list 
+		where user_num = #{user_num} or busi_num = #{busi_num} 
+	</select>	
+	
 	
 </mapper>
 

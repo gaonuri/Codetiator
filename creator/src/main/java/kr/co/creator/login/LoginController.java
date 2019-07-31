@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import kr.co.creator.vo.Busi_userVO;
 import kr.co.creator.vo.FindPwdVO;
+import kr.co.creator.vo.HistoryVO;
 import kr.co.creator.vo.MemberListVO;
 import kr.co.creator.vo.MemberVO;
 import kr.co.creator.vo.ProjectVO;
@@ -52,11 +53,9 @@ public class LoginController {
 			int loginCusGbCd = 1;
 			session.setAttribute("memberVO", vo);
 			session.setAttribute("memVO", vo);
-<<<<<<< HEAD
 			session.setAttribute("mypageVO", vo);
-=======
 			session.setAttribute("loginCusGbCd", loginCusGbCd);
->>>>>>> branch 'master' of https://github.com/gaonuri/Codetiator.git
+			sqlSession.insert("LoginMapper.historyTime", vo);
 		} 
 		out.print(successCnt);
 		out.close();
@@ -72,11 +71,9 @@ public class LoginController {
 			int loginCusGbCd = 2;
 			session.setAttribute("memberVO", vo);
 			session.setAttribute("memVO", vo);
-<<<<<<< HEAD
 			session.setAttribute("mypageVO", vo);
-=======
 			session.setAttribute("loginCusGbCd", loginCusGbCd);
->>>>>>> branch 'master' of https://github.com/gaonuri/Codetiator.git
+			sqlSession.insert("LoginMapper.historyTime", vo);
 		}
 		out.print(successCnt);
 		out.close();
@@ -152,6 +149,8 @@ public class LoginController {
 		model.addAttribute("memberList", list);
 		return "login/login";
 	}//busi_user_list
+	
+	
 	
 }//class
 
