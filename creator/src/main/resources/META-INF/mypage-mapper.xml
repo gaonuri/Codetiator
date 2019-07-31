@@ -46,6 +46,7 @@
 	</select>
 	
 	<select id="Account"
+		parameterType="kr.co.creator.vo.MemberVO"
 		resultType="kr.co.creator.vo.AccountVO">
 		select a.account_name
 		, a.bank_name

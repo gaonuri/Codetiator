@@ -63,14 +63,18 @@ public class MypageController {
 	}
 	
 	@RequestMapping(value = "/my_depo_mgn", method = RequestMethod.GET)
-	public String my_modify(HttpSession session, Model model, MemberVO userVO, AccountVO accVO, InOutVO ioVO) {
+	public String my_modify(HttpSession session, Model model, MemberVO userVO) {
 		logger.info("my_depo_mgn");
 		userVO = (MemberVO)session.getAttribute("memberVO");
-		accVO = service.account(userVO, accVO);
-		ioVO = service.inout(userVO, ioVO);
+		AccountVO accVO = null;
+		InOutVO ioVO = null;
+		accVO = service.account(userVO);
+		ioVO = service.inout(userVO);
 		
-		model.addAttribute("Account", accVO);
+		model.addAttribute("acnt", accVO);
 		model.addAttribute("Inout",ioVO);
+		logger.info("my_depo_mgn"+accVO);
+		logger.info("my_depo_mgn"+ioVO);
 		return "mypage/my_depo_mgn";
 	}
 	
