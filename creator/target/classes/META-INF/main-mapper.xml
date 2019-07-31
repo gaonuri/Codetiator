@@ -5,4 +5,22 @@
  
 <mapper namespace="MainMapper">
 	
+	<select id="projectList1" resultType="kr.co.creator.vo.ProjectVO">
+		select * 
+		from project_list
+		where ad_grade = 1
+	</select>
+	
+	<select id="projectList2" resultType="kr.co.creator.vo.ProjectVO">
+		select * 
+		from project_list
+		where ad_grade = 2
+	</select>
+	
+	<select id="projectList3" resultType="kr.co.creator.vo.ProjectVO">
+		select * 
+		from project_list
+		where ad_grade = 3
+	</select>
+	
 </mapper>

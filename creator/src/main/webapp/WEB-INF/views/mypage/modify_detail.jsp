@@ -33,7 +33,9 @@
 	  Author: TemplateMag.com
 	  License: https://templatemag.com/license/
 	======================================================= -->
+	
 <script type="text/javascript">
+
 </script>
 </head>
      
@@ -103,7 +105,7 @@
 					<tr>
 					<td class="condition-title">이름</td>
 						<td class="condition-content">
-							<input type="text" class="form-control" id="cusNm" maxlength="50" value="김도엽">
+							<input type="text" class="form-control" id="cusNm" maxlength="50" value="${mypagemem.user_name}${mypagedetail.manager_name}">
 						</td>
 						<td>
 							<button type="button" class="btn btn-purple-transparent" onclick="fn_updateCusNm()" id="updateCusNmBtn">변경</button>
@@ -112,7 +114,7 @@
 					<tr>
 					<td class="condition-title">이메일</td>
 						<td class="condition-content">
-							<input type="text" class="form-control" id="email" maxlength="50" value="whitesky1203@naver.com">
+							<input type="text" class="form-control" id="email" maxlength="50" value="${mypagemem.email}${mypagedetail.manager_email}">
 						</td>
 						<td>
 							<button type="button" class="btn btn-purple-transparent" onclick="fn_updateEmail()" id="updateEmailBtn">변경</button>
@@ -121,7 +123,7 @@
 					<tr>
 					<td class="condition-title">휴대전화번호</td>
 						<td class="condition-content">
-							<input type="text" class="form-control" id="mpNo" maxlength="50" readonly="readonly" value="010-1111-2111">
+							<input type="text" class="form-control" id="mpNo" maxlength="50" readonly="readonly" value="${mypagemem.phone}${mypagedetail.manager_phone}">
 							<input type="hidden" id="ci">
 						</td>
 						<td>
@@ -136,17 +138,11 @@
 						</td>
 					</tr>
 					
-					<c:forEach items="${memberList}" var="vo" varStatus="status">
 					<tr>
 						<td class="condition-title">주민등록번호</td>
-						<c:choose>
-							<c:when test="${memberVO.user_num != null}">
-								<td class="condition-content">${vo.jumin}</td>
-							</c:when>
-						</c:choose>
+						<td class="condition-content">${mypagemem.jumin}${mypagemem.manager_birth}</td>
 						<td></td>
 					</tr>
-					</c:forEach>
 					
 					<tr>
 					<td colspan="2" class="condition-content">
@@ -185,7 +181,7 @@
 							</td>
 							<td class="condition-content">
 								<select id="cusBankCdSelect" class="form-control" name="cusBankCd">
-									<option value="">선택하세요</option>
+									<option value="">${mypagebank.bank_name}</option>
 										<option value="002">산업은행</option><option value="003">기업은행</option>
 										<option value="004">국민은행</option><option value="007">수협중앙회</option>
 										<option value="008">수출입은행</option><option value="010">농협</option>
@@ -232,7 +228,7 @@
 							<br><br><p><font size="2">계좌번호를 정확히 입력해주세요.</font></p>
 							</td>
 							<td class="condition-content">
-								<input type="text" class="form-control" id="cusAccount" maxlength="14">
+								<input type="text" class="form-control" id="cusAccount" maxlength="14" value="${mypagebank.bank_num}">
 							</td>
 							<td></td>
 						</tr>
@@ -245,8 +241,7 @@
 					</table>
 					<div class="autoConditionSet" >
 						<button type="button" class="btn btn-purple-transparent btn-block" onclick="fn_updateCusAccount()" id="updateCusAccountBtn">계좌 정보 저장</button>
-					</div>
-					<br><br>
+					</div><br>
                 </div>
               </div>
             </div>
@@ -271,14 +266,14 @@
 							<td class="condition-title">기존 비밀번호
 							</td>
 							<td class="condition-content">
-							<input type="text" class="form-control" id="cusAccount" maxlength="14">
+							<input type="password" class="form-control" id="cusAccount" maxlength="14" value="${mypagemem.user_password}${mypagemem.busi_password}">
 							</td>
 						</tr>
 						<tr>
 							<td class="condition-title">새 비밀번호
 							</td>
 							<td class="condition-content">
-								<input type="text" class="form-control" id="cusAccount" maxlength="14">
+								<input type="password" class="form-control" id="cusAccount" maxlength="14">
 							</td>
 							<td></td>
 						</tr>
@@ -287,7 +282,7 @@
 							<td class="condition-title">비밀번호 확인
 							</td>
 							<td class="condition-content">
-								<input type="text" class="form-control" id="cusAccount" maxlength="14">
+								<input type="password" class="form-control" id="cusAccount" maxlength="14">
 							</td>						
 							<td></td>
 						</tr>
@@ -321,19 +316,19 @@
 						<tbody>
 						
 	                  	<tr>
-	                    <td>1</td>
+	                    <td>${mypagemem.user_login_time}${mypagemem.busi_login_time}</td>
 	                    <td>Mark</td>
 						</tr>
 	                  	<tr>
-	                    <td>1</td>
+	                    <td>${mypagemem.user_login_time}${mypagemem.busi_login_time}</td>
 	                    <td>Mark</td>
 						</tr>
 	                  	<tr>
-	                    <td>1</td>
+	                    <td>${mypagemem.user_login_time}${mypagemem.busi_login_time}</td>
 	                    <td>Mark</td>
 						</tr>
 						<tr>
-							<td class="condition-title">최근 4회 동안 접속하신 정보입니다.</td>
+							<td class="condition-title">최근 3회 동안 접속하신 정보입니다.</td>
 							<td></td>
 						</tr>		
 						</tbody>
@@ -348,7 +343,11 @@
             </div>
           </div>
 	</section>
-</section>    
+</section>   
+
+
+
+ 
 <!--    =======================================================    -->    	
 	
 		<!--footer start-->

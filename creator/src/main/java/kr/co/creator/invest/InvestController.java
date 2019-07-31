@@ -40,10 +40,10 @@ public class InvestController {
 //	}//invest
 	
 	@RequestMapping(value = "/invest", method = RequestMethod.GET)
-	public String invest(Model model, MemberVO memberVO, AccountVO accVO, ProjectVO proVO) {
+	public String invest(Model model, MemberVO memVO, AccountVO accVO, ProjectVO proVO) {
 		logger.info("invest");
 		
-//		if(memberVO == null || memberVO.getUser_num().equals("") || memberVO.getBusi_num().equals("")) {
+//		if(memVO == null || memVO.getUser_num().equals("") || memVO.getBusi_num().equals("")) {
 //			return "login/login";
 //		}
 		System.out.println("Controller1111111111 : " + accVO);
@@ -126,9 +126,11 @@ public class InvestController {
 //			return "login/login";
 //		}
 		accVO = investService.acount_detail(accVO);
+		model.addAttribute("accountVO", accVO);
 		proVO = investService.project_detail(proVO);
 		model.addAttribute("accVO", accVO);
 		model.addAttribute("proVO", proVO);
 		return "invest/invest_finish";
 	}//invest_finish
+	
 }//class

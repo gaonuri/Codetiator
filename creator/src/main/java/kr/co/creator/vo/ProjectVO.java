@@ -5,33 +5,32 @@ public class ProjectVO {
 	private String project_num;			// 프로젝트번호
 	private String img;					// 사진(경로)
 	private String project_name;		// 이름
-	private String current_price;		// 현재금액
 	private String price;				// 모집금액
-	private String guarantee_price;		// 남은대출금액 
-	private String deadline;			// 남은기간
 	private String refund;				// 상환기간
-	private String ach_rate;			// 모집현황
-	private String ach_state;			// 모집상태
-	private String customer;			// 투자자수
 	private String type;				// 게임유형
 	private String genre;				// 장르
-	private String yield;				// 연 수익률
 	private String grade;				// 등급
 	private String more_information;	// 상세정보
 	private String en_date;				// 등록날짜
-	private String rate;				// 금리
 	private String loan_period;			// 대출기간
 	private String loan_amount;			// 대출계좌
 	private String loan_class;			// 대출구분
 	private String loan_type;			// 대출유형
-
 	private String repay_method;		// 상환방식
-	private String repay_count;			// 상환차수
 	private String judge_status;		// 심사상태
-
+	private String repay_count;			// 상환차수
+	private String loan_history;		// 대출자 상환내역
+	private String rate;				// 금리
+	private String yield;				// 연 수익률
+	private String current_price;		// 현재금액
+	private String guarantee_price;		// 남은대출금액 
+	private String deadline;			// 남은기간
+	private String ach_rate;			// 모집현황
+	private String ach_state;			// 모집상태
+	private String customer;			// 투자자수
 	private String user_num;			// (참조)유저번호
 	private String busi_num;			// (참조)법인유저번호
-	
+
 	public ProjectVO() {}	//constructor
 	public ProjectVO(	String project_num, String img, String project_name, String current_price, String price, 
 						String guarantee_price, String deadline, String refund, String ach_rate, String customer, 
@@ -241,7 +240,6 @@ public class ProjectVO {
 		this.judge_status = judge_status;
 	}//judge_status
 	
-	
 	//참조
 	public String getUser_num() {
 		return user_num;
@@ -256,4 +254,10 @@ public class ProjectVO {
 	public void setBusi_num(String busi_num) {
 		this.busi_num = busi_num;
 	}//busi_num
+	public String getLoan_history() {
+		return loan_history;
+	}
+	public void setLoan_history(String loan_history) {
+		this.loan_history = loan_history;
+	}
 }//class
