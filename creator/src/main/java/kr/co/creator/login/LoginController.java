@@ -150,8 +150,6 @@ public class LoginController {
 		return "login/login";
 	}//busi_user_list
 	
-	
-	
 }//class
 
 

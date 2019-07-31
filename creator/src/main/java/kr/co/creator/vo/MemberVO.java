@@ -14,8 +14,8 @@ public class MemberVO {
 	private String user_join_date;				// 가입일
 	private String user_phone_key;				// 휴대폰인증		
 	private String busi_num;					// 법인 유저번호
-	private String busi_resi_num;				// 사업자 등록번호
 	private String manager_name;				// 담당자명
+	private String busi_resi_num;				// 사업자 등록번호
 	private String busi_password;				// 사업자 비밀번호
 	private String com_name;					// 업체명
 	private String presen_name;					// 대표자명
@@ -37,7 +37,6 @@ public class MemberVO {
 	private String busi_privacy_policy_agree;	// 개인정보처리동의
 	private String busi_join_date;				// 가입일
 	private String busi_phone_key;				// 휴대폰 인증
-	private String i;							// 모르는 변수
 	
 	public MemberVO() {}	//constructor
 	public MemberVO(String user_num, String email, String user_password, String user_name, String jumin, 
@@ -302,17 +301,6 @@ public class MemberVO {
 	public void setBusi_phone_key(String busi_phone_key) {
 		this.busi_phone_key = busi_phone_key;
 	}
-	public String getI() {
-		return i;
-	}
-	public void setI(String i) {
-		this.i = i;
-	}
-	
-	
-	
-	
-	
 }//class
 
 

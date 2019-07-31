@@ -28,7 +28,6 @@ public class ProjectVO {
 	private String ach_rate;			// 모집현황
 	private String ach_state;			// 모집상태
 	private String customer;			// 투자자수
-
 	private String user_num;			// (참조)유저번호
 	private String busi_num;			// (참조)법인유저번호
 
@@ -254,7 +253,7 @@ public class ProjectVO {
 	}
 	public void setBusi_num(String busi_num) {
 		this.busi_num = busi_num;
-	}//busi_num
+	}
 	public String getLoan_history() {
 		return loan_history;
 	}
