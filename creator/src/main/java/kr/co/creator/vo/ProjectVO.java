@@ -15,18 +15,10 @@ public class ProjectVO {
 	private String loan_period;			// 대출기간
 	private String loan_amount;			// 대출계좌
 	private String loan_class;			// 대출구분
-<<<<<<< HEAD
 	private String loan_type;			// 대출유형
-=======
-	private String loan_type;			// 대출유형
->>>>>>> branch 'master' of https://github.com/gaonuri/Codetiator.git
 	private String repay_method;		// 상환방식
 	private String judge_status;		// 심사상태
-<<<<<<< HEAD
 	private String repay_count;			// 상환차수
-=======
-	private String repay_count;			// 상환차수
->>>>>>> branch 'master' of https://github.com/gaonuri/Codetiator.git
 	private String loan_history;		// 대출자 상환내역
 	private String rate;				// 금리
 	private String yield;				// 연 수익률
@@ -36,10 +28,6 @@ public class ProjectVO {
 	private String ach_rate;			// 모집현황
 	private String ach_state;			// 모집상태
 	private String customer;			// 투자자수
-<<<<<<< HEAD
-
-=======
->>>>>>> branch 'master' of https://github.com/gaonuri/Codetiator.git
 	private String user_num;			// (참조)유저번호
 	private String busi_num;			// (참조)법인유저번호
 
@@ -265,19 +253,11 @@ public class ProjectVO {
 	}
 	public void setBusi_num(String busi_num) {
 		this.busi_num = busi_num;
-<<<<<<< HEAD
 	}//busi_num
-=======
-	}
->>>>>>> branch 'master' of https://github.com/gaonuri/Codetiator.git
 	public String getLoan_history() {
 		return loan_history;
 	}
 	public void setLoan_history(String loan_history) {
 		this.loan_history = loan_history;
-<<<<<<< HEAD
 	}
-=======
-	}
->>>>>>> branch 'master' of https://github.com/gaonuri/Codetiator.git
 }//class

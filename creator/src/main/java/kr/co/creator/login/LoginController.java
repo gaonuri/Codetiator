@@ -55,10 +55,7 @@ public class LoginController {
 			session.setAttribute("memVO", vo);
 			session.setAttribute("mypageVO", vo);
 			session.setAttribute("loginCusGbCd", loginCusGbCd);
-<<<<<<< HEAD
-=======
 			sqlSession.insert("LoginMapper.historyTime", vo);
->>>>>>> branch 'master' of https://github.com/gaonuri/Codetiator.git
 		} 
 		out.print(successCnt);
 		out.close();
@@ -76,10 +73,7 @@ public class LoginController {
 			session.setAttribute("memVO", vo);
 			session.setAttribute("mypageVO", vo);
 			session.setAttribute("loginCusGbCd", loginCusGbCd);
-<<<<<<< HEAD
-=======
 			sqlSession.insert("LoginMapper.historyTime", vo);
->>>>>>> branch 'master' of https://github.com/gaonuri/Codetiator.git
 		}
 		out.print(successCnt);
 		out.close();

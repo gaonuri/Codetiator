@@ -4,35 +4,19 @@ public class MemberVO {
 	private String user_num;					// 유저번호
 	private String email;						// 이메일
 	private String user_password;				// 비밀번호
-<<<<<<< HEAD
 	private String user_name;					// 이름
-=======
-	private String user_name;					// 이름
->>>>>>> branch 'master' of https://github.com/gaonuri/Codetiator.git
 	private String jumin;						// 주민등록번호
 	private String phone;						// 전화번호
 	private String addr;						// 주소
 	private String user_chk_email;				// 이메일 수신 여부
 	private String user_terms_of_service;		// 이용약관
 	private String user_privacy_policy_agree;	// 개인정보처리동의	
-<<<<<<< HEAD
 	private String user_join_date;					// 가입일
 	private String user_login_time;					// 접속이력
 	private String user_phone_key;				// 휴대폰인증		
-=======
-	private String user_join_date;				// 가입일
-	private String user_phone_key;				// 휴대폰인증		
->>>>>>> branch 'master' of https://github.com/gaonuri/Codetiator.git
 	private String busi_num;					// 법인 유저번호
-<<<<<<< HEAD
 	private String busi_resi_num;				// 사업자 등록번호
-=======
->>>>>>> branch 'master' of https://github.com/gaonuri/Codetiator.git
 	private String manager_name;				// 담당자명
-<<<<<<< HEAD
-=======
-	private String busi_resi_num;				// 사업자 등록번호
->>>>>>> branch 'master' of https://github.com/gaonuri/Codetiator.git
 	private String busi_password;				// 사업자 비밀번호
 	private String com_name;					// 업체명
 	private String presen_name;					// 대표자명
