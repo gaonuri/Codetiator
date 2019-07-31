@@ -56,6 +56,14 @@
 		where a.user_num = #{user_num}
 	</select>
 	
+	<select id="User"
+		parameterType="kr.co.creator.vo.MemberVO"
+		resultType="kr.co.creator.vo.UserVO">
+		select *
+		from user_list 
+		where user_num = #{user_num}
+	</select>
+	
 	<select id="Inout"
 		parameterType="kr.co.creator.vo.MemberVO"
 		resultType="kr.co.creator.vo.InOutVO">
