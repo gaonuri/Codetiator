@@ -38,6 +38,7 @@ $(document).ready(function() {
 	$("#un_btn").click(function(){
 		var input = $("#member_password").val();
 		var numChk = $("#numChk").val();
+		var numChk1 = $("#numChk1").val();
 		
 		if($.trim(input) == ""){
 			alert("비밀번호를 입력하세요.");
@@ -46,6 +47,35 @@ $(document).ready(function() {
 		}//user_paswword
 		
 		if(numChk) {
+			$.post(
+					"./historyin",
+					{
+						user_num:$("#numChk").val(),
+						busi_num:$("#numChk1").val()
+					},
+					function(data,status){
+						
+					}
+			);//post
+			$.post(
+					"./historyout",
+					{
+						user_num:$("#numChk").val(),
+						busi_num:$("#numChk1").val()
+					},
+					function(data,status){
+						
+					}
+			);//post
+			$.post(
+					"./mypagebank",
+					{
+						user_num:$("#numChk").val()
+					},
+					function(data,status){
+						
+					}
+			);//post			
 			$.post(
 					"./mypagemodifyu",
 					{
@@ -74,7 +104,8 @@ $(document).ready(function() {
 $(document).ready(function() {
 	$("#un_btn1").click(function(){
 		var input = $("#member_password").val();
-		var numChk = $("#numChk1").val();
+		var numChk = $("#numChk").val();
+		var numChk1 = $("#numChk1").val();
 		
 		if($.trim($("#member_password").val()) == ""){
 			alert("비밀번호를 입력하세요.");
@@ -82,7 +113,36 @@ $(document).ready(function() {
 			return;
 		}//user_paswword
 		
-		if(numChk) {
+		if(numChk1) {
+			$.post(
+					"./historyin",
+					{
+						user_num:$("#numChk").val(),
+						busi_num:$("#numChk1").val()
+					},
+					function(data,status){
+						
+					}
+			);//post
+			$.post(
+					"./historyout",
+					{
+						user_num:$("#numChk").val(),
+						busi_num:$("#numChk1").val()
+					},
+					function(data,status){
+						
+					}
+			);//post			
+			$.post(
+					"./mypagebank",
+					{
+						busi_num:$("#numChk1").val()
+					},
+					function(data,status){
+						
+					}
+			);//post			
 			$.post(
 					"./mypagemodifyb",
 					{
@@ -214,8 +274,6 @@ $(document).ready(function() {
 </section>
    	<input type="hidden" id="numChk" value="${mypageVO.user_num}"/>
 	<input type="hidden" id="numChk1" value="${mypageVO.busi_num}"/>
-    <input type="hidden" id="numChk2" value="${mypagebank.user_num}"/>
-    
 		
 		<!--footer start-->
 		<footer class="site-footer">

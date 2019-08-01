@@ -42,11 +42,5 @@ public class LoginService {
 		return list;
 	}//busi_user_list
 
-	public int historyTime(HistoryVO vo1) {
-		int cnt = 0;
-		cnt = loginDAO.historyTime(vo1);
-		return cnt;
-	}
-	
 	
 }//class

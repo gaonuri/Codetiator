@@ -52,11 +52,32 @@
 	</select>
 	
 	<insert id="historyTime" parameterType="kr.co.creator.vo.MemberVO" >
-		INSERT INTO history (user_num, busi_num, log_in_out_time, log_in_out_type)
-		VALUES (#{user_num}, #{busi_num}, now(), 1)
+		insert into history (user_num, busi_num, log_in_out_time, log_in_out_type)
+		values (#{user_num}, #{busi_num}, now(), 1)
 	</insert>
 	
+	<insert id="logoutTime" parameterType="kr.co.creator.vo.MemberVO">
+		insert into history (user_num, busi_num, log_in_out_time, log_in_out_type)
+		values (#{user_num}, #{busi_num}, now(), 0)
+	</insert>
+	
+	<select id="historyIn" parameterType="kr.co.creator.vo.HistoryVO" resultType="kr.co.creator.vo.HistoryVO">
+		select * 
+		from history 
+		where (user_num = #{user_num} AND log_in_out_type = '1') OR (busi_num = #{busi_num} AND log_in_out_type = '1')
+		order by history_num desc
+		limit 3
+	</select>
+	
+	<select id="historyOut" parameterType="kr.co.creator.vo.HistoryVO" resultType="kr.co.creator.vo.HistoryVO">
+		select * 
+		from history 
+		where (user_num = #{user_num} AND log_in_out_type = '0') OR (busi_num = #{busi_num} AND log_in_out_type = '0')
+		order by history_num desc
+		limit 3
+	</select>
 	
 	
-	 
 </mapper>
+
+
