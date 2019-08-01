@@ -57,6 +57,13 @@ public class MypageDAO {
 		return cnt;
 	}//myPageModifyB
 
+	public UserVO user(MemberVO userVO) {
+		UserVO useVO = null;
+		useVO = sqlSession.selectOne("MypageMapper.User", userVO);
+		return useVO;
+	}
+
+
 	
 }//class
 

@@ -11,6 +11,7 @@ import kr.co.creator.vo.InOutVO;
 import kr.co.creator.vo.MemberVO;
 import kr.co.creator.vo.MypageVO;
 import kr.co.creator.vo.ProjectVO;
+import kr.co.creator.vo.UserVO;
 
 @Service
 public class MypageService {
@@ -53,6 +54,12 @@ public class MypageService {
 		cnt = dao.myPageModifyB(vo);
 		return cnt; 
 	}//myPageModifyB	
+
+	public UserVO user(MemberVO userVO) {
+		UserVO useVO = null;
+		useVO = (UserVO) dao.user(userVO);
+		return useVO;
+	}
 
 	
 }//class
