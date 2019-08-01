@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kr.co.creator.vo.FindPwdVO;
+import kr.co.creator.vo.HistoryVO;
 import kr.co.creator.vo.MemberListVO;
 import kr.co.creator.vo.MemberVO;
 import kr.co.creator.vo.ProjectVO;
@@ -40,6 +41,12 @@ public class LoginService {
 		list = loginDAO.busi_user_list();
 		return list;
 	}//busi_user_list
+
+	public int historyTime(HistoryVO vo1) {
+		int cnt = 0;
+		cnt = loginDAO.historyTime(vo1);
+		return cnt;
+	}
 	
 	
 }//class

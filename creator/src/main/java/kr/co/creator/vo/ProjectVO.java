@@ -18,7 +18,7 @@ public class ProjectVO {
 	private String loan_type;			// 대출유형
 	private String repay_method;		// 상환방식
 	private String judge_status;		// 심사상태
-	private String repay_count;			// 상환차수	
+	private String repay_count;			// 상환차수
 	private String loan_history;		// 대출자 상환내역
 	private String rate;				// 금리
 	private String yield;				// 연 수익률
@@ -28,7 +28,6 @@ public class ProjectVO {
 	private String ach_rate;			// 모집현황
 	private String ach_state;			// 모집상태
 	private String customer;			// 투자자수
-
 	private String user_num;			// (참조)유저번호
 	private String busi_num;			// (참조)법인유저번호
 
@@ -254,13 +253,11 @@ public class ProjectVO {
 	}
 	public void setBusi_num(String busi_num) {
 		this.busi_num = busi_num;
-
 	}//busi_num
-
 	public String getLoan_history() {
 		return loan_history;
 	}
 	public void setLoan_history(String loan_history) {
 		this.loan_history = loan_history;
-	}//loan_history
+	}
 }//class

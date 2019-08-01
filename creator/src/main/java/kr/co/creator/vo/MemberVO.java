@@ -11,11 +11,12 @@ public class MemberVO {
 	private String user_chk_email;				// 이메일 수신 여부
 	private String user_terms_of_service;		// 이용약관
 	private String user_privacy_policy_agree;	// 개인정보처리동의	
-	private String user_join_date;				// 가입일
-	private String user_login_time;				// 접속이력
+	private String user_join_date;					// 가입일
+	private String user_login_time;					// 접속이력
 	private String user_phone_key;				// 휴대폰인증		
 	private String busi_num;					// 법인 유저번호
 	private String busi_resi_num;				// 사업자 등록번호
+	private String manager_name;				// 담당자명
 	private String busi_password;				// 사업자 비밀번호
 	private String com_name;					// 업체명
 	private String presen_name;					// 대표자명
@@ -24,7 +25,6 @@ public class MemberVO {
 	private String address;						// 주소
 	private String pre_phone;					// 대표자번호
 	private String fax_num;						// 팩스번호
-	private String manager_name;				// 담당자명
 	private String manager_birth;				// 담당자 생년월일
 	private String manager_email;				// 담당자 이메일
 	private String office_num;					// 사무실 번호
@@ -37,17 +37,16 @@ public class MemberVO {
 	private String busi_terms_of_service;		// 이용약관
 	private String busi_privacy_policy_agree;	// 개인정보처리동의
 	private String busi_join_date;				// 가입일
-	private String busi_login_time;				// 로그인 이력
 	private String busi_phone_key;				// 휴대폰 인증
 	
 	public MemberVO() {}	//constructor
 	public MemberVO(String user_num, String email, String user_password, String user_name, String jumin, 
 			String phone, String addr, String user_chk_email, String user_terms_of_service, String user_privacy_policy_agree, 
-			String user_join_date, String user_login_time, String user_phone_key, String busi_num, String busi_resi_num, String busi_password, 
+			String user_join_date, String user_phone_key, String busi_num, String busi_resi_num, String busi_password, 
 			String com_name, String presen_name, String cor_num, String homepage, String address, String pre_phone, String fax_num, 
 			String manager_name, String manager_birth, String manager_email, String office_num, String manager_phone, 
 			String manager_fax_num, String manager_task, String manager_rank, String manager_depart, String busi_chk_email, 
-			String busi_terms_of_service, String busi_privacy_policy_agree, String busi_join_date, String busi_login_time, String busi_phone_key) {
+			String busi_terms_of_service, String busi_privacy_policy_agree, String busi_join_date, String busi_phone_key) {
 		this.user_num = user_num;
 		this.email = email;
 		this.user_password = user_password;
@@ -59,7 +58,6 @@ public class MemberVO {
 		this.user_terms_of_service = user_terms_of_service;
 		this.user_privacy_policy_agree = user_privacy_policy_agree;
 		this.user_join_date = user_join_date;
-		this.user_login_time = user_login_time;
 		this.user_phone_key = user_phone_key;
 		this.busi_num = busi_num;
 		this.busi_resi_num = busi_resi_num;
@@ -84,7 +82,6 @@ public class MemberVO {
 		this.busi_terms_of_service = busi_terms_of_service;
 		this.busi_privacy_policy_agree = busi_privacy_policy_agree;
 		this.busi_join_date = busi_join_date;
-		this.busi_login_time = busi_login_time;
 		this.busi_phone_key = busi_phone_key;
 	}//constructor
 	
@@ -154,12 +151,6 @@ public class MemberVO {
 	}
 	public void setUser_join_date(String user_join_date) {
 		this.user_join_date = user_join_date;
-	}
-	public String getUser_login_time() {
-		return user_login_time;
-	}
-	public void setUser_login_time(String user_login_time) {
-		this.user_login_time = user_login_time;
 	}
 	public String getUser_phone_key() {
 		return user_phone_key;
@@ -304,12 +295,6 @@ public class MemberVO {
 	}
 	public void setBusi_join_date(String busi_join_date) {
 		this.busi_join_date = busi_join_date;
-	}
-	public String getBusi_login_time() {
-		return busi_login_time;
-	}
-	public void setBusi_login_time(String busi_login_time) {
-		this.busi_login_time = busi_login_time;
 	}
 	public String getBusi_phone_key() {
 		return busi_phone_key;

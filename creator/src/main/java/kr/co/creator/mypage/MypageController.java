@@ -14,12 +14,16 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import kr.co.creator.login.EmailForm;
+import kr.co.creator.login.FindUtil;
 import kr.co.creator.vo.AccountVO;
+import kr.co.creator.vo.FindPwdVO;
 import kr.co.creator.vo.InOutVO;
 import kr.co.creator.vo.MemberListVO;
 import kr.co.creator.vo.MemberVO;
 import kr.co.creator.vo.MypageVO;
 import kr.co.creator.vo.ProjectVO;
+import kr.co.creator.vo.UserVO;
 
 @Controller
 public class MypageController {
@@ -63,16 +67,50 @@ public class MypageController {
 	}
 	
 	@RequestMapping(value = "/my_depo_mgn", method = RequestMethod.GET)
-	public String my_modify(HttpSession session, Model model, MemberVO userVO, AccountVO accVO, InOutVO ioVO) {
+	public String my_modify(HttpSession session, Model model, MemberVO userVO) {
 		logger.info("my_depo_mgn");
 		userVO = (MemberVO)session.getAttribute("memberVO");
-		accVO = service.account(userVO, accVO);
-		ioVO = service.inout(userVO, ioVO);
+		AccountVO accVO = null;
+		InOutVO ioVO = null;
+		UserVO useVO = null;
+		accVO = service.account(userVO);
+		ioVO = service.inout(userVO);
+		useVO = service.user(userVO);
 		
-		model.addAttribute("Account", accVO);
+		model.addAttribute("acnt", accVO);
 		model.addAttribute("Inout",ioVO);
+		logger.info("my_depo_mgn"+accVO);
+		logger.info("my_depo_mgn"+ioVO);
 		return "mypage/my_depo_mgn";
 	}
+	
+//	@RequestMapping(value = "/emailcert", method = RequestMethod.POST)
+//	public void sendCert(PrintWriter out, EmailForm form, FindUtil findUtil) throws Exception {
+//		logger.info("=== sendEmailCertification ===");
+//		int cnt = 0;
+//		cnt = ((Object) sqlSession).emailcert(vo);
+//		if(cnt > 0) {
+//			String newPassword, user_name;
+//			newPassword = findUtil.getRamdomPassword(8);
+//			user_name = sqlSession.selectOne("LoginMapper.selectName", vo);
+//			vo.setNewPassword(newPassword);
+//			vo.setUser_name(user_name);
+//			form.setContent("새로운 비밀번호는 " + newPassword + " 입니다");
+//			form.setSubject("안녕하세요 " + vo.getUser_name() + "님 임시비밀번호를 확인해 주세요");
+//			form.setReceiver(vo.getEmail());
+//			emailSender.sendEmail(form);
+//		}
+//		if(cnt > 0) {
+//			System.out.println(vo.getEmail());
+//			cnt = loginService.updatePwd(vo);
+//			out.print(cnt);
+//			out.flush();
+//			out.close();
+//		}
+//		out.print(cnt);
+//		out.flush();
+//		out.close();
+//	}//sendNewPassword
 	
 	@RequestMapping(value = "/mypagemodifyu", method = RequestMethod.POST)
 	public void myPageModifyU(HttpSession session, PrintWriter out, MemberListVO vo) {
@@ -83,7 +121,7 @@ public class MypageController {
 //		successCnt = service.myPageModify(vo);
 		if(vo != null && vo.getUser_num() != null && !vo.getUser_num().equals("")) {
 			cnt = 1;
-			session.setAttribute("mypagedetail", vo);
+			session.setAttribute("mypagemem", vo);
 		} 
 		out.print(cnt);
 		out.flush();
@@ -99,7 +137,7 @@ public class MypageController {
 //		successCnt = service.myPageModify(vo);
 		if(vo != null && vo.getBusi_num() != null && !vo.getBusi_num().equals("")) {
 			cnt = 1;
-			session.setAttribute("mypagedetail", vo);
+			session.setAttribute("mypagemem", vo);
 		}
 		out.print(cnt);
 		out.flush();
@@ -120,6 +158,21 @@ public class MypageController {
 		return "mypage/my_modify";
 	}
 	
+	@RequestMapping(value="/mypagebank", method=RequestMethod.POST)
+	public void myPageBank(HttpSession session, PrintWriter out, AccountVO vo) {
+		logger.info("=== myPageBank ===");
+		vo = sqlSession.selectOne("MypageMapper.MyPageBank", vo);
+		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!! :" + vo );
+		int cnt = 0;
+		if((vo != null && vo.getBusi_num() != null && !vo.getBusi_num().equals("")) 
+				|| (vo != null && vo.getUser_num() != null && !vo.getUser_num().equals(""))) {
+			cnt = 1;
+			session.setAttribute("mypagebank", vo);
+		}
+		out.print(cnt);
+		out.flush();
+		out.close();	
+	}//myPageBank
 	
 	
 }//class

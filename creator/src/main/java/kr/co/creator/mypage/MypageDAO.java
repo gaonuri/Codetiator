@@ -33,12 +33,14 @@ public class MypageDAO {
 		return loan;
 	} 
 	
-	public AccountVO account(MemberVO userVO, AccountVO accVO) {
-		accVO = sqlSession.selectOne("MypageMapper.Account", accVO);
+	public AccountVO account(MemberVO userVO) {
+		AccountVO accVO = null;
+		accVO = sqlSession.selectOne("MypageMapper.Account", userVO);
 		return accVO;
 	}
 	
-	public InOutVO inout(MemberVO userVO, InOutVO ioVO) {
+	public InOutVO inout(MemberVO userVO) {
+		InOutVO ioVO = null;
 		ioVO = sqlSession.selectOne("MypageMapper.Inout", userVO);
 		return ioVO;
 	}
@@ -54,6 +56,13 @@ public class MypageDAO {
 		cnt = sqlSession.selectOne("MypageMapper.MyPageModifyB", vo);
 		return cnt;
 	}//myPageModifyB
+
+	public UserVO user(MemberVO userVO) {
+		UserVO useVO = null;
+		useVO = sqlSession.selectOne("MypageMapper.User", userVO);
+		return useVO;
+	}
+
 
 	
 }//class

@@ -46,6 +46,7 @@
 	</select>
 	
 	<select id="Account"
+		parameterType="kr.co.creator.vo.MemberVO"
 		resultType="kr.co.creator.vo.AccountVO">
 		select a.account_name
 		, a.bank_name
@@ -53,6 +54,14 @@
 		, a.deposit
 		from account_list a
 		where a.user_num = #{user_num}
+	</select>
+	
+	<select id="User"
+		parameterType="kr.co.creator.vo.MemberVO"
+		resultType="kr.co.creator.vo.UserVO">
+		select *
+		from user_list 
+		where user_num = #{user_num}
 	</select>
 	
 	<select id="Inout"
@@ -75,6 +84,12 @@
 		from busi_user_list 
 		where busi_num = #{busi_num} and busi_password = #{busi_password}
 	</select>
+	
+	<select id="MyPageBank" parameterType="kr.co.creator.vo.AccountVO" resultType="kr.co.creator.vo.AccountVO">
+		select * 
+		from account_list 
+		where user_num = #{user_num} or busi_num = #{busi_num} 
+	</select>	
 	
 	
 </mapper>

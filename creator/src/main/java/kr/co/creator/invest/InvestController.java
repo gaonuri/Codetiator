@@ -1,5 +1,6 @@
 package kr.co.creator.invest;
 
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 
@@ -9,6 +10,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -18,6 +20,8 @@ import kr.co.creator.vo.GuaranteeVO;
 import kr.co.creator.vo.InvestVO;
 import kr.co.creator.vo.MemberVO;
 import kr.co.creator.vo.ProjectVO;
+//import kr.co.koitt.board1.BoardVO;
+//import kr.co.koitt.tip.FileUtilService;
 
 @Controller
 public class InvestController {
@@ -126,10 +130,40 @@ public class InvestController {
 //			return "login/login";
 //		}
 		accVO = investService.acount_detail(accVO);
+		model.addAttribute("accountVO", accVO);
 		proVO = investService.project_detail(proVO);
 		model.addAttribute("accVO", accVO);
 		model.addAttribute("proVO", proVO);
-
 		return "invest/invest_finish";
 	}//invest_finish
+	
+//	@RequestMapping(value="/board1/insert4", method=RequestMethod.POST)
+//	@Transactional
+//	public void boardInsert4(BoardVO vo
+//									, PrintWriter out) {
+//		logger.info("boardInsert4");
+//		int count = 0;
+//		count = service.boardInsert(vo);
+//		//CK image start============================
+//		int imgYn = 0;
+//		imgYn = vo.getCnts().indexOf("src=\"");
+//		if(imgYn > 0) {//image in cnts
+//			try {
+//				FileUtilService.mvCKImgTmpToNew(
+//						vo.getCnts(), vo.getNo());
+//			} catch (IOException e) {
+//				out.print(0);
+//				out.flush();
+//				out.close();
+//				e.printStackTrace();
+//				return;
+//			}//try
+//		}//if
+//		//CK image end============================
+//		vo.setCnts(vo.getCnts().replaceAll("/tmp/", "/"+vo.getNo()+"/"));
+//		count = service.boardUpdate(vo);
+//		out.print(count);
+//		out.flush();
+//		out.close();
+//	}//boardInsert4
 }//class

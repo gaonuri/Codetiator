@@ -4,13 +4,17 @@
 <html>
 
 <head>
+
+	<script src="${pageContext.request.contextPath}/resources/jquery/jquery-3.4.1.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/ckeditor/ckeditor.js"></script>
+
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="description" content="">
 	<meta name="author" content="Dashboard">
 	<meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
 	<title>Dashio - Bootstrap Admin Template</title>
-	<script src="../resources/jquery/jquery-3.4.1.js"></script>
+	
 	<!-- Favicons -->
 	<link href="${pageContext.request.contextPath}/resources/bootstrap/img/favicon.png" rel="icon">
 	<link href="${pageContext.request.contextPath}/resources/bootstrap/img/apple-touch-icon.png" rel="apple-touch-icon">
@@ -32,280 +36,125 @@
 	  Author: TemplateMag.com
 	  License: https://templatemag.com/license/
 	======================================================= -->
+	
+<script type="text/javascript">
+
+//id check
+$(document).ready(function(){
+	var chkemail = '';
+
+	$("#email").blur(function(){
+		var emailStd = /([a-z0-9]{1,20}\@)([a-z]{1,20}\.)([a-z]{1,10})/gi;
+		
+		if($.trim($("#email").val()) != $(this).val().match(emailStd)){
+			alert("올바르지 않은 이메일 입니다.");
+			return;
+		}
+		$.post(
+				"./findpwdchk",
+				{
+					email:$("#email").val()
+				},
+				function(data,status){
+					if(data == 1){
+						alert("이메일이 확인 되었습니다.");
+						chkemail = $("#email").val();
+					}else{
+						alert("등록된 이메일이 없습니다.");
+					}
+				}//function
+		);//post
+	});//ready
+});//blur
+
+$(document).ready(function(){
+	$("#findpwd_btn").click(function(){
+		if($.trim($("#email").val()) == ""){
+			alert("등록된 이메일이 없습니다.");
+// 			$("#email").focus();
+			return;
+		}
+		$.post(
+				"./emailcert"
+				,{
+					email:$("#email").val()
+				}
+				,function(data,status){
+					if(status == "success"){
+						if(data > 0){
+							alert("해당 이메일로 임시비밀번호를 발송했습니다.");
+							location.href="/creator/findpwd";
+						} else if(data == 0){
+							alert("존재하지 않는 이메일 입니다.");
+						} else {
+							alert("잠시 후, 다시 시도해 주세요.");
+						}
+					} else {
+						alert("시스템 관리자에게 문의 바랍니다.");
+					}
+				}
+		);//post
+	});//click
+});//ready
+</script>
+
+
 </head>
-<style >
-#content .step {
-    padding: 0px 10px 60px 10px;
-}
-#content .step .wrap .item.active {
-    background-color: #712594;
-    font-weight: bold;
-    color: #fff;
-}
 
-#content .step .wrap .item {
-    padding: 10px 20px;
-    border-style: solid;
-    border-color: #712594;
-    border-width: 1px;
-    background-color: #fff;
-    color: #712594;
-    display: inline;
-}
-.container {
-    padding-right: 15px;
-    padding-left: 15px;
-    margin-right: auto;
-    margin-left: auto;
-    width: 1170px;
-}
-#loanGuide-banner {
-    background: url(${pageContext.request.contextPath}/resources/bootstrap/img/blog-bg.jpg)no-repeat center center fixed;
-    background-size: cover;
-    background-attachment: fixed;
-    width: 100%;
-    height: 80px;
-    padding: 100px 0 200px 0;
-}
-.text-center {
-    text-align: center;
-}
-.title {
-    font-size: 26pt;
-    font-weight: 500;
-    color: #fff;
-    text-shadow: 1px 1px 1px #bf9bcb;
-    letter-spacing: -0.5pt;
-    line-height: 1.2;
-    text-align: center;
-}
-.section-body {
-    color: #fff;
-    position: relative;
-    padding: 60px 20px 30px 20px;
-}
-.top {
-    padding: 30px 0px;
-    text-align: center;
-}
-.dl-horizontal dd {
-	    margin-left: 80px;
-}
-.dl-horizontal dt {
-	    width: 70px;
-}
-#procedure {
-    padding: 41px 0 111px 0;
-    background-color: #fff;
-}
-.text-center {
-    text-align: center;
-}
-.section-body {
-    padding: 0 15px;
-}
-.loan_int_tit {
-    font-size: 21pt;
-    font-weight: 500;
-    color: #333;
-    margin-top: 70px;
-    margin-bottom: 45px;
-    text-align: center;
-    letter-spacing: -0.2pt;
-    /* text-shadow: 0px 0px 1px #777; */
-}
-.row {
-    margin-right: -15px;
-    margin-left: -15px;
-    margin-bottom: 120px;
-}
-.procedure {
-    padding: 40px 0 0 0;
-}
-.col-md-offset-1 {
-    margin-left: 8.33333333%;
-}
-.col-md-2 {
-    width: 16.66666667%;
-    float: left;
-}
-.step {
-    position: relative;
-}
-img {
-    vertical-align: middle;
-    border: 0;
-}
-.arrow {
-    position: absolute;
-    top: 40px;
-    right: -15px;
-    display: block;
-}
-h4{
-    font-size: 15px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    font-family: inherit;
-    font-weight: 500;
-    line-height: 1.1;
-    color: black;
-    display: block;
-    margin-block-start: 1.33em;
-    margin-block-end: 1.33em;
-    margin-inline-start: 0px;
-    margin-inline-end: 0px;
-}
-strong {
-    font-weight: bold;
-}
-.number {
-    display: none;
-}
-.mainTop_btn {
-    width: 26%;
-    height: 36px;
-    font-size: 17px;
-    margin: 5% 37% 0 37%;
-}
-.mr-cap {
-    color: #fff;
-    background-color: #02863A;
-    width: 20px;
-    border-top-right-radius: 5px;
-    border-bottom-right-radius: 5px;
-    float: right;
-    height: 100%;
-}
-.mr-angle {
-	color: #fff;
-    background-color: #02863A;
-    margin-right: -10px;
-    width: 20px;
-    text-align: right;
-    float: right;
-    transform: skew(-30deg);
-    -webkit-transform: skew(-30deg);
-    -ms-transform: skew(-30deg);
-    height: 100%;
-}
-p {
-    color: #fff;
-    margin: 0 0 10px;
-    display: block;
-    margin-block-start: 1em;
-    margin-block-end: 1em;
-    margin-inline-start: 0px;
-    margin-inline-end: 0px;
-}
-.mr-green {
-    color: #fff;
-    background-color: #01C351;
-    text-align: center;
-    font-weight: 600;
-    margin-left: auto;
-    margin-right: auto;
-    border: 2px solid #01C351;
-}
-</style>
 <body>
-
 	<section id="container">
 	    <!-- **********************************************************************************************************************************************************
 	        TOP BAR CONTENT & NOTIFICATIONS
 	        *********************************************************************************************************************************************************** -->
 	    <!--header start-->
-	    <%@ include file="../header.jsp" %>
-	    <!--header end-->
-	   <section id="loanGuide-banner" class="text-center">
-			<div class="overlay">
-				<div class="section-body">
-					<span class="title">대출 안내</span>
-				</div>
-			</div>
-		</section>
+	    
+	     <%@ include file="../header.jsp" %>
 	   
 	    <!-- **********************************************************************************************************************************************************
 	        MAIN CONTENT
 	        *********************************************************************************************************************************************************** -->
 		<!--main content start-->
-<section id="procedure" class="text-center">
-		<div class="container">
-			<div class="center">
-				<div class="loan_int_tit">대출 절차</div>
-			</div>
-			<div class="section-body">
-				<div class="row">
-					<div class="col-xs-6 col-sm-6 col-md-2 col-md-offset-1 procedure side">
-						<div class="step step-1">
-							<!-- 
-							<img src="/images/loan/img_loan_procedure_loan_application.png">
-							-->
-							<img src="${pageContext.request.contextPath}/resources/img/img_loan_process_01.png">
-						</div>
-						<div class="arrow">
-							<img src="${pageContext.request.contextPath}/resources/img//img_next.png">
-						</div>
-						<h4><strong><span class="number">1.&nbsp;</span>대출 신청</strong></h4>
-					</div>
-					<div class="col-xs-6 col-sm-6 col-md-2 procedure">
-						<div class="step step-2">
-							<!-- 
-							<img src="/images/loan/img_loan_procedure_add_info.png">
-							-->
-							<img src="${pageContext.request.contextPath}/resources/img/img_loan_process_02.png">
-						</div>
-						<h4><strong><span class="number">2.&nbsp;</span>추가정보</strong></h4>
-						<div class="arrow pc">
-							<img src="${pageContext.request.contextPath}/resources/img/img_next.png">
-						</div>
-					</div>
-					<div class="col-xs-6 col-sm-6 col-md-2 procedure">
-						<div class="step step-3">
-							<!--  
-							<img src="/images/loan/img_loan_procedure_judge.png">
-							-->
-							<img src="${pageContext.request.contextPath}/resources/img/img_loan_process_03.png">
-						</div>
-						<h4><strong><span class="number">3.&nbsp;</span>서류심사</strong></h4>
-						<div class="arrow">
-							<img src="${pageContext.request.contextPath}/resources/img/img_next.png">
-						</div>
-					</div>
-					<div class="col-xs-6 col-sm-6 col-md-2 procedure">
-						<div class="step step-4">
-							<!--  
-							<img src="/images/loan/img_loan_procedure_dealopen.png">
-							-->
-							<img src="${pageContext.request.contextPath}/resources/img/img_loan_process_04.png">
-						</div>
-						<h4><strong><span class="number">4.&nbsp;</span>상품오픈</strong></h4>
-						<div class="arrow">
-							<img src="${pageContext.request.contextPath}/resources/img/img_next.png">
-						</div>
-					</div>
-					<div class="col-xs-6 col-sm-6 col-md-2 procedure">
-						<div class="step-5">
-							<!--  
-							<img src="/images/loan/img_loan_procedure_approval.png">
-							-->
-							<img src="${pageContext.request.contextPath}/resources/img/img_loan_process_05.png">
-						</div>
-						<h4><strong><span class="number">5.&nbsp;</span>대출 실행</strong></h4>
-					</div>
-				</div>
-				<div class="mr-green mainTop_btn" id="loanReqBtn">
-					대출신청<span class="mr-cap"></span>
-					<span class="mr-angle">
-						<div style="-webkit-transform: skew(30deg); line-height: 0px"><p>&gt;</p></div>
-					</span>
-				</div>
-			</div>
+		
+<section id="main-content">
+<section class="wrapper site-min-height">
+<div class="container">
+	<div class="col-md-offset-3">
+	<img src="${pageContext.request.contextPath}/resources/img/test_logo.jpg" alt="login_img">
+	</div>
+</div>
+				
+<!-- =====================================================================logo -->
+				
+				
+<div class="col-lg-6 mt col-md-offset-3">
+	<h3 class="title">비밀번호를 잊어 버리셨나요?</h3>
+	<h4 class="title">임시 비밀번호를 보내드립니다.</h4>
+	<div class="form-group">
+		<div class="col-sm-10">
+			<input type="text" class="form-control" id="email" placeholder="*이메일">
 		</div>
-	</section>
+	</div>
+	<div class="form-group">
+		<div class="col-sm-10 col-lg-offset-3" id="findpwd_btn">
+		
+			<button id="findpwd_btn" class="btn btn-theme" >비밀번호 초기화</button>
+
+		</div>
+	</div>	
+<!-- 	<div class="form-send"> -->
+<!-- 		<div class="col-sm-10 col-lg-offset-3"> -->
+<!-- 			<input type="text" class="btn btn-theme" id="findpwd_btn" value="비밀번호 초기화" /> -->
+<!-- 		</div> -->
+<!-- 	</div>		 -->
+</div>
+				
+		<!-- ===================================================================== body-->		
+				
+		</section>
+			<!-- /wrapper -->
+	    </section>
 	    <!-- /MAIN CONTENT -->
 	    <!--main content end-->
-		
 		<!--footer start-->
 		<footer class="site-footer">
 			<div class="container">
@@ -370,6 +219,7 @@ p {
 	<script src="${pageContext.request.contextPath}/resources/bootstrap/lib/sparkline-chart.js"></script>
 	<script src="${pageContext.request.contextPath}/resources/bootstrap/lib/zabuto_calendar.js"></script>
 	<script type="text/javascript">
+	/*
     $(document).ready(function() {
       var unique_id = $.gritter.add({
         // (string | mandatory) the heading of the notification
@@ -388,6 +238,7 @@ p {
 
       return false;
     });
+	*/
 	</script>
 	<script type="application/javascript">
     $(document).ready(function() {
@@ -431,22 +282,6 @@ p {
       console.log('nav ' + nav + ' to: ' + to.month + '/' + to.year);
     }
 	</script>
-	<script type="text/javascript">
-	$(document).ready(function() {
-		$("#loanReqBtn").click(function() {
-			location.href = "${pageContext.request.contextPath}/getloan";
-		});
-	});
-
-	
-	
-	window.name ="Parent_window";
-	function fn_openNicePopup(){
-		window.open('', 'popupChk', 'width=500, height=550, top=100, left=100, fullscreen=no, menubar=no, status=no, toolbar=no, titlebar=yes, location=no, scrollbar=no');
-		document.form_chk.action = "https://nice.checkplus.co.kr/CheckPlusSafekeyModel/checkplus.cb";
-		document.form_chk.target = "popupChk";
-		document.form_chk.submit();
-	}
-	</script>
 </body>
+
 </html>

@@ -28,8 +28,8 @@ public class LoanDAO {
 		return insert_project_yn;
 	}//insert_project
 
-	public RepayVO RepaySelect(RepayVO rvo) {
-		rvo = sqlSession.selectOne("LoanMapper.RepaySelect", rvo);
+	public String RepaySelect(RepayVO vo) {
+		String rvo = sqlSession.selectOne("LoanMapper.RepaySelect", vo);
 		return rvo;
 	}
 
