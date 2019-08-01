@@ -63,6 +63,12 @@ public class MypageDAO {
 		return useVO;
 	}
 
+	public int emailcert(FindPwdVO vo) {
+		int cnt = 0;
+		cnt = sqlSession.selectOne("LoginMapper.findPwdChk", vo);
+		return cnt;
+	}//findPwdChk
+
 
 	
 }//class
