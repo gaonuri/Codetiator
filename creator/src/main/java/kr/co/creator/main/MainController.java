@@ -20,6 +20,22 @@ public class MainController {
 	@Autowired
 	MainService mainService;
 	
+//	@RequestMapping(value = "/main", method = RequestMethod.GET)
+//	public String main(Model model, ProjectVO proVO) {
+//		logger.info("main");
+//		
+//		System.out.println("111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111" + proVO.getAd_grade());
+////		if(proVO.getAd_grade() == null) {
+////			proVO.setAd_grade("1");
+////		}
+//		
+//		List<ProjectVO> list = null;
+//		list = mainService.project_list(proVO);
+//		model.addAttribute("projectList", list);
+//		
+//		return "main/main";
+//	}//main
+	
 	@RequestMapping(value = "/main", method = RequestMethod.GET)
 	public String main(Model model) {
 		logger.info("main");

@@ -28,6 +28,8 @@ public class ProjectVO {
 	private String ach_rate;			// 모집현황
 	private String ach_state;			// 모집상태
 	private String customer;			// 투자자수
+	private String ad_grade;			// 광고등급
+	
 	private String user_num;			// (참조)유저번호
 	private String busi_num;			// (참조)법인유저번호
 
@@ -253,11 +255,17 @@ public class ProjectVO {
 	}
 	public void setBusi_num(String busi_num) {
 		this.busi_num = busi_num;
-	}
+	}//busi_num
 	public String getLoan_history() {
 		return loan_history;
 	}
 	public void setLoan_history(String loan_history) {
 		this.loan_history = loan_history;
+	}
+	public String getAd_grade() {
+		return ad_grade;
+	}
+	public void setAd_grade(String ad_grade) {
+		this.ad_grade = ad_grade;
 	}
 }//class

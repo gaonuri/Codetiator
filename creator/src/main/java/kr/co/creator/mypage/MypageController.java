@@ -14,12 +14,17 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import kr.co.creator.login.EmailForm;
+import kr.co.creator.login.EmailSender;
+import kr.co.creator.login.FindUtil;
 import kr.co.creator.vo.AccountVO;
+import kr.co.creator.vo.FindPwdVO;
 import kr.co.creator.vo.InOutVO;
 import kr.co.creator.vo.MemberListVO;
 import kr.co.creator.vo.MemberVO;
 import kr.co.creator.vo.MypageVO;
 import kr.co.creator.vo.ProjectVO;
+import kr.co.creator.vo.UserVO;
 
 @Controller
 public class MypageController {
@@ -31,6 +36,9 @@ public class MypageController {
 	
 	@Autowired
 	MypageService service;
+	
+	@Autowired
+	private My_EmailSender emailSender;
 	
 	@RequestMapping(value = "/my_dashboard", method = RequestMethod.GET)
 	public String list(HttpSession session, Model model, MemberVO userVO, MypageVO myVO) {
@@ -55,24 +63,58 @@ public class MypageController {
 	@RequestMapping(value = "/my_loan_list", method = RequestMethod.GET)
 	public String loan(HttpSession session, Model model, MemberVO userVO, ProjectVO proVO) {
 		logger.info("my_loan_list");
-		userVO = (MemberVO)session.getAttribute("memberVO");
-		List<ProjectVO> loan= null;
-		loan = service.loan_list(userVO);
-		model.addAttribute("loanList",loan);
+//		userVO = (MemberVO)session.getAttribute("memberVO");
+//		List<ProjectVO> loan= null;
+//		loan = service.loan_list(userVO);
+//		model.addAttribute("loanList",loan);
 		return "mypage/my_loan_list";
 	}
 	
 	@RequestMapping(value = "/my_depo_mgn", method = RequestMethod.GET)
-	public String my_modify(HttpSession session, Model model, MemberVO userVO, AccountVO accVO, InOutVO ioVO) {
+	public String my_modify(HttpSession session, Model model, MemberVO userVO) {
 		logger.info("my_depo_mgn");
 		userVO = (MemberVO)session.getAttribute("memberVO");
-		accVO = service.account(userVO, accVO);
-		ioVO = service.inout(userVO, ioVO);
+		AccountVO accVO = null;
+		InOutVO ioVO = null;
+		UserVO useVO = null;
+		accVO = service.account(userVO);
+		ioVO = service.inout(userVO);
+		useVO = service.user(userVO);
 		
-		model.addAttribute("Account", accVO);
+		model.addAttribute("acnt", accVO);
 		model.addAttribute("Inout",ioVO);
+		logger.info("my_depo_mgn"+accVO);
+		logger.info("my_depo_mgn"+ioVO);
 		return "mypage/my_depo_mgn";
 	}
+	
+	@RequestMapping(value = "/emailcert", method = RequestMethod.POST)
+	public void sendCert(PrintWriter out, My_EmailForm form, My_FindUtil findUtil, FindPwdVO vo) throws Exception {
+		logger.info("=== sendEmailCertification ===");
+		int cnt = 0;
+		cnt = ((MypageService) sqlSession).emailcert(vo);
+		if(cnt > 0) {
+			String newPassword, user_name;
+			newPassword = findUtil.getRamdomCert(8);
+			user_name = sqlSession.selectOne("LoginMapper.selectName", vo);
+			vo.setNewPassword(newPassword);
+			vo.setUser_name(user_name);
+			form.setContent("인증번호를 드립니다."
+							+ " 인증번호는 " + newPassword + " 입니다");
+			form.setSubject("안녕하세요 " + vo.getUser_name() + "님 임시비밀번호를 확인해 주세요");
+			form.setReceiver(vo.getEmail());
+			emailSender.My_EmailSender(form);
+		}
+		if(cnt > 0) {
+			System.out.println(vo.getEmail());
+			out.print(cnt);
+			out.flush();
+			out.close();
+		}
+		out.print(cnt);
+		out.flush();
+		out.close();
+	}//sendcert	
 	
 	@RequestMapping(value = "/mypagemodifyu", method = RequestMethod.POST)
 	public void myPageModifyU(HttpSession session, PrintWriter out, MemberListVO vo) {
