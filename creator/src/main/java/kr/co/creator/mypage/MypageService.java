@@ -60,6 +60,13 @@ public class MypageService {
 		useVO = (UserVO) dao.user(userVO);
 		return useVO;
 	}
+	
+	public int emailcert(FindPwdVO vo) {
+		System.out.println(vo.getEmail());
+		int cnt = 0;
+		cnt = dao.emailcert(vo);
+		return cnt; 
+	}//findPwdChk
 
 	
 }//class

@@ -33,6 +33,13 @@
 	  Author: TemplateMag.com
 	  License: https://templatemag.com/license/
 	======================================================= -->
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$("#").click(function() {
+				location.href ="${pageContext.request.contextPath}/invest/invest_detail"
+			});
+		});
+	</script>
 </head>
      
 <body>
@@ -111,6 +118,7 @@
 						   		<div class="col-md-12">
 						    	<div class="investDetail">
 								<div class="row">
+								<br><br>
 									<div class="col-xs-12 col-sm-6 col-md-6">
 										<div class="title">
 											<a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
@@ -159,8 +167,8 @@
 													<c:if test="${memberVO.user_num != null}">
 													</c:if>
 													<td>${vo.invest_date}</td>
-													<td>${vo.project_num}</td>
-													<td>${vo.project_name}</td>
+													<td><a href="invest_detail?detail_num=${vo.project_name}"/>${vo.project_num}</td>
+													<td><a href="invest_detail?detail_num=${vo.project_name}"/>${vo.project_name}</td>
 													<td>${vo.rate}%</td>
 													<td>${vo.invest_price}</td>
 													<td>${vo.refund_count}</td>
@@ -244,6 +252,7 @@
 					    	<form role="form" class="form-horizontal">
 						   		<div class="row">
 						   			<div class="col-md-12">
+						   			<br><br>
 								   		<div class="row">
 											<div class="col-md-4">
 												<div class="title">
@@ -296,44 +305,6 @@
 													</div>
 												</div>
 											</div>
-										<div class="col-md-6">
-											<div class="title">
-												<font class="font-purple">
-													●
-												</font> 예치금 요약
-											</div>
-											<div class="row height statsText">
-												<div class="col-xs-12 col-sm-12 col-md-12">
-													<div class="row">
-														<div class="col-xs-6 col-sm-6 col-md-6">
-															기본 예치금
-														</div>
-														<div class="col-xs-6 col-sm-6 col-md-6 text-right">
-															0 원
-														</div>
-													</div>
-													<div class="row" style="margin-top: 30px;">
-														<div class="col-xs-6 col-sm-6 col-md-6">
-															자동투자 예치금
-														</div>
-														<div class="col-xs-6 col-sm-6 col-md-6 text-right">
-															0 원
-														</div>
-													</div>
-													<hr>
-													<div class="row">
-														<div class="col-xs-6 col-sm-6 col-md-6">
-															총 예치금
-														</div>
-														<div class="col-xs-6 col-sm-6 col-md-6 text-right">
-															<span class="font-purple"><strong>
-																0 <font size="2">원</font>
-															</strong></span>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
 									</div>
 							    	<table class="table">
 	<%-- 					                <c:forEach items="${supportlist}" var="vo" varStatus="status"> --%>

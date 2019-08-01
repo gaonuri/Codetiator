@@ -92,15 +92,6 @@
        	 	<div class="row">
          		 <div class="col-md-12">
             		<div class="content-panel">
-	            		<div class="panel-heading">
-	            			<div class="col-lg-2">
-								<ul class="nav nav-tabs nav-justified">
-									<li class="active">
-										<a data-toggle="tab">나의투자</a>
-									</li>
-								</ul>
-							</div>
-						</div>
 			            <div class="tab-content">
 						<div id="invest" class="tab-pane active">
 					    	<form role="form" class="form-horizontal">
@@ -118,7 +109,6 @@
 									</div>
 								</div>
 								<a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
-								
 								<div class="row investList" style="margin-top: 10px;" style="margin-left: 10px;">
 									<div class="col-xs-10 col">
 										<table class="table">
@@ -156,8 +146,8 @@
 													<c:if test="${memberVO.user_num != null}">
 													</c:if>
 													<td>${vo.invest_date}</td>
-													<td>${vo.project_num}</td>
-													<td>${vo.project_name}</td>
+													<td><a href="invest_detail?detail_num=${vo.project_name}"/>${vo.project_num}</td>
+													<td><a href="invest_detail?detail_num=${vo.project_name}"/>${vo.project_name}</td>
 													<td>${vo.rate}%</td>
 													<td>${vo.invest_price}</td>
 													<td>${vo.refund_count}</td>

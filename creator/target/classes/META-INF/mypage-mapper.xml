@@ -18,7 +18,7 @@
 	<select id="InvestList"
 			parameterType="kr.co.creator.vo.MemberVO"
 			resultType="kr.co.creator.vo.MypageVO">
-			select  i.invest_date 
+			select i.invest_date 
 			, p.project_num 
 			, p.project_name 
 			, p.rate rate 
@@ -34,15 +34,10 @@
 	
 	<select id="loanList"
 		resultType="kr.co.creator.vo.ProjectVO">
-		select  a.account_name
-		, a.bank_name
-		, a.bank_num
-		, a.deposit
-		, i.input_history
-		, i.output_history
-		from account_list a, in_out i
-		where a.account_num = i.account_num 
-			and a.user_num = #{user_num}
+		select project_name
+		, 
+		from project_list
+		
 	</select>
 	
 	<select id="Account"
