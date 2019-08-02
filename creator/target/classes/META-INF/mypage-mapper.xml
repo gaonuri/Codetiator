@@ -33,6 +33,12 @@
 				and i.user_num = #{user_num}
 	</select>
 	
+	<select id="loanList"
+		resultType="kr.co.creator.vo.ProjectVO">
+		select project_name
+		from project_list
+	</select>
+	
 	<select id="Account"
 		parameterType="kr.co.creator.vo.MemberVO"
 		resultType="kr.co.creator.vo.AccountVO">

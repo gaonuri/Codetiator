@@ -48,36 +48,7 @@ $(document).ready(function() {
 		
 		if(numChk) {
 			$.post(
-					"./historyin",
-					{
-						user_num:$("#numChk").val(),
-						busi_num:$("#numChk1").val()
-					},
-					function(data,status){
-						
-					}
-			);//post
-			$.post(
-					"./historyout",
-					{
-						user_num:$("#numChk").val(),
-						busi_num:$("#numChk1").val()
-					},
-					function(data,status){
-						
-					}
-			);//post
-			$.post(
-					"./mypagebank",
-					{
-						user_num:$("#numChk").val()
-					},
-					function(data,status){
-						
-					}
-			);//post			
-			$.post(
-					"./mypagemodifyu",
+					"${pageContext.request.contextPath}/mypagemodifyu",
 					{
 						//user_num:hidden으로 가지고 있다가 가는 부분
 						user_num:$("#numChk").val(),
@@ -114,35 +85,6 @@ $(document).ready(function() {
 		}//user_paswword
 		
 		if(numChk1) {
-			$.post(
-					"./historyin",
-					{
-						user_num:$("#numChk").val(),
-						busi_num:$("#numChk1").val()
-					},
-					function(data,status){
-						
-					}
-			);//post
-			$.post(
-					"./historyout",
-					{
-						user_num:$("#numChk").val(),
-						busi_num:$("#numChk1").val()
-					},
-					function(data,status){
-						
-					}
-			);//post			
-			$.post(
-					"./mypagebank",
-					{
-						busi_num:$("#numChk1").val()
-					},
-					function(data,status){
-						
-					}
-			);//post			
 			$.post(
 					"./mypagemodifyb",
 					{

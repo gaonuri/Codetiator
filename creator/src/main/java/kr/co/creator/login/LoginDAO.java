@@ -42,5 +42,17 @@ public class LoginDAO {
 		return list;
 	}//busi_user_list
 
+	public List<HistoryVO> historyIn(HistoryVO hvo) {
+		List<HistoryVO> list = null;
+		list = sqlSession.selectList("LoginMapper.historyIn", hvo);
+		return list;
+	}
+	
+	public List<HistoryVO> historyOut(HistoryVO hvo) {
+		List<HistoryVO> list = null;
+		list = sqlSession.selectList("LoginMapper.historyOut", hvo);
+		return list;
+	}
+
 	
 }//class

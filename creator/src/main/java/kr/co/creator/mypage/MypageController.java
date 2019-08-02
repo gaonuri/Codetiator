@@ -17,8 +17,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import kr.co.creator.login.EmailForm;
 import kr.co.creator.login.EmailSender;
 import kr.co.creator.login.FindUtil;
+import kr.co.creator.login.LoginService;
+import kr.co.creator.login.UtilForSession;
 import kr.co.creator.vo.AccountVO;
 import kr.co.creator.vo.FindPwdVO;
+import kr.co.creator.vo.HistoryVO;
 import kr.co.creator.vo.InOutVO;
 import kr.co.creator.vo.MemberListVO;
 import kr.co.creator.vo.MemberVO;
@@ -37,6 +40,9 @@ public class MypageController {
 	@Autowired
 	MypageService service;
 	
+	@Autowired
+	LoginService loginService;
+
 	@Autowired
 	private My_EmailSender emailSender;
 	
@@ -114,15 +120,20 @@ public class MypageController {
 		out.print(cnt);
 		out.flush();
 		out.close();
-	}//sendcert	
+	}//sendCert	
+	
+	@RequestMapping(value = "/my_modify", method = RequestMethod.GET)
+	public String my_modify() {
+		logger.info("my_modify");
+		
+		return "mypage/my_modify";
+	}
 	
 	@RequestMapping(value = "/mypagemodifyu", method = RequestMethod.POST)
 	public void myPageModifyU(HttpSession session, PrintWriter out, MemberListVO vo) {
 		logger.info("=== myPageModifyU ===");
 		vo = sqlSession.selectOne("MypageMapper.MyPageModifyU", vo);
-		System.out.println("@@@@@@@@@@@@@@ :" + vo );
 		int cnt = 0;
-//		successCnt = service.myPageModify(vo);
 		if(vo != null && vo.getUser_num() != null && !vo.getUser_num().equals("")) {
 			cnt = 1;
 			session.setAttribute("mypagemem", vo);
@@ -136,9 +147,7 @@ public class MypageController {
 	public void myPageModifyB(HttpSession session, PrintWriter out, MemberListVO vo) {
 		logger.info("=== myPageModifyB ===");
 		vo = sqlSession.selectOne("MypageMapper.MyPageModifyB", vo);
-		System.out.println("@@@@@@@@@@@@@@ :" + vo );
 		int cnt = 0;
-//		successCnt = service.myPageModify(vo);
 		if(vo != null && vo.getBusi_num() != null && !vo.getBusi_num().equals("")) {
 			cnt = 1;
 			session.setAttribute("mypagemem", vo);
@@ -149,34 +158,20 @@ public class MypageController {
 	}//myPageModifyB
 	
 	@RequestMapping(value = "/modify_detail", method = RequestMethod.GET)
-	public String modify_detail() {
+	public String modify_detail(HttpSession session, Model model, HistoryVO hvo, AccountVO avo) {
 		logger.info("modify_detail");
-		
+		if(UtilForSession.chkSession(session) == false) {
+			return "redirect:/main";
+		} else {
+			List<HistoryVO> hInList = loginService.historyIn(hvo);
+			model.addAttribute("hInList", hInList);
+			List<HistoryVO> hOutList = loginService.historyOut(hvo);
+			model.addAttribute("hOutList", hOutList);
+			avo = sqlSession.selectOne("MypageMapper.MyPageBank", avo);
+			model.addAttribute("mypagebank", avo);
+		}
 		return "mypage/modify_detail";
 	}
-	
-	@RequestMapping(value = "/my_modify", method = RequestMethod.GET)
-	public String my_modify() {
-		logger.info("my_modify");
-		
-		return "mypage/my_modify";
-	}
-	
-	@RequestMapping(value="/mypagebank", method=RequestMethod.POST)
-	public void myPageBank(HttpSession session, PrintWriter out, AccountVO vo) {
-		logger.info("=== myPageBank ===");
-		vo = sqlSession.selectOne("MypageMapper.MyPageBank", vo);
-		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!! :" + vo );
-		int cnt = 0;
-		if((vo != null && vo.getBusi_num() != null && !vo.getBusi_num().equals("")) 
-				|| (vo != null && vo.getUser_num() != null && !vo.getUser_num().equals(""))) {
-			cnt = 1;
-			session.setAttribute("mypagebank", vo);
-		}
-		out.print(cnt);
-		out.flush();
-		out.close();	
-	}//myPageBank
 	
 	
 }//class

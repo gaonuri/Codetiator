@@ -2,6 +2,7 @@ package kr.co.creator.login;
 
 import java.io.PrintWriter;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -160,35 +161,7 @@ public class LoginController {
 		model.addAttribute("memberList", list);
 		return "login/login";
 	}//busi_user_list
-	
-	@RequestMapping(value="/historyin", method=RequestMethod.POST)
-	public void historyIn(HistoryVO vo, HttpSession session, PrintWriter out, Model model) {
-		logger.info("=== historyIn ===");
-		List<HistoryVO> list = null;
-		
-		list = sqlSession.selectList("LoginMapper.historyIn", list);
-		if((vo != null && vo.getBusi_num() != null && !vo.getBusi_num().equals("")) 
-				|| (vo != null && vo.getUser_num() != null && !vo.getUser_num().equals(""))) {
-		session.setAttribute("historyIn", vo);
-		}
-		out.flush();
-		out.close();
-	}//historyIn 
-	
-	@RequestMapping(value="/historyout", method=RequestMethod.POST)
-	public void historyOut(HistoryVO vo, HttpSession session, PrintWriter out, Model model) {
-		logger.info("=== historyOut ===");
-		List<HistoryVO> list = null;
-		
-		list = sqlSession.selectList("LoginMapper.historyOut", list);
-		if((vo != null && vo.getBusi_num() != null && !vo.getBusi_num().equals("")) 
-				|| (vo != null && vo.getUser_num() != null && !vo.getUser_num().equals(""))) {
-		session.setAttribute("historyOut", vo);
-		}
-		out.flush();
-		out.close();
-	}//historyOut 
-	
+
 }//class
 
 
