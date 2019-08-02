@@ -517,7 +517,7 @@
 										<input type="hidden" name="m" value="checkplusSerivce">	<!-- 필수 데이타로, 누락하시면 안됩니다. -->
 										<input type="hidden" id="EncodeData" name="EncodeData" value="">	<!-- 위에서 업체정보를 암호화 한 데이타입니다. -->
 									</form>
-									<c:when test="">
+
 									<!-- 예치금 계좌 발급 Modal -->
 						<div class="modal fade" id="btn_cert"  name="cert" role="dialog" aria-labelledby="vtAcntModalLabel" aria-hidden="true">
 							<div class="modal-dialog">
@@ -768,7 +768,7 @@
 							</div>
 							<!-- /.modal-dialog -->
 						</div>
-						</c:when>
+
 						<!-- 예치금 계좌 발급 Modal -->
 						<div class="modal fade" id="btn_cert"  name="cert" role="dialog" aria-labelledby="vtAcntModalLabel" aria-hidden="true">
 							<div class="modal-dialog">

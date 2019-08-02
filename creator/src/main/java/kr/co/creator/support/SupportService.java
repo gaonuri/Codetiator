@@ -12,6 +12,13 @@ public class SupportService {
 
 	@Autowired
 	SupportDAO dao;
+	
+	public int supportDelete(NoticeVO vo) {
+		int count = 0;
+		count = dao.supportDelete(vo);
+		return count;
+	};
+	
 
 	public int supportInsert(NoticeVO vo) {
 		int count = 0;
@@ -37,9 +44,14 @@ public class SupportService {
 		return support;
 	}//supportList2
 
-	public NoticeVO noticeDetail(NoticeVO vo) {
-		vo = dao.noticeDetail(vo);
+	public NoticeVO supportDetail(NoticeVO vo) {
+		vo = dao.supportDetail(vo);
 		return vo;
-	}//totalDetail
+	}//supportDatail
+	
+	public NoticeVO supportDetailType(NoticeVO vo) {
+		vo = dao.supportDetailType(vo);
+		return vo;
+	}//supportDatailType
 	
 }//class

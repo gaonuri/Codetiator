@@ -37,13 +37,13 @@
 		<script type="text/javascript">
 			$(document).ready(function() {
 				$("#write_new").click(function() {
-					location.href = "${pageContext.request.contextPath}/support/formi";
+					location.href = "${pageContext.request.contextPath}/formi";
 				});//btn_write
 			});
 				
 			$(document).ready(function() {
 				$("#write_op").click(function() {
-					location.href = "${pageContext.request.contextPath}/support/formi2";
+					location.href = "${pageContext.request.contextPath}/formi2";
 				});//btn_write2
 			});
 				
@@ -72,6 +72,7 @@
 						}//function
 					);//get
 				});
+				
 		</script>
 		
 </head>
@@ -227,12 +228,12 @@
 								   		<div class="col-md-12">
 									    	<table class="table">
 								                <c:forEach items="${supportlist}" var="vo" varStatus="status">
-         <!-- 1씩증가 하는법 물어보기  -->     		  <c:set var="seq" value="1" />
+         								   		  <c:set var="seq" value="1" />
 													<tbody>
 														<tr>
-														    <td><a href="support_total_detail?notice_num=${vo.notice_num}">${seq}</a></td>
+														    <td><a href="support_detail?notice_num=${vo.notice_num}">${vo.notice_num}</a></td>
 <%-- 															<td><a href="support_total_detail?notice_num=${vo.notice_num}">${vo.notice_num}</a></td> --%>
-															<td><a href="support_total_detail?notice_num=${vo.notice_num}">${vo.title}</a></td>
+															<td><a href="support_detail?notice_num=${vo.notice_num}">${vo.title}</a></td>
 															<td>${vo.notice_date}</td>
 														</tr>
 													</tbody>
@@ -251,8 +252,8 @@
 								                <c:forEach items="${supportlist2}" var="vo" varStatus="status">
 													<tbody>
 														<tr>
-															<td><a href="support_new_detail?notice_num=${vo.notice_num}">${vo.notice_num}</a></td>
-															<td><a href="support_new_detail?notice_num=${vo.notice_num}">${vo.title}</a></td>
+															<td><a href="support_detail?notice_num=${vo.notice_num}&notice_type=${vo.notice_type}">${vo.notice_num}</a></td>
+															<td><a href="support_detail?notice_num=${vo.notice_num}&notice_type=${vo.notice_type}">${vo.title}</a></td>
 															<td>${vo.notice_date}</td>
 														</tr>
 													</tbody>
@@ -277,8 +278,8 @@
 								                <c:forEach items="${supportlist3}" var="vo" varStatus="status">
 													<tbody>
 														<tr>
-															<td><a href="support_operation_detail?notice_num=${vo.notice_num}">${vo.notice_num}</a></td>
-															<td><a href="support_operation_detail?notice_num=${vo.notice_num}">${vo.title}</a></td>
+															<td><a href="support_detail?notice_num=${vo.notice_num}&notice_type=${vo.notice_type}">${vo.notice_num}</a></td>
+															<td><a href="support_detail?notice_num=${vo.notice_num}&notice_type=${vo.notice_type}">${vo.title}</a></td>
 															<td>${vo.notice_date}</td>
 														</tr>
 													</tbody>

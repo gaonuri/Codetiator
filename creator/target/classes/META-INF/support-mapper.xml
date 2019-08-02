@@ -45,11 +45,28 @@
 			order by notice_date desc
 	</select>
 	
-	<select id="noticeDetail"
+	<delete id="supportDelete"
+			parameterType="kr.co.creator.vo.NoticeVO">
+			delete
+			from notice
+			where notice_num = #{notice_num}
+	</delete>
+	
+	<select id="supportDetail"
 			parameterType="kr.co.creator.vo.NoticeVO"
 			resultType="kr.co.creator.vo.NoticeVO">
 		select *
 			from notice 
 			where notice_num = #{notice_num}
 	</select>
+	
+	<select id="supportDetailType"
+			parameterType="kr.co.creator.vo.NoticeVO"
+			resultType="kr.co.creator.vo.NoticeVO">
+		select *
+			from notice 
+			where notice_num = #{notice_num}
+			and notice_type = #{notice_type}
+	</select>
+	
 	</mapper>

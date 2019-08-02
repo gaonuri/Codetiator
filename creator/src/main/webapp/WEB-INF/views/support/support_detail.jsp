@@ -37,11 +37,37 @@
 		<script type="text/javascript">
 			$(document).ready(function() {
 				$("#btn_list").click(function() {
-					location.href = "${pageContext.request.contextPath}/support_total";
+					location.href = "${pageContext.request.contextPath}/support";
 				});//btn_write
 			});//ready
+			
+			$(document).ready(function() {
+				$("#btn_delete").click(function() {
+					var del_yn = false;
+					del_yn = confirm("삭제 하시겠습니까?");
+					if(del_yn == false){
+						return;
+					}
+					$.get("/support/delete"
+							,{
+								no:$("#hid_no").val()
+							}//data
+							,function(data,status) {
+								if(status == "success") {
+									if(data > 0){
+										alert("삭제 되었습니다.");
+										location.href="/support/support";
+									} else {
+										alert("잠시 후 다시 시도해 주세요.");
+									}
+								} else {
+									alert("admin : 02-5555-7777");
+								}
+							}//function
+					);//get
+				});//btn_delete
+				
 		</script>
-		
 </head>
 
 <body>
@@ -174,25 +200,25 @@
 					<div class="content-panel">
 						<div class="invoice-body">
 			                <!-- /pull-left -->
-							<div class="pull-left">
+							<div class="left">
 							</div>
 			                <div class="clearfix"></div>
 			                <br>
 			                <br>
+			                <input type="hidden" id="hid_no"/>
                 			<table>
                 				<tr>
-									<td>제목</td>
-									<td>${total_detailVO.title}</td>
+									<font size="6">${detailVO.title}</font>
 								</tr>
 								<tr>
-									<td>${total_detailVO.notice_date}</td>
+									<font size="3">${detailVO.notice_date}</font>
 								</tr>
 								<tr>
-									<td>내용</td>
-									<td>${total_detailVO.notice_contents}</td>
+									<font size="4">${detailVO.notice_contents}</font>
 								</tr>
 							</table>
 							<div class="pull-right">
+								<button id="btn_delete">삭제</button>
 								<button id="btn_list">목록으로</button>
 							</div>
 							<br>
