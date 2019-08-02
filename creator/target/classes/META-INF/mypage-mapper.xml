@@ -7,12 +7,13 @@
 
 	<select id="assetsList"
 			resultType="kr.co.creator.vo.InvestVO">
-		select invest_num
-			, project_num
-			, invest_price
-			, invest_date
-			FROM invest_list
-			order by invest_date desc
+		select a.deposit
+			, p.guarantee_price
+			, i.invest_price
+			FROM i.invest_list, a.account_list, p.project_list
+			where p.project_num = i.project_num
+				   p.project_num =  a.project_num
+				 and i.user_num = #{user_num}
 	</select>
 	
 	<select id="InvestList"

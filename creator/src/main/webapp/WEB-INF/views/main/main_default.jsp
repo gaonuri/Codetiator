@@ -110,7 +110,7 @@
 								<a href="./inquiry">1:1문의</a>
 							</li>
 							<li>
-								<a href="./support_total">공지사항</a>
+								<a href="./support">공지사항</a>
 							</li>
 						</ul>
 					</li>
