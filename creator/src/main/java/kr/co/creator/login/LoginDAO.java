@@ -42,10 +42,5 @@ public class LoginDAO {
 		return list;
 	}//busi_user_list
 
-	public int historyTime(HistoryVO vo1) {
-		int cnt = 0;
-		cnt = sqlSession.insert("LoginMapper.historyTime",vo1);
-		return cnt;
-	}
 	
 }//class

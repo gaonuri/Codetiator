@@ -50,7 +50,6 @@ $(document).ready(function(){
 			$("#user_password").focus();
 			return;
 		}
-		
 
 		$.post(
 				"./loginuser"
@@ -90,16 +89,6 @@ $(document).ready(function(){
 			$("#busi_password").focus();
 			return;
 		}
-		
-		$.post(
-				"./loginbusi",
-				{
-					busi_num:$("#busi_num").val()
-				},
-				function(data,status){
-					
-				}
-				);//post
 		
 		$.post(
 				"./loginbusi"

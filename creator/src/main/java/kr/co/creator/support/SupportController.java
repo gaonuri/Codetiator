@@ -131,6 +131,25 @@ public class SupportController {
 	return "support/support_total_detail";
 	}//support_total_detail
 	
+	@RequestMapping(value="/support_new_detail"
+			,method=RequestMethod.GET)
+	public String newDetail(NoticeVO vo, Model model) {
+	logger.info("newDatail");
+	vo = service.noticeDetail(vo);
+	model.addAttribute("detailVO", vo);
+	return "support/support_new_detail";
+	}//support_total_detail
+	
+	@RequestMapping(value="/support_operation_detail"
+			,method=RequestMethod.GET)
+	public String operationDetail(NoticeVO vo, Model model) {
+	logger.info("operationDatail");
+	vo = service.noticeDetail(vo);
+	model.addAttribute("detailVO", vo);
+	return "support/support_operation_detail";
+	
+	
+	}//support_total_detail
 //	@RequestMapping(value="/support/formu"
 //			,method=RequestMethod.GET)
 //	public String formUpdate(NoticeVO vo, Model model) {

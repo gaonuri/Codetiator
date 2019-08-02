@@ -316,16 +316,8 @@
 						<tbody>
 						
 	                  	<tr>
-	                    <td>${mypagemem.user_login_time}${mypagemem.busi_login_time}</td>
-	                    <td>Mark</td>
-						</tr>
-	                  	<tr>
-	                    <td>${mypagemem.user_login_time}${mypagemem.busi_login_time}</td>
-	                    <td>Mark</td>
-						</tr>
-	                  	<tr>
-	                    <td>${mypagemem.user_login_time}${mypagemem.busi_login_time}</td>
-	                    <td>Mark</td>
+	                    <td>${historyIn.log_in_out_time}aaa</td>
+	                    <td>${historyOut.log_in_out_time}aaa</td>
 						</tr>
 						<tr>
 							<td class="condition-title">최근 3회 동안 접속하신 정보입니다.</td>

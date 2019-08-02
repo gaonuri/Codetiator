@@ -3,6 +3,7 @@ package kr.co.creator.login;
 import java.io.PrintWriter;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.session.SqlSession;
@@ -80,11 +81,21 @@ public class LoginController {
 	}//loginBusi 
 	
 	@RequestMapping(value="/logout", method=RequestMethod.GET)
-	public String logout(HttpSession session) {
+	public String logout(MemberVO vo, HttpSession session) {
 		logger.info("=== logout ===");
-		session.invalidate();
-		return "main/main";
+		
+		return "login/logoutTime";
 	}//logout
+	
+	@RequestMapping(value = "/logouttime", method = RequestMethod.POST)
+	public void logoutTime(MemberVO vo, HttpSession session, PrintWriter out, HttpServletRequest request) {
+		logger.info("=== logoutTime ===");
+		vo = (MemberVO)session.getAttribute("memVO");
+		sqlSession.insert("LoginMapper.logoutTime", vo);
+		session.invalidate();
+		out.flush();
+		out.close();
+	}//logoutTime
 	
 	@RequestMapping(value = "/findpwd", method=RequestMethod.GET)
 	public String findPwd() {
@@ -149,6 +160,34 @@ public class LoginController {
 		model.addAttribute("memberList", list);
 		return "login/login";
 	}//busi_user_list
+	
+	@RequestMapping(value="/historyin", method=RequestMethod.POST)
+	public void historyIn(HistoryVO vo, HttpSession session, PrintWriter out, Model model) {
+		logger.info("=== historyIn ===");
+		List<HistoryVO> list = null;
+		
+		list = sqlSession.selectList("LoginMapper.historyIn", list);
+		if((vo != null && vo.getBusi_num() != null && !vo.getBusi_num().equals("")) 
+				|| (vo != null && vo.getUser_num() != null && !vo.getUser_num().equals(""))) {
+		session.setAttribute("historyIn", vo);
+		}
+		out.flush();
+		out.close();
+	}//historyIn 
+	
+	@RequestMapping(value="/historyout", method=RequestMethod.POST)
+	public void historyOut(HistoryVO vo, HttpSession session, PrintWriter out, Model model) {
+		logger.info("=== historyOut ===");
+		List<HistoryVO> list = null;
+		
+		list = sqlSession.selectList("LoginMapper.historyOut", list);
+		if((vo != null && vo.getBusi_num() != null && !vo.getBusi_num().equals("")) 
+				|| (vo != null && vo.getUser_num() != null && !vo.getUser_num().equals(""))) {
+		session.setAttribute("historyOut", vo);
+		}
+		out.flush();
+		out.close();
+	}//historyOut 
 	
 }//class
 
