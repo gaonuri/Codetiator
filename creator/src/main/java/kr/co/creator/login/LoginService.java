@@ -42,5 +42,17 @@ public class LoginService {
 		return list;
 	}//busi_user_list
 
+	public List<HistoryVO> historyIn(HistoryVO hvo) {
+		List<HistoryVO> list = null;
+		list = loginDAO.historyIn(hvo);
+		return list;
+	}
+	
+	public List<HistoryVO> historyOut(HistoryVO hvo) {
+		List<HistoryVO> list = null;
+		list = loginDAO.historyOut(hvo);
+		return list;
+	}
+
 	
 }//class

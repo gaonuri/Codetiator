@@ -69,7 +69,7 @@
 		limit 3
 	</select>
 	
-	<select id="historyOut" parameterType="kr.co.creator.vo.HistoryVO" resultType="kr.co.creator.vo.HistoryVO">
+	<select id="historyOut" parameterType="kr.co.creator.vo.MemberVO" resultType="kr.co.creator.vo.HistoryVO">
 		select * 
 		from history 
 		where (user_num = #{user_num} AND log_in_out_type = '0') OR (busi_num = #{busi_num} AND log_in_out_type = '0')

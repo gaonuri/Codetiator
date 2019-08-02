@@ -35,9 +35,7 @@
 	<select id="loanList"
 		resultType="kr.co.creator.vo.ProjectVO">
 		select project_name
-		, 
 		from project_list
-		
 	</select>
 	
 	<select id="Account"
