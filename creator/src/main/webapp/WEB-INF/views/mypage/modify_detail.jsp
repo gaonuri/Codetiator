@@ -35,7 +35,43 @@
 	======================================================= -->
 	
 <script type="text/javascript">
-
+$(document).ready(function() {
+	$("#un_btn").click(function(){
+		var input = $("#member_password").val();
+		var numChk = $("#numChk").val();
+		var numChk1 = $("#numChk1").val();
+		
+		if($.trim(input) == ""){
+			alert("비밀번호를 입력하세요.");
+			$("#member_password").focus();
+			return;
+		}//user_paswword
+		
+		if(numChk) {
+			$.post(
+					"${pageContext.request.contextPath}/mypagemodifyu",
+					{
+						//user_num:hidden으로 가지고 있다가 가는 부분
+						user_num:$("#numChk").val(),
+						user_password:$("#member_password").val()
+					},
+					function(data,status){
+						if(status == "success"){
+							if(data > 0){
+								location.href="${pageContext.request.contextPath}/modify_detail?user_num=${memberVO.user_num}";
+							} else if(data == 0){
+								alert("비밀번호를 확인해 주세요.");
+							} else {
+								alert("잠시 후, 다시 시도해 주세요.");
+							}
+						} else {
+							alert("시스템 관리자에게 문의 바랍니다.");
+						}
+					}
+				);//post
+			} 
+	});//click
+});//ready
 </script>
 </head>
      
@@ -305,7 +341,6 @@
                 <h4><i class="fa fa-angle-right"></i>접속이력</h4>
 				<hr>
                 <div class="panel-body text-center">
-                
 					<table class="table condition-table">
 		                <thead>
 		                  <tr>
@@ -314,23 +349,23 @@
 		                  </tr>
 		                </thead>
 						<tbody>
+		                  	<tr>
+		                  		<td>
+									<c:forEach items="${hInList}" var="vo" varStatus="status">
+			                    		<a>${vo.log_in_out_time}<br><p><font size="2"></font></p></a>
+									</c:forEach>
+								</td>
+								<td>
+			                    	<c:forEach items="${hOutList}" var="vo" varStatus="status">
+										<a>${vo.log_in_out_time}<br><p><font size="2"></font></p></a>
+									</c:forEach>
+								</td>
+							</tr>
+								<tr>
+									<td class="condition-title">최근 3회 동안 접속하신 정보입니다.</td>
+									<td></td>
+								</tr>		
 						
-	                  	<tr>
-	                    <td>${mypagemem.user_login_time}${mypagemem.busi_login_time}</td>
-	                    <td>Mark</td>
-						</tr>
-	                  	<tr>
-	                    <td>${mypagemem.user_login_time}${mypagemem.busi_login_time}</td>
-	                    <td>Mark</td>
-						</tr>
-	                  	<tr>
-	                    <td>${mypagemem.user_login_time}${mypagemem.busi_login_time}</td>
-	                    <td>Mark</td>
-						</tr>
-						<tr>
-							<td class="condition-title">최근 3회 동안 접속하신 정보입니다.</td>
-							<td></td>
-						</tr>		
 						</tbody>
 					</table>
 					<div class="autoConditionSet" >

@@ -14,12 +14,20 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import kr.co.creator.login.EmailForm;
+import kr.co.creator.login.EmailSender;
+import kr.co.creator.login.FindUtil;
+import kr.co.creator.login.LoginService;
+import kr.co.creator.login.UtilForSession;
 import kr.co.creator.vo.AccountVO;
+import kr.co.creator.vo.FindPwdVO;
+import kr.co.creator.vo.HistoryVO;
 import kr.co.creator.vo.InOutVO;
 import kr.co.creator.vo.MemberListVO;
 import kr.co.creator.vo.MemberVO;
 import kr.co.creator.vo.MypageVO;
 import kr.co.creator.vo.ProjectVO;
+import kr.co.creator.vo.UserVO;
 
 @Controller
 public class MypageController {
@@ -31,6 +39,12 @@ public class MypageController {
 	
 	@Autowired
 	MypageService service;
+	
+	@Autowired
+	LoginService loginService;
+
+	@Autowired
+	private My_EmailSender emailSender;
 	
 	@RequestMapping(value = "/my_dashboard", method = RequestMethod.GET)
 	public String list(HttpSession session, Model model, MemberVO userVO, MypageVO myVO) {
@@ -55,10 +69,10 @@ public class MypageController {
 	@RequestMapping(value = "/my_loan_list", method = RequestMethod.GET)
 	public String loan(HttpSession session, Model model, MemberVO userVO, ProjectVO proVO) {
 		logger.info("my_loan_list");
-		userVO = (MemberVO)session.getAttribute("memberVO");
-		List<ProjectVO> loan= null;
-		loan = service.loan_list(userVO);
-		model.addAttribute("loanList",loan);
+//		userVO = (MemberVO)session.getAttribute("memberVO");
+//		List<ProjectVO> loan= null;
+//		loan = service.loan_list(userVO);
+//		model.addAttribute("loanList",loan);
 		return "mypage/my_loan_list";
 	}
 	
@@ -68,8 +82,10 @@ public class MypageController {
 		userVO = (MemberVO)session.getAttribute("memberVO");
 		AccountVO accVO = null;
 		InOutVO ioVO = null;
+		UserVO useVO = null;
 		accVO = service.account(userVO);
 		ioVO = service.inout(userVO);
+		useVO = service.user(userVO);
 		
 		model.addAttribute("acnt", accVO);
 		model.addAttribute("Inout",ioVO);
@@ -78,13 +94,46 @@ public class MypageController {
 		return "mypage/my_depo_mgn";
 	}
 	
+	@RequestMapping(value = "/emailcert", method = RequestMethod.POST)
+	public void sendCert(PrintWriter out, My_EmailForm form, My_FindUtil findUtil, FindPwdVO vo) throws Exception {
+		logger.info("=== sendEmailCertification ===");
+		int cnt = 0;
+		cnt = ((MypageService) sqlSession).emailcert(vo);
+		if(cnt > 0) {
+			String newPassword, user_name;
+			newPassword = findUtil.getRamdomCert(8);
+			user_name = sqlSession.selectOne("LoginMapper.selectName", vo);
+			vo.setNewPassword(newPassword);
+			vo.setUser_name(user_name);
+			form.setContent("인증번호를 드립니다."
+							+ " 인증번호는 " + newPassword + " 입니다");
+			form.setSubject("안녕하세요 " + vo.getUser_name() + "님 임시비밀번호를 확인해 주세요");
+			form.setReceiver(vo.getEmail());
+			emailSender.My_EmailSender(form);
+		}
+		if(cnt > 0) {
+			System.out.println(vo.getEmail());
+			out.print(cnt);
+			out.flush();
+			out.close();
+		}
+		out.print(cnt);
+		out.flush();
+		out.close();
+	}//sendCert	
+	
+	@RequestMapping(value = "/my_modify", method = RequestMethod.GET)
+	public String my_modify() {
+		logger.info("my_modify");
+		
+		return "mypage/my_modify";
+	}
+	
 	@RequestMapping(value = "/mypagemodifyu", method = RequestMethod.POST)
 	public void myPageModifyU(HttpSession session, PrintWriter out, MemberListVO vo) {
 		logger.info("=== myPageModifyU ===");
 		vo = sqlSession.selectOne("MypageMapper.MyPageModifyU", vo);
-		System.out.println("@@@@@@@@@@@@@@ :" + vo );
 		int cnt = 0;
-//		successCnt = service.myPageModify(vo);
 		if(vo != null && vo.getUser_num() != null && !vo.getUser_num().equals("")) {
 			cnt = 1;
 			session.setAttribute("mypagemem", vo);
@@ -98,9 +147,7 @@ public class MypageController {
 	public void myPageModifyB(HttpSession session, PrintWriter out, MemberListVO vo) {
 		logger.info("=== myPageModifyB ===");
 		vo = sqlSession.selectOne("MypageMapper.MyPageModifyB", vo);
-		System.out.println("@@@@@@@@@@@@@@ :" + vo );
 		int cnt = 0;
-//		successCnt = service.myPageModify(vo);
 		if(vo != null && vo.getBusi_num() != null && !vo.getBusi_num().equals("")) {
 			cnt = 1;
 			session.setAttribute("mypagemem", vo);
@@ -111,34 +158,20 @@ public class MypageController {
 	}//myPageModifyB
 	
 	@RequestMapping(value = "/modify_detail", method = RequestMethod.GET)
-	public String modify_detail() {
+	public String modify_detail(HttpSession session, Model model, HistoryVO hvo, AccountVO avo) {
 		logger.info("modify_detail");
-		
+		if(UtilForSession.chkSession(session) == false) {
+			return "redirect:/main";
+		} else {
+			List<HistoryVO> hInList = loginService.historyIn(hvo);
+			model.addAttribute("hInList", hInList);
+			List<HistoryVO> hOutList = loginService.historyOut(hvo);
+			model.addAttribute("hOutList", hOutList);
+			avo = sqlSession.selectOne("MypageMapper.MyPageBank", avo);
+			model.addAttribute("mypagebank", avo);
+		}
 		return "mypage/modify_detail";
 	}
-	
-	@RequestMapping(value = "/my_modify", method = RequestMethod.GET)
-	public String my_modify() {
-		logger.info("my_modify");
-		
-		return "mypage/my_modify";
-	}
-	
-	@RequestMapping(value="/mypagebank", method=RequestMethod.POST)
-	public void myPageBank(HttpSession session, PrintWriter out, AccountVO vo) {
-		logger.info("=== myPageBank ===");
-		vo = sqlSession.selectOne("MypageMapper.MyPageBank", vo);
-		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!! :" + vo );
-		int cnt = 0;
-		if((vo != null && vo.getBusi_num() != null && !vo.getBusi_num().equals("")) 
-				|| (vo != null && vo.getUser_num() != null && !vo.getUser_num().equals(""))) {
-			cnt = 1;
-			session.setAttribute("mypagebank", vo);
-		}
-		out.print(cnt);
-		out.flush();
-		out.close();	
-	}//myPageBank
 	
 	
 }//class

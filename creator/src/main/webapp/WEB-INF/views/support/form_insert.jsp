@@ -5,8 +5,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>form_insert5.jsp</title>
-<script src="../resources/jquery/jquery-3.4.1.js"></script>
+<title>새소식</title>
+<script src="${pageContext.request.contextPath}/resources/jquery/jquery-3.4.1.js"></script>
 <script src="https://cdn.ckeditor.com/4.12.1/basic/ckeditor.js"></script>
 <script>
 $(document).ready(function() {
@@ -16,10 +16,16 @@ $(document).ready(function() {
 			alert("제목을 확인하세요.");
 			return;
 		}
-		$.post("${pageContext.request.contextPath}/support/insert"
+		var cnts = CKEDITOR.instances.cnts;
+// 		if(cnts.getData() == ""){
+// 			alert("내용을 확인 하세요.");
+// 			cnts.focus();
+// 			return;
+// 		}
+		$.post("${pageContext.request.contextPath}/insert"
 				,{
 					title:$("#title").val()
-					,notice_contents:$("#cnts").val()
+					,notice_contents:cnts.getData()//$("#cnts").val()
 				}//data
 				,function(data,status){
  				//alert(data); alert(status);

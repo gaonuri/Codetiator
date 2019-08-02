@@ -42,10 +42,17 @@ public class LoginDAO {
 		return list;
 	}//busi_user_list
 
-	public int historyTime(HistoryVO vo1) {
-		int cnt = 0;
-		cnt = sqlSession.insert("LoginMapper.historyTime",vo1);
-		return cnt;
+	public List<HistoryVO> historyIn(HistoryVO hvo) {
+		List<HistoryVO> list = null;
+		list = sqlSession.selectList("LoginMapper.historyIn", hvo);
+		return list;
 	}
+	
+	public List<HistoryVO> historyOut(HistoryVO hvo) {
+		List<HistoryVO> list = null;
+		list = sqlSession.selectList("LoginMapper.historyOut", hvo);
+		return list;
+	}
+
 	
 }//class

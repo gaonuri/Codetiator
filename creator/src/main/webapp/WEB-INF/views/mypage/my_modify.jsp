@@ -38,6 +38,7 @@ $(document).ready(function() {
 	$("#un_btn").click(function(){
 		var input = $("#member_password").val();
 		var numChk = $("#numChk").val();
+		var numChk1 = $("#numChk1").val();
 		
 		if($.trim(input) == ""){
 			alert("비밀번호를 입력하세요.");
@@ -47,7 +48,7 @@ $(document).ready(function() {
 		
 		if(numChk) {
 			$.post(
-					"./mypagemodifyu",
+					"${pageContext.request.contextPath}/mypagemodifyu",
 					{
 						//user_num:hidden으로 가지고 있다가 가는 부분
 						user_num:$("#numChk").val(),
@@ -74,7 +75,8 @@ $(document).ready(function() {
 $(document).ready(function() {
 	$("#un_btn1").click(function(){
 		var input = $("#member_password").val();
-		var numChk = $("#numChk1").val();
+		var numChk = $("#numChk").val();
+		var numChk1 = $("#numChk1").val();
 		
 		if($.trim($("#member_password").val()) == ""){
 			alert("비밀번호를 입력하세요.");
@@ -82,7 +84,7 @@ $(document).ready(function() {
 			return;
 		}//user_paswword
 		
-		if(numChk) {
+		if(numChk1) {
 			$.post(
 					"./mypagemodifyb",
 					{
@@ -214,8 +216,6 @@ $(document).ready(function() {
 </section>
    	<input type="hidden" id="numChk" value="${mypageVO.user_num}"/>
 	<input type="hidden" id="numChk1" value="${mypageVO.busi_num}"/>
-    <input type="hidden" id="numChk2" value="${mypagebank.user_num}"/>
-    
 		
 		<!--footer start-->
 		<footer class="site-footer">

@@ -1,6 +1,25 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<head>
+<script type="text/javascript">
+$(document).ready(function(){
+	$("#logout_btn").click(function(){
+
+		$.post(
+				"./logouttime",
+				{
+					user_num:$("#user_num").val(),
+					busi_num:$("#busi_num").val()
+				},
+				function(data,status){
+				}
+		);//post
+	});//click
+});//ready
+
+</script>
+</head>
 	    <!--header start-->
 	    <header class="header black-bg">
 			<!--logo start-->
@@ -139,8 +158,8 @@
 					
 					<c:choose>
 						<c:when test="${memberVO != null && memberVO.user_num != '' || memberVO != null && memberVO.busi_num != ''}">
-							<li id="logout">
-								<a href="${pageContext.request.contextPath}/logout">로그아웃</a>
+							<li id="logout_btn">
+								<a href="${pageContext.request.contextPath}/login">로그아웃</a>
 							</li>
 						</c:when>
 						<c:otherwise>

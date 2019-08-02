@@ -11,6 +11,7 @@ import kr.co.creator.vo.InOutVO;
 import kr.co.creator.vo.MemberVO;
 import kr.co.creator.vo.MypageVO;
 import kr.co.creator.vo.ProjectVO;
+import kr.co.creator.vo.UserVO;
 
 @Service
 public class MypageService {
@@ -53,6 +54,19 @@ public class MypageService {
 		cnt = dao.myPageModifyB(vo);
 		return cnt; 
 	}//myPageModifyB	
+
+	public UserVO user(MemberVO userVO) {
+		UserVO useVO = null;
+		useVO = (UserVO) dao.user(userVO);
+		return useVO;
+	}
+	
+	public int emailcert(FindPwdVO vo) {
+		System.out.println(vo.getEmail());
+		int cnt = 0;
+		cnt = dao.emailcert(vo);
+		return cnt; 
+	}//findPwdChk
 
 	
 }//class

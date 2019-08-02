@@ -57,6 +57,19 @@ public class MypageDAO {
 		return cnt;
 	}//myPageModifyB
 
+	public UserVO user(MemberVO userVO) {
+		UserVO useVO = null;
+		useVO = sqlSession.selectOne("MypageMapper.User", userVO);
+		return useVO;
+	}
+
+	public int emailcert(FindPwdVO vo) {
+		int cnt = 0;
+		cnt = sqlSession.selectOne("LoginMapper.findPwdChk", vo);
+		return cnt;
+	}//findPwdChk
+
+
 	
 }//class
 

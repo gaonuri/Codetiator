@@ -13,6 +13,12 @@ public class MainService {
 	@Autowired
 	MainDAO mainDAO;
 
+//	public List<ProjectVO> project_list(ProjectVO proVO) {
+//		List<ProjectVO> list = mainDAO.project_list(proVO);
+//
+//		return list;
+//	}//project_list
+	
 	public List<ProjectVO> project_list1() {
 		List<ProjectVO> list1 = mainDAO.project_list1();
 

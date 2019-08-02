@@ -33,7 +33,6 @@
 	  Author: TemplateMag.com
 	  License: https://templatemag.com/license/
 	======================================================= -->
-	
 	<script type="text/javascript">
 	$(document).ready(function() {
 		var temp = 0;
@@ -89,7 +88,11 @@
 			if(deposit > limit) {
 				alert("예치금 잔액에 초과한 금액입니다.");
 			}
-		}
+		}//depositLimit
+		
+		$("#").ready(function() {
+			
+		});
 	});//ready
 	</script>
 </head>
@@ -166,7 +169,7 @@
 																</div>
 																<div style="padding:20px 0;">
 																
-																	<button type="button" class="btn btn-purple-transparent btn-block" onclick="fn_checkNiceCert()">
+																	<button type="button" class="btn btn-purple-transparent btn-block" data-toggle="modal" data-target="#btn_cert" >
 																		예치금 계좌 발급을 위해 본인 인증하기
 																	</button>
 																
@@ -514,8 +517,9 @@
 										<input type="hidden" name="m" value="checkplusSerivce">	<!-- 필수 데이타로, 누락하시면 안됩니다. -->
 										<input type="hidden" id="EncodeData" name="EncodeData" value="">	<!-- 위에서 업체정보를 암호화 한 데이타입니다. -->
 									</form>
-						<!-- 예치금 계좌 발급 Modal -->
-						<div class="modal fade" id="vtAcntModal" role="dialog" aria-labelledby="vtAcntModalLabel" aria-hidden="true">
+
+									<!-- 예치금 계좌 발급 Modal -->
+						<div class="modal fade" id="btn_cert"  name="cert" role="dialog" aria-labelledby="vtAcntModalLabel" aria-hidden="true">
 							<div class="modal-dialog">
 								<div class="modal-content">
 									<div class="modal-header">
@@ -539,7 +543,258 @@
 										<div class="row">
 											<div class="form-group col-xs-5 col-sm-5 col-md-3">
 												<label for="cusNm" class="control-label">예금주</label>
-												<input class="form-control" id="cusNm" type="text" value="김도엽" readonly="">
+												<input class="form-control" id="cusNm" type="text" value="${acnt.account_name}" readonly="">
+											</div>
+											<div class="form-group col-xs-7 col-sm-7 col-md-4">
+												<label for="cusBankCdSelect" class="control-label">은행명</label>
+												<select id="cusBankCdSelect" class="form-control" name="cusBankCd">
+													<option value="">선택하세요</option>
+													
+														
+															
+																<option value="002">산업은행</option>
+															
+																<option value="003">기업은행</option>
+															
+																<option value="004">국민은행</option>
+															
+																<option value="007">수협중앙회</option>
+															
+																<option value="008">수출입은행</option>
+															
+																<option value="010">농협</option>
+															
+																<option value="011">농협중앙회</option>
+															
+																<option value="012">지역농·축협</option>
+															
+																<option value="020">우리은행</option>
+															
+																<option value="023">SC제일은행</option>
+															
+																<option value="027">한국씨티은행</option>
+															
+																<option value="031">대구은행</option>
+															
+																<option value="032">부산은행</option>
+															
+																<option value="034">광주은행</option>
+															
+																<option value="035">제주은행</option>
+															
+																<option value="037">전북은행</option>
+															
+																<option value="039">경남은행</option>
+															
+																<option value="045">새마을금고중앙회</option>
+															
+																<option value="048">신협중앙회</option>
+															
+																<option value="050">상호저축은행</option>
+															
+																<option value="052">모건스탠리은행</option>
+															
+																<option value="054">HSBC은행</option>
+															
+																<option value="055">도이치은행</option>
+															
+																<option value="057">제이피모간체이스은행</option>
+															
+																<option value="058">미즈호은행</option>
+															
+																<option value="059">미쓰비시도쿄UFJ은행</option>
+															
+																<option value="060">BOA은행</option>
+															
+																<option value="061">비엔피파리바은행</option>
+															
+																<option value="062">중국공상은행</option>
+															
+																<option value="063">중국은행</option>
+															
+																<option value="065">대화은행</option>
+															
+																<option value="066">교통은행</option>
+															
+																<option value="071">우체국</option>
+															
+																<option value="081">KEB하나은행</option>
+															
+																<option value="088">신한은행</option>
+															
+																<option value="089">케이뱅크</option>
+															
+																<option value="090">카카오뱅크</option>
+															
+																<option value="096">한국전자금융(주)</option>
+															
+																<option value="102">대신저축은행</option>
+															
+																<option value="103">에스비아이저축은행</option>
+															
+																<option value="104">에이치케이저축은행</option>
+															
+																<option value="105">웰컴저축은행</option>
+															
+																<option value="209">유안타증권</option>
+															
+																<option value="218">KB증권</option>
+															
+																<option value="221">골든브릿지투자증권</option>
+															
+																<option value="222">한양증권</option>
+															
+																<option value="223">리딩투자증권</option>
+															
+																<option value="224">BNK투자증권</option>
+															
+																<option value="225">IBK투자증권</option>
+															
+																<option value="227">KTB투자증권</option>
+															
+																<option value="238">미래에셋대우</option>
+															
+																<option value="240">삼성증권</option>
+															
+																<option value="243">한국투자증권</option>
+															
+																<option value="247">NH투자증권</option>
+															
+																<option value="261">교보증권</option>
+															
+																<option value="262">하이투자증권</option>
+															
+																<option value="263">HMC투자증권</option>
+															
+																<option value="264">키움증권</option>
+															
+																<option value="265">이베스트투자증권</option>
+															
+																<option value="266">SK증권</option>
+															
+																<option value="267">대신증권</option>
+															
+																<option value="269">한화투자증권</option>
+															
+																<option value="270">하나금융투자</option>
+															
+																<option value="278">신한금융투자</option>
+															
+																<option value="279">동부증권</option>
+															
+																<option value="280">유진투자증권</option>
+															
+																<option value="287">메리츠종합금융증권</option>
+															
+																<option value="290">부국증권</option>
+															
+																<option value="291">신영증권</option>
+															
+																<option value="292">케이프투자증권</option>
+															
+																<option value="293">한국증권금융</option>
+															
+																<option value="294">펀드온라인코리아</option>
+															
+																<option value="295">우리종합금융</option>
+															
+																<option value="296">삼성선물</option>
+															
+																<option value="297">외환선물</option>
+															
+																<option value="298">현대선물</option>
+												</select>
+											</div>
+											<div class="form-group col-xs-12 col-sm-12 col-md-5">
+												<label for="cusAccount" class="control-label">계좌번호</label>
+												<input type="text" class="form-control" id="cusAccount" maxlength="14">
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-xs-12 col-sm-12 col-md-12">
+												<span class="modal-body-strong">*출금계좌란?</span>
+												<span class="modal-body-light">&nbsp;투자 원리금 및 상환 수익금을 출금받으실 계좌입니다.</span>
+											</div>
+											<div class="col-xs-12 col-sm-12 col-md-12">
+												<span class="modal-body-strong">*카카오뱅크를 이용하신다면?</span>
+												<span class="modal-body-light">&nbsp;자유적금 계좌는 출금처리가 되지 않으니 입출금통장 계좌로 등록하시기 바랍니다.</span>
+											</div>
+											<div class="col-xs-12 col-sm-12 col-md-12 display-none" id="cusGb02Div">
+												<span class="modal-body-strong">*사업자고객일 경우 거래은행 정책에 따라 예금주명이 변경될 수 있습니다.</span>
+											</div>
+										</div>
+										<div id="pInfDiv" style="">
+											<hr>
+											<div class="row">
+												<div class="col-xs-12 col-sm-12 col-md-12">
+													<div class="modal-body-title">
+														개인정보 등록
+													</div>
+												</div>
+											</div>
+											<div class="row">
+												<div class="form-group col-xs-6 col-sm-6 col-md-6">
+													<label for="mpNo" class="control-label">휴대전화번호</label>
+													<input class="form-control" id="mpNo" type="text" maxlength="11" readonly="">
+												</div>
+												<div class="form-group col-xs-6 col-sm-6 col-md-6">
+													<label for="ssnNo" class="control-label">주민등록번호</label>
+													<input class="form-control" id="ssnNo" type="text" maxlength="13">
+													<input type="hidden" id="ci" value="">
+												</div>
+											</div>
+											<div class="row">
+												<div class="col-xs-12 col-sm-12 col-md-12">
+													<span class="modal-body-strong">※ 왜 주민등록번호가 필요한가요?</span>
+													<span class="modal-body-light">&nbsp;주민등록번호는 현행 세법상 원천징수 납부에 사용됩니다.</span>
+												</div>
+												<div class="clearfix"></div>
+												<div class="col-xs-12 col-sm-12 col-md-12">
+													<span class="modal-body-light font-purple">&nbsp;주민등록번호 없이도 사이트 이용은 가능하며 최초 투자시 한 번만 등록하시면 됩니다.</span>
+												</div>
+												<div class="clearfix"></div>
+												<div class="col-xs-12 col-sm-12 col-md-12">
+													<span class="modal-body-strong">※ 미성년자는 가상계좌 발급시 추가 인증이 필요합니다.</span>
+													<span class="modal-body-light">&nbsp;<a href="https://www.midrate.co.kr/info/noticeDetail/43" target="_blank">공지사항</a>을 참고하세요.</span>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="modal-footer">
+										<button type="button" class="btn btn-purple-transparent" onclick="fn_insertVtAcnt()">예치금 계좌 발급받기</button>
+									</div>
+								</div>
+								<!-- /.modal-content -->
+							</div>
+							<!-- /.modal-dialog -->
+						</div>
+
+						<!-- 예치금 계좌 발급 Modal -->
+						<div class="modal fade" id="btn_cert"  name="cert" role="dialog" aria-labelledby="vtAcntModalLabel" aria-hidden="true">
+							<div class="modal-dialog">
+								<div class="modal-content">
+									<div class="modal-header">
+										<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+											<span aria-hidden="true">×</span>
+										</button>
+										<div class="modal-title" id="vtAcntModalLabel">
+											<div style="">
+												예치금 계좌 발급을 위한 정보를 입력하여 주십시오
+											</div>
+										</div>
+									</div>
+									<div class="modal-body">
+										<div class="row">
+											<div class="col-xs-12 col-sm-12 col-md-12">
+												<div class="modal-body-title">
+													출금계좌 등록
+												</div>
+											</div>
+										</div>
+										<div class="row">
+											<div class="form-group col-xs-5 col-sm-5 col-md-3">
+												<label for="cusNm" class="control-label">예금주</label>
+												<input class="form-control" id="cusNm" type="text" value="${acnt.account_name}" readonly="">
 											</div>
 											<div class="form-group col-xs-7 col-sm-7 col-md-4">
 												<label for="cusBankCdSelect" class="control-label">은행명</label>
@@ -783,6 +1038,30 @@
 	    <input type="hidden" id="invest_limit" value="${acnt.deposit}" />					<!-- 예치금한도 -->
 	    <!-- hidden value -->
     
+		<div class="modal fade" id="eventModal" role="dialog" aria-labelledby="eventModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">×</span>
+					</button>
+					<h4 class="modal-title" id="eventModalLabel">가상계좌 관련기능 제한 안내</h4>
+				</div>
+				<div class="modal-body">
+					<div class="modal-body-img event">
+						<p style="font-size: 16px;">
+							NH오픈플랫폼 서버점검에 따라 <strong>7/17 00~06:00</strong>까지 가상계좌 발급 및 예치금 충전이 제한됩니다.
+						</p>
+					</div>
+				</div>
+				<div class="modal-footer event">
+					<span aria-hidden="true" class="close1day" id="close1day">오늘 하루 이 팝업 열지 않기</span>
+				</div>
+			</div>
+		</div>
+	</div>
+		
+		
 		
 		<!--footer start-->
 		<footer class="site-footer">

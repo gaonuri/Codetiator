@@ -2,7 +2,9 @@ package kr.co.creator.login;
 
 import java.io.PrintWriter;
 import java.util.List;
+import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.session.SqlSession;
@@ -80,11 +82,21 @@ public class LoginController {
 	}//loginBusi 
 	
 	@RequestMapping(value="/logout", method=RequestMethod.GET)
-	public String logout(HttpSession session) {
+	public String logout(MemberVO vo, HttpSession session) {
 		logger.info("=== logout ===");
-		session.invalidate();
-		return "main/main";
+		
+		return "login/logoutTime";
 	}//logout
+	
+	@RequestMapping(value = "/logouttime", method = RequestMethod.POST)
+	public void logoutTime(MemberVO vo, HttpSession session, PrintWriter out, HttpServletRequest request) {
+		logger.info("=== logoutTime ===");
+		vo = (MemberVO)session.getAttribute("memVO");
+		sqlSession.insert("LoginMapper.logoutTime", vo);
+		session.invalidate();
+		out.flush();
+		out.close();
+	}//logoutTime
 	
 	@RequestMapping(value = "/findpwd", method=RequestMethod.GET)
 	public String findPwd() {
@@ -149,7 +161,7 @@ public class LoginController {
 		model.addAttribute("memberList", list);
 		return "login/login";
 	}//busi_user_list
-	
+
 }//class
 
 
