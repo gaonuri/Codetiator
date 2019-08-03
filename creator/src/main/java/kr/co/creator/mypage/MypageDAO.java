@@ -63,9 +63,9 @@ public class MypageDAO {
 		return useVO;
 	}
 
-	public int emailcert(FindPwdVO vo) {
+	public int emailcert(String email) {
 		int cnt = 0;
-		cnt = sqlSession.selectOne("LoginMapper.findPwdChk", vo);
+		cnt = sqlSession.selectOne("LoginMapper.findPwdChk", email);
 		return cnt;
 	}//findPwdChk
 
