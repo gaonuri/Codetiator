@@ -36,31 +36,34 @@
 	
 <script type="text/javascript">
 $(document).ready(function() {
-	$("#un_btn").click(function(){
-		var input = $("#member_password").val();
+	$("#userDataUpdate").click(function(){
+		window.open('${pageContext.request.contextPath}/my_popup','','menubar=no,width=450,height=350');
+	});//click
+});//ready
+
+$(document).ready(function() {
+	$("#updatePassBtn").click(function(){
 		var numChk = $("#numChk").val();
 		var numChk1 = $("#numChk1").val();
 		
-		if($.trim(input) == ""){
-			alert("비밀번호를 입력하세요.");
-			$("#member_password").focus();
+		if($("#updatePassword").val() != $("#updatePassword1").val()){
+			alert("비밀번호를 똑같이 입력해 주세요.");
+			$("#updatePassword").focus();
 			return;
-		}//user_paswword
-		
-		if(numChk) {
+		}
 			$.post(
-					"${pageContext.request.contextPath}/mypagemodifyu",
+					"${pageContext.request.contextPath}/updatepass",
 					{
-						//user_num:hidden으로 가지고 있다가 가는 부분
 						user_num:$("#numChk").val(),
-						user_password:$("#member_password").val()
+						user_password:$("#updatePassword").val()
 					},
 					function(data,status){
 						if(status == "success"){
 							if(data > 0){
-								location.href="${pageContext.request.contextPath}/modify_detail?user_num=${memberVO.user_num}";
+								alert("@@@@@@@@@@@@@@@@@@@@@@@@@");
 							} else if(data == 0){
-								alert("비밀번호를 확인해 주세요.");
+								alert("변경 되었습니다.");
+								location.href="${pageContext.request.contextPath}/my_modify";
 							} else {
 								alert("잠시 후, 다시 시도해 주세요.");
 							}
@@ -69,9 +72,41 @@ $(document).ready(function() {
 						}
 					}
 				);//post
+	});//click
+});//ready
+
+$(document).ready(function() {
+	$("#deleteUserBtn").click(function(){
+		var numChk = $("#numChk").val();
+		var numChk1 = $("#numChk1").val();
+		if(confirm("정말로 탈퇴 하시겠습니까??") == true) {
+			$.post(
+					"${pageContext.request.contextPath}/deleteuser",
+					{
+						user_num:$("#numChk").val(),
+					},
+					function(data,status){
+						if(status == "success"){
+							if(data > 0){
+								alert("@@@@@@@@@@@@@@@@@@@@@@@@@");
+							} else if(data == 0){
+								alert("그동안 크리에이터를 이용해 주셔서 감사합니다.");
+								location.href="${pageContext.request.contextPath}/login";
+							} else {
+								alert("잠시 후, 다시 시도해 주세요.");
+							}
+						} else {
+							alert("시스템 관리자에게 문의 바랍니다.");
+						}
+					}
+				);//post
+			} else{
+				return false;
 			} 
 	});//click
 });//ready
+
+
 </script>
 </head>
      
@@ -141,8 +176,13 @@ $(document).ready(function() {
 					<tr>
 					<td class="condition-title">이름</td>
 						<td class="condition-content">
+<<<<<<< HEAD
+							<input type="text" class="form-control" id="cusNm" maxlength="50" readonly="readonly" value="${mypagemem.user_name}${mypagedetail.manager_name}">
+=======
 							<input type="text" class="form-control" id="cusNm" maxlength="50" value="${mypagemem.user_name}${mypagedetail.manager_name}" readonly="readonly">
+>>>>>>> branch 'master' of https://github.com/gaonuri/Codetiator.git
 						</td>
+<<<<<<< HEAD
 					</tr>
 					<tr>
 					<td class="condition-title">이메일</td>
@@ -151,6 +191,10 @@ $(document).ready(function() {
 						</td>
 						<td>
 							<button type="button" class="btn btn-purple-transparent" onclick="fn_updateEmail()" id="updateEmailBtn">변경</button>
+=======
+						<td>
+							<button type="button" class="btn btn-purple-transparent" id="userDataUpdate" name="userDataUpdate">변경</button>
+>>>>>>> branch 'master' of https://github.com/gaonuri/Codetiator.git
 						</td>
 					</tr>
 					<tr>
@@ -160,7 +204,7 @@ $(document).ready(function() {
 							<input type="hidden" id="ci">
 						</td>
 						<td>
-							<button type="button" class="btn btn-purple-transparent" onclick="fn_checkNiceCert()" id="updateCusNmBtn">변경</button>
+<!-- 							<button type="button" class="btn btn-purple-transparent" id="userDataUpdate" name="userDataUpdate">변경</button> -->
 						</td>
 						<td>
 							<!-- 본인인증 서비스 팝업을 호출하기 위해서는 다음과 같은 form이 필요합니다. -->
@@ -173,7 +217,17 @@ $(document).ready(function() {
 					
 					<tr>
 						<td class="condition-title">주민등록번호</td>
-						<td class="condition-content">${mypagemem.jumin}${mypagemem.manager_birth}</td>
+						<td class="condition-content">
+							<input type="text" class="form-control" id="email" maxlength="50" readonly="readonly" value="${mypagemem.jumin}${mypagemem.manager_birth}"></td>
+						<td>
+<!-- 							<button type="button" class="btn btn-purple-transparent" id="userDataUpdate" name="userDataUpdate">변경</button> -->
+						</td>
+					</tr>
+					<tr>
+					<td class="condition-title">이메일</td>
+						<td class="condition-content">
+							<input type="text" class="form-control" id="email" maxlength="50" readonly="readonly" value="${mypagemem.email}${mypagedetail.manager_email}">
+						</td>
 						<td></td>
 					</tr>
 					
@@ -273,7 +327,7 @@ $(document).ready(function() {
 						</tbody>
 					</table>
 					<div class="autoConditionSet" >
-						<button type="button" class="btn btn-purple-transparent btn-block" onclick="fn_updateCusAccount()" id="updateCusAccountBtn">계좌 정보 저장</button>
+						<button type="button" class="btn btn-purple-transparent btn-block" onclick="fn_updateCusAccount()" id="updateCusAccountBtn">예치금 계좌 발급</button>
 					</div><br>
                 </div>
               </div>
@@ -306,7 +360,7 @@ $(document).ready(function() {
 							<td class="condition-title">새 비밀번호
 							</td>
 							<td class="condition-content">
-								<input type="password" class="form-control" id="cusAccount" maxlength="14">
+								<input type="password" class="form-control" id="updatePassword" maxlength="14">
 							</td>
 							<td></td>
 						</tr>
@@ -315,14 +369,14 @@ $(document).ready(function() {
 							<td class="condition-title">비밀번호 확인
 							</td>
 							<td class="condition-content">
-								<input type="password" class="form-control" id="cusAccount" maxlength="14">
+								<input type="password" class="form-control" id="updatePassword1" maxlength="14">
 							</td>						
 							<td></td>
 						</tr>
 						</tbody>
 					</table>
 					<div class="autoConditionSet" >
-						<button type="button" class="btn btn-purple-transparent btn-block" onclick="fn_updateCusAccount()" id="updateCusAccountBtn">새 비밀번호 저장</button>
+						<button type="button" class="btn btn-purple-transparent btn-block" onclick="fn_updateCusAccount()" id="updatePassBtn">새 비밀번호 저장</button>
 					</div>
 					<br><br>                
                 
@@ -365,9 +419,11 @@ $(document).ready(function() {
 						
 						</tbody>
 					</table>
+					<form name="removeuser">
 					<div class="autoConditionSet" >
-						<button type="button" class="btn btn-purple-transparent btn-block" onclick="fn_updateCusAccount()" id="updateCusAccountBtn">회원 탈퇴</button>
+						<button type="button" class="btn btn-purple-transparent btn-block" onclick="removeCheck()" id="deleteUserBtn">회원 탈퇴</button>
 					</div>
+					</form>
 					<br><br>                  
                 
                 </div>
@@ -377,6 +433,8 @@ $(document).ready(function() {
 	</section>
 </section>   
 
+   	<input type="hidden" id="numChk" value="${memVO.user_num}"/>
+	<input type="hidden" id="numChk1" value="${memVO.busi_num}"/>
 
 
  

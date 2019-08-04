@@ -69,6 +69,18 @@ public class MypageDAO {
 		return cnt;
 	}//findPwdChk
 
+	public int userDataUpdate(MemberVO vo) {
+		int cnt = 0;
+		cnt = sqlSession.update("MypageMapper.UserDataUpdate", vo);
+		return cnt;
+	}
+	
+	public int userDataUpdate1(MemberVO vo) {
+		int cnt1 = 0;
+		cnt1 = sqlSession.update("MypageMapper.UserDataUpdate1", vo);
+		return cnt1;
+	}
+
 
 	
 }//class

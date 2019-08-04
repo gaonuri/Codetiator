@@ -85,6 +85,30 @@
 		where user_num = #{user_num} or busi_num = #{busi_num} 
 	</select>	
 	
+	<update id="UserDataUpdate" parameterType="kr.co.creator.vo.MemberVO">
+		update user_list 
+		set user_name = #{user_name}, jumin = #{jumin}, phone = #{phone}  
+		where user_num = #{user_num}
+	</update>
+	
+	<update id="UserDataUpdate1" parameterType="kr.co.creator.vo.MemberVO">
+		update user_list 
+		set manager_name = #{manager_name}, manager_birth = #{manager_birth}, manager_phone = #{manager_phone}  
+		where busi_num = #{busi_num}
+	</update>
+	
+	<update id="UpdatePass" parameterType="kr.co.creator.vo.MemberVO">
+		update user_list 
+		set user_password = #{user_password} 
+		where user_num = #{user_num}
+	</update>
+	
+	<delete id="Deleteuser" parameterType="kr.co.creator.vo.MemberVO">
+		delete from user_list 
+		where user_num = #{user_num}
+	</delete>
+	
+	
 	
 </mapper>
 

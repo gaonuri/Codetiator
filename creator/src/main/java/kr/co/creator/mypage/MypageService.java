@@ -68,6 +68,18 @@ public class MypageService {
 		return cnt; 
 	}//findPwdChk
 
+	public int userDataUpdate(MemberVO vo) {
+		int cnt = 0;
+		cnt = dao.userDataUpdate(vo);
+		return cnt; 
+	}
+	
+	public int userDataUpdate1(MemberVO vo) {
+		int cnt1 = 0;
+		cnt1 = dao.userDataUpdate1(vo);
+		return cnt1; 
+	}
+
 	
 }//class
 
