@@ -173,6 +173,52 @@ public class MypageController {
 		return "mypage/modify_detail";
 	}
 	
+	@RequestMapping(value = "/my_popup", method = RequestMethod.GET)
+	public String popup1(HttpSession session) throws Exception {
+		
+    	return "mypage/my_popup";
+    }
+	
+	@RequestMapping(value="/userdataupdate", method=RequestMethod.POST)
+	public void userDataUpdate(HttpSession session, PrintWriter out, MemberVO vo) {
+		logger.info("=== userDataUpdate ===");
+		vo = (MemberVO)session.getAttribute("memberVO");
+		int cnt = 0;
+		cnt = service.userDataUpdate(vo);
+		int cnt1 = 0;
+		cnt1 = service.userDataUpdate1(vo);
+		out.print(vo);
+		out.flush();
+		out.close();	
+	}//userDataUpdate
+	
+	@RequestMapping(value="/updatepass", method=RequestMethod.POST)
+	public void updatePass(HttpSession session, PrintWriter out, MemberVO vo) {
+		logger.info("=== updatePass ===");
+		vo = sqlSession.selectOne("MypageMapper.UpdatePass", vo);
+		int cnt = 0;
+		if(vo != null && vo.getUser_num() != null && !vo.getUser_num().equals("")) {
+			cnt = 1;
+		}
+		out.print(cnt);
+		out.flush();
+		out.close();	
+	}//updatePass
+	
+	@RequestMapping(value="/deleteuser", method=RequestMethod.POST)
+	public void deleteUser(HttpSession session, PrintWriter out, MemberVO vo) {
+		logger.info("=== deleteUser ===");
+		vo = sqlSession.selectOne("MypageMapper.Deleteuser", vo);
+		int cnt = 0;
+		if(vo != null && vo.getUser_num() != null && !vo.getUser_num().equals("")) {
+			cnt = 1;
+		}
+		out.print(cnt);
+		out.flush();
+		out.close();	
+	}//deleteUser
+	
+	
 	
 }//class
 
