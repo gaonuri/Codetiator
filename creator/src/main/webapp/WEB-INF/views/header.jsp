@@ -6,8 +6,7 @@
 $(document).ready(function(){
 	$("#logout_btn").click(function(){
 
-		$.post(
-				"./logouttime",
+		$.post("${pageContext.request.contextPath}/logouttime",
 				{
 					user_num:$("#user_num").val(),
 					busi_num:$("#busi_num").val()
@@ -86,7 +85,7 @@ $(document).ready(function(){
 								<a href="${pageContext.request.contextPath}/support">이용약관</a>
 							</li>
 							<li>
-								<a href="${pageContext.request.contextPath}/policy">개인정보</a>
+								<a href="${pageContext.request.contextPath}/privacy_policy">개인정보</a>
 							</li>
 							<li>
 								<a href="${pageContext.request.contextPath}/inquiry">1:1문의</a>
@@ -159,7 +158,7 @@ $(document).ready(function(){
 					<c:choose>
 						<c:when test="${memberVO != null && memberVO.user_num != '' || memberVO != null && memberVO.busi_num != ''}">
 							<li id="logout_btn">
-								<a href="${pageContext.request.contextPath}/login">로그아웃</a>
+								<a href="${pageContext.request.contextPath}/main">로그아웃</a>
 							</li>
 						</c:when>
 						<c:otherwise>
@@ -177,8 +176,6 @@ $(document).ready(function(){
 							<li></li>
 						</c:otherwise>
 					</c:choose>
-					
-					
 				
 					<!-- 로그아웃 end -->
 				</ul>

@@ -22,28 +22,20 @@ public class SupportController {
 	@Autowired
 	SupportService service;
 	
-//	@RequestMapping(value = "/faq", method = RequestMethod.GET)
-//	public String faq() {
-//		logger.info("faq");
-//		
-//		
-//		return "support/faq";
-//	}
-//	
-//	@RequestMapping(value = "/policy", method = RequestMethod.GET)
-//	public String policy() {
-//		logger.info("policy");
-//		
-//		return "support/policy";
-//	}
-//	
+	@RequestMapping(value = "/faq", method = RequestMethod.GET)
+	public String faq() {
+		logger.info("faq");
+		
+		return "support/faq";
+	}
+
 //	@RequestMapping(value = "/inquiry", method = RequestMethod.GET)
 //	public String inquiry() { 
 //		logger.info("inquiry");
 //				
 //		return "support/inquiry";
 //	}
-//	
+
 	@RequestMapping(value = "/support", method = RequestMethod.GET)
 	public String support(Model model, NoticeVO vo) {
 		logger.info("support");

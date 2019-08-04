@@ -1,6 +1,5 @@
 package kr.co.creator.invest;
 
-import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 
@@ -10,7 +9,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -44,12 +42,12 @@ public class InvestController {
 //	}//invest
 	
 	@RequestMapping(value = "/invest", method = RequestMethod.GET)
-	public String invest(Model model, MemberVO memVO, AccountVO accVO, ProjectVO proVO) {
+	public String invest(HttpSession session, Model model, MemberVO memVO, AccountVO accVO, ProjectVO proVO) {
 		logger.info("invest");
 		
-//		if(memVO == null || memVO.getUser_num().equals("") || memVO.getBusi_num().equals("")) {
-//			return "login/login";
-//		}
+		if(session.getAttribute("memVO") == null) {
+			return "redirect:/login";
+		}
 		System.out.println("Controller1111111111 : " + accVO);
 		accVO = investService.acount_detail(accVO);
 		proVO = investService.project_detail(proVO);

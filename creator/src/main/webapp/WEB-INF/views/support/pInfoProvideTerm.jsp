@@ -132,118 +132,7 @@
 	        TOP BAR CONTENT & NOTIFICATIONS
 	        *********************************************************************************************************************************************************** -->
 	    <!--header start-->
-	    <header class="header black-bg">
-			<!--logo start-->
-			<a href="./main" class="logo"><img id="logoImage" alt="로고" src="${pageContext.request.contextPath}/resources/img/ner.jpg" width="200px" height="30px"></a>
-			<!--logo end-->
-			<div class="nav notify-row top-menu" id="top_menu">
-				<!--  notification start -->
-				<ul class="nav pull-right top-menu">
-					<!-- settings start -->
-					
-					<!-- 회사소개 start -->
-					<li><a href="./loan_guide">회사소개</a></li>
-					<!-- 회사소개 end -->
-					
-					<!-- 대출 start -->
-					<li class="dropdown">
-						<a data-toggle="dropdown" class="dropdown-toggle" href="#">
-							대출
-						</a>
-						<ul class="dropdown-menu extended tasks-bar">
-							<div class="notify-arrow notify-arrow-green"></div>
-							<li>
-								<a href="./loan_guide">대출안내</a>
-							</li>
-							<li>
-								<a href="./loan/getloan">대출하기</a>
-							</li>
-						</ul>
-					</li>
-	          		<!-- 대출 end -->
-	          
-	          		<!-- inbox dropdown start-->
-	         		<li class="dropdown">
-						<a data-toggle="dropdown" class="dropdown-toggle" href="#">
-							투자
-						</a>
-						<ul class="dropdown-menu extended tasks-bar">
-							<div class="notify-arrow notify-arrow-black"></div>
-							<li>
-								<a href="./invest_guide">투자안내</a>
-							</li>
-							<li>
-								<a href="./invest_list">투자하기</a>
-							</li>
-							<li>
-								<a href="./invest_finish">완료된투자</a>
-							</li>
-						</ul>
-					</li>
-	          		<!-- 투자 end -->
-	          
-	          
-					<!-- 고객지원 start-->
-					<li id="header_notification_bar" class="dropdown">
-						<a data-toggle="dropdown" class="dropdown-toggle" href="#">
-							고객지원
-						</a>
-						<ul class="dropdown-menu extended notification">
-							<div class="notify-arrow"></div>
-							<li>
-								<a href="./faq">FAQ</a>
-							</li>
-							<li>
-								<a href="./support">이용약관</a>
-							</li>
-							<li>
-								<a href="./policy">개인정보</a>
-							</li>
-							<li>
-								<a href="./inquiry">1:1문의</a>
-							</li>
-						</ul>
-					</li>
-					<!-- 고객지원 end -->
-					
-					<!-- 마이페이지 start-->
-					<li id="header_notification_bar" class="dropdown">
-						<a data-toggle="dropdown" class="dropdown-toggle" href="#">
-							마이페이지
-						</a>
-						<ul class="dropdown-menu extended notification">
-							<div class="notify-arrow notify-arrow-yellow"></div>
-							<li>
-								<a href="./my_dashboard">대시보드</a>
-							</li>
-							<li>
-								<a href="./my_invest_list">투자내역</a>
-							</li>
-							<li>
-								<a href="./my_loan_list">대출내역</a>
-							</li>
-							<li>
-								<a href="./my_depo_mgn">예치금관리</a>
-							</li>
-							<li>
-								<a href="./my_modify">회원정보수정</a>
-							</li>
-						</ul>
-					</li>
-					<!-- 마이페이지 end -->
-					
-					<!-- 로그아웃 start -->
-					<li><a href="./loan_guide">로그아웃</a></li>
-					<!-- 로그아웃 end -->
-				</ul>
-				<!--  notification end -->
-			</div>
-			<div class="top-menu">
-				<ul class="nav pull-right top-menu">
-					<li><a class="logout" href="/creator/join">회원가입</a></li>
-				</ul>
-			</div>
-	    </header>
+	    <%@ include file="../header.jsp" %>
 	    <!--header end-->
 	   <section id="loanGuide-banner" class="text-center">
 			<div class="overlay">
@@ -261,62 +150,61 @@
 			<section class="wrapper site-min-height">
 				<div class="row mt">
 					<div class="col-lg-12">
-
-<div class="container">
-			<div class="section-body">
-				<div class="row">
-					<div class="col-md-12">
-						<div class="wrap">
-							<div class="box">
-								<strong>
-								<br>주식회사 크리에이터 대부 귀중
-								<br>
-								<br>귀사와의 대부 거래와 관련하여 귀사가 본인으로부터 취득한 개인(신용)정보는 「개인정보 보호법」 제17조 및 제22조, 「신용정보의 이용 및 보호에 관한 법률」 제32조 및 제33조에 따라 제3자에게 제공할 경우 본인의 사전 동의를 얻어야 하는 정보입니다. 이에 본인은 귀사가 본인의 개인(신용)정보를 아래와 같이 신용조회회사 NICE평가정보(주)에게 제공하는 것에 대해 동의합니다.
-								<br>
-								</strong>
-								<br>1. 개인 신용정보를 제공받는 자 : 신용정보 집중기관 : 여신업체, 본인인증업체, ㈜크리에이터
-								<br>
-								<br>2. 제공받는 자의 이용목적: 신용도 평가, 실명확인, 사기방지 등 신용조회회사의 업무
-								<br>
-								<br>3. 제공하는 개인(신용)정보항목 : 개인식별정보, 신용거래정보, 신용능력정보, 신용도 판단 정보, 공공정보
-								<br>
-								<br>4. 제공받는 자의 개인(신용)정보 보유 및 이용기간
-								<br>
-								<br>신용도 평가, 실명확인 등 신용조회업무 목적 달성 시까지 본인은 귀사가 위 목적으로 본인의 고유식별정보를 처리하는 것에 동의합니다.
-								<br>※ 고유식별정보 : 운전면허번호, 여권번호, 외국인등록번호, 국내거소신고번호
-								<br>
-								<br>5. 거래목적 달성을 위한 개인(신용)정보 제공
-								<br>
-								<br>1) 개인(신용)정보를 제공받는 자 : 대출심사 위탁업체 : ㈜크리에이터
-								<br>
-								<br>2) 제공받는 자의 이용목적
-								<br>대출계약의 체결·이행·유지·관리, 금융사고 조사, 법령상 의무이행, 분쟁해결, 범죄의 고소·고발, 대금청구(SMS제공포함), 계약내용 및 상환안내, 채권추심, 부가/제휴서비스 제공 및 각종 포인트제공·정산, 배송업무(우편물, 이메일 등), 현장조사/서류수령/자서대행 등
-								<br>
-								<br>3) 제공할 개인(신용)정보의 내용
-								<br>개인식별정보, 신용거래정보, 신용도정보, 신용능력정보, 공공기관정보, 신용관련정보, 계약내용, 채무불이행정보 등 기타 계약의 체결·이행·유지·관리 등과 관련하여 본인이 제공한 정보
-								<br>
-								<br>4) 제공받는 자의 개인(신용)정보 보유 및 이용기간
-								<br>개인(신용)정보를 제공받는 자의 이용목적을 달성할 때까지
-								<br>다만, 관련법규에 별도 규정이 있는 경우 그 기간을 따릅니다.
-								<br>
-								<br>※ 상기 내용이 변동되는 경우 인터넷 홈페이지 게시 등을 통해 그 내용을 안내해 드립니다.
-								<br>※ 이에 대한 동의가 없을 경우 거래관계의 설정 또는 유지가 불가능할 수 있음을 알려드립니다.
-							</div>
-							<hr>
-							<div class="row">
-								<div class="col-md-push-8 col-md-4">
-									<select class="form-control" id="termHisSelect">
-										<option value="">이전 약관보기</option>
-										<option value="20180227">2018년 2월 27일</option>
-									</select>
+						<div class="container">
+							<div class="section-body">
+								<div class="row">
+									<div class="col-md-12">
+										<div class="wrap">
+											<div class="box">
+												<strong>
+												<br>주식회사 크리에이터 대부 귀중
+												<br>
+												<br>귀사와의 대부 거래와 관련하여 귀사가 본인으로부터 취득한 개인(신용)정보는 「개인정보 보호법」 제17조 및 제22조, 「신용정보의 이용 및 보호에 관한 법률」 제32조 및 제33조에 따라 제3자에게 제공할 경우 본인의 사전 동의를 얻어야 하는 정보입니다. 이에 본인은 귀사가 본인의 개인(신용)정보를 아래와 같이 신용조회회사 NICE평가정보(주)에게 제공하는 것에 대해 동의합니다.
+												<br>
+												</strong>
+												<br>1. 개인 신용정보를 제공받는 자 : 신용정보 집중기관 : 여신업체, 본인인증업체, ㈜크리에이터
+												<br>
+												<br>2. 제공받는 자의 이용목적: 신용도 평가, 실명확인, 사기방지 등 신용조회회사의 업무
+												<br>
+												<br>3. 제공하는 개인(신용)정보항목 : 개인식별정보, 신용거래정보, 신용능력정보, 신용도 판단 정보, 공공정보
+												<br>
+												<br>4. 제공받는 자의 개인(신용)정보 보유 및 이용기간
+												<br>
+												<br>신용도 평가, 실명확인 등 신용조회업무 목적 달성 시까지 본인은 귀사가 위 목적으로 본인의 고유식별정보를 처리하는 것에 동의합니다.
+												<br>※ 고유식별정보 : 운전면허번호, 여권번호, 외국인등록번호, 국내거소신고번호
+												<br>
+												<br>5. 거래목적 달성을 위한 개인(신용)정보 제공
+												<br>
+												<br>1) 개인(신용)정보를 제공받는 자 : 대출심사 위탁업체 : ㈜크리에이터
+												<br>
+												<br>2) 제공받는 자의 이용목적
+												<br>대출계약의 체결·이행·유지·관리, 금융사고 조사, 법령상 의무이행, 분쟁해결, 범죄의 고소·고발, 대금청구(SMS제공포함), 계약내용 및 상환안내, 채권추심, 부가/제휴서비스 제공 및 각종 포인트제공·정산, 배송업무(우편물, 이메일 등), 현장조사/서류수령/자서대행 등
+												<br>
+												<br>3) 제공할 개인(신용)정보의 내용
+												<br>개인식별정보, 신용거래정보, 신용도정보, 신용능력정보, 공공기관정보, 신용관련정보, 계약내용, 채무불이행정보 등 기타 계약의 체결·이행·유지·관리 등과 관련하여 본인이 제공한 정보
+												<br>
+												<br>4) 제공받는 자의 개인(신용)정보 보유 및 이용기간
+												<br>개인(신용)정보를 제공받는 자의 이용목적을 달성할 때까지
+												<br>다만, 관련법규에 별도 규정이 있는 경우 그 기간을 따릅니다.
+												<br>
+												<br>※ 상기 내용이 변동되는 경우 인터넷 홈페이지 게시 등을 통해 그 내용을 안내해 드립니다.
+												<br>※ 이에 대한 동의가 없을 경우 거래관계의 설정 또는 유지가 불가능할 수 있음을 알려드립니다.
+											</div>
+											<hr>
+											<div class="row">
+												<div class="col-md-push-8 col-md-4">
+													<select class="form-control" id="termHisSelect">
+														<option value="">이전 약관보기</option>
+														<option value="20180227">2018년 2월 27일</option>
+													</select>
+												</div>
+											</div>
+										</div>
+									</div>
 								</div>
 							</div>
 						</div>
 					</div>
-				</div>
-			</div>
-		</div>
-</div>
 				</div>
 			</section>
 			<!-- /wrapper -->

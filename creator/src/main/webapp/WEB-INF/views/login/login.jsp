@@ -52,7 +52,7 @@ $(document).ready(function(){
 		}
 
 		$.post(
-				"./loginuser"
+				"${pageContext.request.contextPath}/loginuser"
 				,{
 					email:$("#email").val(),
 					user_password:$("#user_password").val()
@@ -91,7 +91,7 @@ $(document).ready(function(){
 		}
 		
 		$.post(
-				"./loginbusi"
+				"${pageContext.request.contextPath}/loginbusi"
 				,{
 					busi_resi_num:$("#busi_resi_num").val(),
 					busi_password:$("#busi_password").val()
