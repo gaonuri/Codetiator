@@ -87,6 +87,7 @@ public class MypageController {
 		ioVO = service.inout(userVO);
 		useVO = service.user(userVO);
 		
+		model.addAttribute("user", useVO);
 		model.addAttribute("acnt", accVO);
 		model.addAttribute("Inout",ioVO);
 		logger.info("my_depo_mgn"+accVO);
@@ -95,16 +96,13 @@ public class MypageController {
 	}
 	
 	@RequestMapping(value = "/emailcert", method = RequestMethod.POST)
-	public void sendCert(PrintWriter out, My_EmailForm form, My_FindUtil findUtil, FindPwdVO vo) throws Exception {
+	public void sendCert(PrintWriter out, My_EmailForm form, My_FindUtil findUtil, String email) throws Exception {
 		logger.info("=== sendEmailCertification ===");
 		int cnt = 0;
-		cnt = ((MypageService) sqlSession).emailcert(vo);
+		cnt = ((MypageService) sqlSession).emailcert(email);
 		if(cnt > 0) {
 			String newPassword, user_name;
 			newPassword = findUtil.getRamdomCert(8);
-			user_name = sqlSession.selectOne("LoginMapper.selectName", vo);
-			vo.setNewPassword(newPassword);
-			vo.setUser_name(user_name);
 			form.setContent("인증번호를 드립니다."
 							+ " 인증번호는 " + newPassword + " 입니다");
 			form.setSubject("안녕하세요 " + vo.getUser_name() + "님 임시비밀번호를 확인해 주세요");

@@ -92,7 +92,7 @@ $(document).ready(function(){
 								<a href="${pageContext.request.contextPath}/inquiry">1:1문의</a>
 							</li>
 							<li>
-								<a href="${pageContext.request.contextPath}/support_total">공지사항</a>
+								<a href="${pageContext.request.contextPath}/support">공지사항</a>
 							</li>
 						</ul>
 					</li>
@@ -117,7 +117,7 @@ $(document).ready(function(){
 					</c:choose>
 					
 					
-<!-- 					이프문해야함 admin -->
+					<!--이프문해야함 admin -->
 					<c:choose>
 						<c:when test="${memberVO != null && memberVO.user_num != '' || memberVO != null && memberVO.busi_num != ''}">
 							<c:choose>

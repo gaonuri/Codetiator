@@ -2,7 +2,6 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
-
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -45,8 +44,7 @@
 		var limit	= parseInt($("#invest_limit").val());
 		var confirmYN = false;
 		var check = $("input:checkbox[id=agreeCheckbox]:checked").is(":checked");
-
-
+		var count = 0; 
 		
 		$("#amtPlus100_771").click(function() {
 			tmpInt = parseInt($("#withdrawAmt").val()) + 1000000;
@@ -90,9 +88,49 @@
 			}
 		}//depositLimit
 		
-		$("#").ready(function() {
+		$(document).ready(function(){
+			$("#numre").click(function(){
+				if($.trim($("#cusEmail").val()) == ""){
+					alert("등록된 이메일이 없습니다.");
+//		 			$("#email").focus();
+					return;
+				}
+				$.post(
+						"./emailcert"
+						,{
+							email:$("#cusEmail").val(),
+							user_name:$("#cusName").val()
+						}
+						,function(data,status){
+							if(status == "success"){
+								if(data > 0){
+									alert("해당 이메일로 임시비밀번호를 발송했습니다.");
+								} else if(data == 0){
+									alert("존재하지 않는 이메일 입니다.");
+								} else {
+									alert("잠시 후, 다시 시도해 주세요.");
+								}
+							} else {
+								alert("시스템 관리자에게 문의 바랍니다.");
+							}
+						}
+				);//post
+			});//click
+		});//ready
+		
+// 		$("#").ready(function() {
 			
-		});
+// 		});
+// 		$("#cert_start").click(function() {
+// 			int count
+// 			count = 0;
+// 			if (count=1) {
+// 				location.href="#btm_cert1"
+// 			} else {
+// 				location.href="#btm_cert2"
+// 			}
+// 		});//이메일 인증 Modal
+		
 	});//ready
 	</script>
 </head>
@@ -169,7 +207,7 @@
 																</div>
 																<div style="padding:20px 0;">
 																
-																	<button type="button" class="btn btn-purple-transparent btn-block" data-toggle="modal" data-target="#btn_cert" >
+																	<button type="button" id="cert_start" class="btn btn-purple-transparent btn-block" data-toggle="modal" data-target="#btn_cert1" >
 																		예치금 계좌 발급을 위해 본인 인증하기
 																	</button>
 																
@@ -515,11 +553,11 @@
 									<!-- 본인인증 서비스 팝업을 호출하기 위해서는 다음과 같은 form이 필요합니다. -->
 									<form name="form_chk" method="post">
 										<input type="hidden" name="m" value="checkplusSerivce">	<!-- 필수 데이타로, 누락하시면 안됩니다. -->
-										<input type="hidden" id="EncodeData" name="EncodeData" value="">	<!-- 위에서 업체정보를 암호화 한 데이타입니다. -->
+										<input type="hidden" id="EncodeData" name="EncodeData" value=""><!-- 위에서 업체정보를 암호화 한 데이타입니다. -->
 									</form>
 
-									<!-- 예치금 계좌 발급 Modal -->
-						<div class="modal fade" id="btn_cert"  name="cert" role="dialog" aria-labelledby="vtAcntModalLabel" aria-hidden="true">
+				<!-- Email 인증시작 -->
+						<div class="modal fade" id="btn_cert1"  name="cert1" role="dialog" aria-labelledby="vtAcntModalLabel" aria-hidden="true">
 							<div class="modal-dialog">
 								<div class="modal-content">
 									<div class="modal-header">
@@ -528,7 +566,7 @@
 										</button>
 										<div class="modal-title" id="vtAcntModalLabel">
 											<div style="">
-												예치금 계좌 발급을 위한 정보를 입력하여 주십시오
+												예치금 계좌 발급을 위한 인증을 진행하여 주십시오
 											</div>
 										</div>
 									</div>
@@ -536,191 +574,30 @@
 										<div class="row">
 											<div class="col-xs-12 col-sm-12 col-md-12">
 												<div class="modal-body-title">
-													출금계좌 등록
+													Email 인증
 												</div>
 											</div>
 										</div>
 										<div class="row">
 											<div class="form-group col-xs-5 col-sm-5 col-md-3">
-												<label for="cusNm" class="control-label">예금주</label>
-												<input class="form-control" id="cusNm" type="text" value="${acnt.account_name}" readonly="">
-											</div>
-											<div class="form-group col-xs-7 col-sm-7 col-md-4">
-												<label for="cusBankCdSelect" class="control-label">은행명</label>
-												<select id="cusBankCdSelect" class="form-control" name="cusBankCd">
-													<option value="">선택하세요</option>
-													
-														
-															
-																<option value="002">산업은행</option>
-															
-																<option value="003">기업은행</option>
-															
-																<option value="004">국민은행</option>
-															
-																<option value="007">수협중앙회</option>
-															
-																<option value="008">수출입은행</option>
-															
-																<option value="010">농협</option>
-															
-																<option value="011">농협중앙회</option>
-															
-																<option value="012">지역농·축협</option>
-															
-																<option value="020">우리은행</option>
-															
-																<option value="023">SC제일은행</option>
-															
-																<option value="027">한국씨티은행</option>
-															
-																<option value="031">대구은행</option>
-															
-																<option value="032">부산은행</option>
-															
-																<option value="034">광주은행</option>
-															
-																<option value="035">제주은행</option>
-															
-																<option value="037">전북은행</option>
-															
-																<option value="039">경남은행</option>
-															
-																<option value="045">새마을금고중앙회</option>
-															
-																<option value="048">신협중앙회</option>
-															
-																<option value="050">상호저축은행</option>
-															
-																<option value="052">모건스탠리은행</option>
-															
-																<option value="054">HSBC은행</option>
-															
-																<option value="055">도이치은행</option>
-															
-																<option value="057">제이피모간체이스은행</option>
-															
-																<option value="058">미즈호은행</option>
-															
-																<option value="059">미쓰비시도쿄UFJ은행</option>
-															
-																<option value="060">BOA은행</option>
-															
-																<option value="061">비엔피파리바은행</option>
-															
-																<option value="062">중국공상은행</option>
-															
-																<option value="063">중국은행</option>
-															
-																<option value="065">대화은행</option>
-															
-																<option value="066">교통은행</option>
-															
-																<option value="071">우체국</option>
-															
-																<option value="081">KEB하나은행</option>
-															
-																<option value="088">신한은행</option>
-															
-																<option value="089">케이뱅크</option>
-															
-																<option value="090">카카오뱅크</option>
-															
-																<option value="096">한국전자금융(주)</option>
-															
-																<option value="102">대신저축은행</option>
-															
-																<option value="103">에스비아이저축은행</option>
-															
-																<option value="104">에이치케이저축은행</option>
-															
-																<option value="105">웰컴저축은행</option>
-															
-																<option value="209">유안타증권</option>
-															
-																<option value="218">KB증권</option>
-															
-																<option value="221">골든브릿지투자증권</option>
-															
-																<option value="222">한양증권</option>
-															
-																<option value="223">리딩투자증권</option>
-															
-																<option value="224">BNK투자증권</option>
-															
-																<option value="225">IBK투자증권</option>
-															
-																<option value="227">KTB투자증권</option>
-															
-																<option value="238">미래에셋대우</option>
-															
-																<option value="240">삼성증권</option>
-															
-																<option value="243">한국투자증권</option>
-															
-																<option value="247">NH투자증권</option>
-															
-																<option value="261">교보증권</option>
-															
-																<option value="262">하이투자증권</option>
-															
-																<option value="263">HMC투자증권</option>
-															
-																<option value="264">키움증권</option>
-															
-																<option value="265">이베스트투자증권</option>
-															
-																<option value="266">SK증권</option>
-															
-																<option value="267">대신증권</option>
-															
-																<option value="269">한화투자증권</option>
-															
-																<option value="270">하나금융투자</option>
-															
-																<option value="278">신한금융투자</option>
-															
-																<option value="279">동부증권</option>
-															
-																<option value="280">유진투자증권</option>
-															
-																<option value="287">메리츠종합금융증권</option>
-															
-																<option value="290">부국증권</option>
-															
-																<option value="291">신영증권</option>
-															
-																<option value="292">케이프투자증권</option>
-															
-																<option value="293">한국증권금융</option>
-															
-																<option value="294">펀드온라인코리아</option>
-															
-																<option value="295">우리종합금융</option>
-															
-																<option value="296">삼성선물</option>
-															
-																<option value="297">외환선물</option>
-															
-																<option value="298">현대선물</option>
-												</select>
+												<label for="cusNm" class="control-label">이 름</label>
+												<input class="form-control" id="cusName" type="text" value="${user.user_name}" readonly="">
 											</div>
 											<div class="form-group col-xs-12 col-sm-12 col-md-5">
-												<label for="cusAccount" class="control-label">계좌번호</label>
-												<input type="text" class="form-control" id="cusAccount" maxlength="14">
+												<label for="cusAccount" class="control-label" >Email_주소</label>
+												<input class="form-control" id="cusEmail" type="text" value="${user.email}" readonly="">
+											</div>
+											<div class="form-group col-xs-12 col-sm-12 col-md-4">
+												<br style="line-height:24px";">
+												<button type="button" class="btn btn-purple-transparent" id="numre" name="numre">인증번호 받기</button>
 											</div>
 										</div>
 										<div class="row">
 											<div class="col-xs-12 col-sm-12 col-md-12">
-												<span class="modal-body-strong">*출금계좌란?</span>
-												<span class="modal-body-light">&nbsp;투자 원리금 및 상환 수익금을 출금받으실 계좌입니다.</span>
+												<span class="modal-body-light">&nbsp;● 인증번호를 받으실 수 있는 Email주소를 입력하시기 바랍니다.</span>
 											</div>
 											<div class="col-xs-12 col-sm-12 col-md-12">
-												<span class="modal-body-strong">*카카오뱅크를 이용하신다면?</span>
-												<span class="modal-body-light">&nbsp;자유적금 계좌는 출금처리가 되지 않으니 입출금통장 계좌로 등록하시기 바랍니다.</span>
-											</div>
-											<div class="col-xs-12 col-sm-12 col-md-12 display-none" id="cusGb02Div">
-												<span class="modal-body-strong">*사업자고객일 경우 거래은행 정책에 따라 예금주명이 변경될 수 있습니다.</span>
+												<span class="modal-body-light">&nbsp;● 정상처리가 불가할 경우 1:1문의사항을 이용하시기 바랍니다.</span>
 											</div>
 										</div>
 										<div id="pInfDiv" style="">
@@ -728,29 +605,35 @@
 											<div class="row">
 												<div class="col-xs-12 col-sm-12 col-md-12">
 													<div class="modal-body-title">
-														개인정보 등록
+														인증번호
 													</div>
 												</div>
 											</div>
 											<div class="row">
+ 
 												<div class="form-group col-xs-6 col-sm-6 col-md-6">
-													<label for="mpNo" class="control-label">휴대전화번호</label>
-													<input class="form-control" id="mpNo" type="text" maxlength="11" readonly="">
+													<label for="ssnNo" class="control-label">인증번호를 입력하세요.</label>
 												</div>
-												<div class="form-group col-xs-6 col-sm-6 col-md-6">
-													<label for="ssnNo" class="control-label">주민등록번호</label>
+											</div>		
+											
+											<div class="row">
+												<div class="form-group col-md-4">
 													<input class="form-control" id="ssnNo" type="text" maxlength="13">
+												</div>
+												<div class="form-group col-md-2">	
+														<button type="button" class="btn btn-purple-transparent" onclick="fn_insertVtAcnt()">인증하기</button>
 													<input type="hidden" id="ci" value="">
 												</div>
-											</div>
+											</div>													
+												
+											
 											<div class="row">
 												<div class="col-xs-12 col-sm-12 col-md-12">
-													<span class="modal-body-strong">※ 왜 주민등록번호가 필요한가요?</span>
-													<span class="modal-body-light">&nbsp;주민등록번호는 현행 세법상 원천징수 납부에 사용됩니다.</span>
-												</div>
+												<span class="modal-body-light">&nbsp;● 정상처리가 불가할 경우 1:1문의사항을 이용하시기 바랍니다.</span>
+											</div>
 												<div class="clearfix"></div>
 												<div class="col-xs-12 col-sm-12 col-md-12">
-													<span class="modal-body-light font-purple">&nbsp;주민등록번호 없이도 사이트 이용은 가능하며 최초 투자시 한 번만 등록하시면 됩니다.</span>
+													<span class="modal-body-light font-purple">&nbsp;● 주민등록번호 없이도 사이트 이용은 가능하며 최초 투자시 한 번만 등록하시면 됩니다.</span>
 												</div>
 												<div class="clearfix"></div>
 												<div class="col-xs-12 col-sm-12 col-md-12">
@@ -761,16 +644,18 @@
 										</div>
 									</div>
 									<div class="modal-footer">
-										<button type="button" class="btn btn-purple-transparent" onclick="fn_insertVtAcnt()">예치금 계좌 발급받기</button>
+										<button type="button" class="btn btn-purple-transparent" onclick="fn_insertVtAcnt()">확 인</button>
 									</div>
 								</div>
 								<!-- /.modal-content -->
 							</div>
 							<!-- /.modal-dialog -->
 						</div>
+						<!-- Email 인증끝. -->
+						
 
 						<!-- 예치금 계좌 발급 Modal -->
-						<div class="modal fade" id="btn_cert"  name="cert" role="dialog" aria-labelledby="vtAcntModalLabel" aria-hidden="true">
+						<div class="modal fade" id="btn_cert2"  name="cert2" role="dialog" aria-labelledby="vtAcntModalLabel" aria-hidden="true">
 							<div class="modal-dialog">
 								<div class="modal-content">
 									<div class="modal-header">
@@ -794,7 +679,7 @@
 										<div class="row">
 											<div class="form-group col-xs-5 col-sm-5 col-md-3">
 												<label for="cusNm" class="control-label">예금주</label>
-												<input class="form-control" id="cusNm" type="text" value="${acnt.account_name}" readonly="">
+												<input class="form-control" id="cusNm" type="text" value="${user.user_name}" readonly="">
 											</div>
 											<div class="form-group col-xs-7 col-sm-7 col-md-4">
 												<label for="cusBankCdSelect" class="control-label">은행명</label>
@@ -986,12 +871,7 @@
 											<div class="row">
 												<div class="form-group col-xs-6 col-sm-6 col-md-6">
 													<label for="mpNo" class="control-label">휴대전화번호</label>
-													<input class="form-control" id="mpNo" type="text" maxlength="11" readonly="">
-												</div>
-												<div class="form-group col-xs-6 col-sm-6 col-md-6">
-													<label for="ssnNo" class="control-label">주민등록번호</label>
-													<input class="form-control" id="ssnNo" type="text" maxlength="13">
-													<input type="hidden" id="ci" value="">
+													<input class="form-control" id="mpNo" type="text" maxlength="11" value="${user.phone}" readonly="">
 												</div>
 											</div>
 											<div class="row">
