@@ -53,14 +53,14 @@
 				<div class="row mt">
 					<div class="col-lg-12">
 					<!-- CHART PANELS -->
-						<table>
+						<table style="width:1000px;">
 							<tr valign=top>
 <%-- 							<c:forEach begin="0" end="2" step="1" varStatus="step"> --%>
 								<th>
 									<c:forEach items="${projectList1}" var="vo" varStatus="status" begin="0" end="2" step="1">
 										<c:choose>
 											<c:when test="${memVO.user_num != null}">
-												<td class="col-md-4" style="padding-left:150px;">
+												<td class="col-md-3" style="padding-left:150px;">
 													<a href="${pageContext.request.contextPath}/invest_detail?
 													project_num=${vo.project_num}
 													&p_busi_num=${vo.busi_num}
@@ -107,7 +107,7 @@
 												</td>
 											</c:when>
 											<c:when test="${memVO.busi_num != null}">
-												<td class="col-md-4" style="padding-left:150px;">
+												<td class="col-md-3" style="padding-left:150px;">
 													<a href="${pageContext.request.contextPath}/invest_detail?
 													project_num=${vo.project_num}
 													&p_busi_num=${vo.busi_num}
@@ -154,7 +154,7 @@
 												</td>
 											</c:when>
 											<c:otherwise>
-												<td class="col-md-4" style="padding-left:150px;">
+												<td class="col-md-3" style="padding-left:150px;">
 													<a href="${pageContext.request.contextPath}/invest_detail?
 													project_num=${vo.project_num}
 													&p_busi_num=${vo.busi_num}">
@@ -211,7 +211,7 @@
 									<c:forEach items="${projectList2}" var="vo" varStatus="status" begin="0" end="2" step="1">
 										<c:choose>
 											<c:when test="${memVO.user_num != null}">
-												<td class="col-md-4" style="padding-left:150px;">
+												<td class="col-md-3" style="padding-left:150px;">
 													<a href="${pageContext.request.contextPath}/invest_detail?
 													project_num=${vo.project_num}
 													&p_busi_num=${vo.busi_num}
@@ -258,7 +258,7 @@
 												</td>
 											</c:when>
 											<c:when test="${memVO.busi_num != null}">
-												<td class="col-md-4" style="padding-left:150px;">
+												<td class="col-md-3" style="padding-left:150px;">
 													<a href="${pageContext.request.contextPath}/invest_detail?
 													project_num=${vo.project_num}
 													&p_busi_num=${vo.busi_num}
@@ -305,7 +305,7 @@
 												</td>
 											</c:when>
 											<c:otherwise>
-												<td class="col-md-4" style="padding-left:150px;">
+												<td class="col-md-3" style="padding-left:150px;">
 													<a href="${pageContext.request.contextPath}/invest_detail?
 													project_num=${vo.project_num}
 													&p_busi_num=${vo.busi_num}">
@@ -362,7 +362,7 @@
 									<c:forEach items="${projectList3}" var="vo" varStatus="status" begin="0" end="2" step="1">
 										<c:choose>
 											<c:when test="${memVO.user_num != null}">
-												<td class="col-md-4" style="padding-left:150px;">
+												<td class="col-md-3" style="padding-left:150px;">
 													<a href="${pageContext.request.contextPath}/invest_detail?
 													project_num=${vo.project_num}
 													&p_busi_num=${vo.busi_num}
@@ -409,7 +409,7 @@
 												</td>
 											</c:when>
 											<c:when test="${memVO.busi_num != null}">
-												<td class="col-md-4" style="padding-left:150px;">
+												<td class="col-md-3" style="padding-left:150px;">
 													<a href="${pageContext.request.contextPath}/invest_detail?
 													project_num=${vo.project_num}
 													&p_busi_num=${vo.busi_num}
@@ -456,7 +456,7 @@
 												</td>
 											</c:when>
 											<c:otherwise>
-												<td class="col-md-4" style="padding-left:150px;">
+												<td class="col-md-3" style="padding-left:150px;">
 													<a href="${pageContext.request.contextPath}/invest_detail?
 													project_num=${vo.project_num}
 													&p_busi_num=${vo.busi_num}">

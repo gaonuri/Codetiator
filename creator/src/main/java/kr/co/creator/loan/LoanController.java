@@ -111,39 +111,39 @@ public class LoanController {
 		if(insert_project_yn > 0 && gnt > 0) {
 			int saveFileCnt = 0;
 			if(dvo2.getBusi_regi() != null && dvo2.getBusi_regi().getSize() > 0) {
-				dvo.setBusi_regi	(UtilForFile.fileUpByType(dvo2.getBusi_regi()    , "loan", pvo.getProject_num()));
+				dvo.setBusi_regi	(UtilForFile.fileUpByType(dvo2.getBusi_regi(), "loan", pvo.getProject_num()));
 				saveFileCnt++;
 			}
 			if(dvo2.getJumin_chobon() != null && dvo2.getJumin_chobon().getSize() > 0) {
-				dvo.setJumin_chobon	(UtilForFile.fileUpByType(dvo2.getJumin_chobon() , "loan", pvo.getProject_num()));
+				dvo.setJumin_chobon	(UtilForFile.fileUpByType(dvo2.getJumin_chobon(), "loan", pvo.getProject_num()));
 				saveFileCnt++;
 			}
 			if(dvo2.getCer_ingam() != null && dvo2.getCer_ingam().getSize() > 0) {
-				dvo.setCer_ingam	(UtilForFile.fileUpByType(dvo2.getCer_ingam()    , "loan", pvo.getProject_num()));
+				dvo.setCer_ingam	(UtilForFile.fileUpByType(dvo2.getCer_ingam(), "loan", pvo.getProject_num()));
 				saveFileCnt++;
 			}
 			if(dvo2.getCer_budong() != null && dvo2.getCer_budong().getSize() > 0) {
-				dvo.setCer_budong	(UtilForFile.fileUpByType(dvo2.getCer_budong()   , "loan", pvo.getProject_num()));
+				dvo.setCer_budong	(UtilForFile.fileUpByType(dvo2.getCer_budong(), "loan", pvo.getProject_num()));
 				saveFileCnt++;
 			}
 			if(dvo2.getCer_dong() != null && dvo2.getCer_dong().getSize() > 0) {
-				dvo.setCer_dong		(UtilForFile.fileUpByType(dvo2.getCer_dong()     , "loan", pvo.getProject_num()));
+				dvo.setCer_dong		(UtilForFile.fileUpByType(dvo2.getCer_dong(), "loan", pvo.getProject_num()));
 				saveFileCnt++;
 			}
 			if(dvo2.getCer_income() != null && dvo2.getCer_income().getSize() > 0) {
-				dvo.setCer_income	(UtilForFile.fileUpByType(dvo2.getCer_income()   , "loan", pvo.getProject_num()));
+				dvo.setCer_income	(UtilForFile.fileUpByType(dvo2.getCer_income(), "loan", pvo.getProject_num()));
 				saveFileCnt++;
 			}
 			if(dvo2.getCer_vat() != null && dvo2.getCer_vat().getSize() > 0) {
-				dvo.setCer_vat		(UtilForFile.fileUpByType(dvo2.getCer_vat()      , "loan", pvo.getProject_num()));
+				dvo.setCer_vat		(UtilForFile.fileUpByType(dvo2.getCer_vat(), "loan", pvo.getProject_num()));
 				saveFileCnt++;
 			}
 			if(dvo2.getCer_other() != null && dvo2.getCer_other().getSize() > 0) {
-				dvo.setCer_other	(UtilForFile.fileUpByType(dvo2.getCer_other()    , "loan", pvo.getProject_num()));
+				dvo.setCer_other	(UtilForFile.fileUpByType(dvo2.getCer_other(), "loan", pvo.getProject_num()));
 				saveFileCnt++;
 			}
 			if(dvo2.getCopy_id() != null && dvo2.getCopy_id().getSize() > 0) {
-				dvo.setCopy_id		(UtilForFile.fileUpByType(dvo2.getCopy_id()      , "loan", pvo.getProject_num()));
+				dvo.setCopy_id		(UtilForFile.fileUpByType(dvo2.getCopy_id(), "loan", pvo.getProject_num()));
 				saveFileCnt++;
 			}
 			if(dvo2.getCopy_bankbook() != null && dvo2.getCopy_bankbook().getSize() > 0) {

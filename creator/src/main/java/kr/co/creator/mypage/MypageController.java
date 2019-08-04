@@ -87,6 +87,7 @@ public class MypageController {
 		ioVO = service.inout(userVO);
 		useVO = service.user(userVO);
 		
+		model.addAttribute("user", useVO);
 		model.addAttribute("acnt", accVO);
 		model.addAttribute("Inout",ioVO);
 		logger.info("my_depo_mgn"+accVO);
@@ -95,19 +96,16 @@ public class MypageController {
 	}
 	
 	@RequestMapping(value = "/emailcert", method = RequestMethod.POST)
-	public void sendCert(PrintWriter out, My_EmailForm form, My_FindUtil findUtil, FindPwdVO vo) throws Exception {
+	public void sendCert(PrintWriter out, My_EmailForm form, My_FindUtil findUtil, String email, UserVO vo) throws Exception {
 		logger.info("=== sendEmailCertification ===");
 		int cnt = 0;
-		cnt = ((MypageService) sqlSession).emailcert(vo);
+		cnt = ((MypageService) sqlSession).emailcert(email);
 		if(cnt > 0) {
-			String newPassword, user_name;
+			String newPassword;
 			newPassword = findUtil.getRamdomCert(8);
-			user_name = sqlSession.selectOne("LoginMapper.selectName", vo);
-			vo.setNewPassword(newPassword);
-			vo.setUser_name(user_name);
 			form.setContent("인증번호를 드립니다."
 							+ " 인증번호는 " + newPassword + " 입니다");
-			form.setSubject("안녕하세요 " + vo.getUser_name() + "님 임시비밀번호를 확인해 주세요");
+			form.setSubject("안녕하세요 " + vo.getUser_name() + "님 인증번호를 확인해 주세요");
 			form.setReceiver(vo.getEmail());
 			emailSender.My_EmailSender(form);
 		}
@@ -160,8 +158,8 @@ public class MypageController {
 	@RequestMapping(value = "/modify_detail", method = RequestMethod.GET)
 	public String modify_detail(HttpSession session, Model model, HistoryVO hvo, AccountVO avo) {
 		logger.info("modify_detail");
-		if(UtilForSession.chkSession(session) == false) {
-			return "redirect:/main";
+		if(session.getAttribute("memVO") == null) {
+			return "redirect:/login";
 		} else {
 			List<HistoryVO> hInList = loginService.historyIn(hvo);
 			model.addAttribute("hInList", hInList);
@@ -172,6 +170,7 @@ public class MypageController {
 		}
 		return "mypage/modify_detail";
 	}
+<<<<<<< HEAD
 	
 	@RequestMapping(value = "/my_popup", method = RequestMethod.GET)
 	public String popup1(HttpSession session) throws Exception {
@@ -220,6 +219,8 @@ public class MypageController {
 	
 	
 	
+=======
+>>>>>>> branch 'master' of https://github.com/gaonuri/Codetiator.git
 }//class
 
 

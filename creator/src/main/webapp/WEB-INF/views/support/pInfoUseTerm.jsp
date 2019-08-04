@@ -132,120 +132,9 @@
 	        TOP BAR CONTENT & NOTIFICATIONS
 	        *********************************************************************************************************************************************************** -->
 	    <!--header start-->
-	    <header class="header black-bg">
-			<!--logo start-->
-			<a href="./main" class="logo"><img id="logoImage" alt="로고" src="${pageContext.request.contextPath}/resources/img/ner.jpg" width="200px" height="30px"></a>
-			<!--logo end-->
-			<div class="nav notify-row top-menu" id="top_menu">
-				<!--  notification start -->
-				<ul class="nav pull-right top-menu">
-					<!-- settings start -->
-					
-					<!-- 회사소개 start -->
-					<li><a href="./loan_guide">회사소개</a></li>
-					<!-- 회사소개 end -->
-					
-					<!-- 대출 start -->
-					<li class="dropdown">
-						<a data-toggle="dropdown" class="dropdown-toggle" href="#">
-							대출
-						</a>
-						<ul class="dropdown-menu extended tasks-bar">
-							<div class="notify-arrow notify-arrow-green"></div>
-							<li>
-								<a href="./loan_guide">대출안내</a>
-							</li>
-							<li>
-								<a href="./loan/getloan">대출하기</a>
-							</li>
-						</ul>
-					</li>
-	          		<!-- 대출 end -->
-	          
-	          		<!-- inbox dropdown start-->
-	         		<li class="dropdown">
-						<a data-toggle="dropdown" class="dropdown-toggle" href="#">
-							투자
-						</a>
-						<ul class="dropdown-menu extended tasks-bar">
-							<div class="notify-arrow notify-arrow-black"></div>
-							<li>
-								<a href="./invest_guide">투자안내</a>
-							</li>
-							<li>
-								<a href="./invest_list">투자하기</a>
-							</li>
-							<li>
-								<a href="./invest_finish">완료된투자</a>
-							</li>
-						</ul>
-					</li>
-	          		<!-- 투자 end -->
-	          
-	          
-					<!-- 고객지원 start-->
-					<li id="header_notification_bar" class="dropdown">
-						<a data-toggle="dropdown" class="dropdown-toggle" href="#">
-							고객지원
-						</a>
-						<ul class="dropdown-menu extended notification">
-							<div class="notify-arrow"></div>
-							<li>
-								<a href="./faq">FAQ</a>
-							</li>
-							<li>
-								<a href="./support">이용약관</a>
-							</li>
-							<li>
-								<a href="./policy">개인정보</a>
-							</li>
-							<li>
-								<a href="./inquiry">1:1문의</a>
-							</li>
-						</ul>
-					</li>
-					<!-- 고객지원 end -->
-					
-					<!-- 마이페이지 start-->
-					<li id="header_notification_bar" class="dropdown">
-						<a data-toggle="dropdown" class="dropdown-toggle" href="#">
-							마이페이지
-						</a>
-						<ul class="dropdown-menu extended notification">
-							<div class="notify-arrow notify-arrow-yellow"></div>
-							<li>
-								<a href="./my_dashboard">대시보드</a>
-							</li>
-							<li>
-								<a href="./my_invest_list">투자내역</a>
-							</li>
-							<li>
-								<a href="./my_loan_list">대출내역</a>
-							</li>
-							<li>
-								<a href="./my_depo_mgn">예치금관리</a>
-							</li>
-							<li>
-								<a href="./my_modify">회원정보수정</a>
-							</li>
-						</ul>
-					</li>
-					<!-- 마이페이지 end -->
-					
-					<!-- 로그아웃 start -->
-					<li><a href="./loan_guide">로그아웃</a></li>
-					<!-- 로그아웃 end -->
-				</ul>
-				<!--  notification end -->
-			</div>
-			<div class="top-menu">
-				<ul class="nav pull-right top-menu">
-					<li><a class="logout" href="/creator/join">회원가입</a></li>
-				</ul>
-			</div>
-	    </header>
+		<%@ include file="../header.jsp" %>
 	    <!--header end-->
-	   <section id="loanGuide-banner" class="text-center">
+		<section id="loanGuide-banner" class="text-center">
 			<div class="overlay">
 				<div class="section-body">
 					<span class="title">개인(신용)정보 수집-이용 동의</span>
@@ -261,62 +150,61 @@
 			<section class="wrapper site-min-height">
 				<div class="row mt">
 					<div class="col-lg-12">
-
-<div class="container">
-			<div class="section-body">
-				<div class="row">
-					<div class="col-md-12">
-						<div class="wrap">
-							<div class="box">
-								<strong>
-								<br>주식회사 크리에이터 귀중
-								<br>
-								<br>귀사와의 (금융)거래와 관련하여 귀사가 본인의 개인(신용)정보를 수집·이용하고자 하는 경우에는 [개인정보 보호법] 제15조 및 제22조, 제24조, [신용정보의 이용 및 보호에 관한 법률] 제32조, 제33조 및 제34조에 따라 동의를 얻어야 합니다. 이에 본인은 귀사가 아래&gt;의 내용과 같이 본인의 개인(신용)정보를 수집·이용하는데 동의합니다.
-								<br>
-								<br>[개인(신용)정보의 수집·이용 목적]
-								</strong>
-								<br>신청하신 투자 상품 및 관련 서비스 제공, (금융)거래관계의 설정·체결·유지·이행·관리(통계, 모형 개발 등 포함) ·개선, 투자 소 득에 대한 원천징수 납부, 법령상 의무이행, 신용질서 문란행위 조사, 분쟁처리, 전화상담업무, 민원처리, 본인 여부 확인 등
-								<br>
-								<strong>
-								<br>[수집·이용할 개인(신용)정보의 내용]
-								</strong>
-								<br>1. 개인식별정보 : 성명, 주민등록번호, 계좌정보, 휴대전화번호, e-mail, 거주지역 등
-								<br>
-								<br>2.(금융)거래정보 : 신청하신 투자상품 종류, 거래조건(수익률, 만기 등), 거래 일시, 금액 등 거래 설정·내역 정보 및 (금융)거래의 설정·유지·이행·관리를 위한 상담을 통해 생성되는 정보
-								<br>
-								<br>3. 고객 ID, 접속 일시, IP주소, 이용 전화번호 등 전자금융거래법에 따른 수집정보 [전자금융거래 한함]
-								<br>
-								<strong>
-								<br>[개인(신용)정보의 보유·이용 기간]
-								</strong>
-								<br>거래종료일로부터 5년(단, 관련 법령의 별도 규정이 명시되어 있는 경우 그 기간을 따름)
-								<br>
-								<strong>
-								<br>[고유식별정보의 필수적 수집·이용에 대한 동의]
-								</strong>
-								<br>본인은 귀사가 상기 목적으로 다음과 같은 본인의 고유식별정보를 처리하는 것에 동의합니다.
-								<br>- 고유식별정보 : 주민등록번호
-								<br>
-								<br>본인은 개인(신용)정보 필수적 수집·이용에 관한 사항을 이해하고, 동의합니다.
-								<br>
-								<br>※상기 내용이 변동되는 경우 당사 홈페이지(www.creator.co.kr)게시 등을 통해 그 내용을 안내 드리며, 본 동의서는 이 투자 계약이 성립되지 않는 경우 그 시점으로부터 효력을 상실합니다.
-								<br>※귀하는 동의를 거부할 권리가 있으나, 위 사항에 대한 동의가 없을 경우 채권에 대한 투자가 불가능할 수 있음을 알려드립니다.
-							</div>
-							<hr>
-							<div class="row">
-								<div class="col-md-push-8 col-md-4">
-									<select class="form-control" id="termHisSelect">
-										<option value="">이전 약관보기</option>
-										<option value="20180227">2018년 2월 27일</option>
-									</select>
+						<div class="container">
+							<div class="section-body">
+								<div class="row">
+									<div class="col-md-12">
+										<div class="wrap">
+											<div class="box">
+												<strong>
+												<br>주식회사 크리에이터 귀중
+												<br>
+												<br>귀사와의 (금융)거래와 관련하여 귀사가 본인의 개인(신용)정보를 수집·이용하고자 하는 경우에는 [개인정보 보호법] 제15조 및 제22조, 제24조, [신용정보의 이용 및 보호에 관한 법률] 제32조, 제33조 및 제34조에 따라 동의를 얻어야 합니다. 이에 본인은 귀사가 아래&gt;의 내용과 같이 본인의 개인(신용)정보를 수집·이용하는데 동의합니다.
+												<br>
+												<br>[개인(신용)정보의 수집·이용 목적]
+												</strong>
+												<br>신청하신 투자 상품 및 관련 서비스 제공, (금융)거래관계의 설정·체결·유지·이행·관리(통계, 모형 개발 등 포함) ·개선, 투자 소 득에 대한 원천징수 납부, 법령상 의무이행, 신용질서 문란행위 조사, 분쟁처리, 전화상담업무, 민원처리, 본인 여부 확인 등
+												<br>
+												<strong>
+												<br>[수집·이용할 개인(신용)정보의 내용]
+												</strong>
+												<br>1. 개인식별정보 : 성명, 주민등록번호, 계좌정보, 휴대전화번호, e-mail, 거주지역 등
+												<br>
+												<br>2.(금융)거래정보 : 신청하신 투자상품 종류, 거래조건(수익률, 만기 등), 거래 일시, 금액 등 거래 설정·내역 정보 및 (금융)거래의 설정·유지·이행·관리를 위한 상담을 통해 생성되는 정보
+												<br>
+												<br>3. 고객 ID, 접속 일시, IP주소, 이용 전화번호 등 전자금융거래법에 따른 수집정보 [전자금융거래 한함]
+												<br>
+												<strong>
+												<br>[개인(신용)정보의 보유·이용 기간]
+												</strong>
+												<br>거래종료일로부터 5년(단, 관련 법령의 별도 규정이 명시되어 있는 경우 그 기간을 따름)
+												<br>
+												<strong>
+												<br>[고유식별정보의 필수적 수집·이용에 대한 동의]
+												</strong>
+												<br>본인은 귀사가 상기 목적으로 다음과 같은 본인의 고유식별정보를 처리하는 것에 동의합니다.
+												<br>- 고유식별정보 : 주민등록번호
+												<br>
+												<br>본인은 개인(신용)정보 필수적 수집·이용에 관한 사항을 이해하고, 동의합니다.
+												<br>
+												<br>※상기 내용이 변동되는 경우 당사 홈페이지(www.creator.co.kr)게시 등을 통해 그 내용을 안내 드리며, 본 동의서는 이 투자 계약이 성립되지 않는 경우 그 시점으로부터 효력을 상실합니다.
+												<br>※귀하는 동의를 거부할 권리가 있으나, 위 사항에 대한 동의가 없을 경우 채권에 대한 투자가 불가능할 수 있음을 알려드립니다.
+											</div>
+											<hr>
+											<div class="row">
+												<div class="col-md-push-8 col-md-4">
+													<select class="form-control" id="termHisSelect">
+														<option value="">이전 약관보기</option>
+														<option value="20180227">2018년 2월 27일</option>
+													</select>
+												</div>
+											</div>
+										</div>
+									</div>
 								</div>
 							</div>
 						</div>
 					</div>
-				</div>
-			</div>
-		</div>
-</div>
 				</div>
 			</section>
 			<!-- /wrapper -->

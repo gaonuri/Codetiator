@@ -176,7 +176,11 @@ $(document).ready(function() {
 					<tr>
 					<td class="condition-title">이름</td>
 						<td class="condition-content">
+<<<<<<< HEAD
 							<input type="text" class="form-control" id="cusNm" maxlength="50" readonly="readonly" value="${mypagemem.user_name}${mypagedetail.manager_name}">
+=======
+							<input type="text" class="form-control" id="cusNm" maxlength="50" value="${mypagemem.user_name}${mypagedetail.manager_name}" readonly="readonly">
+>>>>>>> branch 'master' of https://github.com/gaonuri/Codetiator.git
 						</td>
 						<td>
 							<button type="button" class="btn btn-purple-transparent" id="userDataUpdate" name="userDataUpdate">변경</button>
@@ -185,7 +189,7 @@ $(document).ready(function() {
 					<tr>
 					<td class="condition-title">휴대전화번호</td>
 						<td class="condition-content">
-							<input type="text" class="form-control" id="mpNo" maxlength="50" readonly="readonly" value="${mypagemem.phone}${mypagedetail.manager_phone}">
+							<input type="text" class="form-control" id="mpNo" maxlength="50" value="${mypagemem.phone}${mypagedetail.manager_phone}">
 							<input type="hidden" id="ci">
 						</td>
 						<td>
