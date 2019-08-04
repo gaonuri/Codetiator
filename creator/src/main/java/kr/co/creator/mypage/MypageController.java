@@ -170,7 +170,6 @@ public class MypageController {
 		}
 		return "mypage/modify_detail";
 	}
-<<<<<<< HEAD
 	
 	@RequestMapping(value = "/my_popup", method = RequestMethod.GET)
 	public String popup1(HttpSession session) throws Exception {
@@ -217,10 +216,8 @@ public class MypageController {
 		out.close();	
 	}//deleteUser
 	
+
 	
-	
-=======
->>>>>>> branch 'master' of https://github.com/gaonuri/Codetiator.git
 }//class
 
 
