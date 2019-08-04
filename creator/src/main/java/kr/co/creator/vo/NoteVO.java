@@ -13,21 +13,7 @@ public class NoteVO {
 	private String status;					// 처리상태
 	private String file_path;				// 파일경로
 	
-	public NoteVO() {}	//constructor
-	public NoteVO(	String note_num, String note_type, String note_date, String chk_note_reception, String note_contents, 
-					String send_user_num, String send_nickname, String note_title, String status, String file_path) {
-		this.note_num = note_num;
-		this.note_type = note_type;
-		this.note_date = note_date;
-		this.chk_note_reception = chk_note_reception;
-		this.note_contents = note_contents;
-		this.send_user_num = send_user_num;
-		this.send_nickname = send_nickname;
-		this.note_title = note_title;
-		this.status = status;
-		this.file_path = file_path;
-	}//constructor
-	
+
 	public String getNote_num() {
 		return note_num;
 	}

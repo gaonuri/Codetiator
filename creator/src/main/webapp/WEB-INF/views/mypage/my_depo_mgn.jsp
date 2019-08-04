@@ -47,6 +47,7 @@
 		var count = 0; 
 		
 		$("#amtPlus100_771").click(function() {
+			if()
 			tmpInt = parseInt($("#withdrawAmt").val()) + 1000000;
 			$("#withdrawAmt").val(tmpInt);
 		});//1,000,000원
@@ -206,12 +207,9 @@
 																	투자 신청을 위해 예치금 계좌를 발급해 주세요.
 																</div>
 																<div style="padding:20px 0;">
-																
 																	<button type="button" id="cert_start" class="btn btn-purple-transparent btn-block" data-toggle="modal" data-target="#btn_cert1" >
 																		예치금 계좌 발급을 위해 본인 인증하기
 																	</button>
-																
-																
 																</div>
 															</div>
 														</div>
@@ -274,7 +272,7 @@
 																	입금처리 시간은 1분 이내이며 고객메세지를 통해 알려드립니다.(단, 은행망전산 점검시간 0시~0시30분에는 불가능합니다.)
 																</li>
 																<li>
-																	자세한 내용은 <a href="/info/noticeDetail/10" target="_blank"><strong>공지사항</strong></a>을 참고하시기 바랍니다.
+																	자세한 내용은 <a href="${pageContext.request.contextPath}/support_detail" target="_blank"><strong>공지사항</strong></a>을 참고하시기 바랍니다.
 																</li>
 															</ul>
 														</div>
@@ -300,21 +298,21 @@
 															<div class="col-xs-12 col-sm-12 col-md-12">
 																<div class="row">
 																	<div class="col-xs-6 col-sm-6 col-md-6">
-																		기본 예치금
+																		예치금
 																	</div>
 																	<div class="col-xs-6 col-sm-6 col-md-6 text-right" id="inputDeposit771" name="inputDeposit">
 																		${acnt.deposit} 원
 																		<input type="hidden" id="inputDeposit" value="${acnt.deposit}" />
 																	</div>
 																</div>
-																<div class="row" style="margin-top: 10px;">
-																	<div class="col-xs-6 col-sm-6 col-md-6">총 예치금</div>
-																	<div class="col-xs-6 col-sm-6 col-md-6 text-right">
-																		<span class="font-purple" id="inputDeposit771" name="inputDeposit"><strong>
-																			${acnt.deposit} <font size="2">원</font>
-																		</strong></span>
-																	</div>
-																</div>
+<!-- 																<div class="row" style="margin-top: 10px;"> 지워도 문제 없으면 지우자 -->
+<!-- 																	<div class="col-xs-6 col-sm-6 col-md-6">총 예치금</div> -->
+<!-- 																	<div class="col-xs-6 col-sm-6 col-md-6 text-right"> -->
+<!-- 																		<span class="font-purple" id="inputDeposit771" name="inputDeposit"><strong> -->
+<%-- 																			${acnt.deposit} <font size="2">원</font> --%>
+<!-- 																		</strong></span> -->
+<!-- 																	</div> -->
+<!-- 																</div> -->
 															</div>
 														</div>
 													</div>
@@ -348,7 +346,7 @@
 																		출금 대기금액
 																	</div>
 																	<div class="col-xs-6 col-sm-6 col-md-6 text-right">
-																		<span name="WTHDRW_REQ_AMT_SUM">${acnt.deposit}</span> 원
+																		<span name="WTHDRW_REQ_AMT_SUM">0</span> 원
 																	</div>
 																</div>
 															</div>
@@ -400,9 +398,6 @@
 																	<div class="col-md-12">
 																		<div class="withdrawGuide">
 																			<ul>
-																			<!-- 
-																			
-																			 -->
 																				<li>
 																					출금 요청 후 최대 1시간이내, 등록하신 계좌로 일괄 입금됩니다.(출금 요청 : 1일 2회)
 																				</li>
@@ -412,7 +407,7 @@
 																				<li>
 																					예치금 지연인출제도의 지연인출조건에 해당시 출금신청 후 72시간 이후 처리됩니다.
 																					<br>
-																					(자세한 내용은 공지사항 <a href="/info/noticeDetail/253" target="_blank">"보이스피싱 피해 방지를 위한 [예치금 지연인출제도] 개발 및 시행 안내"</a>를 참고하시기 바랍니다.)
+																					(자세한 내용은 공지사항 <a href="${pageContext.request.contextPath}/support_detail" target="_blank">"보이스피싱 피해 방지를 위한 [예치금 지연인출제도] 개발 및 시행 안내"</a>를 참고하시기 바랍니다.)
 																				</li>
 																			</ul>
 																		</div>
@@ -427,7 +422,7 @@
 																		출금 가능액
 																	</div>
 																	<div class="col-xs-7 col-sm-7 col-md-7 withdraw-content text-right">
-																		0<font size="2">원</font>
+																		${acnt.deposit}<font size="2">원</font>
 																	</div>
 																</div>
 																<div class="row" style="margin-top: 10px;">
@@ -638,7 +633,7 @@
 												<div class="clearfix"></div>
 												<div class="col-xs-12 col-sm-12 col-md-12">
 													<span class="modal-body-strong">※ 미성년자는 가상계좌 발급시 추가 인증이 필요합니다.</span>
-													<span class="modal-body-light">&nbsp;<a href="https://www.midrate.co.kr/info/noticeDetail/43" target="_blank">공지사항</a>을 참고하세요.</span>
+													<span class="modal-body-light">&nbsp;<a href="${pageContext.request.contextPath}/support" target="_blank">공지사항</a>을 참고하세요.</span>
 												</div>
 											</div>
 										</div>
@@ -686,159 +681,157 @@
 												<select id="cusBankCdSelect" class="form-control" name="cusBankCd">
 													<option value="">선택하세요</option>
 													
-														
-															
-																<option value="002">산업은행</option>
-															
-																<option value="003">기업은행</option>
-															
-																<option value="004">국민은행</option>
-															
-																<option value="007">수협중앙회</option>
-															
-																<option value="008">수출입은행</option>
-															
-																<option value="010">농협</option>
-															
-																<option value="011">농협중앙회</option>
-															
-																<option value="012">지역농·축협</option>
-															
-																<option value="020">우리은행</option>
-															
-																<option value="023">SC제일은행</option>
-															
-																<option value="027">한국씨티은행</option>
-															
-																<option value="031">대구은행</option>
-															
-																<option value="032">부산은행</option>
-															
-																<option value="034">광주은행</option>
-															
-																<option value="035">제주은행</option>
-															
-																<option value="037">전북은행</option>
-															
-																<option value="039">경남은행</option>
-															
-																<option value="045">새마을금고중앙회</option>
-															
-																<option value="048">신협중앙회</option>
-															
-																<option value="050">상호저축은행</option>
-															
-																<option value="052">모건스탠리은행</option>
-															
-																<option value="054">HSBC은행</option>
-															
-																<option value="055">도이치은행</option>
-															
-																<option value="057">제이피모간체이스은행</option>
-															
-																<option value="058">미즈호은행</option>
-															
-																<option value="059">미쓰비시도쿄UFJ은행</option>
-															
-																<option value="060">BOA은행</option>
-															
-																<option value="061">비엔피파리바은행</option>
-															
-																<option value="062">중국공상은행</option>
-															
-																<option value="063">중국은행</option>
-															
-																<option value="065">대화은행</option>
-															
-																<option value="066">교통은행</option>
-															
-																<option value="071">우체국</option>
-															
-																<option value="081">KEB하나은행</option>
-															
-																<option value="088">신한은행</option>
-															
-																<option value="089">케이뱅크</option>
-															
-																<option value="090">카카오뱅크</option>
-															
-																<option value="096">한국전자금융(주)</option>
-															
-																<option value="102">대신저축은행</option>
-															
-																<option value="103">에스비아이저축은행</option>
-															
-																<option value="104">에이치케이저축은행</option>
-															
-																<option value="105">웰컴저축은행</option>
-															
-																<option value="209">유안타증권</option>
-															
-																<option value="218">KB증권</option>
-															
-																<option value="221">골든브릿지투자증권</option>
-															
-																<option value="222">한양증권</option>
-															
-																<option value="223">리딩투자증권</option>
-															
-																<option value="224">BNK투자증권</option>
-															
-																<option value="225">IBK투자증권</option>
-															
-																<option value="227">KTB투자증권</option>
-															
-																<option value="238">미래에셋대우</option>
-															
-																<option value="240">삼성증권</option>
-															
-																<option value="243">한국투자증권</option>
-															
-																<option value="247">NH투자증권</option>
-															
-																<option value="261">교보증권</option>
-															
-																<option value="262">하이투자증권</option>
-															
-																<option value="263">HMC투자증권</option>
-															
-																<option value="264">키움증권</option>
-															
-																<option value="265">이베스트투자증권</option>
-															
-																<option value="266">SK증권</option>
-															
-																<option value="267">대신증권</option>
-															
-																<option value="269">한화투자증권</option>
-															
-																<option value="270">하나금융투자</option>
-															
-																<option value="278">신한금융투자</option>
-															
-																<option value="279">동부증권</option>
-															
-																<option value="280">유진투자증권</option>
-															
-																<option value="287">메리츠종합금융증권</option>
-															
-																<option value="290">부국증권</option>
-															
-																<option value="291">신영증권</option>
-															
-																<option value="292">케이프투자증권</option>
-															
-																<option value="293">한국증권금융</option>
-															
-																<option value="294">펀드온라인코리아</option>
-															
-																<option value="295">우리종합금융</option>
-															
-																<option value="296">삼성선물</option>
-															
-																<option value="297">외환선물</option>
-															
-																<option value="298">현대선물</option>
+													<option value="002">산업은행</option>
+												
+													<option value="003">기업은행</option>
+												
+													<option value="004">국민은행</option>
+												
+													<option value="007">수협중앙회</option>
+												
+													<option value="008">수출입은행</option>
+												
+													<option value="010">농협</option>
+												
+													<option value="011">농협중앙회</option>
+												
+													<option value="012">지역농·축협</option>
+												
+													<option value="020">우리은행</option>
+												
+													<option value="023">SC제일은행</option>
+												
+													<option value="027">한국씨티은행</option>
+												
+													<option value="031">대구은행</option>
+												
+													<option value="032">부산은행</option>
+												
+													<option value="034">광주은행</option>
+												
+													<option value="035">제주은행</option>
+												
+													<option value="037">전북은행</option>
+												
+													<option value="039">경남은행</option>
+												
+													<option value="045">새마을금고중앙회</option>
+												
+													<option value="048">신협중앙회</option>
+												
+													<option value="050">상호저축은행</option>
+												
+													<option value="052">모건스탠리은행</option>
+												
+													<option value="054">HSBC은행</option>
+												
+													<option value="055">도이치은행</option>
+												
+													<option value="057">제이피모간체이스은행</option>
+												
+													<option value="058">미즈호은행</option>
+												
+													<option value="059">미쓰비시도쿄UFJ은행</option>
+												
+													<option value="060">BOA은행</option>
+												
+													<option value="061">비엔피파리바은행</option>
+												
+													<option value="062">중국공상은행</option>
+												
+													<option value="063">중국은행</option>
+												
+													<option value="065">대화은행</option>
+												
+													<option value="066">교통은행</option>
+												
+													<option value="071">우체국</option>
+												
+													<option value="081">KEB하나은행</option>
+												
+													<option value="088">신한은행</option>
+												
+													<option value="089">케이뱅크</option>
+												
+													<option value="090">카카오뱅크</option>
+												
+													<option value="096">한국전자금융(주)</option>
+												
+													<option value="102">대신저축은행</option>
+												
+													<option value="103">에스비아이저축은행</option>
+												
+													<option value="104">에이치케이저축은행</option>
+												
+													<option value="105">웰컴저축은행</option>
+												
+													<option value="209">유안타증권</option>
+												
+													<option value="218">KB증권</option>
+												
+													<option value="221">골든브릿지투자증권</option>
+												
+													<option value="222">한양증권</option>
+												
+													<option value="223">리딩투자증권</option>
+												
+													<option value="224">BNK투자증권</option>
+												
+													<option value="225">IBK투자증권</option>
+												
+													<option value="227">KTB투자증권</option>
+												
+													<option value="238">미래에셋대우</option>
+												
+													<option value="240">삼성증권</option>
+												
+													<option value="243">한국투자증권</option>
+												
+													<option value="247">NH투자증권</option>
+												
+													<option value="261">교보증권</option>
+												
+													<option value="262">하이투자증권</option>
+												
+													<option value="263">HMC투자증권</option>
+												
+													<option value="264">키움증권</option>
+												
+													<option value="265">이베스트투자증권</option>
+												
+													<option value="266">SK증권</option>
+												
+													<option value="267">대신증권</option>
+												
+													<option value="269">한화투자증권</option>
+												
+													<option value="270">하나금융투자</option>
+												
+													<option value="278">신한금융투자</option>
+												
+													<option value="279">동부증권</option>
+												
+													<option value="280">유진투자증권</option>
+												
+													<option value="287">메리츠종합금융증권</option>
+												
+													<option value="290">부국증권</option>
+												
+													<option value="291">신영증권</option>
+												
+													<option value="292">케이프투자증권</option>
+												
+													<option value="293">한국증권금융</option>
+												
+													<option value="294">펀드온라인코리아</option>
+												
+													<option value="295">우리종합금융</option>
+												
+													<option value="296">삼성선물</option>
+												
+													<option value="297">외환선물</option>
+												
+													<option value="298">현대선물</option>
 												</select>
 											</div>
 											<div class="form-group col-xs-12 col-sm-12 col-md-5">
@@ -886,7 +879,7 @@
 												<div class="clearfix"></div>
 												<div class="col-xs-12 col-sm-12 col-md-12">
 													<span class="modal-body-strong">※ 미성년자는 가상계좌 발급시 추가 인증이 필요합니다.</span>
-													<span class="modal-body-light">&nbsp;<a href="https://www.midrate.co.kr/info/noticeDetail/43" target="_blank">공지사항</a>을 참고하세요.</span>
+													<span class="modal-body-light">&nbsp;<a href="${pageContext.request.contextPath}/support" target="_blank">공지사항</a>을 참고하세요.</span>
 												</div>
 											</div>
 										</div>
@@ -915,7 +908,7 @@
 		<input type="hidden" id="rate" value="${proVO.rate}" />									<!-- 금리 -->
 		<input type="hidden" id="user_num" value="${memVO.user_num}" />							<!-- 유저번호 -->
 		<input type="hidden" id="busi_num" value="${memVO.busi_num}" />							<!-- 법인유저번호 -->
-	    <input type="hidden" id="invest_limit" value="${acnt.deposit}" />					<!-- 예치금한도 -->
+	    <input type="hidden" id="invest_limit" value="${acnt.deposit}" />						<!-- 예치금한도 -->
 	    <!-- hidden value -->
     
 		<div class="modal fade" id="eventModal" role="dialog" aria-labelledby="eventModalLabel" aria-hidden="true">

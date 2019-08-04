@@ -5,24 +5,9 @@ public class InOutVO {
 	private String in_out_num;		// 입출금번호
 	private String input_history;	// 입금내역
 	private String output_history;	// 출금내역
-	private String user_num; // 유저 번호
 	
-	public String getUser_num() {
-		return user_num;
-	}
-	public void setUser_num(String user_num) {
-		this.user_num = user_num;
-	}
-	private String account_num;		// (참조)계좌순서
-	
-	public InOutVO() {}	//constructor
-	public InOutVO(String in_out_num, String input_history, String output_history, String account_num) {
-		this.in_out_num = in_out_num;
-		this.input_history = input_history;
-		this.output_history = output_history;
-		
-		this.account_num = account_num;
-	}//constructor
+	private String account_num;		// (참조)계좌등록번호
+	private String user_num; 		// (참조)유저번호
 	
 	public String getIn_out_num() {
 		return in_out_num;
@@ -53,4 +38,11 @@ public class InOutVO {
 	public void setAccount_num(String account_num) {
 		this.account_num = account_num;
 	}//account_num
+	
+	public String getUser_num() {
+		return user_num;
+	}
+	public void setUser_num(String user_num) {
+		this.user_num = user_num;
+	}//user_num
 }//class

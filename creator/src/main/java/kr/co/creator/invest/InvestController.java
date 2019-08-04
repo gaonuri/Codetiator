@@ -107,9 +107,12 @@ public class InvestController {
 	}//invest_finish
 	
 	@RequestMapping(value = "/deposit_update", method = RequestMethod.POST)
-	public void deposit_update(Model model, PrintWriter out, AccountVO accVO, InvestVO inVO ,ProjectVO proVO) {
+	public void deposit_update(HttpSession session, Model model, PrintWriter out, AccountVO accVO, InvestVO inVO ,ProjectVO proVO) {
 		logger.info("deposit_update");
 		
+		if(session.getAttribute("memVO") == null) {
+			return;
+		}
 		int count = 0;
 		count = investService.deposit_update(accVO);
 		System.out.println("deposit_update_Controller111111111111111111111111111111 : " + accVO);

@@ -143,9 +143,6 @@ $(document).ready(function() {
 						<td class="condition-content">
 							<input type="text" class="form-control" id="cusNm" maxlength="50" value="${mypagemem.user_name}${mypagedetail.manager_name}" readonly="readonly">
 						</td>
-						<td>
-							<button type="button" class="btn btn-purple-transparent" onclick="fn_updateCusNm()" id="updateCusNmBtn">변경</button>
-						</td>
 					</tr>
 					<tr>
 					<td class="condition-title">이메일</td>
