@@ -48,7 +48,7 @@
 		var confirmYN = false;
 		var check = $("input:checkbox[id=agreeCheckbox]:checked").is(":checked");
 
-
+		$("#inputDeposit771").val(addComma(deposit));
 		
 		$("#amtPlus100_771").click(function() {
 			addDeposit(1000000);
@@ -112,48 +112,6 @@
 				calculating();
 			}//if
 		});//blur
-
-		function addDeposit(add) {
-			if(deposit > 0) {
-				temp = parseInt($("#inputAmt771").val());
-				temp += add;
-				//deposit = parseInt($("#inputDeposit771").val());
-				//alert(temp);alert(deposit);
-				if(temp > limit) {
-					alert("동일 차입자에게 투자한도 이상의 투자를 할 수 없습니다.");
-				} else if(temp > deposit) {
-					confirmYN = confirm("투자 가능 예치금이 부족합니다. 예치금 관리 페이지로 이동하시겠습니까?");
-					if(confirmYN == true) {
-						location.href = "${pageContext.request.contextPath}/my_depo_mgn";
-					} else {
-						return;
-					}//if
-				} else {
-					$("#inputAmt771").val(temp);
-					calculating();
-				}
-			} else {
-				confirmYN = confirm("투자 가능 예치금이 부족합니다. 예치금 관리 페이지로 이동하시겠습니까?");
-				if(confirmYN == true) {
-					location.href = "${pageContext.request.contextPath}/my_depo_mgn";
-				} else {
-					return;
-				}//if
-			}//if
-		}//addDeposit
-		
-		function calculating() {
-			invest 	= parseInt($("#inputAmt771").val());
-			intrst 	= invest * $("#rate").val() * 0.01;
-			tax 	= parseInt(intrst * 0.275);
-			benefit = invest + intrst - tax;
-
-			$("#investAmtL").text(invest);
-			$("#intrstAmtL").text(intrst);
-			$("#taxAmtL").text(tax);
-			$("#benefitAmtL").text(benefit);
-		}//calculating
-		
 	
 		$("#invest_offer_u").click(function() {
 			if(parseInt($("#inputAmt771").val()) == 0) {
@@ -258,6 +216,53 @@
 				alert("약관에 동의해주시기 바랍니다.");
 			}//if
 		});//invest_offer_b
+
+		
+		function addDeposit(add) {
+			if(deposit > 0) {
+				temp = parseInt($("#inputAmt771").val());
+				temp += add;
+				//deposit = parseInt($("#inputDeposit771").val());
+				//alert(temp);alert(deposit);
+				if(temp > limit) {
+					alert("동일 차입자에게 투자한도 이상의 투자를 할 수 없습니다.");
+				} else if(temp > deposit) {
+					confirmYN = confirm("투자 가능 예치금이 부족합니다. 예치금 관리 페이지로 이동하시겠습니까?");
+					if(confirmYN == true) {
+						location.href = "${pageContext.request.contextPath}/my_depo_mgn";
+					} else {
+						return;
+					}//if
+				} else {
+					$("#inputAmt771").val(temp);
+					calculating();
+				}
+			} else {
+				confirmYN = confirm("투자 가능 예치금이 부족합니다. 예치금 관리 페이지로 이동하시겠습니까?");
+				if(confirmYN == true) {
+					location.href = "${pageContext.request.contextPath}/my_depo_mgn";
+				} else {
+					return;
+				}//if
+			}//if
+		}//addDeposit
+		
+		function calculating() {
+			invest 	= parseInt($("#inputAmt771").val());
+			intrst 	= invest * $("#rate").val() * 0.01;
+			tax 	= parseInt(intrst * 0.275);
+			benefit = invest + intrst - tax;
+
+			$("#investAmtL").text(addComma(invest));
+			$("#intrstAmtL").text(addComma(intrst));
+			$("#taxAmtL").text(addComma(tax));
+			$("#benefitAmtL").text(addComma(benefit));
+		}//calculating
+		
+		function addComma(num) {
+			var regexp = /\B(?=(\d{3})+(?!\d))/g;
+			return num.toString().replace(regexp, ',');
+		}//addComma
 	});//ready
 	</script>
 </head>

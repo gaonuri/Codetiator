@@ -6,55 +6,56 @@
 <mapper namespace="InvestMapper">
 	
 	<select id="investList" resultType="kr.co.creator.vo.ProjectVO">
-		select	*
-		from	project_list
+		select	* 
+		FROM  	project_list
+		ORDER BY regi_date DESC
 	</select>
 	
 	<select id="accountDetail" resultType="kr.co.creator.vo.AccountVO">
-		select	*
-		from	account_list
+		select	* 
+		from	account_list 
 		where	user_num = #{user_num} || busi_num = #{busi_num} 
 	</select>
 	
 	<select id="projectDetail" parameterType="kr.co.creator.vo.ProjectVO" resultType="kr.co.creator.vo.ProjectVO">
-		select	*
+		select	* 
 		from	project_list 
 		where 	project_num = #{project_num}
 	</select>
 		
 	<select id="guaranteeDetail" parameterType="kr.co.creator.vo.GuaranteeVO" resultType="kr.co.creator.vo.GuaranteeVO">
-		select	*
+		select	* 
 		from	guarantee 
 		where 	project_num = #{project_num}
 	</select>
 	
-	<select id="investFinish" resultType="kr.co.creator.vo.ProjectVO">
-		select	*
-		from	project_list
+	<select id="investFinished" resultType="kr.co.creator.vo.ProjectVO">
+		select	* 
+		from	project_list 
 		where	ach_state = "상환완료" || ach_state = "중도상환"
 	</select>
 	
 	<update id="depositUpdate" parameterType="kr.co.creator.vo.AccountVO">
-		update account_list
-		set deposit = #{deposit}
+		update account_list 
+		set deposit = #{deposit} 
 		where user_num = #{user_num} || busi_num = #{busi_num} 
 	</update>
 	
 	<update id="currentPriceUpdate" parameterType="kr.co.creator.vo.ProjectVO">
-		update project_list
-		set current_price = #{current_price}
+		update project_list 
+		set current_price = #{current_price} 
 		where project_num = #{project_num}
 	</update>
 	
 	<insert id="investPriceInsert" parameterType="kr.co.creator.vo.InvestVO">
-		INSERT INTO invest_list 
+		INSERT INTO invest_list  
 		(invest_price, invest_date, user_num, busi_num, project_num) 
 		VALUE(#{invest_price}, NOW(), #{user_num}, #{busi_num}, #{project_num}) 
 	</insert>
 	
 	<select id="investDetail" parameterType="kr.co.creator.vo.InvestVO" resultType="kr.co.creator.vo.InvestVO">
 		SELECT SUM(invest_price) invest_price, p.busi_num 
-		FROM invest_list i, project_list p  
+		FROM invest_list i, project_list p 
 		WHERE i.project_num = p.project_num 
 		AND p.busi_num = #{p_busi_num} 
 		AND (i.user_num = #{user_num} OR i.busi_num = #{busi_num}) 
@@ -69,4 +70,6 @@
 <!-- 		AND p.ach_state = '투자하기'  -->
 <!-- 		GROUP BY p.busi_num -->
 <!-- 	</select> -->
+
+<!-- UPDATE project_list SET end_date = (regi_date + INTERVAL 1 MONTH) WHERE project_num = 1; 심사에서 쓰일 코드 -->
 </mapper>
