@@ -41,7 +41,6 @@ public class LoginService {
 		return list;
 	}//busi_user_list
 
-<<<<<<< HEAD
 	public int insertNumber(FindPwdVO vo) {
 		int cnt = 0;
 		cnt = loginDAO.insertNumber(vo);
@@ -58,12 +57,10 @@ public class LoginService {
 		int cnt = 0;
 		cnt = loginDAO.CheckCerNumber(vo);
 		return cnt;
-=======
 	public List<HistoryVO> historyIn(HistoryVO hvo) {
 		List<HistoryVO> list = null;
 		list = loginDAO.historyIn(hvo);
 		return list;
->>>>>>> branch 'master' of https://github.com/gaonuri/Codetiator.git
 	}
 	
 	public List<HistoryVO> historyOut(HistoryVO hvo) {
