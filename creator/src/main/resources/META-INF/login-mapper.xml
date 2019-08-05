@@ -22,12 +22,24 @@
 	     from user_list 
 	     where email=#{email}
  	</select>
+ 	
+ 	<select id="busifindChk" parameterType="java.lang.String" resultType="int">
+	     select count(*) 
+	     from busi_user_list 
+	     where manager_email=#{manager_email}
+ 	</select>
 	
 	<update id="updatePwd" parameterType="kr.co.creator.vo.FindPwdVO">
 		update user_list
 		set user_password = #{newPassword} 
 		where email = #{email}
 	</update>
+	
+	<select id="selectBusiName" parameterType="java.lang.String" resultType="java.lang.String">
+		select manager_name
+		from busi_user_list
+		where manager_email = #{manager_email}
+	</select>
 	
 	<select id="selectName" parameterType="java.lang.String" resultType="java.lang.String">
 		select user_name
@@ -51,6 +63,18 @@
 		from	busi_user_list
 	</select>
 	
+	<update id="insertNumber" parameterType="kr.co.creator.vo.FindPwdVO">
+		update busi_user_list
+		set cer_number = #{newPassword} 
+		where manager_email = #{manager_email}
+	</update>
+	
+	<select id="CheckCerNumber" resultType="int">
+		select count(*)
+		from busi_user_list
+		where cer_number = #{cer_number}
+	</select>
+	 
 	<insert id="historyTime" parameterType="kr.co.creator.vo.MemberVO" >
 		insert into history (user_num, busi_num, log_in_out_time, log_in_out_type)
 		values (#{user_num}, #{busi_num}, now(), 1)
@@ -77,7 +101,4 @@
 		limit 3
 	</select>
 	
-	
 </mapper>
-
-

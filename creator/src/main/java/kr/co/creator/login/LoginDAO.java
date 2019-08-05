@@ -6,11 +6,10 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import kr.co.creator.vo.Busi_userVO;
 import kr.co.creator.vo.FindPwdVO;
 import kr.co.creator.vo.HistoryVO;
 import kr.co.creator.vo.MemberListVO;
-import kr.co.creator.vo.MemberVO;
-import kr.co.creator.vo.ProjectVO;
 
 @Repository
 public class LoginDAO {
@@ -42,17 +41,33 @@ public class LoginDAO {
 		return list;
 	}//busi_user_list
 
+	public int insertNumber(FindPwdVO vo) {
+		int cnt = 0;
+		cnt = sqlSession.insert("LoginMapper.insertNumber", vo);
+		return cnt;
+	}//insertNumber
+
+	public int busifindChk(FindPwdVO vo) {
+		int cnt = 0;
+		cnt = sqlSession.selectOne("LoginMapper.busifindChk", vo);
+		return cnt;
+	}//busifindChk
+
+	public int CheckCerNumber(Busi_userVO vo) {
+		int cnt = 0;
+		cnt = sqlSession.selectOne("LoginMapper.CheckCerNumber", vo);
+		return cnt;
+	}//CheckCerNumber
+	
 	public List<HistoryVO> historyIn(HistoryVO hvo) {
 		List<HistoryVO> list = null;
 		list = sqlSession.selectList("LoginMapper.historyIn", hvo);
 		return list;
-	}
+	}//historyIn
 	
 	public List<HistoryVO> historyOut(HistoryVO hvo) {
 		List<HistoryVO> list = null;
 		list = sqlSession.selectList("LoginMapper.historyOut", hvo);
 		return list;
-	}
-
-	
+	}//historyOut
 }//class

@@ -58,7 +58,7 @@ public class LoginController {
 			session.setAttribute("mypageVO", vo);
 			session.setAttribute("loginCusGbCd", loginCusGbCd);
 			sqlSession.insert("LoginMapper.historyTime", vo);
-		} 
+		}
 		out.print(successCnt);
 		out.close();
 	}//loginUser
@@ -141,6 +141,56 @@ public class LoginController {
 		out.flush();
 		out.close();
 	}//sendNewPassword
+	
+	@RequestMapping(value = "/busifindChk", method = RequestMethod.POST)
+	public void busifindChk(PrintWriter out, FindPwdVO vo) {
+		logger.info("=== busifindChk ===");
+		int cnt = 0;
+		cnt = loginService.busifindChk(vo);
+		out.print(cnt);
+		out.flush();
+		out.close();
+	}//busifindChk
+	
+	@RequestMapping(value = "/CerEmail", method = RequestMethod.POST)
+	public void CerEmail(PrintWriter out, FindPwdVO vo, EmailForm form, FindUtil findUtil) throws Exception {
+		logger.info("=== CerEmail ===");
+		int cnt = 0;
+		cnt = loginService.busifindChk(vo);
+		if(cnt > 0) {
+			String newPassword, user_name;
+			newPassword = findUtil.getRamdomPassword(8);
+			user_name = sqlSession.selectOne("LoginMapper.selectBusiName", vo);
+			vo.setNewPassword(newPassword);
+			vo.setManager_name(user_name);
+			form.setContent("인증번호는 " + newPassword + " 입니다");
+			form.setSubject("안녕하세요 " + vo.getManager_name() + "님 인증번호를 확인해 주세요");
+			form.setReceiver(vo.getManager_email());
+			emailSender.sendEmail(form);
+		}
+		if(cnt > 0) {
+			System.out.println(vo.getManager_email());
+			cnt = loginService.insertNumber(vo);
+			out.print(cnt);
+			out.flush();
+			out.close();
+		}
+		out.print(cnt);
+		out.flush();
+		out.close();
+	}//CerEmail
+	
+	@RequestMapping(value = "/CheckCerNumber", method = RequestMethod.POST)
+	public void CheckCerNumber(PrintWriter out, Busi_userVO vo, EmailForm form, FindUtil findUtil) throws Exception {
+		logger.info("=== CheckCerNumber ===");
+		int cnt = 0;
+		cnt = loginService.CheckCerNumber(vo);
+		if(cnt > 0) {
+			out.print(cnt);
+			out.flush();
+			out.close();
+		}
+	}//CheckCerNumber
 	
 	@RequestMapping(value = "/user_list", method = RequestMethod.GET)
 	public String user_list(Model model) {

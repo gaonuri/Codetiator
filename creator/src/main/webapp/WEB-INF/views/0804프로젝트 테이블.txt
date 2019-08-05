@@ -200,6 +200,7 @@ CREATE TABLE `history` (
 	CONSTRAINT `FK_history_busi_user_list` FOREIGN KEY (`busi_num`) REFERENCES `busi_user_list` (`busi_num`) ON DELETE CASCADE,
 	CONSTRAINT `FK_history_user_list` FOREIGN KEY (`user_num`) REFERENCES `user_list` (`user_num`) ON DELETE CASCADE
 )
+COMMENT='<로그인,아웃 기록>'
 COLLATE='utf8_general_ci'
 ENGINE=InnoDB;
 

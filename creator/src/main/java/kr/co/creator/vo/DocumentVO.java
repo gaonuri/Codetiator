@@ -15,7 +15,7 @@ public class DocumentVO {
 	private String copy_bankbook;	// 통장사본
 	private String chk_select;		// 개인정보 선택적이용확인
 	private String judge_status;	// 심사상태
-	
+
 	private String project_num;		// (참조)프로젝트번호
 	
 	
