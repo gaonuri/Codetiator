@@ -61,10 +61,10 @@ public class MypageService {
 		return useVO;
 	}
 	
-	public int emailcert(String email) {
-		System.out.println(email);
+	public int emailcert(UserVO vo) {
+		System.out.println(vo);
 		int cnt = 0;
-		cnt = dao.emailcert(email);
+		cnt = dao.emailcert(vo);
 		return cnt; 
 	}//findPwdChk
 

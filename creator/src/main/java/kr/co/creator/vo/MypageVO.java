@@ -22,8 +22,15 @@ public class MypageVO {
 	
 	private String user_num;			// (참조)유저번호
 	private String busi_num;			// (참조)법인유저번호
+	private String refund_deadline;		// 상환예정일
 	
 	
+	public String getRefund_deadline() {
+		return refund_deadline;
+	}
+	public void setRefund_deadline(String refund_deadline) {
+		this.refund_deadline = refund_deadline;
+	}
 	public String getAccount_name() {
 		return account_name;
 	}
