@@ -33,13 +33,30 @@
 	  License: https://templatemag.com/license/
 	======================================================= -->
 <script type="text/javascript">
+var id;
+var min = 02;
+var sec = 59;
+var minZero = "";
+var secZero = "";
 function setClock() {
-	var min = 2;
-	var sec = 59;
-	var now =  min + " : "	+ sec;
+	id = setInterval(worker,1000);
+}
+function worker() {
+	if(min < 10){minZero = "0";}else{minZero = "";}
+	if(sec < 10){secZero = "0";}else{secZero = "";}
+	var now = minZero + min + " : " + secZero + sec;
 	clock.innerHTML = "<h6>"+now+"</h6>";
-	sec = sec - 1;
-	setTimeout('setClock()', 1000);
+	sec = parseInt(sec) - 1;
+	if(sec == -1) {
+		sec = 59;
+		min = parseInt(min) - 1;
+		if(min == -1){
+			clearInterval(id);
+			alert("인증시간이 만료 되었습니다.");
+			location.reload();
+			//$("#btn_cert1").modal("hide");
+		}
+	}
 }
 $(document).ready(function(){
 	var chkemail = '';
@@ -608,8 +625,8 @@ $(document).ready(function() {
 											<div class="row">
 												<div class="form-group col-md-4">
 													<input class="form-control" id="cer_number" type="text" maxlength="13"  placeholder="" style="display:none;">
-												<div id="clock">
 												</div>
+												<div id="clock">
 												</div>
 											</div>													
 												
@@ -815,7 +832,6 @@ $(document).ready(function() {
 			var loanGb = $("#loan_class").val();
 			var loanType = $("#loanTypeSelect").val();
 			var repayTypeCd = $("#repay_method").val();
-			$("#btn_cert1").modal(); return;
 			if(sex == undefined) {
 				alert("성별을 선택하세요.");
 				$(".sexRadio-label").focus();
