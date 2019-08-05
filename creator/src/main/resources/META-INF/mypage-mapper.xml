@@ -58,6 +58,14 @@
 		where user_num = #{user_num}
 	</select>
 	
+	<select id="Busi"
+		parameterType="kr.co.creator.vo.MemberVO"
+		resultType="kr.co.creator.vo.Busi_userVO">
+		select *
+		from busi_user_list 
+		where busi_num = #{busi_num}
+	</select>
+	
 	<select id="Inout"
 		parameterType="kr.co.creator.vo.MemberVO"
 		resultType="kr.co.creator.vo.InOutVO">

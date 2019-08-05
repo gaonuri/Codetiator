@@ -687,7 +687,7 @@
 													<input class="form-control" id="ssnNo" type="text" maxlength="13" placeholder="" style="display:none;">
 												</div>
 												<div class="form-group col-md-2">	
-														<button type="button" class="btn btn-purple-transparent" onclick="fn_insertVtAcnt()">인증하기</button>
+														<button type="button"  id="ssnNo" placeholder="" style="display:none;" class="btn btn-purple-transparent" onclick="fn_insertVtAcnt()">인증하기</button>
 													<input type="hidden" id="ci" value="">
 												</div>
 											</div>													
@@ -744,7 +744,7 @@
 										<div class="row">
 											<div class="form-group col-xs-5 col-sm-5 col-md-3">
 												<label for="cusNm" class="control-label">예금주</label>
-												<input class="form-control" id="cusNm" type="text" value="${user.user_name}" readonly="">
+												<input class="form-control" id="cusNm" type="text" value="${user.user_name}${user.manager_name}" readonly="">
 											</div>
 											<div class="form-group col-xs-7 col-sm-7 col-md-4">
 												<label for="cusBankCdSelect" class="control-label">은행명</label>

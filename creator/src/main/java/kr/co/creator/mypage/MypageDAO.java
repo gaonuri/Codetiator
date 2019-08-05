@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import kr.co.creator.vo.AccountVO;
+import kr.co.creator.vo.Busi_userVO;
 import kr.co.creator.vo.FindPwdVO;
 import kr.co.creator.vo.InOutVO;
 import kr.co.creator.vo.InvestVO;
@@ -61,6 +62,12 @@ public class MypageDAO {
 		UserVO useVO = null;
 		useVO = sqlSession.selectOne("MypageMapper.User", userVO);
 		return useVO;
+	}
+	
+	public Busi_userVO busi(MemberVO userVO) {
+		Busi_userVO busiVO = null;
+		busiVO = sqlSession.selectOne("MypageMapper.Busi", userVO);
+		return busiVO;
 	}
 
 	public int emailcert(UserVO vo) {

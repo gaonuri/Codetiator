@@ -20,6 +20,7 @@ import kr.co.creator.login.FindUtil;
 import kr.co.creator.login.LoginService;
 import kr.co.creator.login.UtilForSession;
 import kr.co.creator.vo.AccountVO;
+import kr.co.creator.vo.Busi_userVO;
 import kr.co.creator.vo.FindPwdVO;
 import kr.co.creator.vo.HistoryVO;
 import kr.co.creator.vo.InOutVO;
@@ -83,15 +84,19 @@ public class MypageController {
 		AccountVO accVO = null;
 		InOutVO ioVO = null;
 		UserVO useVO = null;
+		Busi_userVO busiVO = null;
 		accVO = service.account(userVO);
 		ioVO = service.inout(userVO);
 		useVO = service.user(userVO);
-		
+		busiVO = service.busi(userVO); 
+				
 		model.addAttribute("user", useVO);
+		model.addAttribute("busi", busiVO);
 		model.addAttribute("acnt", accVO);
 		model.addAttribute("Inout",ioVO);
 		logger.info("my_depo_mgn"+accVO);
 		logger.info("my_depo_mgn"+ioVO);
+		logger.info("my_depo_mgn"+busiVO);
 		return "mypage/my_depo_mgn";
 	}
 	
