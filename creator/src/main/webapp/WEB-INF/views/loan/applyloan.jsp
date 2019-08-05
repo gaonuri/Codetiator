@@ -338,7 +338,7 @@
 									<dd>
 										
 											<div class="form-group">
-												<select class="form-control loanType-select" id="loanTypeSelect">
+												<select class="form-control loanType-select" id="loanTypeSelect" name="loan_type">
 													<option value="">대출구분을 선택하세요</option>
 													<!-- 
 													
@@ -385,7 +385,7 @@
 													
 												</select>
 												 -->
-												<select class="form-control repayTypeCd-select" id="repay_method", name="repay_method">
+												<select class="form-control repayTypeCd-select" id="repay_method" name="repay_method">
 													<option value="1">원리금균등</option>
 													<option value="3">만기일시</option>
 												</select>
@@ -629,7 +629,7 @@
 			var loanAmt = $("#loan_period").val();
 			var loanGb = $("#loan_class").val();
 			var loanType = $("#loanTypeSelect").val();
-			var repayTypeCd = $("#repayTypeCdSelect").val();
+			var repayTypeCd = $("#repay_method").val();
 			if(sex == undefined) {
 				alert("성별을 선택하세요.");
 				$(".sexRadio-label").focus();
@@ -647,7 +647,7 @@
 				$("#loanTypeSelect").focus();
 			} else if(repayTypeCd == "") {
 				alert("상환방식을 선택하세요.");
-				$("#repayTypeCdSelect").focus();
+				$("#repay_method").focus();
 			} else if(agree1Checkbox == false) {
 				alert("서비스 이용약관에 동의하세요.");
 				$("#agree1Checkbox").focus();

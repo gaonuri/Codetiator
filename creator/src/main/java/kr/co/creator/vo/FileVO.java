@@ -2,7 +2,7 @@ package kr.co.creator.vo;
 
 import org.springframework.web.multipart.MultipartFile;
 
-public class DocumentVO2 {
+public class FileVO {
 
 	private MultipartFile copy_id;
 	private MultipartFile copy_bankbook;
@@ -14,7 +14,12 @@ public class DocumentVO2 {
 	private MultipartFile cer_income;
 	private MultipartFile cer_vat;
 	private MultipartFile cer_other;
-
+	private MultipartFile img_file;
+	private MultipartFile guarantee_img_file;
+	private MultipartFile reference_file1_file;			// 참고파일1
+	private MultipartFile reference_file2_file;			// 참고파일2
+	private MultipartFile reference_file3_file;			// 참고파일3
+	
 	public MultipartFile getCopy_id() {
 		return copy_id;
 	}
@@ -74,6 +79,36 @@ public class DocumentVO2 {
 	}
 	public void setCer_other(MultipartFile cer_other) {
 		this.cer_other = cer_other;
+	}
+	public MultipartFile getImg_file() {
+		return img_file;
+	}
+	public void setImg_file(MultipartFile img_file) {
+		this.img_file = img_file;
+	}
+	public MultipartFile getGuarantee_img_file() {
+		return guarantee_img_file;
+	}
+	public void setGuarantee_img_file(MultipartFile guarantee_img_file) {
+		this.guarantee_img_file = guarantee_img_file;
+	}
+	public MultipartFile getReference_file1_file() {
+		return reference_file1_file;
+	}
+	public void setReference_file1_file(MultipartFile reference_file1_file) {
+		this.reference_file1_file = reference_file1_file;
+	}
+	public MultipartFile getReference_file2_file() {
+		return reference_file2_file;
+	}
+	public void setReference_file2_file(MultipartFile reference_file2_file) {
+		this.reference_file2_file = reference_file2_file;
+	}
+	public MultipartFile getReference_file3_file() {
+		return reference_file3_file;
+	}
+	public void setReference_file3_file(MultipartFile reference_file3_file) {
+		this.reference_file3_file = reference_file3_file;
 	}
 
 }//class

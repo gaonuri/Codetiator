@@ -6,10 +6,9 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import kr.co.creator.vo.Busi_userVO;
 import kr.co.creator.vo.FindPwdVO;
 import kr.co.creator.vo.MemberListVO;
-import kr.co.creator.vo.MemberVO;
-import kr.co.creator.vo.ProjectVO;
 
 @Repository
 public class LoginDAO {
@@ -40,5 +39,23 @@ public class LoginDAO {
 		list = sqlSession.selectList("LoginMapper.busiUserList");
 		return list;
 	}//busi_user_list
+
+	public int insertNumber(FindPwdVO vo) {
+		int cnt = 0;
+		cnt = sqlSession.insert("LoginMapper.insertNumber", vo);
+		return cnt;
+	}
+
+	public int busifindChk(FindPwdVO vo) {
+		int cnt = 0;
+		cnt = sqlSession.selectOne("LoginMapper.busifindChk", vo);
+		return cnt;
+	}
+
+	public int CheckCerNumber(Busi_userVO vo) {
+		int cnt = 0;
+		cnt = sqlSession.selectOne("LoginMapper.CheckCerNumber", vo);
+		return cnt;
+	}
 	
 }//class

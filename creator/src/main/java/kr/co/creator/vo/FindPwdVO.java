@@ -10,6 +10,7 @@ public class FindPwdVO {
 	private String user_password;
 	private String user_name;
 	private String newPassword;
+	private String manager_name;
 	
 	public FindPwdVO() {}	//constructor
 	public FindPwdVO(String user_num, String email, String busi_num, String manager_email, String user_password, String user_name, String newPassword) {
@@ -64,6 +65,12 @@ public class FindPwdVO {
 	}
 	public void setNewPassword(String newPassword) {
 		this.newPassword = newPassword;
+	}
+	public String getManager_name() {
+		return manager_name;
+	}
+	public void setManager_name(String manager_name) {
+		this.manager_name = manager_name;
 	}
 	
 	

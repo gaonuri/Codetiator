@@ -27,6 +27,7 @@ public class Busi_userVO {
 	private String busi_join_date;					// 가입일
 	private String busi_login_time;					// 로그인 이력
 	private String busi_phone_key;				// 휴대폰 인증
+	private String cer_number;					//인증번호
 	
 	public Busi_userVO() {}	//constructor
 	public Busi_userVO(	String busi_num, String busi_resi_num, String busi_password, String com_name, String presen_name, 
@@ -231,6 +232,12 @@ public class Busi_userVO {
 	public void setBusi_phone_key(String busi_phone_key) {
 		this.busi_phone_key = busi_phone_key;
 	}//busi_phone_key
+	public String getCer_number() {
+		return cer_number;
+	}
+	public void setCer_number(String cer_number) {
+		this.cer_number = cer_number;
+	}
 	
 }//class
 

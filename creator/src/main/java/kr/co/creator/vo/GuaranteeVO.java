@@ -19,6 +19,7 @@ public class GuaranteeVO {
 	private String comple_year;				// 준공년도
 	private String quote;					// 시세
 	private String code;					// 담보분류
+	private String judge_status;			// 심사상태
 	private String reference_file1;			// 참고파일1
 	private String reference_file2;			// 참고파일2
 	private String reference_file3;			// 참고파일3
@@ -202,4 +203,10 @@ public class GuaranteeVO {
 	public void setProject_num(String project_num) {
 		this.project_num = project_num;
 	}//project_num
+	public String getJudge_status() {
+		return judge_status;
+	}
+	public void setJudge_status(String judge_status) {
+		this.judge_status = judge_status;
+	}
 }//class

@@ -18,6 +18,7 @@
 							,copy_id
 							,copy_bankbook
 							,chk_select
+							,judge_status
 							,project_num)
 		values( #{busi_regi}
 				, #{jumin_chobon}
@@ -30,6 +31,7 @@
 				, #{copy_id}
 				, #{copy_bankbook}
 				, #{chk_select}
+				, 1
 				, #{project_num})
 		<selectKey resultType="String" keyProperty="document_num" order="AFTER">
 			SELECT LAST_INSERT_ID()
@@ -38,9 +40,9 @@
 
 	<insert id="insert_project"
 			parameterType="kr.co.creator.vo.ProjectVO">
-			INSERT INTO project_list (img, project_name, price, refund, type, genre, grade, more_information, en_date,
+			INSERT INTO project_list (busi_num, img, project_name, price, refund, type, genre, grade, more_information, en_date,
 										loan_period, loan_amount, loan_class, loan_type, repay_method, judge_status, repay_count)
-			VALUES (#{img}, #{project_name}, #{price}, #{refund}, #{type}, #{genre}, #{grade}, #{more_information}, now(),
+			VALUES (#{busi_num}, #{img}, #{project_name}, #{price}, #{refund}, #{type}, #{genre}, #{grade}, #{more_information}, now(),
 					#{loan_period}, #{loan_amount}, #{loan_class}, #{loan_type}, #{repay_method}, 1, #{repay_count})
 		<selectKey resultType="String" keyProperty="project_num" order="AFTER">
 			SELECT LAST_INSERT_ID()
@@ -48,13 +50,13 @@
 	</insert>
 	
 	<insert id="insert_guarantee" parameterType="kr.co.creator.vo.GuaranteeVO">
-		INSERT INTO guarantee (guarantee_type, guarantee_img, guarantee_name, debtor_type
+		INSERT INTO guarantee (guarantee_type, guarantee_img, guarantee_name, debtor_type,
 								business_type, object_type, connoisseur, supply_area, exclusive_area, 
-								area, map, location, scale, comple_year, quote, code, reference_file1, 
-								reference_file2, reference_file3)
+								area, map, location, scale, comple_year, quote, code, judge_status, reference_file1, 
+								reference_file2, reference_file3, project_num)
 		VALUES (#{guarantee_type}, #{guarantee_img}, #{guarantee_name}, #{debtor_type}, #{business_type}, #{object_type}, #{connoisseur}, 
 				#{supply_area}, #{exclusive_area}, #{area}, #{map}, #{location}, #{scale}, #{comple_year}, #{quote}, 
-				#{code}, #{reference_file1}, #{reference_file2}, #{reference_file3})
+				#{code}, 1, #{reference_file1}, #{reference_file2}, #{reference_file3}, #{project_num})
 		<selectKey resultType="String" keyProperty="guarantee_num" order="AFTER">
 			SELECT LAST_INSERT_ID()
 		</selectKey>

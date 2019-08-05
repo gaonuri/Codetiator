@@ -199,7 +199,7 @@
                         <span class="btn btn-theme02 btn-file">
                           <span class="fileupload-new"><i class="fa fa-paperclip"></i> 사진 선택</span>
                         <span class="fileupload-exists"><i class="fa fa-undo"></i> 사진 변경</span>
-                        <input type="file" id="main_img" name="img" class="default" />
+                        <input type="file" id="main_img" name="img_file" class="default" />
                         </span>
                       </div>
                     </div>
@@ -299,7 +299,7 @@
                         <span class="btn btn-theme02 btn-file">
                           <span class="fileupload-new"><i class="fa fa-paperclip"></i> 사진 선택</span>
                         <span class="fileupload-exists"><i class="fa fa-undo"></i> 사진 변경</span>
-                        <input type="file" id="guarantee_img" name="guarantee_img" class="default" />
+                        <input type="file" id="guarantee_img" name="guarantee_img_file" class="default" />
                         </span>
                       </div>
                     </div>
@@ -406,19 +406,19 @@
                 <div class="form-group">
                   	<label class="control-label col-md-3">참고파일1</label>
                   	<div class="col-md-4">
-                    	<input type="file" class="reference_file1" name="reference_file1"/>
+                    	<input type="file" class="reference_file1" name="reference_file1_file"/>
                     </div>
                   </div>
                   <div class="form-group">
                   	<label class="control-label col-md-3">참고파일2</label>
                   	<div class="col-md-4">
-                    	<input type="file" class="reference_file2" name="reference_file2"/>
+                    	<input type="file" class="reference_file2" name="reference_file2_file"/>
                     </div>
                   </div>
                   <div class="form-group">
                   	<label class="control-label col-md-3">참고파일3</label>
                   	<div class="col-md-4">
-                    	<input type="file" class="reference_file3" name="reference_file3"/>
+                    	<input type="file" class="reference_file3" name="reference_file3_file"/>
                     </div>
                   </div>
                 <div class="bottom">
