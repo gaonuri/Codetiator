@@ -1,26 +1,27 @@
 package kr.co.creator.vo;
 
-// ?봽濡쒖젥?듃
+// 마이페이지
 public class MypageVO {
-	private String project_num;			// ?봽濡쒖젥?듃踰덊샇
-	private String project_name;		// ?씠由?
-	private String refund_deadline;			// ?궓??湲곌컙
-	private String refund;				// ?긽?솚湲곌컙
-	private String ach_state;			// 紐⑥쭛?긽?깭
-	private String rate;				// 湲덈━
-	private String repay_method;		// ?긽?솚諛⑹떇
-	private String repay_count;			// ?긽?솚李⑥닔
-	private String invest_date;		// �닾�옄�궇吏�
-	private String user_num;			// (李몄“)?쑀??踰덊샇
-	private String busi_num;		// (李몄“)踰뺤씤?쑀??踰덊샇
-	private String invest_price;
-	private String refund_count;
-	private String account_name;
-	private String bank_num;
-	private String bank_name;
-	private String deposit;
-	private String input_history;
-	private String output_history;
+	private String project_num;			// 프로젝트번호
+	private String project_name;		// 이름
+	private String refund_end;			// 상환완료일
+	private String refund;				// 상환기간
+	private String ach_state;			// 모집상태
+	private String rate;				// 금리
+	private String repay_method;		// 상환방식
+	private String repay_count;			// 상환차수
+	private String invest_date;			// 투자날짜
+	private String invest_price;		// 투자금액
+	private String refund_count;		// 상환차수
+	private String account_name;		// 예금주
+	private String bank_name;			// 은행명
+	private String bank_num;			// 계좌번호
+	private String deposit;				// 예치금
+	private String input_history;		// 입금내역
+	private String output_history;		// 출금내역
+	
+	private String user_num;			// (참조)유저번호
+	private String busi_num;			// (참조)법인유저번호
 	
 	
 	public String getAccount_name() {
@@ -30,19 +31,19 @@ public class MypageVO {
 		this.account_name = account_name;
 	}//account_name
 	
-	public String getBank_num() {
-		return bank_num;
-	}
-	public void setBank_num(String bank_num) {
-		this.bank_num = bank_num;
-	}//bank_num
-	
 	public String getBank_name() {
 		return bank_name;
 	}
 	public void setBank_name(String bank_name) {
 		this.bank_name = bank_name;
 	}//bank_name
+	
+	public String getBank_num() {
+		return bank_num;
+	}
+	public void setBank_num(String bank_num) {
+		this.bank_num = bank_num;
+	}//bank_num
 	
 	public String getDeposit() {
 		return deposit;
@@ -71,13 +72,13 @@ public class MypageVO {
 	public void setRefund_count(String refund_count) {
 		this.refund_count = refund_count;
 	}//refund_count
-	
-	public String getRefund_deadline() {
-		return refund_deadline;
+
+	public String getRefund_end() {
+		return refund_end;
 	}
-	public void setRefund_deadline(String refund_deadline) {
-		this.refund_deadline = refund_deadline;
-	}//refund_deadline
+	public void setRefund_end(String refund_end) {
+		this.refund_end = refund_end;
+	}//refund_end
 	
 	public String getInvest_price() {
 		return invest_price;

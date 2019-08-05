@@ -56,6 +56,7 @@ public class AccountVO {
 		this.deposit_chk = deposit_chk;
 	}//deposit_chk
 	
+	
 	//참조
 	public String getUser_num() {
 		return user_num;

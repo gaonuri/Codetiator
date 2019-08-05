@@ -30,6 +30,7 @@ public class HistoryVO {
 		this.log_in_out_type = log_in_out_type;
 	}//log_in_out_type
 	
+	
 	// 참조
 	public String getUser_num() {
 		return user_num;

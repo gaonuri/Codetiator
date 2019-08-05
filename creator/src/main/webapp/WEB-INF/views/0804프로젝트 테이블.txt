@@ -1,26 +1,3 @@
-CREATE TABLE `account_list` (
-	`account_num` INT(11) NOT NULL AUTO_INCREMENT COMMENT '계좌등록번호',
-	`account_name` VARCHAR(10) NULL DEFAULT NULL COMMENT '예금주',
-	`bank_name` VARCHAR(10) NOT NULL COMMENT '은행명',
-	`bank_num` VARCHAR(20) NOT NULL COMMENT '계좌번호',
-	`deposit` VARCHAR(30) NULL DEFAULT NULL COMMENT '예치금',
-	`deoisit_chk` VARCHAR(1) NULL DEFAULT NULL COMMENT '예치금 생성여부',
-	`user_num` INT(11) NULL DEFAULT NULL COMMENT '유저번호',
-	`busi_num` INT(11) NULL DEFAULT NULL COMMENT '법인유저번호',
-	`project_num` INT(11) NULL DEFAULT NULL COMMENT '프로젝트번호',
-	PRIMARY KEY (`account_num`),
-	INDEX `FK_account_list_busi_user_list` (`busi_num`),
-	INDEX `FK_account_list_user_list` (`user_num`),
-	INDEX `project_num` (`project_num`),
-	CONSTRAINT `FK_account_list_busi_user_list` FOREIGN KEY (`busi_num`) REFERENCES `busi_user_list` (`busi_num`) ON DELETE CASCADE,
-	CONSTRAINT `FK_account_list_project_list` FOREIGN KEY (`project_num`) REFERENCES `project_list` (`project_num`) ON DELETE CASCADE,
-	CONSTRAINT `FK_account_list_user_list` FOREIGN KEY (`user_num`) REFERENCES `user_list` (`user_num`) ON DELETE CASCADE
-)
-COMMENT='<계좌>'
-COLLATE='utf8_general_ci'
-ENGINE=InnoDB;
-
-
 CREATE TABLE `user_list` (
 	`user_num` INT(11) NOT NULL AUTO_INCREMENT COMMENT '유저번호',
 	`email` VARCHAR(100) NULL DEFAULT NULL COMMENT '이메일',
@@ -74,16 +51,83 @@ COLLATE='utf8_general_ci'
 ENGINE=InnoDB;
 
 
+CREATE TABLE `project_list` (
+	`project_num` INT(11) NOT NULL AUTO_INCREMENT COMMENT '프로젝트번호',
+	`img` VARCHAR(200) NULL DEFAULT NULL COMMENT '사진(경로)',
+	`project_name` VARCHAR(60) NULL DEFAULT NULL COMMENT '이름',
+	`rate` VARCHAR(10) NULL DEFAULT NULL COMMENT '금리',
+	`price` VARCHAR(30) NULL DEFAULT NULL COMMENT '모집금액',
+	`current_price` VARCHAR(30) NULL DEFAULT NULL COMMENT '현재금액',
+	`ach_rate` VARCHAR(10) NULL DEFAULT NULL COMMENT '모집현황',
+	`ach_state` VARCHAR(20) NULL DEFAULT NULL COMMENT '모집상태',
+	`repay_method` VARCHAR(10) NULL DEFAULT NULL COMMENT '상환방식',
+	`deadline` VARCHAR(30) NULL DEFAULT NULL COMMENT '남은기간',
+	`refund` VARCHAR(50) NULL DEFAULT NULL COMMENT '상환기간',
+	`repay_count` INT(10) NULL DEFAULT NULL COMMENT '상환차수',
+	`loan_history` VARCHAR(30) NULL DEFAULT NULL COMMENT '대출자 상환내역',
+	`guarantee_price` VARCHAR(30) NULL DEFAULT NULL COMMENT '남은대출금액',
+	`refund_end` DATE NULL DEFAULT NULL COMMENT '상환완료일',
+	`type` VARCHAR(10) NULL DEFAULT NULL COMMENT '게임유형',
+	`genre` VARCHAR(10) NULL DEFAULT NULL COMMENT '장르',
+	`grade` VARCHAR(10) NULL DEFAULT NULL COMMENT '담보등급',
+	`more_information` VARCHAR(2000) NULL DEFAULT NULL COMMENT '상세정보',
+	`en_date` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '등록날짜',
+	`loan_period` VARCHAR(10) NULL DEFAULT NULL COMMENT '대출기간',
+	`loan_amount` VARCHAR(20) NULL DEFAULT NULL COMMENT '대출계좌',
+	`loan_class` VARCHAR(10) NULL DEFAULT NULL COMMENT '대출구분',
+	`loan_type` VARCHAR(10) NULL DEFAULT NULL COMMENT '대출유형',
+	`judge_status` INT(1) NULL DEFAULT NULL COMMENT '심사상태',
+	`ing_status` INT(1) NULL DEFAULT NULL COMMENT '1:승인 2:심사 3:반려',
+	`customer` VARCHAR(20) NULL DEFAULT NULL COMMENT '투자자수',
+	`ad_price` INT(11) NULL DEFAULT NULL COMMENT '광고 금액',
+	`ad_grade` INT(11) NULL DEFAULT NULL COMMENT '광고 등급',
+	`user_num` INT(11) NULL DEFAULT NULL COMMENT '유저번호',
+	`busi_num` INT(11) NULL DEFAULT NULL COMMENT '법인유저번호',
+	PRIMARY KEY (`project_num`),
+	INDEX `FK_project_list_user_list` (`user_num`),
+	INDEX `FK_project_list_busi_user_list` (`busi_num`),
+	CONSTRAINT `FK_project_list_busi_user_list` FOREIGN KEY (`busi_num`) REFERENCES `busi_user_list` (`busi_num`) ON DELETE CASCADE,
+	CONSTRAINT `FK_project_list_user_list` FOREIGN KEY (`user_num`) REFERENCES `user_list` (`user_num`) ON DELETE CASCADE
+)
+COMMENT='<프로젝트>'
+COLLATE='utf8_general_ci'
+ENGINE=InnoDB;
+
+
+CREATE TABLE `account_list` (
+	`account_num` INT(11) NOT NULL AUTO_INCREMENT COMMENT '계좌등록번호',
+	`account_name` VARCHAR(10) NULL DEFAULT NULL COMMENT '예금주',
+	`bank_name` VARCHAR(10) NOT NULL COMMENT '은행명',
+	`bank_num` VARCHAR(20) NOT NULL COMMENT '계좌번호',
+	`deposit` VARCHAR(30) NULL DEFAULT NULL COMMENT '예치금',
+	`deoisit_chk` VARCHAR(1) NULL DEFAULT NULL COMMENT '예치금 생성여부',
+	`user_num` INT(11) NULL DEFAULT NULL COMMENT '유저번호',
+	`busi_num` INT(11) NULL DEFAULT NULL COMMENT '법인유저번호',
+	`project_num` INT(11) NULL DEFAULT NULL COMMENT '프로젝트번호',
+	PRIMARY KEY (`account_num`),
+	INDEX `FK_account_list_busi_user_list` (`busi_num`),
+	INDEX `FK_account_list_user_list` (`user_num`),
+	INDEX `project_num` (`project_num`),
+	CONSTRAINT `FK_account_list_busi_user_list` FOREIGN KEY (`busi_num`) REFERENCES `busi_user_list` (`busi_num`) ON DELETE CASCADE,
+	CONSTRAINT `FK_account_list_project_list` FOREIGN KEY (`project_num`) REFERENCES `project_list` (`project_num`) ON DELETE CASCADE,
+	CONSTRAINT `FK_account_list_user_list` FOREIGN KEY (`user_num`) REFERENCES `user_list` (`user_num`) ON DELETE CASCADE
+)
+COMMENT='<계좌>'
+COLLATE='utf8_general_ci'
+ENGINE=InnoDB;
+
+
 CREATE TABLE `cert_list` (
-	`cert_key` VARCHAR(50) NULL DEFAULT NULL,
-	`cert_time` INT(10) NULL DEFAULT NULL,
-	`user_num` INT(11) NULL DEFAULT NULL,
-	`busi_num` INT(11) NULL DEFAULT NULL,
+	`cert_key` VARCHAR(50) NULL DEFAULT NULL COMMENT '인증번호',
+	`cert_time` INT(10) NULL DEFAULT NULL COMMENT '인증시간',
+	`user_num` INT(11) NULL DEFAULT NULL COMMENT '유저번호',
+	`busi_num` INT(11) NULL DEFAULT NULL COMMENT '법인유저번호',
 	INDEX `user_num` (`user_num`),
 	INDEX `busi_num` (`busi_num`),
 	CONSTRAINT `FK_cert_list_busi_user_list` FOREIGN KEY (`busi_num`) REFERENCES `busi_user_list` (`busi_num`) ON DELETE CASCADE,
 	CONSTRAINT `FK_cert_list_user_list` FOREIGN KEY (`user_num`) REFERENCES `user_list` (`user_num`) ON DELETE CASCADE
 )
+COMMENT='<본인인증>'
 COLLATE='utf8_general_ci'
 ENGINE=InnoDB;
 
@@ -237,49 +281,6 @@ CREATE TABLE `notice` (
 	PRIMARY KEY (`notice_num`)
 )
 COMMENT='<공지사항>'
-COLLATE='utf8_general_ci'
-ENGINE=InnoDB;
-
-
-CREATE TABLE `project_list` (
-	`project_num` INT(11) NOT NULL AUTO_INCREMENT COMMENT '프로젝트번호',
-	`img` VARCHAR(200) NULL DEFAULT NULL COMMENT '사진(경로)',
-	`project_name` VARCHAR(60) NULL DEFAULT NULL COMMENT '이름',
-	`rate` VARCHAR(10) NULL DEFAULT NULL COMMENT '금리',
-	`price` VARCHAR(30) NULL DEFAULT NULL COMMENT '모집금액',
-	`current_price` VARCHAR(30) NULL DEFAULT NULL COMMENT '현재금액',
-	`ach_rate` VARCHAR(10) NULL DEFAULT NULL COMMENT '모집현황',
-	`ach_state` VARCHAR(20) NULL DEFAULT NULL COMMENT '모집상태',
-	`repay_method` VARCHAR(10) NULL DEFAULT NULL COMMENT '상환방식',
-	`deadline` VARCHAR(30) NULL DEFAULT NULL COMMENT '남은기간',
-	`refund` VARCHAR(50) NULL DEFAULT NULL COMMENT '상환기간',
-	`repay_count` INT(10) NULL DEFAULT NULL COMMENT '상환차수',
-	`loan_history` VARCHAR(30) NULL DEFAULT NULL COMMENT '대출자 상환내역',
-	`guarantee_price` VARCHAR(30) NULL DEFAULT NULL COMMENT '남은대출금액',
-	`refund_end` DATE NULL DEFAULT NULL COMMENT '상환완료일',
-	`type` VARCHAR(10) NULL DEFAULT NULL COMMENT '게임유형',
-	`genre` VARCHAR(10) NULL DEFAULT NULL COMMENT '장르',
-	`grade` VARCHAR(10) NULL DEFAULT NULL COMMENT '담보등급',
-	`more_information` VARCHAR(2000) NULL DEFAULT NULL COMMENT '상세정보',
-	`en_date` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '등록날짜',
-	`loan_period` VARCHAR(10) NULL DEFAULT NULL COMMENT '대출기간',
-	`loan_amount` VARCHAR(20) NULL DEFAULT NULL COMMENT '대출계좌',
-	`loan_class` VARCHAR(10) NULL DEFAULT NULL COMMENT '대출구분',
-	`loan_type` VARCHAR(10) NULL DEFAULT NULL COMMENT '대출유형',
-	`judge_status` INT(1) NULL DEFAULT NULL COMMENT '심사상태',
-	`ing_status` INT(1) NULL DEFAULT NULL COMMENT '1:승인 2:심사 3:반려',
-	`customer` VARCHAR(20) NULL DEFAULT NULL COMMENT '투자자수',
-	`ad_price` INT(11) NULL DEFAULT NULL COMMENT '광고 금액',
-	`ad_grade` INT(11) NULL DEFAULT NULL COMMENT '광고 등급',
-	`user_num` INT(11) NULL DEFAULT NULL COMMENT '유저번호',
-	`busi_num` INT(11) NULL DEFAULT NULL COMMENT '법인유저번호',
-	PRIMARY KEY (`project_num`),
-	INDEX `FK_project_list_user_list` (`user_num`),
-	INDEX `FK_project_list_busi_user_list` (`busi_num`),
-	CONSTRAINT `FK_project_list_busi_user_list` FOREIGN KEY (`busi_num`) REFERENCES `busi_user_list` (`busi_num`) ON DELETE CASCADE,
-	CONSTRAINT `FK_project_list_user_list` FOREIGN KEY (`user_num`) REFERENCES `user_list` (`user_num`) ON DELETE CASCADE
-)
-COMMENT='<프로젝트>'
 COLLATE='utf8_general_ci'
 ENGINE=InnoDB;
 
