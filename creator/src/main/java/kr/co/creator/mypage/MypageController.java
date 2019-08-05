@@ -44,7 +44,7 @@ public class MypageController {
 	LoginService loginService;
 
 	@Autowired
-	private My_EmailSender emailSender;
+	private EmailSender emailSender;
 	
 	@RequestMapping(value = "/my_dashboard", method = RequestMethod.GET)
 	public String list(HttpSession session, Model model, MemberVO userVO, MypageVO myVO) {
@@ -69,10 +69,10 @@ public class MypageController {
 	@RequestMapping(value = "/my_loan_list", method = RequestMethod.GET)
 	public String loan(HttpSession session, Model model, MemberVO userVO, ProjectVO proVO) {
 		logger.info("my_loan_list");
-//		userVO = (MemberVO)session.getAttribute("memberVO");
-//		List<ProjectVO> loan= null;
-//		loan = service.loan_list(userVO);
-//		model.addAttribute("loanList",loan);
+		userVO = (MemberVO)session.getAttribute("memberVO");
+		List<ProjectVO> loan= null;
+		loan = service.loan_list(userVO);
+		model.addAttribute("loanList",loan);
 		return "mypage/my_loan_list";
 	}
 	
@@ -95,22 +95,25 @@ public class MypageController {
 		return "mypage/my_depo_mgn";
 	}
 	
-	@RequestMapping(value = "/emailcert", method = RequestMethod.POST)
-	public void sendCert(PrintWriter out, My_EmailForm form, My_FindUtil findUtil, String email, UserVO vo) throws Exception {
-		logger.info("=== sendEmailCertification ===");
+	@RequestMapping(value = "/CertEmail", method = RequestMethod.POST)
+	public void CertEmail(PrintWriter out, FindPwdVO vo, EmailForm form, FindUtil findUtil) throws Exception {
+		logger.info("=== CertEmail ===");
 		int cnt = 0;
-		cnt = ((MypageService) sqlSession).emailcert(email);
+		cnt = loginService.busifindChk(vo);
 		if(cnt > 0) {
-			String newPassword;
-			newPassword = findUtil.getRamdomCert(8);
-			form.setContent("인증번호를 드립니다."
-							+ " 인증번호는 " + newPassword + " 입니다");
-			form.setSubject("안녕하세요 " + vo.getUser_name() + "님 인증번호를 확인해 주세요");
-			form.setReceiver(vo.getEmail());
-			emailSender.My_EmailSender(form);
+			String newPassword, user_name;
+			newPassword = findUtil.getRamdomPassword(8);
+			user_name = sqlSession.selectOne("LoginMapper.selectBusiName", vo);
+			vo.setNewPassword(newPassword);
+			vo.setManager_name(user_name);
+			form.setContent("인증번호는 " + newPassword + " 입니다");
+			form.setSubject("안녕하세요 " + vo.getManager_name() + "님 인증번호를 확인해 주세요");
+			form.setReceiver(vo.getManager_email());
+			emailSender.sendEmail(form);
 		}
 		if(cnt > 0) {
-			System.out.println(vo.getEmail());
+			System.out.println(vo.getManager_email());
+			cnt = loginService.insertNumber(vo);
 			out.print(cnt);
 			out.flush();
 			out.close();
@@ -118,7 +121,7 @@ public class MypageController {
 		out.print(cnt);
 		out.flush();
 		out.close();
-	}//sendCert	
+	}//CertEmail
 	
 	@RequestMapping(value = "/my_modify", method = RequestMethod.GET)
 	public String my_modify() {

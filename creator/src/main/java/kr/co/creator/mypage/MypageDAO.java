@@ -29,7 +29,7 @@ public class MypageDAO {
 
 	public List<ProjectVO> loan_list(MemberVO userVO) {
 		List<ProjectVO> loan = null;
-		loan = sqlSession.selectList("MypageMapper.loanlist", userVO);
+		loan = sqlSession.selectList("MypageMapper.loanList", userVO);
 		return loan;
 	} 
 	
@@ -63,9 +63,9 @@ public class MypageDAO {
 		return useVO;
 	}
 
-	public int emailcert(String email) {
+	public int emailcert(UserVO vo) {
 		int cnt = 0;
-		cnt = sqlSession.selectOne("LoginMapper.findPwdChk", email);
+		cnt = sqlSession.selectOne("LoginMapper.findPwdChk", vo);
 		return cnt;
 	}//findPwdChk
 

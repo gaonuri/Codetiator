@@ -89,22 +89,49 @@
 		}//depositLimit
 		
 		$(document).ready(function(){
-			$("#numre").click(function(){
-				if($.trim($("#cusEmail").val()) == ""){
-					alert("등록된 이메일이 없습니다.");
-//		 			$("#email").focus();
+			var chkemail = '';
+			
+			$("#cusEmail").blur(function(){
+				var emailStd = /([a-z0-9]{1,20}\@)([a-z]{1,20}\.)([a-z]{1,10})/gi;
+				
+				if($.trim($("#cusEmail").val()) != $(this).val().match(emailStd)){
+					alert("올바르지 않은 이메일 입니다.");
 					return;
 				}
 				$.post(
-						"./emailcert"
+						"./busifindChk",
+						{
+							cusEmail:$("#cusEmail").val()
+						},
+						function(data,status){
+							if(data == 1){
+								alert("이메일이 확인 되었습니다.");
+								chkemail = $("#cusEmail").val();
+							}else{
+								alert("등록된 이메일이 없습니다.");
+							}
+						}//function
+				);//post
+			});//blur
+		});//ready
+
+		$(document).ready(function(){
+			$("#numre").click(function(){
+				if($.trim($("#cusEmail").val()) == ""){
+					alert("등록된 이메일이 없습니다.");
+//		 			$("#cusEmail").focus();
+					return;
+				}
+				$.post(
+						"./CertEmail"
 						,{
-							email:$("#cusEmail").val(),
-							user_name:$("#cusName").val()
+							cusEmail:$("#cusEmail").val()
 						}
 						,function(data,status){
 							if(status == "success"){
 								if(data > 0){
-									alert("해당 이메일로 임시비밀번호를 발송했습니다.");
+									alert("해당 이메일로 인증번호를 발송했습니다.");
+									$("#ssnNo").css("display","block");
 								} else if(data == 0){
 									alert("존재하지 않는 이메일 입니다.");
 								} else {
@@ -117,6 +144,31 @@
 				);//post
 			});//click
 		});//ready
+		$(document).ready(function() {
+			$("#btn_certi_complete").click(function() {
+				$.post(
+						"./CheckCerNumber"
+						,{
+							cer_number:$("#cer_number").val()
+						}
+						,function(data,status){
+							if(status == "success"){
+								if(data > 0){
+									alert("인증이 완료 되었습니다.");
+									opener.tempFunction();
+									window.self.close();
+								} else if(data == 0){
+									alert("인증번호가 다릅니다.");
+								} else {
+									alert("잠시 후, 다시 시도해 주세요.");
+								}
+							} else {
+								alert("시스템 관리자에게 문의 바랍니다.");
+							}
+						}
+				);//post
+			});
+		});
 		
 // 		$("#").ready(function() {
 			
@@ -551,6 +603,26 @@
 									</form>
 
 				<!-- Email 인증시작 -->
+					<script type="text/javascript">
+						var id;
+						var min = 00;
+						var sec = 10;
+						function setClock() {
+							id = setInterval(worker,1000);
+						}
+						function worker() {
+							var now = min + " : " + sec;
+							clock.innerHTML = "<h1>"+now+"</h1>";
+							sec = parseInt(sec) - 1;
+							if(sec == -1) {
+								sec = 59;
+								min = parseInt(min) - 1;
+								if(min == -1){
+									clearInterval(id);
+								}
+							}
+						}
+					</script>
 						<div class="modal fade" id="btn_cert1"  name="cert1" role="dialog" aria-labelledby="vtAcntModalLabel" aria-hidden="true">
 							<div class="modal-dialog">
 								<div class="modal-content">
@@ -612,7 +684,7 @@
 											
 											<div class="row">
 												<div class="form-group col-md-4">
-													<input class="form-control" id="ssnNo" type="text" maxlength="13">
+													<input class="form-control" id="ssnNo" type="text" maxlength="13" placeholder="" style="display:none;">
 												</div>
 												<div class="form-group col-md-2">	
 														<button type="button" class="btn btn-purple-transparent" onclick="fn_insertVtAcnt()">인증하기</button>
@@ -645,9 +717,8 @@
 							</div>
 							<!-- /.modal-dialog -->
 						</div>
-						<!-- Email 인증끝. -->
+						<!-- Email 인증 끝. -->
 						
-
 						<!-- 예치금 계좌 발급 Modal -->
 						<div class="modal fade" id="btn_cert2"  name="cert2" role="dialog" aria-labelledby="vtAcntModalLabel" aria-hidden="true">
 							<div class="modal-dialog">
