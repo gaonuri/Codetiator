@@ -58,7 +58,7 @@ public class LoginService {
 		cnt = loginDAO.CheckCerNumber(vo);
 		return cnt;
 	}//CheckCerNumber
-	
+
 	public List<HistoryVO> historyIn(HistoryVO hvo) {
 		List<HistoryVO> list = null;
 		list = loginDAO.historyIn(hvo);

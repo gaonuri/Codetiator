@@ -58,7 +58,7 @@ public class LoginController {
 			session.setAttribute("mypageVO", vo);
 			session.setAttribute("loginCusGbCd", loginCusGbCd);
 			sqlSession.insert("LoginMapper.historyTime", vo);
-		}
+		} 
 		out.print(successCnt);
 		out.close();
 	}//loginUser
@@ -73,6 +73,7 @@ public class LoginController {
 			int loginCusGbCd = 2;
 			session.setAttribute("memberVO", vo);
 			session.setAttribute("memVO", vo);
+			session.setAttribute("loginCusGbCd", loginCusGbCd);
 			session.setAttribute("mypageVO", vo);
 			session.setAttribute("loginCusGbCd", loginCusGbCd);
 			sqlSession.insert("LoginMapper.historyTime", vo);
