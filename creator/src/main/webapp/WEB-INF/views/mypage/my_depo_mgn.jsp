@@ -47,7 +47,6 @@
 		var count = 0; 
 		
 		$("#amtPlus100_771").click(function() {
-			if()
 			tmpInt = parseInt($("#withdrawAmt").val()) + 1000000;
 			$("#withdrawAmt").val(tmpInt);
 		});//1,000,000원
