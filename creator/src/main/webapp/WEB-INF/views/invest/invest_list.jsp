@@ -97,10 +97,10 @@
 													<c:when test="${vo.ach_state == '투자하기'}">
 														<c:choose>
 															<c:when test="${memVO.user_num != null}">
-																<a href="${pageContext.request.contextPath}/invest?user_num=${memVO.user_num}&project_num=${proVO.project_num}">${vo.ach_state}u</a>
+																<a href="${pageContext.request.contextPath}/invest?user_num=${memVO.user_num}&project_num=${vo.project_num}">${vo.ach_state}u</a>
 															</c:when>
 															<c:when test="${memVO.busi_num != null}">
-																<a href="${pageContext.request.contextPath}/invest?busi_num=${memVO.busi_num}&project_num=${proVO.project_num}">${vo.ach_state}u</a>
+																<a href="${pageContext.request.contextPath}/invest?busi_num=${memVO.busi_num}&project_num=${vo.project_num}">${vo.ach_state}u</a>
 															</c:when>
 															<c:otherwise>
 																<a href="${pageContext.request.contextPath}/login">${vo.ach_state}</a>
@@ -117,12 +117,11 @@
 							</table>
 						</div>
 						<!-- 투자리스트 end -->
-						
 					</div>
 					<!-- page end-->
 				</div>
 			</div>
-				<!-- /row -->
+			<!-- /row -->
 		</section>
 		<!-- /wrapper -->
 	</section>
