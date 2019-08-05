@@ -176,13 +176,8 @@ $(document).ready(function() {
 					<tr>
 					<td class="condition-title">이름</td>
 						<td class="condition-content">
-<<<<<<< HEAD
 							<input type="text" class="form-control" id="cusNm" maxlength="50" readonly="readonly" value="${mypagemem.user_name}${mypagedetail.manager_name}">
-=======
-							<input type="text" class="form-control" id="cusNm" maxlength="50" value="${mypagemem.user_name}${mypagedetail.manager_name}" readonly="readonly">
->>>>>>> branch 'master' of https://github.com/gaonuri/Codetiator.git
 						</td>
-<<<<<<< HEAD
 					</tr>
 					<tr>
 					<td class="condition-title">이메일</td>
@@ -190,11 +185,7 @@ $(document).ready(function() {
 							<input type="text" class="form-control" id="email" maxlength="50" value="${mypagemem.email}${mypagedetail.manager_email}">
 						</td>
 						<td>
-							<button type="button" class="btn btn-purple-transparent" onclick="fn_updateEmail()" id="updateEmailBtn">변경</button>
-=======
-						<td>
 							<button type="button" class="btn btn-purple-transparent" id="userDataUpdate" name="userDataUpdate">변경</button>
->>>>>>> branch 'master' of https://github.com/gaonuri/Codetiator.git
 						</td>
 					</tr>
 					<tr>
@@ -204,7 +195,7 @@ $(document).ready(function() {
 							<input type="hidden" id="ci">
 						</td>
 						<td>
-<!-- 							<button type="button" class="btn btn-purple-transparent" id="userDataUpdate" name="userDataUpdate">변경</button> -->
+							<button type="button" class="btn btn-purple-transparent" id="phoneDataUpdate" name="phoneDataUpdate">변경</button>
 						</td>
 						<td>
 							<!-- 본인인증 서비스 팝업을 호출하기 위해서는 다음과 같은 form이 필요합니다. -->

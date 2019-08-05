@@ -18,19 +18,13 @@ public class InvestDAO {
 	@Autowired
 	SqlSession sqlSession;
 
-	public AccountVO invest(AccountVO vo) {
-		System.out.println("DAO111111111 : " + vo);
-		vo = sqlSession.selectOne("InvestMapper.accountDetail", vo);
-		System.out.println("DAO222222222 : " + vo);
-		
-		return vo;
-	}//invest
-
-	public AccountVO acount_detail(AccountVO accVO) {
-		accVO = sqlSession.selectOne("InvestMapper.accountDetail", accVO);
-		
-		return accVO;
-	}//acount_detail
+//	public AccountVO invest(AccountVO vo) {
+//		System.out.println("DAO111111111 : " + vo);
+//		vo = sqlSession.selectOne("InvestMapper.accountDetail", vo);
+//		System.out.println("DAO222222222 : " + vo);
+//		
+//		return vo;
+//	}//invest
 
 	public List<ProjectVO> invest_list() {
 		List<ProjectVO> list = null;
@@ -38,6 +32,20 @@ public class InvestDAO {
 		
 		return list;
 	}//invest_list
+
+	public InvestVO invest_detail(InvestVO inVO) {
+		System.out.println("DAO11111111111111111 : " + inVO);
+		inVO = sqlSession.selectOne("InvestMapper.investDetail", inVO);
+		System.out.println("DAO22222222222222222 : " + inVO);
+		
+		return inVO;
+	}//invest_detail
+
+	public AccountVO acount_detail(AccountVO accVO) {
+		accVO = sqlSession.selectOne("InvestMapper.accountDetail", accVO);
+		
+		return accVO;
+	}//acount_detail
 	
 	public ProjectVO project_detail(ProjectVO proVO) {
 		proVO = sqlSession.selectOne("InvestMapper.projectDetail", proVO);
@@ -53,7 +61,7 @@ public class InvestDAO {
 
 	public List<ProjectVO> invest_finished() {
 		List<ProjectVO> list = null;
-		list = sqlSession.selectList("InvestMapper.investFinish");
+		list = sqlSession.selectList("InvestMapper.investFinished");
 		
 		return list;
 	}//invest_finished
@@ -84,12 +92,4 @@ public class InvestDAO {
 		
 		return count;
 	}//current_price_update
-
-	public InvestVO invest_detail(InvestVO inVO) {
-		System.out.println("DAO11111111111111111 : " + inVO);
-		inVO = sqlSession.selectOne("InvestMapper.investDetail", inVO);
-		System.out.println("DAO22222222222222222 : " + inVO);
-		
-		return inVO;
-	}//invest_detail
 }//class

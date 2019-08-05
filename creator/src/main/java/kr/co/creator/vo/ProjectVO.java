@@ -13,15 +13,17 @@ public class ProjectVO {
 	private String repay_method;		// 상환방식
 	private String deadline;			// 남은기간
 	private String refund;				// 상환기간
-	private String repay_count;			// 상환차수
+	private String refund_count;		// 상환차수
 	private String loan_history;		// 대출자 상환내역
 	private String guarantee_price;		// 남은대출금액
+	private String refund_due_date;		// 상환예정일
 	private String refund_end;			// 상환완료일
 	private String type;				// 게임유형
 	private String genre;				// 장르
 	private String grade;				// 등급
 	private String more_information;	// 상세정보
-	private String en_date;				// 등록날짜
+	private String regi_date;			// 등록날짜
+	private String end_date;			// 종료날짜
 	private String loan_period;			// 대출기간
 	private String loan_amount;			// 대출계좌
 	private String loan_class;			// 대출구분
@@ -113,12 +115,12 @@ public class ProjectVO {
 		this.refund = refund;
 	}//refund
 
-	public String getRepay_count() {
-		return repay_count;
+	public String getRefund_count() {
+		return refund_count;
 	}
-	public void setRepay_count(String repay_count) {
-		this.repay_count = repay_count;
-	}//repay_count
+	public void setRefund_count(String refund_count) {
+		this.refund_count = refund_count;
+	}//refund_count
 	
 	public String getLoan_history() {
 		return loan_history;
@@ -133,6 +135,13 @@ public class ProjectVO {
 	public void setGuarantee_price(String guarantee_price) {
 		this.guarantee_price = guarantee_price;
 	}//guarantee_price
+	
+	public String getRefund_due_date() {
+		return refund_due_date;
+	}
+	public void setRefund_due_date(String refund_due_date) {
+		this.refund_due_date = refund_due_date;
+	}//refund_due_date
 	
 	public String getRefund_end() {
 		return refund_end;
@@ -169,12 +178,19 @@ public class ProjectVO {
 		this.more_information = more_information;
 	}//more_information
 	
-	public String getEn_date() {
-		return en_date;
+	public String getRegi_date() {
+		return regi_date;
 	}
-	public void setEn_date(String en_date) {
-		this.en_date = en_date;
-	}//en_date
+	public void setRegi_date(String regi_date) {
+		this.regi_date = regi_date;
+	}//end_date
+	
+	public String getEnd_date() {
+		return end_date;
+	}
+	public void setEnd_date(String end_date) {
+		this.end_date = end_date;
+	}//end_date
 	
 	public String getLoan_period() {
 		return loan_period;
