@@ -60,6 +60,7 @@ public class JoinController {
 //		logger.info(vo.getEmail());
 		int cnt = 0;
 		cnt = joinService.joinLicenseChk(vo);
+		System.out.println("00000000000000000000000000000000000000000000000000000000000000000000000000000" + cnt + "22222222222222222222222222222222");
 		out.print(cnt);
 		out.flush();
 		out.close();

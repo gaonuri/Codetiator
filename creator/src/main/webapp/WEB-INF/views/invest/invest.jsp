@@ -106,10 +106,10 @@
 		$("#inputAmt771").blur(function() {
 			var str = $("#inputAmt771").val();
 			//alert(str.substr(str.length-4, 4)); 숫자 뒤 4자리가 0000인지 확인
-			
 			if("0000" != str.substr(str.length-4, 4)) {
 				alert("만원 단위로 입력하시기 바랍니다.");
 				$("#inputAmt771").val("0");
+				calculating();
 			}//if
 		});//blur
 

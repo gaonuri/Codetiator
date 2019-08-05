@@ -14,28 +14,13 @@ public class DocumentVO {
 	private String copy_id;			// 신분증사본
 	private String copy_bankbook;	// 통장사본
 	private String chk_select;		// 개인정보 선택적이용확인
+	private String judge_status;	// 심사상태
+<<<<<<< HEAD
+=======
 	
+>>>>>>> branch 'master' of https://github.com/gaonuri/Codetiator.git
 	private String project_num;		// (참조)프로젝트번호
 	
-	public DocumentVO() {}	//constructor
-	public DocumentVO(	String document_num, String busi_regi, String jumin_chobon, String cer_ingam, 
-						String cer_budong, String cer_dong, String cer_income, String cer_vat, String cer_other, 
-						String copy_id, String copy_bankbook, String chk_select, String project_num) {
-		this.document_num = document_num;
-		this.busi_regi = busi_regi;
-		this.jumin_chobon = jumin_chobon;
-		this.cer_ingam = cer_ingam;
-		this.cer_budong = cer_budong;
-		this.cer_dong = cer_dong;
-		this.cer_income = cer_income;
-		this.cer_vat = cer_vat;
-		this.cer_other = cer_other;
-		this.copy_id = copy_id;
-		this.copy_bankbook = copy_bankbook;
-		this.chk_select = chk_select;
-		
-		this.project_num = project_num;
-	}//constructor
 	
 	public String getDocument_num() {
 		return document_num;
@@ -121,6 +106,13 @@ public class DocumentVO {
 		this.chk_select = chk_select;
 	}//chk_select
 	
+	public String getJudge_status() {
+		return judge_status;
+	}
+	public void setJudge_status(String judge_status) {
+		this.judge_status = judge_status;
+	}//judge_status
+	
 	
 	//참조
 	public String getProject_num() {
@@ -129,4 +121,10 @@ public class DocumentVO {
 	public void setProject_num(String project_num) {
 		this.project_num = project_num;
 	}//project_num
+	public String getJudge_status() {
+		return judge_status;
+	}
+	public void setJudge_status(String judge_status) {
+		this.judge_status = judge_status;
+	}
 }//class

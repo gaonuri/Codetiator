@@ -15,24 +15,7 @@ public class UserVO {
 	private String user_join_date;				// 가입일
 	private String user_phone_key;				// 휴대폰인증
 	
-	public UserVO() {}	//constructor
-	public UserVO(	String user_num, String email, String user_password, String user_name, String jumin, 
-					String phone, String addr, String user_chk_email, String user_terms_of_service, String user_privacy_policy_agree, 
-					String user_join_date, String user_phone_key) {
-		this.user_num = user_num;
-		this.email = email;
-		this.user_password = user_password;
-		this.user_name = user_name;
-		this.jumin = jumin;
-		this.phone = phone;
-		this.addr = addr;
-		this.user_chk_email = user_chk_email;
-		this.user_terms_of_service = user_terms_of_service;
-		this.user_privacy_policy_agree = user_privacy_policy_agree;
-		this.user_join_date = user_join_date;
-		this.user_phone_key = user_phone_key;
-	}//constructor
-	
+
 	public String getUser_num() {
 		return user_num;
 	}
@@ -80,41 +63,39 @@ public class UserVO {
 	public void setAddr(String addr) {
 		this.addr = addr;
 	}//addr
+	
 	public String getUser_chk_email() {
 		return user_chk_email;
 	}
 	public void setUser_chk_email(String user_chk_email) {
 		this.user_chk_email = user_chk_email;
 	}//user_chk_email
+	
 	public String getUser_terms_of_service() {
 		return user_terms_of_service;
 	}
 	public void setUser_terms_of_service(String user_terms_of_service) {
 		this.user_terms_of_service = user_terms_of_service;
 	}//user_terms_of_service
+	
 	public String getUser_privacy_policy_agree() {
 		return user_privacy_policy_agree;
 	}
 	public void setUser_privacy_policy_agree(String user_privacy_policy_agree) {
 		this.user_privacy_policy_agree = user_privacy_policy_agree;
 	}//user_privacy_policy_agree
+	
 	public String getUser_join_date() {
 		return user_join_date;
 	}
 	public void setUser_join_date(String user_join_date) {
 		this.user_join_date = user_join_date;
 	}//user_join_date
+	
 	public String getUser_phone_key() {
 		return user_phone_key;
 	}
 	public void setUser_phone_key(String user_phone_key) {
 		this.user_phone_key = user_phone_key;
 	}//user_phone_key
-	
-	
 }//class
-
-
-
-
-

@@ -132,118 +132,7 @@
 	        TOP BAR CONTENT & NOTIFICATIONS
 	        *********************************************************************************************************************************************************** -->
 	    <!--header start-->
-	    <header class="header black-bg">
-			<!--logo start-->
-			<a href="./main" class="logo"><img id="logoImage" alt="로고" src="${pageContext.request.contextPath}/resources/img/ner.jpg" width="200px" height="30px"></a>
-			<!--logo end-->
-			<div class="nav notify-row top-menu" id="top_menu">
-				<!--  notification start -->
-				<ul class="nav pull-right top-menu">
-					<!-- settings start -->
-					
-					<!-- 회사소개 start -->
-					<li><a href="./loan_guide">회사소개</a></li>
-					<!-- 회사소개 end -->
-					
-					<!-- 대출 start -->
-					<li class="dropdown">
-						<a data-toggle="dropdown" class="dropdown-toggle" href="#">
-							대출
-						</a>
-						<ul class="dropdown-menu extended tasks-bar">
-							<div class="notify-arrow notify-arrow-green"></div>
-							<li>
-								<a href="./loan_guide">대출안내</a>
-							</li>
-							<li>
-								<a href="./loan/getloan">대출하기</a>
-							</li>
-						</ul>
-					</li>
-	          		<!-- 대출 end -->
-	          
-	          		<!-- inbox dropdown start-->
-	         		<li class="dropdown">
-						<a data-toggle="dropdown" class="dropdown-toggle" href="#">
-							투자
-						</a>
-						<ul class="dropdown-menu extended tasks-bar">
-							<div class="notify-arrow notify-arrow-black"></div>
-							<li>
-								<a href="./invest_guide">투자안내</a>
-							</li>
-							<li>
-								<a href="./invest_list">투자하기</a>
-							</li>
-							<li>
-								<a href="./invest_finish">완료된투자</a>
-							</li>
-						</ul>
-					</li>
-	          		<!-- 투자 end -->
-	          
-	          
-					<!-- 고객지원 start-->
-					<li id="header_notification_bar" class="dropdown">
-						<a data-toggle="dropdown" class="dropdown-toggle" href="#">
-							고객지원
-						</a>
-						<ul class="dropdown-menu extended notification">
-							<div class="notify-arrow"></div>
-							<li>
-								<a href="./faq">FAQ</a>
-							</li>
-							<li>
-								<a href="./support">이용약관</a>
-							</li>
-							<li>
-								<a href="./policy">개인정보</a>
-							</li>
-							<li>
-								<a href="./inquiry">1:1문의</a>
-							</li>
-						</ul>
-					</li>
-					<!-- 고객지원 end -->
-					
-					<!-- 마이페이지 start-->
-					<li id="header_notification_bar" class="dropdown">
-						<a data-toggle="dropdown" class="dropdown-toggle" href="#">
-							마이페이지
-						</a>
-						<ul class="dropdown-menu extended notification">
-							<div class="notify-arrow notify-arrow-yellow"></div>
-							<li>
-								<a href="./my_dashboard">대시보드</a>
-							</li>
-							<li>
-								<a href="./my_invest_list">투자내역</a>
-							</li>
-							<li>
-								<a href="./my_loan_list">대출내역</a>
-							</li>
-							<li>
-								<a href="./my_depo_mgn">예치금관리</a>
-							</li>
-							<li>
-								<a href="./my_modify">회원정보수정</a>
-							</li>
-						</ul>
-					</li>
-					<!-- 마이페이지 end -->
-					
-					<!-- 로그아웃 start -->
-					<li><a href="./loan_guide">로그아웃</a></li>
-					<!-- 로그아웃 end -->
-				</ul>
-				<!--  notification end -->
-			</div>
-			<div class="top-menu">
-				<ul class="nav pull-right top-menu">
-					<li><a class="logout" href="/creator/join">회원가입</a></li>
-				</ul>
-			</div>
-	    </header>
+	    <%@ include file="../header.jsp" %>
 	    <!--header end-->
 	   <section id="loanGuide-banner" class="text-center">
 			<div class="overlay">
@@ -261,53 +150,52 @@
 			<section class="wrapper site-min-height">
 				<div class="row mt">
 					<div class="col-lg-12">
-
-<div class="container">
-			<div class="section-body">
-				<div class="row">
-					<div class="col-md-12">
-						<div class="wrap">
-							<div class="box">
-								<strong>
-								<br>주식회사 크리에이터 귀중
-								<br>
-								<br>신용정보의 이용 및 보호에 관한 법률 제32조제2항 및 개인정보 보호] 제24조에 따라 귀사가 아래와 같은 내용으로 신용조회회사 NICE평가정보(주)로부터 본인의 신용정보를 조회하거나, 본인임을 확인하는 것에 대하여 동의합니다. 대부거래의 갱신, 만기연장, 대환대출의 경우에도 본 동의의 효력은 유효합니다.
-								<br>
-								</strong>
-								<br>1. 조회 대상 기관
-								<br>1) 신용정보집중기관: 한국신용정보원, 대부협회, 여신금융협회 등 
-								<br>2) 신용조회회사: NICE평가정보㈜, 코리아크레딧뷰로㈜, 서울신용평가정보㈜ 등
-								<br>
-								<br>2. 조회할 개인(신용)정보 : 개인식별정보, 신용거래정보, 신용도판단정보, 신용능력정보, 공공정보, 신용등급
-								<br>
-								<br>3. 조회목적 : 대부거래관계의 설정·유지·이행·관리·개선, 연체관리
-								<br>
-								<br>4. 조회동의 효력기간 : 동의한 시점부터 본 거래 종료일까지. 다만, 본 거래관계 미 설정시 그 시점부터 동의의 효력은 소멸
-								<br>
-								<br>5. 조회자(신용정보를 제공받는 자)의 개인(신용)정보의 보유·이용 기간 : 신용정보의 이용 및 보호에 관한 법률 및 관련 규약에 근거한 기간까지
-								<br>
-								<br>본인은 귀사가 위 목적으로 위 조회동의 효력 기간 동안 다음과 같은 본인의 고유식별정보를 처리하는 것에 동의합니다.
-								<br>- 고유식별정보 : 운전면허번호, 여권번호, 외국인등록번호, 국내거소신고번호
-								<br>
-								<br>※ 상기 내용이 변동되는 경우 인터넷 홈페이지 게시 등을 통해 그 내용을 안내해드리며, 본 동의서는 본 계약이 성립되지 않는 경우 그 시점으로부터 효력을 상실합니다.
-								<br>※ 이에 대한 동의가 없을 경우 거래관계의 설정 또는 유지가 불가능할 수 있음을 알려드립니다.
-								<br>※ 신용조회회사를 통하여 귀하의 신용정보를 조회한 기록에 의해 신용등급이 하락할 수 있으나, 본 계약과 관련한 신용정보 조회기록은 귀하의 신용등급 하락에 영향을 미치지 않음을 알려드립니다.
-							</div>
-							<hr>
-							<div class="row">
-								<div class="col-md-push-8 col-md-4">
-									<select class="form-control" id="termHisSelect">
-										<option value="">이전 약관보기</option>
-										<option value="20180227">2018년 2월 27일</option>
-									</select>
+						<div class="container">
+							<div class="section-body">
+								<div class="row">
+									<div class="col-md-12">
+										<div class="wrap">
+											<div class="box">
+												<strong>
+												<br>주식회사 크리에이터 귀중
+												<br>
+												<br>신용정보의 이용 및 보호에 관한 법률 제32조제2항 및 개인정보 보호] 제24조에 따라 귀사가 아래와 같은 내용으로 신용조회회사 NICE평가정보(주)로부터 본인의 신용정보를 조회하거나, 본인임을 확인하는 것에 대하여 동의합니다. 대부거래의 갱신, 만기연장, 대환대출의 경우에도 본 동의의 효력은 유효합니다.
+												<br>
+												</strong>
+												<br>1. 조회 대상 기관
+												<br>1) 신용정보집중기관: 한국신용정보원, 대부협회, 여신금융협회 등 
+												<br>2) 신용조회회사: NICE평가정보㈜, 코리아크레딧뷰로㈜, 서울신용평가정보㈜ 등
+												<br>
+												<br>2. 조회할 개인(신용)정보 : 개인식별정보, 신용거래정보, 신용도판단정보, 신용능력정보, 공공정보, 신용등급
+												<br>
+												<br>3. 조회목적 : 대부거래관계의 설정·유지·이행·관리·개선, 연체관리
+												<br>
+												<br>4. 조회동의 효력기간 : 동의한 시점부터 본 거래 종료일까지. 다만, 본 거래관계 미 설정시 그 시점부터 동의의 효력은 소멸
+												<br>
+												<br>5. 조회자(신용정보를 제공받는 자)의 개인(신용)정보의 보유·이용 기간 : 신용정보의 이용 및 보호에 관한 법률 및 관련 규약에 근거한 기간까지
+												<br>
+												<br>본인은 귀사가 위 목적으로 위 조회동의 효력 기간 동안 다음과 같은 본인의 고유식별정보를 처리하는 것에 동의합니다.
+												<br>- 고유식별정보 : 운전면허번호, 여권번호, 외국인등록번호, 국내거소신고번호
+												<br>
+												<br>※ 상기 내용이 변동되는 경우 인터넷 홈페이지 게시 등을 통해 그 내용을 안내해드리며, 본 동의서는 본 계약이 성립되지 않는 경우 그 시점으로부터 효력을 상실합니다.
+												<br>※ 이에 대한 동의가 없을 경우 거래관계의 설정 또는 유지가 불가능할 수 있음을 알려드립니다.
+												<br>※ 신용조회회사를 통하여 귀하의 신용정보를 조회한 기록에 의해 신용등급이 하락할 수 있으나, 본 계약과 관련한 신용정보 조회기록은 귀하의 신용등급 하락에 영향을 미치지 않음을 알려드립니다.
+											</div>
+											<hr>
+											<div class="row">
+												<div class="col-md-push-8 col-md-4">
+													<select class="form-control" id="termHisSelect">
+														<option value="">이전 약관보기</option>
+														<option value="20180227">2018년 2월 27일</option>
+													</select>
+												</div>
+											</div>
+										</div>
+									</div>
 								</div>
 							</div>
 						</div>
 					</div>
-				</div>
-			</div>
-		</div>
-</div>
 				</div>
 			</section>
 			<!-- /wrapper -->

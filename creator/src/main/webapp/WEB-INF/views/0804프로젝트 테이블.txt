@@ -1,0 +1,303 @@
+CREATE TABLE `user_list` (
+	`user_num` INT(11) NOT NULL AUTO_INCREMENT COMMENT '유저번호',
+	`email` VARCHAR(100) NULL DEFAULT NULL COMMENT '이메일',
+	`user_password` VARCHAR(40) NULL DEFAULT NULL COMMENT '비밀번호',
+	`user_name` VARCHAR(10) NULL DEFAULT NULL COMMENT '이름',
+	`jumin` VARCHAR(20) NULL DEFAULT NULL COMMENT '주민등록번호',
+	`phone` VARCHAR(20) NULL DEFAULT NULL COMMENT '전화번호',
+	`addr` VARCHAR(80) NULL DEFAULT NULL COMMENT '주소',
+	`user_chk_email` VARCHAR(1) NULL DEFAULT NULL COMMENT '이메일 수신 여부',
+	`user_terms_of_service` VARCHAR(1) NULL DEFAULT NULL COMMENT '이용약관',
+	`user_privacy_policy_agree` VARCHAR(1) NOT NULL COMMENT '개인정보처리동의',
+	`user_join_date` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP COMMENT '가입일',
+	`user_phone_key` VARCHAR(50) NULL DEFAULT NULL COMMENT '휴대폰인증',
+	PRIMARY KEY (`user_num`)
+)
+COMMENT='<일반회원>'
+COLLATE='utf8_general_ci'
+ENGINE=InnoDB;
+
+
+CREATE TABLE `busi_user_list` (
+	`busi_num` INT(11) NOT NULL AUTO_INCREMENT COMMENT '법인 유저번호',
+	`busi_resi_num` VARCHAR(10) NULL DEFAULT NULL COMMENT '사업자 등록번호',
+	`busi_password` VARCHAR(20) NULL DEFAULT NULL COMMENT '사업자 비밀번호',
+	`com_name` VARCHAR(20) NULL DEFAULT NULL COMMENT '업체명',
+	`presen_name` VARCHAR(20) NULL DEFAULT NULL COMMENT '대표자명',
+	`cor_num` VARCHAR(20) NULL DEFAULT NULL COMMENT '법인번호',
+	`homepage` VARCHAR(200) NULL DEFAULT NULL COMMENT '홈페이지',
+	`address` VARCHAR(30) NULL DEFAULT NULL COMMENT '주소',
+	`pre_phone` VARCHAR(20) NULL DEFAULT NULL COMMENT '대표자번호',
+	`fax_num` VARCHAR(20) NULL DEFAULT NULL COMMENT '팩스 번호',
+	`manager_name` VARCHAR(10) NULL DEFAULT NULL COMMENT '담당자명',
+	`manager_birth` VARCHAR(20) NULL DEFAULT NULL COMMENT '담당자 생년월일',
+	`manager_email` VARCHAR(100) NULL DEFAULT NULL COMMENT '담당자 이메일',
+	`office_num` VARCHAR(20) NULL DEFAULT NULL COMMENT '사무실 번호',
+	`manager_phone` VARCHAR(20) NULL DEFAULT NULL COMMENT '매니저 번호',
+	`manager_fax_num` VARCHAR(20) NULL DEFAULT NULL COMMENT '매니저 팩스번호',
+	`manager_task` VARCHAR(10) NULL DEFAULT NULL COMMENT '담당업무',
+	`manager_rank` VARCHAR(10) NULL DEFAULT NULL COMMENT '직급',
+	`manager_depart` VARCHAR(10) NULL DEFAULT NULL COMMENT '근무부서',
+	`cer_number` VARCHAR(20) NULL DEFAULT NULL COMMENT '인증번호',
+	`busi_chk_email` VARCHAR(1) NULL DEFAULT NULL COMMENT '이메일 수신 여부',
+	`busi_terms_of_service` VARCHAR(1) NULL DEFAULT NULL COMMENT '이용약관',
+	`busi_privacy_policy_agree` VARCHAR(1) NULL DEFAULT NULL COMMENT '개인정보처리동의',
+	`busi_join_date` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '가입일',
+	`busi_phone_key` VARCHAR(1) NULL DEFAULT NULL COMMENT '휴대폰 인증',
+	PRIMARY KEY (`busi_num`)
+)
+COMMENT='<법인회원>'
+COLLATE='utf8_general_ci'
+ENGINE=InnoDB;
+
+
+CREATE TABLE `project_list` (
+	`project_num` INT(11) NOT NULL AUTO_INCREMENT COMMENT '프로젝트번호',
+	`img` VARCHAR(200) NULL DEFAULT NULL COMMENT '사진(경로)',
+	`project_name` VARCHAR(60) NULL DEFAULT NULL COMMENT '이름',
+	`rate` VARCHAR(10) NULL DEFAULT NULL COMMENT '금리',
+	`price` VARCHAR(30) NULL DEFAULT NULL COMMENT '모집금액',
+	`current_price` VARCHAR(30) NULL DEFAULT NULL COMMENT '현재금액',
+	`ach_rate` VARCHAR(10) NULL DEFAULT NULL COMMENT '모집현황',
+	`ach_state` VARCHAR(20) NULL DEFAULT NULL COMMENT '모집상태',
+	`repay_method` VARCHAR(10) NULL DEFAULT NULL COMMENT '상환방식',
+	`deadline` VARCHAR(30) NULL DEFAULT NULL COMMENT '남은기간',
+	`refund` VARCHAR(50) NULL DEFAULT NULL COMMENT '상환기간',
+	`repay_count` INT(10) NULL DEFAULT NULL COMMENT '상환차수',
+	`loan_history` VARCHAR(30) NULL DEFAULT NULL COMMENT '대출자 상환내역',
+	`guarantee_price` VARCHAR(30) NULL DEFAULT NULL COMMENT '남은대출금액',
+	`refund_end` DATE NULL DEFAULT NULL COMMENT '상환완료일',
+	`type` VARCHAR(10) NULL DEFAULT NULL COMMENT '게임유형',
+	`genre` VARCHAR(10) NULL DEFAULT NULL COMMENT '장르',
+	`grade` VARCHAR(10) NULL DEFAULT NULL COMMENT '담보등급',
+	`more_information` VARCHAR(2000) NULL DEFAULT NULL COMMENT '상세정보',
+	`en_date` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '등록날짜',
+	`loan_period` VARCHAR(10) NULL DEFAULT NULL COMMENT '대출기간',
+	`loan_amount` VARCHAR(20) NULL DEFAULT NULL COMMENT '대출계좌',
+	`loan_class` VARCHAR(10) NULL DEFAULT NULL COMMENT '대출구분',
+	`loan_type` VARCHAR(10) NULL DEFAULT NULL COMMENT '대출유형',
+	`judge_status` INT(1) NULL DEFAULT NULL COMMENT '심사상태',
+	`ing_status` INT(1) NULL DEFAULT NULL COMMENT '1:승인 2:심사 3:반려',
+	`customer` VARCHAR(20) NULL DEFAULT NULL COMMENT '투자자수',
+	`ad_price` INT(11) NULL DEFAULT NULL COMMENT '광고 금액',
+	`ad_grade` INT(11) NULL DEFAULT NULL COMMENT '광고 등급',
+	`user_num` INT(11) NULL DEFAULT NULL COMMENT '유저번호',
+	`busi_num` INT(11) NULL DEFAULT NULL COMMENT '법인유저번호',
+	PRIMARY KEY (`project_num`),
+	INDEX `FK_project_list_user_list` (`user_num`),
+	INDEX `FK_project_list_busi_user_list` (`busi_num`),
+	CONSTRAINT `FK_project_list_busi_user_list` FOREIGN KEY (`busi_num`) REFERENCES `busi_user_list` (`busi_num`) ON DELETE CASCADE,
+	CONSTRAINT `FK_project_list_user_list` FOREIGN KEY (`user_num`) REFERENCES `user_list` (`user_num`) ON DELETE CASCADE
+)
+COMMENT='<프로젝트>'
+COLLATE='utf8_general_ci'
+ENGINE=InnoDB;
+
+
+CREATE TABLE `account_list` (
+	`account_num` INT(11) NOT NULL AUTO_INCREMENT COMMENT '계좌등록번호',
+	`account_name` VARCHAR(10) NULL DEFAULT NULL COMMENT '예금주',
+	`bank_name` VARCHAR(10) NOT NULL COMMENT '은행명',
+	`bank_num` VARCHAR(20) NOT NULL COMMENT '계좌번호',
+	`deposit` VARCHAR(30) NULL DEFAULT NULL COMMENT '예치금',
+	`deoisit_chk` VARCHAR(1) NULL DEFAULT NULL COMMENT '예치금 생성여부',
+	`user_num` INT(11) NULL DEFAULT NULL COMMENT '유저번호',
+	`busi_num` INT(11) NULL DEFAULT NULL COMMENT '법인유저번호',
+	`project_num` INT(11) NULL DEFAULT NULL COMMENT '프로젝트번호',
+	PRIMARY KEY (`account_num`),
+	INDEX `FK_account_list_busi_user_list` (`busi_num`),
+	INDEX `FK_account_list_user_list` (`user_num`),
+	INDEX `project_num` (`project_num`),
+	CONSTRAINT `FK_account_list_busi_user_list` FOREIGN KEY (`busi_num`) REFERENCES `busi_user_list` (`busi_num`) ON DELETE CASCADE,
+	CONSTRAINT `FK_account_list_project_list` FOREIGN KEY (`project_num`) REFERENCES `project_list` (`project_num`) ON DELETE CASCADE,
+	CONSTRAINT `FK_account_list_user_list` FOREIGN KEY (`user_num`) REFERENCES `user_list` (`user_num`) ON DELETE CASCADE
+)
+COMMENT='<계좌>'
+COLLATE='utf8_general_ci'
+ENGINE=InnoDB;
+
+
+CREATE TABLE `cert_list` (
+	`cert_key` VARCHAR(50) NULL DEFAULT NULL COMMENT '인증번호',
+	`cert_time` INT(10) NULL DEFAULT NULL COMMENT '인증시간',
+	`user_num` INT(11) NULL DEFAULT NULL COMMENT '유저번호',
+	`busi_num` INT(11) NULL DEFAULT NULL COMMENT '법인유저번호',
+	INDEX `user_num` (`user_num`),
+	INDEX `busi_num` (`busi_num`),
+	CONSTRAINT `FK_cert_list_busi_user_list` FOREIGN KEY (`busi_num`) REFERENCES `busi_user_list` (`busi_num`) ON DELETE CASCADE,
+	CONSTRAINT `FK_cert_list_user_list` FOREIGN KEY (`user_num`) REFERENCES `user_list` (`user_num`) ON DELETE CASCADE
+)
+COMMENT='<본인인증>'
+COLLATE='utf8_general_ci'
+ENGINE=InnoDB;
+
+
+CREATE TABLE `document` (
+	`document_num` INT(11) NOT NULL AUTO_INCREMENT COMMENT '서류번호',
+	`busi_regi` VARCHAR(200) NULL DEFAULT NULL COMMENT '사업자등록증',
+	`jumin_chobon` VARCHAR(200) NULL DEFAULT NULL COMMENT '주민등록초본',
+	`cer_ingam` VARCHAR(200) NULL DEFAULT NULL COMMENT '인감증명서',
+	`cer_budong` VARCHAR(200) NULL DEFAULT NULL COMMENT '부동산증명서',
+	`cer_dong` VARCHAR(200) NULL DEFAULT NULL COMMENT '동산증명서',
+	`cer_income` VARCHAR(200) NULL DEFAULT NULL COMMENT '소득금액증명원',
+	`cer_vat` VARCHAR(200) NULL DEFAULT NULL COMMENT '부가가치세과세증명원',
+	`cer_other` VARCHAR(200) NULL DEFAULT NULL COMMENT '기타증명서',
+	`copy_id` VARCHAR(200) NULL DEFAULT NULL COMMENT '신분증사본',
+	`copy_bankbook` VARCHAR(200) NULL DEFAULT NULL COMMENT '통장사본',
+	`chk_select` VARCHAR(1) NULL DEFAULT NULL COMMENT '개인정보 선택적이용확인',
+	`judge_status` INT(1) NULL DEFAULT NULL COMMENT '심사상태',
+	`project_num` INT(11) NOT NULL,
+	PRIMARY KEY (`document_num`),
+	INDEX `FK_document_project_list` (`project_num`),
+	CONSTRAINT `FK_document_project_list` FOREIGN KEY (`project_num`) REFERENCES `project_list` (`project_num`) ON DELETE CASCADE
+)
+COMMENT='<서류>'
+COLLATE='utf8_general_ci'
+ENGINE=InnoDB;
+
+
+CREATE TABLE `guarantee` (
+	`guarantee_num` INT(11) NOT NULL AUTO_INCREMENT COMMENT '담보번호',
+	`guarantee_type` VARCHAR(20) NOT NULL COMMENT '담보유형',
+	`guarantee_img` VARCHAR(200) NULL DEFAULT NULL COMMENT '담보물사진경로',
+	`guarantee_name` VARCHAR(30) NOT NULL COMMENT '담보이름',
+	`debtor_type` VARCHAR(20) NULL DEFAULT NULL COMMENT '차주유형(개인,법인)',
+	`business_type` VARCHAR(30) NULL DEFAULT NULL COMMENT '차주업종(직종)',
+	`object_type` VARCHAR(30) NULL DEFAULT NULL COMMENT '물건유형(아파트, 연립주택)',
+	`connoisseur` VARCHAR(30) NULL DEFAULT NULL COMMENT '외부감정가',
+	`supply_area` VARCHAR(50) NULL DEFAULT NULL COMMENT '공급면적',
+	`exclusive_area` VARCHAR(50) NULL DEFAULT NULL COMMENT '전용면적',
+	`area` VARCHAR(50) NULL DEFAULT NULL COMMENT '면적',
+	`judge_status` INT(1) NULL DEFAULT NULL COMMENT '심사상태',
+	`map` VARCHAR(50) NULL DEFAULT NULL COMMENT '지도',
+	`location` VARCHAR(50) NULL DEFAULT NULL COMMENT '소재지',
+	`scale` VARCHAR(10) NULL DEFAULT NULL COMMENT '규모',
+	`comple_year` VARCHAR(10) NULL DEFAULT NULL COMMENT '준공년도',
+	`quote` VARCHAR(20) NULL DEFAULT NULL COMMENT '시세',
+	`code` VARCHAR(20) NULL DEFAULT NULL COMMENT '담보분류',
+	`reference_file1` VARCHAR(200) NULL DEFAULT NULL COMMENT '참고파일1',
+	`reference_file2` VARCHAR(200) NULL DEFAULT NULL COMMENT '참고파일2',
+	`reference_file3` VARCHAR(200) NULL DEFAULT NULL COMMENT '참고파일3',
+	`project_num` INT(11) NULL DEFAULT NULL COMMENT '프로젝트번호',
+	PRIMARY KEY (`guarantee_num`),
+	INDEX `FK_guarantee_project_list` (`project_num`),
+	CONSTRAINT `FK_guarantee_project_list` FOREIGN KEY (`project_num`) REFERENCES `project_list` (`project_num`) ON DELETE CASCADE
+)
+COMMENT='<담보>'
+COLLATE='utf8_general_ci'
+ENGINE=InnoDB;
+
+
+CREATE TABLE `history` (
+	`history_num` INT(11) NOT NULL AUTO_INCREMENT,
+	`log_in_out_time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '로그인 또는 로그아웃 타임',
+	`log_in_out_type` INT(11) NOT NULL COMMENT '로그인 또는 로그아웃 구분',
+	`user_num` INT(11) NULL DEFAULT NULL COMMENT '유저 또는 사업자',
+	`busi_num` INT(11) NULL DEFAULT NULL,
+	PRIMARY KEY (`history_num`),
+	INDEX `FK_history_user_list` (`user_num`),
+	INDEX `FK_history_busi_user_list` (`busi_num`),
+	CONSTRAINT `FK_history_busi_user_list` FOREIGN KEY (`busi_num`) REFERENCES `busi_user_list` (`busi_num`) ON DELETE CASCADE,
+	CONSTRAINT `FK_history_user_list` FOREIGN KEY (`user_num`) REFERENCES `user_list` (`user_num`) ON DELETE CASCADE
+)
+COMMENT='<로그인,아웃 기록>'
+COLLATE='utf8_general_ci'
+ENGINE=InnoDB;
+
+CREATE TABLE `invest_list` (
+	`invest_num` INT(11) NOT NULL AUTO_INCREMENT COMMENT '투자번호',
+	`invest_price` INT(11) NULL DEFAULT NULL COMMENT '투자금액(단위 만)',
+	`invest_date` DATE NULL DEFAULT NULL COMMENT '투자날짜',
+	`user_num` INT(11) NULL DEFAULT NULL COMMENT '유저번호',
+	`busi_num` INT(11) NULL DEFAULT NULL COMMENT '법인번호',
+	`project_num` INT(11) NULL DEFAULT NULL COMMENT '프로젝트번호',
+	PRIMARY KEY (`invest_num`),
+	INDEX `user_num` (`user_num`),
+	INDEX `busi_num` (`busi_num`),
+	INDEX `project_num` (`project_num`),
+	CONSTRAINT `FK_invest_list_busi_user_list` FOREIGN KEY (`busi_num`) REFERENCES `busi_user_list` (`busi_num`) ON DELETE CASCADE,
+	CONSTRAINT `FK_invest_list_project_list` FOREIGN KEY (`project_num`) REFERENCES `project_list` (`project_num`) ON DELETE CASCADE,
+	CONSTRAINT `FK_invest_list_user_list` FOREIGN KEY (`user_num`) REFERENCES `user_list` (`user_num`) ON DELETE CASCADE
+)
+COMMENT='<투자>'
+COLLATE='utf8_general_ci'
+ENGINE=InnoDB;
+
+
+CREATE TABLE `in_out` (
+	`in_out_num` INT(11) NOT NULL AUTO_INCREMENT COMMENT '입출금번호',
+	`input_history` INT(11) NULL DEFAULT NULL COMMENT '입금내역',
+	`output_history` INT(11) NULL DEFAULT NULL COMMENT '출금내역',
+	`account_num` INT(11) NULL DEFAULT NULL COMMENT '계좌등록번호',
+	`user_num` INT(11) NULL DEFAULT NULL COMMENT '유저번호',
+	PRIMARY KEY (`in_out_num`),
+	INDEX `FK_in_out_account_list` (`account_num`),
+	INDEX `FK_in_out_user_list` (`user_num`),
+	CONSTRAINT `FK_in_out_account_list` FOREIGN KEY (`account_num`) REFERENCES `account_list` (`account_num`) ON DELETE CASCADE,
+	CONSTRAINT `FK_in_out_user_list` FOREIGN KEY (`user_num`) REFERENCES `user_list` (`user_num`) ON DELETE CASCADE
+)
+COMMENT='<투자자입출금>'
+COLLATE='utf8_general_ci'
+ENGINE=InnoDB;
+
+
+CREATE TABLE `judge` (
+	`judge_num` INT(11) NOT NULL AUTO_INCREMENT COMMENT '심사번호',
+	`judge_success` VARCHAR(1) NULL DEFAULT NULL COMMENT '심사성공여부',
+	`project_num` INT(11) NULL DEFAULT NULL,
+	PRIMARY KEY (`judge_num`),
+	INDEX `FK_judge_project_list` (`project_num`),
+	CONSTRAINT `FK_judge_project_list` FOREIGN KEY (`project_num`) REFERENCES `project_list` (`project_num`) ON DELETE CASCADE
+)
+COMMENT='<심사>'
+COLLATE='utf8_general_ci'
+ENGINE=InnoDB;
+
+
+CREATE TABLE `note_list` (
+	`note_num` INT(11) NOT NULL AUTO_INCREMENT COMMENT '문의번호',
+	`note_type` VARCHAR(10) NULL DEFAULT NULL COMMENT '타입(보낸문의받은문의)',
+	`note_date` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '수신일',
+	`chk_note_reception` VARCHAR(1) NULL DEFAULT NULL COMMENT '수신확인여부',
+	`note_contents` VARCHAR(600) NULL DEFAULT NULL COMMENT '문의내용',
+	`send_user_num` INT(11) NULL DEFAULT NULL COMMENT '문의자번호',
+	`send_nickname` VARCHAR(40) NULL DEFAULT NULL COMMENT '문의자닉네임',
+	`note_title` VARCHAR(40) NULL DEFAULT NULL COMMENT '제목',
+	`status` VARCHAR(10) NULL DEFAULT NULL COMMENT '처리상태',
+	`file_path` VARCHAR(200) NULL DEFAULT NULL COMMENT '파일경로',
+	PRIMARY KEY (`note_num`)
+)
+COMMENT='<1:1문의>'
+COLLATE='utf8_general_ci'
+ENGINE=InnoDB;
+
+
+CREATE TABLE `notice` (
+	`notice_num` INT(11) NOT NULL AUTO_INCREMENT COMMENT '공지사항번호',
+	`img` VARCHAR(60) NULL DEFAULT NULL COMMENT '사진',
+	`title` VARCHAR(40) NULL DEFAULT NULL COMMENT '제목',
+	`notice_contents` VARCHAR(5000) NULL DEFAULT NULL COMMENT '공지사항내용',
+	`notice_date` DATE NOT NULL COMMENT '등록날짜',
+	`notice_type` VARCHAR(30) NULL DEFAULT NULL COMMENT '공지사항구분',
+	PRIMARY KEY (`notice_num`)
+)
+COMMENT='<공지사항>'
+COLLATE='utf8_general_ci'
+ENGINE=InnoDB;
+
+
+CREATE TABLE `repay_list` (
+	`repay_num` INT(11) NOT NULL AUTO_INCREMENT COMMENT '상환번호',
+	`invest_history` VARCHAR(20) NULL DEFAULT NULL COMMENT '투자자 상환내역',
+	`loan_history` VARCHAR(20) NULL DEFAULT NULL COMMENT '대출자 상환내역',
+	`user_num` INT(11) NULL DEFAULT NULL COMMENT '유저번호',
+	`busi_num` INT(11) NULL DEFAULT NULL COMMENT '법인유저번호',
+	PRIMARY KEY (`repay_num`),
+	INDEX `FK_repay_list_busi_user_list` (`busi_num`),
+	INDEX `FK_repay_list_user_list` (`user_num`),
+	CONSTRAINT `FK_repay_list_busi_user_list` FOREIGN KEY (`busi_num`) REFERENCES `busi_user_list` (`busi_num`) ON DELETE CASCADE,
+	CONSTRAINT `FK_repay_list_user_list` FOREIGN KEY (`user_num`) REFERENCES `user_list` (`user_num`) ON DELETE CASCADE
+)
+COMMENT='<상환내역>'
+COLLATE='utf8_general_ci'
+ENGINE=InnoDB;

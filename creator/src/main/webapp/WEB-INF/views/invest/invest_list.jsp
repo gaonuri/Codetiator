@@ -65,11 +65,12 @@
 	        MAIN CONTENT
 	        *********************************************************************************************************************************************************** -->
 		<!--main content start-->
-		<section>
-			<section class="wrapper">
-				<h3><i class="fa fa-angle-right"></i> 투자상품</h3>
-				<div class="row mb">
+	<section>
+		<section class="wrapper">
+			<h3>투자상품</h3>
+			<div class="row mb">
 					<!-- page start-->
+				<div class="col-md-12">
 					<div class="content-panel">
 						<!-- 투자리스트 start -->
 						<div class="adv-table">
@@ -137,12 +138,13 @@
 					</div>
 					<!-- page end-->
 				</div>
+			</div>
 				<!-- /row -->
-			</section>
-			<!-- /wrapper -->
 		</section>
-		<!-- /MAIN CONTENT -->
-		<!--main content end-->
+		<!-- /wrapper -->
+	</section>
+	<!-- /MAIN CONTENT -->
+	<!--main content end-->
 		
 		<!--footer start-->
 		<footer class="site-footer">

@@ -9,17 +9,8 @@ public class InvestVO {
 	private String user_num;		// (참조)유저번호
 	private String busi_num;		// (참조)법인 유저 순서
 	private String project_num;		// (참조)프로젝트번호
-	private String p_busi_num;		// (참조)프로젝트번호
-	
-	public InvestVO() {}	//constructor
-	public InvestVO(String invest_num, String invest_price, String invest_date, String user_num, String busi_num, String project_num) {
-		this.user_num = invest_num;
-		this.invest_price = invest_price;
-		this.invest_date = invest_date;
-		this.user_num = user_num;
-		this.busi_num = busi_num;
-		this.project_num = project_num;
-	}//constructor
+	private String p_busi_num;		// (참조)프로젝트 신청하는 법인유저번호
+
 	
 	public String getInvest_num() {
 		return invest_num;
@@ -64,10 +55,11 @@ public class InvestVO {
 	public void setProject_num(String project_num) {
 		this.project_num = project_num;
 	}//project_num
+	
 	public String getP_busi_num() {
 		return p_busi_num;
 	}
 	public void setP_busi_num(String p_busi_num) {
 		this.p_busi_num = p_busi_num;
-	}
+	}//p_busi_num
 }//class
