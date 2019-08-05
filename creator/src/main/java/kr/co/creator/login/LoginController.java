@@ -55,13 +55,10 @@ public class LoginController {
 			int loginCusGbCd = 1;
 			session.setAttribute("memberVO", vo);
 			session.setAttribute("memVO", vo);
-<<<<<<< HEAD
 			session.setAttribute("loginCusGbCd", loginCusGbCd);
-=======
 			session.setAttribute("mypageVO", vo);
 			session.setAttribute("loginCusGbCd", loginCusGbCd);
 			sqlSession.insert("LoginMapper.historyTime", vo);
->>>>>>> branch 'master' of https://github.com/gaonuri/Codetiator.git
 		} 
 		out.print(successCnt);
 		out.close();
@@ -77,13 +74,10 @@ public class LoginController {
 			int loginCusGbCd = 2;
 			session.setAttribute("memberVO", vo);
 			session.setAttribute("memVO", vo);
-<<<<<<< HEAD
 			session.setAttribute("loginCusGbCd", loginCusGbCd);
-=======
 			session.setAttribute("mypageVO", vo);
 			session.setAttribute("loginCusGbCd", loginCusGbCd);
 			sqlSession.insert("LoginMapper.historyTime", vo);
->>>>>>> branch 'master' of https://github.com/gaonuri/Codetiator.git
 		}
 		out.print(successCnt);
 		out.close();
