@@ -1,6 +1,24 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<head>
+<script type="text/javascript">
+$(document).ready(function(){
+	$("#logout_btn").click(function(){
+
+		$.post("${pageContext.request.contextPath}/logouttime",
+				{
+					user_num:$("#user_num").val(),
+					busi_num:$("#busi_num").val()
+				},
+				function(data,status){
+				}
+		);//post
+	});//click
+});//ready
+
+</script>
+</head>
 	    <!--header start-->
 	    <header class="header black-bg">
 			<!--logo start-->
@@ -67,13 +85,13 @@
 								<a href="${pageContext.request.contextPath}/support">이용약관</a>
 							</li>
 							<li>
-								<a href="${pageContext.request.contextPath}/policy">개인정보</a>
+								<a href="${pageContext.request.contextPath}/privacy_policy">개인정보</a>
 							</li>
 							<li>
 								<a href="${pageContext.request.contextPath}/inquiry">1:1문의</a>
 							</li>
 							<li>
-								<a href="${pageContext.request.contextPath}/support_total">공지사항</a>
+								<a href="${pageContext.request.contextPath}/support">공지사항</a>
 							</li>
 						</ul>
 					</li>
@@ -98,7 +116,7 @@
 					</c:choose>
 					
 					
-<!-- 					이프문해야함 admin -->
+					<!--이프문해야함 admin -->
 					<c:choose>
 						<c:when test="${memberVO != null && memberVO.user_num != '' || memberVO != null && memberVO.busi_num != ''}">
 							<c:choose>
@@ -139,8 +157,8 @@
 					
 					<c:choose>
 						<c:when test="${memberVO != null && memberVO.user_num != '' || memberVO != null && memberVO.busi_num != ''}">
-							<li>
-								<a href="${pageContext.request.contextPath}/logout">로그아웃</a>
+							<li id="logout_btn">
+								<a href="${pageContext.request.contextPath}/main">로그아웃</a>
 							</li>
 						</c:when>
 						<c:otherwise>
@@ -158,8 +176,6 @@
 							<li></li>
 						</c:otherwise>
 					</c:choose>
-					
-					
 				
 					<!-- 로그아웃 end -->
 				</ul>

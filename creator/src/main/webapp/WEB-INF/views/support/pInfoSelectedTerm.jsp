@@ -132,120 +132,9 @@
 	        TOP BAR CONTENT & NOTIFICATIONS
 	        *********************************************************************************************************************************************************** -->
 	    <!--header start-->
-	    <header class="header black-bg">
-			<!--logo start-->
-			<a href="./main" class="logo"><img id="logoImage" alt="로고" src="${pageContext.request.contextPath}/resources/img/ner.jpg" width="200px" height="30px"></a>
-			<!--logo end-->
-			<div class="nav notify-row top-menu" id="top_menu">
-				<!--  notification start -->
-				<ul class="nav pull-right top-menu">
-					<!-- settings start -->
-					
-					<!-- 회사소개 start -->
-					<li><a href="./loan_guide">회사소개</a></li>
-					<!-- 회사소개 end -->
-					
-					<!-- 대출 start -->
-					<li class="dropdown">
-						<a data-toggle="dropdown" class="dropdown-toggle" href="#">
-							대출
-						</a>
-						<ul class="dropdown-menu extended tasks-bar">
-							<div class="notify-arrow notify-arrow-green"></div>
-							<li>
-								<a href="./loan_guide">대출안내</a>
-							</li>
-							<li>
-								<a href="./loan/getloan">대출하기</a>
-							</li>
-						</ul>
-					</li>
-	          		<!-- 대출 end -->
-	          
-	          		<!-- inbox dropdown start-->
-	         		<li class="dropdown">
-						<a data-toggle="dropdown" class="dropdown-toggle" href="#">
-							투자
-						</a>
-						<ul class="dropdown-menu extended tasks-bar">
-							<div class="notify-arrow notify-arrow-black"></div>
-							<li>
-								<a href="./invest_guide">투자안내</a>
-							</li>
-							<li>
-								<a href="./invest_list">투자하기</a>
-							</li>
-							<li>
-								<a href="./invest_finish">완료된투자</a>
-							</li>
-						</ul>
-					</li>
-	          		<!-- 투자 end -->
-	          
-	          
-					<!-- 고객지원 start-->
-					<li id="header_notification_bar" class="dropdown">
-						<a data-toggle="dropdown" class="dropdown-toggle" href="#">
-							고객지원
-						</a>
-						<ul class="dropdown-menu extended notification">
-							<div class="notify-arrow"></div>
-							<li>
-								<a href="./faq">FAQ</a>
-							</li>
-							<li>
-								<a href="./support">이용약관</a>
-							</li>
-							<li>
-								<a href="./policy">개인정보</a>
-							</li>
-							<li>
-								<a href="./inquiry">1:1문의</a>
-							</li>
-						</ul>
-					</li>
-					<!-- 고객지원 end -->
-					
-					<!-- 마이페이지 start-->
-					<li id="header_notification_bar" class="dropdown">
-						<a data-toggle="dropdown" class="dropdown-toggle" href="#">
-							마이페이지
-						</a>
-						<ul class="dropdown-menu extended notification">
-							<div class="notify-arrow notify-arrow-yellow"></div>
-							<li>
-								<a href="./my_dashboard">대시보드</a>
-							</li>
-							<li>
-								<a href="./my_invest_list">투자내역</a>
-							</li>
-							<li>
-								<a href="./my_loan_list">대출내역</a>
-							</li>
-							<li>
-								<a href="./my_depo_mgn">예치금관리</a>
-							</li>
-							<li>
-								<a href="./my_modify">회원정보수정</a>
-							</li>
-						</ul>
-					</li>
-					<!-- 마이페이지 end -->
-					
-					<!-- 로그아웃 start -->
-					<li><a href="./loan_guide">로그아웃</a></li>
-					<!-- 로그아웃 end -->
-				</ul>
-				<!--  notification end -->
-			</div>
-			<div class="top-menu">
-				<ul class="nav pull-right top-menu">
-					<li><a class="logout" href="/creator/join">회원가입</a></li>
-				</ul>
-			</div>
-	    </header>
+	    <%@ include file="../header.jsp" %>
 	    <!--header end-->
-	   <section id="loanGuide-banner" class="text-center">
+		<section id="loanGuide-banner" class="text-center">
 			<div class="overlay">
 				<div class="section-body">
 					<span class="title">개인(신용)정보 선택적 수집·이용 동의서</span>
@@ -261,71 +150,70 @@
 			<section class="wrapper site-min-height">
 				<div class="row mt">
 					<div class="col-lg-12">
-
-<div class="container">
-			<div class="section-body">
-				<div class="row">
-					<div class="col-md-12">
-						<div class="wrap">
-							<div class="box">
-								<strong><em>
-								※ 귀하는 개인(신용)정보의 선택적인 수집∙이용, 제공에 대한 동의를 거부할 수 있습니다. 다만, 동의하지 않을 경우 관련 편의제공(무이자 또는 이자율 인하 이벤트, 한도 증액, 사은품 제공 등)에 제한이 있을 수 있지만 그 밖의 대부 거래와 관련된 불이익은 없습니다. 상기 사항은 당사 홈페이지 또는 고객센터(02-546-4076)를 통해 철회가 가능합니다.
-								</em></strong>
-								<br>
-								<br>
-								<br><strong>㈜ 크리에이터 대부 귀중</strong>
-								<br>
-								<br>이 계약과 관련하여 귀사가 본인의 개인(신용)정보를 수집·이용하고자 하는 경우에는 「개인정보보호법」 제15조 및 제22조, 제24조, 「신용정보의 이용 및 보호에 관한 법률」 제32조, 제33조 및 제34조, 정보통신망 이용촉진 및 정보보호 등에 관한 법률 제22조, 제26조의2에 따라 동의를 얻어야 합니다. 이에 본인은 귀사가 아래의 내용과 같이 본인의 개인(신용)정보를 수집·이용하는데 동의합니다.
-								<br>
-								<br><strong>1. 개인(신용)정보의 선택적 수집ㆍ이용에 관한 사항</strong>
-								<br>
-								<br>가. 개인(신용)정보의 수집·이용 목적
-								<br>1) 고객에 대한 편의제공, 귀사 및 제휴업체의 상품·서비스 안내 및 이용권유, 사은·판촉행사 등의 마케팅 활동, 시장조사 및 상품·서비스 개발연구 등
-								<br>
-								<br>나. 수집·이용할 개인(신용)정보의 내용
-								<br>1) 개인식별정보, 신용거래정보, 신용도정보, 신용능력정보, 공공기관정보, 신용관련정보
-								<br>2) 기타 계약의 체결·이행·유지·관리 등과 관련하여 본인이 제공한 정보
-								<br>
-								<br>다. 개인(신용)정보의 보유 및 이용기간
-								<br>1) 수집ㆍ이용 동의일로부터 본인이 신청한 대부거래가 귀사에 의해 거절된 시점까지, 대부거래가 설정된 경우에는 본인의 수집 이용 동의 철회시까지 또는 거래종료일(채권 채무관계가 해소된 시점)로부터 3개월 또는 그 기간이내 고객의 수집ㆍ이용 동의 철회시까지 이용가능합니다.
-								<br>
-								<br><strong>2. 개인(신용)정보의 선택적 제공에 관한 사항</strong>
-								<br>
-								<br>가. 개인(신용)정보를 제공받는 자
-								<br>1) 귀사 및 제휴업체의 상품·서비스 안내 등 아래 이용목적과 관련한 업무를 위탁받은 자
-								<br>
-								<br>나. 제공받는 자의 이용목적
-								<br>1) 상품·서비스 안내 및 이용권유, 회원유치, 시장조사, 상품·서비스 개발연구, 고객만족도 조사 등
-								<br>
-								<br>다. 제공할 개인(신용)정보의 내용
-								<br>1) 상기 이용목적 달성을 위하여 필요한 정보(개인식별정보, 신용거래정보 등)
-								<br>
-								<br>라. 제공받는 자의 개인(신용)정보 보유 및 이용기간
-								<br>1) 동의일로부터 개인(신용)정보의 수집·이용 목적을 달성할 때까지
-								<br>2) 다만, 관련법규에 별도 규정이 있는 경우 그 기간을 따릅니다.
-								<br>
-								<br>
-								<br>※ 귀하는 동의를 거부할 권리가 있으나, 동의하지 않는 경우 관련 편의제공(사은품, 할인쿠폰 제공 등)에 일부 제한이 있을 수 있습니다.
-								<br>
-								<br>※ 동의한 경우에도 귀하는 동의를 철회하거나 마케팅 목적으로 귀하에게 연락하는 것을 중지하도록 요청할 수 있습니다.
-								<br>
-								<br>※ 상기 내용이 변동하는 경우 당사의 인터넷홈페이지 게시 등을 통해 그 내용을 공시합니다.
-							</div>
-							<hr>
-							<div class="row">
-								<div class="col-md-push-8 col-md-4">
-									<select class="form-control" id="termHisSelect">
-										<option value="">이전 약관보기</option>
-										<option value="20180227">2018년 2월 27일</option>
-									</select>
+						<div class="container">
+							<div class="section-body">
+								<div class="row">
+									<div class="col-md-12">
+										<div class="wrap">
+											<div class="box">
+												<strong><em>
+												※ 귀하는 개인(신용)정보의 선택적인 수집∙이용, 제공에 대한 동의를 거부할 수 있습니다. 다만, 동의하지 않을 경우 관련 편의제공(무이자 또는 이자율 인하 이벤트, 한도 증액, 사은품 제공 등)에 제한이 있을 수 있지만 그 밖의 대부 거래와 관련된 불이익은 없습니다. 상기 사항은 당사 홈페이지 또는 고객센터(02-546-4076)를 통해 철회가 가능합니다.
+												</em></strong>
+												<br>
+												<br>
+												<br><strong>㈜ 크리에이터 대부 귀중</strong>
+												<br>
+												<br>이 계약과 관련하여 귀사가 본인의 개인(신용)정보를 수집·이용하고자 하는 경우에는 「개인정보보호법」 제15조 및 제22조, 제24조, 「신용정보의 이용 및 보호에 관한 법률」 제32조, 제33조 및 제34조, 정보통신망 이용촉진 및 정보보호 등에 관한 법률 제22조, 제26조의2에 따라 동의를 얻어야 합니다. 이에 본인은 귀사가 아래의 내용과 같이 본인의 개인(신용)정보를 수집·이용하는데 동의합니다.
+												<br>
+												<br><strong>1. 개인(신용)정보의 선택적 수집ㆍ이용에 관한 사항</strong>
+												<br>
+												<br>가. 개인(신용)정보의 수집·이용 목적
+												<br>1) 고객에 대한 편의제공, 귀사 및 제휴업체의 상품·서비스 안내 및 이용권유, 사은·판촉행사 등의 마케팅 활동, 시장조사 및 상품·서비스 개발연구 등
+												<br>
+												<br>나. 수집·이용할 개인(신용)정보의 내용
+												<br>1) 개인식별정보, 신용거래정보, 신용도정보, 신용능력정보, 공공기관정보, 신용관련정보
+												<br>2) 기타 계약의 체결·이행·유지·관리 등과 관련하여 본인이 제공한 정보
+												<br>
+												<br>다. 개인(신용)정보의 보유 및 이용기간
+												<br>1) 수집ㆍ이용 동의일로부터 본인이 신청한 대부거래가 귀사에 의해 거절된 시점까지, 대부거래가 설정된 경우에는 본인의 수집 이용 동의 철회시까지 또는 거래종료일(채권 채무관계가 해소된 시점)로부터 3개월 또는 그 기간이내 고객의 수집ㆍ이용 동의 철회시까지 이용가능합니다.
+												<br>
+												<br><strong>2. 개인(신용)정보의 선택적 제공에 관한 사항</strong>
+												<br>
+												<br>가. 개인(신용)정보를 제공받는 자
+												<br>1) 귀사 및 제휴업체의 상품·서비스 안내 등 아래 이용목적과 관련한 업무를 위탁받은 자
+												<br>
+												<br>나. 제공받는 자의 이용목적
+												<br>1) 상품·서비스 안내 및 이용권유, 회원유치, 시장조사, 상품·서비스 개발연구, 고객만족도 조사 등
+												<br>
+												<br>다. 제공할 개인(신용)정보의 내용
+												<br>1) 상기 이용목적 달성을 위하여 필요한 정보(개인식별정보, 신용거래정보 등)
+												<br>
+												<br>라. 제공받는 자의 개인(신용)정보 보유 및 이용기간
+												<br>1) 동의일로부터 개인(신용)정보의 수집·이용 목적을 달성할 때까지
+												<br>2) 다만, 관련법규에 별도 규정이 있는 경우 그 기간을 따릅니다.
+												<br>
+												<br>
+												<br>※ 귀하는 동의를 거부할 권리가 있으나, 동의하지 않는 경우 관련 편의제공(사은품, 할인쿠폰 제공 등)에 일부 제한이 있을 수 있습니다.
+												<br>
+												<br>※ 동의한 경우에도 귀하는 동의를 철회하거나 마케팅 목적으로 귀하에게 연락하는 것을 중지하도록 요청할 수 있습니다.
+												<br>
+												<br>※ 상기 내용이 변동하는 경우 당사의 인터넷홈페이지 게시 등을 통해 그 내용을 공시합니다.
+											</div>
+											<hr>
+											<div class="row">
+												<div class="col-md-push-8 col-md-4">
+													<select class="form-control" id="termHisSelect">
+														<option value="">이전 약관보기</option>
+														<option value="20180227">2018년 2월 27일</option>
+													</select>
+												</div>
+											</div>
+										</div>
+									</div>
 								</div>
 							</div>
 						</div>
 					</div>
-				</div>
-			</div>
-		</div>
-</div>
 				</div>
 			</section>
 			<!-- /wrapper -->

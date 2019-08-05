@@ -7,14 +7,7 @@ public class JudgeVO {
 	
 	private String project_num;		// (참조)프로젝트번호
 	
-	public JudgeVO() {}	//constructor
-	public JudgeVO(String judge_num, String judge_success, String project_num) {
-		this.judge_num = judge_num;
-		this.judge_success = judge_success;
-		
-		this.project_num = project_num;
-	}//constructor
-	
+
 	public String getJudge_num() {
 		return judge_num;
 	}

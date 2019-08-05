@@ -13,6 +13,7 @@ public class GuaranteeVO {
 	private String supply_area;				// 공급면적
 	private String exclusive_area;			// 전용면적
 	private String area;					// 면적
+	private String judge_status;			// 심사상태
 	private String map;						// 지도
 	private String location;				// 소재지
 	private String scale;					// 규모
@@ -26,35 +27,7 @@ public class GuaranteeVO {
 	
 	private String project_num;				// (참조)프로젝트번호
 	
-	public GuaranteeVO() {}	//constructor
-	public GuaranteeVO(	String guarantee_num, String guarantee_type, String guarantee_img, String guarantee_name, 
-						String debtor_type, String business_type, String object_type, String connoisseur, 
-						String exclusive_area, String supply_area, String area, String map, 
-						String location, String scale, String comple_year, String quote, String code, 
-						String grade, String more_information, String en_date, String rate, 
-						String reference_file1, String reference_file2, String reference_file3, String project_num) {
-		this.guarantee_num = guarantee_num;
-		this.guarantee_type = guarantee_type;
-		this.guarantee_img = guarantee_img;
-		this.guarantee_name = guarantee_name;
-		this.debtor_type = debtor_type;
-		this.business_type = business_type;
-		this.object_type = object_type;
-		this.connoisseur = connoisseur;
-		this.area = area;
-		this.map = map;
-		this.location = location;
-		this.scale = scale;
-		this.comple_year = comple_year;
-		this.quote = quote;
-		this.code = code;
-		this.reference_file1 = reference_file1;
-		this.reference_file2 = reference_file2;
-		this.reference_file3 = reference_file3;
-		
-		this.project_num = project_num;
-	}//constructor
-	
+
 	public String getGuarantee_num() {
 		return guarantee_num;
 	}
@@ -131,6 +104,13 @@ public class GuaranteeVO {
 	public void setArea(String area) {
 		this.area = area;
 	}//area
+	
+	public String getJudge_status() {
+		return judge_status;
+	}
+	public void setJudge_status(String judge_status) {
+		this.judge_status = judge_status;
+	}//judge_status
 	
 	public String getMap() {
 		return map;

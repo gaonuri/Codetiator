@@ -11,6 +11,7 @@ import kr.co.creator.vo.InOutVO;
 import kr.co.creator.vo.MemberVO;
 import kr.co.creator.vo.MypageVO;
 import kr.co.creator.vo.ProjectVO;
+import kr.co.creator.vo.UserVO;
 
 @Service
 public class MypageService {
@@ -30,13 +31,15 @@ public class MypageService {
 		return loan;
 	}
 
-	public AccountVO account(MemberVO userVO,AccountVO accVO) {
-		accVO = dao.account(userVO, accVO);
+	public AccountVO account(MemberVO userVO) {
+		AccountVO accVO = null;
+		accVO = dao.account(userVO);
 		return accVO;
 	}
 	
-	public InOutVO inout(MemberVO userVO, InOutVO ioVO) {
-		ioVO = (InOutVO) dao.inout(userVO, ioVO);
+	public InOutVO inout(MemberVO userVO) {
+		InOutVO ioVO = null;
+		ioVO = (InOutVO) dao.inout(userVO);
 		return ioVO;
 	}
 	
@@ -51,6 +54,31 @@ public class MypageService {
 		cnt = dao.myPageModifyB(vo);
 		return cnt; 
 	}//myPageModifyB	
+
+	public UserVO user(MemberVO userVO) {
+		UserVO useVO = null;
+		useVO = (UserVO) dao.user(userVO);
+		return useVO;
+	}
+	
+	public int emailcert(String email) {
+		System.out.println(email);
+		int cnt = 0;
+		cnt = dao.emailcert(email);
+		return cnt; 
+	}//findPwdChk
+
+	public int userDataUpdate(MemberVO vo) {
+		int cnt = 0;
+		cnt = dao.userDataUpdate(vo);
+		return cnt; 
+	}
+	
+	public int userDataUpdate1(MemberVO vo) {
+		int cnt1 = 0;
+		cnt1 = dao.userDataUpdate1(vo);
+		return cnt1; 
+	}
 
 	
 }//class

@@ -53,16 +53,17 @@
 		where user_name = #{user_name}
 	</select>
 	
-	<select id="userList" resultType="kr.co.creator.vo.MemberListVO">
+	<select id="userList" parameterType="kr.co.creator.vo.MemberListVO">
 		select	*
 		from	user_list
 	</select>
 	
-	<select id="busiUserList" resultType="kr.co.creator.vo.MemberListVO">
+	<select id="busiUserList" parameterType="kr.co.creator.vo.MemberListVO">
 		select	*
 		from	busi_user_list
 	</select>
 	
+<<<<<<< HEAD
 	<update id="insertNumber" parameterType="kr.co.creator.vo.FindPwdVO">
 		update busi_user_list
 		set cer_number = #{newPassword} 
@@ -76,3 +77,35 @@
 	</select>
 	 
 </mapper>
+=======
+	<insert id="historyTime" parameterType="kr.co.creator.vo.MemberVO" >
+		insert into history (user_num, busi_num, log_in_out_time, log_in_out_type)
+		values (#{user_num}, #{busi_num}, now(), 1)
+	</insert>
+	
+	<insert id="logoutTime" parameterType="kr.co.creator.vo.MemberVO">
+		insert into history (user_num, busi_num, log_in_out_time, log_in_out_type)
+		values (#{user_num}, #{busi_num}, now(), 0)
+	</insert>
+	
+	<select id="historyIn" parameterType="kr.co.creator.vo.HistoryVO" resultType="kr.co.creator.vo.HistoryVO">
+		select * 
+		from history 
+		where (user_num = #{user_num} AND log_in_out_type = '1') OR (busi_num = #{busi_num} AND log_in_out_type = '1')
+		order by history_num desc
+		limit 3
+	</select>
+	
+	<select id="historyOut" parameterType="kr.co.creator.vo.MemberVO" resultType="kr.co.creator.vo.HistoryVO">
+		select * 
+		from history 
+		where (user_num = #{user_num} AND log_in_out_type = '0') OR (busi_num = #{busi_num} AND log_in_out_type = '0')
+		order by history_num desc
+		limit 3
+	</select>
+	
+	
+</mapper>
+
+
+>>>>>>> branch 'master' of https://github.com/gaonuri/Codetiator.git

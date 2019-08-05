@@ -52,10 +52,10 @@ $(document).ready(function(){
 		}
 
 		$.post(
-				"./loginuser"
+				"${pageContext.request.contextPath}/loginuser"
 				,{
-					email:$("#email").val()
-					,user_password:$("#user_password").val()
+					email:$("#email").val(),
+					user_password:$("#user_password").val()
 				}
 				,function(data,status){
 					if(status == "success"){
@@ -89,12 +89,12 @@ $(document).ready(function(){
 			$("#busi_password").focus();
 			return;
 		}
-
+		
 		$.post(
-				"./loginbusi"
+				"${pageContext.request.contextPath}/loginbusi"
 				,{
-					busi_resi_num:$("#busi_resi_num").val()
-					,busi_password:$("#busi_password").val()
+					busi_resi_num:$("#busi_resi_num").val(),
+					busi_password:$("#busi_password").val()
 				}
 				,function(data,status){
 					if(status == "success"){
@@ -227,6 +227,10 @@ $(document).ready(function(){
 			<!-- /wrapper -->
 	    </section>
 	    <!-- /MAIN CONTENT -->
+	    
+	    <input type="hidden" id="numChk" value="${memVO.user_num}"/>
+	    <input type="hidden" id="numChk1" value="${memVO.busi_num}"/>
+	    
 	    <!--main content end-->
 		
 		<!--footer start-->

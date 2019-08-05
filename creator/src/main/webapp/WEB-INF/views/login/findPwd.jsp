@@ -51,7 +51,7 @@ $(document).ready(function(){
 			return;
 		}
 		$.post(
-				"./findpwdchk",
+				"${pageContext.request.contextPath}/findpwdchk",
 				{
 					email:$("#email").val()
 				},
@@ -75,7 +75,7 @@ $(document).ready(function(){
 			return;
 		}
 		$.post(
-				"./sendnewpassword"
+				"${pageContext.request.contextPath}/sendnewpassword"
 				,{
 					email:$("#email").val()
 				}

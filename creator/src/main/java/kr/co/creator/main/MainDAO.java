@@ -14,6 +14,12 @@ public class MainDAO {
 	@Autowired
 	SqlSession sqlSession;
 
+//	public List<ProjectVO> project_list(ProjectVO proVO) {
+//		List<ProjectVO> list = sqlSession.selectList("MainMapper.projectList", proVO);
+//		
+//		return list;
+//	}//project_list
+	
 	public List<ProjectVO> project_list1() {
 		List<ProjectVO> list1 = sqlSession.selectList("MainMapper.projectList1");
 		

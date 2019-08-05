@@ -2,7 +2,9 @@ package kr.co.creator.login;
 
 import java.io.PrintWriter;
 import java.util.List;
+import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.session.SqlSession;
@@ -16,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import kr.co.creator.vo.Busi_userVO;
 import kr.co.creator.vo.FindPwdVO;
+import kr.co.creator.vo.HistoryVO;
 import kr.co.creator.vo.MemberListVO;
 import kr.co.creator.vo.MemberVO;
 import kr.co.creator.vo.ProjectVO;
@@ -52,7 +55,13 @@ public class LoginController {
 			int loginCusGbCd = 1;
 			session.setAttribute("memberVO", vo);
 			session.setAttribute("memVO", vo);
+<<<<<<< HEAD
 			session.setAttribute("loginCusGbCd", loginCusGbCd);
+=======
+			session.setAttribute("mypageVO", vo);
+			session.setAttribute("loginCusGbCd", loginCusGbCd);
+			sqlSession.insert("LoginMapper.historyTime", vo);
+>>>>>>> branch 'master' of https://github.com/gaonuri/Codetiator.git
 		} 
 		out.print(successCnt);
 		out.close();
@@ -68,18 +77,34 @@ public class LoginController {
 			int loginCusGbCd = 2;
 			session.setAttribute("memberVO", vo);
 			session.setAttribute("memVO", vo);
+<<<<<<< HEAD
 			session.setAttribute("loginCusGbCd", loginCusGbCd);
+=======
+			session.setAttribute("mypageVO", vo);
+			session.setAttribute("loginCusGbCd", loginCusGbCd);
+			sqlSession.insert("LoginMapper.historyTime", vo);
+>>>>>>> branch 'master' of https://github.com/gaonuri/Codetiator.git
 		}
 		out.print(successCnt);
 		out.close();
 	}//loginBusi 
 	
-	@RequestMapping(value="/logout", method=RequestMethod.GET)
-	public String logout(HttpSession session) {
-		logger.info("=== logout ===");
+//	@RequestMapping(value="/logout", method=RequestMethod.GET)
+//	public String logout(MemberVO vo, HttpSession session) {
+//		logger.info("=== logout ===");
+//		
+//		return "login/logoutTime";
+//	}//logout
+	
+	@RequestMapping(value = "/logouttime", method = RequestMethod.POST)
+	public void logoutTime(MemberVO vo, HttpSession session, PrintWriter out, HttpServletRequest request) {
+		logger.info("=== logoutTime ===");
+		vo = (MemberVO)session.getAttribute("memVO");
+		sqlSession.insert("LoginMapper.logoutTime", vo);
 		session.invalidate();
-		return "main/main";
-	}//logout
+		out.flush();
+		out.close();
+	}//logoutTime
 	
 	@RequestMapping(value = "/findpwd", method=RequestMethod.GET)
 	public String findPwd() {
@@ -194,6 +219,7 @@ public class LoginController {
 		model.addAttribute("memberList", list);
 		return "login/login";
 	}//busi_user_list
+
 }//class
 
 

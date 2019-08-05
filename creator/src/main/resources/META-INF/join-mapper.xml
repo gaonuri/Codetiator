@@ -13,7 +13,7 @@
 	<insert id="joinUser" parameterType="kr.co.creator.vo.UserVO">
 		insert into user_list (user_name, email, user_password, jumin, phone, 
 								addr, user_chk_email, user_terms_of_service, 
-								user_privacy_policy_agree, join_date)
+								user_privacy_policy_agree, user_join_date)
 		values(#{user_name}, #{email}, #{user_password}, #{jumin}, #{phone}, 
 				#{addr}, #{user_chk_email}, #{user_terms_of_service}, 
 				#{user_privacy_policy_agree}, now())
@@ -29,7 +29,7 @@
 									homepage, address, pre_phone, fax_num, manager_name, manager_birth, 
 									manager_email, office_num, manager_phone, manager_fax_num, manager_task, 
 									manager_rank, manager_depart, busi_chk_email, busi_terms_of_service, 
-									busi_privacy_policy_agree, join_date)
+									busi_privacy_policy_agree, busi_join_date)
 		values(#{busi_resi_num}, #{busi_password}, #{com_name}, #{presen_name}, #{cor_num}, 
 				#{homepage}, #{address}, #{pre_phone}, #{fax_num}, #{manager_name}, #{manager_birth}, 
 				#{manager_email}, #{office_num}, #{manager_phone}, #{manager_fax_num}, #{manager_task}, 
@@ -42,7 +42,7 @@
 	</insert>
 	
 	<select id="joinLicenseChk" parameterType="java.lang.String" resultType="int">
-		select count(*) from busi_user_list where busi_resi_num = #{busi_resi_num}
+		select count(busi_resi_num) from busi_user_list where busi_resi_num = #{busi_resi_num}
 	</select>
 	
 	<select id="joinMagEmailChk" parameterType="java.lang.String" resultType="int">

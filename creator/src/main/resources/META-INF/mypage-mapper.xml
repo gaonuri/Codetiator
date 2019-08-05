@@ -7,18 +7,19 @@
 
 	<select id="assetsList"
 			resultType="kr.co.creator.vo.InvestVO">
-		select invest_num
-			, project_num
-			, invest_price
-			, invest_date
-			FROM invest_list
-			order by invest_date desc
+		select a.deposit
+			, p.guarantee_price
+			, i.invest_price
+			FROM i.invest_list, a.account_list, p.project_list
+			where p.project_num = i.project_num
+				   p.project_num =  a.project_num
+				 and i.user_num = #{user_num}
 	</select>
 	
 	<select id="InvestList"
 			parameterType="kr.co.creator.vo.MemberVO"
 			resultType="kr.co.creator.vo.MypageVO">
-			select  i.invest_date 
+			select i.invest_date 
 			, p.project_num 
 			, p.project_name 
 			, p.rate rate 
@@ -34,18 +35,12 @@
 	
 	<select id="loanList"
 		resultType="kr.co.creator.vo.ProjectVO">
-		select  a.account_name
-		, a.bank_name
-		, a.bank_num
-		, a.deposit
-		, i.input_history
-		, i.output_history
-		from account_list a, in_out i
-		where a.account_num = i.account_num 
-			and a.user_num = #{user_num}
+		select project_name
+		from project_list
 	</select>
 	
 	<select id="Account"
+		parameterType="kr.co.creator.vo.MemberVO"
 		resultType="kr.co.creator.vo.AccountVO">
 		select a.account_name
 		, a.bank_name
@@ -53,6 +48,14 @@
 		, a.deposit
 		from account_list a
 		where a.user_num = #{user_num}
+	</select>
+	
+	<select id="User"
+		parameterType="kr.co.creator.vo.MemberVO"
+		resultType="kr.co.creator.vo.UserVO">
+		select *
+		from user_list 
+		where user_num = #{user_num}
 	</select>
 	
 	<select id="Inout"
@@ -75,6 +78,36 @@
 		from busi_user_list 
 		where busi_num = #{busi_num} and busi_password = #{busi_password}
 	</select>
+	
+	<select id="MyPageBank" parameterType="kr.co.creator.vo.AccountVO" resultType="kr.co.creator.vo.AccountVO">
+		select * 
+		from account_list 
+		where user_num = #{user_num} or busi_num = #{busi_num} 
+	</select>	
+	
+	<update id="UserDataUpdate" parameterType="kr.co.creator.vo.MemberVO">
+		update user_list 
+		set user_name = #{user_name}, jumin = #{jumin}, phone = #{phone}  
+		where user_num = #{user_num}
+	</update>
+	
+	<update id="UserDataUpdate1" parameterType="kr.co.creator.vo.MemberVO">
+		update user_list 
+		set manager_name = #{manager_name}, manager_birth = #{manager_birth}, manager_phone = #{manager_phone}  
+		where busi_num = #{busi_num}
+	</update>
+	
+	<update id="UpdatePass" parameterType="kr.co.creator.vo.MemberVO">
+		update user_list 
+		set user_password = #{user_password} 
+		where user_num = #{user_num}
+	</update>
+	
+	<delete id="Deleteuser" parameterType="kr.co.creator.vo.MemberVO">
+		delete from user_list 
+		where user_num = #{user_num}
+	</delete>
+	
 	
 	
 </mapper>

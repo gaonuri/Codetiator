@@ -4,6 +4,10 @@
 <html>
 
 <head>
+
+	<script src="${pageContext.request.contextPath}/resources/jquery/jquery-3.4.1.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/ckeditor/ckeditor.js"></script>
+
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="description" content="">
@@ -25,38 +29,76 @@
 	<link href="${pageContext.request.contextPath}/resources/bootstrap/css/style.css" rel="stylesheet">
 	<link href="${pageContext.request.contextPath}/resources/bootstrap/css/style-responsive.css" rel="stylesheet">
 	<script src="${pageContext.request.contextPath}/resources/bootstrap/lib/chart-master/Chart.js"></script>
-	
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-	
+
 	<!-- =======================================================
 	  Template Name: Dashio
 	  Template URL: https://templatemag.com/dashio-bootstrap-admin-template/
 	  Author: TemplateMag.com
 	  License: https://templatemag.com/license/
 	======================================================= -->
-		<script type="text/javascript">
-			$(document).ready(function() {
-				$("#btn_write").click(function() {
-					location.href = "${pageContext.request.contextPath}/support/formi";
-				});//btn_write
-			});//ready
-			$(document).ready(function() {
-				$("#btn_total").click(function() {
-					location.href = "${pageContext.request.contextPath}/support_total";
-				});//btn_write
-			});//ready
-			$(document).ready(function() {
-				$("#btn_new").click(function() {
-					location.href = "${pageContext.request.contextPath}/support_new";
-				});//btn_write
-			});//ready
-			$(document).ready(function() {
-				$("#btn_operation").click(function() {
-					location.href = "${pageContext.request.contextPath}/support_operation";
-				});//btn_write
-			});//ready
-		</script>
+	
+<script type="text/javascript">
+
+//id check
+$(document).ready(function(){
+	var chkemail = '';
+
+	$("#email").blur(function(){
+		var emailStd = /([a-z0-9]{1,20}\@)([a-z]{1,20}\.)([a-z]{1,10})/gi;
 		
+		if($.trim($("#email").val()) != $(this).val().match(emailStd)){
+			alert("올바르지 않은 이메일 입니다.");
+			return;
+		}
+		$.post(
+				"./findpwdchk",
+				{
+					email:$("#email").val()
+				},
+				function(data,status){
+					if(data == 1){
+						alert("이메일이 확인 되었습니다.");
+						chkemail = $("#email").val();
+					}else{
+						alert("등록된 이메일이 없습니다.");
+					}
+				}//function
+		);//post
+	});//ready
+});//blur
+
+$(document).ready(function(){
+	$("#findpwd_btn").click(function(){
+		if($.trim($("#email").val()) == ""){
+			alert("등록된 이메일이 없습니다.");
+// 			$("#email").focus();
+			return;
+		}
+		$.post(
+				"./emailcert"
+				,{
+					email:$("#email").val()
+				}
+				,function(data,status){
+					if(status == "success"){
+						if(data > 0){
+							alert("해당 이메일로 임시비밀번호를 발송했습니다.");
+							location.href="/creator/findpwd";
+						} else if(data == 0){
+							alert("존재하지 않는 이메일 입니다.");
+						} else {
+							alert("잠시 후, 다시 시도해 주세요.");
+						}
+					} else {
+						alert("시스템 관리자에게 문의 바랍니다.");
+					}
+				}
+		);//post
+	});//click
+});//ready
+</script>
+
+
 </head>
 
 <body>
@@ -65,156 +107,54 @@
 	        TOP BAR CONTENT & NOTIFICATIONS
 	        *********************************************************************************************************************************************************** -->
 	    <!--header start-->
-	    <header class="header black-bg">
-			<!--logo start-->
-			<a href="./main" class="logo"><img id="logoImage" alt="로고" src="${pageContext.request.contextPath}/resources/img/ner.jpg" width="200px" height="30px"></a>
-			<!--logo end-->
-			<div class="nav notify-row top-menu" id="top_menu">
-				<!--  notification start -->
-				<ul class="nav pull-right top-menu">
-					<!-- settings start -->
-					
-					<!-- 회사소개 start -->
-					<li><a href="./loan_guide">회사소개</a></li>
-					<!-- 회사소개 end -->
-					
-					<!-- 대출 start -->
-					<li class="dropdown">
-						<a data-toggle="dropdown" class="dropdown-toggle" href="#">대출</a>
-						<ul class="dropdown-menu extended tasks-bar">
-							<div class="notify-arrow notify-arrow-green"></div>
-							<li>
-								<a href="./loan_guide">대출안내</a>
-							</li>
-							<li>
-								<a href="./loan">대출하기</a>
-							</li>
-						</ul>
-					</li>
-	          		<!-- 대출 end -->
-	          
-	          		<!-- inbox dropdown start-->
-	         		<li class="dropdown">
-						<a data-toggle="dropdown" class="dropdown-toggle" href="#">
-							투자
-						</a>
-						<ul class="dropdown-menu extended tasks-bar">
-							<div class="notify-arrow notify-arrow-black"></div>
-							<li>
-								<a href="./invest_guide">투자안내</a>
-							</li>
-							<li>
-								<a href="./invest_list">투자하기</a>
-							</li>
-							<li>
-								<a href="./invest_finish">완료된투자</a>
-							</li>
-						</ul>
-					</li>
-	          		<!-- 투자 end -->
-	          
-	          
-					<!-- 고객지원 start-->
-					<li id="header_notification_bar" class="dropdown">
-						<a data-toggle="dropdown" class="dropdown-toggle" href="#">
-							고객지원
-						</a>
-						<ul class="dropdown-menu extended notification">
-							<div class="notify-arrow"></div>
-							<li>
-								<a href="./faq">FAQ</a>
-							</li>
-							<li>
-								<a href="./support">이용약관</a>
-							</li>
-							<li>
-								<a href="./policy">개인정보</a>
-							</li>
-							<li>
-								<a href="./inquiry">1:1문의</a>
-							</li>
-						</ul>
-					</li>
-					<!-- 고객지원 end -->
-					
-					<!-- 마이페이지 start-->
-					<li id="header_notification_bar" class="dropdown">
-						<a data-toggle="dropdown" class="dropdown-toggle" href="#">
-							마이페이지
-						</a>
-						<ul class="dropdown-menu extended notification">
-							<div class="notify-arrow notify-arrow-yellow"></div>
-							<li>
-								<a href="./my_dashboard">대시보드</a>
-							</li>
-							<li>
-								<a href="./my_invest_list">투자내역</a>
-							</li>
-							<li>
-								<a href="./my_loan_list">대출내역</a>
-							</li>
-							<li>
-								<a href="./my_depo_mgn">예치금관리</a>
-							</li>
-							<li>
-								<a href="./my_modify">회원정보수정</a>
-							</li>
-						</ul>
-					</li>
-					<!-- 마이페이지 end -->
-					
-					<!-- 로그아웃 start -->
-					<li><a href="./loan_guide">로그아웃</a></li>
-					<!-- 로그아웃 end -->
-				</ul>
-				<!--  notification end -->
-			</div>
-			<div class="top-menu">
-				<ul class="nav pull-right top-menu">
-					<li><a class="logout" href="/creator/join">회원가입</a></li>
-				</ul>
-			</div>
-	    </header>
-	    <!--header end-->
-	   
+	    
+	     <%@ include file="../header.jsp" %>
 	   
 	    <!-- **********************************************************************************************************************************************************
 	        MAIN CONTENT
 	        *********************************************************************************************************************************************************** -->
 		<!--main content start-->
-    <section id="main-content">
-     	 <section class="wrapper">
-       	 	<div class="row">
-         		 <div class="col-md-10">
-            		<div class="content-panel">
-            		<div class="btn-group">
-		                <button id="btn_total" type="button" class="btn btn-default">전체</button>
-		                <button id="btn_new" type="button" class="btn btn-default">새소식</button>
-		                <button id="btn_operation" type="button" class="btn btn-default">운영사항</button>
-              		</div>
-		            <table class="table">
-		                <c:forEach items="${supportlist2}" var="vo" varStatus="status">
-							<tbody>
-								<tr>
-									<td><a href="support_new_detail?notice_num=${vo.notice_num}">${vo.notice_num}</a></td>
-									<td><a href="support_new_detail?notice_num=${vo.notice_num}">${vo.title}</a></td>
-									<td>${vo.notice_date}</td>
-								</tr>
-							</tbody>
-						</c:forEach>
-		            </table>
-		            </div>
-		          </div>
-         		 <!-- /col-md-12 -->
-        	</div>
-        	<!-- row -->
-	        	<br><br>
-				<button id="btn_write">글쓰기</button>
-				<br><br>
-      </section>
-    </section>
-    <!-- /MAIN CONTENT -->
-    <!--main content end-->
+		
+<section id="main-content">
+<section class="wrapper site-min-height">
+<div class="container">
+	<div class="col-md-offset-3">
+	<img src="${pageContext.request.contextPath}/resources/img/test_logo.jpg" alt="login_img">
+	</div>
+</div>
+				
+<!-- =====================================================================logo -->
+				
+				
+<div class="col-lg-6 mt col-md-offset-3">
+	<h3 class="title">비밀번호를 잊어 버리셨나요?</h3>
+	<h4 class="title">임시 비밀번호를 보내드립니다.</h4>
+	<div class="form-group">
+		<div class="col-sm-10">
+			<input type="text" class="form-control" id="email" placeholder="*이메일">
+		</div>
+	</div>
+	<div class="form-group">
+		<div class="col-sm-10 col-lg-offset-3" id="findpwd_btn">
+		
+			<button id="findpwd_btn" class="btn btn-theme" >비밀번호 초기화</button>
+
+		</div>
+	</div>	
+<!-- 	<div class="form-send"> -->
+<!-- 		<div class="col-sm-10 col-lg-offset-3"> -->
+<!-- 			<input type="text" class="btn btn-theme" id="findpwd_btn" value="비밀번호 초기화" /> -->
+<!-- 		</div> -->
+<!-- 	</div>		 -->
+</div>
+				
+		<!-- ===================================================================== body-->		
+				
+		</section>
+			<!-- /wrapper -->
+	    </section>
+	    <!-- /MAIN CONTENT -->
+	    <!--main content end-->
 		<!--footer start-->
 		<footer class="site-footer">
 			<div class="container">
@@ -278,7 +218,70 @@
 	<!--script for this page-->
 	<script src="${pageContext.request.contextPath}/resources/bootstrap/lib/sparkline-chart.js"></script>
 	<script src="${pageContext.request.contextPath}/resources/bootstrap/lib/zabuto_calendar.js"></script>
+	<script type="text/javascript">
+	/*
+    $(document).ready(function() {
+      var unique_id = $.gritter.add({
+        // (string | mandatory) the heading of the notification
+        title: 'Welcome to Dashio!',
+        // (string | mandatory) the text inside the notification
+        text: 'Hover me to enable the Close Button. You can hide the left sidebar clicking on the button next to the logo. Developed by <a href="http://alvarez.is" target="_blank" style="color:#4ECDC4">Alvarez.is</a>.',
+        // (string | optional) the image to display on the left
+        image: '${pageContext.request.contextPath}/resources/bootstrap/img/ui-sam.jpg',
+        // (bool | optional) if you want it to fade out on its own or just sit there
+        sticky: false,
+        // (int | optional) the time you want it to be alive for before fading out
+        time: 8000,
+        // (string | optional) the class name you want to apply to that specific message
+        class_name: 'my-sticky-class'
+      });
 
+      return false;
+    });
+	*/
+	</script>
+	<script type="application/javascript">
+    $(document).ready(function() {
+      $("#date-popover").popover({
+        html: true,
+        trigger: "manual"
+      });
+      $("#date-popover").hide();
+      $("#date-popover").click(function(e) {
+        $(this).hide();
+      });
+
+      $("#my-calendar").zabuto_calendar({
+        action: function() {
+          return myDateFunction(this.id, false);
+        },
+        action_nav: function() {
+          return myNavFunction(this.id);
+        },
+        ajax: {
+          url: "show_data.php?action=1",
+          modal: true
+        },
+        legend: [{
+            type: "text",
+            label: "Special event",
+            badge: "00"
+          },
+          {
+            type: "block",
+            label: "Regular event",
+          }
+        ]
+      });
+    });
+
+    function myNavFunction(id) {
+      $("#date-popover").hide();
+      var nav = $("#" + id).data("navigation");
+      var to = $("#" + id).data("to");
+      console.log('nav ' + nav + ' to: ' + to.month + '/' + to.year);
+    }
+	</script>
 </body>
 
 </html>

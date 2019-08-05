@@ -33,7 +33,80 @@
 	  Author: TemplateMag.com
 	  License: https://templatemag.com/license/
 	======================================================= -->
+	
 <script type="text/javascript">
+$(document).ready(function() {
+	$("#userDataUpdate").click(function(){
+		window.open('${pageContext.request.contextPath}/my_popup','','menubar=no,width=450,height=350');
+	});//click
+});//ready
+
+$(document).ready(function() {
+	$("#updatePassBtn").click(function(){
+		var numChk = $("#numChk").val();
+		var numChk1 = $("#numChk1").val();
+		
+		if($("#updatePassword").val() != $("#updatePassword1").val()){
+			alert("비밀번호를 똑같이 입력해 주세요.");
+			$("#updatePassword").focus();
+			return;
+		}
+			$.post(
+					"${pageContext.request.contextPath}/updatepass",
+					{
+						user_num:$("#numChk").val(),
+						user_password:$("#updatePassword").val()
+					},
+					function(data,status){
+						if(status == "success"){
+							if(data > 0){
+								alert("@@@@@@@@@@@@@@@@@@@@@@@@@");
+							} else if(data == 0){
+								alert("변경 되었습니다.");
+								location.href="${pageContext.request.contextPath}/my_modify";
+							} else {
+								alert("잠시 후, 다시 시도해 주세요.");
+							}
+						} else {
+							alert("시스템 관리자에게 문의 바랍니다.");
+						}
+					}
+				);//post
+	});//click
+});//ready
+
+$(document).ready(function() {
+	$("#deleteUserBtn").click(function(){
+		var numChk = $("#numChk").val();
+		var numChk1 = $("#numChk1").val();
+		if(confirm("정말로 탈퇴 하시겠습니까??") == true) {
+			$.post(
+					"${pageContext.request.contextPath}/deleteuser",
+					{
+						user_num:$("#numChk").val(),
+					},
+					function(data,status){
+						if(status == "success"){
+							if(data > 0){
+								alert("@@@@@@@@@@@@@@@@@@@@@@@@@");
+							} else if(data == 0){
+								alert("그동안 크리에이터를 이용해 주셔서 감사합니다.");
+								location.href="${pageContext.request.contextPath}/login";
+							} else {
+								alert("잠시 후, 다시 시도해 주세요.");
+							}
+						} else {
+							alert("시스템 관리자에게 문의 바랍니다.");
+						}
+					}
+				);//post
+			} else{
+				return false;
+			} 
+	});//click
+});//ready
+
+
 </script>
 </head>
      
@@ -103,29 +176,35 @@
 					<tr>
 					<td class="condition-title">이름</td>
 						<td class="condition-content">
-							<input type="text" class="form-control" id="cusNm" maxlength="50" value="${mypagedetail.user_name}${mypagedetail.manager_name}">
+<<<<<<< HEAD
+							<input type="text" class="form-control" id="cusNm" maxlength="50" readonly="readonly" value="${mypagemem.user_name}${mypagedetail.manager_name}">
+=======
+							<input type="text" class="form-control" id="cusNm" maxlength="50" value="${mypagemem.user_name}${mypagedetail.manager_name}" readonly="readonly">
+>>>>>>> branch 'master' of https://github.com/gaonuri/Codetiator.git
 						</td>
-						<td>
-							<button type="button" class="btn btn-purple-transparent" onclick="fn_updateCusNm()" id="updateCusNmBtn">변경</button>
-						</td>
+<<<<<<< HEAD
 					</tr>
 					<tr>
 					<td class="condition-title">이메일</td>
 						<td class="condition-content">
-							<input type="text" class="form-control" id="email" maxlength="50" value="${mypagedetail.email}${mypagedetail.manager_email}">
+							<input type="text" class="form-control" id="email" maxlength="50" value="${mypagemem.email}${mypagedetail.manager_email}">
 						</td>
 						<td>
 							<button type="button" class="btn btn-purple-transparent" onclick="fn_updateEmail()" id="updateEmailBtn">변경</button>
+=======
+						<td>
+							<button type="button" class="btn btn-purple-transparent" id="userDataUpdate" name="userDataUpdate">변경</button>
+>>>>>>> branch 'master' of https://github.com/gaonuri/Codetiator.git
 						</td>
 					</tr>
 					<tr>
 					<td class="condition-title">휴대전화번호</td>
 						<td class="condition-content">
-							<input type="text" class="form-control" id="mpNo" maxlength="50" readonly="readonly" value="${mypagedetail.phone}${mypagedetail.manager_phone}">
+							<input type="text" class="form-control" id="mpNo" maxlength="50" value="${mypagemem.phone}${mypagedetail.manager_phone}">
 							<input type="hidden" id="ci">
 						</td>
 						<td>
-							<button type="button" class="btn btn-purple-transparent" onclick="fn_checkNiceCert()" id="updateCusNmBtn">변경</button>
+<!-- 							<button type="button" class="btn btn-purple-transparent" id="userDataUpdate" name="userDataUpdate">변경</button> -->
 						</td>
 						<td>
 							<!-- 본인인증 서비스 팝업을 호출하기 위해서는 다음과 같은 form이 필요합니다. -->
@@ -138,7 +217,17 @@
 					
 					<tr>
 						<td class="condition-title">주민등록번호</td>
-						<td class="condition-content">${mypagedetail.jumin}${mypagedetail.manager_birth}</td>
+						<td class="condition-content">
+							<input type="text" class="form-control" id="email" maxlength="50" readonly="readonly" value="${mypagemem.jumin}${mypagemem.manager_birth}"></td>
+						<td>
+<!-- 							<button type="button" class="btn btn-purple-transparent" id="userDataUpdate" name="userDataUpdate">변경</button> -->
+						</td>
+					</tr>
+					<tr>
+					<td class="condition-title">이메일</td>
+						<td class="condition-content">
+							<input type="text" class="form-control" id="email" maxlength="50" readonly="readonly" value="${mypagemem.email}${mypagedetail.manager_email}">
+						</td>
 						<td></td>
 					</tr>
 					
@@ -179,7 +268,7 @@
 							</td>
 							<td class="condition-content">
 								<select id="cusBankCdSelect" class="form-control" name="cusBankCd">
-									<option value="">${mypagedetail.bank_name}</option>
+									<option value="">${mypagebank.bank_name}</option>
 										<option value="002">산업은행</option><option value="003">기업은행</option>
 										<option value="004">국민은행</option><option value="007">수협중앙회</option>
 										<option value="008">수출입은행</option><option value="010">농협</option>
@@ -226,7 +315,7 @@
 							<br><br><p><font size="2">계좌번호를 정확히 입력해주세요.</font></p>
 							</td>
 							<td class="condition-content">
-								<input type="text" class="form-control" id="cusAccount" maxlength="14">
+								<input type="text" class="form-control" id="cusAccount" maxlength="14" value="${mypagebank.bank_num}">
 							</td>
 							<td></td>
 						</tr>
@@ -238,9 +327,8 @@
 						</tbody>
 					</table>
 					<div class="autoConditionSet" >
-						<button type="button" class="btn btn-purple-transparent btn-block" onclick="fn_updateCusAccount()" id="updateCusAccountBtn">계좌 정보 저장</button>
-					</div>
-					<br><br>
+						<button type="button" class="btn btn-purple-transparent btn-block" onclick="fn_updateCusAccount()" id="updateCusAccountBtn">예치금 계좌 발급</button>
+					</div><br>
                 </div>
               </div>
             </div>
@@ -265,14 +353,14 @@
 							<td class="condition-title">기존 비밀번호
 							</td>
 							<td class="condition-content">
-							<input type="text" class="form-control" id="cusAccount" maxlength="14">
+							<input type="password" class="form-control" id="cusAccount" maxlength="14" value="${mypagemem.user_password}${mypagemem.busi_password}">
 							</td>
 						</tr>
 						<tr>
 							<td class="condition-title">새 비밀번호
 							</td>
 							<td class="condition-content">
-								<input type="text" class="form-control" id="cusAccount" maxlength="14">
+								<input type="password" class="form-control" id="updatePassword" maxlength="14">
 							</td>
 							<td></td>
 						</tr>
@@ -281,14 +369,14 @@
 							<td class="condition-title">비밀번호 확인
 							</td>
 							<td class="condition-content">
-								<input type="text" class="form-control" id="cusAccount" maxlength="14">
+								<input type="password" class="form-control" id="updatePassword1" maxlength="14">
 							</td>						
 							<td></td>
 						</tr>
 						</tbody>
 					</table>
 					<div class="autoConditionSet" >
-						<button type="button" class="btn btn-purple-transparent btn-block" onclick="fn_updateCusAccount()" id="updateCusAccountBtn">새 비밀번호 저장</button>
+						<button type="button" class="btn btn-purple-transparent btn-block" onclick="fn_updateCusAccount()" id="updatePassBtn">새 비밀번호 저장</button>
 					</div>
 					<br><br>                
                 
@@ -304,7 +392,6 @@
                 <h4><i class="fa fa-angle-right"></i>접속이력</h4>
 				<hr>
                 <div class="panel-body text-center">
-                
 					<table class="table condition-table">
 		                <thead>
 		                  <tr>
@@ -313,28 +400,30 @@
 		                  </tr>
 		                </thead>
 						<tbody>
+		                  	<tr>
+		                  		<td>
+									<c:forEach items="${hInList}" var="vo" varStatus="status">
+			                    		<a>${vo.log_in_out_time}<br><p><font size="2"></font></p></a>
+									</c:forEach>
+								</td>
+								<td>
+			                    	<c:forEach items="${hOutList}" var="vo" varStatus="status">
+										<a>${vo.log_in_out_time}<br><p><font size="2"></font></p></a>
+									</c:forEach>
+								</td>
+							</tr>
+								<tr>
+									<td class="condition-title">최근 3회 동안 접속하신 정보입니다.</td>
+									<td></td>
+								</tr>		
 						
-	                  	<tr>
-	                    <td>1</td>
-	                    <td>Mark</td>
-						</tr>
-	                  	<tr>
-	                    <td>1</td>
-	                    <td>Mark</td>
-						</tr>
-	                  	<tr>
-	                    <td>1</td>
-	                    <td>Mark</td>
-						</tr>
-						<tr>
-							<td class="condition-title">최근 4회 동안 접속하신 정보입니다.</td>
-							<td></td>
-						</tr>		
 						</tbody>
 					</table>
+					<form name="removeuser">
 					<div class="autoConditionSet" >
-						<button type="button" class="btn btn-purple-transparent btn-block" onclick="fn_updateCusAccount()" id="updateCusAccountBtn">회원 탈퇴</button>
+						<button type="button" class="btn btn-purple-transparent btn-block" onclick="removeCheck()" id="deleteUserBtn">회원 탈퇴</button>
 					</div>
+					</form>
 					<br><br>                  
                 
                 </div>
@@ -342,7 +431,13 @@
             </div>
           </div>
 	</section>
-</section>    
+</section>   
+
+   	<input type="hidden" id="numChk" value="${memVO.user_num}"/>
+	<input type="hidden" id="numChk1" value="${memVO.busi_num}"/>
+
+
+ 
 <!--    =======================================================    -->    	
 	
 		<!--footer start-->

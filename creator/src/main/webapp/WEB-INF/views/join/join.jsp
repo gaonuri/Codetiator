@@ -85,6 +85,7 @@ var chklicense = '';
 // 				return;
 // 			}
 // 		});//onlyEmail
+
 $(document).ready(function(){
 	$("#email").blur(function(){
 		var emailStd = /([a-z0-9]{1,20}\@)([a-z]{1,20}\.)([a-z]{1,10})/gi;
@@ -94,7 +95,7 @@ $(document).ready(function(){
 		}
 
 		$.post(
-				"./joinemailchk",
+				"${pageContext.request.contextPath}/joinemailchk",
 				{
 					email:$("#email").val()
 				},
@@ -102,8 +103,10 @@ $(document).ready(function(){
 					if(data == 0){
 						alert("사용 가능한 이메일 입니다.");
 						chkemail = $("#email").val();
+						return;
 					}else{
 						alert("이미 등록된 이메일 입니다.");
+						return;
 					}
 				}//function
 		);//post
@@ -112,12 +115,14 @@ $(document).ready(function(){
 
 $(document).ready(function(){
 	$("#busi_resi_num").blur(function(){
-		if($.trim($("#busi_resi_num").val()) == ''){
+		if($.trim($("#busi_resi_num").val()) == "") {
 			alert("사업자등록번호는 필수 입력 입니다.");
+ 			//alert($("#busi_resi_num").size());
 			return;
 		}
-		$.post(
-				"./joinlicensechk",
+		var licenseStd = /^[0-9]{10}$/;
+		if($(this).val().match(licenseStd)){
+			$.post("${pageContext.request.contextPath}/joinlicensechk",
 				{
 					busi_resi_num:$("#busi_resi_num").val()
 				},
@@ -125,13 +130,19 @@ $(document).ready(function(){
 					if(data == 0){
 						alert("사용 가능한 사업자등록번호 입니다.");
 						chklicense = $("#busi_resi_num").val();
+						return;
 					}else{
 						alert("이미 등록된 사업자등록번호 입니다.");
+						return;
 					}
 				}//function
-		);//post
-	});//ready
-});//blur
+			);//post
+		}else{
+			alert("사업자등록번호를 형식에 맞게 작성해 주세요.");
+			return;
+		}
+	});//blur
+});//ready
 
 var chkmagemail = '';
 
@@ -143,19 +154,18 @@ $(document).ready(function(){
 // 			$("#email").focus();
 			return;
 		}
-		$.post(
-				"./joinmagemailchk",
-				{
-					manager_email:$("#manager_email").val()
-				},
-				function(data,status){
-					if(data == 0){
-						alert("사용 가능한 이메일 입니다.");
-						chkmagemail = $("#manager_email").val();
-					}else{
-						alert("이미 등록된 이메일 입니다.");
-					}
-				}//function
+		$.post("${pageContext.request.contextPath}/joinmagemailchk",
+			{
+				manager_email:$("#manager_email").val()
+			},
+			function(data,status){
+				if(data == 0){
+					alert("사용 가능한 이메일 입니다.");
+					chkmagemail = $("#manager_email").val();
+				}else{
+					alert("이미 등록된 이메일 입니다.");
+				}
+			}//function
 		);//post
 	});//ready
 });//blur
@@ -227,27 +237,27 @@ $(document).ready(function(){
 		//alert($(this).val());
 		var phoneStd = /^[0-9]{11}$/;
 		if($(this).val().match(phoneStd)){
-			//alert("ok");
+			//alert($(this).val().match(licenseStd));
 		}else{
 			alert("핸드폰번호 형식에 맞게 작성해 주세요.");
 			//$(this).val("");
-			$(this).focus();
+			//$(this).focus();
 			return;
 		}
 	});//onlyPhone
 	
-	$(".onlyLicense").change(function(){
-		//alert($(this).val());
-		var licenseStd = /^[0-9]{10}$/;
-		if($(this).val().match(licenseStd)){
-			//alert("ok");
-		}else{
-			alert("사업자등록번호를 형식에 맞게 작성해 주세요.");
-			//$(this).val("");
-			$(this).focus();
-			return;
-		}
-	});//onlyLicense
+// 	$(".onlyLicense").change(function(){	중복돼서 오류남
+// 		//alert($(this).val());
+// 		var licenseStd = /^[0-9]{10}$/;
+// 		if($(this).val().match(licenseStd)){
+// 			alert($(this).val().match(licenseStd));
+// 		}else{
+// 			alert("사업자등록번호를 형식에 맞게 작성해 주세요.");
+// 			//$(this).val("");
+// 			//$(this).focus();
+// 			return;
+// 		}
+// 	});//onlyLicense
 	
 	$(".onlyPass").change(function(){
 		//alert($(this).val());
@@ -257,7 +267,7 @@ $(document).ready(function(){
 		}else{
 			alert("8~20자 영문,숫자,특수문자만 입력해 주세요.");
 			$(this).val("");
-			$(this).focus();
+			//$(this).focus();
 			return;
 		}
 	});//onlyPass
@@ -270,7 +280,7 @@ $(document).ready(function(){
 		}else{
 			alert("올바른 입력을 해주세요.");
 			$(this).val("");
-			$(this).focus();
+			//$(this).focus();
 			return;
 		}
 	});//onlyPass
@@ -291,68 +301,68 @@ $(document).ready(function(){
 // 			기본정보
 			if($.trim($("#user_name").val()) == ''){
 				alert("이름은 필수 입력 사항입니다.");
-				$("#user_name").focus();
+				//$("#user_name").focus();
 				return;
 			}
 			if($.trim($("#email").val()) == ''){
 				alert("이메일은 필수 입력 사항입니다.");
-				$("#email").focus();
+				//$("#email").focus();
 				return;
 			}
 			if($("#email").val().indexOf('@') == '-1'
 				|| $("#email").val().lastIndexOf('.') == '-1'){
 				alert("이메일 형식이 잘못되었습니다.");
-				$("#email").focus();
+				//$("#email").focus();
 				return;
 			}
 			if($("#email").val() != chkemail){
 				alert("이메일을 다시 입력해 주세요.");
-// 				$("#email").focus();
+				//$("#email").focus();
 				return;
 			}
 			if($.trim($("#user_password").val()) == ''){
 				alert("비밀번호는 필수 입력 사항입니다.");
-				$("#user_password").focus();
+				//$("#user_password").focus();
 				return;
 			}
 			if($("#user_password").val() != $("#user_password_re").val()){
 				alert("비밀번호를 똑같이 입력해 주세요.");
-				$("#user_password").focus();
+				//$("#user_password").focus();
 				return;
 			}
 			if($.trim($("#jumin").val()) == ''){
 				alert("생년월일은 필수 입력 사항입니다.");
-				$("#jumin").focus();
+				//$("#jumin").focus();
 				return;
 			}
 			if($.trim($("#phone").val()) == ''){
 				alert("휴대폰 번호는 필수 입력 사항입니다.");
-				$("#phone").focus();
+				//$("#phone").focus();
 				return;
 			}
 			if($.trim($("#addr").val()) == ''){
 				alert("주소는 필수 입력 사항입니다.");
-				$("#addr").focus();
+				//$("#addr").focus();
 				return;
 			}
 			if($.trim($("#addrdetail").val()) == ''){
 				alert("상세주소를 입력해주세요.");
-				$("#addrdetail").focus();
+				//$("#addrdetail").focus();
 				return;
 			}			
-			if($("#user_privacy_policy_agree").val() == 0){
+			if($("#user_terms_of_service").val() == 0){
 				alert("이용 약관 동의 후 회원 가입 바랍니다.");
-				$("#user_privacy_policy_agree").focus();
+				//$("#user_terms_of_service").focus();
 				return;
 			}
-			if($("#user_terms_of_service").val() == 0){
+			if($("#user_privacy_policy_agree").val() == 0){
 				alert("개인 정보 처리 방침 동의 후 회원 가입 바랍니다.");
-				$("#user_terms_of_service").focus();
+				//$("#user_privacy_policy_agree").focus();
 				return;
 			}
 // 			alert("aaa");
 			$.post(
-					"./joinuser",
+					"${pageContext.request.contextPath}/joinuser",
 					{
 						user_name:$("#user_name").val(),
 						email:$("#email").val(),
@@ -363,7 +373,7 @@ $(document).ready(function(){
 						user_chk_email:$("#user_chk_email").val(),
 						user_terms_of_service:$("#user_terms_of_service").val(),
 						user_privacy_policy_agree:$("#user_privacy_policy_agree").val(),
-						join_date:$("#join_date").val()
+						user_join_date:$("#user_join_date").val()
 					},					
 					function(data,status){
 // 						alert("bbb");
@@ -389,181 +399,181 @@ $(document).ready(function(){
 	$(document).ready(function(){
 		$("#join_btn1").click(function(){
 //			사업자정보
-		if($.trim($("#busi_resi_num").val()) == ''){
-			alert("사업장등록번호는 필수 입력 사항입니다.");
-			$("#busi_resi_num").focus();
-			return;
-		}
-		if($.trim($("#busi_resi_num_re").val()) == ''){
-			alert("사업장등록번호를 한번 더  입력해 주세요.");
-			$("#busi_resi_num_re").focus();
-			return;
-		}
-		if($("#busi_resi_num").val() != $("#busi_resi_num_re").val()){
-			alert("사업자번호를 똑같이 입력해 주세요.");
-			$("#busi_resi_num").focus();
-			return;
-		}
-		if($("#busi_resi_num").val() != chklicense){
-			alert("사업자등록번호를 다시 입력해 주세요.");
-//				$("#email").focus();
-			return;
-		}
-		if($.trim($("#busi_password").val()) == ''){
-			alert("비밀번호는 필수 입력 사항입니다.");
-			$("#busi_password").focus();
-			return;
-		}
-		if($("#busi_password").val() != $("#busi_password_re").val()){
-			alert("비밀번호를 똑같이 입력해 주세요.");
-			$("#busi_password").focus();
-			return;
-		}
+			if($.trim($("#busi_resi_num").val()) == ''){
+				alert("사업장등록번호는 필수 입력 사항입니다.");
+				//$("#busi_resi_num").focus();
+				return;
+			}
+			if($.trim($("#busi_resi_num_re").val()) == ''){
+				alert("사업장등록번호를 한번 더  입력해 주세요.");
+				//$("#busi_resi_num_re").focus();
+				return;
+			}
+			if($("#busi_resi_num").val() != $("#busi_resi_num_re").val()){
+				alert("사업자번호를 똑같이 입력해 주세요.");
+				$("#busi_resi_num").focus();
+				return;
+			}
+			if($("#busi_resi_num").val() != chklicense){
+				alert("사업자등록번호를 다시 입력해 주세요.");
+				//$("#email").focus();
+				return;
+			}
+			if($.trim($("#busi_password").val()) == ''){
+				alert("비밀번호는 필수 입력 사항입니다.");
+				//$("#busi_password").focus();
+				return;
+			}
+			if($("#busi_password").val() != $("#busi_password_re").val()){
+				alert("비밀번호를 똑같이 입력해 주세요.");
+				//$("#busi_password").focus();
+				return;
+			}
+			
+	//			기업정보
+			if($.trim($("#com_name").val()) == ''){
+				alert("업체명은 필수 입력 사항입니다.");
+				//$("#com_name").focus();
+				return;
+			}
+			if($.trim($("#presen_name").val()) == ''){
+				alert("대표자명은 필수 입력 사항입니다.");
+				//$("#presen_name").focus();
+				return;
+			}
+			if($.trim($("#cor_num").val()) == ''){
+				alert("법인번호는 필수 입력 사항입니다.");
+				//$("#cor_num").focus();
+				return;
+			}
+			
+	//			본사정보
+			if($.trim($("#address").val()) == ''){
+				alert("주소는 필수 입력 사항입니다.");
+				//$("#address").focus();
+				return;
+			}
+			if($.trim($("#addressdetail").val()) == ''){
+				alert("상세주소를 입력해주세요.");
+				//$("#addressdetail").focus();
+				return;
+			}	
+			
+	//			담당자정보
+			if($.trim($("#manager_name").val()) == ''){
+				alert("담당자명은 필수 입력 사항입니다.");
+				//$("#manager_name").focus();
+				return;
+			}	
+			if($.trim($("#manager_birth").val()) == ''){
+				alert("담당자 생년월일은 필수 입력 사항입니다.");
+				//$("#manager_birth").focus();
+				return;
+			}	
+			if($.trim($("#manager_email").val()) == ''){
+				alert("담당자 이메일은 필수 입력 사항입니다.");
+				//$("#manager_email").focus();
+				return;
+			}
+			if($("#manager_email").val().indexOf('@') == '-1'
+				|| $("#manager_email").val().lastIndexOf('.') == '-1'){
+				alert("이메일 형식이 잘못되었습니다.");
+				//$("#manager_email").focus();
+				return;
+			}	
+			if($("#manager_email").val() != chkmagemail){
+				alert("이메일을 다시 입력해 주세요.");
+				//$("#email").focus();
+				return;
+			}
+			if($.trim($("#office_num").val()) == ''){
+				alert("사무실번호는 필수 입력 사항입니다.");
+				//$("#office_num").focus();
+				return;
+			}	
+			if($.trim($("#manager_phone").val()) == ''){
+				alert("휴대전화 번호는 필수 입력 사항입니다.");
+				//$("#manager_phone").focus();
+				return;
+			}	
+			if($.trim($("#manager_fax_num").val()) == ''){
+				alert("팩스번호는 필수 입력 사항입니다.");
+				//$("#manager_fax_num").focus();
+				return;
+			}	
+			if($.trim($("#manager_task").val()) == ''){
+				alert("담당업무는 필수 입력 사항입니다.");
+				//$("#manager_task").focus();
+				return;
+			}	
+			if($.trim($("#manager_rank").val()) == ''){
+				alert("직급은 필수 입력 사항입니다.");
+				//$("#manager_rank").focus();
+				return;
+			}	
+			if($.trim($("#manager_depart").val()) == ''){
+				alert("근무부서는 필수 입력 사항입니다.");
+				//$("#manager_depart").focus();
+				return;
+			}	
+			
+	//		이용약관
+			if($("#busi_terms_of_service").val() == 0){
+				alert("이용 약관 동의 후 회원 가입 바랍니다.");
+				//$("#busi_terms_of_service").focus();
+				return;
+			}
+			if($("#busi_privacy_policy_agree").val() == 0){
+				alert("개인 정보 처리 방침 동의 후 회원 가입 바랍니다.");
+				//$("#busi_privacy_policy_agree").focus();
+				return;
+			}
 		
-//			기업정보
-		if($.trim($("#com_name").val()) == ''){
-			alert("업체명은 필수 입력 사항입니다.");
-			$("#com_name").focus();
-			return;
-		}
-		if($.trim($("#presen_name").val()) == ''){
-			alert("대표자명은 필수 입력 사항입니다.");
-			$("#presen_name").focus();
-			return;
-		}
-		if($.trim($("#cor_num").val()) == ''){
-			alert("법인번호는 필수 입력 사항입니다.");
-			$("#cor_num").focus();
-			return;
-		}
-		
-//			본사정보
-		if($.trim($("#address").val()) == ''){
-			alert("주소는 필수 입력 사항입니다.");
-			$("#address").focus();
-			return;
-		}
-		if($.trim($("#addressdetail").val()) == ''){
-			alert("상세주소를 입력해주세요.");
-			$("#addressdetail").focus();
-			return;
-		}	
-		
-//			담당자정보
-		if($.trim($("#manager_name").val()) == ''){
-			alert("담당자명은 필수 입력 사항입니다.");
-			$("#manager_name").focus();
-			return;
-		}	
-		if($.trim($("#manager_birth").val()) == ''){
-			alert("담당자 생년월일은 필수 입력 사항입니다.");
-			$("#manager_birth").focus();
-			return;
-		}	
-		if($.trim($("#manager_email").val()) == ''){
-			alert("담당자 이메일은 필수 입력 사항입니다.");
-			$("#manager_email").focus();
-			return;
-		}
-		if($("#manager_email").val().indexOf('@') == '-1'
-			|| $("#manager_email").val().lastIndexOf('.') == '-1'){
-			alert("이메일 형식이 잘못되었습니다.");
-			$("#manager_email").focus();
-			return;
-		}	
-		if($("#manager_email").val() != chkmagemail){
-			alert("이메일을 다시 입력해 주세요.");
-//				$("#email").focus();
-			return;
-		}
-		if($.trim($("#office_num").val()) == ''){
-			alert("사무실번호는 필수 입력 사항입니다.");
-			$("#office_num").focus();
-			return;
-		}	
-		if($.trim($("#manager_phone").val()) == ''){
-			alert("휴대전화 번호는 필수 입력 사항입니다.");
-			$("#manager_phone").focus();
-			return;
-		}	
-		if($.trim($("#manager_fax_num").val()) == ''){
-			alert("팩스번호는 필수 입력 사항입니다.");
-			$("#manager_fax_num").focus();
-			return;
-		}	
-		if($.trim($("#manager_task").val()) == ''){
-			alert("담당업무는 필수 입력 사항입니다.");
-			$("#manager_task").focus();
-			return;
-		}	
-		if($.trim($("#manager_rank").val()) == ''){
-			alert("직급은 필수 입력 사항입니다.");
-			$("#manager_rank").focus();
-			return;
-		}	
-		if($.trim($("#manager_depart").val()) == ''){
-			alert("근무부서는 필수 입력 사항입니다.");
-			$("#manager_depart").focus();
-			return;
-		}	
-		
-//		이용약관
-		if($("#busi_terms_of_service").val() == 0){
-			alert("이용 약관 동의 후 회원 가입 바랍니다.");
-			$("#busi_terms_of_service").focus();
-			return;
-		}
-		if($("#busi_privacy_policy_agree").val() == 0){
-			alert("개인 정보 처리 방침 동의 후 회원 가입 바랍니다.");
-			$("#busi_privacy_policy_agree").focus();
-			return;
-		}
-		
-		$.post(
-				"./joinbusi",
-				{
-					busi_resi_num:$("#busi_resi_num").val(),
-					busi_password:$("#busi_password").val(),
-					com_name:$("#com_name").val(),
-					presen_name:$("#presen_name").val(),
-					cor_num:$("#cor_num").val(),
-					homepage:$("#homepage").val(),
-					address:$("#address").val() +" "+ $("#addressdetail").val(),
-					pre_phone:$("#pre_phone").val(),
-					fax_num:$("#fax_num").val(),
-					manager_name:$("#manager_name").val(),
-					manager_birth:$("#manager_birth").val(),
-					manager_email:$("#manager_email").val(),
-					office_num:$("#office_num").val(),
-					manager_phone:$("#manager_phone").val(),
-					manager_fax_num:$("#manager_fax_num").val(),
-					manager_task:$("#manager_task").val(),
-					manager_rank:$("#manager_rank").val(),
-					manager_depart:$("#manager_depart").val(),
-					busi_chk_email:$("#busi_chk_email").val(),
-					busi_terms_of_service:$("#busi_terms_of_service").val(),
-					busi_privacy_policy_agree:$("#busi_privacy_policy_agree").val(),
-					join_date:$("#join_date").val()
-				},				
-
-				function(data,status){
-//						alert("bbb");
-					if(status == "success"){
-						if(data == -1) {
-							alert("시스템 관리자에게 문의 바랍니다.");
-						} else if(data > 0) {
-							alert("회원 가입 되었습니다.");
-							location.href="/creator/main";
+			$.post(
+					"${pageContext.request.contextPath}/joinbusi",
+					{
+						busi_resi_num:$("#busi_resi_num").val(),
+						busi_password:$("#busi_password").val(),
+						com_name:$("#com_name").val(),
+						presen_name:$("#presen_name").val(),
+						cor_num:$("#cor_num").val(),
+						homepage:$("#homepage").val(),
+						address:$("#address").val() +" "+ $("#addressdetail").val(),
+						pre_phone:$("#pre_phone").val(),
+						fax_num:$("#fax_num").val(),
+						manager_name:$("#manager_name").val(),
+						manager_birth:$("#manager_birth").val(),
+						manager_email:$("#manager_email").val(),
+						office_num:$("#office_num").val(),
+						manager_phone:$("#manager_phone").val(),
+						manager_fax_num:$("#manager_fax_num").val(),
+						manager_task:$("#manager_task").val(),
+						manager_rank:$("#manager_rank").val(),
+						manager_depart:$("#manager_depart").val(),
+						busi_chk_email:$("#busi_chk_email").val(),
+						busi_terms_of_service:$("#busi_terms_of_service").val(),
+						busi_privacy_policy_agree:$("#busi_privacy_policy_agree").val(),
+						busi_join_date:$("#busi_join_date").val()
+					},				
+	
+					function(data,status){
+	//						alert("bbb");
+						if(status == "success"){
+							if(data == -1) {
+								alert("시스템 관리자에게 문의 바랍니다.");
+							} else if(data > 0) {
+								alert("회원 가입 되었습니다.");
+								location.href="/creator/main";
+							} else {
+								alert("잠시 후, 다시 시도해 주세요.");
+							}
 						} else {
-							alert("잠시 후, 다시 시도해 주세요.");
+							alert("시스템 관리자에게 문의 바랍니다.");
 						}
-					} else {
-						alert("시스템 관리자에게 문의 바랍니다.");
-					}
-				}//function
-		);//post
-	});//click
-});//ready
+					}//function
+			);//post
+		});//click
+	});//ready
 // 		<!--  ======================================================= 법인회원-->	
 		
 </script>

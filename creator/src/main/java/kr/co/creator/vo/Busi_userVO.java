@@ -21,46 +21,13 @@ public class Busi_userVO {
 	private String manager_task;				// 담당업무
 	private String manager_rank;				// 직급
 	private String manager_depart;				// 근무부서
+	private String cer_number;					// 인증번호
 	private String busi_chk_email;				// 이메일 수신 여부
 	private String busi_terms_of_service;		// 이용약관
 	private String busi_privacy_policy_agree;	// 개인정보처리동의
-	private String busi_join_date;					// 가입일
-	private String busi_login_time;					// 로그인 이력
+	private String busi_join_date;				// 가입일
 	private String busi_phone_key;				// 휴대폰 인증
 	private String cer_number;					//인증번호
-	
-	public Busi_userVO() {}	//constructor
-	public Busi_userVO(	String busi_num, String busi_resi_num, String busi_password, String com_name, String presen_name, 
-						String cor_num, String homepage, String address, String pre_phone, String fax_num, 
-						String manager_name, String manager_birth, String manager_email, String office_num, String manager_phone, 
-						String manager_fax_num, String manager_task, String manager_rank, String manager_depart, String busi_chk_email, 
-						String busi_terms_of_service, String busi_privacy_policy_agree, String busi_join_date, String busi_login_time, String busi_phone_key) {
-		this.busi_num = busi_num;
-		this.busi_resi_num = busi_resi_num;
-		this.busi_password = busi_password;
-		this.com_name = com_name;
-		this.presen_name = presen_name;
-		this.cor_num = cor_num;
-		this.homepage = homepage;
-		this.address = address;
-		this.pre_phone = pre_phone;
-		this.fax_num = fax_num;
-		this.manager_name = manager_name;
-		this.manager_birth = manager_birth;
-		this.manager_email = manager_email;
-		this.office_num = office_num;
-		this.manager_phone = manager_phone;
-		this.manager_fax_num = manager_fax_num;
-		this.manager_task = manager_task;
-		this.manager_rank = manager_rank;
-		this.manager_depart = manager_depart;
-		this.busi_chk_email = busi_chk_email;
-		this.busi_terms_of_service = busi_terms_of_service;
-		this.busi_privacy_policy_agree = busi_privacy_policy_agree;
-		this.busi_join_date = busi_join_date;
-		this.busi_login_time = busi_login_time;
-		this.busi_phone_key = busi_phone_key;
-	}//constructor
 	
 	
 	public String getBusi_num() {
@@ -195,18 +162,28 @@ public class Busi_userVO {
 	public void setManager_depart(String manager_depart) {
 		this.manager_depart = manager_depart;
 	}//manager_depart
+	
+	public String getCer_number() {
+		return cer_number;
+	}
+	public void setCer_number(String cer_number) {
+		this.cer_number = cer_number;
+	}//cer_number
+	
 	public String getBusi_chk_email() {
 		return busi_chk_email;
 	}
 	public void setBusi_chk_email(String busi_chk_email) {
 		this.busi_chk_email = busi_chk_email;
 	}//busi_chk_email
+	
 	public String getBusi_terms_of_service() {
 		return busi_terms_of_service;
 	}
 	public void setBusi_terms_of_service(String busi_terms_of_service) {
 		this.busi_terms_of_service = busi_terms_of_service;
 	}//busi_terms_of_service
+	
 	public String getBusi_privacy_policy_agree() {
 		return busi_privacy_policy_agree;
 	}
@@ -219,19 +196,15 @@ public class Busi_userVO {
 	}
 	public void setBusi_join_date(String busi_join_date) {
 		this.busi_join_date = busi_join_date;
-	}//join_date
-	public String getBusi_login_time() {
-		return busi_login_time;
-	}
-	public void setBusi_login_time(String busi_login_time) {
-		this.busi_login_time = busi_login_time;
-	}//login_time
+	}//busi_join_date
+	
 	public String getBusi_phone_key() {
 		return busi_phone_key;
 	}
 	public void setBusi_phone_key(String busi_phone_key) {
 		this.busi_phone_key = busi_phone_key;
 	}//busi_phone_key
+<<<<<<< HEAD
 	public String getCer_number() {
 		return cer_number;
 	}
@@ -239,6 +212,8 @@ public class Busi_userVO {
 		this.cer_number = cer_number;
 	}
 	
+=======
+>>>>>>> branch 'master' of https://github.com/gaonuri/Codetiator.git
 }//class
 
 

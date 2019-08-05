@@ -101,16 +101,16 @@
 								<a href="./faq">FAQ</a>
 							</li>
 							<li>
-								<a href="./support">이용약관</a>
+								<a href="./policy">이용약관</a>
 							</li>
 							<li>
-								<a href="./policy">개인정보</a>
+								<a href="./indiinform">개인정보</a>
 							</li>
 							<li>
 								<a href="./inquiry">1:1문의</a>
 							</li>
 							<li>
-								<a href="./support_total">공지사항</a>
+								<a href="./support">공지사항</a>
 							</li>
 						</ul>
 					</li>

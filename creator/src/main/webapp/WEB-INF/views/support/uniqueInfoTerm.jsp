@@ -126,126 +126,14 @@
 
 </style>
 <body>
-
 	<section id="container">
 	    <!-- **********************************************************************************************************************************************************
 	        TOP BAR CONTENT & NOTIFICATIONS
 	        *********************************************************************************************************************************************************** -->
 	    <!--header start-->
-	    <header class="header black-bg">
-			<!--logo start-->
-			<a href="./main" class="logo"><img id="logoImage" alt="로고" src="${pageContext.request.contextPath}/resources/img/ner.jpg" width="200px" height="30px"></a>
-			<!--logo end-->
-			<div class="nav notify-row top-menu" id="top_menu">
-				<!--  notification start -->
-				<ul class="nav pull-right top-menu">
-					<!-- settings start -->
-					
-					<!-- 회사소개 start -->
-					<li><a href="./loan_guide">회사소개</a></li>
-					<!-- 회사소개 end -->
-					
-					<!-- 대출 start -->
-					<li class="dropdown">
-						<a data-toggle="dropdown" class="dropdown-toggle" href="#">
-							대출
-						</a>
-						<ul class="dropdown-menu extended tasks-bar">
-							<div class="notify-arrow notify-arrow-green"></div>
-							<li>
-								<a href="./loan_guide">대출안내</a>
-							</li>
-							<li>
-								<a href="./loan/getloan">대출하기</a>
-							</li>
-						</ul>
-					</li>
-	          		<!-- 대출 end -->
-	          
-	          		<!-- inbox dropdown start-->
-	         		<li class="dropdown">
-						<a data-toggle="dropdown" class="dropdown-toggle" href="#">
-							투자
-						</a>
-						<ul class="dropdown-menu extended tasks-bar">
-							<div class="notify-arrow notify-arrow-black"></div>
-							<li>
-								<a href="./invest_guide">투자안내</a>
-							</li>
-							<li>
-								<a href="./invest_list">투자하기</a>
-							</li>
-							<li>
-								<a href="./invest_finish">완료된투자</a>
-							</li>
-						</ul>
-					</li>
-	          		<!-- 투자 end -->
-	          
-	          
-					<!-- 고객지원 start-->
-					<li id="header_notification_bar" class="dropdown">
-						<a data-toggle="dropdown" class="dropdown-toggle" href="#">
-							고객지원
-						</a>
-						<ul class="dropdown-menu extended notification">
-							<div class="notify-arrow"></div>
-							<li>
-								<a href="./faq">FAQ</a>
-							</li>
-							<li>
-								<a href="./support">이용약관</a>
-							</li>
-							<li>
-								<a href="./policy">개인정보</a>
-							</li>
-							<li>
-								<a href="./inquiry">1:1문의</a>
-							</li>
-						</ul>
-					</li>
-					<!-- 고객지원 end -->
-					
-					<!-- 마이페이지 start-->
-					<li id="header_notification_bar" class="dropdown">
-						<a data-toggle="dropdown" class="dropdown-toggle" href="#">
-							마이페이지
-						</a>
-						<ul class="dropdown-menu extended notification">
-							<div class="notify-arrow notify-arrow-yellow"></div>
-							<li>
-								<a href="./my_dashboard">대시보드</a>
-							</li>
-							<li>
-								<a href="./my_invest_list">투자내역</a>
-							</li>
-							<li>
-								<a href="./my_loan_list">대출내역</a>
-							</li>
-							<li>
-								<a href="./my_depo_mgn">예치금관리</a>
-							</li>
-							<li>
-								<a href="./my_modify">회원정보수정</a>
-							</li>
-						</ul>
-					</li>
-					<!-- 마이페이지 end -->
-					
-					<!-- 로그아웃 start -->
-					<li><a href="./loan_guide">로그아웃</a></li>
-					<!-- 로그아웃 end -->
-				</ul>
-				<!--  notification end -->
-			</div>
-			<div class="top-menu">
-				<ul class="nav pull-right top-menu">
-					<li><a class="logout" href="/creator/join">회원가입</a></li>
-				</ul>
-			</div>
-	    </header>
+	    <%@ include file="../header.jsp" %>
 	    <!--header end-->
-	   <section id="loanGuide-banner" class="text-center">
+		<section id="loanGuide-banner" class="text-center">
 			<div class="overlay">
 				<div class="section-body">
 					<span class="title">고유식별번호 수집-이용 동의</span>
@@ -261,50 +149,49 @@
 			<section class="wrapper site-min-height">
 				<div class="row mt">
 					<div class="col-lg-12">
-
-<div class="container">
-			<div class="section-body">
-				<div class="row">
-					<div class="col-md-12">
-						<div class="wrap">
-							<div class="box">
-								<strong>
-								주식회사 크리에이터 귀중
-								<br>
-								<br>본인은 신용인증송부서비스를 위해 귀사가 아래와 같이 본인의 고유식별정보를 수집 및 이용하는 데 동의합니다.
-								</strong>
-								<br>
-								<br>회사는 「신용정보의 이용 및 보호에 관한 법률」에 근거하여 별도로 주민등록번호를 수집하고 있습니다.
-								<br>
-								<br>1. 고유식별정보의 수집 및 이용 항목
-								<br>- 주민등록번호(외국인등록번호)
-								<br>
-								<br>2. 수집 및 이용 목적
-								<br>- "이용자"의 신용정보의 조회
-								<br>- "이용자"의 본인 확인
-								<br>- "이용자"의 거래 내역 입증
-								<br>
-								<br>3. 보유 및 이용기간
-								<br>- "이용자"의 서비스 이용 목적이 달성되면 지체 없이 파기되며, 다만 관계법령에 따라 보유의무가 존재하는 경우 암호화하여 보관합니다.
-								<br>
-								<br>4. 동의 거부 및 동의 거부 시의 불이익
-								<br>- "이용자"가 고유식별정보 수집 및 이용에 동의하지 않을 경우 신용인증송부서비스 이용이 제한될 수 있습니다.
-							</div>
-							<hr>
-							<div class="row">
-								<div class="col-md-push-8 col-md-4">
-									<select class="form-control" id="termHisSelect">
-										<option value="">이전 약관보기</option>
-										<option value="20180227">2018년 2월 27일</option>
-									</select>
+						<div class="container">
+							<div class="section-body">
+								<div class="row">
+									<div class="col-md-12">
+										<div class="wrap">
+											<div class="box">
+												<strong>
+												주식회사 크리에이터 귀중
+												<br>
+												<br>본인은 신용인증송부서비스를 위해 귀사가 아래와 같이 본인의 고유식별정보를 수집 및 이용하는 데 동의합니다.
+												</strong>
+												<br>
+												<br>회사는 「신용정보의 이용 및 보호에 관한 법률」에 근거하여 별도로 주민등록번호를 수집하고 있습니다.
+												<br>
+												<br>1. 고유식별정보의 수집 및 이용 항목
+												<br>- 주민등록번호(외국인등록번호)
+												<br>
+												<br>2. 수집 및 이용 목적
+												<br>- "이용자"의 신용정보의 조회
+												<br>- "이용자"의 본인 확인
+												<br>- "이용자"의 거래 내역 입증
+												<br>
+												<br>3. 보유 및 이용기간
+												<br>- "이용자"의 서비스 이용 목적이 달성되면 지체 없이 파기되며, 다만 관계법령에 따라 보유의무가 존재하는 경우 암호화하여 보관합니다.
+												<br>
+												<br>4. 동의 거부 및 동의 거부 시의 불이익
+												<br>- "이용자"가 고유식별정보 수집 및 이용에 동의하지 않을 경우 신용인증송부서비스 이용이 제한될 수 있습니다.
+											</div>
+											<hr>
+											<div class="row">
+												<div class="col-md-push-8 col-md-4">
+													<select class="form-control" id="termHisSelect">
+														<option value="">이전 약관보기</option>
+														<option value="20180227">2018년 2월 27일</option>
+													</select>
+												</div>
+											</div>
+										</div>
+									</div>
 								</div>
 							</div>
 						</div>
 					</div>
-				</div>
-			</div>
-		</div>
-</div>
 				</div>
 			</section>
 			<!-- /wrapper -->

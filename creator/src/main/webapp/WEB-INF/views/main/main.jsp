@@ -10,7 +10,7 @@
 	<meta name="author" content="Dashboard">
 	<meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
 	<title>Dashio - Bootstrap Admin Template</title>
-	<script src="../resources/jquery/jquery-3.4.1.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/jquery/jquery-3.4.1.js"></script>
 	
 	<!-- Favicons -->
 	<link href="${pageContext.request.contextPath}/resources/bootstrap/img/favicon.png" rel="icon">
@@ -48,446 +48,465 @@
 	        MAIN CONTENT
 	        *********************************************************************************************************************************************************** -->
 		<!--main content start-->
-		<section id="main-content">
+		<section>
 			<section class="wrapper site-min-height">
 				<div class="row mt">
 					<div class="col-lg-12">
 					<!-- CHART PANELS -->
-
-						<!--  FIRST FOURTH ROW OF PANELS -->
-						<div class="row">
-							<!-- FIRST PROJECT PANEL -->
-							<div class="col-md-3">
-								<c:forEach items="${projectList1}" var="vo" varStatus="status" begin="0" end="2" step="1">
-									<c:choose>
-										<c:when test="${memVO.user_num != null}">
-											<a href="${pageContext.request.contextPath}/invest_detail?project_num=${vo.project_num}&p_busi_num=${vo.busi_num}&user_num=${memVO.user_num}">
-												<div>
-													<img src="${pageContext.request.contextPath}/resources/img/ner.jpg" width="400px" />
-												</div>
-												<div>
-													<table style="border-left: 1px; border-right: 1px; width: 400px">
-														<tr>
-															<td>${vo.en_date}</td>
-														</tr>
-														<tr>
-															<td>${vo.project_name}</td>
-														</tr>
-														<tr>
-															<td witdh="400px">
-																<!-- ANIMATED PROGRESS BARS -->
-												 				<div class="progress progress-striped active">
-												  					<div class="progress-bar" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 45%">
-												  						45%
-																	</div>
-																</div>
-																<!-- /showback -->
-												            </td>
-														</tr>
-													</table>
-													<table width="400px">
-														<tr>
-															<td class="infomation">등급</td>
-															<td class="infomation">연수익률</td>
-															<td class="infomation">기간</td>
-															<td class="infomation">모집금액</td>
-															<td class="infomation">상환방식</td>
-														</tr>
-														<tr>
-															<td class="infomation">${vo.grade}</td>
-															<td class="infomation">${vo.rate}</td>
-															<td class="infomation">${vo.refund}개월</td>
-															<td class="infomation">${vo.price}만원</td>
-															<td class="infomation">${vo.repay_method}</td>
-														</tr>
-													</table>
-												</div>
-											</a>
-										</c:when>
-										<c:when test="${memVO.busi_num != null}">
-											<a href="${pageContext.request.contextPath}/invest_detail?project_num=${vo.project_num}&p_busi_num=${vo.busi_num}&busi_num=${memVO.busi_num}">
-												<div>
-													<img src="${pageContext.request.contextPath}/resources/img/ner.jpg" width="400px" />
-												</div>
-												<div>
-													<table style="border-left: 1px; border-right: 1px; width: 400px">
-														<tr>
-															<td>${vo.en_date}</td>
-														</tr>
-														<tr>
-															<td>${vo.project_name}</td>
-														</tr>
-														<tr>
-															<td witdh="400px">
-																<!-- ANIMATED PROGRESS BARS -->
-												 				<div class="progress progress-striped active">
-												  					<div class="progress-bar" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 45%">
-												  						45%
-																	</div>
-																</div>
-																<!-- /showback -->
-												            </td>
-														</tr>
-													</table>
-													<table width="400px">
-														<tr>
-															<td class="infomation">등급</td>
-															<td class="infomation">연수익률</td>
-															<td class="infomation">기간</td>
-															<td class="infomation">모집금액</td>
-															<td class="infomation">상환방식</td>
-														</tr>
-														<tr>
-															<td class="infomation">${vo.grade}</td>
-															<td class="infomation">${vo.rate}</td>
-															<td class="infomation">${vo.refund}개월</td>
-															<td class="infomation">${vo.price}만원</td>
-															<td class="infomation">${vo.repay_method}</td>
-														</tr>
-													</table>
-												</div>
-											</a>
-										</c:when>
-										<c:otherwise>
-											<a href="${pageContext.request.contextPath}/invest_detail?project_num=${vo.project_num}">
-												<div>
-													<img src="${pageContext.request.contextPath}/resources/img/ner.jpg" width="400px" />
-												</div>
-												<div>
-													<table style="border-left: 1px; border-right: 1px; width: 400px">
-														<tr>
-															<td>${vo.en_date}</td>
-														</tr>
-														<tr>
-															<td>${vo.project_name}</td>
-														</tr>
-														<tr>
-															<td witdh="400px">
-																<!-- ANIMATED PROGRESS BARS -->
-												 				<div class="progress progress-striped active">
-												  					<div class="progress-bar" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 45%">
-												  						45%
-																	</div>
-																</div>
-																<!-- /showback -->
-												            </td>
-														</tr>
-													</table>
-													<table width="400px">
-														<tr>
-															<td class="infomation">등급</td>
-															<td class="infomation">연수익률</td>
-															<td class="infomation">기간</td>
-															<td class="infomation">모집금액</td>
-															<td class="infomation">상환방식</td>
-														</tr>
-														<tr>
-															<td class="infomation">${vo.grade}</td>
-															<td class="infomation">${vo.rate}</td>
-															<td class="infomation">${vo.refund}개월</td>
-															<td class="infomation">${vo.price}만원</td>
-															<td class="infomation">${vo.repay_method}</td>
-														</tr>
-													</table>
-												</div>
-											</a>
-										</c:otherwise>
-									</c:choose>
-								</c:forEach>
-							</div>
-							<!-- FIRST PROJECT PANEL -->
-						</div>
-						<!-- FIRST row end -->
-						
-						<!--  SECOND FOURTH ROW OF PANELS -->
-						<div class="row">
-							<!-- SECOND PROJECT PANEL -->
-							<div class="col-md-3">
-								<c:forEach items="${projectList2}" var="vo" varStatus="status" begin="0" end="2" step="1">
-									<c:choose>
-										<c:when test="${memVO.user_num != null}">
-											<a href="${pageContext.request.contextPath}/invest_detail?project_num=${vo.project_num}&p_busi_num=${vo.busi_num}&user_num=${memVO.user_num}">
-												<div>
-													<img src="${pageContext.request.contextPath}/resources/img/ner.jpg" width="400px" />
-												</div>
-												<div>
-													<table style="border-left: 1px; border-right: 1px; width: 400px">
-														<tr>
-															<td>${vo.en_date}</td>
-														</tr>
-														<tr>
-															<td>${vo.project_name}</td>
-														</tr>
-														<tr>
-															<td witdh="400px">
-																<!-- ANIMATED PROGRESS BARS -->
-												 				<div class="progress progress-striped active">
-												  					<div class="progress-bar" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 45%">
-												  						45%
-																	</div>
-																</div>
-																<!-- /showback -->
-												            </td>
-														</tr>
-													</table>
-													<table width="400px">
-														<tr>
-															<td class="infomation">등급</td>
-															<td class="infomation">연수익률</td>
-															<td class="infomation">기간</td>
-															<td class="infomation">모집금액</td>
-															<td class="infomation">상환방식</td>
-														</tr>
-														<tr>
-															<td class="infomation">${vo.grade}</td>
-															<td class="infomation">${vo.rate}</td>
-															<td class="infomation">${vo.refund}개월</td>
-															<td class="infomation">${vo.price}만원</td>
-															<td class="infomation">${vo.repay_method}</td>
-														</tr>
-													</table>
-												</div>
-											</a>
-										</c:when>
-										<c:when test="${memVO.busi_num != null}">
-											<a href="${pageContext.request.contextPath}/invest_detail?project_num=${vo.project_num}&p_busi_num=${vo.busi_num}&busi_num=${memVO.busi_num}">
-												<div>
-													<img src="${pageContext.request.contextPath}/resources/img/ner.jpg" width="400px" />
-												</div>
-												<div>
-													<table style="border-left: 1px; border-right: 1px; width: 400px">
-														<tr>
-															<td>${vo.en_date}</td>
-														</tr>
-														<tr>
-															<td>${vo.project_name}</td>
-														</tr>
-														<tr>
-															<td witdh="400px">
-																<!-- ANIMATED PROGRESS BARS -->
-												 				<div class="progress progress-striped active">
-												  					<div class="progress-bar" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 45%">
-												  						45%
-																	</div>
-																</div>
-																<!-- /showback -->
-												            </td>
-														</tr>
-													</table>
-													<table width="400px">
-														<tr>
-															<td class="infomation">등급</td>
-															<td class="infomation">연수익률</td>
-															<td class="infomation">기간</td>
-															<td class="infomation">모집금액</td>
-															<td class="infomation">상환방식</td>
-														</tr>
-														<tr>
-															<td class="infomation">${vo.grade}</td>
-															<td class="infomation">${vo.rate}</td>
-															<td class="infomation">${vo.refund}개월</td>
-															<td class="infomation">${vo.price}만원</td>
-															<td class="infomation">${vo.repay_method}</td>
-														</tr>
-													</table>
-												</div>
-											</a>
-										</c:when>
-										<c:otherwise>
-											<a href="${pageContext.request.contextPath}/invest_detail?project_num=${vo.project_num}">
-												<div>
-													<img src="${pageContext.request.contextPath}/resources/img/ner.jpg" width="400px" />
-												</div>
-												<div>
-													<table style="border-left: 1px; border-right: 1px; width: 400px">
-														<tr>
-															<td>${vo.en_date}</td>
-														</tr>
-														<tr>
-															<td>${vo.project_name}</td>
-														</tr>
-														<tr>
-															<td witdh="400px">
-																<!-- ANIMATED PROGRESS BARS -->
-												 				<div class="progress progress-striped active">
-												  					<div class="progress-bar" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 45%">
-												  						45%
-																	</div>
-																</div>
-																<!-- /showback -->
-												            </td>
-														</tr>
-													</table>
-													<table width="400px">
-														<tr>
-															<td class="infomation">등급</td>
-															<td class="infomation">연수익률</td>
-															<td class="infomation">기간</td>
-															<td class="infomation">모집금액</td>
-															<td class="infomation">상환방식</td>
-														</tr>
-														<tr>
-															<td class="infomation">${vo.grade}</td>
-															<td class="infomation">${vo.rate}</td>
-															<td class="infomation">${vo.refund}개월</td>
-															<td class="infomation">${vo.price}만원</td>
-															<td class="infomation">${vo.repay_method}</td>
-														</tr>
-													</table>
-												</div>
-											</a>
-										</c:otherwise>
-									</c:choose>
-								</c:forEach>
-							</div>
-							<!-- SECOND PROJECT PANEL -->
-						</div>
-						<!-- SECOND row end -->
-						
- 						<!-- THIRD FOURTH ROW OF PANELS -->
-						<div class="row">
- 							<!-- THIRD PROJECT PANEL -->
-							<div class="col-md-3">
-								<c:forEach items="${projectList3}" var="vo" varStatus="status" begin="0" end="2" step="1">
-									<c:choose>
-										<c:when test="${memVO.user_num != null}">
-											<a href="${pageContext.request.contextPath}/invest_detail?project_num=${vo.project_num}&p_busi_num=${vo.busi_num}&user_num=${memVO.user_num}">
-												<div>
-													<img src="${pageContext.request.contextPath}/resources/img/ner.jpg" width="400px" />
-												</div>
-												<div>
-													<table style="border-left: 1px; border-right: 1px; width: 400px">
-														<tr>
-															<td>${vo.en_date}</td>
-														</tr>
-														<tr>
-															<td>${vo.project_name}</td>
-														</tr>
-														<tr>
-															<td witdh="400px">
-																<!-- ANIMATED PROGRESS BARS -->
-												 				<div class="progress progress-striped active">
-												  					<div class="progress-bar" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 45%">
-												  						45%
-																	</div>
-																</div>
-																<!-- /showback -->
-												            </td>
-														</tr>
-													</table>
-													<table width="400px">
-														<tr>
-															<td class="infomation">등급</td>
-															<td class="infomation">연수익률</td>
-															<td class="infomation">기간</td>
-															<td class="infomation">모집금액</td>
-															<td class="infomation">상환방식</td>
-														</tr>
-														<tr>
-															<td class="infomation">${vo.grade}</td>
-															<td class="infomation">${vo.rate}</td>
-															<td class="infomation">${vo.refund}개월</td>
-															<td class="infomation">${vo.price}만원</td>
-															<td class="infomation">${vo.repay_method}</td>
-														</tr>
-													</table>
-												</div>
-											</a>
-										</c:when>
-										<c:when test="${memVO.busi_num != null}">
-											<a href="${pageContext.request.contextPath}/invest_detail?project_num=${vo.project_num}&p_busi_num=${vo.busi_num}&busi_num=${memVO.busi_num}">
-												<div>
-													<img src="${pageContext.request.contextPath}/resources/img/ner.jpg" width="400px" />
-												</div>
-												<div>
-													<table style="border-left: 1px; border-right: 1px; width: 400px">
-														<tr>
-															<td>${vo.en_date}</td>
-														</tr>
-														<tr>
-															<td>${vo.project_name}</td>
-														</tr>
-														<tr>
-															<td witdh="400px">
-																<!-- ANIMATED PROGRESS BARS -->
-												 				<div class="progress progress-striped active">
-												  					<div class="progress-bar" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 45%">
-												  						45%
-																	</div>
-																</div>
-																<!-- /showback -->
-												            </td>
-														</tr>
-													</table>
-													<table width="400px">
-														<tr>
-															<td class="infomation">등급</td>
-															<td class="infomation">연수익률</td>
-															<td class="infomation">기간</td>
-															<td class="infomation">모집금액</td>
-															<td class="infomation">상환방식</td>
-														</tr>
-														<tr>
-															<td class="infomation">${vo.grade}</td>
-															<td class="infomation">${vo.rate}</td>
-															<td class="infomation">${vo.refund}개월</td>
-															<td class="infomation">${vo.price}만원</td>
-															<td class="infomation">${vo.repay_method}</td>
-														</tr>
-													</table>
-												</div>
-											</a>
-										</c:when>
-										<c:otherwise>
-											<a href="${pageContext.request.contextPath}/invest_detail?project_num=${vo.project_num}">
-												<div>
-													<img src="${pageContext.request.contextPath}/resources/img/ner.jpg" width="400px" />
-												</div>
-												<div>
-													<table style="border-left: 1px; border-right: 1px; width: 400px">
-														<tr>
-															<td>${vo.en_date}</td>
-														</tr>
-														<tr>
-															<td>${vo.project_name}</td>
-														</tr>
-														<tr>
-															<td witdh="400px">
-																<!-- ANIMATED PROGRESS BARS -->
-												 				<div class="progress progress-striped active">
-												  					<div class="progress-bar" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 45%">
-												  						45%
-																	</div>
-																</div>
-																<!-- /showback -->
-												            </td>
-														</tr>
-													</table>
-													<table width="400px">
-														<tr>
-															<td class="infomation">등급</td>
-															<td class="infomation">연수익률</td>
-															<td class="infomation">기간</td>
-															<td class="infomation">모집금액</td>
-															<td class="infomation">상환방식</td>
-														</tr>
-														<tr>
-															<td class="infomation">${vo.grade}</td>
-															<td class="infomation">${vo.rate}</td>
-															<td class="infomation">${vo.refund}개월</td>
-															<td class="infomation">${vo.price}만원</td>
-															<td class="infomation">${vo.repay_method}</td>
-														</tr>
-													</table>
-												</div>
-											</a>
-										</c:otherwise>
-									</c:choose>
-								</c:forEach>
-							</div>
-							<!-- THIRD PROJECT PANEL -->
-						</div>
-						<!-- THIRD row end -->
+						<table style="width:1000px;">
+							<tr valign=top>
+<%-- 							<c:forEach begin="0" end="2" step="1" varStatus="step"> --%>
+								<th>
+									<c:forEach items="${projectList1}" var="vo" varStatus="status" begin="0" end="2" step="1">
+										<c:choose>
+											<c:when test="${memVO.user_num != null}">
+												<td class="col-md-3" style="padding-left:150px;">
+													<a href="${pageContext.request.contextPath}/invest_detail?
+													project_num=${vo.project_num}
+													&p_busi_num=${vo.busi_num}
+													&user_num=${memVO.user_num}">
+														<div>
+															<img src="${pageContext.request.contextPath}/resources/img/ner.jpg" width="400px" />
+														</div>
+														<div>
+															<table style="border-left: 1px; border-right: 1px; width: 400px">
+																<tr>
+																	<td>${vo.en_date}</td>
+																</tr>
+																<tr>
+																	<td>${vo.project_name}<span>k</span></td>
+																</tr>
+																<tr>
+																	<td witdh="400px">
+														 				<div class="progress progress-striped active">
+														  					<div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
+														  						45%
+																			</div>
+																		</div>
+														            </td>
+																</tr>
+															</table>
+															<table width="400px">
+																<tr>
+																	<td class="infomation">등급</td>
+																	<td class="infomation">연수익률</td>
+																	<td class="infomation">기간</td>
+																	<td class="infomation">모집금액</td>
+																	<td class="infomation">상환방식</td>
+																</tr>
+																<tr>
+																	<td class="infomation">${vo.grade}</td>
+																	<td class="infomation">${vo.rate}</td>
+																	<td class="infomation">${vo.refund}개월</td>
+																	<td class="infomation">${vo.price}만원</td>
+																	<td class="infomation">${vo.repay_method}</td>
+																</tr>
+															</table>
+														</div>
+													</a>
+												</td>
+											</c:when>
+											<c:when test="${memVO.busi_num != null}">
+												<td class="col-md-3" style="padding-left:150px;">
+													<a href="${pageContext.request.contextPath}/invest_detail?
+													project_num=${vo.project_num}
+													&p_busi_num=${vo.busi_num}
+													&busi_num=${memVO.busi_num}">
+														<div>
+															<img src="${pageContext.request.contextPath}/resources/img/ner.jpg" width="400px" />
+														</div>
+														<div>
+															<table style="border-left: 1px; border-right: 1px; width: 400px">
+																<tr>
+																	<td>${vo.en_date}</td>
+																</tr>
+																<tr>
+																	<td>${vo.project_name}<span>B</span></td>
+																</tr>
+																<tr>
+																	<td witdh="400px">
+														 				<div class="progress progress-striped active">
+														  					<div class="progress-bar" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 45%">
+														  						45%
+																			</div>
+																		</div>
+														            </td>
+																</tr>
+															</table>
+															<table width="400px">
+																<tr>
+																	<td class="infomation">등급</td>
+																	<td class="infomation">연수익률</td>
+																	<td class="infomation">기간</td>
+																	<td class="infomation">모집금액</td>
+																	<td class="infomation">상환방식</td>
+																</tr>
+																<tr>
+																	<td class="infomation">${vo.grade}</td>
+																	<td class="infomation">${vo.rate}</td>
+																	<td class="infomation">${vo.refund}개월</td>
+																	<td class="infomation">${vo.price}만원</td>
+																	<td class="infomation">${vo.repay_method}</td>
+																</tr>
+															</table>
+														</div>
+													</a>
+												</td>
+											</c:when>
+											<c:otherwise>
+												<td class="col-md-3" style="padding-left:150px;">
+													<a href="${pageContext.request.contextPath}/invest_detail?
+													project_num=${vo.project_num}
+													&p_busi_num=${vo.busi_num}">
+														<div>
+															<img src="${pageContext.request.contextPath}/resources/img/ner.jpg" width="400px" />
+														</div>
+														<div>
+															<table style="border-left: 1px; border-right: 1px; width: 400px">
+																<tr>
+																	<td>${vo.en_date}</td>
+																</tr>
+																<tr>
+																	<td>${vo.project_name}<span>N</span></td>
+																</tr>
+																<tr>
+																	<td witdh="400px">
+														 				<div class="progress progress-striped active">
+														  					<div class="progress-bar" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 45%">
+														  						45%
+																			</div>
+																		</div>
+														            </td>
+																</tr>
+															</table>
+															<table width="400px">
+																<tr>
+																	<td class="infomation">등급</td>
+																	<td class="infomation">연수익률</td>
+																	<td class="infomation">기간</td>
+																	<td class="infomation">모집금액</td>
+																	<td class="infomation">상환방식</td>
+																</tr>
+																<tr>
+																	<td class="infomation">${vo.grade}</td>
+																	<td class="infomation">${vo.rate}</td>
+																	<td class="infomation">${vo.refund}개월</td>
+																	<td class="infomation">${vo.price}만원</td>
+																	<td class="infomation">${vo.repay_method}</td>
+																</tr>
+															</table>
+														</div>
+													</a>
+												<td>
+											</c:otherwise>
+										</c:choose>
+									</c:forEach>
+								</th>
+<%-- 							</c:forEach> --%>
+							</tr>
+							
+							<tr valign=top>
+<%-- 							<c:forEach begin="0" end="2" step="1" varStatus="step"> --%>
+								<th>
+									<c:forEach items="${projectList2}" var="vo" varStatus="status" begin="0" end="2" step="1">
+										<c:choose>
+											<c:when test="${memVO.user_num != null}">
+												<td class="col-md-3" style="padding-left:150px;">
+													<a href="${pageContext.request.contextPath}/invest_detail?
+													project_num=${vo.project_num}
+													&p_busi_num=${vo.busi_num}
+													&user_num=${memVO.user_num}">
+														<div>
+															<img src="${pageContext.request.contextPath}/resources/img/ner.jpg" width="400px" />
+														</div>
+														<div>
+															<table style="border-left: 1px; border-right: 1px; width: 400px">
+																<tr>
+																	<td>${vo.en_date}</td>
+																</tr>
+																<tr>
+																	<td>${vo.project_name}<span>k</span></td>
+																</tr>
+																<tr>
+																	<td witdh="400px">
+														 				<div class="progress progress-striped active">
+														  					<div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
+														  						45%
+																			</div>
+																		</div>
+														            </td>
+																</tr>
+															</table>
+															<table width="400px">
+																<tr>
+																	<td class="infomation">등급</td>
+																	<td class="infomation">연수익률</td>
+																	<td class="infomation">기간</td>
+																	<td class="infomation">모집금액</td>
+																	<td class="infomation">상환방식</td>
+																</tr>
+																<tr>
+																	<td class="infomation">${vo.grade}</td>
+																	<td class="infomation">${vo.rate}</td>
+																	<td class="infomation">${vo.refund}개월</td>
+																	<td class="infomation">${vo.price}만원</td>
+																	<td class="infomation">${vo.repay_method}</td>
+																</tr>
+															</table>
+														</div>
+													</a>
+												</td>
+											</c:when>
+											<c:when test="${memVO.busi_num != null}">
+												<td class="col-md-3" style="padding-left:150px;">
+													<a href="${pageContext.request.contextPath}/invest_detail?
+													project_num=${vo.project_num}
+													&p_busi_num=${vo.busi_num}
+													&busi_num=${memVO.busi_num}">
+														<div>
+															<img src="${pageContext.request.contextPath}/resources/img/ner.jpg" width="400px" />
+														</div>
+														<div>
+															<table style="border-left: 1px; border-right: 1px; width: 400px">
+																<tr>
+																	<td>${vo.en_date}</td>
+																</tr>
+																<tr>
+																	<td>${vo.project_name}<span>B</span></td>
+																</tr>
+																<tr>
+																	<td witdh="400px">
+														 				<div class="progress progress-striped active">
+														  					<div class="progress-bar" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 45%">
+														  						45%
+																			</div>
+																		</div>
+														            </td>
+																</tr>
+															</table>
+															<table width="400px">
+																<tr>
+																	<td class="infomation">등급</td>
+																	<td class="infomation">연수익률</td>
+																	<td class="infomation">기간</td>
+																	<td class="infomation">모집금액</td>
+																	<td class="infomation">상환방식</td>
+																</tr>
+																<tr>
+																	<td class="infomation">${vo.grade}</td>
+																	<td class="infomation">${vo.rate}</td>
+																	<td class="infomation">${vo.refund}개월</td>
+																	<td class="infomation">${vo.price}만원</td>
+																	<td class="infomation">${vo.repay_method}</td>
+																</tr>
+															</table>
+														</div>
+													</a>
+												</td>
+											</c:when>
+											<c:otherwise>
+												<td class="col-md-3" style="padding-left:150px;">
+													<a href="${pageContext.request.contextPath}/invest_detail?
+													project_num=${vo.project_num}
+													&p_busi_num=${vo.busi_num}">
+														<div>
+															<img src="${pageContext.request.contextPath}/resources/img/ner.jpg" width="400px" />
+														</div>
+														<div>
+															<table style="border-left: 1px; border-right: 1px; width: 400px">
+																<tr>
+																	<td>${vo.en_date}</td>
+																</tr>
+																<tr>
+																	<td>${vo.project_name}<span>N</span></td>
+																</tr>
+																<tr>
+																	<td witdh="400px">
+														 				<div class="progress progress-striped active">
+														  					<div class="progress-bar" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 45%">
+														  						45%
+																			</div>
+																		</div>
+														            </td>
+																</tr>
+															</table>
+															<table width="400px">
+																<tr>
+																	<td class="infomation">등급</td>
+																	<td class="infomation">연수익률</td>
+																	<td class="infomation">기간</td>
+																	<td class="infomation">모집금액</td>
+																	<td class="infomation">상환방식</td>
+																</tr>
+																<tr>
+																	<td class="infomation">${vo.grade}</td>
+																	<td class="infomation">${vo.rate}</td>
+																	<td class="infomation">${vo.refund}개월</td>
+																	<td class="infomation">${vo.price}만원</td>
+																	<td class="infomation">${vo.repay_method}</td>
+																</tr>
+															</table>
+														</div>
+													</a>
+												<td>
+											</c:otherwise>
+										</c:choose>
+									</c:forEach>
+								</th>
+<%-- 							</c:forEach> --%>
+							</tr>
+							
+							<tr valign=top>
+<%-- 							<c:forEach begin="0" end="2" step="1" varStatus="step"> --%>
+								<th>
+									<c:forEach items="${projectList3}" var="vo" varStatus="status" begin="0" end="2" step="1">
+										<c:choose>
+											<c:when test="${memVO.user_num != null}">
+												<td class="col-md-3" style="padding-left:150px;">
+													<a href="${pageContext.request.contextPath}/invest_detail?
+													project_num=${vo.project_num}
+													&p_busi_num=${vo.busi_num}
+													&user_num=${memVO.user_num}">
+														<div>
+															<img src="${pageContext.request.contextPath}/resources/img/ner.jpg" width="400px" />
+														</div>
+														<div>
+															<table style="border-left: 1px; border-right: 1px; width: 400px">
+																<tr>
+																	<td>${vo.en_date}</td>
+																</tr>
+																<tr>
+																	<td>${vo.project_name}<span>k</span></td>
+																</tr>
+																<tr>
+																	<td witdh="400px">
+														 				<div class="progress progress-striped active">
+														  					<div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
+														  						45%
+																			</div>
+																		</div>
+														            </td>
+																</tr>
+															</table>
+															<table width="400px">
+																<tr>
+																	<td class="infomation">등급</td>
+																	<td class="infomation">연수익률</td>
+																	<td class="infomation">기간</td>
+																	<td class="infomation">모집금액</td>
+																	<td class="infomation">상환방식</td>
+																</tr>
+																<tr>
+																	<td class="infomation">${vo.grade}</td>
+																	<td class="infomation">${vo.rate}</td>
+																	<td class="infomation">${vo.refund}개월</td>
+																	<td class="infomation">${vo.price}만원</td>
+																	<td class="infomation">${vo.repay_method}</td>
+																</tr>
+															</table>
+														</div>
+													</a>
+												</td>
+											</c:when>
+											<c:when test="${memVO.busi_num != null}">
+												<td class="col-md-3" style="padding-left:150px;">
+													<a href="${pageContext.request.contextPath}/invest_detail?
+													project_num=${vo.project_num}
+													&p_busi_num=${vo.busi_num}
+													&busi_num=${memVO.busi_num}">
+														<div>
+															<img src="${pageContext.request.contextPath}/resources/img/ner.jpg" width="400px" />
+														</div>
+														<div>
+															<table style="border-left: 1px; border-right: 1px; width: 400px">
+																<tr>
+																	<td>${vo.en_date}</td>
+																</tr>
+																<tr>
+																	<td>${vo.project_name}<span>B</span></td>
+																</tr>
+																<tr>
+																	<td witdh="400px">
+														 				<div class="progress progress-striped active">
+														  					<div class="progress-bar" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 45%">
+														  						45%
+																			</div>
+																		</div>
+														            </td>
+																</tr>
+															</table>
+															<table width="400px">
+																<tr>
+																	<td class="infomation">등급</td>
+																	<td class="infomation">연수익률</td>
+																	<td class="infomation">기간</td>
+																	<td class="infomation">모집금액</td>
+																	<td class="infomation">상환방식</td>
+																</tr>
+																<tr>
+																	<td class="infomation">${vo.grade}</td>
+																	<td class="infomation">${vo.rate}</td>
+																	<td class="infomation">${vo.refund}개월</td>
+																	<td class="infomation">${vo.price}만원</td>
+																	<td class="infomation">${vo.repay_method}</td>
+																</tr>
+															</table>
+														</div>
+													</a>
+												</td>
+											</c:when>
+											<c:otherwise>
+												<td class="col-md-3" style="padding-left:150px;">
+													<a href="${pageContext.request.contextPath}/invest_detail?
+													project_num=${vo.project_num}
+													&p_busi_num=${vo.busi_num}">
+														<div>
+															<img src="${pageContext.request.contextPath}/resources/img/ner.jpg" width="400px" />
+														</div>
+														<div>
+															<table style="border-left: 1px; border-right: 1px; width: 400px">
+																<tr>
+																	<td>${vo.en_date}</td>
+																</tr>
+																<tr>
+																	<td>${vo.project_name}<span>N</span></td>
+																</tr>
+																<tr>
+																	<td witdh="400px">
+														 				<div class="progress progress-striped active">
+														  					<div class="progress-bar" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 45%">
+														  						45%
+																			</div>
+																		</div>
+														            </td>
+																</tr>
+															</table>
+															<table width="400px">
+																<tr>
+																	<td class="infomation">등급</td>
+																	<td class="infomation">연수익률</td>
+																	<td class="infomation">기간</td>
+																	<td class="infomation">모집금액</td>
+																	<td class="infomation">상환방식</td>
+																</tr>
+																<tr>
+																	<td class="infomation">${vo.grade}</td>
+																	<td class="infomation">${vo.rate}</td>
+																	<td class="infomation">${vo.refund}개월</td>
+																	<td class="infomation">${vo.price}만원</td>
+																	<td class="infomation">${vo.repay_method}</td>
+																</tr>
+															</table>
+														</div>
+													</a>
+												<td>
+											</c:otherwise>
+										</c:choose>
+									</c:forEach>
+								</th>
+<%-- 							</c:forEach> --%>
+							</tr>
+						</table>
 					</div>
 				</div>
 			</section>

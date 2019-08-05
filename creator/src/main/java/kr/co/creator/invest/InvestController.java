@@ -18,6 +18,8 @@ import kr.co.creator.vo.GuaranteeVO;
 import kr.co.creator.vo.InvestVO;
 import kr.co.creator.vo.MemberVO;
 import kr.co.creator.vo.ProjectVO;
+//import kr.co.koitt.board1.BoardVO;
+//import kr.co.koitt.tip.FileUtilService;
 
 @Controller
 public class InvestController {
@@ -40,12 +42,12 @@ public class InvestController {
 //	}//invest
 	
 	@RequestMapping(value = "/invest", method = RequestMethod.GET)
-	public String invest(Model model, MemberVO memVO, AccountVO accVO, ProjectVO proVO) {
+	public String invest(HttpSession session, Model model, MemberVO memVO, AccountVO accVO, ProjectVO proVO) {
 		logger.info("invest");
 		
-//		if(memVO == null || memVO.getUser_num().equals("") || memVO.getBusi_num().equals("")) {
-//			return "login/login";
-//		}
+		if(session.getAttribute("memVO") == null) {
+			return "redirect:/login";
+		}
 		System.out.println("Controller1111111111 : " + accVO);
 		accVO = investService.acount_detail(accVO);
 		proVO = investService.project_detail(proVO);
@@ -105,9 +107,12 @@ public class InvestController {
 	}//invest_finish
 	
 	@RequestMapping(value = "/deposit_update", method = RequestMethod.POST)
-	public void deposit_update(Model model, PrintWriter out, AccountVO accVO, InvestVO inVO ,ProjectVO proVO) {
+	public void deposit_update(HttpSession session, Model model, PrintWriter out, AccountVO accVO, InvestVO inVO ,ProjectVO proVO) {
 		logger.info("deposit_update");
 		
+		if(session.getAttribute("memVO") == null) {
+			return;
+		}
 		int count = 0;
 		count = investService.deposit_update(accVO);
 		System.out.println("deposit_update_Controller111111111111111111111111111111 : " + accVO);
@@ -126,10 +131,40 @@ public class InvestController {
 //			return "login/login";
 //		}
 		accVO = investService.acount_detail(accVO);
+		model.addAttribute("accountVO", accVO);
 		proVO = investService.project_detail(proVO);
 		model.addAttribute("accVO", accVO);
 		model.addAttribute("proVO", proVO);
-
 		return "invest/invest_finish";
 	}//invest_finish
+	
+//	@RequestMapping(value="/board1/insert4", method=RequestMethod.POST)
+//	@Transactional
+//	public void boardInsert4(BoardVO vo
+//									, PrintWriter out) {
+//		logger.info("boardInsert4");
+//		int count = 0;
+//		count = service.boardInsert(vo);
+//		//CK image start============================
+//		int imgYn = 0;
+//		imgYn = vo.getCnts().indexOf("src=\"");
+//		if(imgYn > 0) {//image in cnts
+//			try {
+//				FileUtilService.mvCKImgTmpToNew(
+//						vo.getCnts(), vo.getNo());
+//			} catch (IOException e) {
+//				out.print(0);
+//				out.flush();
+//				out.close();
+//				e.printStackTrace();
+//				return;
+//			}//try
+//		}//if
+//		//CK image end============================
+//		vo.setCnts(vo.getCnts().replaceAll("/tmp/", "/"+vo.getNo()+"/"));
+//		count = service.boardUpdate(vo);
+//		out.print(count);
+//		out.flush();
+//		out.close();
+//	}//boardInsert4
 }//class

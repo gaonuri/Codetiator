@@ -44,11 +44,24 @@ public class SupportDAO {
 		return support;
 	}//supportList2
 	
-	public NoticeVO noticeDetail(NoticeVO vo) {
+	public NoticeVO supportDetail(NoticeVO vo) {
 		vo = sqlSession.selectOne(
-				"SupportMapper.noticeDetail", vo);
+				"SupportMapper.supportDetail", vo);
 		return vo;
 	}//totalDetail
+	
+	public NoticeVO supportDetailType(NoticeVO vo) {
+		vo = sqlSession.selectOne(
+				"SupportMapper.supportDetailType", vo);
+		return vo;
+	}//supportDatailType
+
+	public int supportDelete(NoticeVO vo) {
+		int count = 0;
+		count = sqlSession.delete(
+						"SupportMapper.supportDelete", vo);
+		return count;
+	}
 
 	
 }//class
