@@ -147,85 +147,58 @@ public class LoanController {
 		int cnt = 0;
 		DocumentVO dvo = new DocumentVO();
 			int saveFileCnt = 0;
-<<<<<<< HEAD
 			if(fvo.getBusi_regi() != null && fvo.getBusi_regi().getSize() > 0) {
 				dvo.setBusi_regi(UtilForFile.fileUpByType(fvo.getBusi_regi()    , "loan", pvo.getProject_num()));
-=======
 			if(dvo2.getBusi_regi() != null && dvo2.getBusi_regi().getSize() > 0) {
 				dvo.setBusi_regi	(UtilForFile.fileUpByType(dvo2.getBusi_regi(), "loan", pvo.getProject_num()));
->>>>>>> branch 'master' of https://github.com/gaonuri/Codetiator.git
 				saveFileCnt++;
 			}
-<<<<<<< HEAD
 			if(fvo.getJumin_chobon() != null && fvo.getJumin_chobon().getSize() > 0) {
 				dvo.setJumin_chobon	(UtilForFile.fileUpByType(fvo.getJumin_chobon() , "loan", pvo.getProject_num()));
-=======
 			if(dvo2.getJumin_chobon() != null && dvo2.getJumin_chobon().getSize() > 0) {
 				dvo.setJumin_chobon	(UtilForFile.fileUpByType(dvo2.getJumin_chobon(), "loan", pvo.getProject_num()));
->>>>>>> branch 'master' of https://github.com/gaonuri/Codetiator.git
 				saveFileCnt++;
 			}
-<<<<<<< HEAD
 			if(fvo.getCer_ingam() != null && fvo.getCer_ingam().getSize() > 0) {
 				dvo.setCer_ingam	(UtilForFile.fileUpByType(fvo.getCer_ingam()    , "loan", pvo.getProject_num()));
-=======
 			if(dvo2.getCer_ingam() != null && dvo2.getCer_ingam().getSize() > 0) {
 				dvo.setCer_ingam	(UtilForFile.fileUpByType(dvo2.getCer_ingam(), "loan", pvo.getProject_num()));
->>>>>>> branch 'master' of https://github.com/gaonuri/Codetiator.git
 				saveFileCnt++;
 			}
-<<<<<<< HEAD
 			if(fvo.getCer_budong() != null && fvo.getCer_budong().getSize() > 0) {
 				dvo.setCer_budong	(UtilForFile.fileUpByType(fvo.getCer_budong()   , "loan", pvo.getProject_num()));
-=======
 			if(dvo2.getCer_budong() != null && dvo2.getCer_budong().getSize() > 0) {
 				dvo.setCer_budong	(UtilForFile.fileUpByType(dvo2.getCer_budong(), "loan", pvo.getProject_num()));
->>>>>>> branch 'master' of https://github.com/gaonuri/Codetiator.git
 				saveFileCnt++;
 			}
-<<<<<<< HEAD
 			if(fvo.getCer_dong() != null && fvo.getCer_dong().getSize() > 0) {
 				dvo.setCer_dong		(UtilForFile.fileUpByType(fvo.getCer_dong()     , "loan", pvo.getProject_num()));
-=======
 			if(dvo2.getCer_dong() != null && dvo2.getCer_dong().getSize() > 0) {
 				dvo.setCer_dong		(UtilForFile.fileUpByType(dvo2.getCer_dong(), "loan", pvo.getProject_num()));
->>>>>>> branch 'master' of https://github.com/gaonuri/Codetiator.git
 				saveFileCnt++;
 			}
-<<<<<<< HEAD
 			if(fvo.getCer_income() != null && fvo.getCer_income().getSize() > 0) {
 				dvo.setCer_income	(UtilForFile.fileUpByType(fvo.getCer_income()   , "loan", pvo.getProject_num()));
-=======
 			if(dvo2.getCer_income() != null && dvo2.getCer_income().getSize() > 0) {
 				dvo.setCer_income	(UtilForFile.fileUpByType(dvo2.getCer_income(), "loan", pvo.getProject_num()));
->>>>>>> branch 'master' of https://github.com/gaonuri/Codetiator.git
 				saveFileCnt++;
 			}
-<<<<<<< HEAD
 			if(fvo.getCer_vat() != null && fvo.getCer_vat().getSize() > 0) {
 				dvo.setCer_vat		(UtilForFile.fileUpByType(fvo.getCer_vat()      , "loan", pvo.getProject_num()));
-=======
 			if(dvo2.getCer_vat() != null && dvo2.getCer_vat().getSize() > 0) {
 				dvo.setCer_vat		(UtilForFile.fileUpByType(dvo2.getCer_vat(), "loan", pvo.getProject_num()));
->>>>>>> branch 'master' of https://github.com/gaonuri/Codetiator.git
 				saveFileCnt++;
 			}
-<<<<<<< HEAD
 			if(fvo.getCer_other() != null && fvo.getCer_other().getSize() > 0) {
 				dvo.setCer_other	(UtilForFile.fileUpByType(fvo.getCer_other()    , "loan", pvo.getProject_num()));
-=======
 			if(dvo2.getCer_other() != null && dvo2.getCer_other().getSize() > 0) {
 				dvo.setCer_other	(UtilForFile.fileUpByType(dvo2.getCer_other(), "loan", pvo.getProject_num()));
->>>>>>> branch 'master' of https://github.com/gaonuri/Codetiator.git
 				saveFileCnt++;
 			}
-<<<<<<< HEAD
 			if(fvo.getCopy_id() != null && fvo.getCopy_id().getSize() > 0) {
 				dvo.setCopy_id		(UtilForFile.fileUpByType(fvo.getCopy_id()      , "loan", pvo.getProject_num()));
-=======
 			if(dvo2.getCopy_id() != null && dvo2.getCopy_id().getSize() > 0) {
 				dvo.setCopy_id		(UtilForFile.fileUpByType(dvo2.getCopy_id(), "loan", pvo.getProject_num()));
->>>>>>> branch 'master' of https://github.com/gaonuri/Codetiator.git
 				saveFileCnt++;
 			}
 			if(fvo.getCopy_bankbook() != null && fvo.getCopy_bankbook().getSize() > 0) {
