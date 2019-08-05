@@ -41,22 +41,7 @@ public class InvestController {
 //		return "invest/invest";
 //	}//invest
 	
-	@RequestMapping(value = "/invest", method = RequestMethod.GET)
-	public String invest(HttpSession session, Model model, MemberVO memVO, AccountVO accVO, ProjectVO proVO) {
-		logger.info("invest");
-		
-		if(session.getAttribute("memVO") == null) {
-			return "redirect:/login";
-		}
-		System.out.println("Controller1111111111 : " + accVO);
-		accVO = investService.acount_detail(accVO);
-		proVO = investService.project_detail(proVO);
-		System.out.println("Controller2222222222 : " + accVO);
-		model.addAttribute("accVO", accVO);
-		model.addAttribute("proVO", proVO);
-		
-		return "invest/invest";
-	}//invest
+
 	
 	@RequestMapping(value = "/invest_guide", method = RequestMethod.GET)
 	public String invest_guide() {
@@ -84,9 +69,9 @@ public class InvestController {
 		
 		proVO = investService.project_detail(proVO);
 		guaVO = investService.guarantee_detail(guaVO);
-		System.out.println("Controller1111111111111111111111111111111 : " + inVO);
+		System.out.println("Controller1111111111111111111111111111111 : " + inVO.getP_busi_num());
 		inVO  = investService.invest_detail(inVO);
-		
+					
 		model.addAttribute("proVO", proVO);
 		model.addAttribute("guaVO", guaVO);
 		session.setAttribute("inVO", inVO);
@@ -94,6 +79,23 @@ public class InvestController {
 		//System.out.println("Controller2222222222222222222222222222222 : " + ((InvestVO)session.getAttribute("sess_investVO")).getInvest_price());
 		return "invest/invest_detail";
 	}//invest_detail
+	
+	@RequestMapping(value = "/invest", method = RequestMethod.GET)
+	public String invest(HttpSession session, Model model, MemberVO memVO, AccountVO accVO, ProjectVO proVO) {
+		logger.info("invest");
+		
+		if(session.getAttribute("memVO") == null) {
+			return "redirect:/login";
+		}
+		System.out.println("Controller1111111111 : " + accVO);
+		accVO = investService.acount_detail(accVO);
+		proVO = investService.project_detail(proVO);
+		System.out.println("Controller2222222222 : " + accVO);
+		model.addAttribute("accVO", accVO);
+		model.addAttribute("proVO", proVO);
+		
+		return "invest/invest";
+	}//invest
 	
 	@RequestMapping(value = "/invest_finished", method = RequestMethod.GET)
 	public String invest_finished(Model model) {

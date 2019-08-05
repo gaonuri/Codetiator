@@ -24,6 +24,19 @@ public class InvestService {
 //		return vo;
 //	}//invest
 
+	public List<ProjectVO> invest_list() {
+		List<ProjectVO> list = null;
+		list = investDAO.invest_list();
+		
+		return list;
+	}//invest_list
+
+	public InvestVO invest_detail(InvestVO inVO) {
+		inVO = investDAO.invest_detail(inVO);
+		
+		return inVO;
+	}//invest_detail
+
 	public AccountVO acount_detail(AccountVO accVO) {
 		System.out.println("Service111111111 : " + accVO);
 		accVO = investDAO.acount_detail(accVO);
@@ -31,13 +44,6 @@ public class InvestService {
 		
 		return accVO;
 	}//acount_detail
-
-	public List<ProjectVO> invest_list() {
-		List<ProjectVO> list = null;
-		list = investDAO.invest_list();
-		
-		return list;
-	}//invest_list
 
 	public ProjectVO project_detail(ProjectVO proVO) {
 		proVO = investDAO.project_detail(proVO);
@@ -78,10 +84,4 @@ public class InvestService {
 		
 		return count;
 	}//current_price_update
-
-	public InvestVO invest_detail(InvestVO inVO) {
-		inVO = investDAO.invest_detail(inVO);
-		
-		return inVO;
-	}//invest_detail
 }//class

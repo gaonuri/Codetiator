@@ -71,10 +71,10 @@
 														<div>
 															<table style="border-left: 1px; border-right: 1px; width: 400px">
 																<tr>
-																	<td>${vo.en_date}</td>
+																	<td>${vo.regi_date}</td>
 																</tr>
 																<tr>
-																	<td>${vo.project_name}<span>k</span></td>
+																	<td>${vo.project_name}<span>U</span></td>
 																</tr>
 																<tr>
 																	<td witdh="400px">
@@ -118,7 +118,7 @@
 														<div>
 															<table style="border-left: 1px; border-right: 1px; width: 400px">
 																<tr>
-																	<td>${vo.en_date}</td>
+																	<td>${vo.regi_date}</td>
 																</tr>
 																<tr>
 																	<td>${vo.project_name}<span>B</span></td>
@@ -164,7 +164,7 @@
 														<div>
 															<table style="border-left: 1px; border-right: 1px; width: 400px">
 																<tr>
-																	<td>${vo.en_date}</td>
+																	<td>${vo.regi_date}</td>
 																</tr>
 																<tr>
 																	<td>${vo.project_name}<span>N</span></td>
@@ -222,10 +222,10 @@
 														<div>
 															<table style="border-left: 1px; border-right: 1px; width: 400px">
 																<tr>
-																	<td>${vo.en_date}</td>
+																	<td>${vo.regi_date}</td>
 																</tr>
 																<tr>
-																	<td>${vo.project_name}<span>k</span></td>
+																	<td>${vo.project_name}<span>U</span></td>
 																</tr>
 																<tr>
 																	<td witdh="400px">
@@ -269,7 +269,7 @@
 														<div>
 															<table style="border-left: 1px; border-right: 1px; width: 400px">
 																<tr>
-																	<td>${vo.en_date}</td>
+																	<td>${vo.regi_date}</td>
 																</tr>
 																<tr>
 																	<td>${vo.project_name}<span>B</span></td>
@@ -315,7 +315,7 @@
 														<div>
 															<table style="border-left: 1px; border-right: 1px; width: 400px">
 																<tr>
-																	<td>${vo.en_date}</td>
+																	<td>${vo.regi_date}</td>
 																</tr>
 																<tr>
 																	<td>${vo.project_name}<span>N</span></td>
@@ -373,10 +373,10 @@
 														<div>
 															<table style="border-left: 1px; border-right: 1px; width: 400px">
 																<tr>
-																	<td>${vo.en_date}</td>
+																	<td>${vo.regi_date}</td>
 																</tr>
 																<tr>
-																	<td>${vo.project_name}<span>k</span></td>
+																	<td>${vo.project_name}<span>U</span></td>
 																</tr>
 																<tr>
 																	<td witdh="400px">
@@ -420,7 +420,7 @@
 														<div>
 															<table style="border-left: 1px; border-right: 1px; width: 400px">
 																<tr>
-																	<td>${vo.en_date}</td>
+																	<td>${vo.regi_date}</td>
 																</tr>
 																<tr>
 																	<td>${vo.project_name}<span>B</span></td>
@@ -466,7 +466,7 @@
 														<div>
 															<table style="border-left: 1px; border-right: 1px; width: 400px">
 																<tr>
-																	<td>${vo.en_date}</td>
+																	<td>${vo.regi_date}</td>
 																</tr>
 																<tr>
 																	<td>${vo.project_name}<span>N</span></td>
