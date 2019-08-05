@@ -22,35 +22,26 @@ public class SupportController {
 	@Autowired
 	SupportService service;
 	
-//	@RequestMapping(value = "/faq", method = RequestMethod.GET)
-//	public String faq() {
-//		logger.info("faq");
-//		
-//		
-//		return "support/faq";
-//	}
-//	
-//	@RequestMapping(value = "/policy", method = RequestMethod.GET)
-//	public String policy() {
-//		logger.info("policy");
-//		
-//		return "support/policy";
-//	}
-//	
+	@RequestMapping(value = "/faq", method = RequestMethod.GET)
+	public String faq() {
+		logger.info("faq");
+		
+		return "support/faq";
+	}
+
 //	@RequestMapping(value = "/inquiry", method = RequestMethod.GET)
 //	public String inquiry() { 
 //		logger.info("inquiry");
 //				
 //		return "support/inquiry";
 //	}
-//	
+
 	@RequestMapping(value = "/support", method = RequestMethod.GET)
 	public String support(Model model, NoticeVO vo) {
 		logger.info("support");
 		List<NoticeVO> support = null;   // 전체
 		List<NoticeVO> support2 = null;  // 새소식
 		List<NoticeVO> support3 = null;  // 운영사항
-		
 		
 		support = service.supportList();
 		
@@ -60,21 +51,10 @@ public class SupportController {
 		vo.setNotice_type("2");
 		support3 = service.supportList2(vo);
 		
-		
 		model.addAttribute("supportlist", support);
 		model.addAttribute("supportlist2", support2);
 		model.addAttribute("supportlist3", support3);
-		
 		return "support/support";
-	}
-
-	@RequestMapping(value = "/support_sebu", method = RequestMethod.GET)
-	public String support2(Model model, NoticeVO vo) {
-		logger.info("support_sebu");
-		List<NoticeVO> support = null;
-		support = service.supportList2(vo);
-		model.addAttribute("supportlist2", support);
-		return "support/support_new";
 	}
 
 	@RequestMapping(value="/formi"
@@ -94,7 +74,7 @@ public class SupportController {
 	out.print(count);
 	out.flush();
 	out.close();
-	}//boardInsert
+	}//supportInsert
 	
 	@RequestMapping(value="/insert2"
 			,method=RequestMethod.POST)
@@ -107,6 +87,28 @@ public class SupportController {
 	out.flush();
 	out.close();
 	}//boardInsert
+	
+	@RequestMapping(value="/support_detail", method=RequestMethod.GET)
+	public String supportDatail(NoticeVO vo, Model model) {
+		logger.info("supportDatail");
+		if(vo.getNotice_type() == null) {
+			vo = service.supportDetail(vo);
+		} else {
+			vo = service.supportDetailType(vo);
+		}
+		model.addAttribute("detailVO", vo);
+		return "support/support_detail";
+	}//support_detail
+	
+	@RequestMapping(value="/delete", method=RequestMethod.GET)
+	public void supportDelete(NoticeVO vo, PrintWriter out) {
+		logger.info("supportDelete");
+		int count = 0;
+		count = service.supportDelete(vo);
+		out.print(count);
+		out.flush();
+		out.close();
+	}//support_total_detail
 	
 	@RequestMapping(value="/privacy_policy" ,method=RequestMethod.GET)
 	public String privacy_policy() {
@@ -122,34 +124,7 @@ public class SupportController {
 	return "support/investor_terms_service";
 	}//investor_terms_service
 	
-	@RequestMapping(value="/support_total_detail"
-			,method=RequestMethod.GET)
-	public String supportDatail(NoticeVO vo, Model model) {
-	logger.info("supportDatail");
-	vo = service.noticeDetail(vo);
-	model.addAttribute("detailVO", vo);
-	return "support/support_total_detail";
-	}//support_total_detail
-	
-	@RequestMapping(value="/support_new_detail"
-			,method=RequestMethod.GET)
-	public String newDetail(NoticeVO vo, Model model) {
-	logger.info("newDatail");
-	vo = service.noticeDetail(vo);
-	model.addAttribute("detailVO", vo);
-	return "support/support_new_detail";
-	}//support_total_detail
-	
-	@RequestMapping(value="/support_operation_detail"
-			,method=RequestMethod.GET)
-	public String operationDetail(NoticeVO vo, Model model) {
-	logger.info("operationDatail");
-	vo = service.noticeDetail(vo);
-	model.addAttribute("detailVO", vo);
-	return "support/support_operation_detail";
-	
-	
-	}//support_total_detail
+
 //	@RequestMapping(value="/support/formu"
 //			,method=RequestMethod.GET)
 //	public String formUpdate(NoticeVO vo, Model model) {

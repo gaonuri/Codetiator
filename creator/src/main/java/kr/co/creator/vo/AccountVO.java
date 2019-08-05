@@ -2,25 +2,17 @@ package kr.co.creator.vo;
 
 // 계좌
 public class AccountVO {
-	private String account_num;		// 계좌순서
+	private String account_num;		// 계좌등록번호
 	private String account_name;	// 예금주
 	private String bank_name;		// 은행명
 	private String bank_num;		// 계좌번호
 	private String deposit;			// 예치금
+	private String deposit_chk;		// 예치금 생성여부
 	
 	private String user_num;		// (참조)유저번호
 	private String busi_num;		// (참조)법인유저번호
+	private String project_num;		// (참조)프로젝트번호
 	
-	public AccountVO() {}	//constructor
-	public AccountVO(String account_num, String account_name, String bank_name, String bank_num, String deposit, String user_num, String busi_num) {
-		this.account_num = account_num;
-		this.account_name = account_name;
-		this.bank_name = bank_name;
-		this.bank_num = bank_num;
-		this.deposit = deposit;
-		this.user_num = user_num;
-		this.busi_num = busi_num;
-	}//constructor
 	
 	public String getAccount_num() {
 		return account_num;
@@ -57,6 +49,13 @@ public class AccountVO {
 		this.deposit = deposit;
 	}//deposit
 	
+	public String getDeposit_chk() {
+		return deposit_chk;
+	}
+	public void setDeposit_chk(String deposit_chk) {
+		this.deposit_chk = deposit_chk;
+	}//deposit_chk
+	
 	//참조
 	public String getUser_num() {
 		return user_num;
@@ -71,4 +70,11 @@ public class AccountVO {
 	public void setBusi_num(String busi_num) {
 		this.busi_num = busi_num;
 	}//busi_num
+	
+	public String getProject_num() {
+		return project_num;
+	}
+	public void setProject_num(String project_num) {
+		this.project_num = project_num;
+	}//project_num
 }//class

@@ -34,6 +34,8 @@ public class JoinDAO {
 	public int joinLicenseChk(Busi_userVO vo) {
 		int cnt = 0;
 		cnt = sqlSession.selectOne("JoinMapper.joinLicenseChk", vo);
+		
+		System.out.println("DAODAODAODAODAODAODAODAODAODAODAODAODAODAODAODAODAODAO" + cnt);
 		return cnt;
 	}//joinLicenseChk
 	

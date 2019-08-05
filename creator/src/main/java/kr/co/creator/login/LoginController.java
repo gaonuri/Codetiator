@@ -81,12 +81,12 @@ public class LoginController {
 		out.close();
 	}//loginBusi 
 	
-	@RequestMapping(value="/logout", method=RequestMethod.GET)
-	public String logout(MemberVO vo, HttpSession session) {
-		logger.info("=== logout ===");
-		
-		return "login/logoutTime";
-	}//logout
+//	@RequestMapping(value="/logout", method=RequestMethod.GET)
+//	public String logout(MemberVO vo, HttpSession session) {
+//		logger.info("=== logout ===");
+//		
+//		return "login/logoutTime";
+//	}//logout
 	
 	@RequestMapping(value = "/logouttime", method = RequestMethod.POST)
 	public void logoutTime(MemberVO vo, HttpSession session, PrintWriter out, HttpServletRequest request) {

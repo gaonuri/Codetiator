@@ -61,12 +61,24 @@ public class MypageService {
 		return useVO;
 	}
 	
-	public int emailcert(FindPwdVO vo) {
-		System.out.println(vo.getEmail());
+	public int emailcert(String email) {
+		System.out.println(email);
 		int cnt = 0;
-		cnt = dao.emailcert(vo);
+		cnt = dao.emailcert(email);
 		return cnt; 
 	}//findPwdChk
+
+	public int userDataUpdate(MemberVO vo) {
+		int cnt = 0;
+		cnt = dao.userDataUpdate(vo);
+		return cnt; 
+	}
+	
+	public int userDataUpdate1(MemberVO vo) {
+		int cnt1 = 0;
+		cnt1 = dao.userDataUpdate1(vo);
+		return cnt1; 
+	}
 
 	
 }//class

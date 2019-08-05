@@ -37,13 +37,13 @@
 		<script type="text/javascript">
 			$(document).ready(function() {
 				$("#write_new").click(function() {
-					location.href = "${pageContext.request.contextPath}/support/formi";
+					location.href = "${pageContext.request.contextPath}/formi";
 				});//btn_write
 			});
 				
 			$(document).ready(function() {
 				$("#write_op").click(function() {
-					location.href = "${pageContext.request.contextPath}/support/formi2";
+					location.href = "${pageContext.request.contextPath}/formi2";
 				});//btn_write2
 			});
 				
@@ -72,6 +72,7 @@
 						}//function
 					);//get
 				});
+				
 		</script>
 		
 </head>
@@ -82,116 +83,7 @@
 	        TOP BAR CONTENT & NOTIFICATIONS
 	        *********************************************************************************************************************************************************** -->
 	    <!--header start-->
-	    <header class="header black-bg">
-			<!--logo start-->
-			<a href="./main" class="logo"><img id="logoImage" alt="로고" src="${pageContext.request.contextPath}/resources/img/ner.jpg" width="200px" height="30px"></a>
-			<!--logo end-->
-			<div class="nav notify-row top-menu" id="top_menu">
-				<!--  notification start -->
-				<ul class="nav pull-right top-menu">
-					<!-- settings start -->
-					
-					<!-- 회사소개 start -->
-					<li><a href="./loan_guide">회사소개</a></li>
-					<!-- 회사소개 end -->
-					
-					<!-- 대출 start -->
-					<li class="dropdown">
-						<a data-toggle="dropdown" class="dropdown-toggle" href="#">대출</a>
-						<ul class="dropdown-menu extended tasks-bar">
-							<div class="notify-arrow notify-arrow-green"></div>
-							<li>
-								<a href="./loan_guide">대출안내</a>
-							</li>
-							<li>
-								<a href="./loan">대출하기</a>
-							</li>
-						</ul>
-					</li>
-	          		<!-- 대출 end -->
-	          
-	          		<!-- inbox dropdown start-->
-	         		<li class="dropdown">
-						<a data-toggle="dropdown" class="dropdown-toggle" href="#">
-							투자
-						</a>
-						<ul class="dropdown-menu extended tasks-bar">
-							<div class="notify-arrow notify-arrow-black"></div>
-							<li>
-								<a href="./invest_guide">투자안내</a>
-							</li>
-							<li>
-								<a href="./invest_list">투자하기</a>
-							</li>
-							<li>
-								<a href="./invest_finish">완료된투자</a>
-							</li>
-						</ul>
-					</li>
-	          		<!-- 투자 end -->
-	          
-	          
-					<!-- 고객지원 start-->
-					<li id="header_notification_bar" class="dropdown">
-						<a data-toggle="dropdown" class="dropdown-toggle" href="#">
-							고객지원
-						</a>
-						<ul class="dropdown-menu extended notification">
-							<div class="notify-arrow"></div>
-							<li>
-								<a href="./faq">FAQ</a>
-							</li>
-							<li>
-								<a href="./support">이용약관</a>
-							</li>
-							<li>
-								<a href="./policy">개인정보</a>
-							</li>
-							<li>
-								<a href="./inquiry">1:1문의</a>
-							</li>
-						</ul>
-					</li>
-					<!-- 고객지원 end -->
-					
-					<!-- 마이페이지 start-->
-					<li id="header_notification_bar" class="dropdown">
-						<a data-toggle="dropdown" class="dropdown-toggle" href="#">
-							마이페이지
-						</a>
-						<ul class="dropdown-menu extended notification">
-							<div class="notify-arrow notify-arrow-yellow"></div>
-							<li>
-								<a href="./my_dashboard">대시 보드</a>
-							</li>
-							<li>
-								<a href="./my_invest_list">투자 내역</a>
-							</li>
-							<li>
-								<a href="./my_loan_list">대출 내역</a>
-							</li>
-							<li>
-								<a href="./my_depo_mgn">예치금 관리</a>
-							</li>
-							<li>
-								<a href="./my_modify">기본 정보 수정</a>
-							</li>
-						</ul>
-					</li>
-					<!-- 마이페이지 end -->
-					
-					<!-- 로그아웃 start -->
-					<li><a href="./loan_guide">로그아웃</a></li>
-					<!-- 로그아웃 end -->
-				</ul>
-				<!--  notification end -->
-			</div>
-			<div class="top-menu">
-				<ul class="nav pull-right top-menu">
-					<li><a class="logout" href="/creator/join">회원가입</a></li>
-				</ul>
-			</div>
-	    </header>
+	    <%@ include file="../header.jsp" %>
 	    <!--header end-->
 	   
 	   
@@ -199,110 +91,111 @@
 	        MAIN CONTENT
 	        *********************************************************************************************************************************************************** -->
 		<!--main content start-->
-    <section id="main-content">
-     	 <section class="wrapper">
-       	 	<div class="row">
-         		 <div class="col-md-10">
-	         		 <div class="row content-panel">
-						<div class="panel-heading">
-							<div class="col-lg-3">
-								<ul class="nav nav-tabs nav-justified">
-									<li class="active">
-										<a data-toggle="tab" href="#totaltab">전체</a>
-									</li>
-									<li >
-										<a data-toggle="tab" href="#newtab">새소식</a>
-									</li>
-									<li >
-										<a data-toggle="tab" href="#operationtab">운영사항</a>
-									</li>
-								</ul>
-							</div>	
-						</div>
-						<!-- =========전체 -->	
-				            <div class="tab-content">
-							<div id="totaltab" class="tab-pane active">
-						    	<form role="form" class="form-horizontal">
-							   		<div class="row">
-								   		<div class="col-md-12">
-									    	<table class="table">
-								                <c:forEach items="${supportlist}" var="vo" varStatus="status">
-         <!-- 1씩증가 하는법 물어보기  -->     		  <c:set var="seq" value="1" />
-													<tbody>
-														<tr>
-														    <td><a href="support_total_detail?notice_num=${vo.notice_num}">${seq}</a></td>
-<%-- 															<td><a href="support_total_detail?notice_num=${vo.notice_num}">${vo.notice_num}</a></td> --%>
-															<td><a href="support_total_detail?notice_num=${vo.notice_num}">${vo.title}</a></td>
-															<td>${vo.notice_date}</td>
-														</tr>
-													</tbody>
-												</c:forEach>
-						           		   </table>
-					           		   </div>
-								   </div>
-						    	</form>
+	    <section id="main-content">
+	     	 <section class="wrapper">
+	     	 	<br>
+	       	 	<div class="row mt">
+	         		 <div class="col-md-10">
+		         		 <div class="row content-panel">
+							<div class="panel-heading">
+								<div class="col-lg-3">
+									<ul class="nav nav-tabs nav-justified">
+										<li class="active">
+											<a data-toggle="tab" href="#totaltab">전체</a>
+										</li>
+										<li >
+											<a data-toggle="tab" href="#newtab">새소식</a>
+										</li>
+										<li >
+											<a data-toggle="tab" href="#operationtab">운영사항</a>
+										</li>
+									</ul>
+								</div>	
 							</div>
-							<!-- =========새소식 -->
-							<div id="newtab" class="tab-pane">
-						    	<form role="form" class="form-horizontal">
-							   		<div class="row">
-								   		<div class="col-md-12">
-									    	<table class="table">
-								                <c:forEach items="${supportlist2}" var="vo" varStatus="status">
-													<tbody>
-														<tr>
-															<td><a href="support_new_detail?notice_num=${vo.notice_num}">${vo.notice_num}</a></td>
-															<td><a href="support_new_detail?notice_num=${vo.notice_num}">${vo.title}</a></td>
-															<td>${vo.notice_date}</td>
-														</tr>
-													</tbody>
-												</c:forEach>
-						           		   </table>
-						           		   <div class="row">
-						           		   <div class="col-sm-11"></div>
-						           		   	 <div class="col-sm-1">
-						           		  	 <button type="button" id="write_new" class="btn btn-default">글쓰기</button>
-						           		  	 </div>
+							<!-- =========전체 -->	
+					            <div class="tab-content">
+								<div id="totaltab" class="tab-pane active">
+							    	<form role="form" class="form-horizontal">
+								   		<div class="row">
+									   		<div class="col-md-12">
+										    	<table class="table">
+									                <c:forEach items="${supportlist}" var="vo" varStatus="status">
+	         								   		  <c:set var="seq" value="1" />
+														<tbody>
+															<tr>
+															    <td><a href="support_detail?notice_num=${vo.notice_num}">${vo.notice_num}</a></td>
+	<%-- 															<td><a href="support_total_detail?notice_num=${vo.notice_num}">${vo.notice_num}</a></td> --%>
+																<td><a href="support_detail?notice_num=${vo.notice_num}">${vo.title}</a></td>
+																<td>${vo.notice_date}</td>
+															</tr>
+														</tbody>
+													</c:forEach>
+							           		   </table>
 						           		   </div>
-					           		   </div>
-								   </div>
-						    	</form>
-							</div>
-							<!-- =========운영사항 -->
-							<div id="operationtab" class="tab-pane ">
-						    	<form role="form" class="form-horizontal">
-							   		<div class="row">
-								   		<div class="col-md-12">
-									    	<table class="table">
-								                <c:forEach items="${supportlist3}" var="vo" varStatus="status">
-													<tbody>
-														<tr>
-															<td><a href="support_operation_detail?notice_num=${vo.notice_num}">${vo.notice_num}</a></td>
-															<td><a href="support_operation_detail?notice_num=${vo.notice_num}">${vo.title}</a></td>
-															<td>${vo.notice_date}</td>
-														</tr>
-													</tbody>
-												</c:forEach>
-						           		   </table>
-						           		   <div class="row">
-						           		   <div class="col-sm-11"></div>
-						           		   	 <div class="col-sm-1">
-						           		  	 <button type="button"  id="write_op" class="btn btn-default">글쓰기</button>
-						           		  	 </div>
+									   </div>
+							    	</form>
+								</div>
+								<!-- =========새소식 -->
+								<div id="newtab" class="tab-pane">
+							    	<form role="form" class="form-horizontal">
+								   		<div class="row">
+									   		<div class="col-md-12">
+										    	<table class="table">
+									                <c:forEach items="${supportlist2}" var="vo" varStatus="status">
+														<tbody>
+															<tr>
+																<td><a href="support_detail?notice_num=${vo.notice_num}&notice_type=${vo.notice_type}">${vo.notice_num}</a></td>
+																<td><a href="support_detail?notice_num=${vo.notice_num}&notice_type=${vo.notice_type}">${vo.title}</a></td>
+																<td>${vo.notice_date}</td>
+															</tr>
+														</tbody>
+													</c:forEach>
+							           		   </table>
+							           		   <div class="row">
+							           		   <div class="col-sm-11"></div>
+							           		   	 <div class="col-sm-1">
+							           		  	 <button type="button" id="write_new" class="btn btn-default">글쓰기</button>
+							           		  	 </div>
+							           		   </div>
 						           		   </div>
-					           		   </div>
-								   </div>
-						    	</form>
+									   </div>
+							    	</form>
+								</div>
+								<!-- =========운영사항 -->
+								<div id="operationtab" class="tab-pane ">
+							    	<form role="form" class="form-horizontal">
+								   		<div class="row">
+									   		<div class="col-md-12">
+										    	<table class="table">
+									                <c:forEach items="${supportlist3}" var="vo" varStatus="status">
+														<tbody>
+															<tr>
+																<td><a href="support_detail?notice_num=${vo.notice_num}&notice_type=${vo.notice_type}">${vo.notice_num}</a></td>
+																<td><a href="support_detail?notice_num=${vo.notice_num}&notice_type=${vo.notice_type}">${vo.title}</a></td>
+																<td>${vo.notice_date}</td>
+															</tr>
+														</tbody>
+													</c:forEach>
+							           		   </table>
+							           		   <div class="row">
+							           		   <div class="col-sm-11"></div>
+							           		   	 <div class="col-sm-1">
+							           		  	 <button type="button"  id="write_op" class="btn btn-default">글쓰기</button>
+							           		  	 </div>
+							           		   </div>
+						           		   </div>
+									   </div>
+							    	</form>
+								</div>
 							</div>
 						</div>
 					</div>
-				</div>
-            </div>
-        <!-- row -->
-      </section>
-    </section>
-    <!-- /MAIN CONTENT -->
-    <!--main content end-->
+	            </div>
+	        <!-- row -->
+	      </section>
+	    </section>
+	    <!-- /MAIN CONTENT -->
+	    <!--main content end-->
 		<!--footer start-->
 		<footer class="site-footer">
 			<div class="container">

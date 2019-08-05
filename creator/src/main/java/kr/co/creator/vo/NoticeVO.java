@@ -9,15 +9,6 @@ public class NoticeVO {
 	private String notice_date;			// 등록날짜
 	private String notice_type;			// 공지사항구분
 	
-	public NoticeVO() {}	//constructor
-	public NoticeVO(String notice_num, String img, String title, String notice_contents, String notice_date, String notice_type) {
-		this.notice_num = notice_num;
-		this.img = img;
-		this.title = title;
-		this.notice_contents = notice_contents;
-		this.notice_date = notice_date;
-		this.notice_type = notice_type;
-	}//constructor
 	
 	public String getNotice_num() {
 		return notice_num;

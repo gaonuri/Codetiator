@@ -9,15 +9,6 @@ public class RepayVO {
 	private String user_num;			// (참조)유저번호
 	private String busi_num;			// (참조)법인유저번호
 	
-	public RepayVO() {}	//constructor
-	public RepayVO(String repay_num, String invest_history, String loan_history, String user_num, String busi_num) {
-		this.repay_num = repay_num;
-		this.invest_history = invest_history;
-		this.loan_history = loan_history;
-		
-		this.user_num = user_num;
-		this.busi_num = busi_num;
-	}//constructor
 	
 	public String getRepay_num() {
 		return repay_num;
