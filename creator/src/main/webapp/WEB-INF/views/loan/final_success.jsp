@@ -238,6 +238,9 @@
     width: 100%;
     padding-right: 200px;
 }
+.step {
+    position: relative;
+}
 </style>
 </head>
 <body>
@@ -273,9 +276,17 @@
                   <h4>펀딩을 시작합니다</h4>
                   <hr>
                 </div>
-                <div class="fa-hover col-md-3 col-sm-4" style="padding-left: 0px;padding-right: 175px;height: 30px;"><a href="font_awesome.html#phone" style="padding-left: 0px; padding-right: 10px;"><i class="fa fa-phone"></i>전화:02-1234-5678</a></div>
-                <div class="fa-hover col-md-3 col-sm-4" style="padding-right: 70px;padding-left: 0px;height: 50px;"><a href="font_awesome.html#"><i class="fa fa-envelope"></i>대출/투자 문의 : contact@creator.co.kr</a></div>
-                <button class="loan_int_btn mr-green" id="loanReqBtn2" style="width:200px; height: 36px;margin-top: 150px;">
+                <br><br>
+                <div class="step step-2">
+							<!-- 
+							<img src="/images/loan/img_loan_procedure_add_info.png">
+							-->
+							<img src="/creator/resources/img/develop.png" style="width: 200px;height: 200px;">
+				</div>
+				<br><br>
+                <div class="fa-hover col-md-3 col-sm-4" style="padding-left: 0px;padding-right: 175px;height: 30px;margin-top: 50px;"><a href="font_awesome.html#phone" style="padding-left: 0px; padding-right: 10px;"><i class="fa fa-phone"></i>전화:02-1234-5678</a></div>
+                <div class="fa-hover col-md-3 col-sm-4" style="padding-right: 70px;padding-left: 0px;height: 50px;margin-top: 20px;"><a href="font_awesome.html#"><i class="fa fa-envelope"></i>대출/투자 문의 : contact@creator.co.kr</a></div>
+                <button class="loan_int_btn mr-green" id="loanReqBtn2" style="width:200px; height: 36px;margin-top: 100px;">
 								돌아가기<span class="mr-cap"></span>
 								<span class="mr-angle">
 									<div>

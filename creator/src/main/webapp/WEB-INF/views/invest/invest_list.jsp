@@ -33,23 +33,6 @@
 	  Author: TemplateMag.com
 	  License: https://templatemag.com/license/
 	======================================================= -->
-	<script type="text/javascript">
-		$(document).ready(function() {
-			$("#state_u").click(function() {
-				alert("u");
-				location.href="${pageContext.request.contextPath}/invest_detail?project_num=${proVO.project_num}&user_num=${memVO.user_num}";
-			});
-			
-			$("#state_b").click(function() {
-				alert("b");
-				location.href="${pageContext.request.contextPath}/invest_detail?project_num=${proVO.project_num}&busi_num=${memVO.busi_num}";
-			});
-			
-			$("#state_n").click(function() {
-				location.href="${pageContext.request.contextPath}/login";
-			});
-		});
-	</script>
 </head>
 
 <body>
@@ -114,13 +97,13 @@
 													<c:when test="${vo.ach_state == '투자하기'}">
 														<c:choose>
 															<c:when test="${memVO.user_num != null}">
-																<button id="state_u">${vo.ach_state}</button>
+																<a href="${pageContext.request.contextPath}/invest?user_num=${memVO.user_num}&project_num=${vo.project_num}">${vo.ach_state}u</a>
 															</c:when>
 															<c:when test="${memVO.busi_num != null}">
-																<button id="state_b">${vo.ach_state}</button>
+																<a href="${pageContext.request.contextPath}/invest?busi_num=${memVO.busi_num}&project_num=${vo.project_num}">${vo.ach_state}u</a>
 															</c:when>
 															<c:otherwise>
-																<button id="state_n">${vo.ach_state}</button>
+																<a href="${pageContext.request.contextPath}/login">${vo.ach_state}</a>
 															</c:otherwise>
 														</c:choose>
 													</c:when>
@@ -134,12 +117,11 @@
 							</table>
 						</div>
 						<!-- 투자리스트 end -->
-						
 					</div>
 					<!-- page end-->
 				</div>
 			</div>
-				<!-- /row -->
+			<!-- /row -->
 		</section>
 		<!-- /wrapper -->
 	</section>

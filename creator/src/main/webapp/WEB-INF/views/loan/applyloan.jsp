@@ -10,7 +10,7 @@
 	<meta name="author" content="Dashboard">
 	<meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
 	<title>Dashio - Bootstrap Admin Template</title>
-	<script src="../resources/jquery/jquery-3.4.1.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/jquery/jquery-3.4.1.js"></script>
 	<!-- Favicons -->
 	<link href="${pageContext.request.contextPath}/resources/bootstrap/img/favicon.png" rel="icon">
 	<link href="${pageContext.request.contextPath}/resources/bootstrap/img/apple-touch-icon.png" rel="apple-touch-icon">
@@ -32,6 +32,97 @@
 	  Author: TemplateMag.com
 	  License: https://templatemag.com/license/
 	======================================================= -->
+<script type="text/javascript">
+function setClock() {
+	var min = 2;
+	var sec = 59;
+	var now =  min + " : "	+ sec;
+	clock.innerHTML = "<h6>"+now+"</h6>";
+	sec = sec - 1;
+	setTimeout('setClock()', 1000);
+}
+$(document).ready(function(){
+	var chkemail = '';
+	
+	$("#manager_email").blur(function(){
+		var emailStd = /([a-z0-9]{1,20}\@)([a-z]{1,20}\.)([a-z]{1,10})/gi;
+		
+		if($.trim($("#manager_email").val()) != $(this).val().match(emailStd)){
+			alert("올바르지 않은 이메일 입니다.");
+			return;
+		}
+		$.post(
+				"./busifindChk",
+				{
+					manager_email:$("#manager_email").val()
+				},
+				function(data,status){
+					if(data == 1){
+						alert("이메일이 확인 되었습니다. 인증번호 받기 버튼을 눌러주세요.");
+						chkemail = $("#manager_email").val();
+					}else{
+						alert("등록된 이메일이 없습니다.");
+					}
+				}//function
+		);//post
+	});//blur
+});//ready
+
+$(document).ready(function(){
+	$("#btn_certi").click(function(){
+		if($.trim($("#manager_email").val()) == ""){
+			alert("등록된 이메일이 없습니다.");
+// 			$("#manager_email").focus();
+			return;
+		}
+		$.post(
+				"./CerEmail"
+				,{
+					manager_email:$("#manager_email").val()
+				}
+				,function(data,status){
+					if(status == "success"){
+						if(data > 0){
+							alert("해당 이메일로 인증번호를 발송했습니다.");
+							$("#cer_number").css("display","block");
+							setClock();
+						} else if(data == 0){
+							alert("존재하지 않는 이메일 입니다.");
+						} else {
+							alert("잠시 후, 다시 시도해 주세요.");
+						}
+					} else {
+						alert("시스템 관리자에게 문의 바랍니다.");
+					}
+				}
+		);//post
+	});//click
+});//ready
+$(document).ready(function() {
+	$("#btn_certi_complete").click(function() {
+		$.post(
+				"./CheckCerNumber"
+				,{
+					cer_number:$("#cer_number").val()
+				}
+				,function(data,status){
+					if(status == "success"){
+						if(data > 0){
+							alert("인증이 완료 되었습니다.");
+							tempFunction();
+						} else if(data == 0){
+							alert("인증번호가 다릅니다.");
+						} else {
+							alert("잠시 후, 다시 시도해 주세요.");
+						}
+					} else {
+						alert("시스템 관리자에게 문의 바랍니다.");
+					}
+				}
+		);//post
+	});
+});
+</script>
 </head>
 <style >
 #content .step {
@@ -338,7 +429,7 @@
 									<dd>
 										
 											<div class="form-group">
-												<select class="form-control loanType-select" id="loanTypeSelect">
+												<select class="form-control loanType-select" id="loanTypeSelect" name="loan_type">
 													<option value="">대출구분을 선택하세요</option>
 													<!-- 
 													
@@ -385,7 +476,7 @@
 													
 												</select>
 												 -->
-												<select class="form-control repayTypeCd-select" id="repay_method", name="repay_method">
+												<select class="form-control repayTypeCd-select" id="repay_method" name="repay_method">
 													<option value="1">원리금균등</option>
 													<option value="3">만기일시</option>
 												</select>
@@ -447,13 +538,107 @@
 							</div>
 							<div class="bottom">
 								<input type="button" class="btn btn-purple-transparent btn-block" id="doNextStepBtn"
-										value="본인 인증 및 대출 가능여부 확인" />
+										value="본인 인증 및 대출 가능여부 확인" data-toggle="modal"/>
 <!-- 									<button type="submit" class="btn btn-purple-transparent btn-block" id="doNextStepBtn">본인 인증 및 대출 가능여부 확인</button> -->
 									<p>※ 대출 신청은 신용등급에 영향을 끼치지 않습니다.</p>
 									<div class="page" style="text-align: right;">1/4</div>
 							</div>
 								</form>
 							</div>
+						<!-- Email 인증시작 -->
+						<div class="modal fade" id="btn_cert1"  name="cert1" role="dialog" aria-labelledby="vtAcntModalLabel" aria-hidden="true">
+							<div class="modal-dialog">
+								<div class="modal-content">
+									<div class="modal-header">
+										<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+											<span aria-hidden="true">×</span>
+										</button>
+										<div class="modal-title" id="vtAcntModalLabel">
+											<div style="">
+												예치금 계좌 발급을 위한 인증을 진행하여 주십시오
+											</div>
+										</div>
+									</div>
+									<div class="modal-body">
+										<div class="row">
+											<div class="col-xs-12 col-sm-12 col-md-12">
+												<div class="modal-body-title">
+													Email 인증
+												</div>
+											</div>
+										</div>
+										<div class="row">
+											<div class="form-group col-xs-5 col-sm-5 col-md-3">
+												<label for="cusNm" class="control-label">이 름</label>
+												<input class="form-control" id="manager_name" type="text" value="${memVO.manager_name}" readonly="">
+											</div>
+											<div class="form-group col-xs-12 col-sm-12 col-md-5">
+												<label for="cusAccount" class="control-label" >Email_주소</label>
+												<input class="form-control" id="manager_email" type="text" value="${memVO.manager_email}" readonly="">
+											</div>
+											<div class="form-group col-xs-12 col-sm-12 col-md-4">
+												<br style="line-height:24px";">
+												<button type="button" class="btn btn-purple-transparent" id="btn_certi" name="numre">인증번호 받기</button>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-xs-12 col-sm-12 col-md-12">
+												<span class="modal-body-light">&nbsp;● 인증번호를 받으실 수 있는 Email주소를 입력하시기 바랍니다.</span>
+											</div>
+											<div class="col-xs-12 col-sm-12 col-md-12">
+												<span class="modal-body-light">&nbsp;● 정상처리가 불가할 경우 1:1문의사항을 이용하시기 바랍니다.</span>
+											</div>
+										</div>
+										<div id="pInfDiv" style="">
+											<hr>
+											<div class="row">
+												<div class="col-xs-12 col-sm-12 col-md-12">
+													<div class="modal-body-title">
+														인증번호
+													</div>
+												</div>
+											</div>
+											<div class="row">
+ 
+												<div class="form-group col-xs-6 col-sm-6 col-md-6">
+													<label for="ssnNo" class="control-label">인증번호를 입력하세요.</label>
+												</div>
+											</div>		
+											
+											<div class="row">
+												<div class="form-group col-md-4">
+													<input class="form-control" id="cer_number" type="text" maxlength="13"  placeholder="" style="display:none;">
+												<div id="clock">
+												</div>
+												</div>
+											</div>													
+												
+											
+											<div class="row">
+												<div class="col-xs-12 col-sm-12 col-md-12">
+												<span class="modal-body-light">&nbsp;● 정상처리가 불가할 경우 1:1문의사항을 이용하시기 바랍니다.</span>
+											</div>
+												<div class="clearfix"></div>
+												<div class="col-xs-12 col-sm-12 col-md-12">
+													<span class="modal-body-light font-purple">&nbsp;● 주민등록번호 없이도 사이트 이용은 가능하며 최초 투자시 한 번만 등록하시면 됩니다.</span>
+												</div>
+												<div class="clearfix"></div>
+												<div class="col-xs-12 col-sm-12 col-md-12">
+													<span class="modal-body-strong">※ 미성년자는 가상계좌 발급시 추가 인증이 필요합니다.</span>
+													<span class="modal-body-light">&nbsp;<a href="${pageContext.request.contextPath}/support" target="_blank">공지사항</a>을 참고하세요.</span>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="modal-footer">
+										<button type="button" id="btn_certi_complete" class="btn btn-purple-transparent" >확 인</button>
+									</div>
+								</div>
+								<!-- /.modal-content -->
+							</div>
+							<!-- /.modal-dialog -->
+						</div>
+						<!-- Email 인증끝. -->
 							<form name="form_chk" method="post" style="display: none;">
 								<!-- 필수 데이타로, 누락하시면 안됩니다. -->
 								<input type="hidden" name="m" value="safekeyService">
@@ -629,42 +814,54 @@
 			var loanAmt = $("#loan_period").val();
 			var loanGb = $("#loan_class").val();
 			var loanType = $("#loanTypeSelect").val();
-			var repayTypeCd = $("#repayTypeCdSelect").val();
+			var repayTypeCd = $("#repay_method").val();
+			$("#btn_cert1").modal(); return;
 			if(sex == undefined) {
 				alert("성별을 선택하세요.");
 				$(".sexRadio-label").focus();
+				return;
 			} else if(loanPeriodSelect == "") {
 				alert("대출기간을 선택하세요.");
 				$("#loanPeriodSelect").focus();
+				return;
 			} else if(loanAmt == "") {
 				alert("대출금액을 입력하세요.");
 				$("#loan_period").focus();
+				return;
 			} else if(loanGb == "") {
 				alert("대출구분을 선택하세요.");
 				$("#loan_class").focus();
+				return;
 			} else if(loanType == "") {
 				alert("대출유형을 선택하세요.");
 				$("#loanTypeSelect").focus();
+				return;
 			} else if(repayTypeCd == "") {
 				alert("상환방식을 선택하세요.");
-				$("#repayTypeCdSelect").focus();
+				$("#repay_method").focus();
+				return;
 			} else if(agree1Checkbox == false) {
 				alert("서비스 이용약관에 동의하세요.");
 				$("#agree1Checkbox").focus();
+				return;
 			} else if(agree2Checkbox == false) {
 				alert("개인(신용)정보제공에 동의하세요.");
 				$("#agree2Checkbox").focus();
+				return;
 			} else if(agree3Checkbox == false) {
 				alert("개인(신용)정보조회에 동의하세요.");
 				$("#agree3Checkbox").focus();
+				return;
 			} else if(agree4Checkbox == false) {
 				alert("개인(신용)정보수집,이용에 동의하세요.");
 				$("#agree4Checkbox").focus();
+				return;
 			} else if(agree5Checkbox == false) {
 				alert("고유식별정보 처리방침에 동의하세요.");
 				$("#agree5Checkbox").focus();
+				return;
 			} else {
-				window.open('${pageContext.request.contextPath}/popup','','menubar=no,width=450,height=300');
+				$("#btn_cert1").modal();
 			}
 		});
 	});

@@ -203,8 +203,7 @@ public class Busi_userVO {
 	public void setBusi_phone_key(String busi_phone_key) {
 		this.busi_phone_key = busi_phone_key;
 	}//busi_phone_key
-}//class
-
+}
 
 
 

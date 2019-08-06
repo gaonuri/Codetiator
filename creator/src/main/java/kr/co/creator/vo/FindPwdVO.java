@@ -2,14 +2,29 @@ package kr.co.creator.vo;
 
 // 비밀번호찾기
 public class FindPwdVO {
-	private String user_num;		// 유저번호
-	private String email;			// 이메일
+	private String user_num;		// 유저번호	
 	private String busi_num;		// 법인 유저번호
-	private String manager_email;	// 담당자 이메일
-	private String user_password;	// 유저비밀번호
 	private String user_name;		// 유저이름
+	private String user_password;	// 유저비밀번호
+	private String email;			// 이메일
+	private String manager_name;	// 관리자이름
+	private String manager_email;	// 담당자 이메일
 	private String newPassword;		// 바꿀비밀번호
+
 	
+	public String getUser_num() {
+		return user_num;
+	}
+	public void setUser_num(String user_num) {
+		this.user_num = user_num;
+	}//user_num
+	
+	public String getBusi_num() {
+		return busi_num;
+	}
+	public void setBusi_num(String busi_num) {
+		this.busi_num = busi_num;
+	}//busi_num
 	
 	public String getUser_name() {
 		return user_name;
@@ -25,26 +40,19 @@ public class FindPwdVO {
 		this.user_password = user_password;
 	}//user_password
 	
-	public String getUser_num() {
-		return user_num;
-	}
-	public void setUser_num(String user_num) {
-		this.user_num = user_num;
-	}//user_num
-	
 	public String getEmail() {
 		return email;
 	}
 	public void setEmail(String email) {
 		this.email = email;
-	}//emai
+	}//email
 	
-	public String getBusi_num() {
-		return busi_num;
+	public String getManager_name() {
+		return manager_name;
 	}
-	public void setBusi_num(String busi_num) {
-		this.busi_num = busi_num;
-	}//busi_num
+	public void setManager_name(String manager_name) {
+		this.manager_name = manager_name;
+	}//manager_name
 	
 	public String getManager_email() {
 		return manager_email;
