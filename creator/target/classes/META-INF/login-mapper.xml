@@ -35,6 +35,12 @@
 		where email = #{email}
 	</update>
 	
+	<update id="insertUserNumber" parameterType="kr.co.creator.vo.FindPwdVO">
+		update user_list
+		set cer_number = #{newPassword} 
+		where email = #{email}
+	</update>
+	
 	<select id="selectBusiName" parameterType="java.lang.String" resultType="java.lang.String">
 		select manager_name
 		from busi_user_list
@@ -68,6 +74,12 @@
 		set cer_number = #{newPassword} 
 		where manager_email = #{manager_email}
 	</update>
+	
+	<select id="CheckCerUserNumber" resultType="int">
+		select count(*)
+		from user_list
+		where cer_number = #{cer_number}
+	</select>
 	
 	<select id="CheckCerNumber" resultType="int">
 		select count(*)

@@ -77,4 +77,16 @@ public class LoginService {
 		return list;
 	}//historyOut
 
+	public int insertUserNumber(FindPwdVO vo) {
+		int cnt = 0;
+		cnt = loginDAO.insertUserNumber(vo);
+		return cnt;
+	}//insertUserNumber
+
+	public int CheckCerUserNumber(FindPwdVO vo) {
+		int cnt = 0;
+		cnt = loginDAO.CheckCerUserNumber(vo);
+		return cnt;
+	}//CheckCerUserNumber
+
 }//class

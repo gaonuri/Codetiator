@@ -77,4 +77,16 @@ public class LoginDAO {
 		return list;
 	}//historyOut
 
+	public int insertUserNumber(FindPwdVO vo) {
+		int cnt = 0;
+		cnt = sqlSession.insert("LoginMapper.insertUserNumber", vo);
+		return cnt;
+	}
+
+	public int CheckCerUserNumber(FindPwdVO vo) {
+		int cnt = 0;
+		cnt = sqlSession.selectOne("LoginMapper.CheckCerUserNumber", vo);
+		return cnt;
+	}//CheckCerNumber
+
 }//class

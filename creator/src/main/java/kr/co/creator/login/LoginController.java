@@ -181,6 +181,18 @@ public class LoginController {
 		out.close();
 	}//CerEmail
 	
+	@RequestMapping(value = "/CheckCerUserNumber", method = RequestMethod.POST)
+	public void CheckCerUserNumber(PrintWriter out, FindPwdVO vo, EmailForm form, FindUtil findUtil) throws Exception {
+		logger.info("=== CheckCerUserNumber ===");
+		int cnt = 0;
+		cnt = loginService.CheckCerUserNumber(vo);
+		if(cnt > 0) {
+			out.print(cnt);
+			out.flush();
+			out.close();
+		}
+	}//CheckCerUserNumber
+	
 	@RequestMapping(value = "/CheckCerNumber", method = RequestMethod.POST)
 	public void CheckCerNumber(PrintWriter out, Busi_userVO vo, EmailForm form, FindUtil findUtil) throws Exception {
 		logger.info("=== CheckCerNumber ===");

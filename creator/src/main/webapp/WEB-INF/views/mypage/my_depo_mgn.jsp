@@ -81,20 +81,43 @@
 			}
 			calculating();
 		});		
-		
+	});//ready
+
 		function depositLimit(limit) {
 			if(deposit > limit) {
 				alert("예치금 잔액에 초과한 금액입니다.");
 			}
 		}//depositLimit
 		
+		function tempFunction() {
+			$("#btn_cert2");
+			document.frmLoan.submit();
+		}tempFunction
+		
+		var id;
+		var min = 02;
+		var sec = 59;
+		var minZero = "";
+		var secZero = "";
 		function setClock() {
-			var min = 2;
-			var sec = 59;
-			var now =  min + " : "	+ sec;
+			id = setInterval(worker,1000);
+		}
+		function worker() {
+			if(min < 10){minZero = "0";}else{minZero = "";}
+			if(sec < 10){secZero = "0";}else{secZero = "";}
+			var now = minZero + min + " : " + secZero + sec;
 			clock.innerHTML = "<h6>"+now+"</h6>";
-			sec = sec - 1;
-			setTimeout('setClock()', 1000);
+			sec = parseInt(sec) - 1;
+			if(sec == -1) {
+				sec = 59;
+				min = parseInt(min) - 1;
+				if(min == -1){
+					clearInterval(id);
+					alert("인증시간이 만료 되었습니다.");
+					location.reload();
+					//$("#btn_cert1").modal("hide");
+				}
+			}
 		}
 		$(document).ready(function(){
 			var chkemail = '';
@@ -108,8 +131,10 @@
 				}
 				$.post(
 						"./busifindChk",
+						"./findPwdChk",
 						{
-							cusEmail:$("#cusEmail").val()
+							Email:$("#cusEmail").val(),
+							manager_email:$("#cusEmail").val()
 						},
 						function(data,status){
 							if(data == 1){
@@ -131,9 +156,10 @@
 					return;
 				}
 				$.post(
-						"./CerEmail"
+						"./CertEmail"
 						,{
-							cusEmail:$("#cusEmail").val()
+							Email:$("#cusEmail").val(),
+							manager_email:$("#cusEmail").val()
 						}
 						,function(data,status){
 							if(status == "success"){
@@ -156,8 +182,8 @@
 		$(document).ready(function() {
 			$("#btn_certi_complete").click(function() {
 				$.post(
-						"./CheckCerNumber"
-						,{
+						"./CheckCerNumber",
+						{
 							cer_number:$("#cer_number").val()
 						}
 						,function(data,status){
@@ -176,7 +202,7 @@
 						}
 				);//post
 			});
-		});
+		});//ready
 	</script>
 </head>
      
@@ -597,24 +623,31 @@
 
 				<!-- Email 인증시작 -->
 					<script type="text/javascript">
-						var id;
-						var min = 00;
-						var sec = 10;
-						function setClock() {
-							id = setInterval(worker,1000);
-						}
-						function worker() {
-							var now = min + " : " + sec;
-							clock.innerHTML = "<h1>"+now+"</h1>";
-							sec = parseInt(sec) - 1;
-							if(sec == -1) {
-								sec = 59;
-								min = parseInt(min) - 1;
-								if(min == -1){
-									clearInterval(id);
-								}
+					var id;
+					var min = 02;
+					var sec = 59;
+					var minZero = "";
+					var secZero = "";
+					function setClock() {
+						id = setInterval(worker,1000);
+					}
+					function worker() {
+						if(min < 10){minZero = "0";}else{minZero = "";}
+						if(sec < 10){secZero = "0";}else{secZero = "";}
+						var now = minZero + min + " : " + secZero + sec;
+						clock.innerHTML = "<h6>"+now+"</h6>";
+						sec = parseInt(sec) - 1;
+						if(sec == -1) {
+							sec = 59;
+							min = parseInt(min) - 1;
+							if(min == -1){
+								clearInterval(id);
+								alert("인증시간이 만료 되었습니다.");
+								location.reload();
+								//$("#btn_cert1").modal("hide");
 							}
 						}
+					}
 					</script>
 						<div class="modal fade" id="btn_cert1"  name="cert1" role="dialog" aria-labelledby="vtAcntModalLabel" aria-hidden="true">
 							<div class="modal-dialog">
@@ -640,11 +673,11 @@
 										<div class="row">
 											<div class="form-group col-xs-5 col-sm-5 col-md-3">
 												<label for="cusNm" class="control-label">이 름</label>
-												<input class="form-control" id="cusName" type="text" value="${user.user_name}${Busi_user.manager_name}" readonly="">
+												<input class="form-control" id="cusName" type="text" value="${user.user_name}${busi.manager_name}" readonly="">
 											</div>
 											<div class="form-group col-xs-12 col-sm-12 col-md-5">
 												<label for="cusAccount" class="control-label" >Email_주소</label>
-												<input class="form-control" id="cusEmail" type="text" value="${user.email}${Busi_user.manager_email}" readonly="">
+												<input class="form-control" id="cusEmail" type="text" value="${user.email}${busi.manager_email}" readonly="">
 											</div>
 											<div class="form-group col-xs-12 col-sm-12 col-md-4">
 												<br style="line-height:24px";">
@@ -678,8 +711,8 @@
 											<div class="row">
 												<div class="form-group col-md-4">
 													<input class="form-control" id="cer_number" type="text" maxlength="13"  placeholder="" style="display:none;">
-												<div id="clock">
 												</div>
+												<div id="clock">
 												</div>
 											</div>		
 											
@@ -700,7 +733,7 @@
 										</div>
 									</div>
 									<div class="modal-footer">
-										<button type="button" class="btn btn-purple-transparent" id="btn_certi_complete">확 인</button>
+										<input type="submit" class="btn btn-purple-transparent" id="btn_certi_complete" value="확 인" />
 									</div>
 								</div>
 								<!-- /.modal-content -->
@@ -1045,8 +1078,6 @@
 	
 	</section>
 	<!-- js placed at the end of the document so the pages load faster -->
-	<script src="${pageContext.request.contextPath}/resources/bootstrap/lib/jquery/jquery.min.js"></script>
-	
 	<script src="${pageContext.request.contextPath}/resources/bootstrap/lib/bootstrap/js/bootstrap.min.js"></script>
 	<script class="include" type="text/javascript" src="${pageContext.request.contextPath}/resources/bootstrap/lib/jquery.dcjqaccordion.2.7.js"></script>
 	<script src="${pageContext.request.contextPath}/resources/bootstrap/lib/jquery.scrollTo.min.js"></script>
