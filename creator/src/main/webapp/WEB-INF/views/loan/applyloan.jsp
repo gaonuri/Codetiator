@@ -626,7 +626,7 @@ $(document).ready(function() {
 												<div class="form-group col-md-4">
 													<input class="form-control" id="cer_number" type="text" maxlength="13"  placeholder="" style="display:none;">
 												</div>
-												<div id="clock">
+												<div id="clock"><!--여기서 수정 -->
 												</div>
 											</div>													
 												
