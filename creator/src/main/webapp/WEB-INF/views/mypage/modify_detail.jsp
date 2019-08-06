@@ -182,7 +182,7 @@ $(document).ready(function() {
 					<tr>
 					<td class="condition-title">이름</td>
 						<td class="condition-content">
-							<input type="text" class="form-control" id="cusNm" maxlength="50" readonly="readonly" value="${mypagemem.user_name}${mypagedetail.manager_name}">
+							<input type="text" class="form-control" id="cusNm" maxlength="50" readonly="readonly" value="${mypagemem.user_name}${mypagemem.manager_name}">
 						</td>
 						<td>
 							<button type="button" class="btn btn-purple-transparent" id="userDataUpdate" name="userDataUpdate">변경</button>
@@ -191,7 +191,7 @@ $(document).ready(function() {
 					<tr>
 					<td class="condition-title">휴대전화번호</td>
 						<td class="condition-content">
-							<input type="text" class="form-control" id="mpNo" maxlength="50" readonly="readonly" value="${mypagemem.phone}${mypagedetail.manager_phone}">
+							<input type="text" class="form-control" id="mpNo" maxlength="50" readonly="readonly" value="${mypagemem.phone}${mypagemem.manager_phone}">
 							<input type="hidden" id="ci">
 						</td>
 						<td>
@@ -216,7 +216,7 @@ $(document).ready(function() {
 					<tr>
 					<td class="condition-title">이메일</td>
 						<td class="condition-content">
-							<input type="text" class="form-control" id="email" maxlength="50" readonly="readonly" value="${mypagemem.email}${mypagedetail.manager_email}">
+							<input type="text" class="form-control" id="email" maxlength="50" readonly="readonly" value="${mypagemem.email}${mypagemem.manager_email}">
 						</td>
 						<td></td>
 					</tr>
