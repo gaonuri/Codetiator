@@ -42,6 +42,12 @@ $(document).ready(function() {
 });//ready
 
 $(document).ready(function() {
+	$("#updateCusAccountBtn").click(function(){
+		location.href="${pageContext.request.contextPath}/my_depo_mgn";
+	});//click
+});//ready
+
+$(document).ready(function() {
 	$("#updatePassBtn").click(function(){
 		var numChk = $("#numChk").val();
 		var numChk1 = $("#numChk1").val();
@@ -178,12 +184,6 @@ $(document).ready(function() {
 						<td class="condition-content">
 							<input type="text" class="form-control" id="cusNm" maxlength="50" readonly="readonly" value="${mypagemem.user_name}${mypagedetail.manager_name}">
 						</td>
-					</tr>
-					<tr>
-					<td class="condition-title">이메일</td>
-						<td class="condition-content">
-							<input type="text" class="form-control" id="email" maxlength="50" value="${mypagemem.email}${mypagedetail.manager_email}">
-						</td>
 						<td>
 							<button type="button" class="btn btn-purple-transparent" id="userDataUpdate" name="userDataUpdate">변경</button>
 						</td>
@@ -191,11 +191,10 @@ $(document).ready(function() {
 					<tr>
 					<td class="condition-title">휴대전화번호</td>
 						<td class="condition-content">
-							<input type="text" class="form-control" id="mpNo" maxlength="50" value="${mypagemem.phone}${mypagedetail.manager_phone}">
+							<input type="text" class="form-control" id="mpNo" maxlength="50" readonly="readonly" value="${mypagemem.phone}${mypagedetail.manager_phone}">
 							<input type="hidden" id="ci">
 						</td>
 						<td>
-							<button type="button" class="btn btn-purple-transparent" id="phoneDataUpdate" name="phoneDataUpdate">변경</button>
 						</td>
 						<td>
 							<!-- 본인인증 서비스 팝업을 호출하기 위해서는 다음과 같은 form이 필요합니다. -->
@@ -224,13 +223,11 @@ $(document).ready(function() {
 					
 					<tr>
 					<td colspan="2" class="condition-content">
-						<p>
 						<span class="font-red"><strong>※ 왜 주민등록번호가 필요한가요?</strong></span><br>
 						<font size="2">
 							주민등록번호는 현행 세법상 원천징수 납부에 사용됩니다. 입력하지 않아도 
 							대출상품 투자를 제외한 사이트 이용은 가능하며 최초 투자시 한 번만 등록하시면 됩니다.
 						</font>
-						</p>
 					</td>
 					<td></td>
 					</tr>
@@ -318,7 +315,7 @@ $(document).ready(function() {
 						</tbody>
 					</table>
 					<div class="autoConditionSet" >
-						<button type="button" class="btn btn-purple-transparent btn-block" onclick="fn_updateCusAccount()" id="updateCusAccountBtn">예치금 계좌 발급</button>
+						<button type="button" class="btn btn-purple-transparent btn-block" id="updateCusAccountBtn">예치금 계좌 발급</button>
 					</div><br>
                 </div>
               </div>
@@ -367,9 +364,9 @@ $(document).ready(function() {
 						</tbody>
 					</table>
 					<div class="autoConditionSet" >
-						<button type="button" class="btn btn-purple-transparent btn-block" onclick="fn_updateCusAccount()" id="updatePassBtn">새 비밀번호 저장</button>
+						<button type="button" class="btn btn-purple-transparent btn-block" id="updatePassBtn">새 비밀번호 저장</button>
 					</div>
-					<br><br>                
+					<font size="1"><br></font>       
                 
                 </div>
               </div>
@@ -411,11 +408,11 @@ $(document).ready(function() {
 						</tbody>
 					</table>
 					<form name="removeuser">
-					<div class="autoConditionSet" >
-						<button type="button" class="btn btn-purple-transparent btn-block" onclick="removeCheck()" id="deleteUserBtn">회원 탈퇴</button>
-					</div>
+						<div class="autoConditionSet" >
+							<button type="button" class="btn btn-purple-transparent btn-block" onclick="removeCheck()" id="deleteUserBtn">회원 탈퇴</button>
+						</div>
 					</form>
-					<br><br>                  
+					<font size="2"></font>                
                 
                 </div>
               </div>
