@@ -88,6 +88,14 @@
 			}
 		}//depositLimit
 		
+		function setClock() {
+			var min = 2;
+			var sec = 59;
+			var now =  min + " : "	+ sec;
+			clock.innerHTML = "<h6>"+now+"</h6>";
+			sec = sec - 1;
+			setTimeout('setClock()', 1000);
+		}
 		$(document).ready(function(){
 			var chkemail = '';
 			
@@ -105,7 +113,7 @@
 						},
 						function(data,status){
 							if(data == 1){
-								alert("이메일이 확인 되었습니다.");
+								alert("이메일이 확인 되었습니다. 인증번호 받기 버튼을 눌러주세요.");
 								chkemail = $("#cusEmail").val();
 							}else{
 								alert("등록된 이메일이 없습니다.");
@@ -123,7 +131,7 @@
 					return;
 				}
 				$.post(
-						"./CertEmail"
+						"./CerEmail"
 						,{
 							cusEmail:$("#cusEmail").val()
 						}
@@ -131,7 +139,8 @@
 							if(status == "success"){
 								if(data > 0){
 									alert("해당 이메일로 인증번호를 발송했습니다.");
-									$("#ssnNo").css("display","block");
+									$("#cer_number").css("display","block");
+									setClock();
 								} else if(data == 0){
 									alert("존재하지 않는 이메일 입니다.");
 								} else {
@@ -155,8 +164,7 @@
 							if(status == "success"){
 								if(data > 0){
 									alert("인증이 완료 되었습니다.");
-									opener.tempFunction();
-									window.self.close();
+									tempFunction();
 								} else if(data == 0){
 									alert("인증번호가 다릅니다.");
 								} else {
@@ -169,21 +177,6 @@
 				);//post
 			});
 		});
-		
-// 		$("#").ready(function() {
-			
-// 		});
-// 		$("#cert_start").click(function() {
-// 			int count
-// 			count = 0;
-// 			if (count=1) {
-// 				location.href="#btm_cert1"
-// 			} else {
-// 				location.href="#btm_cert2"
-// 			}
-// 		});//이메일 인증 Modal
-		
-	});//ready
 	</script>
 </head>
      
@@ -647,11 +640,11 @@
 										<div class="row">
 											<div class="form-group col-xs-5 col-sm-5 col-md-3">
 												<label for="cusNm" class="control-label">이 름</label>
-												<input class="form-control" id="cusName" type="text" value="${user.user_name}" readonly="">
+												<input class="form-control" id="cusName" type="text" value="${user.user_name}${Busi_user.manager_name}" readonly="">
 											</div>
 											<div class="form-group col-xs-12 col-sm-12 col-md-5">
 												<label for="cusAccount" class="control-label" >Email_주소</label>
-												<input class="form-control" id="cusEmail" type="text" value="${user.email}" readonly="">
+												<input class="form-control" id="cusEmail" type="text" value="${user.email}${Busi_user.manager_email}" readonly="">
 											</div>
 											<div class="form-group col-xs-12 col-sm-12 col-md-4">
 												<br style="line-height:24px";">
@@ -684,14 +677,11 @@
 											
 											<div class="row">
 												<div class="form-group col-md-4">
-													<input class="form-control" id="ssnNo" type="text" maxlength="13" placeholder="" style="display:none;">
+													<input class="form-control" id="cer_number" type="text" maxlength="13"  placeholder="" style="display:none;">
+												<div id="clock">
 												</div>
-												<div class="form-group col-md-2">	
-														<button type="button"  id="ssnNo" placeholder="" style="display:none;" class="btn btn-purple-transparent" onclick="fn_insertVtAcnt()">인증하기</button>
-													<input type="hidden" id="ci" value="">
 												</div>
-											</div>													
-												
+											</div>		
 											
 											<div class="row">
 												<div class="col-xs-12 col-sm-12 col-md-12">
@@ -710,7 +700,7 @@
 										</div>
 									</div>
 									<div class="modal-footer">
-										<button type="button" class="btn btn-purple-transparent" onclick="fn_insertVtAcnt()">확 인</button>
+										<button type="button" class="btn btn-purple-transparent" id="btn_certi_complete">확 인</button>
 									</div>
 								</div>
 								<!-- /.modal-content -->
@@ -720,7 +710,7 @@
 						<!-- Email 인증 끝. -->
 						
 						<!-- 예치금 계좌 발급 Modal -->
-						<div class="modal fade" id="btn_cert2"  name="cert2" role="dialog" aria-labelledby="vtAcntModalLabel" aria-hidden="true">
+						<div class="modal fade" id="btn_cert2" name="cert2" role="dialog" aria-labelledby="vtAcntModalLabel" aria-hidden="true">
 							<div class="modal-dialog">
 								<div class="modal-content">
 									<div class="modal-header">
@@ -744,7 +734,7 @@
 										<div class="row">
 											<div class="form-group col-xs-5 col-sm-5 col-md-3">
 												<label for="cusNm" class="control-label">예금주</label>
-												<input class="form-control" id="cusNm" type="text" value="${user.user_name}${user.manager_name}" readonly="">
+												<input class="form-control" id="cusNm" type="text" value="${user.user_name}" readonly="">
 											</div>
 											<div class="form-group col-xs-7 col-sm-7 col-md-4">
 												<label for="cusBankCdSelect" class="control-label">은행명</label>

@@ -608,8 +608,8 @@ $(document).ready(function() {
 											<div class="row">
 												<div class="form-group col-md-4">
 													<input class="form-control" id="cer_number" type="text" maxlength="13"  placeholder="" style="display:none;">
-												<div id="clock">
 												</div>
+												<div id="clock">
 												</div>
 											</div>													
 												

@@ -104,19 +104,36 @@ public class MypageController {
 	public void CertEmail(PrintWriter out, FindPwdVO vo, EmailForm form, FindUtil findUtil) throws Exception {
 		logger.info("=== CertEmail ===");
 		int cnt = 0;
-		cnt = loginService.busifindChk(vo);
-		if(cnt > 0) {
+		if(cnt != 0) {
+			cnt = loginService.userfindChk(vo);
 			String newPassword, user_name;
 			newPassword = findUtil.getRamdomPassword(8);
-			user_name = sqlSession.selectOne("LoginMapper.selectBusiName", vo);
+			user_name = sqlSession.selectOne("LoginMapper.selectUserName", vo);
 			vo.setNewPassword(newPassword);
-			vo.setManager_name(user_name);
+			vo.setUser_name(user_name);
+			form.setContent("인증번호는 " + newPassword + " 입니다");
+			form.setSubject("안녕하세요 " + vo.getUser_name() + "님 인증번호를 확인해 주세요");
+			form.setReceiver(vo.getUser_email());
+			emailSender.sendEmail(form);
+		} else {
+			cnt = loginService.busifindChk(vo);
+			String newPassword, busi_name;
+			newPassword = findUtil.getRamdomPassword(8);
+			busi_name = sqlSession.selectOne("LoginMapper.selectBusiName", vo);
+			vo.setNewPassword(newPassword);
+			vo.setManager_name(busi_name);
 			form.setContent("인증번호는 " + newPassword + " 입니다");
 			form.setSubject("안녕하세요 " + vo.getManager_name() + "님 인증번호를 확인해 주세요");
 			form.setReceiver(vo.getManager_email());
 			emailSender.sendEmail(form);
 		}
-		if(cnt > 0) {
+		if(cnt != 0) {
+			System.out.println(vo.getUser_email());
+			cnt = loginService.insertNumber(vo);
+			out.print(cnt);
+			out.flush();
+			out.close();
+		} else {
 			System.out.println(vo.getManager_email());
 			cnt = loginService.insertNumber(vo);
 			out.print(cnt);

@@ -25,7 +25,7 @@
 			, p.rate rate 
 			, i.invest_price 
 			, p.refund_count 
-			, p.refund_deadline
+			, p.refund_due_date
 			, p.refund_end 
 			, p.ach_state 
 			from invest_list i, project_list p
