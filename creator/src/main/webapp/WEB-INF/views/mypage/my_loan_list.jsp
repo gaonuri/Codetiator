@@ -154,7 +154,7 @@
 														<td><a href="invest_detail?detail_num=${vo.project_name}"/>${vo.project_name}</td>
 														<td>${vo.rate}%</td>
 														<td>${vo.refund_method}</td>
-														<td>${vo.refund_deadline}</td>
+														<td>${vo.refund_due_date}</td>
 														<td>${vo.refund_end}</td>
 														<td>${vo.price}</td>
 														<td>${vo.ach_rate}</td>
