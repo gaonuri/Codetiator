@@ -39,6 +39,10 @@
 		from project_list
 	</select>
 	
+	<select id="bankNumChk" parameterType="java.lang.String" resultType="int">
+		select count(*) from account_list where bank_num = #{bank_num}
+	</select>
+	
 	<select id="Account"
 		parameterType="kr.co.creator.vo.MemberVO"
 		resultType="kr.co.creator.vo.AccountVO">

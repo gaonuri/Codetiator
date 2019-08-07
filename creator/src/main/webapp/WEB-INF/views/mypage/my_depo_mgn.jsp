@@ -32,7 +32,9 @@
 	  Author: TemplateMag.com
 	  License: https://templatemag.com/license/
 	======================================================= -->
+
 	<script type="text/javascript">
+/////////////////////////////////////////////////////////////////////////////////////////////금액 버튼 시작
 	$(document).ready(function() {
 		var temp = 0;
 		var add  = 0;
@@ -71,24 +73,73 @@
 				$("#withdrawAmt").val().replace(/[^0-9\.]/g,'')
 			);//한글 입력 방지
 		});//pass.keydown
-		
+/////////////////////////////////////////////////////////////////////////////////////////////금액 버튼 끝
 		$("#withdrawAmt").keyup(function() {
 			deposit = parseInt($("#withdrawAmt").val());
 			//alert("invest : " + invest); alert("limit : " + limit);
 			if(deposit > limit) {
 				alert("동일 차입자에게 투자한도 이상의 투자를 할 수 없습니다.");
 				$("#withdrawAmt").val($("#invest_limit").val());
-			}
-			calculating();
-		});		
-	});//ready
+				}
+				calculating();
+			});		
+		});//ready
 
 		function depositLimit(limit) {
 			if(deposit > limit) {
 				alert("예치금 잔액에 초과한 금액입니다.");
 			}
 		}//depositLimit
+////////////////////////////////////////////////////////////////////////////////////////////////은행별 계좌 유형 시작
+		if($("#cusBankCdSelect").val() == ""){
+			alert("은행을 선택 하세요.");
+			return;
+		}
+		if($("#cusBankCdSelect").val() == "010"){
+			var bankStd = /^[0-9]{8}$/;
+			if($.trim($("#cusBankCdSelect").val()) != $(this).val().match(sanStd)){
+				alert("올바르지 않은 입력입니다.");
+			return;
+			}
+		}
 		
+
+
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////은행별 계좌 유형 끝
+		
+////////////////////////////////////////////////////////////////////////////////////////////////예치금 계좌 발급받기 시작
+		$(document).ready(function(){
+			$("#receaccn").blur(function(){
+				var banknum = /^([0-9]{6}+\-)([0-9]{2}+\-)([0-9]{6})$/;
+				if($.trim($("#receaccn").val()) != $(this).val().match(banknum)){
+					alert("올바르지 않은 계좌입니다.");
+					return;
+				}
+		
+				$.post(
+						"${pageContext.request.contextPath}/bankNumChk",
+						{
+							bank_num:$("#receaccn").val()
+						},
+						function(data,status){
+							if(data == 0){
+								alert("사용 가능한 계좌 입니다.");
+								chkemail = $("#receaccn").val();
+								return;
+							}else{
+								alert("이미 등록된 계좌 입니다.");
+								return;
+							}
+						}//function
+				);//post
+			});//blur
+		})//ready
+/////////////////////////////////////////////////////////////////////////////////////////////예치금 계좌 발급받기 끝
+
+/////////////////////////////////////////////////////////////////////////////////////////////모달 시작
 		function tempFunction() {
 			$("#btn_cert2");
 			document.frmLoan.submit();
@@ -189,8 +240,9 @@
 						,function(data,status){
 							if(status == "success"){
 								if(data > 0){
+									$("#btn_cert1").modal("hide");
+									$("#btn_cert2").modal("show");
 									alert("인증이 완료 되었습니다.");
-									tempFunction();
 								} else if(data == 0){
 									alert("인증번호가 다릅니다.");
 								} else {
@@ -203,7 +255,8 @@
 				);//post
 			});
 		});//ready
-	</script>
+/////////////////////////////////////////////////////////////////////////////////////////////모달 끝
+</script>
 </head>
      
 <body>
@@ -644,7 +697,7 @@
 								clearInterval(id);
 								alert("인증시간이 만료 되었습니다.");
 								location.reload();
-								//$("#btn_cert1").modal("hide");
+								
 							}
 						}
 					}
@@ -767,34 +820,34 @@
 										<div class="row">
 											<div class="form-group col-xs-5 col-sm-5 col-md-3">
 												<label for="cusNm" class="control-label">예금주</label>
-												<input class="form-control" id="cusNm" type="text" value="${user.user_name}" readonly="">
+												<input class="form-control" id="cusNm" type="text" value="${user.user_name}${busi.manager_name}" readonly="">
 											</div>
 											<div class="form-group col-xs-7 col-sm-7 col-md-4">
 												<label for="cusBankCdSelect" class="control-label">은행명</label>
 												<select id="cusBankCdSelect" class="form-control" name="cusBankCd">
 													<option value="">선택하세요</option>
 													
-													<option value="002">산업은행</option>
+													<option id="san" value="002">산업은행</option>
 												
-													<option value="003">기업은행</option>
+													<option id="ki" value="003">기업은행</option>
 												
-													<option value="004">국민은행</option>
+													<option id="kb" value="004">국민은행</option>
 												
-													<option value="007">수협중앙회</option>
+													<option id="su" value="007">수협중앙회</option>
 												
-													<option value="008">수출입은행</option>
+													<option id="chul" value="008">수출입은행</option>
 												
-													<option value="010">농협</option>
+													<option id="nh1" value="010">농협</option>
 												
-													<option value="011">농협중앙회</option>
+													<option id="nh2" value="011">농협중앙회</option>
 												
-													<option value="012">지역농·축협</option>
+													<option id="su3" value="012">지역농·축협</option>
 												
-													<option value="020">우리은행</option>
+													<option id="woo" value="020">우리은행</option>
 												
-													<option value="023">SC제일은행</option>
+													<option id="sc" value="023">SC제일은행</option>
 												
-													<option value="027">한국씨티은행</option>
+													<option id="ct" value="027">한국씨티은행</option>
 												
 													<option value="031">대구은행</option>
 												
@@ -929,7 +982,7 @@
 											</div>
 											<div class="form-group col-xs-12 col-sm-12 col-md-5">
 												<label for="cusAccount" class="control-label">계좌번호</label>
-												<input type="text" class="form-control" id="cusAccount" maxlength="14">
+												<input type="text" class="form-control onlysan" id="cusAccount" maxlength="14">
 											</div>
 										</div>
 										<div class="row">
@@ -956,8 +1009,8 @@
 											</div>
 											<div class="row">
 												<div class="form-group col-xs-6 col-sm-6 col-md-6">
-													<label for="mpNo" class="control-label">휴대전화번호</label>
-													<input class="form-control" id="mpNo" type="text" maxlength="11" value="${user.phone}" readonly="">
+													<label for="mpNo" class="control-label">전화번호</label>
+													<input class="form-control" id="mpNo" type="text" maxlength="11" value="${user.phone}${busi.pre_phone}" readonly="">
 												</div>
 											</div>
 											<div class="row">
@@ -978,7 +1031,7 @@
 										</div>
 									</div>
 									<div class="modal-footer">
-										<button type="button" class="btn btn-purple-transparent" onclick="fn_insertVtAcnt()">예치금 계좌 발급받기</button>
+										<button type="button" class="btn btn-purple-transparent" id="receaccn"">예치금 계좌 발급받기</button>
 									</div>
 								</div>
 								<!-- /.modal-content -->

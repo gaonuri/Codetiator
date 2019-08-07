@@ -88,6 +88,12 @@ public class MypageDAO {
 		return cnt1;
 	}
 
+	public int bankNumChk(AccountVO accvo) {
+		int cnt = 0;
+		cnt = sqlSession.selectOne("MypageMapper.joinEmailChk", accvo);
+		return cnt;
+	}//bankNumChk
+
 
 	
 }//class

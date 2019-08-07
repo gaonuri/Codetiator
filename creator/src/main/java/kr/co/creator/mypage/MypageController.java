@@ -1,5 +1,6 @@
 package kr.co.creator.mypage;
 
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 
@@ -101,45 +102,56 @@ public class MypageController {
 	}
 	
 	@RequestMapping(value = "/CertEmail", method = RequestMethod.POST)
-	public void CertEmail(HttpSession session, PrintWriter out, MemberVO memvo, FindPwdVO vo, EmailForm form, FindUtil findUtil) throws Exception {
+	public void CertEmail(HttpSession session, PrintWriter out, MemberVO memvo, FindPwdVO vo, EmailForm form, FindUtil findUtil) {
 		logger.info("=== CertEmail ===");
 		memvo = (MemberVO)session.getAttribute("memVO");
-		int cnt = 0;
-		cnt = loginService.findPwdChk(vo);
-		if(cnt > 0) {
-			if(memvo.getUser_num() != null || !memvo.getUser_num().equals("")) {
-			String newPassword, user_name;
-			newPassword = findUtil.getRamdomPassword(8);
-			vo.setUser_num(memvo.getUser_num());
-			user_name = sqlSession.selectOne("LoginMapper.selectName", vo);
-			vo.setNewPassword(newPassword);
-			vo.setUser_name(user_name);
-			form.setContent("인증번호는 " + newPassword + " 입니다");
-			form.setSubject("안녕하세요 " + vo.getUser_name() + "님 인증번호를 확인해 주세요");
-			form.setReceiver(vo.getEmail());
-			emailSender.sendEmail(form);
-			System.out.println(vo.getEmail());
-			cnt = loginService.insertUserNumber(vo);
+		logger.info("=== CertEmail : "+memvo.getUser_num());
+		logger.info("=== CertEmail : "+memvo.getBusi_num());
+		int updateCertNunYN = 0;
+			if(memvo.getUser_num() != null && !memvo.getUser_num().equals("")) {
+				logger.info("=== CertEmail : "+memvo.getUser_num());
+				String newPassword, user_name;
+				newPassword = findUtil.getRamdomPassword(8);
+				vo.setUser_num(memvo.getUser_num());
+				user_name = sqlSession.selectOne("LoginMapper.selectName", vo);
+				vo.setNewPassword(newPassword);
+				vo.setUser_name(user_name);
+				form.setContent("인증번호는 " + newPassword + " 입니다");
+				form.setSubject("안녕하세요 " + vo.getUser_name() + "님 인증번호를 확인해 주세요");
+				form.setReceiver(vo.getEmail());
+				//emailSender.sendEmail(form);
+				System.out.println(vo.getEmail());
+				updateCertNunYN = loginService.insertUserNumber(vo);
+				
+			} else if(memvo.getBusi_num() != null && !memvo.getBusi_num().equals("")) {
+				logger.info("=== CertEmail : "+memvo.getBusi_num());
+				String newPassword = null, busi_name = null;
+				newPassword = findUtil.getRamdomPassword(8);
+				busi_name = sqlSession.selectOne("LoginMapper.selectBusiName", vo);
+				vo.setNewPassword(newPassword);
+				vo.setManager_name(busi_name);
+				form.setContent("인증번호는 " + newPassword + " 입니다");
+				form.setSubject("안녕하세요 " + vo.getManager_name() + "님 인증번호를 확인해 주세요");
+				form.setReceiver(vo.getManager_email());
+				//emailSender.sendEmail(form);
+				System.out.println(vo.getManager_email());
+				updateCertNunYN = loginService.insertNumber(vo);
 			}
-		} else {
-			if(memvo.getBusi_num() != null || !memvo.getBusi_num().equals("")) {
-			String newPassword, busi_name;
-			newPassword = findUtil.getRamdomPassword(8);
-			busi_name = sqlSession.selectOne("LoginMapper.selectBusiName", vo);
-			vo.setNewPassword(newPassword);
-			vo.setManager_name(busi_name);
-			form.setContent("인증번호는 " + newPassword + " 입니다");
-			form.setSubject("안녕하세요 " + vo.getManager_name() + "님 인증번호를 확인해 주세요");
-			form.setReceiver(vo.getManager_email());
-			emailSender.sendEmail(form);
-			System.out.println(vo.getManager_email());
-			cnt = loginService.insertNumber(vo);
-			}
-		}
-		out.print(cnt);
+		out.print(updateCertNunYN);
 		out.flush();
 		out.close();
 	}//CertEmail
+	
+	@RequestMapping(value = "/bankNumChk", method = RequestMethod.POST)
+	public void joinEmailChk(PrintWriter out, AccountVO accvo) throws IOException {
+		logger.info("=== bankNumChk ===");
+//		logger.info(vo.getEmail());
+		int cnt = 0;
+		cnt = service.bankNumChk(accvo);
+		out.print(cnt);
+		out.flush();
+		out.close();
+	}//joinEmailChk
 	
 	@RequestMapping(value = "/my_modify", method = RequestMethod.GET)
 	public String my_modify() {

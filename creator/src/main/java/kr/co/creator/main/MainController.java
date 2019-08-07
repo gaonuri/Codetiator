@@ -60,6 +60,13 @@ public class MainController {
 		return "main/main2";
 	}//main2
 	
+	@RequestMapping(value = "/main_new", method = RequestMethod.GET)
+	public String main_new() {
+		logger.info("main_new");
+		
+		return "main/main_new";
+	}//main_new
+	
 	@RequestMapping(value = "/intro", method = RequestMethod.GET)
 	public String intro() {
 		logger.info("intro");
