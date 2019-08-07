@@ -37,13 +37,13 @@
 /////////////////////////////////////////////////////////////////////////////////////////////금액 버튼 시작
 	$(document).ready(function() {
 		var temp = 0;
-		var add  = 0;
+		var add  = 0; 
 		var current_price = parseInt($("#current_price").val() * 10000);
 		var invest_price = parseInt($("#invest_price").val());
 		var deposit = parseInt($("#inputDeposit771").val());
-		var invest 	= parseInt($("#inputAmt771").val());
+		var request	= parseInt($("#withdrawAmt").val());
 		var intrst 	= invest * $("#rate").val() * 0.01;
-		var limit	= parseInt($("#invest_limit").val());
+		var limit	= parseInt($("#request_limit").val());
 		var confirmYN = false;
 		var check = $("input:checkbox[id=agreeCheckbox]:checked").is(":checked");
 		var count = 0; 
@@ -73,35 +73,58 @@
 				$("#withdrawAmt").val().replace(/[^0-9\.]/g,'')
 			);//한글 입력 방지
 		});//pass.keydown
-/////////////////////////////////////////////////////////////////////////////////////////////금액 버튼 끝
+	
 		$("#withdrawAmt").keyup(function() {
 			deposit = parseInt($("#withdrawAmt").val());
 			//alert("invest : " + invest); alert("limit : " + limit);
 			if(deposit > limit) {
-				alert("동일 차입자에게 투자한도 이상의 투자를 할 수 없습니다.");
-				$("#withdrawAmt").val($("#invest_limit").val());
+				alert("보유한 예치금을 초과하였습니다.");
+				$("#withdrawAmt").val($("#request_limit").val());
 				}
 				calculating();
-			});		
-		});//ready
+		});//keyup
+		
+		$("#withdrawAmt").blur(function() {
+			var str = $("#withdrawAmt").val();
+			//alert(str.substr(str.length-4, 4)); 숫자 뒤 4자리가 0000인지 확인
+			if("0000" != str.substr(str.length-4, 4)) {
+				alert("만원 단위로 입력하시기 바랍니다.");
+				$("#withdrawAmt").val("0");
+				calculating();
+			}//if
+		});//blur
+		
+		$("#withdrawReqBtn").click(function() {
+			if(parseInt($("#withdrawAmt").val()) == 0) {
+				alert("금액을 입력하세요");
+				return;
+			} else {
+				$("#deposit").val(deposit - request);
+				
+			}
+		});//click
+	});//ready
+////////////////////////////////////////////////////////////////////////////////////////////////금액 버튼 끝
+		
+////////////////////////////////////////////////////////////////////////////////////////////////은행별 계좌 유형 시작
+		
 
 		function depositLimit(limit) {
 			if(deposit > limit) {
 				alert("예치금 잔액에 초과한 금액입니다.");
 			}
-		}//depositLimit
-////////////////////////////////////////////////////////////////////////////////////////////////은행별 계좌 유형 시작
-		if($("#cusBankCdSelect").val() == ""){
-			alert("은행을 선택 하세요.");
-			return;
-		}
-		if($("#cusBankCdSelect").val() == "010"){
-			var bankStd = /^[0-9]{8}$/;
-			if($.trim($("#cusBankCdSelect").val()) != $(this).val().match(sanStd)){
-				alert("올바르지 않은 입력입니다.");
-			return;
-			}
-		}
+		}//depositLimit 
+//		if($("#cusBankCdSelect").val() == ""){
+// 			alert("은행을 선택 하세요.");
+// 			return;
+// 		}
+// 		if($("#cusBankCdSelect").val() == "010"){
+// 			var bankStd = /^[0-9]{8}$/;
+// 			if($.trim($("#cusBankCdSelect").val()) != $(this).val().match(sanStd)){
+// 				alert("올바르지 않은 입력입니다.");
+// 			return;
+// 			}
+// 		}
 		
 
 
@@ -109,6 +132,12 @@
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////은행별 계좌 유형 끝
+
+////////////////////////////////////////////////////////////////////////////////////////////////예치금 요청 시작
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////예치금 요청 끝
 		
 ////////////////////////////////////////////////////////////////////////////////////////////////예치금 계좌 발급받기 시작
 		$(document).ready(function(){
@@ -577,96 +606,6 @@
 										</div>
 									</div>
 									
-									<div class="wrap" id="listWrap">
-										<div class="box right">
-											<div class="row">
-												<div class="col-xs-12 col-sm-12 col-md-12">
-													<div class="title">
-														<font class="font-purple">
-															●
-														</font> 거래내역
-													</div>
-													<hr>
-												</div>
-											</div>
-											<div class="row">
-												<div class="col- text-right">
-													<div style="margin-top: 12px;">
-														<a id="btnExport">
-															<button type="button" class="btn btn-purple-transparent btn-gradiation">
-																EXCEL <i class="glyphicon glyphicon-download-alt"></i>
-															</button>
-														</a>
-													</div>
-												</div>
-											</div>
-											<div class="row">
-												<div class="col-xs-12 col-sm-12 col-md-12">
-													<div id="goodList" style="margin-top: 10px;">
-														<div class="goodlist-title">
-															<div class="row">
-																<div class="col-xs-4 col-md-2">
-																	<div class="name">거래일자</div>
-																</div>
-																<div class="col-xs-4 col-md-3">
-																	<div class="name">거래명</div>
-																</div>
-																<div class="col-xs-4 col-md-2">
-																	<div class="round">거래구분</div>
-																</div>
-																<div class="col-xs-4 col-md-2">
-																	<div class="day">거래금액</div>
-																</div>
-																<div class="col-xs-4 col-md-3">
-																	<div class="investAmt">
-																		거래 후 예치금 <span class="glyphicon glyphicon-question-sign hover" style="font-size: 12px;" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="auto bottom" data-html="true" data-content="기본 예치금(자동투자 예치금)" data-original-title="" title="">
-																				</span>
-																	</div>
-																</div>
-															</div>
-														</div>
-					
-														<div id="goodListBody"></div>
-														
-														<table id="tblExport" style="display:none;" class="tblExport">
-															<thead>
-																<tr>
-																	<th scope="col">거래일자</th>
-																	<th scope="col">거래명</th>
-																	<th scope="col">거래구분</th>
-																	<th scope="col">거래금액</th>
-																	<th scope="col">거래 후 기본예치금</th>
-																	<th scope="col">거래 후 자동투자 예치금</th>
-																	<th scope="col">거래 후 총 예치금</th>
-																</tr>
-															</thead>
-															<tbody>
-															</tbody>
-														</table>
-														
-														<div class="row" style="margin-top: 10px;">
-															<div class="col-xs-12 col-md-push-6 col-md-6" style="margin-top: 5px;">
-																<form id="depositHisListSrchForm" class="text-right" onsubmit="return false;">
-																	<div style="display: inline-block;">
-																		<input type="text" class="form-control srchText" name="SRCH_TEXT" placeholder="거래명으로 검색" maxlength="20">
-																	</div>
-																	<div style="display: inline-block;">
-																		<button type="button" class="btn btn-purple-transparent" id="depositHisListSrchTextBtn">
-																			<i class="glyphicon glyphicon-search"></i>
-																		</button>
-																	</div>
-																	<div class="clearfix"></div>
-																</form>
-															</div>
-															<div class="col-xs-12 col-md-pull-6 col-md-6 text-left" style="margin-top: 5px;">
-																<ul class="pagination pagination-sm margin-0" id="PAGE_NAVI"></ul>
-															</div>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
 									
 									<!-- 본인인증 서비스 팝업을 호출하기 위해서는 다음과 같은 form이 필요합니다. -->
 									<form name="form_chk" method="post">
@@ -1054,7 +993,7 @@
 		<input type="hidden" id="rate" value="${proVO.rate}" />									<!-- 금리 -->
 		<input type="hidden" id="user_num" value="${memVO.user_num}" />							<!-- 유저번호 -->
 		<input type="hidden" id="busi_num" value="${memVO.busi_num}" />							<!-- 법인유저번호 -->
-	    <input type="hidden" id="invest_limit" value="${acnt.deposit}" />						<!-- 예치금한도 -->
+	    <input type="hidden" id="request_limit" value="${acnt.deposit}" />						<!-- 예치금한도 -->
 	    <!-- hidden value -->
     
 		<div class="modal fade" id="eventModal" role="dialog" aria-labelledby="eventModalLabel" aria-hidden="true">
