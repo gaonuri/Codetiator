@@ -53,6 +53,12 @@ public class LoginDAO {
 		return cnt;
 	}//busifindChk
 
+	public int userfindChk(FindPwdVO vo) {
+		int cnt = 0;
+		cnt = sqlSession.selectOne("LoginMapper.userfindChk", vo);
+		return cnt;
+	}//userfindChk
+	
 	public int CheckCerNumber(Busi_userVO vo) {
 		int cnt = 0;
 		cnt = sqlSession.selectOne("LoginMapper.CheckCerNumber", vo);
@@ -70,4 +76,17 @@ public class LoginDAO {
 		list = sqlSession.selectList("LoginMapper.historyOut", hvo);
 		return list;
 	}//historyOut
+
+	public int insertUserNumber(FindPwdVO vo) {
+		int cnt = 0;
+		cnt = sqlSession.insert("LoginMapper.insertUserNumber", vo);
+		return cnt;
+	}
+
+	public int CheckCerUserNumber(FindPwdVO vo) {
+		int cnt = 0;
+		cnt = sqlSession.selectOne("LoginMapper.CheckCerUserNumber", vo);
+		return cnt;
+	}//CheckCerNumber
+
 }//class

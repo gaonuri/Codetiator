@@ -53,6 +53,12 @@ public class LoginService {
 		return cnt;
 	}//busifindChk
 
+	public int userfindChk(FindPwdVO vo) {
+		int cnt = 0;
+		cnt = loginDAO.userfindChk(vo);
+		return cnt;
+	}
+	
 	public int CheckCerNumber(Busi_userVO vo) {
 		int cnt = 0;
 		cnt = loginDAO.CheckCerNumber(vo);
@@ -70,4 +76,17 @@ public class LoginService {
 		list = loginDAO.historyOut(hvo);
 		return list;
 	}//historyOut
+
+	public int insertUserNumber(FindPwdVO vo) {
+		int cnt = 0;
+		cnt = loginDAO.insertUserNumber(vo);
+		return cnt;
+	}//insertUserNumber
+
+	public int CheckCerUserNumber(FindPwdVO vo) {
+		int cnt = 0;
+		cnt = loginDAO.CheckCerUserNumber(vo);
+		return cnt;
+	}//CheckCerUserNumber
+
 }//class

@@ -25,7 +25,7 @@
 			, p.rate rate 
 			, i.invest_price 
 			, p.refund_count 
-			, p.refund_deadline
+			, p.refund_due_date
 			, p.refund_end 
 			, p.ach_state 
 			from invest_list i, project_list p
@@ -37,6 +37,10 @@
 		resultType="kr.co.creator.vo.ProjectVO">
 		select *
 		from project_list
+	</select>
+	
+	<select id="bankNumChk" parameterType="java.lang.String" resultType="int">
+		select count(*) from account_list where bank_num = #{bank_num}
 	</select>
 	
 	<select id="Account"
@@ -56,6 +60,14 @@
 		select *
 		from user_list 
 		where user_num = #{user_num}
+	</select>
+	
+	<select id="Busi"
+		parameterType="kr.co.creator.vo.MemberVO"
+		resultType="kr.co.creator.vo.Busi_userVO">
+		select *
+		from busi_user_list 
+		where busi_num = #{busi_num}
 	</select>
 	
 	<select id="Inout"
