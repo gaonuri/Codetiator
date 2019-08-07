@@ -87,6 +87,12 @@ public class MypageService {
 		return cnt1; 
 	}
 
+	public int bankNumChk(AccountVO accvo) {
+		int cnt = 0;
+		cnt = dao.bankNumChk(accvo);
+		return cnt;
+	}//bankNumChk
+
 
 	
 }//class
