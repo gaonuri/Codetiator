@@ -158,7 +158,7 @@
 														<td>${vo.refund_end}</td>
 														<td>${vo.price}</td>
 														<td>${vo.ach_rate}</td>
-														<td>${vo.ach_state}</td>
+														<td>${vo.ach_state}</td><!-- 값을 표현하지 못함 -->
 													</tr>
 												</c:forEach>
 											</table>
