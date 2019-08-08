@@ -38,15 +38,21 @@
 	$(document).ready(function() {
 		var temp = 0;
 		var add  = 0; 
-		var current_price = parseInt($("#current_price").val() * 10000);
-		var invest_price = parseInt($("#invest_price").val());
-		var deposit = parseInt($("#inputDeposit771").val());
-		var request	= parseInt($("#withdrawAmt").val());
-		var intrst 	= invest * $("#rate").val() * 0.01;
-		var limit	= parseInt($("#request_limit").val());
+		var deposit = parseInt($("#inputDeposit").val());			// 예치금
+		var request	= parseInt($("#withdrawAmt").val());			// 출금액
+		var limit	= parseInt($("#request_limit").val());			// 출금 제한 금액
+		var input	= parseInt($("#in_history").val());				// 입금 총액
+		var output	= parseInt($("#out_history").val());			// 출금 총액
 		var confirmYN = false;
 		var check = $("input:checkbox[id=agreeCheckbox]:checked").is(":checked");
 		var count = 0; 
+		
+		alert(deposit);
+		
+		$("#deposit").text(addComma(deposit));						// 예치금
+		$("#out_able").text(addComma(deposit));						// 출금 가능액
+		$("#DEPOSIT_AMT_SUM").text(addComma(input));				// 입금 총액
+		$("#WTHDRW_AMT_SUM").text(addComma(output));				// 출금 총액
 		
 		$("#amtPlus100_771").click(function() {
 			tmpInt = parseInt($("#withdrawAmt").val()) + 1000000;
@@ -80,15 +86,15 @@
 			if(deposit > limit) {
 				alert("보유한 예치금을 초과하였습니다.");
 				$("#withdrawAmt").val($("#request_limit").val());
-				}
-				calculating();
+			}
+			calculating();
 		});//keyup
 		
 		$("#withdrawAmt").blur(function() {
 			var str = $("#withdrawAmt").val();
 			//alert(str.substr(str.length-4, 4)); 숫자 뒤 4자리가 0000인지 확인
-			if("0000" != str.substr(str.length-4, 4)) {
-				alert("만원 단위로 입력하시기 바랍니다.");
+			if("00000" != str.substr(str.length-4, 4)) {
+				alert("십만원 단위로 입력하시기 바랍니다.");
 				$("#withdrawAmt").val("0");
 				calculating();
 			}//if
@@ -100,9 +106,14 @@
 				return;
 			} else {
 				$("#deposit").val(deposit - request);
-				
-			}
+			}//if
 		});//click
+		
+		
+		function addComma(num) {
+			var regexp = /\B(?=(\d{3})+(?!\d))/g;
+			return num.toString().replace(regexp, ',');
+		}//금액에 컴마 붙이기
 	});//ready
 ////////////////////////////////////////////////////////////////////////////////////////////////금액 버튼 끝
 		
@@ -453,7 +464,7 @@
 																		예치금
 																	</div>
 																	<div class="col-xs-6 col-sm-6 col-md-6 text-right" id="inputDeposit771" name="inputDeposit">
-																		${acnt.deposit} 원
+																		<span id="deposit"></span> 원
 																		<input type="hidden" id="inputDeposit" value="${acnt.deposit}" />
 																	</div>
 																</div>
@@ -482,7 +493,8 @@
 																		입금 총액
 																	</div>
 																	<div class="col-xs-6 col-sm-6 col-md-6 text-right">
-																		<span name="DEPOSIT_AMT_SUM">${Inout.input_history}</span> 원
+																		<span id="DEPOSIT_AMT_SUM" name="DEPOSIT_AMT_SUM"></span> 원
+																		<input type="hidden" id="in_history"  value="${Inout.input_history}">
 																	</div>
 																</div>
 																<div class="row" style="margin-top: 10px;">
@@ -490,7 +502,8 @@
 																		출금 총액
 																	</div>
 																	<div class="col-xs-6 col-sm-6 col-md-6 text-right">
-																		<span name="WTHDRW_AMT_SUM">${Inout.output_history}</span> 원
+																		<span id="WTHDRW_AMT_SUM" name="WTHDRW_AMT_SUM"></span> 원
+																		<input type="hidden" id="out_history" value="${Inout.output_history}">
 																	</div>
 																</div>
 																<div class="row" style="margin-top: 10px;">
@@ -498,8 +511,8 @@
 																		출금 대기금액
 																	</div>
 																	<div class="col-xs-6 col-sm-6 col-md-6 text-right">
-																		<span name="WTHDRW_REQ_AMT_SUM">0</span> 원
-																	</div>
+																		<span id="WTHDRW_REQ_AMT_SUM" name="WTHDRW_REQ_AMT_SUM">0</span> 원
+																	</div>	
 																</div>
 															</div>
 														</div>
@@ -574,7 +587,7 @@
 																		출금 가능액
 																	</div>
 																	<div class="col-xs-7 col-sm-7 col-md-7 withdraw-content text-right">
-																		${acnt.deposit}<font size="2">원</font>
+																		<font size="2"><span id="out_able"></span>원</font>
 																	</div>
 																</div>
 																<div class="row" style="margin-top: 10px;">
@@ -987,10 +1000,7 @@
 		<input type="hidden" id="reqAmt771" name="reqAmt" value="0">
 		<input type="hidden" name="repayAmt" id="repayAmt771" value="164625000">
 		<input type="hidden" name="loanAmt" id="loanAmt771" value="150000000">
-		<input type="hidden" name="umbrellarRate" id="umbrellarRate771" value="0.0">
-		<input type="hidden" name="umbrellarAplyYn" id="umbrellarAplyYn771" value="N">
 		<input type="hidden" name="brrwrAmt" id="brrwrAmt771" value="5000000">
-		<input type="hidden" id="rate" value="${proVO.rate}" />									<!-- 금리 -->
 		<input type="hidden" id="user_num" value="${memVO.user_num}" />							<!-- 유저번호 -->
 		<input type="hidden" id="busi_num" value="${memVO.busi_num}" />							<!-- 법인유저번호 -->
 	    <input type="hidden" id="request_limit" value="${acnt.deposit}" />						<!-- 예치금한도 -->

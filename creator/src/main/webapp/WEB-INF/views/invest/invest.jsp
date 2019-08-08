@@ -37,14 +37,14 @@
 	$(document).ready(function() {
 		var temp = 0;
 		var add  = 0;
-		var current_price = parseInt($("#current_price").val() * 10000);
-		var invest_price = parseInt($("#invest_price").val());
-		var deposit = parseInt($("#inputDeposit771").val());
-		var invest 	= parseInt($("#inputAmt771").val());
-		var intrst 	= invest * $("#rate").val() * 0.01;
-		var limit	= parseInt($("#invest_limit").val());
-		var tax 	= parseInt(intrst * 0.275);
-		var benefit = invest + intrst - tax;
+		var current_price = parseInt($("#current_price").val() * 10000);	// 투자 받은 금액
+		var invest_price = parseInt($("#invest_price").val());				// 투자 한 금액
+		var deposit = parseInt($("#inputDeposit771").val());				// 예치금
+		var invest 	= parseInt($("#inputAmt771").val());					// 투자 할 금액
+		var intrst 	= invest * $("#rate").val() * 0.01;						// 이자
+		var limit	= parseInt($("#invest_limit").val());					// 최대 투자 가능 금액
+		var tax 	= parseInt(intrst * 0.275);								// 세금
+		var benefit = invest + intrst - tax;								// 이익
 		var confirmYN = false;
 		var check = $("input:checkbox[id=agreeCheckbox]:checked").is(":checked");
 

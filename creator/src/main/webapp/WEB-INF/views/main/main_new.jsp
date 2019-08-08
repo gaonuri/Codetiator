@@ -36,18 +36,27 @@
 <script type="text/javascript">
 $(document).ready(function() {
 	$("#investBtn").on("click", function() {
-		location.href = "${pageContext.request.contextPath}/invest_guide";
+		location.href = "${pageContext.request.contextPath}/invest_list";
 	});
 	
 	$("#loanReqBtn").on("click", function() {
 		location.href = "${pageContext.request.contextPath}/loan_guide"; 
 	});
+	
 	$("ul.tabs li").click(function () {
 		$("ul.tabs li").removeClass("active").css("background-color", "#e9e9e9").css("color","#777");
 		$(this).addClass("active").css("background-color", "#623272").css("color","#fff");
 		$(".tab_cont").hide()
 		var activeTab = $(this).attr("rel");
 		$("#" + activeTab).fadeIn()
+	});
+	
+	$("#goInvestGuideBtn").click(function() {
+		href.location = "${pageContext.request.contextPath}/invest_guide";
+	});
+	
+	$("#goInvestBtn").on("click", function() {
+		location.href = "${pageContext.request.contextPath}/invest_list";
 	});
 });
 </script>
@@ -824,7 +833,7 @@ small, .small {
 					<span class="titLine">투자상품</span>
 				</h2>
 				<div class="section-cat">
-						<a href="${pageContext.request.contextPath}/invest_guide" id="allGood">
+						<a href="${pageContext.request.contextPath}/invest_list" id="allGood">
 							전체상품 보기 <i class="glyphicon glyphicon-chevron-right"></i>
 						</a>
 				</div>

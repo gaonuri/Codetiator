@@ -6,8 +6,8 @@
 <mapper namespace="InvestMapper">
 	
 	<select id="investList" resultType="kr.co.creator.vo.ProjectVO">
-		select	* 
-		FROM  	project_list
+		SELECT * 
+		FROM 	project_list 
 		ORDER BY regi_date DESC
 	</select>
 	
