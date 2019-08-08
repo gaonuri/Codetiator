@@ -47,6 +47,11 @@
 		var check = $("input:checkbox[id=agreeCheckbox]:checked").is(":checked");
 		var count = 0; 
 		
+<<<<<<< HEAD
+=======
+		alert(deposit);
+		
+>>>>>>> branch 'master' of https://github.com/gaonuri/Codetiator.git
 		$("#deposit").text(addComma(deposit));						// 예치금
 		$("#out_able").text(addComma(deposit));						// 출금 가능액
 		$("#DEPOSIT_AMT_SUM").text(addComma(input));				// 입금 총액
@@ -112,6 +117,7 @@
 				return;
 			} else {
 				$("#deposit").val(deposit - request);
+<<<<<<< HEAD
 				$("#output").val(output + request);
 				var confirmYN = false;
 				confirmYN = confirm("출금 요청하시겠습니까?");
@@ -143,6 +149,17 @@
 				}//else
 			});//click
 		});//ready
+=======
+			}//if
+		});//click
+		
+		
+		function addComma(num) {
+			var regexp = /\B(?=(\d{3})+(?!\d))/g;
+			return num.toString().replace(regexp, ',');
+		}//금액에 컴마 붙이기
+	});//ready
+>>>>>>> branch 'master' of https://github.com/gaonuri/Codetiator.git
 ////////////////////////////////////////////////////////////////////////////////////////////////금액 버튼 끝
 		
 ////////////////////////////////////////////////////////////////////////////////////////////////은행별 계좌 유형 시작
@@ -547,6 +564,17 @@
 																		<span id="WTHDRW_AMT_SUM" name="WTHDRW_AMT_SUM"></span> 원
 																		<input type="hidden" id="out_history" value="${Inout.output_history}">
 																	</div>
+<<<<<<< HEAD
+=======
+																</div>
+																<div class="row" style="margin-top: 10px;">
+																	<div class="col-xs-6 col-sm-6 col-md-6">
+																		출금 대기금액
+																	</div>
+																	<div class="col-xs-6 col-sm-6 col-md-6 text-right">
+																		<span id="WTHDRW_REQ_AMT_SUM" name="WTHDRW_REQ_AMT_SUM">0</span> 원
+																	</div>	
+>>>>>>> branch 'master' of https://github.com/gaonuri/Codetiator.git
 																</div>
 															</div>
 														</div>
