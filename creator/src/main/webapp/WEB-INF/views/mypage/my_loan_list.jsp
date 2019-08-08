@@ -151,7 +151,7 @@
 														<c:if test="${memberVO.busi_num != null}">
 														</c:if>
 														<td>${vo.project_num}</td>
-														<td><a href="invest_detail?detail_num=${vo.project_name}"/>${vo.project_name}</td>
+														<td><a href="invest_detail?detail_num=${vo.project_num}"/>${vo.project_name}</td>
 														<td>${vo.rate}%</td>
 														<td>${vo.repay_method}</td>
 														<td>${vo.refund_due_date}</td>
