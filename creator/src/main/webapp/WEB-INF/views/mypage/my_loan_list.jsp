@@ -148,7 +148,7 @@
 													</thead>
 												<c:forEach items="${loanList}" var="vo" varStatus="status">
 													<tr>
-														<c:if test="${memberVO.busi_num != null}">
+														<c:if test="${memberVO.busi_num != null && memberVO.busi_num !='' }">
 														</c:if>
 														<td>${vo.project_num}</td>
 														<td><a href="invest_detail?detail_num=${vo.project_num}"/>${vo.project_name}</td>
