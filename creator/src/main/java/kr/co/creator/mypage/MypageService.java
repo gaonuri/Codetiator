@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 
 import kr.co.creator.vo.AccountVO;
 import kr.co.creator.vo.Busi_userVO;
-import kr.co.creator.vo.FindPwdVO;
 import kr.co.creator.vo.InOutVO;
 import kr.co.creator.vo.MemberVO;
 import kr.co.creator.vo.MypageVO;
@@ -93,8 +92,18 @@ public class MypageService {
 		return cnt;
 	}//bankNumChk
 
+	public int depo_update(AccountVO accVO) {
+		int count = 0;
+		count = dao.depo_update(accVO);
+		return count;
+	}//deposit_update
 
-	
+	public int account_insert(AccountVO accVO) {
+		int count = 0;
+		count = dao.account_insert(accVO);
+		return count;
+	}
+
 }//class
 
 

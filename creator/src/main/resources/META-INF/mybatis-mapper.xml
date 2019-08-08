@@ -5,4 +5,15 @@
  
 <mapper namespace="TestSelectMapper">
 	
+	<select id="investList" resultType="kr.co.creator.vo.ProjectVO">
+		select	* 
+		FROM  	project_list
+	</select>
+	
+	<select id="projectDetail" parameterType="kr.co.creator.vo.ProjectVO" resultType="kr.co.creator.vo.ProjectVO">
+		select	* 
+		from	project_list 
+		where 	project_num = #{project_num}
+	</select>
+	
 </mapper>
