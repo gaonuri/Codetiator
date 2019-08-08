@@ -23,7 +23,6 @@
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/bootstrap/css/zabuto_calendar.css">
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/bootstrap/lib/gritter/css/jquery.gritter.css" />
 	<!-- Custom styles for this template -->
-	<link href="${pageContext.request.contextPath}/resources/bootstrap/css/style.css" rel="stylesheet">
 	<link href="${pageContext.request.contextPath}/resources/bootstrap/css/style-responsive.css" rel="stylesheet">
 	<script src="${pageContext.request.contextPath}/resources/bootstrap/lib/chart-master/Chart.js"></script>
 
@@ -55,7 +54,7 @@ div {
     display: block;
 }
 #cont01 {
-    background: url(/images/investV2/bgImg_investIntro.png)no-repeat center center fixed;
+    background: url(${pageContext.request.contextPath}/resources/img/bgImg_investIntro.png)no-repeat center center fixed;
     background-size: 100%;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -298,8 +297,261 @@ b, strong {
 .lsTxt {
     letter-spacing: -1pt;
 }
+#cont03 {
+    background: url(${pageContext.request.contextPath}/resources/img/invGuide_cont03_bg.png)no-repeat center top fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+#inv_int_03 {
+    width: 900px;
+    height: 100%;
+    margin: 0 auto;
+    text-align: center;
+}
+#inv_int_03 h3 {
+    width: 80%;
+    margin: 0 auto;
+    padding: 80px 0 40px 0;
+    color: #fff;
+}
+.txtArea03 {
+    padding: 0 0 80px 0;
+    color: #fff;
+    font-weight: 400;
+    font-size: 14pt;
+}
+#inv_int_04 {
+    width: 900px;
+    height: 100%;
+    margin: 0 auto;
+    text-align: center;
+}
+#inv_int_04 h3 {
+    width: 90%;
+    margin: 0 auto;
+    padding: 80px 0 40px 0;
+    color: #333;
+}
+.txtArea04 {
+    color: #666;
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: -0.2pt;
+}
+.txtArea04 li:first-child {
+    color: #712594;
+    font-size: 14pt;
+    font-weight: 800;
+    padding-bottom: 40px;
+    padding-top: 40px;
+}
+#inv_int_04 .mainTop_btn {
+    margin-bottom: 100px;
+}
+.mr-blue, .mr-blue-secondary, .mr-green, .mr-green-secondary, .mr-purple, .mr-purple-secondary {
+    height: 30px;
+    line-height: 30px;
+    font-size: 14px;
+}
+.mr-blue .mr-angle, .mr-blue .mr-cap {
+    color: #fff;
+    background-color: #01709B;
+}
+.mr-cap {
+    width: 20px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    float: right;
+    height: 100%;
+}
+.mr-angle {
+    margin-right: -10px;
+    width: 20px;
+    text-align: right;
+    float: right;
+    transform: skew(-30deg);
+    -webkit-transform: skew(-30deg);
+    -ms-transform: skew(-30deg);
+    height: 100%;
+}
+.mr-angle p {
+    color: #fff;
+}
+.slider.slider-horizontal {
+    width: 100%;
+    height: auto;
+}
+.slider {
+    display: inline-block;
+    vertical-align: middle;
+    position: relative;
+    width: 100%;
+    padding: 0 10px;
+}
+.slider.slider-horizontal .slider-track {
+    height: 10px;
+    width: 100%;
+    margin-top: -5px;
+    top: 50%;
+    left: 0;
+}
+.slider-track {
+    position: absolute;
+    cursor: pointer;
+    background-image: -webkit-linear-gradient(top, #f5f5f5 0%, #f5f5f5 100%);
+    background-image: -o-linear-gradient(top, #f5f5f5 0%, #f5f5f5 100%);
+    background-image: linear-gradient(to bottom, #f5f5f5 0%, #f5f5f5 100%);
+    background-repeat: repeat-x;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fff5f5f5', endColorstr='#fff9f9f9', GradientType=0);
+    -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+}
+.slider.slider-horizontal .slider-selection, .slider.slider-horizontal .slider-track-low, .slider.slider-horizontal .slider-track-high {
+    height: 100%;
+    top: 0;
+    bottom: 0;
+}
+.slider-track-low, .slider-track-high {
+    position: absolute;
+    background: transparent;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    border-radius: 4px;
+}
+.slider-selection {
+    position: absolute;
+    background-image: -moz-linear-gradient(left, #c8afc9 0%, #a87fa9 70%, #712594 100%);
+    background-image: -webkit-gradient(left, #c8afc9 0%, #a87fa9 70%, #712594 100%);
+    background-image: -webkit-linear-gradient(left, #c8afc9 0%, #a87fa9 70%, #712594 100%);
+    background-image: -o-linear-gradient(left, #c8afc9 0%, #a87fa9 70%, #712594 100%);
+    background-image: -ms-linear-gradient(left, #c8afc9 0%, #a87fa9 70%, #712594 100%);
+    background-image: linear-gradient(to right, #c8afc9 0%, #a87fa9 70%, #712594 100%);
+    background-repeat: repeat-x;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fff9f9f9', endColorstr='#fff5f5f5', GradientType=0);
+    -webkit-box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+    box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    border-radius: 4px;
+}
+.slider.slider-horizontal .slider-tick, .slider.slider-horizontal .slider-handle {
+    margin-left: -10px;
+    margin-top: -5px;
+    border-radius: 10px;
+    border-width: 0px;
+    background-color: #712594;
+}
+.slider-handle.round {
+    border-radius: 50%;
+}
+.slider-handle {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: #ebe4f3;
+    background-image: radial-gradient(circle, #a87fa9, #712594);
+    background-repeat: repeat-x;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff149bdf', endColorstr='#ff0480be', GradientType=0);
+    filter: none;
+    -webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05);
+    border: 1px solid #d9d9d9;
+}
+.slider .tooltip.top {
+    margin-top: -36px;
+}
+.tooltip.top {
+    padding: 5px 0;
+    margin-top: -3px;
+}
+.tooltip {
+    position: absolute;
+    z-index: 1070;
+    display: block;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 12px;
+    font-weight: normal;
+    line-height: 1.4;
+    visibility: visible;
+    filter: alpha(opacity=0);
+    opacity: 0;
+}
+.tooltip.top .tooltip-arrow {
+    bottom: 0;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px 5px 0;
+    border-top-color: #000;
+}
+.tooltip-arrow {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-color: transparent;
+    border-style: solid;
+}
+.slider .tooltip-inner {
+    white-space: nowrap;
+}
+.tooltip-inner {
+    max-width: 200px;
+    padding: 3px 8px;
+    color: #fff;
+    text-align: center;
+    text-decoration: none;
+    background-color: #000;
+    border-radius: 4px;
+}
+input[type="text"] {
+    font-family: 'Arial',sans-serif !important;
+}
+.mr-blue {
+    color: #fff;
+    background-color: #00A0DC;
+}
 
+.mr-blue, .mr-blue-secondary {
+    text-align: center;
+    font-weight: 600;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    border: 2px solid #00A0DC;
+}
 </style>
+<script type="text/javascript">
+$(document).ready(function() {
+	$("#a_tab1").on("click", function() {
+		$("#tab_01").css("display", "block");
+		$("#tab_02").css("display", "none");
+		$("#tab_03").css("display", "none");
+		$("#tab_04").css("display", "none");
+	});
+	$("#a_tab2").on("click", function() {
+		$("#tab_01").css("display", "none");
+		$("#tab_02").css("display", "block");
+		$("#tab_03").css("display", "none");
+		$("#tab_04").css("display", "none");
+	});
+	$("#a_tab3").on("click", function() {
+		$("#tab_01").css("display", "none");
+		$("#tab_02").css("display", "none");
+		$("#tab_03").css("display", "block");
+		$("#tab_04").css("display", "none");
+	});
+	$("#a_tab4").on("click", function() {
+		$("#tab_01").css("display", "none");
+		$("#tab_02").css("display", "none");
+		$("#tab_03").css("display", "none");
+		$("#tab_04").css("display", "block");
+	});
+});
+</script>
 <body>
 	<section id="container">
 	    <!-- **********************************************************************************************************************************************************
@@ -314,14 +566,14 @@ b, strong {
 	        *********************************************************************************************************************************************************** -->
 		<!--main content start-->
 		<div id="container"><!--container S-->
-		<div id="cont01" class="invIntcont01"> <!--cont01 S-->
+		<div id="cont01" class="invIntcont01" style="height: 429px;"> <!--cont01 S-->
 			<section id="inv_int_01">
 				<div class="inv_int_txt">
-					<h2 class="inv_int_tit">미드레이트에 투자하세요</h2>
+					<h2 class="inv_int_tit">크리에이터에 투자하세요</h2>
 					<ul class="ta_cen">
 						<li>시간과 공간에 제약받지 않는 다양한 투자 콘텐츠</li>
 						<li>IT시스템을 통한 자동 분산투자</li>
-						<li>미드레이트와 함께 디지털 금융활동을 시작하세요</li>
+						<li>크리에이터와 함께 디지털 금융활동을 시작하세요</li>
 					</ul>
 				</div>
 			</section>
@@ -330,31 +582,31 @@ b, strong {
 		<div id="cont02" class="invIntcont02">  <!--cont02 S-->
 			<section id="inv_int_02">
 				<h3 class="inv_int_tit titLine_w">투자상품유형</h3>
-				<div>
+				<div style="height: 856.734px;">
 					<ul class="investIconSet">
 						<li class="col-xs-6 col-sm-6 col-md-3">
-							<a href="#tab_01" class="tab on">
+							<a href="#tab_01" class="tab on" id="a_tab1">
 							<!-- 
 								<img src="/images/investV2/Icon_investIntro_creditLoan_on.png" />
 							-->개인신용
 							</a>
 						</li>
 						<li class="col-xs-6 col-sm-6 col-md-3">
-							<a href="#tab_02" class="tab">
+							<a href="#tab_02" class="tab" id="a_tab2">
 							<!-- 
 								<img src="/images/investV2/Icon_investIntro_LcreditLoan_off.png" />
 							 -->사업자신용
 							</a>
 						</li>
 						<li class="col-xs-6 col-sm-6 col-md-3">
-							<a href="#tab_03" class="tab">
+							<a href="#tab_03" class="tab" id="a_tab3">
 							<!--
 								<img src="/images/investV2/Icon_investIntro_realtyLoan_off.png" />
 							-->부동산담보
 							</a>
 						</li>
 						<li class="col-xs-6 col-sm-6 col-md-3">
-							<a href="#tab_04" class="tab">
+							<a href="#tab_04" class="tab" id="a_tab4">
 							<!--
 								<img src="/images/investV2/Icon_investIntro_guaranteeLoan_off.png" />
 							-->동산담보
@@ -364,11 +616,11 @@ b, strong {
 
 					<div class="inv_int_contents">
 						<div class="topContents">
-							<div id="tab_01" style="display: block;">
+							<div id="tab_01" style="display: block;height: 785.438px;">
 								<section>
 									<ul class="tab1 tabTit">
 										<li class="chkIMG">
-											<img src="/images/investV2/Icon_investIntro_chkPT.png">
+											<img src="${pageContext.request.contextPath}/resources/img/Icon_investIntro_chkPT.png">
 										</li>
 										<li class="chk_tit_IMG">
 											<b>개인신용</b>을 이용한 대출을 원하는 차입자입니다.
@@ -396,7 +648,7 @@ b, strong {
 											예시는 아래와 같습니다.
 										</li>
 									</ul>
-									<div class="bgGR">
+									<div class="bgGR"style="height: 204px;">
 										<span class="tab1 tabCont bgGRTit">투자금액 1,000만 원, 투자금리 연12%, 기간 1년 상품에 투자 시</span>
 										<ul class="tab1 tabCont">
 											<li class="bgGRcircle mg20">
@@ -423,11 +675,11 @@ b, strong {
 								</section>
 							</div>
 
-							<div id="tab_02" style="display: none;">
+							<div id="tab_02" style="display: none;height: 483px;">
 								<section>
 									<ul class="tab2 tabTit">
 										<li class="chkIMG">
-											<img src="/images/investV2/Icon_investIntro_chkPT.png">
+											<img src="${pageContext.request.contextPath}/resources/img/Icon_investIntro_chkPT.png">
 										</li>
 										<li class="chk_tit_IMG">
 											<b>개인신용</b>과 함께 <b>사업성 평가</b>를 통한 사업자 신용 대출을 원하는 차입자입니다.
@@ -462,11 +714,11 @@ b, strong {
 								</section>
 							</div>
 
-							<div id="tab_03" style="display: none;">
+							<div id="tab_03" style="display: none; height: 767px;">
 								<section>
 									<ul class="tab3 tabTit">
 										<li class="chkIMG">
-											<img src="/images/investV2/Icon_investIntro_chkPT.png">
+											<img src="${pageContext.request.contextPath}/resources/img/Icon_investIntro_chkPT.png">
 										</li>
 										<li class="chk_tit_IMG">
 											<b>개인신용</b>과 <b>본인 명의 부동산 담보</b>를 이용한 대출을 원하는 차입자입니다.
@@ -495,7 +747,7 @@ b, strong {
 											담보물에 정확한 가치평가가 중요한 상품으로 시세 거래 사이트를 통한 정확한 가치 파악(현재가치+미래가치)과 등기부 등본 상의 권리 분석을 통하여 적정 한도와 금리를 제시합니다.
 										</li>
 									</ul>
-									<div class="bgGR">
+									<div class="bgGR" style="height: 204px;">
 										<span class="tab3 tabCont bgGRTit">투자금액 1,000만 원, 투자금리 연 12%, 기간 1년 상품, 6개월 상품에 투자 시(만기일시 상환조건)</span>
 										<ul class="tab1 tabCont">
 											<li class="bgGRcircle mg20">
@@ -522,11 +774,11 @@ b, strong {
 								</section>
 							</div>
 
-							<div id="tab_04" style="display: none;">
+							<div id="tab_04" style="display: none;height: 483px;">
 								<section>
 									<ul class="tab4 tabTit">
 										<li class="chkIMG">
-											<img src="/images/investV2/Icon_investIntro_chkPT.png">
+											<img src="${pageContext.request.contextPath}/resources/img/Icon_investIntro_chkPT.png">
 										</li>
 										<li class="chk_tit_IMG">
 											<b>개인신용</b>과 <b>본인 명의 동산 담보</b>를 이용한 대출을 원하는 차입자입니다.
@@ -567,7 +819,7 @@ b, strong {
 		</div> <!--cont02 E-->
 
 		
-		<div id="cont03"> <!--cont03 S-->
+		<div id="cont03" style="height: 311px;"> <!--cont03 S-->
 			<section id="inv_int_03">
 				<h3 class="inv_int_tit titLine_w">혁신적인 자동분산투자</h3>
 
