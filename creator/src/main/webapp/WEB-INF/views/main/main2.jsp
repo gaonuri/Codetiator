@@ -840,253 +840,450 @@ small, .small {
 		<!-- "main_investGoods" Area Start
 		=============================================-->
 		<section class="invGoodsArea">
-			<div class="main_investGoods ">
+			<div class="main_investGoods">
 				<h2 class="sectionTit">
 					<span class="titLine">투자상품</span>
 				</h2>
 				<div class="section-cat">
-						<a href="${pageContext.request.contextPath}/invest_list" id="allGood">
-							전체상품 보기 <i class="glyphicon glyphicon-chevron-right"></i>
-						</a>
+					<a href="${pageContext.request.contextPath}/invest_list" id="allGood">
+						전체상품 보기 <i class="glyphicon glyphicon-chevron-right"></i>
+					</a>
 				</div>
-				<div class="row" id="goodThum"><div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 good-item-wrap">
-				<div class="good-item">	
-				<div class="item-top">		
-				<a href="javascript:(void(0));" onclick="fn_openInvestDetail(791)">	
-							<div class="hover-text">	
-								<div class="clearfix"></div>	
-								<div class="hover-button"></div>
-							</div>	
-				</a>	
-				<div class="item-top-badge">			
-					<span class="label label-rwrdgd">리워드</span>			
-				</div>			
-				<div class="item-top-badge text-right">		
-					<span class="label label-primary animated infinite flash">모집중</span>			
-				</div>		
-				<div class="item-middle-badge">	
-					<div style="display: inline-block;">오버워치
-					</div>		
-					<div style="display: inline-block;">
-						
-					</div>		
-				</div>			
-				<div class="item-bottom-badge text-right">			
-					<span>자동투자 100%</span>			
-				</div>	
-					<img src="${pageContext.request.contextPath}/resources/img/overwatch.jpg">		
-				</div>		
-				<div class="item-bottom">			
-				<div class="item-bottom-text">				
-				<div class="row">					
-				<div class="col-xs-6">						
-				<h5>02-19-42</h5>					
-				</div>				
-				</div>				
-				<h4 style="text-align:center;">[하이퍼 FPS] 오버워치(3차)</h4>				
-				<div class="progress">				
-				<div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="47" aria-valuemin="0" aria-valuemax="100" style="min-width:20px;width: 47%">						47%					
-				</div>				
-				</div>				
-				<div class="item-top-text-num">					
-				<small>(209명)</small>				
-				</div>			
-				</div>			
-				<hr>			
-				<div class="grade">				
-				<div class="circle grade-MA">MA</div>			
-				</div>			
-				<div class="cat">				
-				<div class="title">연 수익률</div>				
-				<div class="sub">15.5
-				<font size="1">%</font>
-				</div>			
-				</div>	
-						<div class="cat">				
-						<div class="title">기간</div>				
-						<div class="sub">6<font size="1">개월</font></div>			
-						</div>			
-						<div class="cat">	
-									<div class="title">모집금액</div>				
-									<div class="sub">7,000<font size="1">만원</font></div>			
-									</div>			<div class="cat">				<div class="title">상환방식</div>				
-									<div class="sub">만기일시</div>			</div>		</div>	</div></div>
-									<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 good-item-wrap">	<div class="good-item">		
-									<div class="item-top">			<a href="javascript:(void(0));" onclick="fn_openInvestDetail(785)">				
-									<div class="hover-text">					<div class="clearfix"></div>					<div class="hover-button"></div>				
-									</div>			</a>			<div class="item-top-badge">		<span class="label label-primary">LTV 66.67%</span>			
-									</div>			
-						<div class="item-top-badge text-right">		
-							<span class="label label-primary animated infinite flash">모집중</span>
-						</div>		
-						<div class="item-middle-badge">			
-						<div style="display: inline-block;">리그오브레전드</div>		
-						<div style="display: inline-block;">
-						</div>		
-						</div>			
-						<div class="item-bottom-badge text-right">			
-							<span>자동투자 100%</span>			
+				<div class="row" id="goodThum">
+					<!-- 1 -->
+					<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 good-item-wrap">
+						<div class="good-item">
+							<div class="item-top">
+								<a href="javascript:(void(0));" onclick="fn_openInvestDetail(791)">
+									<div class="hover-text">
+										<div class="clearfix"></div>
+										<div class="hover-button"></div>
+									</div>
+								</a>
+								<div class="item-top-badge">
+									<span class="label label-rwrdgd">리워드</span>
+								</div>
+								<div class="item-top-badge text-right">
+									<span class="label label-primary animated infinite flash">모집중</span>
+								</div>
+								<div class="item-middle-badge">
+									<div style="display: inline-block;">오버워치</div>
+									<div style="display: inline-block;"></div>
+								</div>
+<!-- 								<div class="item-bottom-badge text-right"> -->
+<!-- 									<span>자동투자 100%</span> -->
+<!-- 								</div> -->
+								<img src="${pageContext.request.contextPath}/resources/img/overwatch.jpg">
+							</div>
+							<div class="item-bottom">
+								<div class="item-bottom-text">
+									<div class="row">
+										<div class="col-xs-6">
+											<h5>02-19-42</h5>
+										</div>
+									</div>
+									<h4 style="text-align:center;">[하이퍼 FPS] 오버워치(3차)</h4>
+									<div class="progress">
+										<div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="47" aria-valuemin="0" aria-valuemax="100" style="min-width:20px;width: 47%">
+											47%
+										</div>
+									</div>
+									<div class="item-top-text-num">
+										<small>(209명)</small>
+									</div>
+								</div>
+								<hr>
+								<div class="grade">
+									<div class="circle grade-MA">MA</div>
+								</div>
+								<div class="cat">
+									<div class="title">연 수익률</div>
+									<div class="sub">
+										15.5<font size="1">%</font>
+									</div>
+								</div>
+								<div class="cat">
+									<div class="title">기간</div>
+									<div class="sub">
+										6<font size="1">개월</font>
+									</div>
+								</div>
+								<div class="cat">
+									<div class="title">모집금액</div>
+									<div class="sub">
+										7,000<font size="1">만원</font>
+									</div>
+								</div>
+								<div class="cat">
+									<div class="title">상환방식</div>
+									<div class="sub">만기일시</div>
+								</div>
+							</div>
 						</div>
-							<img src="${pageContext.request.contextPath}/resources/img/LOL.jpg">
-						</div>		
-						<div class="item-bottom">			
-						<div class="item-bottom-text">				
-						<div class="row">					
-						<div class="col-xs-6">						
-						<h5>04-19-131</h5>					
-						</div>				
-						</div>				
-						<h4 style="text-align:center;">[AOS] 리그오브레전드 (2차)</h4>				
-						<div class="progress">
-						<div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="84" aria-valuemin="0" aria-valuemax="100" style="min-width:20px;width: 84%">
-												84%					
-												</div>				</div>				
-												<div class="item-top-text-num">					<small>(267명)</small>
-			</div>			</div>			<hr>			<div class="grade">				<div class="circle grade-MA">MA</div>
-						</div>			<div class="cat">				<div class="title">연 수익률</div>				
-						<div class="sub">12<font size="1">%</font></div>			</div>			<div class="cat">				
-						<div class="title">기간</div>				<div class="sub">9<font size="1">개월</font></div>			
-						</div>			<div class="cat">				<div class="title">모집금액</div>				
-						<div class="sub">5,000<font size="1">만원</font></div>			</div>			<div class="cat">				
-						<div class="title">상환방식</div>				<div class="sub">만기일시</div>			</div>		</div>	
-						</div></div><div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 good-item-wrap">	<div class="good-item">		
-						<div class="item-top">			<a href="javascript:(void(0));" onclick="fn_openInvestDetail(783)">				
-						<div class="hover-text">					<div class="clearfix"></div>
-				<div class="hover-button"></div>				</div>			</a>			<div class="item-top-badge">		
-				<span class="label label-primary">LTV 65.82%</span>			</div>			
-				<div class="item-top-badge text-right">		
-				<span class="label label-primary animated infinite flash">모집중</span>
-							</div>		<div class="item-middle-badge">			
-							<div style="display: inline-block;">몬스터헌터 월드</div>
-							<div style="display: inline-block;">
-						</div>		
-									</div>			
-				<div class="item-bottom-badge text-right">	
-					<span>자동투자 100%</span>			
-					</div>	
-						<img src="${pageContext.request.contextPath}/resources/img/monster.jpg">
-					</div>		
-					<div class="item-bottom">			
-					<div class="item-bottom-text">				
-			<div class="row">					<div class="col-xs-6">	
-								<h5>04-19-129</h5>					</div>				</div>	
-											<h4 style="text-align:center;">[콘솔] 몬스터헌터 월드 (1차)</h4>	
-														<div class="progress">	
-			<div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="22" aria-valuemin="0" aria-valuemax="100" style="min-width:20px;width: 22%">
-									22%					
-							</div>				
-							</div>	
-							<div class="item-top-text-num">
-				<small>(252명)</small>				</div>			</div>			<hr>			
-				<div class="grade">				<div class="circle grade-MA">MA</div>			</div>			
-				<div class="cat">				<div class="title">연 수익률</div>				
-				<div class="sub">14<font size="1">%</font></div>			</div>			<div class="cat">	
-							<div class="title">기간</div>				<div class="sub">8<font size="1">개월</font></div>
-										</div>			<div class="cat">				<div class="title">모집금액</div>
-														<div class="sub">10,000<font size="1">만원</font></div>	
-																</div>			<div class="cat">	
-																			<div class="title">상환방식</div>				
-			<div class="sub">만기일시</div>			</div>		</div>	
-			</div></div><div class="clearfix visible-md-block visible-lg-block">
-			</div><div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 good-item-wrap">	<div class="good-item">		
-			<div class="item-top">			<a href="javascript:(void(0));" onclick="fn_openInvestDetail(782)">				
-			<div class="hover-text">					<div class="clearfix"></div>					<div class="hover-button">
-			</div>				</div>			</a>			<div class="item-top-badge">			
-			<span class="label label-rwrdgd">리워드</span>			</div>			<div class="item-top-badge text-right">			
-			<span class="label label-primary">상환중</span>			</div>		<div class="item-middle-badge">			
-			<div style="display: inline-block;">메이플스토리</div>		
-			<div style="display: inline-block;">
-			</div>		
-			</div>			<div class="item-bottom-badge text-right">			
-			<span>자동투자 100%</span>			
-			</div>	
-				<img src="${pageContext.request.contextPath}/resources/img/maple.png">
-			</div>		
-			<div class="item-bottom">			
-			<div class="item-bottom-text">				
-					<div class="row">					<div class="col-xs-6">						
-					<h5>02-19-41</h5>					</div>				</div>				
-					<h4 style="text-align:center;">[MMORPG] 메이플스토리(1차)</h4>				<div class="progress">				
-					<div class="progress-bar progress-bar-striped" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="min-width:20px;width: 100%">
-											100%					</div>				</div>				
-											<div class="item-top-text-num">					<small>(186명)</small>				
-					</div>			</div>			<hr>			<div class="grade">				
-					<div class="circle grade-MA">MA</div>			</div>			<div class="cat">				
-					<div class="title">연 수익률</div>				<div class="sub">15<font size="1">%</font></div>			
-					</div>			<div class="cat">				<div class="title">기간</div>				
-					<div class="sub">6<font size="1">개월</font></div>			</div>			<div class="cat">				
-					<div class="title">모집금액</div>				<div class="sub">5,000<font size="1">만원</font></div>			
-					</div>			<div class="cat">				<div class="title">상환방식</div>				
-					<div class="sub">만기일시</div>			</div>		</div>	</div></div>
-					<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 good-item-wrap">	<div class="good-item">		
-					<div class="item-top">			<a href="javascript:(void(0));" onclick="fn_openInvestDetail(781)">		
-					<div class="hover-text">					<div class="clearfix"></div>					
-					<div class="hover-button"></div>				</div>			</a>			<div class="item-top-badge">
-							<span class="label label-primary">LTV 47.83%</span>			</div>			
-							<div class="item-top-badge text-right">			<span class="label label-primary">상환중</span>			
-							</div>		<div class="item-middle-badge">			
-					<div style="display: inline-block;">로스트 아크</div>
-					<div style="display: inline-block;">
-					</div>		
-					</div>			
-					<div class="item-bottom-badge text-right">			
-					<span>자동투자 80%</span>			
-					</div>			
-						<img src="${pageContext.request.contextPath}/resources/img/lostArk.jpg">
-					</div>		
-					<div class="item-bottom">			
-					<div class="item-bottom-text">				
-					<div class="row">					<div class="col-xs-6">						<h5>04-19-128</h5>			
-					</div>				
-					</div>				
-					<h4 style="text-align:center;">[MMORPG] 로스트 아크 (1차)</h4>
-									<div class="progress">				
-					<div class="progress-bar progress-bar-striped" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="min-width:20px;width: 100%">
-											100%					</div>				</div>				
-											<div class="item-top-text-num">					<small>(140명)</small>				
-											</div>			</div>			<hr>			<div class="grade">				
-											<div class="circle grade-MA">MA</div>			</div>			<div class="cat">
-					<div class="title">연 수익률</div>				<div class="sub">12<font size="1">%</font></div>			
-					</div>			<div class="cat">				<div class="title">기간</div>				
-					<div class="sub">8<font size="1">개월</font></div>			</div>			<div class="cat">				
-					<div class="title">모집금액</div>				<div class="sub">1,000<font size="1">만원</font></div>			
-					</div>			<div class="cat">				<div class="title">상환방식</div>				
-					<div class="sub">만기일시</div>			</div>		</div>	
-					</div></div><div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 good-item-wrap mobile-hide">	
-					<div class="good-item">		<div class="item-top">			
-					<a href="javascript:(void(0));" onclick="fn_openInvestDetail(780)">				
-					<div class="hover-text">					<div class="clearfix"></div>					
-					<div class="hover-button"></div>				</div>			</a>			
-					<div class="item-top-badge">		<span class="label label-primary">LTV 42.55%</span>			</div>			
-					<div class="item-top-badge text-right">			<span class="label label-primary">상환중</span>			
-					</div>		<div class="item-middle-badge">			
-					<div style="display: inline-block;">모두의 마블</div>		
-					<div style="display: inline-block;">
-					</div>		
-					</div>			
-					<div class="item-bottom-badge text-right">			
-					<span>자동투자 75%</span>			
-					</div>	
-						<img src="${pageContext.request.contextPath}/resources/img/marble.png">	
-					</div>		
-					<div class="item-bottom">			
-					<div class="item-bottom-text">				
-							<div class="row">					<div class="col-xs-6">						
-							<h5>04-19-127</h5>					</div>				</div>				
-							<h4 style="text-align:center;">[모바일] 모두의 마블(2차)</h4>				
-							<div class="progress">				
-					<div class="progress-bar progress-bar-striped" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="min-width:20px;width: 100%">
-							100%					</div>				</div>				<div class="item-top-text-num">
-					<small>(127명)</small>				</div>			</div>			<hr>			<div class="grade">
-									<div class="circle grade-MA">MA</div>			</div>			<div class="cat">
-													<div class="title">연 수익률</div>				
-					<div class="sub">13<font size="1">%</font></div>			</div>			<div class="cat">				
-					<div class="title">기간</div>				<div class="sub">6<font size="1">개월</font></div>			
-					</div>			<div class="cat">				<div class="title">모집금액</div>				
-					<div class="sub">2,000<font size="1">만원</font></div>			</div>			<div class="cat">				
-					<div class="title">상환방식</div>				<div class="sub">만기일시</div>			</div>		</div>	
-					</div></div><div class="clearfix visible-md-block visible-lg-block"></div></div>
+					</div>
+					<!-- 1 -->
 					
+					<!-- 2 -->
+					<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 good-item-wrap">
+						<div class="good-item">
+							<div class="item-top">
+								<a href="javascript:(void(0));" onclick="fn_openInvestDetail(791)">
+									<div class="hover-text">
+										<div class="clearfix"></div>
+										<div class="hover-button"></div>
+									</div>
+								</a>
+								<div class="item-top-badge">
+									<span class="label label-primary">LTV 66.67%</span>
+								</div>
+								<div class="item-top-badge text-right">
+									<span class="label label-primary animated infinite flash">모집중</span>
+								</div>
+								<div class="item-middle-badge">
+									<div style="display: inline-block;">리그오브레전드</div>
+									<div style="display: inline-block;"></div>
+								</div>
+<!-- 								<div class="item-bottom-badge text-right">		 -->
+<!-- 									<span>자동투자 100%</span> -->
+<!-- 								</div> -->
+								<img src="${pageContext.request.contextPath}/resources/img/LOL.jpg">
+							</div>
+							<div class="item-bottom">
+								<div class="item-bottom-text">
+									<div class="row">
+										<div class="col-xs-6">
+											<h5>04-19-131</h5>
+										</div>
+									</div>
+									<h4 style="text-align:center;">[AOS] 리그오브레전드 (2차)</h4>
+									<div class="progress">
+										<div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="84" aria-valuemin="0" aria-valuemax="100" style="min-width:20px;width: 84%">
+											84%
+										</div>
+									</div>
+									<div class="item-top-text-num">
+										<small>(267명)</small>
+									</div>
+								</div>			
+								<hr>
+								<div class="grade">
+									<div class="circle grade-MA">MA</div>
+								</div>
+								<div class="cat">
+									<div class="title">연 수익률</div>
+									<div class="sub">
+										12<font size="1">%</font>
+									</div>
+								</div>
+								<div class="cat">
+									<div class="title">기간</div>
+									<div class="sub">
+										9<font size="1">개월</font>
+									</div>
+								</div>
+								<div class="cat">
+									<div class="title">모집금액</div>
+									<div class="sub">
+										5,000<font size="1">만원</font>
+									</div>
+								</div>
+								<div class="cat">
+									<div class="title">상환방식</div>
+									<div class="sub">만기일시</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- 2 -->
+					
+					<!-- 3 -->
+					<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 good-item-wrap">
+						<div class="good-item">
+							<div class="item-top">
+								<a href="javascript:(void(0));" onclick="fn_openInvestDetail(783)">
+									<div class="hover-text">
+										<div class="clearfix"></div>
+										<div class="hover-button"></div>
+									</div>
+								</a>
+								<div class="item-top-badge">
+									<span class="label label-primary">LTV 65.82%</span>
+								</div>
+								<div class="item-top-badge text-right">
+									<span class="label label-primary animated infinite flash">모집중</span>
+								</div>
+								<div class="item-middle-badge">
+									<div style="display: inline-block;">몬스터헌터 월드</div>
+									<div style="display: inline-block;"></div>
+								</div>
+								<img src="${pageContext.request.contextPath}/resources/img/monster.jpg">
+							</div>
+							<div class="item-bottom">
+								<div class="item-bottom-text">
+									<div class="row">
+										<div class="col-xs-6">
+											<h5>04-19-129</h5>
+										</div>
+									</div>
+									<h4 style="text-align:center;">[콘솔] 몬스터헌터 월드 (1차)</h4>
+									<div class="progress">
+										<div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="22" aria-valuemin="0" aria-valuemax="100" style="min-width:20px;width: 22%">
+											22%
+										</div>
+									</div>
+									<div class="item-top-text-num">
+										<small>(252명)</small>
+									</div>
+								</div>
+								<hr>
+								<div class="grade">
+									<div class="circle grade-MA">MA</div>
+								</div>
+								<div class="cat">
+									<div class="title">연 수익률</div>		
+									<div class="sub">
+										14<font size="1">%</font>
+									</div>
+								</div>
+								<div class="cat">
+									<div class="title">기간</div>
+									<div class="sub">
+										9<font size="1">개월</font>
+									</div>
+								</div>
+								<div class="cat">
+									<div class="title">모집금액</div>
+									<div class="sub">
+										10,000<font size="1">만원</font>
+									</div>
+								</div>
+								<div class="cat">
+									<div class="title">상환방식</div>
+									<div class="sub">만기일시</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- 3 -->
+					
+					<!-- 4 -->
+					<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 good-item-wrap">
+						<div class="good-item">
+							<div class="item-top">
+								<a href="javascript:(void(0));" onclick="fn_openInvestDetail(782)">
+									<div class="hover-text">
+										<div class="clearfix"></div>
+										<div class="hover-button"></div>
+									</div>
+								</a>
+								<div class="item-top-badge">
+									<span class="label label-rwrdgd">리워드</span>
+								</div>
+								<div class="item-top-badge text-right">
+									<span class="label label-primary">상환중</span>
+								</div>
+								<div class="item-middle-badge">
+									<div style="display: inline-block;">메이플스토리</div>
+									<div style="display: inline-block;"></div>
+								</div>
+								<img src="${pageContext.request.contextPath}/resources/img/maple.png">
+							</div>
+							<div class="item-bottom">
+								<div class="item-bottom-text">
+									<div class="row">
+										<div class="col-xs-6">
+											<h5>02-19-41</h5>
+										</div>
+									</div>
+									<h4 style="text-align:center;">[MMORPG] 메이플스토리(1차)</h4>
+									<div class="progress">
+										<div class="progress-bar progress-bar-striped" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="min-width:20px;width: 100%">
+											100%
+										</div>
+									</div>
+									<div class="item-top-text-num">
+										<small>(186명)</small>
+									</div>
+								</div>
+								<hr>
+								<div class="grade">
+									<div class="circle grade-MA">MA</div>
+								</div>
+								<div class="cat">
+									<div class="title">연 수익률</div>		
+									<div class="sub">
+										15<font size="1">%</font>
+									</div>
+								</div>
+								<div class="cat">
+									<div class="title">기간</div>
+									<div class="sub">
+										6<font size="1">개월</font>
+									</div>
+								</div>
+								<div class="cat">
+									<div class="title">모집금액</div>
+									<div class="sub">
+										5,000<font size="1">만원</font>
+									</div>
+								</div>
+								<div class="cat">
+									<div class="title">상환방식</div>
+									<div class="sub">만기일시</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- 4 -->
+					
+					<!-- 5 -->
+					<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 good-item-wrap">
+						<div class="good-item">
+							<div class="item-top">
+								<a href="javascript:(void(0));" onclick="fn_openInvestDetail(781)">
+									<div class="hover-text">
+										<div class="clearfix"></div>
+										<div class="hover-button"></div>
+									</div>
+								</a>
+								<div class="item-top-badge">
+									<span class="label label-primary">LTV 47.83%</span>
+								</div>
+								<div class="item-top-badge text-right">
+									<span class="label label-primary">상환중</span>
+								</div>
+								<div class="item-middle-badge">
+									<div style="display: inline-block;">로스트 아크</div>
+									<div style="display: inline-block;"></div>
+								</div>
+<!-- 								<div class="item-bottom-badge text-right">			 -->
+<!-- 									<span>자동투자 80%</span>			 -->
+<!-- 								</div>			 -->
+								<img src="${pageContext.request.contextPath}/resources/img/lostArk.jpg">
+							</div>
+							<div class="item-bottom">
+								<div class="item-bottom-text">
+									<div class="row">
+										<div class="col-xs-6">
+											<h5>04-19-128</h5>
+										</div>
+									</div>
+									<h4 style="text-align:center;">[MMORPG] 로스트 아크 (1차)</h4>
+									<div class="progress">
+										<div class="progress-bar progress-bar-striped" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="min-width:20px;width: 100%">
+											100%
+										</div>
+									</div>
+									<div class="item-top-text-num">
+										<small>(140명)</small>
+									</div>
+								</div>
+								<hr>
+								<div class="grade">
+									<div class="circle grade-MA">MA</div>
+								</div>
+								<div class="cat">
+									<div class="title">연 수익률</div>		
+									<div class="sub">
+										12<font size="1">%</font>
+									</div>
+								</div>
+								<div class="cat">
+									<div class="title">기간</div>
+									<div class="sub">
+										9<font size="1">개월</font>
+									</div>
+								</div>
+								<div class="cat">
+									<div class="title">모집금액</div>
+									<div class="sub">
+										1,000<font size="1">만원</font>
+									</div>	
+								</div>
+								<div class="cat">
+									<div class="title">상환방식</div>
+									<div class="sub">만기일시</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- 5 -->
+					
+					<!-- 6 -->
+					<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 good-item-wrap">
+						<div class="good-item">
+							<div class="item-top">
+								<a href="javascript:(void(0));" onclick="fn_openInvestDetail(780)">
+									<div class="hover-text">
+										<div class="clearfix"></div>
+										<div class="hover-button"></div>
+									</div>
+								</a>
+								<div class="item-top-badge">
+									<span class="label label-primary">LTV 42.55%</span>
+								</div>
+								<div class="item-top-badge text-right">
+									<span class="label label-primary">상환중</span>
+								</div>
+								<div class="item-middle-badge">
+									<div style="display: inline-block;">모두의 마블</div>
+									<div style="display: inline-block;"></div>
+								</div>
+<!-- 								<div class="item-bottom-badge text-right"> -->
+<!-- 									<span>자동투자 75%</span> -->
+<!-- 								</div>	 -->
+								<img src="${pageContext.request.contextPath}/resources/img/marble.png">
+							</div>
+							<div class="item-bottom">
+								<div class="item-bottom-text">
+									<div class="row">
+										<div class="col-xs-6">
+											<h5>04-19-127</h5>
+										</div>
+									</div>
+									<h4 style="text-align:center;">[모바일] 모두의 마블(2차)</h4>
+									<div class="progress">
+										<div class="progress-bar progress-bar-striped" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="min-width:20px;width: 100%">
+											100%
+										</div>
+									</div>
+									<div class="item-top-text-num">
+										<small>(127명)</small>
+									</div>
+								</div>
+								<hr>
+								<div class="grade">
+									<div class="circle grade-MA">MA</div>
+								</div>
+								<div class="cat">
+									<div class="title">연 수익률</div>		
+									<div class="sub">
+										13<font size="1">%</font>
+									</div>
+								</div>
+								<div class="cat">
+									<div class="title">기간</div>
+									<div class="sub">
+										6<font size="1">개월</font>
+									</div>
+								</div>
+								<div class="cat">
+									<div class="title">모집금액</div>
+									<div class="sub">
+										2,000<font size="1">만원</font>
+									</div>	
+								</div>
+								<div class="cat">
+									<div class="title">상환방식</div>
+									<div class="sub">만기일시</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- 6 -->
+					
+					<div class="clearfix visible-md-block visible-lg-block"></div>
+				</div>
 			</div>
 		</section>
 		<!-- "main_investGoods" Area End

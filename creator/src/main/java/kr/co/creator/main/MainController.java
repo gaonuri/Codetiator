@@ -48,6 +48,17 @@ public class MainController {
 //		return "main/main";
 //	}//main
 	
+	@RequestMapping(value = "/main2", method = RequestMethod.GET)
+	public String main2(Model model, ProjectVO proVO) {
+		logger.info("main2");
+
+		List<ProjectVO> list = null;
+		list = mainService.project_list(proVO);
+		model.addAttribute("projectList", list);
+		
+		return "main/main2";
+	}//main
+	
 	@RequestMapping(value = "/main_oldversion", method = RequestMethod.GET)
 	public String main_oldversion() {
 		logger.info("main_oldversion");
