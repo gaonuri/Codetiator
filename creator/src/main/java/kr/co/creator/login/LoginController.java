@@ -2,7 +2,6 @@ package kr.co.creator.login;
 
 import java.io.PrintWriter;
 import java.util.List;
-import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -17,12 +16,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import kr.co.creator.vo.Busi_userVO;
+import kr.co.creator.vo.CertVO;
 import kr.co.creator.vo.FindPwdVO;
-import kr.co.creator.vo.HistoryVO;
 import kr.co.creator.vo.MemberListVO;
 import kr.co.creator.vo.MemberVO;
-import kr.co.creator.vo.ProjectVO;
-import kr.co.creator.vo.UserVO;
 
 @Controller
 public class LoginController {
@@ -154,7 +151,7 @@ public class LoginController {
 	}//busifindChk
 	
 	@RequestMapping(value = "/CerEmail", method = RequestMethod.POST)
-	public void CerEmail(PrintWriter out, FindPwdVO vo, EmailForm form, FindUtil findUtil) throws Exception {
+	public void CerEmail(HttpSession session, PrintWriter out, FindPwdVO vo, EmailForm form, FindUtil findUtil, CertVO cvo) throws Exception {
 		logger.info("=== CerEmail ===");
 		int cnt = 0;
 		cnt = loginService.busifindChk(vo);
@@ -180,6 +177,18 @@ public class LoginController {
 		out.flush();
 		out.close();
 	}//CerEmail
+	
+	@RequestMapping(value = "/CheckCerUserNumber", method = RequestMethod.POST)
+	public void CheckCerUserNumber(PrintWriter out, FindPwdVO vo, EmailForm form, FindUtil findUtil) throws Exception {
+		logger.info("=== CheckCerUserNumber ===");
+		int cnt = 0;
+		cnt = loginService.CheckCerUserNumber(vo);
+		if(cnt > 0) {
+			out.print(cnt);
+			out.flush();
+			out.close();
+		}
+	}//CheckCerUserNumber
 	
 	@RequestMapping(value = "/CheckCerNumber", method = RequestMethod.POST)
 	public void CheckCerNumber(PrintWriter out, Busi_userVO vo, EmailForm form, FindUtil findUtil) throws Exception {

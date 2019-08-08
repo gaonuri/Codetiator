@@ -1,5 +1,6 @@
 package kr.co.creator.mypage;
 
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 
@@ -20,6 +21,7 @@ import kr.co.creator.login.FindUtil;
 import kr.co.creator.login.LoginService;
 import kr.co.creator.login.UtilForSession;
 import kr.co.creator.vo.AccountVO;
+import kr.co.creator.vo.Busi_userVO;
 import kr.co.creator.vo.FindPwdVO;
 import kr.co.creator.vo.HistoryVO;
 import kr.co.creator.vo.InOutVO;
@@ -44,7 +46,7 @@ public class MypageController {
 	LoginService loginService;
 
 	@Autowired
-	private My_EmailSender emailSender;
+	private EmailSender emailSender;
 	
 	@RequestMapping(value = "/my_dashboard", method = RequestMethod.GET)
 	public String list(HttpSession session, Model model, MemberVO userVO, MypageVO myVO) {
@@ -69,10 +71,10 @@ public class MypageController {
 	@RequestMapping(value = "/my_loan_list", method = RequestMethod.GET)
 	public String loan(HttpSession session, Model model, MemberVO userVO, ProjectVO proVO) {
 		logger.info("my_loan_list");
-//		userVO = (MemberVO)session.getAttribute("memberVO");
-//		List<ProjectVO> loan= null;
-//		loan = service.loan_list(userVO);
-//		model.addAttribute("loanList",loan);
+		userVO = (MemberVO)session.getAttribute("memberVO");
+		List<ProjectVO> loan= null;
+		loan = service.loan_list(userVO);
+		model.addAttribute("loanList",loan);
 		return "mypage/my_loan_list";
 	}
 	
@@ -83,42 +85,73 @@ public class MypageController {
 		AccountVO accVO = null;
 		InOutVO ioVO = null;
 		UserVO useVO = null;
+		Busi_userVO busiVO = null;
 		accVO = service.account(userVO);
 		ioVO = service.inout(userVO);
 		useVO = service.user(userVO);
-		
+		busiVO = service.busi(userVO); 
+				
 		model.addAttribute("user", useVO);
+		model.addAttribute("busi", busiVO);
 		model.addAttribute("acnt", accVO);
 		model.addAttribute("Inout",ioVO);
 		logger.info("my_depo_mgn"+accVO);
 		logger.info("my_depo_mgn"+ioVO);
+		logger.info("my_depo_mgn"+busiVO);
 		return "mypage/my_depo_mgn";
 	}
 	
-	@RequestMapping(value = "/emailcert", method = RequestMethod.POST)
-	public void sendCert(PrintWriter out, My_EmailForm form, My_FindUtil findUtil, String email, UserVO vo) throws Exception {
-		logger.info("=== sendEmailCertification ===");
+	@RequestMapping(value = "/CertEmail", method = RequestMethod.POST)
+	public void CertEmail(HttpSession session, PrintWriter out, MemberVO memvo, FindPwdVO vo, EmailForm form, FindUtil findUtil) {
+		logger.info("=== CertEmail ===");
+		memvo = (MemberVO)session.getAttribute("memVO");
+		logger.info("=== CertEmail : "+memvo.getUser_num());
+		logger.info("=== CertEmail : "+memvo.getBusi_num());
+		int updateCertNunYN = 0;
+			if(memvo.getUser_num() != null && !memvo.getUser_num().equals("")) {
+				logger.info("=== CertEmail : "+memvo.getUser_num());
+				String newPassword, user_name;
+				newPassword = findUtil.getRamdomPassword(8);
+				vo.setUser_num(memvo.getUser_num());
+				user_name = sqlSession.selectOne("LoginMapper.selectName", vo);
+				vo.setNewPassword(newPassword);
+				vo.setUser_name(user_name);
+				form.setContent("인증번호는 " + newPassword + " 입니다");
+				form.setSubject("안녕하세요 " + vo.getUser_name() + "님 인증번호를 확인해 주세요");
+				form.setReceiver(vo.getEmail());
+				//emailSender.sendEmail(form);
+				System.out.println(vo.getEmail());
+				updateCertNunYN = loginService.insertUserNumber(vo);
+				
+			} else if(memvo.getBusi_num() != null && !memvo.getBusi_num().equals("")) {
+				logger.info("=== CertEmail : "+memvo.getBusi_num());
+				String newPassword = null, busi_name = null;
+				newPassword = findUtil.getRamdomPassword(8);
+				busi_name = sqlSession.selectOne("LoginMapper.selectBusiName", vo);
+				vo.setNewPassword(newPassword);
+				vo.setManager_name(busi_name);
+				form.setContent("인증번호는 " + newPassword + " 입니다");
+				form.setSubject("안녕하세요 " + vo.getManager_name() + "님 인증번호를 확인해 주세요");
+				form.setReceiver(vo.getManager_email());
+				//emailSender.sendEmail(form);
+				System.out.println(vo.getManager_email());
+				updateCertNunYN = loginService.insertNumber(vo);
+			}
+		out.print(updateCertNunYN);
+		out.flush();
+		out.close();
+	}//CertEmail
+	
+	@RequestMapping(value = "/bankNumChk", method = RequestMethod.POST)
+	public void joinEmailChk(PrintWriter out, AccountVO accvo) throws IOException {
+		logger.info("=== bankNumChk ===");
+//		logger.info(vo.getEmail());
 		int cnt = 0;
-		cnt = ((MypageService) sqlSession).emailcert(email);
-		if(cnt > 0) {
-			String newPassword;
-			newPassword = findUtil.getRamdomCert(8);
-			form.setContent("인증번호를 드립니다."
-							+ " 인증번호는 " + newPassword + " 입니다");
-			form.setSubject("안녕하세요 " + vo.getUser_name() + "님 인증번호를 확인해 주세요");
-			form.setReceiver(vo.getEmail());
-			emailSender.My_EmailSender(form);
-		}
-		if(cnt > 0) {
-			System.out.println(vo.getEmail());
-			out.print(cnt);
-			out.flush();
-			out.close();
-		}
+		cnt = service.bankNumChk(accvo);
 		out.print(cnt);
 		out.flush();
 		out.close();
-	}//sendCert	
+	}//joinEmailChk
 	
 	@RequestMapping(value = "/my_modify", method = RequestMethod.GET)
 	public String my_modify() {

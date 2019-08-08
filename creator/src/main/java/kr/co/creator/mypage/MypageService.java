@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kr.co.creator.vo.AccountVO;
+import kr.co.creator.vo.Busi_userVO;
 import kr.co.creator.vo.FindPwdVO;
 import kr.co.creator.vo.InOutVO;
 import kr.co.creator.vo.MemberVO;
@@ -61,10 +62,16 @@ public class MypageService {
 		return useVO;
 	}
 	
-	public int emailcert(String email) {
-		System.out.println(email);
+	public Busi_userVO busi(MemberVO userVO) {
+		Busi_userVO busiVO = null;
+		busiVO = (Busi_userVO) dao.busi(userVO);
+		return busiVO;
+	}
+	
+	public int emailcert(UserVO vo) {
+		System.out.println(vo);
 		int cnt = 0;
-		cnt = dao.emailcert(email);
+		cnt = dao.emailcert(vo);
 		return cnt; 
 	}//findPwdChk
 
@@ -79,6 +86,13 @@ public class MypageService {
 		cnt1 = dao.userDataUpdate1(vo);
 		return cnt1; 
 	}
+
+	public int bankNumChk(AccountVO accvo) {
+		int cnt = 0;
+		cnt = dao.bankNumChk(accvo);
+		return cnt;
+	}//bankNumChk
+
 
 	
 }//class

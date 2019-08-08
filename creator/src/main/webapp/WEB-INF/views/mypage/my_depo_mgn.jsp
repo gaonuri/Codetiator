@@ -32,16 +32,18 @@
 	  Author: TemplateMag.com
 	  License: https://templatemag.com/license/
 	======================================================= -->
+
 	<script type="text/javascript">
+/////////////////////////////////////////////////////////////////////////////////////////////금액 버튼 시작
 	$(document).ready(function() {
 		var temp = 0;
-		var add  = 0;
+		var add  = 0; 
 		var current_price = parseInt($("#current_price").val() * 10000);
 		var invest_price = parseInt($("#invest_price").val());
 		var deposit = parseInt($("#inputDeposit771").val());
-		var invest 	= parseInt($("#inputAmt771").val());
+		var request	= parseInt($("#withdrawAmt").val());
 		var intrst 	= invest * $("#rate").val() * 0.01;
-		var limit	= parseInt($("#invest_limit").val());
+		var limit	= parseInt($("#request_limit").val());
 		var confirmYN = false;
 		var check = $("input:checkbox[id=agreeCheckbox]:checked").is(":checked");
 		var count = 0; 
@@ -71,40 +73,180 @@
 				$("#withdrawAmt").val().replace(/[^0-9\.]/g,'')
 			);//한글 입력 방지
 		});//pass.keydown
-		
+	
 		$("#withdrawAmt").keyup(function() {
 			deposit = parseInt($("#withdrawAmt").val());
 			//alert("invest : " + invest); alert("limit : " + limit);
 			if(deposit > limit) {
-				alert("동일 차입자에게 투자한도 이상의 투자를 할 수 없습니다.");
-				$("#withdrawAmt").val($("#invest_limit").val());
-			}
-			calculating();
-		});		
+				alert("보유한 예치금을 초과하였습니다.");
+				$("#withdrawAmt").val($("#request_limit").val());
+				}
+				calculating();
+		});//keyup
 		
+		$("#withdrawAmt").blur(function() {
+			var str = $("#withdrawAmt").val();
+			//alert(str.substr(str.length-4, 4)); 숫자 뒤 4자리가 0000인지 확인
+			if("0000" != str.substr(str.length-4, 4)) {
+				alert("만원 단위로 입력하시기 바랍니다.");
+				$("#withdrawAmt").val("0");
+				calculating();
+			}//if
+		});//blur
+		
+		$("#withdrawReqBtn").click(function() {
+			if(parseInt($("#withdrawAmt").val()) == 0) {
+				alert("금액을 입력하세요");
+				return;
+			} else {
+				$("#deposit").val(deposit - request);
+				
+			}
+		});//click
+	});//ready
+////////////////////////////////////////////////////////////////////////////////////////////////금액 버튼 끝
+		
+////////////////////////////////////////////////////////////////////////////////////////////////은행별 계좌 유형 시작
+		
+
 		function depositLimit(limit) {
 			if(deposit > limit) {
 				alert("예치금 잔액에 초과한 금액입니다.");
 			}
-		}//depositLimit
+		}//depositLimit 
+//		if($("#cusBankCdSelect").val() == ""){
+// 			alert("은행을 선택 하세요.");
+// 			return;
+// 		}
+// 		if($("#cusBankCdSelect").val() == "010"){
+// 			var bankStd = /^[0-9]{8}$/;
+// 			if($.trim($("#cusBankCdSelect").val()) != $(this).val().match(sanStd)){
+// 				alert("올바르지 않은 입력입니다.");
+// 			return;
+// 			}
+// 		}
 		
+
+
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////은행별 계좌 유형 끝
+
+////////////////////////////////////////////////////////////////////////////////////////////////예치금 요청 시작
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////예치금 요청 끝
+		
+////////////////////////////////////////////////////////////////////////////////////////////////예치금 계좌 발급받기 시작
+		$(document).ready(function(){
+			$("#receaccn").blur(function(){
+				var banknum = /^([0-9]{6}+\-)([0-9]{2}+\-)([0-9]{6})$/;
+				if($.trim($("#receaccn").val()) != $(this).val().match(banknum)){
+					alert("올바르지 않은 계좌입니다.");
+					return;
+				}
+		
+				$.post(
+						"${pageContext.request.contextPath}/bankNumChk",
+						{
+							bank_num:$("#receaccn").val()
+						},
+						function(data,status){
+							if(data == 0){
+								alert("사용 가능한 계좌 입니다.");
+								chkemail = $("#receaccn").val();
+								return;
+							}else{
+								alert("이미 등록된 계좌 입니다.");
+								return;
+							}
+						}//function
+				);//post
+			});//blur
+		})//ready
+/////////////////////////////////////////////////////////////////////////////////////////////예치금 계좌 발급받기 끝
+
+/////////////////////////////////////////////////////////////////////////////////////////////모달 시작
+		function tempFunction() {
+			$("#btn_cert2");
+			document.frmLoan.submit();
+		}tempFunction
+		
+		var id;
+		var min = 02;
+		var sec = 59;
+		var minZero = "";
+		var secZero = "";
+		function setClock() {
+			id = setInterval(worker,1000);
+		}
+		function worker() {
+			if(min < 10){minZero = "0";}else{minZero = "";}
+			if(sec < 10){secZero = "0";}else{secZero = "";}
+			var now = minZero + min + " : " + secZero + sec;
+			clock.innerHTML = "<h6>"+now+"</h6>";
+			sec = parseInt(sec) - 1;
+			if(sec == -1) {
+				sec = 59;
+				min = parseInt(min) - 1;
+				if(min == -1){
+					clearInterval(id);
+					alert("인증시간이 만료 되었습니다.");
+					location.reload();
+					//$("#btn_cert1").modal("hide");
+				}
+			}
+		}
+		$(document).ready(function(){
+			var chkemail = '';
+			
+			$("#cusEmail").blur(function(){
+				var emailStd = /([a-z0-9]{1,20}\@)([a-z]{1,20}\.)([a-z]{1,10})/gi;
+				
+				if($.trim($("#cusEmail").val()) != $(this).val().match(emailStd)){
+					alert("올바르지 않은 이메일 입니다.");
+					return;
+				}
+				$.post(
+						"./busifindChk",
+						"./findPwdChk",
+						{
+							Email:$("#cusEmail").val(),
+							manager_email:$("#cusEmail").val()
+						},
+						function(data,status){
+							if(data == 1){
+								alert("이메일이 확인 되었습니다. 인증번호 받기 버튼을 눌러주세요.");
+								chkemail = $("#cusEmail").val();
+							}else{
+								alert("등록된 이메일이 없습니다.");
+							}
+						}//function
+				);//post
+			});//blur
+		});//ready
+
 		$(document).ready(function(){
 			$("#numre").click(function(){
 				if($.trim($("#cusEmail").val()) == ""){
 					alert("등록된 이메일이 없습니다.");
-//		 			$("#email").focus();
+//		 			$("#cusEmail").focus();
 					return;
 				}
 				$.post(
-						"./emailcert"
+						"./CertEmail"
 						,{
-							email:$("#cusEmail").val(),
-							user_name:$("#cusName").val()
+							Email:$("#cusEmail").val(),
+							manager_email:$("#cusEmail").val()
 						}
 						,function(data,status){
 							if(status == "success"){
 								if(data > 0){
-									alert("해당 이메일로 임시비밀번호를 발송했습니다.");
+									alert("해당 이메일로 인증번호를 발송했습니다.");
+									$("#cer_number").css("display","block");
+									setClock();
 								} else if(data == 0){
 									alert("존재하지 않는 이메일 입니다.");
 								} else {
@@ -117,22 +259,33 @@
 				);//post
 			});//click
 		});//ready
-		
-// 		$("#").ready(function() {
-			
-// 		});
-// 		$("#cert_start").click(function() {
-// 			int count
-// 			count = 0;
-// 			if (count=1) {
-// 				location.href="#btm_cert1"
-// 			} else {
-// 				location.href="#btm_cert2"
-// 			}
-// 		});//이메일 인증 Modal
-		
-	});//ready
-	</script>
+		$(document).ready(function() {
+			$("#btn_certi_complete").click(function() {
+				$.post(
+						"./CheckCerNumber",
+						{
+							cer_number:$("#cer_number").val()
+						}
+						,function(data,status){
+							if(status == "success"){
+								if(data > 0){
+									$("#btn_cert1").modal("hide");
+									$("#btn_cert2").modal("show");
+									alert("인증이 완료 되었습니다.");
+								} else if(data == 0){
+									alert("인증번호가 다릅니다.");
+								} else {
+									alert("잠시 후, 다시 시도해 주세요.");
+								}
+							} else {
+								alert("시스템 관리자에게 문의 바랍니다.");
+							}
+						}
+				);//post
+			});
+		});//ready
+/////////////////////////////////////////////////////////////////////////////////////////////모달 끝
+</script>
 </head>
      
 <body>
@@ -453,96 +606,6 @@
 										</div>
 									</div>
 									
-									<div class="wrap" id="listWrap">
-										<div class="box right">
-											<div class="row">
-												<div class="col-xs-12 col-sm-12 col-md-12">
-													<div class="title">
-														<font class="font-purple">
-															●
-														</font> 거래내역
-													</div>
-													<hr>
-												</div>
-											</div>
-											<div class="row">
-												<div class="col- text-right">
-													<div style="margin-top: 12px;">
-														<a id="btnExport">
-															<button type="button" class="btn btn-purple-transparent btn-gradiation">
-																EXCEL <i class="glyphicon glyphicon-download-alt"></i>
-															</button>
-														</a>
-													</div>
-												</div>
-											</div>
-											<div class="row">
-												<div class="col-xs-12 col-sm-12 col-md-12">
-													<div id="goodList" style="margin-top: 10px;">
-														<div class="goodlist-title">
-															<div class="row">
-																<div class="col-xs-4 col-md-2">
-																	<div class="name">거래일자</div>
-																</div>
-																<div class="col-xs-4 col-md-3">
-																	<div class="name">거래명</div>
-																</div>
-																<div class="col-xs-4 col-md-2">
-																	<div class="round">거래구분</div>
-																</div>
-																<div class="col-xs-4 col-md-2">
-																	<div class="day">거래금액</div>
-																</div>
-																<div class="col-xs-4 col-md-3">
-																	<div class="investAmt">
-																		거래 후 예치금 <span class="glyphicon glyphicon-question-sign hover" style="font-size: 12px;" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="auto bottom" data-html="true" data-content="기본 예치금(자동투자 예치금)" data-original-title="" title="">
-																				</span>
-																	</div>
-																</div>
-															</div>
-														</div>
-					
-														<div id="goodListBody"></div>
-														
-														<table id="tblExport" style="display:none;" class="tblExport">
-															<thead>
-																<tr>
-																	<th scope="col">거래일자</th>
-																	<th scope="col">거래명</th>
-																	<th scope="col">거래구분</th>
-																	<th scope="col">거래금액</th>
-																	<th scope="col">거래 후 기본예치금</th>
-																	<th scope="col">거래 후 자동투자 예치금</th>
-																	<th scope="col">거래 후 총 예치금</th>
-																</tr>
-															</thead>
-															<tbody>
-															</tbody>
-														</table>
-														
-														<div class="row" style="margin-top: 10px;">
-															<div class="col-xs-12 col-md-push-6 col-md-6" style="margin-top: 5px;">
-																<form id="depositHisListSrchForm" class="text-right" onsubmit="return false;">
-																	<div style="display: inline-block;">
-																		<input type="text" class="form-control srchText" name="SRCH_TEXT" placeholder="거래명으로 검색" maxlength="20">
-																	</div>
-																	<div style="display: inline-block;">
-																		<button type="button" class="btn btn-purple-transparent" id="depositHisListSrchTextBtn">
-																			<i class="glyphicon glyphicon-search"></i>
-																		</button>
-																	</div>
-																	<div class="clearfix"></div>
-																</form>
-															</div>
-															<div class="col-xs-12 col-md-pull-6 col-md-6 text-left" style="margin-top: 5px;">
-																<ul class="pagination pagination-sm margin-0" id="PAGE_NAVI"></ul>
-															</div>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
 									
 									<!-- 본인인증 서비스 팝업을 호출하기 위해서는 다음과 같은 form이 필요합니다. -->
 									<form name="form_chk" method="post">
@@ -551,6 +614,33 @@
 									</form>
 
 				<!-- Email 인증시작 -->
+					<script type="text/javascript">
+					var id;
+					var min = 02;
+					var sec = 59;
+					var minZero = "";
+					var secZero = "";
+					function setClock() {
+						id = setInterval(worker,1000);
+					}
+					function worker() {
+						if(min < 10){minZero = "0";}else{minZero = "";}
+						if(sec < 10){secZero = "0";}else{secZero = "";}
+						var now = minZero + min + " : " + secZero + sec;
+						clock.innerHTML = "<h6>"+now+"</h6>";
+						sec = parseInt(sec) - 1;
+						if(sec == -1) {
+							sec = 59;
+							min = parseInt(min) - 1;
+							if(min == -1){
+								clearInterval(id);
+								alert("인증시간이 만료 되었습니다.");
+								location.reload();
+								
+							}
+						}
+					}
+					</script>
 						<div class="modal fade" id="btn_cert1"  name="cert1" role="dialog" aria-labelledby="vtAcntModalLabel" aria-hidden="true">
 							<div class="modal-dialog">
 								<div class="modal-content">
@@ -575,11 +665,11 @@
 										<div class="row">
 											<div class="form-group col-xs-5 col-sm-5 col-md-3">
 												<label for="cusNm" class="control-label">이 름</label>
-												<input class="form-control" id="cusName" type="text" value="${user.user_name}" readonly="">
+												<input class="form-control" id="cusName" type="text" value="${user.user_name}${busi.manager_name}" readonly="">
 											</div>
 											<div class="form-group col-xs-12 col-sm-12 col-md-5">
 												<label for="cusAccount" class="control-label" >Email_주소</label>
-												<input class="form-control" id="cusEmail" type="text" value="${user.email}" readonly="">
+												<input class="form-control" id="cusEmail" type="text" value="${user.email}${busi.manager_email}" readonly="">
 											</div>
 											<div class="form-group col-xs-12 col-sm-12 col-md-4">
 												<br style="line-height:24px";">
@@ -612,14 +702,11 @@
 											
 											<div class="row">
 												<div class="form-group col-md-4">
-													<input class="form-control" id="ssnNo" type="text" maxlength="13">
+													<input class="form-control" id="cer_number" type="text" maxlength="13"  placeholder="" style="display:none;">
 												</div>
-												<div class="form-group col-md-2">	
-														<button type="button" class="btn btn-purple-transparent" onclick="fn_insertVtAcnt()">인증하기</button>
-													<input type="hidden" id="ci" value="">
+												<div id="clock">
 												</div>
-											</div>													
-												
+											</div>		
 											
 											<div class="row">
 												<div class="col-xs-12 col-sm-12 col-md-12">
@@ -638,18 +725,17 @@
 										</div>
 									</div>
 									<div class="modal-footer">
-										<button type="button" class="btn btn-purple-transparent" onclick="fn_insertVtAcnt()">확 인</button>
+										<input type="submit" class="btn btn-purple-transparent" id="btn_certi_complete" value="확 인" />
 									</div>
 								</div>
 								<!-- /.modal-content -->
 							</div>
 							<!-- /.modal-dialog -->
 						</div>
-						<!-- Email 인증끝. -->
+						<!-- Email 인증 끝. -->
 						
-
 						<!-- 예치금 계좌 발급 Modal -->
-						<div class="modal fade" id="btn_cert2"  name="cert2" role="dialog" aria-labelledby="vtAcntModalLabel" aria-hidden="true">
+						<div class="modal fade" id="btn_cert2" name="cert2" role="dialog" aria-labelledby="vtAcntModalLabel" aria-hidden="true">
 							<div class="modal-dialog">
 								<div class="modal-content">
 									<div class="modal-header">
@@ -673,34 +759,34 @@
 										<div class="row">
 											<div class="form-group col-xs-5 col-sm-5 col-md-3">
 												<label for="cusNm" class="control-label">예금주</label>
-												<input class="form-control" id="cusNm" type="text" value="${user.user_name}" readonly="">
+												<input class="form-control" id="cusNm" type="text" value="${user.user_name}${busi.manager_name}" readonly="">
 											</div>
 											<div class="form-group col-xs-7 col-sm-7 col-md-4">
 												<label for="cusBankCdSelect" class="control-label">은행명</label>
 												<select id="cusBankCdSelect" class="form-control" name="cusBankCd">
 													<option value="">선택하세요</option>
 													
-													<option value="002">산업은행</option>
+													<option id="san" value="002">산업은행</option>
 												
-													<option value="003">기업은행</option>
+													<option id="ki" value="003">기업은행</option>
 												
-													<option value="004">국민은행</option>
+													<option id="kb" value="004">국민은행</option>
 												
-													<option value="007">수협중앙회</option>
+													<option id="su" value="007">수협중앙회</option>
 												
-													<option value="008">수출입은행</option>
+													<option id="chul" value="008">수출입은행</option>
 												
-													<option value="010">농협</option>
+													<option id="nh1" value="010">농협</option>
 												
-													<option value="011">농협중앙회</option>
+													<option id="nh2" value="011">농협중앙회</option>
 												
-													<option value="012">지역농·축협</option>
+													<option id="su3" value="012">지역농·축협</option>
 												
-													<option value="020">우리은행</option>
+													<option id="woo" value="020">우리은행</option>
 												
-													<option value="023">SC제일은행</option>
+													<option id="sc" value="023">SC제일은행</option>
 												
-													<option value="027">한국씨티은행</option>
+													<option id="ct" value="027">한국씨티은행</option>
 												
 													<option value="031">대구은행</option>
 												
@@ -835,7 +921,7 @@
 											</div>
 											<div class="form-group col-xs-12 col-sm-12 col-md-5">
 												<label for="cusAccount" class="control-label">계좌번호</label>
-												<input type="text" class="form-control" id="cusAccount" maxlength="14">
+												<input type="text" class="form-control onlysan" id="cusAccount" maxlength="14">
 											</div>
 										</div>
 										<div class="row">
@@ -862,8 +948,8 @@
 											</div>
 											<div class="row">
 												<div class="form-group col-xs-6 col-sm-6 col-md-6">
-													<label for="mpNo" class="control-label">휴대전화번호</label>
-													<input class="form-control" id="mpNo" type="text" maxlength="11" value="${user.phone}" readonly="">
+													<label for="mpNo" class="control-label">전화번호</label>
+													<input class="form-control" id="mpNo" type="text" maxlength="11" value="${user.phone}${busi.pre_phone}" readonly="">
 												</div>
 											</div>
 											<div class="row">
@@ -884,7 +970,7 @@
 										</div>
 									</div>
 									<div class="modal-footer">
-										<button type="button" class="btn btn-purple-transparent" onclick="fn_insertVtAcnt()">예치금 계좌 발급받기</button>
+										<button type="button" class="btn btn-purple-transparent" id="receaccn"">예치금 계좌 발급받기</button>
 									</div>
 								</div>
 								<!-- /.modal-content -->
@@ -907,7 +993,7 @@
 		<input type="hidden" id="rate" value="${proVO.rate}" />									<!-- 금리 -->
 		<input type="hidden" id="user_num" value="${memVO.user_num}" />							<!-- 유저번호 -->
 		<input type="hidden" id="busi_num" value="${memVO.busi_num}" />							<!-- 법인유저번호 -->
-	    <input type="hidden" id="invest_limit" value="${acnt.deposit}" />						<!-- 예치금한도 -->
+	    <input type="hidden" id="request_limit" value="${acnt.deposit}" />						<!-- 예치금한도 -->
 	    <!-- hidden value -->
     
 		<div class="modal fade" id="eventModal" role="dialog" aria-labelledby="eventModalLabel" aria-hidden="true">
@@ -984,8 +1070,6 @@
 	
 	</section>
 	<!-- js placed at the end of the document so the pages load faster -->
-	<script src="${pageContext.request.contextPath}/resources/bootstrap/lib/jquery/jquery.min.js"></script>
-	
 	<script src="${pageContext.request.contextPath}/resources/bootstrap/lib/bootstrap/js/bootstrap.min.js"></script>
 	<script class="include" type="text/javascript" src="${pageContext.request.contextPath}/resources/bootstrap/lib/jquery.dcjqaccordion.2.7.js"></script>
 	<script src="${pageContext.request.contextPath}/resources/bootstrap/lib/jquery.scrollTo.min.js"></script>

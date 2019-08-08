@@ -88,8 +88,8 @@
 	        MAIN CONTENT
 	        *********************************************************************************************************************************************************** -->
 		<section id="main-content">
-     	 <section class="wrapper">
-       	 	<div class="row">
+     	 <section class="wrapper site-min-height">
+       	 	<div class="row mt">
          		 <div class="col-md-12">
             		<div class="content-panel">
 			            <div class="tab-content">
@@ -149,10 +149,10 @@
 													<td><a href="invest_detail?detail_num=${vo.project_name}"/>${vo.project_num}</td>
 													<td><a href="invest_detail?detail_num=${vo.project_name}"/>${vo.project_name}</td>
 													<td>${vo.rate}%</td>
-													<td>${vo.invest_price}</td>
+													<td>${vo.invest_price}만원</td>
 													<td>${vo.refund_count}</td>
-													<td>${vo.refund}</td>
-													<td>${vo.refund_deadline}</td>
+													<td>${vo.refund_due_date}</td>
+													<td>${vo.refund_end}</td>
 													<td>${vo.ach_state}</td>
 													<td>
 <%-- 														<c:choose> --%>
@@ -185,24 +185,6 @@
 									</div>
 								</div>
 								 -->
-								
-								<table id="tblExport" style="display:none;" class="tblExport">
-									<thead>
-										<tr>
-											<th class="col">투자일자</th>
-											<th class="col">상품별호수</th>
-											<th class="col">상품명</th>
-											<th class="col">금리</th>
-											<th class="col">투자금액</th>
-											<th class="col">상환회차</th>
-											<th class="col">만기회차</th>
-											<th class="col">상환예정일</th>
-											<th class="col">상환완료일</th>
-											<th class="col">상품상태</th>
-										</tr>
-									</thead>
-									
-								</table>
 								<div class="row" style="margin-top: 10px;">
 									<div class="col-xs-12 col-md-push-6 col-md-6" style="margin-top: 5px;">
 										<form id="investListSrchForm" class="text-right" onsubmit="return false;">
@@ -222,8 +204,8 @@
 									</div>
 								</div>
 							</div>
-			           		   </div>
-							   </div>
+			           		</div>
+							</div>
 					    	</form>
 						</div>
 						<!-- =========전체 -->	
@@ -234,8 +216,6 @@
         <!-- row -->
       </section>
     </section>
-    
-    
 		
 		<!--footer start-->
 		<footer class="site-footer">

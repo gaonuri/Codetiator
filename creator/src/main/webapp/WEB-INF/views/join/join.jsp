@@ -79,7 +79,7 @@ var chklicense = '';
 // 			if($(this).val().match(emailStd)){
 // 				//alert("ok");
 // 			}else {
-// 				alert("옳바르지 않은 이메일 입니다.");
+// 				alert("올바르지 않은 이메일 입니다.");
 // 				$(this).val("");
 // // 				$(this).focus();
 // 				return;
@@ -90,7 +90,7 @@ $(document).ready(function(){
 	$("#email").blur(function(){
 		var emailStd = /([a-z0-9]{1,20}\@)([a-z]{1,20}\.)([a-z]{1,10})/gi;
 		if($.trim($("#email").val()) != $(this).val().match(emailStd)){
-			alert("옳바르지 않은 이메일 입니다.");
+			alert("올바르지 않은 이메일 입니다.");
 			return;
 		}
 
@@ -150,7 +150,7 @@ $(document).ready(function(){
 	$("#manager_email").blur(function(){
 		var emailStd = /([a-z0-9]{1,20}\@)([a-z]{1,20}\.)([a-z]{1,10})/gi;
 		if($.trim($("#manager_email").val()) != $(this).val().match(emailStd)){
-			alert("옳바르지 않은 이메일 입니다.");
+			alert("올바르지 않은 이메일 입니다.");
 // 			$("#email").focus();
 			return;
 		}
@@ -195,7 +195,7 @@ $(document).ready(function(){
 	
 	
 	$(".onlyhomepage").change(function(){
-		//alert($(this).val());
+		//alert($(this).val()); /^([0-9]{6}+\-)([0-9]{2}+\-)([0-9]{6})$/;
 		var homepageStd = /(http(s)?:\/\/)([a-z0-9\w]+\.*)+[a-z0-9]{2,4}/gi;
 		if($(this).val().match(homepageStd)){
 			//alert("ok");

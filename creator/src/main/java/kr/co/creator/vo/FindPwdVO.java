@@ -4,14 +4,28 @@ package kr.co.creator.vo;
 public class FindPwdVO {
 	private String user_num;		// 유저번호	
 	private String busi_num;		// 법인 유저번호
+	private String user_email;		// 유저 이메일
 	private String user_name;		// 유저이름
 	private String user_password;	// 유저비밀번호
 	private String email;			// 이메일
 	private String manager_name;	// 관리자이름
 	private String manager_email;	// 담당자 이메일
 	private String newPassword;		// 바꿀비밀번호
+	private String cer_number;
 
 	
+	public String getCer_number() {
+		return cer_number;
+	}
+	public void setCer_number(String cer_number) {
+		this.cer_number = cer_number;
+	}
+	public String getUser_email() {
+		return user_email;
+	}
+	public void setUser_email(String user_email) {
+		this.user_email = user_email;
+	}
 	public String getUser_num() {
 		return user_num;
 	}

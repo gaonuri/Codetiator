@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import kr.co.creator.vo.AccountVO;
+import kr.co.creator.vo.Busi_userVO;
 import kr.co.creator.vo.FindPwdVO;
 import kr.co.creator.vo.InOutVO;
 import kr.co.creator.vo.InvestVO;
@@ -29,7 +30,7 @@ public class MypageDAO {
 
 	public List<ProjectVO> loan_list(MemberVO userVO) {
 		List<ProjectVO> loan = null;
-		loan = sqlSession.selectList("MypageMapper.loanlist", userVO);
+		loan = sqlSession.selectList("MypageMapper.loanList", userVO);
 		return loan;
 	} 
 	
@@ -62,10 +63,16 @@ public class MypageDAO {
 		useVO = sqlSession.selectOne("MypageMapper.User", userVO);
 		return useVO;
 	}
+	
+	public Busi_userVO busi(MemberVO userVO) {
+		Busi_userVO busiVO = null;
+		busiVO = sqlSession.selectOne("MypageMapper.Busi", userVO);
+		return busiVO;
+	}
 
-	public int emailcert(String email) {
+	public int emailcert(UserVO vo) {
 		int cnt = 0;
-		cnt = sqlSession.selectOne("LoginMapper.findPwdChk", email);
+		cnt = sqlSession.selectOne("LoginMapper.findPwdChk", vo);
 		return cnt;
 	}//findPwdChk
 
@@ -80,6 +87,12 @@ public class MypageDAO {
 		cnt1 = sqlSession.update("MypageMapper.UserDataUpdate1", vo);
 		return cnt1;
 	}
+
+	public int bankNumChk(AccountVO accvo) {
+		int cnt = 0;
+		cnt = sqlSession.selectOne("MypageMapper.joinEmailChk", accvo);
+		return cnt;
+	}//bankNumChk
 
 
 	

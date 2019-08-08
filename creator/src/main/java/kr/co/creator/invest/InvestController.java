@@ -50,6 +50,13 @@ public class InvestController {
 		return "invest/invest_guide";
 	}//invest_guide
 	
+	@RequestMapping(value = "/invest_guide_new", method = RequestMethod.GET)
+	public String invest_guide_new() {
+		logger.info("invest_guide_new");
+		
+		return "invest/invest_guide_new";
+	}//invest_guide_new
+	
 	@RequestMapping(value = "/invest_list", method = RequestMethod.GET)
 	public String invest_list(Model model, ProjectVO proVO) {
 		logger.info("invest_list");
