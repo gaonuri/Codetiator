@@ -512,12 +512,12 @@ li {
 			<div class="row">
 				<div class="col-xs-12 col-sm-8 col-md-6">
 					<div class="top-regist-text">
-						㈜미드레이트대부 P2P연계대부업 2018-금감원-1374
+						㈜크리에이터대부 P2P연계대부업 2018-금감원-1374
 					</div>
 				</div>
 				<div class="col-xs-12 col-sm-4 col-md-6">
 					<div class="top-guide-title">
-						미드레이트는 <span class="font-purple">
+						크리에이터는 <span class="font-purple">
 							<a id="top-guide-pop" tabindex="0" role="button" style="cursor: pointer; border-bottom: 1px dotted #777;" href="javascript:(void(0));" onclick="fn_setTopGuidePop()">
 								<strong>국내금융법</strong>
 							</a>
@@ -528,7 +528,7 @@ li {
 					<div id="topGuideText">
 						<hr>
 						<div class="top-guide-text">
-							<span class="font-purple">미드레이트</span>는 P2P금융 서비스를 제공하고 있으며, <span class="font-purple">미드레이트 대부</span> 주식회사는 P2P금융서비스를 제공하기 위해서 필수적인 여신기능을 담당하기 위해 <span class="font-purple">미드레이트</span>에서 설립한 제휴여신기관입니다. <span class="font-purple">미드레이트 대부</span>는 일반 대부업은 일절 하지 않으며 <span class="font-purple">미드레이트</span>에서만 펀딩이 성사된 차입자에게 여신을 실행합니다. P2P 대출서비스를 규정할 법이 없어 임시방편으로 대부업법인 ‘대부업 등의 등록 및 금융 이용자 보호에 관한 법률’로 규정하고 있으며, 현행 제도 하에서는 대부업상 차입자로부터 중개수수료를 받는 P2P 대출 서비스의 기본 수익모델이 법으로 금지되어 있기 때문에, <span class="font-purple">미드레이트 플랫폼 사업자</span>가 서비스를 시행합니다.
+							<span class="font-purple">크리에이터</span>는 P2P금융 서비스를 제공하고 있으며, <span class="font-purple">크리에이터 대부</span> 주식회사는 P2P금융서비스를 제공하기 위해서 필수적인 여신기능을 담당하기 위해 <span class="font-purple">크리에이터</span>에서 설립한 제휴여신기관입니다. <span class="font-purple">크리에이터 대부</span>는 일반 대부업은 일절 하지 않으며 <span class="font-purple">크리에이터</span>에서만 펀딩이 성사된 차입자에게 여신을 실행합니다. P2P 대출서비스를 규정할 법이 없어 임시방편으로 대부업법인 ‘대부업 등의 등록 및 금융 이용자 보호에 관한 법률’로 규정하고 있으며, 현행 제도 하에서는 대부업상 차입자로부터 중개수수료를 받는 P2P 대출 서비스의 기본 수익모델이 법으로 금지되어 있기 때문에, <span class="font-purple">크리에이터 플랫폼 사업자</span>가 서비스를 시행합니다.
 						</div>
 						<div class="top-guide-button">
 							<i class="glyphicon glyphicon-chevron-up animated infinite flash" id="topGuideButton"></i>
@@ -548,7 +548,7 @@ li {
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="/">
+				<a class="navbar-brand" href="${pageContext.request.contextPath}/main">
 					<img src="${pageContext.request.contextPath}/resources/img/logo_mainTop.png" class="img-responsive" alt="brand_img">
 				</a>
 			</div>
@@ -556,55 +556,78 @@ li {
 			<!-- Collect the nav links, forms, and other content for toggling -->
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav navbar-right">
-					<li class="dropdown">
-						<a href="#" class="dropdown-toggle top-menu-font" data-toggle="dropdown" role="button" aria-expanded="false">회사소개
-						</a>
-						<ul class="dropdown-menu" role="menu">
-							<li><a href="/info/aboutus">MIDRATE 소개</a></li>
-							<li><a href="/info/notice">공지사항</a></li>
-							<li><a href="/info/news">언론보도</a></li>
-						</ul>
-					</li>
+					<li><a href="${pageContext.request.contextPath}/intro" class="top-menu-font" role="button">회사소개</a></li>
 					<li class="dropdown">
 						<a href="#" class="dropdown-toggle top-menu-font" data-toggle="dropdown" role="button" aria-expanded="false">대출
 						</a>
 						<ul class="dropdown-menu" role="menu">
-							<li><a href="/loan/guide">대출안내</a></li>
-							<li><a href="/loan/loanReq">대출하기</a></li>
+							<li><a href="${pageContext.request.contextPath}/loan_guide">대출안내</a></li>
+							<li><a href="${pageContext.request.contextPath}/getloan">대출하기</a></li>
 						</ul>
 					</li>
 					<li class="dropdown">
 						<a href="#" class="dropdown-toggle top-menu-font" data-toggle="dropdown" role="button" aria-expanded="false">투자
 						</a>
 						<ul class="dropdown-menu" role="menu">
-							<li><a href="/invest/guide">투자안내</a></li>
-							<li><a href="/invest/list">투자하기</a></li>
-							<li><a href="/invest/history">완료된 투자</a></li>
+							<li><a href="${pageContext.request.contextPath}/invest_guide">투자안내</a></li>
+							<li><a href="${pageContext.request.contextPath}/invest_list">투자하기</a></li>
+							<li><a href="${pageContext.request.contextPath}/invest_finished">완료된 투자</a></li>
 						</ul>
-					</li>
-					<li>
-						<a href="/bora">보라!&nbsp;<span class="	glyphicon glyphicon-stats" style="font-size:13px;"></span></a>
-					</li>
-					<li>
-						<a href="/laVender">라벤더&nbsp;<span class="glyphicon glyphicon-shopping-cart" style="font-size:13px;"></span></a>
-					</li>
-					<li>
-						<a href="/invest/byAllRate">바이올렛&nbsp;<span class="glyphicon glyphicon-calendar" style="font-size:13px;"></span></a>
 					</li>
 					<li class="dropdown">
 						<a href="#" class="dropdown-toggle top-menu-font" data-toggle="dropdown" role="button" aria-expanded="false">고객지원
 						</a>
 						<ul class="dropdown-menu" role="menu">
-							<li><a href="/info/faq">자주 묻는 질문</a></li>
-							<li><a href="/info/contact">연락하시는 곳</a></li>
-							<li><a href="/info/useTerm">이용약관</a></li>
-							<li><a href="/info/pInfoTerm">개인정보처리방침</a></li>
+							<li><a href="${pageContext.request.contextPath}/faq">FAQ</a></li>
+							<li><a href="${pageContext.request.contextPath}/support">이용약관</a></li>
+							<li><a href="${pageContext.request.contextPath}/privacy_policy">개인정보</a></li>
+							<li><a href="${pageContext.request.contextPath}/inquiry">1:1문의</a></li>
+							<li><a href="${pageContext.request.contextPath}/support">공지사항</a></li>
 						</ul>
 					</li>
 					
-						<li><a href="/register" class="btn btn-primary solid">회원가입</a></li>
-						<li><a href="/login" class="btn btn-primary solid">로그인</a></li>
+					<!--if문해야함 admin -->
+					<c:choose>
+						<c:when test="${memberVO != null && memberVO.user_num != '' || memberVO != null && memberVO.busi_num != ''}">
+							<c:choose>
+								<c:when test="${memVO.user_num == '1'}">
+									<li><a class="top-menu-font" role="button">${memVO.user_name}님</a></li>
+								</c:when>
+								<c:otherwise>
+									<li id="header_notification_bar" class="dropdown">
+										<a data-toggle="dropdown" class="dropdown-toggle top-menu-font" href="#">
+											${memVO.user_name}${memVO.manager_name}님
+										</a>
+										<ul class="dropdown-menu">
+											<li><a href="${pageContext.request.contextPath}/my_dashboard?user_num=${memberVO.user_num}&busi_num=${memberVO.busi_num}">대시보드</a></li>
+											<li><a href="${pageContext.request.contextPath}/my_invest_list?user_num=${memberVO.user_num}&busi_num=${memberVO.busi_num}">투자내역</a></li>
+											<li><a href="${pageContext.request.contextPath}/my_loan_list?user_num=${memberVO.user_num}&busi_num=${memberVO.busi_num}">대출내역</a></li>
+											<li><a href="${pageContext.request.contextPath}/my_depo_mgn?user_num=${memberVO.user_num}&busi_num=${memberVO.busi_num}">예치금관리</a></li>
+											<li><a href="${pageContext.request.contextPath}/my_modify?user_num=${memberVO.user_num}&busi_num=${memberVO.busi_num}">회원정보수정</a></li>
+										</ul>
+									</li>
+								</c:otherwise>
+							</c:choose>
+						</c:when>
+						<c:otherwise>
+							<li><a class="loginss top-menu-font" href="${pageContext.request.contextPath}/login">로그인</a></li>
+						</c:otherwise>
+					</c:choose>
 					
+					<c:choose>
+						<c:when test="${memberVO != null && memberVO.user_num != '' || memberVO != null && memberVO.busi_num != ''}">
+							<li id="logout_btn"><a class="top-menu-font" href="${pageContext.request.contextPath}/main">로그아웃</a></li>
+						</c:when>
+						<c:otherwise>
+							<li><a class="loginss top-menu-font" href="${pageContext.request.contextPath}/join">회원가입</a></li>
+						</c:otherwise>
+					</c:choose>
+					
+					<c:choose>
+						<c:when test="${memberVO.user_num == '1'}">
+							<li><a href="${pageContext.request.contextPath}/account_list">관리자</a></li>
+						</c:when>
+					</c:choose>
 				</ul>
 			</div><!-- /.navbar-collapse -->
 		</div><!-- /.container-fluid -->

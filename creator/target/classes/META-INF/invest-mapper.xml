@@ -8,6 +8,7 @@
 	<select id="investList" resultType="kr.co.creator.vo.ProjectVO">
 		SELECT * 
 		FROM 	project_list 
+		WHERE	ach_state != "상환완료" AND ach_state != "중도상환"
 		ORDER BY regi_date DESC
 	</select>
 	
@@ -33,6 +34,7 @@
 		select	* 
 		from	project_list 
 		where	ach_state = "상환완료" || ach_state = "중도상환"
+		order by regi_date desc
 	</select>
 	
 	<update id="depositUpdate" parameterType="kr.co.creator.vo.AccountVO">

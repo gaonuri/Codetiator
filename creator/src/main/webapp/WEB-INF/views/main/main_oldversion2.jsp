@@ -41,26 +41,26 @@
 	        TOP BAR CONTENT & NOTIFICATIONS
 	        *********************************************************************************************************************************************************** -->
 		<!--header start-->
-		<%@ include file="../header_oldversion.jsp" %>
+		<%@ include file="../header.jsp" %>
 		<!--header end-->
 	    
 	    <!-- **********************************************************************************************************************************************************
 	        MAIN CONTENT
 	        *********************************************************************************************************************************************************** -->
 		<!--main content start-->
-		<section>
+		<section id="main-content">
 			<section class="wrapper site-min-height">
 				<div class="row mt">
 					<div class="col-lg-12">
 					<!-- CHART PANELS -->
-						<table style="width:1000px;">
+						<table>
 							<tr valign=top>
 <%-- 							<c:forEach begin="0" end="2" step="1" varStatus="step"> --%>
 								<th>
 									<c:forEach items="${projectList1}" var="vo" varStatus="status" begin="0" end="2" step="1">
 										<c:choose>
 											<c:when test="${memVO.user_num != null}">
-												<td class="col-md-3" style="padding-left:150px;">
+												<td>
 													<a href="${pageContext.request.contextPath}/invest_detail?
 													project_num=${vo.project_num}
 													&p_busi_num=${vo.busi_num}
@@ -71,10 +71,10 @@
 														<div>
 															<table style="border-left: 1px; border-right: 1px; width: 400px">
 																<tr>
-																	<td>${vo.regi_date}</td>
+																	<td>${vo.en_date}</td>
 																</tr>
 																<tr>
-																	<td>${vo.project_name}<span>U</span></td>
+																	<td>${vo.project_name}<span>k</span></td>
 																</tr>
 																<tr>
 																	<td witdh="400px">
@@ -107,7 +107,7 @@
 												</td>
 											</c:when>
 											<c:when test="${memVO.busi_num != null}">
-												<td class="col-md-3" style="padding-left:150px;">
+												<td>
 													<a href="${pageContext.request.contextPath}/invest_detail?
 													project_num=${vo.project_num}
 													&p_busi_num=${vo.busi_num}
@@ -118,7 +118,7 @@
 														<div>
 															<table style="border-left: 1px; border-right: 1px; width: 400px">
 																<tr>
-																	<td>${vo.regi_date}</td>
+																	<td>${vo.en_date}</td>
 																</tr>
 																<tr>
 																	<td>${vo.project_name}<span>B</span></td>
@@ -154,7 +154,7 @@
 												</td>
 											</c:when>
 											<c:otherwise>
-												<td class="col-md-3" style="padding-left:150px;">
+												<td>
 													<a href="${pageContext.request.contextPath}/invest_detail?
 													project_num=${vo.project_num}
 													&p_busi_num=${vo.busi_num}">
@@ -164,7 +164,7 @@
 														<div>
 															<table style="border-left: 1px; border-right: 1px; width: 400px">
 																<tr>
-																	<td>${vo.regi_date}</td>
+																	<td>${vo.en_date}</td>
 																</tr>
 																<tr>
 																	<td>${vo.project_name}<span>N</span></td>
@@ -211,7 +211,7 @@
 									<c:forEach items="${projectList2}" var="vo" varStatus="status" begin="0" end="2" step="1">
 										<c:choose>
 											<c:when test="${memVO.user_num != null}">
-												<td class="col-md-3" style="padding-left:150px;">
+												<td>
 													<a href="${pageContext.request.contextPath}/invest_detail?
 													project_num=${vo.project_num}
 													&p_busi_num=${vo.busi_num}
@@ -222,10 +222,10 @@
 														<div>
 															<table style="border-left: 1px; border-right: 1px; width: 400px">
 																<tr>
-																	<td>${vo.regi_date}</td>
+																	<td>${vo.en_date}</td>
 																</tr>
 																<tr>
-																	<td>${vo.project_name}<span>U</span></td>
+																	<td>${vo.project_name}<span>k</span></td>
 																</tr>
 																<tr>
 																	<td witdh="400px">
@@ -258,7 +258,7 @@
 												</td>
 											</c:when>
 											<c:when test="${memVO.busi_num != null}">
-												<td class="col-md-3" style="padding-left:150px;">
+												<td>
 													<a href="${pageContext.request.contextPath}/invest_detail?
 													project_num=${vo.project_num}
 													&p_busi_num=${vo.busi_num}
@@ -269,7 +269,7 @@
 														<div>
 															<table style="border-left: 1px; border-right: 1px; width: 400px">
 																<tr>
-																	<td>${vo.regi_date}</td>
+																	<td>${vo.en_date}</td>
 																</tr>
 																<tr>
 																	<td>${vo.project_name}<span>B</span></td>
@@ -305,7 +305,7 @@
 												</td>
 											</c:when>
 											<c:otherwise>
-												<td class="col-md-3" style="padding-left:150px;">
+												<td>
 													<a href="${pageContext.request.contextPath}/invest_detail?
 													project_num=${vo.project_num}
 													&p_busi_num=${vo.busi_num}">
@@ -315,7 +315,7 @@
 														<div>
 															<table style="border-left: 1px; border-right: 1px; width: 400px">
 																<tr>
-																	<td>${vo.regi_date}</td>
+																	<td>${vo.en_date}</td>
 																</tr>
 																<tr>
 																	<td>${vo.project_name}<span>N</span></td>
@@ -362,7 +362,7 @@
 									<c:forEach items="${projectList3}" var="vo" varStatus="status" begin="0" end="2" step="1">
 										<c:choose>
 											<c:when test="${memVO.user_num != null}">
-												<td class="col-md-3" style="padding-left:150px;">
+												<td>
 													<a href="${pageContext.request.contextPath}/invest_detail?
 													project_num=${vo.project_num}
 													&p_busi_num=${vo.busi_num}
@@ -373,10 +373,10 @@
 														<div>
 															<table style="border-left: 1px; border-right: 1px; width: 400px">
 																<tr>
-																	<td>${vo.regi_date}</td>
+																	<td>${vo.en_date}</td>
 																</tr>
 																<tr>
-																	<td>${vo.project_name}<span>U</span></td>
+																	<td>${vo.project_name}<span>k</span></td>
 																</tr>
 																<tr>
 																	<td witdh="400px">
@@ -409,7 +409,7 @@
 												</td>
 											</c:when>
 											<c:when test="${memVO.busi_num != null}">
-												<td class="col-md-3" style="padding-left:150px;">
+												<td>
 													<a href="${pageContext.request.contextPath}/invest_detail?
 													project_num=${vo.project_num}
 													&p_busi_num=${vo.busi_num}
@@ -420,7 +420,7 @@
 														<div>
 															<table style="border-left: 1px; border-right: 1px; width: 400px">
 																<tr>
-																	<td>${vo.regi_date}</td>
+																	<td>${vo.en_date}</td>
 																</tr>
 																<tr>
 																	<td>${vo.project_name}<span>B</span></td>
@@ -456,7 +456,7 @@
 												</td>
 											</c:when>
 											<c:otherwise>
-												<td class="col-md-3" style="padding-left:150px;">
+												<td>
 													<a href="${pageContext.request.contextPath}/invest_detail?
 													project_num=${vo.project_num}
 													&p_busi_num=${vo.busi_num}">
@@ -466,7 +466,7 @@
 														<div>
 															<table style="border-left: 1px; border-right: 1px; width: 400px">
 																<tr>
-																	<td>${vo.regi_date}</td>
+																	<td>${vo.en_date}</td>
 																</tr>
 																<tr>
 																	<td>${vo.project_name}<span>N</span></td>

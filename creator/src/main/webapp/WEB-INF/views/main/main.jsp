@@ -51,12 +51,24 @@ $(document).ready(function() {
 		$("#" + activeTab).fadeIn()
 	});
 	
-	$("#goInvestGuideBtn").click(function() {
-		href.location = "${pageContext.request.contextPath}/invest_guide";
+	$("#goInvestGuideBtn").on("click", function() {
+		location.href = "${pageContext.request.contextPath}/invest_guide";
 	});
 	
 	$("#goInvestBtn").on("click", function() {
 		location.href = "${pageContext.request.contextPath}/invest_list";
+	});
+	
+// 	$("#goInvestBtn").on("click", function() {
+// 		location.href = "${pageContext.request.contextPath}/invest_list";
+// 	});
+	
+	$("#goLoanGuideBtn").on("click", function() {
+		location.href = "${pageContext.request.contextPath}/loan_guide";
+	});
+
+	$("#goLoanBtn").on("click", function() {
+		location.href = "${pageContext.request.contextPath}/getloan";
 	});
 });
 </script>
@@ -724,7 +736,7 @@ small, .small {
 	        MAIN CONTENT
 	        *********************************************************************************************************************************************************** -->
 		<!--main content start-->
-<div id="main_container" class="animated">
+	<div id="main_container" class="animated">
 		
 	<!-- F/O, wow 공통 jsp -->
 	 
@@ -733,7 +745,7 @@ small, .small {
 		
 			<div id="video_bg" style="position: relative;">
 				<div style="position: absolute; z-index: -1; top: 0px; left: 0px; bottom: 0px; right: 0px; overflow: hidden; background-size: cover; background-color: transparent; background-repeat: no-repeat; background-position: 50% 50%; background-image: none;">
-					<video autoplay loop muted="" style="margin: auto; position: absolute; z-index: -1; top: 50%; left: 50%; transform: translate(-50%, -50%); visibility: visible; opacity: 1; width: auto; height: auto;">
+					<video autoplay loop muted="100" style="margin: auto; position: absolute; z-index: -1; top: 50%; left: 50%; transform: translate(-50%, -50%); visibility: visible; opacity: 1; width: auto; height: auto;">
 						<source src="${pageContext.request.contextPath}/resources/video/overwatch.mp4" type="video/mp4">
 					</video>
 				</div>
@@ -833,111 +845,143 @@ small, .small {
 					<span class="titLine">투자상품</span>
 				</h2>
 				<div class="section-cat">
-						<a href="${pageContext.request.contextPath}/invest_list" id="allGood">
-							전체상품 보기 <i class="glyphicon glyphicon-chevron-right"></i>
-						</a>
+					<a href="${pageContext.request.contextPath}/invest_list" id="allGood">
+						전체상품 보기 <i class="glyphicon glyphicon-chevron-right"></i>
+					</a>
 				</div>
-				<div class="row" id="goodThum"><div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 good-item-wrap">
-				<div class="good-item">	
-				<div class="item-top">		
-				<a href="javascript:(void(0));" onclick="fn_openInvestDetail(791)">	
-							<div class="hover-text">	
-								<div class="clearfix"></div>	
-								<div class="hover-button"></div>
-							</div>	
-				</a>	
-				<div class="item-top-badge">			
-					<span class="label label-rwrdgd">리워드</span>			
-				</div>			
-				<div class="item-top-badge text-right">		
-					<span class="label label-primary animated infinite flash">모집중</span>			
-				</div>		
-				<div class="item-middle-badge">	
-					<div style="display: inline-block;">오버워치
-					</div>		
-					<div style="display: inline-block;">
-						
-					</div>		
-				</div>			
-				<div class="item-bottom-badge text-right">			
-					<span>자동투자 100%</span>			
-				</div>	
-					<img src="${pageContext.request.contextPath}/resources/img/overwatch.jpg">		
-				</div>		
-				<div class="item-bottom">			
-				<div class="item-bottom-text">				
-				<div class="row">					
-				<div class="col-xs-6">						
-				<h5>02-19-42</h5>					
-				</div>				
-				</div>				
-				<h4 style="text-align:center;">[하이퍼 FPS] 오버워치(3차)</h4>				
-				<div class="progress">				
-				<div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="47" aria-valuemin="0" aria-valuemax="100" style="min-width:20px;width: 47%">						47%					
-				</div>				
-				</div>				
-				<div class="item-top-text-num">					
-				<small>(209명)</small>				
-				</div>			
-				</div>			
-				<hr>			
-				<div class="grade">				
-				<div class="circle grade-MA">MA</div>			
-				</div>			
-				<div class="cat">				
-				<div class="title">연 수익률</div>				
-				<div class="sub">15.5
-				<font size="1">%</font>
-				</div>			
-				</div>	
-						<div class="cat">				
-						<div class="title">기간</div>				
-						<div class="sub">6<font size="1">개월</font></div>			
-						</div>			
-						<div class="cat">	
-									<div class="title">모집금액</div>				
-									<div class="sub">7,000<font size="1">만원</font></div>			
-									</div>			<div class="cat">				<div class="title">상환방식</div>				
-									<div class="sub">만기일시</div>			</div>		</div>	</div></div>
-									<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 good-item-wrap">	<div class="good-item">		
-									<div class="item-top">			<a href="javascript:(void(0));" onclick="fn_openInvestDetail(785)">				
-									<div class="hover-text">					<div class="clearfix"></div>					<div class="hover-button"></div>				
-									</div>			</a>			<div class="item-top-badge">		<span class="label label-primary">LTV 66.67%</span>			
+				<div class="row" id="goodThum">
+					<c:forEach items="${projectList}" var="vo" end="5" step="">
+						<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 good-item-wrap">
+							<div class="good-item">	
+								<div class="item-top">		
+									<a href="${pageContext.request.contextPath}/invest_detail?
+													project_num=${vo.project_num}
+													&p_busi_num=${vo.busi_num}
+													&user_num=${memVO.user_num}">	
+										<div class="hover-text">
+											<div class="clearfix"></div>	
+											<div class="hover-button"></div>
+										</div>	
+									</a>	
+									<div class="item-top-badge">			
+										<span class="label label-primary">LTV <span></span>%</span>			
 									</div>			
-						<div class="item-top-badge text-right">		
-							<span class="label label-primary animated infinite flash">모집중</span>
-						</div>		
-						<div class="item-middle-badge">			
-						<div style="display: inline-block;">리그오브레전드</div>		
-						<div style="display: inline-block;">
-						</div>		
-						</div>			
-						<div class="item-bottom-badge text-right">			
-							<span>자동투자 100%</span>			
+									<div class="item-top-badge text-right">		
+										<span class="label label-primary animated infinite flash">${vo.ach_state}</span>			
+									</div>		
+									<div class="item-middle-badge">	
+										<div style="display: inline-block;">${vo.project_name}</div>		
+										<div style="display: inline-block;"></div>		
+									</div>			
+	<!-- 								<div class="item-bottom-badge text-right">			 -->
+	<!-- 									<span>자동투자 100%</span>			 -->
+	<!-- 								</div>	 -->
+									<img src="${pageContext.request.contextPath}/resources/img/overwatch.jpg">		
+								</div>		
+								<div class="item-bottom">			
+									<div class="item-bottom-text">				
+										<div class="row">					
+											<div class="col-xs-6">						
+												<h5>02-19-42</h5>					
+											</div>				
+										</div>				
+										<h4 style="text-align:center;">[${vo.genre}] ${vo.project_name}</h4>				
+										<div class="progress">
+											<div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="${vo.current_price / vo.price * 100}" aria-valuemin="0" aria-valuemax="100" style="min-width:20px; width:47%">
+												${vo.current_price / vo.price * 100}%					
+											</div>				
+										</div>				
+									</div>			
+									<hr>			
+									<div class="grade">				
+										<div class="circle grade-MA">${vo.grade}</div>			
+									</div>			
+									<div class="cat">				
+										<div class="title">연 수익률</div>				
+										<div class="sub">${vo.rate}
+											<font size="1">%</font>
+										</div>			
+									</div>	
+									<div class="cat">				
+										<div class="title">기간</div>				
+										<div class="sub">${vo.refund}<font size="1">개월</font></div>			
+									</div>			
+									<div class="cat">	
+										<div class="title">모집금액</div>				
+										<div class="sub">${vo.price}<font size="1">만원</font></div>			
+									</div>
+									<div class="cat">
+										<div class="title">상환방식</div>				
+										<div class="sub">${vo.repay_method}</div>
+									</div>
+								</div>
+							</div>
 						</div>
-							<img src="${pageContext.request.contextPath}/resources/img/LOL.jpg">
-						</div>		
-						<div class="item-bottom">			
-						<div class="item-bottom-text">				
-						<div class="row">					
-						<div class="col-xs-6">						
-						<h5>04-19-131</h5>					
-						</div>				
-						</div>				
-						<h4 style="text-align:center;">[AOS] 리그오브레전드 (2차)</h4>				
-						<div class="progress">
-						<div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="84" aria-valuemin="0" aria-valuemax="100" style="min-width:20px;width: 84%">
-												84%					
-												</div>				</div>				
-												<div class="item-top-text-num">					<small>(267명)</small>
-			</div>			</div>			<hr>			<div class="grade">				<div class="circle grade-MA">MA</div>
-						</div>			<div class="cat">				<div class="title">연 수익률</div>				
-						<div class="sub">12<font size="1">%</font></div>			</div>			<div class="cat">				
-						<div class="title">기간</div>				<div class="sub">9<font size="1">개월</font></div>			
-						</div>			<div class="cat">				<div class="title">모집금액</div>				
-						<div class="sub">5,000<font size="1">만원</font></div>			</div>			<div class="cat">				
-						<div class="title">상환방식</div>				<div class="sub">만기일시</div>			</div>		</div>	
-						</div></div><div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 good-item-wrap">	<div class="good-item">		
+					</c:forEach>
+					<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 good-item-wrap">
+						<div class="good-item">	
+							<div class="item-top">		
+								<a href="javascript:(void(0));" onclick="fn_openInvestDetail(791)">	
+									<div class="hover-text">	
+										<div class="clearfix"></div>	
+										<div class="hover-button"></div>
+									</div>	
+								</a>
+								<div class="item-top-badge">			
+									<span class="label label-primary">LTV 66.67%</span>			
+								</div>			
+								<div class="item-top-badge text-right">		
+									<span class="label label-primary animated infinite flash">모집중</span>			
+								</div>		
+								<div class="item-middle-badge">	
+									<div style="display: inline-block;">리그오브레전드</div>		
+									<div style="display: inline-block;"></div>		
+								</div>			
+								<img src="${pageContext.request.contextPath}/resources/img/LOL.jpg">		
+							</div>		
+							<div class="item-bottom">			
+								<div class="item-bottom-text">				
+									<div class="row">					
+										<div class="col-xs-6">						
+											<h5>04-19-131</h5>					
+										</div>				
+									</div>				
+									<h4 style="text-align:center;">[AOS] 리그오브레전드 (2차)</h4>				
+									<div class="progress">				
+										<div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="84" aria-valuemin="0" aria-valuemax="100" style="min-width:20px;width: 84%">
+											84%					
+										</div>				
+									</div>				
+									<div class="item-top-text-num">					
+										<small>(267명)</small>				
+									</div>			
+								</div>			
+								<hr>			
+								<div class="grade">				
+									<div class="circle grade-MA">MA</div>			
+								</div>			
+								<div class="cat">				
+									<div class="title">연 수익률</div>				
+									<div class="sub">12
+										<font size="1">%</font>
+									</div>			
+								</div>	
+								<div class="cat">				
+									<div class="title">기간</div>				
+									<div class="sub">9<font size="1">개월</font></div>			
+								</div>			
+								<div class="cat">	
+									<div class="title">모집금액</div>				
+									<div class="sub">5,000<font size="1">만원</font></div>			
+								</div>
+								<div class="cat">
+									<div class="title">상환방식</div>				
+									<div class="sub">만기일시</div>
+								</div>
+							</div>
+						</div>
+					</div>
+						<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 good-item-wrap">	<div class="good-item">		
 						<div class="item-top">			<a href="javascript:(void(0));" onclick="fn_openInvestDetail(783)">				
 						<div class="hover-text">					<div class="clearfix"></div>
 				<div class="hover-button"></div>				</div>			</a>			<div class="item-top-badge">		
@@ -1200,7 +1244,7 @@ small, .small {
 	    <!--main content end-->
 		
 		<!--footer start-->
-			<%@ include file="../footer.jsp" %>
+		<%@ include file="../footer.jsp" %>
 		<!--footer end-->
 	
 	</section>

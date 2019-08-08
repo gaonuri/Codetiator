@@ -21,8 +21,8 @@ $(document).ready(function(){
 </head>
 	    <!--header start-->
 	    <header class="header black-bg">
-			<!--logo start-->
-			<a href="${pageContext.request.contextPath}/main" class="logo"><img id="logoImage" alt="로고" src="${pageContext.request.contextPath}/resources/img/ner.jpg" width="200px" height="30px"></a>
+			<!--logo start--> 
+			<a href="${pageContext.request.contextPath}/main_oldversion" class="logo"><img id="logoImage" alt="로고" src="${pageContext.request.contextPath}/resources/img/ner.jpg" width="200px" height="30px"></a>
 			<!--logo end-->
 			<div class="nav notify-row top-menu" id="top_menu">
 				<!--  notification start -->
@@ -102,21 +102,8 @@ $(document).ready(function(){
 					
 					<!-- 로그아웃 start -->
 					
-					<input id="project_num" type="hidden" value="${vo.project_num}" />
-					<c:choose>
-						<c:when test="${memberVO.user_num != null}">
-							<a href="${pageContext.request.contextPath}/invest_detail?project_num=${vo.project_num}&p_busi_num=${vo.busi_num}&user_num=${memberVO.user_num}">${vo.project_name}</a>
-						</c:when>
-						<c:when test="${memberVO.busi_num != null}">
-							<a href="${pageContext.request.contextPath}/invest_detail?project_num=${vo.project_num}&p_busi_num=${vo.busi_num}&busi_num=${memberVO.busi_num}">${vo.project_name}</a>
-						</c:when>
-						<c:otherwise>
-							<a href="${pageContext.request.contextPath}/invest_detail?project_num=${vo.project_num}">${vo.project_name}</a>
-						</c:otherwise>
-					</c:choose>
 					
-					
-					<!--이프문해야함 admin -->
+					<!--if문해야함 admin -->
 					<c:choose>
 						<c:when test="${memberVO != null && memberVO.user_num != '' || memberVO != null && memberVO.busi_num != ''}">
 							<c:choose>
