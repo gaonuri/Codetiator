@@ -98,11 +98,24 @@ public class MypageService {
 		return count;
 	}//deposit_update
 
-	public int account_insert(AccountVO accVO) {
+//	public int account_insert(AccountVO accVO) {
+//		int count = 0;
+//		count = dao.account_insert(accVO);
+//		return count;
+//	}//account_insert
+
+	public int useraccount_insert(AccountVO acVO) {
 		int count = 0;
-		count = dao.account_insert(accVO);
+		count = dao.useraccount_insert(acVO);
 		return count;
-	}
+	}//useraccount_insert
+	
+	public int busiaccount_insert(AccountVO acVO) {
+		int count = 0;
+		count = dao.busiaccount_insert(acVO);
+		return count;
+	}//busiaccount_insert
+
 
 }//class
 

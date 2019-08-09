@@ -81,20 +81,21 @@ public class MypageController {
 	}
 	
 	@RequestMapping(value = "/my_depo_mgn", method = RequestMethod.GET)
-	public String my_modify(HttpSession session, Model model, MemberVO userVO) {
+	public String my_modify(HttpSession session, Model model, MemberVO userVO, UserVO useVO, Busi_userVO busiVO, AccountVO accVO, InOutVO ioVO) {
 		logger.info("my_depo_mgn");
 		userVO = (MemberVO)session.getAttribute("memberVO");
-		AccountVO accVO = null;
-		InOutVO ioVO = null;
-		UserVO useVO = null;
-		Busi_userVO busiVO = null;
 		accVO = service.account(userVO);
 		ioVO = service.inout(userVO);
-		if(userVO.getUser_num() != null) {
+		if(session.getAttribute("memVO") == null) {
+			return "redirect:/login";
+		}
+		
+		if(userVO.getUser_num() != null && userVO.getUser_num() != "") {
+			System.out.println("=======================================USER======================================");
 			useVO = service.user(userVO);
 			model.addAttribute("user", useVO);
-		}
-		if(userVO.getBusi_num() != null) {
+		} else if(userVO.getBusi_num() != null && userVO.getBusi_num() != "") {
+			System.out.println("=======================================BUSI======================================");
 			busiVO = service.busi(userVO);
 			model.addAttribute("busi", busiVO);
 		}
@@ -106,24 +107,54 @@ public class MypageController {
 		return "mypage/my_depo_mgn";
 	}
 	
-	@RequestMapping(value = "/account_insert", method = RequestMethod.POST)
-	public void account_insert(HttpSession session, Model model, PrintWriter out, AccountVO accVO) {
-		logger.info("account_insert");
-		if(session.getAttribute("memVO") == null) {
-			return;
-		}
-		if(accVO.getUser_num() != null) {
-			System.out.println("account_insert"+ accVO.getUser_num());
-		}
-		if(accVO.getBusi_num() != null) {
-			System.out.println("account_insert"+ accVO.getBusi_num());	
-		}
-			int count = 0;
-			count = service.account_insert(accVO);
+//	@RequestMapping(value = "/account_insert", method = RequestMethod.POST)
+//	public void account_insert(HttpSession session, Model model, PrintWriter out, AccountVO accVO, MemberVO userVO ) {
+//		logger.info("account_insert");
+//		userVO = (MemberVO)session.getAttribute("memVO");
+//		if(userVO.getUser_num() != null) {
+//			System.out.println("account_insert"+ accVO.getUser_num());
+//			int count = 0;
+//			count = service.account_insert(accVO);
+//			out.print(count);
+//			out.flush();
+//			out.close();
+//		}
+//		if(userVO.getBusi_num() != null) {
+//			System.out.println("account_insert"+ accVO.getBusi_num());
+//			int count = 0;
+//			count = service.account_insert(accVO);
+//			out.print(count);
+//			out.flush();
+//			out.close();
+//		}//if
+//	}//account_insert
+	
+	@RequestMapping(value = "/useraccount_insert", method = RequestMethod.POST)
+	public void useraccount_insert(Model model, PrintWriter out, AccountVO acVO, MemberVO userVO ) {
+		logger.info("useraccount_insert");
+		int count = 0;
+		count = service.useraccount_insert(acVO);
+		if(count > 0) {
+			System.out.println("account_insert"+ acVO.getUser_num());
 			out.print(count);
 			out.flush();
 			out.close();
 		}
+	}//useraccount_insert
+	
+	@RequestMapping(value = "/busiaccount_insert", method = RequestMethod.POST)
+	public void busiaccount_insert(HttpSession session, Model model, PrintWriter out, AccountVO acVO, MemberVO userVO ) {
+		logger.info("busiaccount_insert");
+		userVO = (MemberVO)session.getAttribute("memVO");
+		int count = 0;
+		count = service.busiaccount_insert(acVO);
+		if(count > 0) {
+			System.out.println("account_insert"+ acVO.getBusi_num());
+			out.print(count);
+			out.flush();
+			out.close();
+		}//if
+	}//busiaccount_insert
 	
 	@RequestMapping(value = "/depo_update", method = RequestMethod.POST)
 	public void deposit_update(HttpSession session, Model model, PrintWriter out, AccountVO accVO) {
@@ -160,6 +191,7 @@ public class MypageController {
 				user_name = sqlSession.selectOne("LoginMapper.selectName", vo);
 				vo.setNewPassword(newPassword);
 				vo.setUser_name(user_name);
+				System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!vo.getCer_number() : " + vo.getCer_number());
 				form.setContent("인증번호는 " + newPassword + " 입니다");
 				form.setSubject("안녕하세요 " + vo.getUser_name() + "님 인증번호를 확인해 주세요");
 				form.setReceiver(vo.getEmail());
@@ -186,6 +218,26 @@ public class MypageController {
 		out.close();
 	}//CertEmail
 	
+	@RequestMapping(value = "/DepocerNumber", method = RequestMethod.POST)
+	public void DepocerNumber(HttpSession session, PrintWriter out, MemberVO memvo, FindPwdVO vo, Busi_userVO bsvo) {
+		logger.info("=== DepocerNumber ===");
+		int CertNunYN = 0;
+		memvo = (MemberVO)session.getAttribute("memVO");
+		System.out.println("7777777777777777777777777777777777777777777777777777777777777777777777777777777777 vo.cer_number : " + vo.getCer_number());
+			if(memvo.getUser_num() != null && !memvo.getUser_num().equals("")) {
+				CertNunYN = loginService.CheckCerUserNumber(vo);
+				System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ CertNunYN :" + CertNunYN);
+				out.print(CertNunYN);
+				out.flush();
+				out.close();
+			} else if(memvo.getBusi_num() != null && !memvo.getBusi_num().equals("")) {
+				CertNunYN = loginService.CheckCerNumber(bsvo);
+				out.print(CertNunYN);
+				out.flush();
+				out.close();
+			}
+	}//CheckCerNumber
+	
 	@RequestMapping(value = "/bankNumChk", method = RequestMethod.POST)
 	public void joinEmailChk(PrintWriter out, AccountVO accvo) throws IOException {
 		logger.info("=== bankNumChk ===");
@@ -202,7 +254,7 @@ public class MypageController {
 		logger.info("my_modify");
 		
 		return "mypage/my_modify";
-	}
+	}//my_modify
 	
 	@RequestMapping(value = "/mypagemodifyu", method = RequestMethod.POST)
 	public void myPageModifyU(HttpSession session, PrintWriter out, MemberListVO vo) {
