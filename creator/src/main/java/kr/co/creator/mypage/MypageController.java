@@ -179,7 +179,6 @@ public class MypageController {
 	@RequestMapping(value = "/CertEmail", method = RequestMethod.POST)
 	public void CertEmail(HttpSession session, PrintWriter out, MemberVO memvo, FindPwdVO vo, EmailForm form, FindUtil findUtil) {
 		logger.info("=== CertEmail ===");
-<<<<<<< HEAD
 		int cnt = 0;
 		if(cnt != 0) {
 			cnt = loginService.userFindChk(vo);
@@ -218,7 +217,6 @@ public class MypageController {
 			out.close();
 		}
 		out.print(cnt);
-=======
 		memvo = (MemberVO)session.getAttribute("memVO");
 		logger.info("=== CertEmail : "+memvo.getUser_num());
 		logger.info("=== CertEmail : "+memvo.getBusi_num());
@@ -254,7 +252,6 @@ public class MypageController {
 				updateCertNunYN = loginService.insertNumber(vo);
 			}
 		out.print(updateCertNunYN);
->>>>>>> branch 'master' of https://github.com/gaonuri/Codetiator.git
 		out.flush();
 		out.close();
 	}//CertEmail
@@ -385,7 +382,6 @@ public class MypageController {
 		out.flush();
 		out.close();	
 	}//deleteUser
-<<<<<<< HEAD
 	
 	@RequestMapping(value="/updatepass1", method=RequestMethod.POST)
 	public void updatePass1(HttpSession session, PrintWriter out, MemberVO vo) {
@@ -414,6 +410,4 @@ public class MypageController {
 	}//deleteBusi
 
 	
-=======
->>>>>>> branch 'master' of https://github.com/gaonuri/Codetiator.git
 }//class
