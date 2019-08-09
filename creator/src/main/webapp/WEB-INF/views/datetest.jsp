@@ -34,37 +34,88 @@
 	  License: https://templatemag.com/license/
 	======================================================= -->
 	<script type="text/javascript">
-	function calculus() {    
-	    var sta_ymd = document.getElementById("STA_YMD").value;        
-	    var sta_ymd_arr = sta_ymd.split(".");
-	    
-	    var end_ymd = document.getElementById("END_YMD").value;    
-	    var end_ymd_arr = end_ymd.split(".");
-	    
-	    var sta_ymd_obj = new Date(sta_ymd_arr[0], Number(sta_ymd_arr[1])-1, sta_ymd_arr[2]);
-	    var end_ymd_obj = new Date(end_ymd_arr[0], Number(end_ymd_arr[1])-1, end_ymd_arr[2]);
-	    
-	    var betweenDay = (end_ymd_obj.getTime() - sta_ymd_obj.getTime())/1000/60/60/24;
-	    
-	    document.getElementById("DT_RESULT").value = betweenDay;
-	}
-	
-	function alert() {
-		var regi_ymd = document.getElementById("regi_date").value;        
-	    var regi_ymd_arr = regi_ymd.split(":");	  
-
-	    var end_ymd = document.getElementById("end_date").value;    
-	    var end_ymd_arr = end_ymd.split(":");
+	var end_str = document.getElementById("end_date").value;
+    var end_ymd = end_str.substr(0, 10);
+    var end_ymd_arr = end_ymd.split("-");
+    var end_time = end_str.substr(11);
+    var end_time_arr = end_time.split(":");
+    
+  
+// 	var id;
+// 	var hour = end_time_arr[0];
+// 	var min = end_time_arr[1];
+// 	var sec = end_time_arr[2];
+// 	var hourZero = "";
+// 	var minZero = "";
+// 	var secZero = "";
+// 	function setClock() {
+// 		id = setInterval(worker, 1000);
+// 	}
+// 	function worker() {
+// 		if(min < 10){minZero = "0";}else{minZero = "";}
+// 		if(sec < 10){secZero = "0";}else{secZero = "";}
+// 		var now = hourZero + hour + " : " + minZero + min + " : " + secZero + sec;
 		
-	    var regi_ymd_obj = new Date(regi_ymd_arr[0], Number(regi_ymd_arr[1])-1, regi_ymd_arr[2]);
-	    var end_ymd_obj = new Date(end_ymd_arr[0], Number(end_ymd_arr[1])-1, end_ymd_arr[2]);
+// 		clock.innerHTML = "<h6>"+now+"</h6>";
+// 		sec = parseInt(sec) + 1;
+// 		if(sec == 61) {
+// 			sec = 0;
+// 			min = parseInt(min) + 1;
+// 			if(min == 61){
+// 				clearInterval(id);
+// 				alert("투자 시간이 만료 되었습니다.");
+// 				location.reload();
+// 				//$("#btn_cert1").modal("hide");
+// 			}
+// 		}
+// 	}
+// 	function calculus() {    
+// 	    var sta_ymd = document.getElementById("STA_YMD").value;        
+// 	    var sta_ymd_arr = sta_ymd.split(".");
 	    
-	    var betweenDay = (end_ymd_obj.getTime() - regi_ymd_obj.getTime())/1000/60/60/24;
+// 	    var end_ymd = document.getElementById("END_YMD").value;    
+// 	    var end_ymd_arr = end_ymd.split(".");
 	    
-	    document.getElementById("DT_RESULT").value = betweenDay;
+// 	    var sta_ymd_obj = new Date(sta_ymd_arr[0], Number(sta_ymd_arr[1])-1, sta_ymd_arr[2]);
+// 	    var end_ymd_obj = new Date(end_ymd_arr[0], Number(end_ymd_arr[1])-1, end_ymd_arr[2]);
 	    
-	    alert(regi_ymd_obj);
-		alert(end_ymd_obj);
+// 	    var betweenDay = (end_ymd_obj.getTime() - sta_ymd_obj.getTime())/1000/60/60/24;
+	    
+// 	    document.getElementById("DT_RESULT").value = betweenDay;
+// 	}
+	
+	function test() {
+// 		var regi_str = document.getElementById("regi_date").value;
+// 		var regi_ymd = regi_str.substr(0, 10);
+// 		var regi_ymd_arr = regi_ymd.split("-");
+// 	    var regi_time = regi_str.substr(11);
+// 	    var regi_time_arr = regi_time.split(":");
+// 	    alert("regi_ymd : " + regi_ymd);
+// 	    alert("regi_time : " + regi_time);
+// 		for(i = 0; i < 3; i++) {
+// 			alert("regi_ymd_arr[" + i + "] : " + regi_ymd_arr[i]);
+// 		}
+// 		for(i = 0; i < 3; i++) {
+// 			alert("regi_time_arr[" + i + "] : " + regi_time_arr[i]);
+// 		}
+	    var end_str = document.getElementById("end_date").value;
+	    var end_ymd = end_str.substr(0, 10);
+	    var end_ymd_arr = end_ymd.split("-");
+	    var end_time = end_str.substr(11);
+	    var end_time_arr = end_time.split(":");
+	    var end = new Date(end_ymd_arr[0], end_ymd_arr[1], end_ymd_arr[2], end_time_arr[0], end_time_arr[1], end_time_arr[2]);
+	    var now = new Date();
+	    
+	    alert(end);
+	    alert(now);
+// 		alert("end_ymd : " + end_ymd);
+// 		alert("end_time : " + end_time);
+// 		for(i = 0; i < 3; i++) {
+// 			alert("end_ymd_arr[" + i + "] : " + end_ymd_arr[i]);
+// 		}
+// 		for(i = 0; i < 3; i++) {
+// 			alert("end_time_arr[" + i + "] : " + end_time_arr[i]);
+// 		}
 	}
 	</script>
 </head>
@@ -97,7 +148,7 @@
 							종료일 : <input type="text" id="END_YMD" name="END_YMD" value="2019.03.05">
 							차  이 : <input type="text" id="DT_RESULT" name="DT_RESULT" value="">
 							<input type="button" value="비교" onclick="calculus()"><br/>
-							<input type="button" value="알람" onclick="alert()"><br/>
+							<input type="button" value="알람" onclick="test()"><br/>
 						</form>
 					</div>
 					<!-- page end -->
