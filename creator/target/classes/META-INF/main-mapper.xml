@@ -7,8 +7,10 @@
 
 	<select id="projectList" parameterType="kr.co.creator.vo.ProjectVO" resultType="kr.co.creator.vo.ProjectVO">
 		SELECT * 
-		FROM 	project_list 
-		ORDER BY regi_date DESC
+		FROM project_list p 
+		LEFT OUTER JOIN guarantee g 
+		ON p.project_num = g.project_num 
+		ORDER BY p.regi_date DESC
 	</select>
 	
 <!-- 	<select id="projectList1" resultType="kr.co.creator.vo.ProjectVO"> -->

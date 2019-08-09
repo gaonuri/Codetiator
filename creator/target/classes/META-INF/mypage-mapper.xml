@@ -59,14 +59,33 @@
 		, deposit
 		from account_list
 		where user_num = #{user_num}
-		OR busi_num = #{busi_num}
+<!-- 		OR busi_num = #{busi_num} -->
 	</select>
 	
-	<insert id="accountinsert" parameterType="kr.co.creator.vo.AccountVO">
+	<insert id="useraccountinsert" parameterType="kr.co.creator.vo.AccountVO">
 		insert into account_list
-		(account_name, bank_num, bank_name, user_num, busi_num)
-		value(#{account_name}, #{bank_num}, #{bank_name}, #{user_num}, #{busi_num})
+		(account_name, bank_num, bank_name, user_num)
+		value(#{account_name}, #{bank_num}, #{bank_name}, #{user_num})
 	</insert>
+	
+	<insert id="busiaccountinsert" parameterType="kr.co.creator.vo.AccountVO">
+		insert into account_list
+		(account_name, bank_num, bank_name, busi_num)
+		value(#{account_name}, #{bank_num}, #{bank_name}, #{busi_num})
+	</insert>
+	
+<!-- 	<insert id="accountinsert" parameterType="kr.co.creator.vo.AccountVO"> -->
+<!-- 		insert into account_list -->
+<!-- 		where 1 = 1 -->
+<!-- 		<if test="user_num != null and user_num != ''"> -->
+<!-- 			AND user_num = #{user_num} -->
+<!-- 		</if> -->
+<!-- 		<if test="busi_num != null and busi_num != ''"> -->
+<!-- 			OR busi_num = #{busi_num} -->
+<!-- 		</if>  -->
+<!-- 		(account_name, bank_num, bank_name) -->
+<!-- 		value(#{account_name}, #{bank_num}, #{bank_name}) -->
+<!-- 	</insert> -->
 	
 	<update id="depoUpdate" parameterType="kr.co.creator.vo.AccountVO">
 		update account_list 
@@ -145,6 +164,17 @@
 		delete from user_list 
 		where user_num = #{user_num}
 	</delete>
+	
+	<update id="UpdatePass1" parameterType="kr.co.creator.vo.MemberVO">
+		update busi_user_list 
+		set busi_password = #{busi_password} 
+		where busi_num = #{busi_num}
+	</update>
+	
+	<delete id="Deletebusi" parameterType="kr.co.creator.vo.MemberVO">
+		delete from busi_user_list 
+		where busi_num = #{busi_num}
+	</delete>	
 	
 	
 	

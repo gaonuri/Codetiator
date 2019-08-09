@@ -14,8 +14,15 @@ public class UserVO {
 	private String user_privacy_policy_agree;	// 개인정보처리동의	
 	private String user_join_date;				// 가입일
 	private String user_phone_key;				// 휴대폰인증
+	private String cer_number;					// 인증번호
 	
 
+	public String getCer_number() {
+		return cer_number;
+	}
+	public void setCer_number(String cer_number) {
+		this.cer_number = cer_number;
+	}
 	public String getUser_num() {
 		return user_num;
 	}

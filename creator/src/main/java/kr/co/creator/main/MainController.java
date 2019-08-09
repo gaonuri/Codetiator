@@ -25,28 +25,12 @@ public class MainController {
 		logger.info("main");
 
 		List<ProjectVO> list = null;
+		List<ProjectVO> list_g = null;
 		list = mainService.project_list(proVO);
 		model.addAttribute("projectList", list);
 		
 		return "main/main";
 	}//main
-	
-//	@RequestMapping(value = "/main", method = RequestMethod.GET)
-//	public String main(Model model) {
-//		logger.info("main");
-//		
-//		List<ProjectVO> list1 = null;
-//		List<ProjectVO> list2 = null;
-//		List<ProjectVO> list3 = null;
-//		list1 = mainService.project_list1();
-//		list2 = mainService.project_list2();
-//		list3 = mainService.project_list3();
-//		model.addAttribute("projectList1", list1);
-//		model.addAttribute("projectList2", list2);
-//		model.addAttribute("projectList3", list3);
-//		
-//		return "main/main";
-//	}//main
 	
 	@RequestMapping(value = "/main2", method = RequestMethod.GET)
 	public String main2(Model model, ProjectVO proVO) {
@@ -73,3 +57,21 @@ public class MainController {
 		return "intro/intro";
 	}//intro
 }//class
+
+
+//@RequestMapping(value = "/main", method = RequestMethod.GET)
+//public String main(Model model) {
+//	logger.info("main");
+//	
+//	List<ProjectVO> list1 = null;
+//	List<ProjectVO> list2 = null;
+//	List<ProjectVO> list3 = null;
+//	list1 = mainService.project_list1();
+//	list2 = mainService.project_list2();
+//	list3 = mainService.project_list3();
+//	model.addAttribute("projectList1", list1);
+//	model.addAttribute("projectList2", list2);
+//	model.addAttribute("projectList3", list3);
+//	
+//	return "main/main";
+//}//main

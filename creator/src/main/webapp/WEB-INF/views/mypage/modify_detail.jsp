@@ -35,11 +35,349 @@
 	======================================================= -->
 	
 <script type="text/javascript">
-$(document).ready(function() {
-	$("#userDataUpdate").click(function(){
-		window.open('${pageContext.request.contextPath}/my_popup','','menubar=no,width=450,height=350');
+$(document).ready(function(){
+	$(".onlyPass").change(function(){
+		//alert($(this).val());
+		var passStd = /^[0-9a-zA-Z!@#$%^&*]{8,20}$/;
+		if($(this).val().match(passStd)){
+			//alert("ok");
+		}else{
+			alert("8~20자 영문,숫자,특수문자만 입력해 주세요.");
+			$(this).val("");
+			//$(this).focus();
+			return;
+		}
+	});//onlyPass
+});//ready
+
+var id;
+var min = 29;
+var sec = 59;
+var minZero = "";
+var secZero = "";
+function setClock() {
+	if(doubleSubmitCheck()) return;
+	id = setInterval(worker,1000);
+} 
+function worker() {
+	if(min < 10){minZero = "0";}else{minZero = "";}
+	if(sec < 10){secZero = "0";}else{secZero = "";}
+	var now = minZero + min + " : " + secZero + sec;
+	clock.innerHTML = "<h4>"+now+"</h4>";
+	sec = parseInt(sec) - 1;
+	if(sec == -1) {
+		sec = 59;
+		min = parseInt(min) - 1;
+		if(min == -1){
+			clearInterval(id);
+			alert("인증시간이 만료 되었습니다.");
+			location.reload();
+			//$("#btn_cert1").modal("hide");
+		}
+	}
+}
+
+var doubleSubmitFlag = false;
+function doubleSubmitCheck(){
+    if(doubleSubmitFlag){
+        return doubleSubmitFlag;
+    }else{
+        doubleSubmitFlag = true;
+        return false;
+    }
+}
+
+var doubleSubmitFlag1 = false;
+function doubleSubmitCheck1(){
+    if(doubleSubmitFlag1){
+        return doubleSubmitFlag1;
+    }else{
+        doubleSubmitFlag1 = true;
+        return false;
+    }
+}
+
+$(document).ready(function(){
+	$("#inputcommit").click(function(){
+		if(confirm("수정하시겠습니까?") == true) {
+			$("#manager_name").attr("readonly",true);
+			$("#manager_phone").attr("readonly",true);
+			$("#manager_birth").attr("readonly",true);	
+			alert("이메일 인증을 해주세요");
+			$("#inputcommit").attr("disabled",true);	
+			$("#btn_certi1").attr("disabled",false);
+			$("#btn_certi").attr("disabled",false);
+		} else {
+			return false;
+		}
 	});//click
 });//ready
+
+/*
+$(document).ready(function(){
+	$("#inputinsert").click(function(){
+		if(confirm("다시 입력하시겠습니까?") == true) {
+			$("#manager_name").attr("readonly",false);
+			$("#manager_phone").attr("readonly",false);
+			$("#manager_birth").attr("readonly",false);
+// 			$("#manager_name").css("readonly","readonly");
+// 			$("#manager_phone").css("disabled","disabled");
+		} else {
+			return false;
+		}
+	});//click
+});//ready
+*/
+
+$(document).ready(function(){
+	var chkemail = '';
+	$("#manager_email1").blur(function(){
+		var emailStd = /([a-z0-9]{1,20}\@)([a-z]{1,20}\.)([a-z]{1,10})/gi;
+		if($.trim($("#manager_email1").val()) != $(this).val().match(emailStd)){
+			alert("올바르지 않은 이메일 입니다.");
+			return;
+		}
+		$.post(
+				"${pageContext.request.contextPath}/userfindchk",
+				{
+					email:$("#manager_email1").val()
+				},
+				function(data,status){
+					if(data == 1){
+// 						alert("이메일이 확인 되었습니다. 인증번호 받기 버튼을 눌러주세요.");
+						chkemail = $("#manager_email1").val();
+					}else{
+						alert("등록된 이메일이 없습니다.");
+					}
+				}//function
+		);//post
+	});//blur
+});//ready
+
+$(document).ready(function(){
+	$("#btn_certi1").click(function(){
+		if($.trim($("#manager_email1").val()) == ""){
+			alert("등록된 이메일이 없습니다.");
+// 			$("#manager_email").focus();
+			return;
+		}
+		$.post(
+				"${pageContext.request.contextPath}/userceremail"
+				,{
+					email:$("#manager_email1").val()
+				}
+				,function(data,status){
+					if(status == "success"){
+						if(data > 0){
+							alert("해당 이메일로 인증번호를 발송했습니다.");
+							$("#cer_number").css("display","block");
+							$("#btn_certi_complete1").css("display","block");
+							setClock();
+						} else if(data == 0){
+							alert("존재하지 않는 이메일 입니다.");
+						} else {
+							alert("잠시 후, 다시 시도해 주세요.");
+						}
+					} else {
+						alert("시스템 관리자에게 문의 바랍니다.");
+					}
+				}
+		);//post
+	});//click
+});//ready
+
+$(document).ready(function() {
+	$("#btn_certi_complete1").click(function() {
+		var numChk = $("#numChk").val();
+		$.post(
+				"${pageContext.request.contextPath}/usercheckcernumber",
+				{
+					user_num:$("#numChk").val(),
+					user_name:$("#manager_name").val(),
+					phone:$("#manager_phone").val(),
+					jumin:$("#manager_birth").val(),
+					cer_number:$("#cer_number").val()
+				},
+				function(data,status){
+					if(status == "success"){
+						if(data > 0){
+							alert("인증이 완료 되었습니다.");
+							$("#cer_number").attr("readonly",true);	
+							$("#btn_certi_complete1").attr("disabled",true);
+// 							$("#clock").css("display", "none");
+						} else if(data == 0){
+							alert("인증번호가 다릅니다.");
+						} else {
+							alert("잠시 후, 다시 시도해 주세요.");
+						}
+					} else {
+						alert("시스템 관리자에게 문의 바랍니다.");
+					}
+				}
+		);//post
+	});
+});
+
+$(document).ready(function() {
+	$("#userDataUpdateFinal1").click(function() {
+		var numChk = $("#numChk").val();
+		$.post(
+				"${pageContext.request.contextPath}/userdataupdatefinal1",
+				{
+					user_num:$("#numChk").val(),
+					user_name:$("#manager_name").val(),
+					phone:$("#manager_phone").val(),
+					jumin:$("#manager_birth").val(),
+					cer_number:$("#cer_number").val()
+				},
+				function(data,status){
+					if(status == "success"){
+						if(data > 0){
+							alert("변경되었습니다. 다시 로그인 해주시기 바랍니다");
+							location.href="${pageContext.request.contextPath}/logout";
+						} else if(data == 0){
+							alert("이메일 인증 해주시기 바랍니다.");
+						} else {
+							alert("이메일 인증 해주시기 바랍니다!!!!");
+						}
+					} else {
+						alert("시스템 관리자에게 문의 바랍니다.");
+					}
+				}
+		);//post
+	});
+});
+
+//////////////////////////////////////////////////////////////////////////////////// user
+
+$(document).ready(function(){
+	var chkemail = '';
+	
+	$("#manager_email").blur(function(){
+		var emailStd = /([a-z0-9]{1,20}\@)([a-z]{1,20}\.)([a-z]{1,10})/gi;
+		
+		if($.trim($("#manager_email").val()) != $(this).val().match(emailStd)){
+			alert("올바르지 않은 이메일 입니다.");
+			return;
+		}
+		$.post(
+				"${pageContext.request.contextPath}/busifindChk",
+				{
+					manager_email:$("#manager_email").val()
+				},
+				function(data,status){
+					if(data == 1){
+// 						alert("이메일이 확인 되었습니다. 인증번호 받기 버튼을 눌러주세요.");
+						chkemail = $("#manager_email").val();
+					}else{
+						alert("등록된 이메일이 없습니다.");
+					}
+				}//function
+		);//post
+	});//blur
+});//ready
+
+$(document).ready(function(){
+	$("#btn_certi").click(function(){
+		if($.trim($("#manager_email").val()) == ""){
+			alert("등록된 이메일이 없습니다.");
+// 			$("#manager_email").focus();
+			return;
+		}
+		$.post(
+				"${pageContext.request.contextPath}/CerEmail"
+				,{
+					manager_email:$("#manager_email").val()
+				}
+				,function(data,status){
+					if(status == "success"){
+						if(data > 0){
+							alert("해당 이메일로 인증번호를 발송했습니다.");
+							$("#cer_number").css("display","block");
+							$("#btn_certi_complete").css("display","block");
+							$("#aaaaa").css("display","block");
+							setClock();
+						} else if(data == 0){
+							alert("존재하지 않는 이메일 입니다.");
+						} else {
+							alert("잠시 후, 다시 시도해 주세요.");
+						}
+					} else {
+						alert("시스템 관리자에게 문의 바랍니다.");
+					}
+				}
+		);//post
+	});//click
+});//ready
+$(document).ready(function() {
+	$("#btn_certi_complete").click(function() {
+		var numChk1 = $("#numChk1").val();
+		$.post(
+				"${pageContext.request.contextPath}/CheckCerNumber",
+				{
+					busi_num:$("#numChk1").val(),
+					manager_name:$("#manager_name").val(),
+					manager_phone:$("#manager_phone").val(),
+					manager_birth:$("#manager_birth").val(),
+					cer_number:$("#cer_number").val()
+				},
+				function(data,status){
+					if(status == "success"){
+						if(data > 0){
+							alert("인증이 완료 되었습니다.");
+							$("#cer_number").attr("readonly",true);	
+							$("#btn_certi_complete").attr("disabled",true);
+// 							$("#clock").css("display", "none");
+						} else if(data == 0){
+							alert("인증번호가 다릅니다.");
+						} else {
+							alert("잠시 후, 다시 시도해 주세요.");
+						}
+					} else {
+						alert("시스템 관리자에게 문의 바랍니다.");
+					}
+				}
+		);//post
+	});
+});
+
+$(document).ready(function() {
+	$("#userDataUpdateFinal").click(function() {
+		var numChk1 = $("#numChk1").val();
+		$.post(
+				"${pageContext.request.contextPath}/userdataupdatefinal",
+				{
+					busi_num:$("#numChk1").val(),
+					manager_name:$("#manager_name").val(),
+					manager_phone:$("#manager_phone").val(),
+					manager_birth:$("#manager_birth").val(),
+					cer_number:$("#cer_number").val()
+				},
+				function(data,status){
+					if(status == "success"){
+						if(data > 0){
+							alert("변경되었습니다. 다시 로그인 해주시기 바랍니다");
+							location.href="${pageContext.request.contextPath}/logout";
+						} else if(data == 0){
+							alert("이메일 인증 해주시기 바랍니다.");
+						} else {
+							alert("이메일 인증 해주시기 바랍니다!!!!");
+						}
+					} else {
+						alert("시스템 관리자에게 문의 바랍니다.");
+					}
+				}
+		);//post
+	});
+});
+
+$(document).ready(function() {
+	$("#userDataUpdate").click(function() {
+			$("#btn_cert1").modal(); return;
+	});
+});
+
+//////////////////////////////////////////////////////////////////////////////////// busi
 
 $(document).ready(function() {
 	$("#updateCusAccountBtn").click(function(){
@@ -48,7 +386,7 @@ $(document).ready(function() {
 });//ready
 
 $(document).ready(function() {
-	$("#updatePassBtn").click(function(){
+	$("#updatePassBtn1").click(function(){
 		var numChk = $("#numChk").val();
 		var numChk1 = $("#numChk1").val();
 		
@@ -82,14 +420,14 @@ $(document).ready(function() {
 });//ready
 
 $(document).ready(function() {
-	$("#deleteUserBtn").click(function(){
+	$("#deleteUserBtn1").click(function(){
 		var numChk = $("#numChk").val();
 		var numChk1 = $("#numChk1").val();
 		if(confirm("정말로 탈퇴 하시겠습니까??") == true) {
 			$.post(
 					"${pageContext.request.contextPath}/deleteuser",
 					{
-						user_num:$("#numChk").val(),
+						user_num:$("#numChk").val()
 					},
 					function(data,status){
 						if(status == "success"){
@@ -97,7 +435,72 @@ $(document).ready(function() {
 								alert("@@@@@@@@@@@@@@@@@@@@@@@@@");
 							} else if(data == 0){
 								alert("그동안 크리에이터를 이용해 주셔서 감사합니다.");
-								location.href="${pageContext.request.contextPath}/login";
+								location.href="${pageContext.request.contextPath}/logout";
+							} else {
+								alert("잠시 후, 다시 시도해 주세요.");
+							}
+						} else {
+							alert("시스템 관리자에게 문의 바랍니다.");
+						}
+					}
+				);//post
+			} else{
+				return false;
+			} 
+	});//click
+});//ready
+
+$(document).ready(function() {
+	$("#updatePassBtn").click(function(){
+		var numChk = $("#numChk").val();
+		var numChk1 = $("#numChk1").val();
+		
+		if($("#updatePassword").val() != $("#updatePassword1").val()){
+			alert("비밀번호를 똑같이 입력해 주세요.");
+			$("#updatePassword").focus();
+			return;
+		}
+			$.post(
+					"${pageContext.request.contextPath}/updatepass1",
+					{
+						busi_num:$("#numChk1").val(),
+						busi_password:$("#updatePassword").val()
+					},
+					function(data,status){
+						if(status == "success"){
+							if(data > 0){
+								alert("@@@@@@@@@@@@@@@@@@@@@@@@@");
+							} else if(data == 0){
+								alert("변경 되었습니다.");
+								location.href="${pageContext.request.contextPath}/my_modify";
+							} else {
+								alert("잠시 후, 다시 시도해 주세요.");
+							}
+						} else {
+							alert("시스템 관리자에게 문의 바랍니다.");
+						}
+					}
+				);//post
+	});//click
+});//ready
+
+$(document).ready(function() {
+	$("#deleteUserBtn").click(function(){
+		var numChk = $("#numChk").val();
+		var numChk1 = $("#numChk1").val();
+		if(confirm("정말로 탈퇴 하시겠습니까??") == true) {
+			$.post(
+					"${pageContext.request.contextPath}/deletebusi",
+					{
+						busi_num:$("#numChk1").val()
+					},
+					function(data,status){
+						if(status == "success"){
+							if(data > 0){
+								alert("@@@@@@@@@@@@@@@@@@@@@@@@@");
+							} else if(data == 0){
+								alert("그동안 크리에이터를 이용해 주셔서 감사합니다.");
+								location.href="${pageContext.request.contextPath}/logout";
 							} else {
 								alert("잠시 후, 다시 시도해 주세요.");
 							}
@@ -210,7 +613,6 @@ $(document).ready(function() {
 						<td class="condition-content">
 							<input type="text" class="form-control" id="email" maxlength="50" readonly="readonly" value="${mypagemem.jumin}${mypagemem.manager_birth}"></td>
 						<td>
-<!-- 							<button type="button" class="btn btn-purple-transparent" id="userDataUpdate" name="userDataUpdate">변경</button> -->
 						</td>
 					</tr>
 					<tr>
@@ -257,44 +659,16 @@ $(document).ready(function() {
 							<td class="condition-content">
 								<select id="cusBankCdSelect" class="form-control" name="cusBankCd">
 									<option value="">${mypagebank.bank_name}</option>
-										<option value="002">산업은행</option><option value="003">기업은행</option>
-										<option value="004">국민은행</option><option value="007">수협중앙회</option>
-										<option value="008">수출입은행</option><option value="010">농협</option>
-										<option value="011">농협중앙회</option><option value="012">지역농·축협</option>
-										<option value="020">우리은행</option><option value="023">SC제일은행</option>
-										<option value="027">한국씨티은행</option><option value="031">대구은행</option>
-										<option value="032">부산은행</option><option value="034">광주은행</option>
-										<option value="035">제주은행</option><option value="037">전북은행</option>
-										<option value="039">경남은행</option><option value="045">새마을금고중앙회</option>
-										<option value="048">신협중앙회</option><option value="050">상호저축은행</option>
-										<option value="052">모건스탠리은행</option><option value="054">HSBC은행</option>
-										<option value="055">도이치은행</option><option value="057">제이피모간체이스은행</option>
-										<option value="058">미즈호은행</option><option value="059">미쓰비시도쿄UFJ은행</option>
-										<option value="060">BOA은행</option><option value="061">비엔피파리바은행</option>
-										<option value="062">중국공상은행</option><option value="063">중국은행</option>
-										<option value="065">대화은행</option><option value="066">교통은행</option>
-										<option value="071">우체국</option><option value="081">KEB하나은행</option>
-										<option value="088">신한은행</option><option value="089">케이뱅크</option>
-										<option value="090">카카오뱅크</option><option value="096">한국전자금융(주)</option>
-										<option value="102">대신저축은행</option><option value="103">에스비아이저축은행</option>
-										<option value="104">에이치케이저축은행</option><option value="105">웰컴저축은행</option>
-										<option value="209">유안타증권</option><option value="218">KB증권</option>
-										<option value="221">골든브릿지투자증권</option><option value="222">한양증권</option>
-										<option value="223">리딩투자증권</option><option value="224">BNK투자증권</option>
-										<option value="225">IBK투자증권</option><option value="227">KTB투자증권</option>
-										<option value="238">미래에셋대우</option><option value="240">삼성증권</option>
-										<option value="243">한국투자증권</option><option value="247">NH투자증권</option>
-										<option value="261">교보증권</option><option value="262">하이투자증권</option>
-										<option value="263">HMC투자증권</option><option value="264">키움증권</option>
-										<option value="265">이베스트투자증권</option><option value="266">SK증권</option>
-										<option value="267">대신증권</option><option value="269">한화투자증권</option>
-										<option value="270">하나금융투자</option><option value="278">신한금융투자</option>
-										<option value="279">동부증권</option><option value="280">유진투자증권</option>
-										<option value="287">메리츠종합금융증권</option><option value="290">부국증권</option>
-										<option value="291">신영증권</option><option value="292">케이프투자증권</option>
-										<option value="293">한국증권금융</option><option value="294">펀드온라인코리아</option>
-										<option value="295">우리종합금융</option><option value="296">삼성선물</option>
-										<option value="297">외환선물</option><option value="298">현대선물</option>
+										<option value="01">신한은행</option>
+										<option value="02">국민은행</option>
+										<option value="03">우리은행</option>
+										<option value="04">하나은행</option>
+										<option value="05">씨티은행</option>
+										<option value="06">부산은행</option>
+										<option value="07">경남은행</option>
+										<option value="08">광주은행</option>
+										<option value="09">제주은행</option>
+										<option value="10">산업은행</option>		
 								</select>
 							</td>
 						</tr>
@@ -348,7 +722,7 @@ $(document).ready(function() {
 							<td class="condition-title">새 비밀번호
 							</td>
 							<td class="condition-content">
-								<input type="password" class="form-control" id="updatePassword" maxlength="14">
+								<input type="password" class="form-control onlyPass" id="updatePassword" maxlength="14" placeholder="">
 							</td>
 							<td></td>
 						</tr>
@@ -357,14 +731,21 @@ $(document).ready(function() {
 							<td class="condition-title">비밀번호 확인
 							</td>
 							<td class="condition-content">
-								<input type="password" class="form-control" id="updatePassword1" maxlength="14">
+								<input type="password" class="form-control onlyPass" id="updatePassword1" maxlength="14" placeholder="">
 							</td>						
 							<td></td>
 						</tr>
 						</tbody>
 					</table>
 					<div class="autoConditionSet" >
-						<button type="button" class="btn btn-purple-transparent btn-block" id="updatePassBtn">새 비밀번호 저장</button>
+						<c:choose>
+							<c:when test="${memVO != null && (memVO.user_num != '' && memVO.user_num != null)}">
+								<input type="button" class="btn btn-purple-transparent btn-block" id="updatePassBtn1" value="새 비밀번호 저장"/>
+							</c:when>
+							<c:otherwise>
+								<input type="button" class="btn btn-purple-transparent btn-block" id="updatePassBtn" value="새 비밀번호 저장"/>																		
+							</c:otherwise>
+						</c:choose>							
 					</div>
 					<font size="1"><br></font>       
                 
@@ -409,7 +790,14 @@ $(document).ready(function() {
 					</table>
 					<form name="removeuser">
 						<div class="autoConditionSet" >
-							<button type="button" class="btn btn-purple-transparent btn-block" onclick="removeCheck()" id="deleteUserBtn">회원 탈퇴</button>
+							<c:choose>
+								<c:when test="${memVO != null && (memVO.user_num != '' && memVO.user_num != null)}">
+									<input type="button" class="btn btn-purple-transparent btn-block1" id="deleteUserBtn1" value="회원 탈퇴" />
+								</c:when>
+								<c:otherwise>
+									<input type="button" class="btn btn-purple-transparent btn-block" id="deleteUserBtn" value="회원 탈퇴" />
+								</c:otherwise>
+							</c:choose>								
 						</div>
 					</form>
 					<font size="2"></font>                
@@ -424,9 +812,150 @@ $(document).ready(function() {
    	<input type="hidden" id="numChk" value="${memVO.user_num}"/>
 	<input type="hidden" id="numChk1" value="${memVO.busi_num}"/>
 
+<!--    =======================================================    -->    <!--    =======================================================    -->   
 
+							<div class="bottom">
+								<input type="button" class="btn btn-purple-transparent btn-block" id="userDataUpdate"
+										value="본인 인증 및 대출 가능여부 확인" data-toggle="modal"/>
+									<p>※ 대출 신청은 신용등급에 영향을 끼치지 않습니다.</p>
+									<div class="page" style="text-align: right;">1/4</div>
+							</div>
+						<!-- Email 인증시작 -->
+						<div class="modal fade" id="btn_cert1"  name="cert1" role="dialog" aria-labelledby="vtAcntModalLabel" aria-hidden="true">
+							<div class="modal-dialog">
+								<div class="modal-content">
+									<div class="modal-header">
+										<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+											<span aria-hidden="true">×</span>
+										</button>
+										<div class="modal-title" id="vtAcntModalLabel">
+											<div style="">
+												기본정보 변경을 위한 인증 절차 입니다.
+											</div>
+										</div>
+									</div>
+									<div class="modal-body">
+										<div class="row">
+											<div class="col-xs-12 col-sm-12 col-md-12">
+											</div>
+										</div>
+										<div class="row">
+											<div class="form-group col-xs-5 col-sm-5 col-md-3">
+												<label for="cusNm" class="control-label">이 름</label>
+												<input class="form-control" id="manager_name" type="text" value="${memVO.manager_name}${memVO.user_name}">
+											</div>
+											<div class="form-group col-xs-5 col-sm-5 col-md-4">
+												<label for="cusNm" class="control-label">휴대전화번호</label>
+												<input class="form-control" id="manager_phone" type="text" value="${memVO.manager_phone}${memVO.phone}">
+											</div>
+											<div class="form-group col-xs-5 col-sm-5 col-md-3">
+												<label for="cusNm" class="control-label">주민등록번호</label>
+												<input class="form-control" id="manager_birth" type="text" value="${memVO.manager_birth}${memVO.jumin}">
+											</div>
+											<div class="form-group col-xs-5 col-sm-5 col-md-1">
+												<label for="cusNm" class="control-label">&nbsp;</label>
+												<input class="btn btn-purple-transparent" id="inputcommit" type="submit" value="완료">
+											</div>
+<!-- 											<div class="form-group col-xs-5 col-sm-5 col-md-1"> -->
+<!-- 												<label for="cusNm" class="control-label">&nbsp;</label> -->
+<!-- 												<input class="btn btn-purple-transparent" id="inputinsert" type="submit" value="수정"> -->
+<!-- 											</div>											 -->
+											<div class="form-group col-xs-12 col-sm-12 col-md-5">
+												<label for="cusAccount" class="control-label" >Email_주소</label>
+												<c:choose>
+													<c:when test="${memVO != null && (memVO.user_num != '' && memVO.user_num != null)}">
+														<input class="form-control" id="manager_email1" type="text" value="${memVO.email}" readonly="readonly">
+													</c:when>
+													<c:otherwise>
+														<input class="form-control" id="manager_email" type="text" value="${memVO.manager_email}" readonly="readonly">
+													</c:otherwise>
+												</c:choose>														
+											</div>
+											<div class="form-group col-xs-12 col-sm-12 col-md-4">
+												<br style="line-height:24px";">
+												<c:choose>
+													<c:when test="${memVO != null && (memVO.user_num != '' && memVO.user_num != null)}">
+													<input type="submit" class="btn btn-purple-transparent" id="btn_certi1" name="numre" disabled="disabled" value="인증번호 받기" />
+													</c:when>
+													<c:otherwise>
+														<input type="submit" class="btn btn-purple-transparent" id="btn_certi" name="numre" disabled="disabled" value="인증번호 받기" />												
+													</c:otherwise>
+												</c:choose>														
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-xs-12 col-sm-12 col-md-12">
+												<span class="modal-body-light">&nbsp;● 인증된 이메일로 인증번호를 발송하였습니다.</span>
+											</div>
+											<div class="col-xs-12 col-sm-12 col-md-12">
+												<span class="modal-body-light">&nbsp;● 문의사항은 1:1문의사항을 이용하시기 바랍니다.</span>
+											</div>
+										</div>
+										<div id="pInfDiv" style="">
+											<hr>
+											<div class="row">
+												<div class="col-xs-12 col-sm-12 col-md-12">
+												</div>
+											</div>
+											<div class="row">
  
-<!--    =======================================================    -->    	
+											<div class="form-group col-xs-6 col-sm-6 col-md-6">
+													<label for="ssnNo" id="aaaaa" class="control-label" style="display:none;">인증번호를 입력하세요.</label>
+												</div>
+											</div>		
+											
+											<div class="row">
+												<div class="form-group col-md-4">
+													<input class="form-control" id="cer_number" type="text" maxlength="13"  placeholder="" style="display:none;">
+												</div>
+												<div class="form-group col-md-2">
+													<c:choose>
+														<c:when test="${memVO != null && (memVO.user_num != '' && memVO.user_num != null)}">
+															<input type="submit" id="btn_certi_complete1" class="btn btn-purple-transparent" style="display:none;" value="인증 확인"/>
+														</c:when>
+														<c:otherwise>
+															<input type="submit" id="btn_certi_complete" class="btn btn-purple-transparent" style="display:none;" value="인증 확인"/>																						
+														</c:otherwise>
+													</c:choose>														
+												</div>
+												<div class="form-group col-md-2" id="clock">
+												</div>													
+											</div>
+											
+											<div class="row">
+												<div class="col-xs-12 col-sm-12 col-md-12">
+												<span class="modal-body-light">&nbsp;● 투자 및 대출 시 본인의 개인정보와 일치해야 합니다.</span>
+											</div>
+												<div class="clearfix"></div>
+												<div class="col-xs-12 col-sm-12 col-md-12">
+													<span class="modal-body-light font-purple">&nbsp;● 정상처리가 불가할 경우 1:1문의사항을 이용하시기 바랍니다.</span>
+												</div>
+												<div class="clearfix"></div>
+												<div class="col-xs-12 col-sm-12 col-md-12">
+													<span class="modal-body-strong">※ 본인과 다를시 불이익이 발생 할 수 있습니다.</span>
+													<span class="modal-body-light">&nbsp;<a href="${pageContext.request.contextPath}/support" target="_blank">공지사항</a>을 참고하세요.</span>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="modal-footer">
+										<c:choose>
+											<c:when test="${memVO != null && (memVO.user_num != '' && memVO.user_num != null)}">
+												<input type="submit" id="userDataUpdateFinal1" class="btn btn-purple-transparent" value="변 경"/>
+											</c:when>
+											<c:otherwise>
+												<input type="submit" id="userDataUpdateFinal" class="btn btn-purple-transparent" value="변 경"/>																							
+											</c:otherwise>
+										</c:choose>											
+									</div>
+								</div>
+								<!-- /.modal-content -->
+							</div>
+							<!-- /.modal-dialog -->
+						</div>
+						<!-- Email 인증끝. -->
+ 
+<!--    =======================================================    -->    <!--    =======================================================    -->   	
 	
 		<!--footer start-->
 		<footer class="site-footer">

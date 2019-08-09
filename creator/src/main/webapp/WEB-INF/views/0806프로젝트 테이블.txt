@@ -81,8 +81,6 @@ CREATE TABLE `project_list` (
 	`judge_status` INT(1) NULL DEFAULT NULL COMMENT '심사상태',
 	`ing_status` INT(1) NULL DEFAULT NULL COMMENT '1:승인 2:심사 3:반려',
 	`customer` VARCHAR(20) NULL DEFAULT NULL COMMENT '투자자수',
-	`ad_price` INT(11) UNSIGNED NULL DEFAULT NULL COMMENT '광고 금액',
-	`ad_grade` INT(11) NULL DEFAULT NULL COMMENT '광고 등급',
 	`user_num` INT(11) NULL DEFAULT NULL COMMENT '유저번호',
 	`busi_num` INT(11) NULL DEFAULT NULL COMMENT '법인유저번호',
 	PRIMARY KEY (`project_num`),
