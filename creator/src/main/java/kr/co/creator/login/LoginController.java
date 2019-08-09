@@ -41,6 +41,12 @@ public class LoginController {
 		logger.info("login");
 		return "login/login";
 	}//login
+	
+	@RequestMapping(value="/login_new", method=RequestMethod.GET)
+	public String login_new() {
+		logger.info("login_new");
+		return "login/login_new";
+	}//login_new
 
 	@RequestMapping(value="/loginuser", method=RequestMethod.POST)
 	public void loginUser(MemberVO vo, HttpSession session, PrintWriter out) {
