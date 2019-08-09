@@ -30,9 +30,12 @@ public class ProjectVO {
 	private String judge_status;		// 심사상태
 	private String ing_status;			// 1:승인 2:심사 3:반려
 	private String customer;			// 투자자수
+<<<<<<< HEAD
 	private String ad_price;			// 광고금액
 	private String ad_grade;			// 광고등급
 	private String loan_bank_name;		// 대출은행명
+=======
+>>>>>>> branch 'master' of https://github.com/gaonuri/Codetiator.git
 	
 	public String getLoan_bank_name() {
 		return loan_bank_name;
@@ -239,20 +242,6 @@ public class ProjectVO {
 	public void setCustomer(String customer) {
 		this.customer = customer;
 	}//customer
-	
-	public String getAd_price() {
-		return ad_price;
-	}
-	public void setAd_price(String ad_price) {
-		this.ad_price = ad_price;
-	}//ad_price
-	
-	public String getAd_grade() {
-		return ad_grade;
-	}
-	public void setAd_grade(String ad_grade) {
-		this.ad_grade = ad_grade;
-	}//ad_grade
 	
 	//참조
 	public String getUser_num() {

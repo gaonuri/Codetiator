@@ -173,7 +173,7 @@
 													<td>${vo.invest_price}</td>
 													<td>${vo.refund_count}</td>
 													<td>${vo.refund}</td>
-													<td>${vo.refund_deadline}</td>
+													<td>${vo.refund_due_date}</td>
 													<td>${vo.ach_state}</td>
 													<td>
 <%-- 														<c:choose> --%>

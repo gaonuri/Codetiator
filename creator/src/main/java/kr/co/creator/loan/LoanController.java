@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import kr.co.creator.vo.DocumentVO;
-import kr.co.creator.vo.DocumentVO2;
 import kr.co.creator.vo.FileVO;
 import kr.co.creator.vo.GuaranteeVO;
 import kr.co.creator.vo.MemberVO;
@@ -133,7 +132,7 @@ public class LoanController {
 			return "redirect:/login";
 		}
 		session.setAttribute("ProjectVO", pvo);
-		session.setAttribute("DocumentVO2", dvo);
+		session.setAttribute("FileVO", dvo);
 		session.setAttribute("GuaranteeVO", gvo);
 		
     	return "loan/sub_document";
@@ -150,7 +149,6 @@ public class LoanController {
 		//fileupload
 		int cnt = 0;
 		DocumentVO dvo = new DocumentVO();
-		DocumentVO2 dvo2 = new DocumentVO2();
 			int saveFileCnt = 0;
 			if(fvo.getBusi_regi() != null && fvo.getBusi_regi().getSize() > 0) {
 				dvo.setBusi_regi(UtilForFile.fileUpByType(fvo.getBusi_regi()    , "loan", pvo.getProject_num()));

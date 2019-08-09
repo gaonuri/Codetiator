@@ -26,25 +26,25 @@ public class MypageDAO {
 		List<MypageVO> invest = null;
 		invest = sqlSession.selectList("MypageMapper.InvestList", userVO);
 		return invest;
-	}
+	}//invest_detail
 
 	public List<ProjectVO> loan_list(MemberVO userVO) {
 		List<ProjectVO> loan = null;
 		loan = sqlSession.selectList("MypageMapper.loanList", userVO);
 		return loan;
-	} 
+	}//loan_list
 	
 	public AccountVO account(MemberVO userVO) {
 		AccountVO accVO = null;
 		accVO = sqlSession.selectOne("MypageMapper.Account", userVO);
 		return accVO;
-	}
+	}//AccountVO
 	
 	public InOutVO inout(MemberVO userVO) {
 		InOutVO ioVO = null;
 		ioVO = sqlSession.selectOne("MypageMapper.Inout", userVO);
 		return ioVO;
-	}
+	}//InOutVO
 	
 	public int myPageModifyU(MemberVO vo) {
 		int cnt = 0;
@@ -62,13 +62,13 @@ public class MypageDAO {
 		UserVO useVO = null;
 		useVO = sqlSession.selectOne("MypageMapper.User", userVO);
 		return useVO;
-	}
+	}//UserVO
 	
 	public Busi_userVO busi(MemberVO userVO) {
 		Busi_userVO busiVO = null;
 		busiVO = sqlSession.selectOne("MypageMapper.Busi", userVO);
 		return busiVO;
-	}
+	}//Busi_userVO
 
 	public int emailcert(UserVO vo) {
 		int cnt = 0;
@@ -80,15 +80,44 @@ public class MypageDAO {
 		int cnt = 0;
 		cnt = sqlSession.update("MypageMapper.UserDataUpdate", vo);
 		return cnt;
-	}
+	}//userDataUpdate
 	
 	public int userDataUpdate1(MemberVO vo) {
 		int cnt1 = 0;
 		cnt1 = sqlSession.update("MypageMapper.UserDataUpdate1", vo);
 		return cnt1;
-	}
+	}//userDataUpdate1
 
+	public int bankNumChk(AccountVO accvo) {
+		int cnt = 0;
+		cnt = sqlSession.selectOne("MypageMapper.joinEmailChk", accvo);
+		return cnt;
+	}//bankNumChk
 
+		public int depo_update(AccountVO accVO) {
+		int count = 0;
+		count = sqlSession.update("MypageMapper.depoUpdate", accVO);
+		
+		return count;
+	}//deposit_update
+
+//		public int account_insert(AccountVO accVO) {
+//			int count = 0;
+//			count = sqlSession.insert("MypageMapper.accountinsert", accVO);
+//			return count;
+//		}
+
+		public int useraccount_insert(AccountVO acVO) {
+			int count = 0;
+			count = sqlSession.insert("MypageMapper.useraccountinsert", acVO);
+			return count;
+		}
+
+		public int busiaccount_insert(AccountVO acVO) {
+			int count = 0;
+			count = sqlSession.insert("MypageMapper.busiaccountinsert", acVO);
+			return count;
+		}
 	
 }//class
 

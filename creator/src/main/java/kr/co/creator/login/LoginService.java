@@ -103,4 +103,17 @@ public class LoginService {
 		return cnt;
 	}//busiChk
 
+	public int insertUserNumber(FindPwdVO vo) {
+		int cnt = 0;
+		cnt = loginDAO.insertUserNumber(vo);
+		return cnt;
+	}//insertUserNumber
+
+	public int CheckCerUserNumber(FindPwdVO vo) {
+		int cnt = 0;
+		System.out.println("88888888888888888888888888888888888888888888888888888888888 vo.cer_number : " + vo.getCer_number());
+		cnt = loginDAO.CheckCerUserNumber(vo);
+		return cnt;
+	}//CheckCerUserNumber
+
 }//class

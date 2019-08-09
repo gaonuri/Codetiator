@@ -5,28 +5,30 @@
  
 <mapper namespace="MainMapper">
 
-<!-- 	<select id="projectList" parameterType="kr.co.creator.vo.ProjectVO" resultType="kr.co.creator.vo.ProjectVO"> -->
+	<select id="projectList" parameterType="kr.co.creator.vo.ProjectVO" resultType="kr.co.creator.vo.ProjectVO">
+		SELECT * 
+		FROM project_list p 
+		LEFT OUTER JOIN guarantee g 
+		ON p.project_num = g.project_num 
+		ORDER BY p.regi_date DESC
+	</select>
+	
+<!-- 	<select id="projectList1" resultType="kr.co.creator.vo.ProjectVO"> -->
 <!-- 		select *  -->
 <!-- 		from project_list -->
-<!-- 		where ad_grade = #{ad_grade} -->
+<!-- 		where ad_grade = 1 -->
 <!-- 	</select> -->
 	
-	<select id="projectList1" resultType="kr.co.creator.vo.ProjectVO">
-		select * 
-		from project_list
-		where ad_grade = 1
-	</select>
+<!-- 	<select id="projectList2" resultType="kr.co.creator.vo.ProjectVO"> -->
+<!-- 		select *  -->
+<!-- 		from project_list -->
+<!-- 		where ad_grade = 2 -->
+<!-- 	</select> -->
 	
-	<select id="projectList2" resultType="kr.co.creator.vo.ProjectVO">
-		select * 
-		from project_list
-		where ad_grade = 2
-	</select>
-	
-	<select id="projectList3" resultType="kr.co.creator.vo.ProjectVO">
-		select * 
-		from project_list
-		where ad_grade = 3
-	</select>
+<!-- 	<select id="projectList3" resultType="kr.co.creator.vo.ProjectVO"> -->
+<!-- 		select *  -->
+<!-- 		from project_list -->
+<!-- 		where ad_grade = 3 -->
+<!-- 	</select> -->
 	
 </mapper>

@@ -50,6 +50,27 @@ public class InvestController {
 		return "invest/invest_guide";
 	}//invest_guide
 	
+	@RequestMapping(value = "/invest_guide_new", method = RequestMethod.GET)
+	public String invest_guide_new() {
+		logger.info("invest_guide_new");
+		
+		return "invest/invest_guide_new";
+	}//invest_guide_new
+	
+	@RequestMapping(value = "/invest_list_new", method = RequestMethod.GET)
+	public String invest_list_new() {
+		logger.info("invest_list_new");
+		
+		return "invest/invest_list_new";
+	}//invest_list_new
+	
+	@RequestMapping(value = "/invest_detail_new", method = RequestMethod.GET)
+	public String invest_detail_new() {
+		logger.info("invest_detail_new");
+		
+		return "invest/invest_detail_new";
+	}//invest_detail_new
+	
 	@RequestMapping(value = "/invest_list", method = RequestMethod.GET)
 	public String invest_list(Model model, ProjectVO proVO) {
 		logger.info("invest_list");

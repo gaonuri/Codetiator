@@ -71,27 +71,37 @@
 									</tr>
 								</thead>
 								<c:forEach items="${investList}" var="vo" varStatus="status">
+									<input id="project_num" type="hidden" value="${vo.project_num}" />
 										<tr>
-											<td>
-												<input id="project_num" type="hidden" value="${vo.project_num}" />
-												<c:choose>
-													<c:when test="${memVO.user_num != null}">
-														<a href="${pageContext.request.contextPath}/invest_detail?project_num=${vo.project_num}&p_busi_num=${vo.busi_num}&user_num=${memVO.user_num}">${vo.project_name}u</a>
-													</c:when>
-													<c:when test="${memVO.busi_num != null}">
-														<a href="${pageContext.request.contextPath}/invest_detail?project_num=${vo.project_num}&p_busi_num=${vo.busi_num}&busi_num=${memVO.busi_num}">${vo.project_name}b</a>
-													</c:when>
-													<c:otherwise>
-														<a href="${pageContext.request.contextPath}/invest_detail?project_num=${vo.project_num}">${vo.project_name}</a>
-													</c:otherwise>
-												</c:choose>
-											</td>
-											<td>${vo.grade}</td>
-											<td>${vo.rate}%</td>
-											<td>${vo.refund}개월</td>
-											<td>${vo.price}만원</td>
-											<td>${vo.repay_method}</td>
-											<td>${vo.ach_rate}</td>
+											<c:choose>
+												<c:when test="${memVO.user_num != null}">
+													<td><a href="${pageContext.request.contextPath}/invest_detail?project_num=${vo.project_num}&p_busi_num=${vo.busi_num}&user_num=${memVO.user_num}">${vo.project_name}u</a></td>
+													<td><a href="${pageContext.request.contextPath}/invest_detail?project_num=${vo.project_num}&p_busi_num=${vo.busi_num}&user_num=${memVO.user_num}">${vo.grade}u</a></td>
+													<td><a href="${pageContext.request.contextPath}/invest_detail?project_num=${vo.project_num}&p_busi_num=${vo.busi_num}&user_num=${memVO.user_num}">${vo.rate}%u</a></td>
+													<td><a href="${pageContext.request.contextPath}/invest_detail?project_num=${vo.project_num}&p_busi_num=${vo.busi_num}&user_num=${memVO.user_num}">${vo.refund}개월u</a></td>
+													<td><a href="${pageContext.request.contextPath}/invest_detail?project_num=${vo.project_num}&p_busi_num=${vo.busi_num}&user_num=${memVO.user_num}">${vo.price}만원u</a></td>
+													<td><a href="${pageContext.request.contextPath}/invest_detail?project_num=${vo.project_num}&p_busi_num=${vo.busi_num}&user_num=${memVO.user_num}">${vo.repay_method}u</a></td>
+													<td><a href="${pageContext.request.contextPath}/invest_detail?project_num=${vo.project_num}&p_busi_num=${vo.busi_num}&user_num=${memVO.user_num}">${vo.ach_rate}u</a></td>
+												</c:when>
+												<c:when test="${memVO.busi_num != null}">
+													<td><a href="${pageContext.request.contextPath}/invest_detail?project_num=${vo.project_num}&p_busi_num=${vo.busi_num}&busi_num=${memVO.busi_num}">${vo.project_name}b</a></td>
+													<td><a href="${pageContext.request.contextPath}/invest_detail?project_num=${vo.project_num}&p_busi_num=${vo.busi_num}&busi_num=${memVO.busi_num}">${vo.grade}b</a></td>
+													<td><a href="${pageContext.request.contextPath}/invest_detail?project_num=${vo.project_num}&p_busi_num=${vo.busi_num}&busi_num=${memVO.busi_num}">${vo.rate}%b</a></td>
+													<td><a href="${pageContext.request.contextPath}/invest_detail?project_num=${vo.project_num}&p_busi_num=${vo.busi_num}&busi_num=${memVO.busi_num}">${vo.refund}개월b</a></td>
+													<td><a href="${pageContext.request.contextPath}/invest_detail?project_num=${vo.project_num}&p_busi_num=${vo.busi_num}&busi_num=${memVO.busi_num}">${vo.price}만원b</a></td>
+													<td><a href="${pageContext.request.contextPath}/invest_detail?project_num=${vo.project_num}&p_busi_num=${vo.busi_num}&busi_num=${memVO.busi_num}">${vo.repay_method}b</a></td>
+													<td><a href="${pageContext.request.contextPath}/invest_detail?project_num=${vo.project_num}&p_busi_num=${vo.busi_num}&busi_num=${memVO.busi_num}">${vo.ach_rate}b</a></td>
+												</c:when>
+												<c:otherwise>
+													<td><a href="${pageContext.request.contextPath}/invest_detail?project_num=${vo.project_num}">${vo.project_name}</a></td>
+													<td><a href="${pageContext.request.contextPath}/invest_detail?project_num=${vo.project_num}">${vo.grade}</a></td>
+													<td><a href="${pageContext.request.contextPath}/invest_detail?project_num=${vo.project_num}">${vo.rate}</a></td>
+													<td><a href="${pageContext.request.contextPath}/invest_detail?project_num=${vo.project_num}">${vo.refund}개월</a></td>
+													<td><a href="${pageContext.request.contextPath}/invest_detail?project_num=${vo.project_num}">${vo.price}만원</a></td>
+													<td><a href="${pageContext.request.contextPath}/invest_detail?project_num=${vo.project_num}">${vo.repay_method}</a></td>
+													<td><a href="${pageContext.request.contextPath}/invest_detail?project_num=${vo.project_num}">${vo.ach_rate}</a></td>
+												</c:otherwise>
+											</c:choose>
 											<td>
 												<c:choose>
 													<c:when test="${vo.ach_state == '투자하기'}">

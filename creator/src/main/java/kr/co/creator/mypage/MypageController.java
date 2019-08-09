@@ -1,5 +1,6 @@
 package kr.co.creator.mypage;
 
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 
@@ -14,6 +15,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import kr.co.creator.invest.InvestService;
 import kr.co.creator.login.EmailForm;
 import kr.co.creator.login.EmailSender;
 import kr.co.creator.login.FindUtil;
@@ -24,6 +26,7 @@ import kr.co.creator.vo.Busi_userVO;
 import kr.co.creator.vo.FindPwdVO;
 import kr.co.creator.vo.HistoryVO;
 import kr.co.creator.vo.InOutVO;
+import kr.co.creator.vo.InvestVO;
 import kr.co.creator.vo.MemberListVO;
 import kr.co.creator.vo.MemberVO;
 import kr.co.creator.vo.MypageVO;
@@ -78,31 +81,105 @@ public class MypageController {
 	}
 	
 	@RequestMapping(value = "/my_depo_mgn", method = RequestMethod.GET)
-	public String my_modify(HttpSession session, Model model, MemberVO userVO) {
+	public String my_modify(HttpSession session, Model model, MemberVO userVO, UserVO useVO, Busi_userVO busiVO, AccountVO accVO, InOutVO ioVO) {
 		logger.info("my_depo_mgn");
 		userVO = (MemberVO)session.getAttribute("memberVO");
-		AccountVO accVO = null;
-		InOutVO ioVO = null;
-		UserVO useVO = null;
-		Busi_userVO busiVO = null;
 		accVO = service.account(userVO);
 		ioVO = service.inout(userVO);
-		useVO = service.user(userVO);
-		busiVO = service.busi(userVO); 
-				
-		model.addAttribute("user", useVO);
-		model.addAttribute("busi", busiVO);
+		if(session.getAttribute("memVO") == null) {
+			return "redirect:/login";
+		}
+		
+		if(userVO.getUser_num() != null && userVO.getUser_num() != "") {
+			System.out.println("=======================================USER======================================");
+			useVO = service.user(userVO);
+			model.addAttribute("user", useVO);
+		} else if(userVO.getBusi_num() != null && userVO.getBusi_num() != "") {
+			System.out.println("=======================================BUSI======================================");
+			busiVO = service.busi(userVO);
+			model.addAttribute("busi", busiVO);
+		}
 		model.addAttribute("acnt", accVO);
 		model.addAttribute("Inout",ioVO);
-		logger.info("my_depo_mgn"+accVO);
-		logger.info("my_depo_mgn"+ioVO);
-		logger.info("my_depo_mgn"+busiVO);
+//		logger.info("my_depo_mgn"+accVO);
+//		logger.info("my_depo_mgn"+ioVO);
+//		logger.info("my_depo_mgn"+busiVO);
 		return "mypage/my_depo_mgn";
 	}
 	
+//	@RequestMapping(value = "/account_insert", method = RequestMethod.POST)
+//	public void account_insert(HttpSession session, Model model, PrintWriter out, AccountVO accVO, MemberVO userVO ) {
+//		logger.info("account_insert");
+//		userVO = (MemberVO)session.getAttribute("memVO");
+//		if(userVO.getUser_num() != null) {
+//			System.out.println("account_insert"+ accVO.getUser_num());
+//			int count = 0;
+//			count = service.account_insert(accVO);
+//			out.print(count);
+//			out.flush();
+//			out.close();
+//		}
+//		if(userVO.getBusi_num() != null) {
+//			System.out.println("account_insert"+ accVO.getBusi_num());
+//			int count = 0;
+//			count = service.account_insert(accVO);
+//			out.print(count);
+//			out.flush();
+//			out.close();
+//		}//if
+//	}//account_insert
+	
+	@RequestMapping(value = "/useraccount_insert", method = RequestMethod.POST)
+	public void useraccount_insert(Model model, PrintWriter out, AccountVO acVO, MemberVO userVO ) {
+		logger.info("useraccount_insert");
+		int count = 0;
+		count = service.useraccount_insert(acVO);
+		if(count > 0) {
+			System.out.println("account_insert"+ acVO.getUser_num());
+			out.print(count);
+			out.flush();
+			out.close();
+		}
+	}//useraccount_insert
+	
+	@RequestMapping(value = "/busiaccount_insert", method = RequestMethod.POST)
+	public void busiaccount_insert(HttpSession session, Model model, PrintWriter out, AccountVO acVO, MemberVO userVO ) {
+		logger.info("busiaccount_insert");
+		userVO = (MemberVO)session.getAttribute("memVO");
+		int count = 0;
+		count = service.busiaccount_insert(acVO);
+		if(count > 0) {
+			System.out.println("account_insert"+ acVO.getBusi_num());
+			out.print(count);
+			out.flush();
+			out.close();
+		}//if
+	}//busiaccount_insert
+	
+	@RequestMapping(value = "/depo_update", method = RequestMethod.POST)
+	public void deposit_update(HttpSession session, Model model, PrintWriter out, AccountVO accVO) {
+		logger.info("depo_update");
+		if(session.getAttribute("memVO") == null) {
+			return;
+		}
+		System.out.println("VOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVO" + accVO);
+		if(accVO.getUser_num() != null) {
+			System.out.println("depo_update !!!!!!!!!!!!!!!!!!!!!!!!! user" + accVO.getUser_num());
+		}
+		if(accVO.getBusi_num() != null) {
+			System.out.println("depo_update !!!!!!!!!!!!!!!!!!!!!!!!! busi" + accVO.getBusi_num());
+		}
+		int count = 0;
+		count = service.depo_update(accVO);
+		out.print(count);
+		//out.flush();
+		out.close();
+	}//depo_update
+	
 	@RequestMapping(value = "/CertEmail", method = RequestMethod.POST)
-	public void CertEmail(PrintWriter out, FindPwdVO vo, EmailForm form, FindUtil findUtil) throws Exception {
+	public void CertEmail(HttpSession session, PrintWriter out, MemberVO memvo, FindPwdVO vo, EmailForm form, FindUtil findUtil) {
 		logger.info("=== CertEmail ===");
+<<<<<<< HEAD
 		int cnt = 0;
 		if(cnt != 0) {
 			cnt = loginService.userFindChk(vo);
@@ -141,16 +218,84 @@ public class MypageController {
 			out.close();
 		}
 		out.print(cnt);
+=======
+		memvo = (MemberVO)session.getAttribute("memVO");
+		logger.info("=== CertEmail : "+memvo.getUser_num());
+		logger.info("=== CertEmail : "+memvo.getBusi_num());
+		int updateCertNunYN = 0;
+			if(memvo.getUser_num() != null && !memvo.getUser_num().equals("")) {
+				logger.info("=== CertEmail : "+memvo.getUser_num());
+				String newPassword, user_name;
+				newPassword = findUtil.getRamdomPassword(8);
+				vo.setUser_num(memvo.getUser_num());
+				user_name = sqlSession.selectOne("LoginMapper.selectName", vo);
+				vo.setNewPassword(newPassword);
+				vo.setUser_name(user_name);
+				System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!vo.getCer_number() : " + vo.getCer_number());
+				form.setContent("인증번호는 " + newPassword + " 입니다");
+				form.setSubject("안녕하세요 " + vo.getUser_name() + "님 인증번호를 확인해 주세요");
+				form.setReceiver(vo.getEmail());
+				//emailSender.sendEmail(form);
+				System.out.println(vo.getEmail());
+				updateCertNunYN = loginService.insertUserNumber(vo);
+				
+			} else if(memvo.getBusi_num() != null && !memvo.getBusi_num().equals("")) {
+				logger.info("=== CertEmail : "+memvo.getBusi_num());
+				String newPassword = null, busi_name = null;
+				newPassword = findUtil.getRamdomPassword(8);
+				busi_name = sqlSession.selectOne("LoginMapper.selectBusiName", vo);
+				vo.setNewPassword(newPassword);
+				vo.setManager_name(busi_name);
+				form.setContent("인증번호는 " + newPassword + " 입니다");
+				form.setSubject("안녕하세요 " + vo.getManager_name() + "님 인증번호를 확인해 주세요");
+				form.setReceiver(vo.getManager_email());
+				//emailSender.sendEmail(form);
+				System.out.println(vo.getManager_email());
+				updateCertNunYN = loginService.insertNumber(vo);
+			}
+		out.print(updateCertNunYN);
+>>>>>>> branch 'master' of https://github.com/gaonuri/Codetiator.git
 		out.flush();
 		out.close();
 	}//CertEmail
+	
+	@RequestMapping(value = "/DepocerNumber", method = RequestMethod.POST)
+	public void DepocerNumber(HttpSession session, PrintWriter out, MemberVO memvo, FindPwdVO vo, Busi_userVO bsvo) {
+		logger.info("=== DepocerNumber ===");
+		int CertNunYN = 0;
+		memvo = (MemberVO)session.getAttribute("memVO");
+		System.out.println("7777777777777777777777777777777777777777777777777777777777777777777777777777777777 vo.cer_number : " + vo.getCer_number());
+			if(memvo.getUser_num() != null && !memvo.getUser_num().equals("")) {
+				CertNunYN = loginService.CheckCerUserNumber(vo);
+				System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ CertNunYN :" + CertNunYN);
+				out.print(CertNunYN);
+				out.flush();
+				out.close();
+			} else if(memvo.getBusi_num() != null && !memvo.getBusi_num().equals("")) {
+				CertNunYN = loginService.CheckCerNumber(bsvo);
+				out.print(CertNunYN);
+				out.flush();
+				out.close();
+			}
+	}//CheckCerNumber
+	
+	@RequestMapping(value = "/bankNumChk", method = RequestMethod.POST)
+	public void joinEmailChk(PrintWriter out, AccountVO accvo) throws IOException {
+		logger.info("=== bankNumChk ===");
+//		logger.info(vo.getEmail());
+		int cnt = 0;
+		cnt = service.bankNumChk(accvo);
+		out.print(cnt);
+		out.flush();
+		out.close();
+	}//joinEmailChk
 	
 	@RequestMapping(value = "/my_modify", method = RequestMethod.GET)
 	public String my_modify() {
 		logger.info("my_modify");
 		
 		return "mypage/my_modify";
-	}
+	}//my_modify
 	
 	@RequestMapping(value = "/mypagemodifyu", method = RequestMethod.POST)
 	public void myPageModifyU(HttpSession session, PrintWriter out, MemberListVO vo) {
@@ -240,6 +385,7 @@ public class MypageController {
 		out.flush();
 		out.close();	
 	}//deleteUser
+<<<<<<< HEAD
 	
 	@RequestMapping(value="/updatepass1", method=RequestMethod.POST)
 	public void updatePass1(HttpSession session, PrintWriter out, MemberVO vo) {
@@ -268,6 +414,6 @@ public class MypageController {
 	}//deleteBusi
 
 	
+=======
+>>>>>>> branch 'master' of https://github.com/gaonuri/Codetiator.git
 }//class
-
-

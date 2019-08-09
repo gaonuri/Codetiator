@@ -103,4 +103,17 @@ public class LoginDAO {
 		return cnt;
 	}//userfindChk
 
+	public int insertUserNumber(FindPwdVO vo) {
+		int cnt = 0;
+		cnt = sqlSession.insert("LoginMapper.insertUserNumber", vo);
+		return cnt;
+	}
+
+	public int CheckCerUserNumber(FindPwdVO vo) {
+		int cnt = 0;
+		System.out.println("99999999999999999999999999999999999999 vo.cer_number : " + vo.getCer_number());
+		cnt = sqlSession.selectOne("LoginMapper.CheckCerUserNumber", vo);
+		return cnt;
+	}//CheckCerNumber
+
 }//class
