@@ -135,9 +135,6 @@ img {
     padding-right: 15px;
     padding-left: 15px;
 }
-#loanHeadNmWrap .row {
-    margin-top: 32px;
-}
 .col-xs-12 {
     width: 100%;
 }
@@ -180,12 +177,6 @@ li {
     display: list-item;
     text-align: -webkit-match-parent;
 }
-#loanHeadNmWrap .row ol li {
-    float: left;
-    margin-right: 6px;
-    margin-top: 4px;
-    padding: 4px;
-}
 .badge_deal {
     border: 1px solid #72398a;
     background-color: #72398a;
@@ -205,8 +196,646 @@ li {
     font-size: 23px;
     font-weight: bold;
 }
+.col-md-2 {
+    width: 16.66666667%;
+}
+.social {
+    text-align: right;
+    line-height: 2;
+    vertical-align: middle;
+}
+a {
+    color: #712594;
+}
+a {
+    color: #337ab7;
+    text-decoration: none;
+}
+a {
+    background-color: transparent;
+}
+.social .text {
+    padding: 0 0 0 11px;
+}
+.rpm_banner {
+    background: url(${pageContext.request.contextPath}/resources/img/rpm_bgIMG.png) center 0% repeat;
+}
+p {
+    margin: 0 0 10px;
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+.right-col {
+    padding-left: 0px;
+}
+.col-md-push-9 {
+    left: 75%;
+}
+.col-md-3 {
+    width: 25%;
+}
+.wrap {
+    margin: 2px;
+    letter-spacing: -1px;
+}
+.wrap .box.right {
+    padding: 23px 11px 14px 11px;
+}
+.wrap .box {
+    border: 1px solid #d9d9de;
+}
+.wrap .box.right .title {
+    color: #3d3d3d;
+    padding: 0 11px;
+    margin-bottom: 23px;
+    font-size: 13px;
+    font-weight: normal;
+}
+.wrap .box.right .title .day {
+    font-size: 20px;
+    font-weight: bold;
+}
+.wrap .box.right .title .time {
+    font-size: 18px;
+    padding: 5px 0 10px;
+}
+.wrap .box.right hr {
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+hr {
+    margin: 0px 20px;
+    border: 0;
+    border-top: 1px solid #eee;
+    height: 0;
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+    display: block;
+    unicode-bidi: isolate;
+    margin-block-start: 0.5em;
+    margin-block-end: 0.5em;
+    margin-inline-start: auto;
+    margin-inline-end: auto;
+    overflow: hidden;
+    border-style: inset;
+    border-width: 1px;
+}
+.wrap .box.right .chart {
+    text-align: center;
+    margin-top: 26px;
+}
+.wrap .box.right .chart canvas {
+    max-width: 150px;
+}
+audio, canvas, progress, video {
+    display: inline-block;
+    vertical-align: baseline;
+}
+.wrap .box.right .amt {
+    text-align: center;
+    margin-top: 30px;
+    font-size: 26px;
+    font-weight: 600;
+    letter-spacing: 1;
+    color: #777;
+}
+.font-purple {
+    color: #712594 !important;
+}
+font[Attributes Style] {
+    font-size: small;
+}
+.wrap .box.right .option {
+    padding: 20px 0;
+    color: #3d3d3d;
+}
+.wrap .box.right .option .row {
+    margin-top: 10px;
+}
+.wrap .box .row {
+    margin-left: 0px;
+    margin-right: 0px;
+}
+.wrap .box.right .option .left {
+    text-align: right;
+    font-size: 15px;
+    margin-top: 10px;
+}
+.col-md-5 {
+    width: 41.66666667%;
+}
+.wrap .box.right .option .right {
+    text-align: left;
+    font-weight: 600;
+    font-size: 20px;
+    margin-top: 4px;
+    color: #555;
+}
+.col-md-7 {
+    width: 58.33333333%;
+}
+.wrap .box.right button {
+    font-size: 16px;
+    color: #fff;
+    font-weight: bold;
+}
+.btn-purple-transparent {
+    color: #fff;
+    background-color: #712594;
+    opacity: 1.0;
+    font-size: 16px;
+    border-style: none;
+}
+.btn-block {
+    display: block;
+    width: 100%;
+}
+.btn {
+    display: inline-block;
+    padding: 6px 12px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+input, button, select, textarea {
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+}
+button, html input[type="button"], input[type="reset"], input[type="submit"] {
+    -webkit-appearance: button;
+    cursor: pointer;
+}
+button, select {
+    text-transform: none;
+}
+button, input, optgroup, select, textarea {
+    margin: 0;
+    font: inherit;
+    color: inherit;
+}
+button {
+	overflow: visible;
+    -webkit-appearance: button;
+    -webkit-writing-mode: horizontal-tb !important;
+    text-rendering: auto;
+    color: buttontext;
+    letter-spacing: normal;
+    word-spacing: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    display: inline-block;
+    text-align: center;
+    align-items: flex-start;
+    cursor: default;
+    background-color: buttonface;
+    box-sizing: border-box;
+    margin: 0em;
+    font: 400 13.3333px Arial;
+    padding: 1px 6px;
+    border-width: 2px;
+    border-style: outset;
+    border-color: buttonface;
+    border-image: initial;
+}
+.glyphicon {
+    position: relative;
+    top: 1px;
+    display: inline-block;
+    font-family: 'Glyphicons Halflings';
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+.display-none {
+    display: none;
+}
+.left-col {
+    padding-right: 0px;
+}
+.col-md-pull-3 {
+    right: 25%;
+}
+.col-md-9 {
+    width: 75%;
+}
+.wrap .box.umbrellar {
+    padding: 20px 11px;
+    font-size: 16px;
+    color: #858585;
+    text-align: center;
+}
+button.close {
+    -webkit-appearance: none;
+    padding: 0;
+    cursor: pointer;
+    background: transparent;
+    border: 0;
+}
+.close {
+    float: right;
+    font-size: 21px;
+    font-weight: bold;
+    line-height: 1;
+    color: #000;
+    text-shadow: 0 1px 0 #fff;
+    filter: alpha(opacity=20);
+    opacity: .2;
+}
+b, strong {
+    font-weight: bold;
+}
+.wrap .box.loanDet {
+    padding: 0px 0px 80px 0px;
+}
+.wrap .box.loanDet .row {
+    padding: 0px 26px;
+}
+.investCont_tit {
+    font-size: 23px;
+    font-weight: 600;
+    color: #712594;
+    margin-top: 50px;
+}
+.investCont_tit b {
+    font-weight: 800;
+}
+.title_2nd {
+    font-size: 18px;
+    font-weight: 600;
+    color: #5c5c5c;
+    margin-top: 30px;
+    margin-bottom: 6px;
+    letter-spacing: -1px;
+}
+.wrap .box.loanDet .content {
+    padding: 6px 0px 10px 0px;
+}
+.wrap .box.loanDet .content table {
+    margin-bottom: 0px;
+    border: none;
+}
+.table {
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 20px;
+}
+table {
+    background-color: transparent;
+    border-spacing: 0;
+    border-collapse: collapse;
+    display: table;
+    border-color: grey;
+}
+colgroup {
+    display: table-column-group;
+}
+col[Attributes Style] {
+    width: 25%;
+}
+col {
+    display: table-column;
+}
+thead {
+    display: table-header-group;
+    vertical-align: middle;
+    border-color: inherit;
+}
+.wrap .box.loanDet .content table tr {
+    text-align: center;
+    border-color: #d9d9d9;
+    border-width: 1px;
+    color: #3d3d3d;
+    font-size: 14px;
+}
+tr {
+    display: table-row;
+    vertical-align: inherit;
+    border-color: inherit;
+}
+.wrap .box.loanDet .content table .purpleTop th {
+    text-align: center;
+    background-color: #712594;
+    border: none;
+    color: #fff;
+    font-size: 14px;
+    border-left: 2px solid #fff;
+    border-right: 2px solid #fff;
+}
+.table > caption + thead > tr:first-child > th, .table > colgroup + thead > tr:first-child > th, .table > thead:first-child > tr:first-child > th, .table > caption + thead > tr:first-child > td, .table > colgroup + thead > tr:first-child > td, .table > thead:first-child > tr:first-child > td {
+    border-top: 0;
+}
+.table > thead > tr > th {
+    vertical-align: bottom;
+    border-bottom: 2px solid #ddd;
+}
+.table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td {
+    padding: 8px;
+    line-height: 1.42857143;
+    vertical-align: top;
+    border-top: 1px solid #ddd;
+}
+th {
+    display: table-cell;
+    vertical-align: inherit;
+    font-weight: bold;
+    text-align: -internal-center;
+}
+.wrap .box.loanDet .content table tbody {
+    color: #3d3d3d;
+    border-bottom: 1px solid #555;
+}
+tbody {
+    display: table-row-group;
+    vertical-align: middle;
+    border-color: inherit;
+}
+.left_table, .right_table, .bottom_table {
+    margin-bottom: 16px;
+}
+.col-md-6 {
+    width: 50%;
+}
+.tb_vert {
+    border-top: 1px solid #555;
+}
+.title_td {
+    font-weight: 600;
+    font-size: 14px;
+    background-color: #f7f7fe;
+    color: #000;
+    opacity: 0.8;
+}
+.bottom_table table th {
+    border-top: 1px solid #555;
+    background-color: #f7f7fe;
+    text-align: center;
+    color: #333;
+    border-left: 2px solid #fff;
+    border-right: 2px solid #fff;
+}
+.sameBrrwrList {
+    text-align: right;
+    margin-right: 40px;
+    font-weight: 600;
+    font-size: 12px;
+    color: #712594;
+}
+#gradeDiv {
+    margin-bottom: 60px;
+}
+.wrap .box.loanDet .col {
+    padding: 0px;
+}
+.wrap_gCont {
+    margin-top: 10px;
+}
+.grade_txt p {
+    font-size: 15pt;
+    font-weight: 600;
+    color: #666;
+    margin-bottom: 0;
+}
+p {
+    margin: 0 0 10px;
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+.grade_txt p b {
+    font-size: 26pt;
+    font-weight: 900;
+    color: #712594;
+}
+.grade_IMG img {
+    width: 100%;
+    display: block;
+    margin: 0 auto;
+    padding-bottom: 10px;
+}
+.bgBL {
+    background-color: #f7f7fe;
+}
+.wrap_gGraph {
+    margin-top: 24px;
+}
+svg:not(:root) {
+    overflow: hidden;
+}
+.wrap .box.loanDet .htmlTable {
+    font-size: 14px;
+}
+.wrap .box.loanDet .htmlTable table {
+    font-size: 14px;
+}
+.wrap .box.loanDet .htmlTable table tr.active th {
+    background-color: #712594;
+    color: #fff;
+    font-size: 14px;
+    border-left: 2px solid #fff;
+    border-right: 2px solid #fff;
+}
+.wrap .box.loanDet .htmlTable table th {
+    text-align: center;
+    vertical-align: middle;
+}
+.xd {
+    display: none;
+}
+.wrap .box.loanDet .htmlTable table td {
+    text-align: center;
+    vertical-align: middle;
+}
+.table_underline {
+    border-bottom: 1px solid #555;
+}
+.nmvblsImg ul li {
+    margin-top: 16px;
+}
+.nmvblsImg ul li {
+    list-style-type: none;
+}
+#wowslider-container1.ws_gestures {
+    cursor: -webkit-grab;
+    cursor: -moz-grab;
+    cursor: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAQAAADZc7J/AAAABGdBT…h0ZGF0ZTptb2RpZnkAMjAxNC0wNy0wN1QxMzo0OToxMCswMjowMOroGqgAAAAASUVORK5CYII=), move;
+}
+#wowslider-container1 {
+    display: table;
+    zoom: 1;
+    position: relative;
+    width: 100%;
+    max-width: 1024px;
+    max-height: 824px;
+    margin: 0px auto 0px;
+    z-index: 90;
+    text-align: left;
+    font-size: 10px;
+    text-shadow: none;
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+}
+#wowslider-container1 .ws_images, #wowslider-container1 .ws_shadow {
+    margin-bottom: 7.1em;
+}
+#wowslider-container1 .ws_images {
+    position: relative;
+    left: 0;
+    top: 0;
+    height: 100%;
+    max-height: 768px;
+    max-width: 1024px;
+    vertical-align: top;
+    border: none;
+    overflow: hidden;
+}
+#wowslider-container1 .ws_images ul {
+    position: relative;
+    width: 10000%;
+    height: 100%;
+    left: 0;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border-spacing: 0;
+    overflow: visible;
+    /* table-layout: fixed; */
+}
+#wowslider-container1 a {
+    text-decoration: none;
+    outline: none;
+    border: none;
+}
+#wowslider-container1 .ws_fullscreen {
+    display: none;
+    position: absolute;
+    font-family: "ws-fullscreen";
+    top: .5em;
+    right: .5em;
+    font-size: 2.25em;
+    z-index: 61;
+    color: #712594;
+}
+#wowslider-container1 .ws_thumbs {
+    position: absolute;
+    text-align: left;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 7.1em;
+    overflow: auto;
+    z-index: 60;
+}
+#wowslider-container1 .ws_thumbs div {
+    position: relative;
+    letter-spacing: -4px;
+    /* width: 34.8em; */
+    height: 100%;
+}
+#wowslider-container1 .ws_images, #wowslider-container1 .ws_shadow {
+    margin-bottom: 7.1em;
+}
+.tabSubTit {
+    font-size: 18px;
+    font-weight: 600;
+    margin-top: 30px;
+}
+.wrap .box.loanDet .content p.calcLtv {
+    font-size: 12px;
+}
+.safeDivWrap {
+    text-align: center;
+    margin-top: 36px;
+    margin-bottom: 24px;
+}
+.col-md-4 {
+    width: 33.33333333%;
+}
+.safeDivCont {
+    display: inline;
+    line-height: 1.4;
+}
+.safeCont_tit {
+    font-size: 19px;
+    font-weight: 600;
+    color: #712594;
+    line-height: 0;
+}
+.safeDivNum {
+    font-size: 30px;
+    font-weight: 400;
+    color: #712594;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+.fa {
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    transform: translate(0, 0);
+}
 
 </style>
+<script type="text/javascript">
+$(document).ready(function() {
+$("#waterbubbleChart").waterbubble({
+	// bubble size
+	radius : 100,
+
+	// border width
+	lineWidth : 5,
+
+	// data to present
+	data : TOTAL_INVEST_PCNT / 100,
+
+	// color of the water bubble
+	waterColor : 'rgba(113,37,148,1)',
+
+	// text color
+	textColor : 'rgba(179,134,180,0.8)',
+
+	// custom font family
+	font : '',
+
+	// show wave
+	wave : true,
+
+	// custom text displayed inside the water bubble
+	txt : Math.round(TOTAL_INVEST_PCNT * 100) / 100 + '%',
+
+	// enable water fill animation
+	animation : true
+	});
+});
+</script>
 <body>
 	<div id="wowslider_engine" style="position: absolute; left: -1000px; top: -1000px; opacity: 0.1;"><a href="http://wowslider.com">wowslider.com</a></div>
 
@@ -219,11 +848,10 @@ li {
 <!-- Navigation
 ==========================================-->
 <!--header start-->
-	<%@ include file="../header_new.jsp" %>
+	<%@ include file="../header.jsp" %>
 <!--header end-->
 
 <script type="text/javascript">
-
 	$(function() {
 		$("#topGuideButton").on("click", function() {
 			$("#topGuideText").removeClass("animated fadeIn");
@@ -252,34 +880,14 @@ li {
 			$("#topGuideTextDiv").show();
 		}
 	}
-	
 </script>
 
 	<!-- begin this page -->
 	
 	<!-- F/O, wow 공통 jsp -->
-	
-
-
-<!-- 버블챠트 -->
-<script type="text/javascript" src="/js/waterbubble.min.js"></script>
-
-<!-- 하프게이지/파이챠트 -->
-<script type="text/javascript" src="/js/RGraph.common.core.js"></script>
-<script type="text/javascript" src="/js/RGraph.common.tooltips.js"></script>
-<script type="text/javascript" src="/js/RGraph.common.dynamic.js"></script>
-<script type="text/javascript" src="/js/RGraph.common.effects.js"></script>
-<script type="text/javascript" src="/js/RGraph.meter.js"></script>
-<script type="text/javascript" src="/js/RGraph.pie.js"></script>
-
-<!-- 스코어 챠트 -->
-<script type="text/javascript" src="/js/highcharts/highcharts.js"></script>
-<script type="text/javascript" src="/js/highcharts/highcharts-more.js"></script>
-<script type="text/javascript" src="/js/highcharts/exporting.js"></script>
-<script type="text/javascript" src="/js/highcharts/export-data.js"></script>
-
 
 <script type="text/javascript">
+$(document).ready(function() {
 	$(function() {
 		// 현황사진 슬라이드 //
 		$('#eventBanner').each(function(){	
@@ -399,35 +1007,6 @@ li {
 			TOTAL_INVEST_PCNT = 0;
 		}
 
-		$('#waterbubbleChart').waterbubble({
-			// bubble size
-			radius : 100,
-
-			// border width
-			lineWidth : 5,
-
-			// data to present
-			data : TOTAL_INVEST_PCNT / 100,
-
-			// color of the water bubble
-			waterColor : 'rgba(113,37,148,1)',
-
-			// text color
-			textColor : 'rgba(179,134,180,0.8)',
-
-			// custom font family
-			font : '',
-
-			// show wave
-			wave : true,
-
-			// custom text displayed inside the water bubble
-			txt : Math.round(TOTAL_INVEST_PCNT * 100) / 100 + '%',
-
-			// enable water fill animation
-			animation : true
-		});
-		
 		var REPAY_STATS_CD = "01";
 		var INVEST_DISP_YN = "Y";
 		if(INVEST_DISP_YN == "Y") {
@@ -621,9 +1200,6 @@ li {
 		if(sec > 1) {
 			timeTitle.html('상품 오픈까지');
 			
-			day = parseInt(sec / 60 / 60 / 24);
-			sec = (sec - (day * 60 * 60 * 24));
-			hour = parseInt(sec / 60 / 60);
 			sec = (sec - (hour * 60 * 60));
 			min = parseInt(sec / 60);
 			sec = parseInt(sec - (min * 60));
@@ -679,40 +1255,6 @@ li {
 		var et = end.getTime();
 		
 		sec = parseInt(et - nt) / 1000;
-		var orgSec = sec;
-		if(sec > 0) {
-			timeTitle.html('모집 마감까지');
-			
-			day = parseInt(sec / 60 / 60 / 24);
-			sec = (sec - (day * 60 * 60 * 24));
-			hour = parseInt(sec / 60 / 60);
-			sec = (sec - (hour * 60 * 60));
-			min = parseInt(sec / 60);
-			sec = parseInt(sec - (min * 60));
-			
-			var hourHtml = "";
-			if(day > 0) {
-				hourHtml += day + "<font size='2'>일</font> ";
-			}
-			if(hour > 0) {
-				hourHtml += hour + "<font size='2'>시간</font> ";
-			}
-			if(min > 0) {
-				hourHtml += min + "<font size='2'>분</font> ";
-			}
-			hourHtml += sec + "<font size='2'>초 남았습니다.</font>";
-			
-			if(orgSec < 60) {
-				hourHtml = "<span class='font-red'>" + hourHtml + "</span>";
-			}
-			if(orgSec < 10) {
-				hourHtml = "<span class='animated infinite flash'>" + hourHtml + "</span>";
-			}
-			timeSub.html(hourHtml);
-		} else {
-			timeTitle.html('추가 모집중');
-			timeSub.html('');
-		}
 	}
 	
 	function fn_doInvest() {
@@ -755,7 +1297,7 @@ li {
 		
 		// 운영서버일때 페이스북 쿼리 실행
 		var hostname = location.hostname;
-		if(hostname.indexOf("midrate.co.kr") > -1) {
+		if(hostname.indexOf("creator.co.kr") > -1) {
 			fbq('track', 'investDetailAlarmReq');
 		}
 		
@@ -776,16 +1318,16 @@ li {
 	function fn_kakaoAddFriend() {
 		// 운영서버일때 페이스북 쿼리 실행
 		var hostname = location.hostname;
-		if(hostname.indexOf("midrate.co.kr") > -1) {
+		if(hostname.indexOf("creator.co.kr") > -1) {
 			fbq('track', 'kakaoAddFriend');
 		}
-		window.open("https://goto.kakao.com/@midrate", "_blank");
+		window.open("https://goto.kakao.com/@creator", "_blank");
 	}
 	
 	function fn_goAutoInvest() {
 		// 운영서버일때 페이스북 쿼리 실행
 		var hostname = location.hostname;
-		if(hostname.indexOf("midrate.co.kr") > -1) {
+		if(hostname.indexOf("creator.co.kr") > -1) {
 			fbq('track', 'goAutoInvest');
 		}
 		gfn_goMypageMenu(3);
@@ -1216,17 +1758,6 @@ li {
 		}
 		var calcListRsrvAmt = calcOuterVlAmt - (calcPrrOrdrAmt + calcLoanAmt);
 		
-		var ltv = Math.round((calcPrrOrdrAmt + calcLoanAmt) / calcOuterVlAmt * 10000) / 100;
-		$("#calcLtv").val(ltv);
-		$("#calcLtvDiv").show();
-		$("#calcActnCaseDiv").show();
-		
-		$("#calcListOuterVlAmt").text(comma(calcOuterVlAmt));
-		$("#calcListPrrOrdrAmt").text(comma(calcPrrOrdrAmt));
-		$("#calcListLoanAmt").text(comma(calcLoanAmt));
-		$("#calcListRsrvAmt").text(comma(calcListRsrvAmt));
-		
-		$("#calcBidRate").focus();
 		
 		fn_calcActn();
 	}
@@ -1335,7 +1866,7 @@ li {
 			return;
 		}
 	}
-	
+});	
 </script>
 
 	<section id="invest-good">
@@ -1346,7 +1877,7 @@ li {
 						<div class="bannerWrap">
 							
 								
-									<img src="/images/investV2/banner_bg_nmvbls.png">
+									<img src="${pageContext.request.contextPath}/resources/img/banner_bg_nmvbls.png">
 								
 								
 								
@@ -1364,7 +1895,7 @@ li {
 									<div class="loanHeadNm">
 										<div class="row">
 											<div id="BadgeList" class="col-xs-12">
-												<ol class="investBadgeList">
+												<ol class="investBadgeList" style="padding-left: 0px;margin-top: 0px;">
 													<li class="badge_status" id="REQ_STATS_CD">
 														<span>모집중</span>
 													</li>
@@ -1384,9 +1915,7 @@ li {
 											</div>
 											<div class="col-md-2 col-sm-2 col-xs-12" style=" margin-top:30px;">
 												<div class="social">
-													<a href="javascript:(void(0));" onclick="gfn_sendSns(&quot;facebook&quot;,&quot;https://www.midrate.co.kr/invest/detail/790&quot;,&quot;&quot;)" target="_blank">
-														<img id="fBLogo" src="/images/common/btn_footer_sns_facebook_default.png" alt="Midrate">
-													</a>
+														<img id="fBLogo" src="${pageContext.request.contextPath}/resources/img/btn_footer_sns_facebook_default.png" alt="creator">	
 													<span class="text"> 공유하기 </span>
 												</div>
 											</div>
@@ -1401,7 +1930,7 @@ li {
 			<div class="rpm_banner col-sm-12 col-md-12">
 				<p style="text-align:center; padding:16px 0 6px 0;">
 					<a href="/info/noticeDetail/39" target="_blank">
-						<img src="/images/investV2/rpm_txtIMG.png" class="" alt="Recovery Plan of Midrate" style="max-width:300px;">
+						<img src="${pageContext.request.contextPath}/resources/img/rpm_txtIMG.png" class="" alt="Recovery Plan of creator" style="max-width:300px;">
 					</a>
 				</p>
 			</div>
@@ -1417,8 +1946,8 @@ li {
 								</div>
 								<div class="col-xs-4">
 									<div class="social">
-										<a href="javascript:(void(0));" onclick='gfn_sendSns("facebook","https://www.midrate.co.kr/invest/detail/790","")' target="_blank">
-											<img id="fBLogo" src="/images/common/btn_footer_sns_facebook_default.png" alt="Midrate">
+										<a href="javascript:(void(0));" onclick='gfn_sendSns("facebook","https://www.creator.co.kr/invest/detail/790","")' target="_blank">
+											<img id="fBLogo" src="/images/common/btn_footer_sns_facebook_default.png" alt="creator">
 										</a>
 										<span class="text"> 공유하기 </span>
 									</div>
@@ -1571,7 +2100,7 @@ li {
 									<button type="button" class="close" aria-label="Close" onclick="gfn_closeDiv('runAutoInvestBanner')">
 										<span aria-hidden="true">×</span>
 									</button>
-									<a href="/invest/guide#autoInvest"><strong>자동투자</strong></a>가 실행된 상태입니다.
+									<a href="/invest/guide#autoInvest" style="color: #712594;"><strong>자동투자</strong></a>가 실행된 상태입니다.
 								</div>
 							</div>
 						</div>
@@ -1584,7 +2113,7 @@ li {
 									<button type="button" class="close" aria-label="Close" onclick="gfn_closeDiv('umbrellarBanner')">
 										<span aria-hidden="true">×</span>
 									</button>
-									<a href="/invest/guide#umbrellar"><strong>미드레이트 엄브렐러</strong></a>로<div class="xd"></div> 보호받을 수 있는 상품입니다.
+									<a href="/invest/guide#umbrellar"><strong>크리에이터 엄브렐러</strong></a>로<div class="xd"></div> 보호받을 수 있는 상품입니다.
 								</div>
 							</div>
 						</div>
@@ -2241,19 +2770,19 @@ li {
 		<div class="row">
 			<div class="col-md-12">
 				<div class="title_2nd">
-					미드레이트 종합등급
+					크리에이터 종합등급
 				</div>
 				<div class="row wrap_grade col">
 					<div class="col-xs-12 col-sm-12 col-md-6 col wrap_gCont">
 						<div class="row wrap_grade_IMG">
 							<div class="col-sm-12 col-md-12 col grade_txt">
 								<p style="text-align: center;">
-									미드레이트 <b>MA</b> 등급입니다
+									크리에이터 <b>MA</b> 등급입니다
 								</p>
 							</div>
 							<div class="col-sm-12 col-md-12 col grade_IMG">
 								<p style="text-align: center;">
-									<img src="/images/investV2/img_invest_detail_grade_MA.png">
+									<img src="${pageContext.request.contextPath}/resources/img/img_invest_detail_grade_MA.png">
 								</p>
 							</div>
 						</div>
@@ -2908,10 +3437,10 @@ li {
 					</div>
 					<div class="text-center valuationBtn">
 						<a href="http://nland.kbstar.com/quics?page=B025914&amp;cc=b043428:b043506/" target="_blank">
-							<img src="/images/invest/img_invest_kbstar.png">
+							<img src="${pageContext.request.contextPath}/resources/img/img_invest_kbstar.png">
 						</a>
 						<a href="http://rt.molit.go.kr/" target="_blank">
-							<img src="/images/invest/img_invest_molit.png">
+							<img src="${pageContext.request.contextPath}/resources/img/img_invest_molit.png">
 						</a>
 					</div>
 				</div>
@@ -2929,10 +3458,10 @@ li {
 		
 		
 			<div class="md">
-				<img src="/images/invest/img_invest_nmvbls_strctr2_l.png" class="img-responsive" style="margin: 30px auto;">
+				<img src="${pageContext.request.contextPath}/resources/img/img_invest_nmvbls_strctr2_l.png" class="img-responsive" style="margin: 30px auto;">
 			</div>
 			<div class="xd">
-				<img src="/images/invest/img_invest_nmvbls_strctr2_s.png" class="img-responsive" style="margin: 30px auto;">
+				<img src="${pageContext.request.contextPath}/resources/img/img_invest_nmvbls_strctr2_s.png" class="img-responsive" style="margin: 30px auto;">
 			</div>
 		
 		
@@ -2965,7 +3494,7 @@ li {
 						NPL매각
 					</div>
 					<div>
-						만약 본 상품 부실발생시, NPL매입전문 업체에게 채권매각하여 회수합니다. 미드레이트는 물건 심사시 사전에 NPL매입의 수익률 민감도 분석을 통하여 합리적으로 매입 가능한 수준의 대출금액을 승인합니다.
+						만약 본 상품 부실발생시, NPL매입전문 업체에게 채권매각하여 회수합니다. 크리에이터는 물건 심사시 사전에 NPL매입의 수익률 민감도 분석을 통하여 합리적으로 매입 가능한 수준의 대출금액을 승인합니다.
 
 					</div>
 				
@@ -2973,7 +3502,7 @@ li {
 						경매회수
 					</div>
 					<div>
-						시장의 예기치 못한 상황으로 채권매각이 원활하지 않을 시, 담보권리를 기반으로 경매진행하여 회수합니다. 미드레이트는 경매 낙찰가율을 고려한 유효담보가액을 산정하여 담보여력을 평가한 뒤 대출금액을 승인합니다.
+						시장의 예기치 못한 상황으로 채권매각이 원활하지 않을 시, 담보권리를 기반으로 경매진행하여 회수합니다. 크리에이터는 경매 낙찰가율을 고려한 유효담보가액을 산정하여 담보여력을 평가한 뒤 대출금액을 승인합니다.
 					</div>
 				
 			
@@ -2981,7 +3510,7 @@ li {
 		
 		
 		
-			<img src="/images/invest/img_invest_nmvbls_auction.png" class="img-responsive" style="margin: 30px auto;">
+			<img src="${pageContext.request.contextPath}/resources/img/img_invest_nmvbls_auction.png" class="img-responsive" style="margin: 30px auto;">
 		
 		
 		</div>
@@ -3094,7 +3623,7 @@ li {
 											
 												
 													<div class="loanFile">
-														<a class="fileItem" target="_blank" href="https://midrate.co.kr/img/loan/790/cde5c5a80901478486e01a27b4b8eba3.pdf">
+														<a class="fileItem" target="_blank" href="https://creator.co.kr/img/loan/790/cde5c5a80901478486e01a27b4b8eba3.pdf">
 															
 															
 															등기부등본
@@ -3150,9 +3679,9 @@ li {
 													본 부동산 담보 목적물은 경기도 파주시 문산읍 당동리 소재 토지 3필지로 근저당권부 질권 대출 목적의 투자모집 진행 건 입니다.<br>
 해당 담보물은 제1종일반주거지역 내 전 및 임야로 인근에 개발이 진행중입니다. 차입자는 여신회사로 국세, 지방세 체납없이 영업을 영위하고 있습니다.<br><br>
 
-해당 건물의 최근 시세를 바탕으로 책정한 외부감정가액은 85.0억원이며, 유효담보가액은 55.2억원입니다. 미드레이트 대출금액과 선순위 반영 금액을 고려하더라도 유효담보가액을 기준으로 한 남은 담보여력은 약 19.5억원으로 채권보전이 가능할 것으로 판단됩니다.<br><br>
+해당 건물의 최근 시세를 바탕으로 책정한 외부감정가액은 85.0억원이며, 유효담보가액은 55.2억원입니다. 크리에이터 대출금액과 선순위 반영 금액을 고려하더라도 유효담보가액을 기준으로 한 남은 담보여력은 약 19.5억원으로 채권보전이 가능할 것으로 판단됩니다.<br><br>
 
-미드레이트대부 명의로 해당 모집 분에 대해서 근저당권부 질권 150%가 설정되며, 부실 발생 시 NPL전문매입업체에 매각 또는 직접경매를 통해 투자자를 보호합니다.<br><br>
+크리에이터대부 명의로 해당 모집 분에 대해서 근저당권부 질권 150%가 설정되며, 부실 발생 시 NPL전문매입업체에 매각 또는 직접경매를 통해 투자자를 보호합니다.<br><br>
 
 본 상품의 이자기산일은 투자모집 마감일의 익일이며, 당일 투자 모집이 완료되지 않는다면 투자일부터 마감일까지의 투자대기포인트가 지급됩니다.<br><br>
 												</p>
@@ -3343,7 +3872,7 @@ li {
 																</div>
 																<div id="investFaqCollapse3" class="panel-collapse collapse" role="tabpanel" aria-labelledby="investFaqHeading3">
 																	<div id="FAQbody" class="panel-body">
-																		투자 시 발생된 이자수익은 과세대상입니다. 현행 세법에 따라 비영업대금에 대한 이익은 이자소득으로 간주되어 25%의 세율이 적용됩니다. (소득세법 제16조 제1항 제11) 여기에 주민세가 2.5% 추가되어 총 27.5%를 세금으로 원천징수 하고있습니다. 미드레이트에서는 회원님의 이자 수익에대해서 납세금을 납부하며, 세후의 순수익에 대하여 회원님의 예치금 계좌로 입금해 드립니다.
+																		투자 시 발생된 이자수익은 과세대상입니다. 현행 세법에 따라 비영업대금에 대한 이익은 이자소득으로 간주되어 25%의 세율이 적용됩니다. (소득세법 제16조 제1항 제11) 여기에 주민세가 2.5% 추가되어 총 27.5%를 세금으로 원천징수 하고있습니다. 크리에이터에서는 회원님의 이자 수익에대해서 납세금을 납부하며, 세후의 순수익에 대하여 회원님의 예치금 계좌로 입금해 드립니다.
 																	</div>
 																</div>
 															</div>
@@ -3399,7 +3928,7 @@ li {
 																		 3. 법정대리인 신분증 사본<br>
 																		 4. 미성년자 계좌 사본
 																		<br><br>
-																		* 이메일 주소: contact@midrate.co.kr<br>
+																		* 이메일 주소: contact@creator.co.kr<br>
 																		* 우편 주소: (우)06131 서울특별시 강남구 논현로95길 12, 4층
 																	</div>
 																</div>
@@ -3414,7 +3943,7 @@ li {
 																</div>
 																<div id="investFaqCollapse6" class="panel-collapse collapse" role="tabpanel" aria-labelledby="investFaqHeading6">
 																	<div id="FAQbody" class="panel-body">
-																		투자 회원님의 이자소득에 대한 세금은 미드레이트에서 원천징수합니다. 따라서 별도로 소득 신고를 하실 필요가 없습니다.
+																		투자 회원님의 이자소득에 대한 세금은 크리에이터에서 원천징수합니다. 따라서 별도로 소득 신고를 하실 필요가 없습니다.
 																	</div>
 																</div>
 															</div>
@@ -3422,16 +3951,16 @@ li {
 																<div class="panel-heading" role="tab" id="investFaqHeading7">
 																	<h4 class="panel-title" id="FAQhead">
 																		<a data-toggle="collapse" data-parent="#investFaqAccordion" href="#investFaqCollapse7" aria-expanded="false" aria-controls="investFaqCollapse7">
-																			Q7. 미드레이트에 투자하면 원금이 보장되나요?
+																			Q7. 크리에이터에 투자하면 원금이 보장되나요?
 																		</a>
 																	</h4>
 																</div>
 																<div id="investFaqCollapse7" class="panel-collapse collapse" role="tabpanel" aria-labelledby="investFaqHeading7">
 																	<div id="FAQbody" class="panel-body">
-																		미드레이트의 투자상품은 원금이 보장되지 않습니다. 미드레이트와 같은 P2P대출 플랫폼에서의 투자는 현행 법률상 '유사수신행위의 규제에 관한 법률'에 의해 원금과 수익을 보장할 수 없으며, '원금 보장이 안됨'을 명시하지 않는 것은 법률 위반입니다.
-																		미드레이트는 이에 대해 충분한 사전 고지 의무를 다하고자 합니다.
-																		투자고객님은 이를 인지하시고 신중한 결정 부탁드립니다. 다만, 미드레이트는 자체신용평가시스템을 통해 대출고객의 신용도를 세밀하고 정밀하게 평가하여 리스크를 낮추고 있습니다.
-																		투자고객님께서는 반드시 분산투자를 통해 부도에 대한 위험을 낮추실 수 있습니다. 분산투자가 어렵게 느껴지는 투자회원님을 위해 미드레이트에서는 자동 투자 시스템을 마련하였습니다.
+																		크리에이터의 투자상품은 원금이 보장되지 않습니다. 크리에이터와 같은 P2P대출 플랫폼에서의 투자는 현행 법률상 '유사수신행위의 규제에 관한 법률'에 의해 원금과 수익을 보장할 수 없으며, '원금 보장이 안됨'을 명시하지 않는 것은 법률 위반입니다.
+																		크리에이터는 이에 대해 충분한 사전 고지 의무를 다하고자 합니다.
+																		투자고객님은 이를 인지하시고 신중한 결정 부탁드립니다. 다만, 크리에이터는 자체신용평가시스템을 통해 대출고객의 신용도를 세밀하고 정밀하게 평가하여 리스크를 낮추고 있습니다.
+																		투자고객님께서는 반드시 분산투자를 통해 부도에 대한 위험을 낮추실 수 있습니다. 분산투자가 어렵게 느껴지는 투자회원님을 위해 크리에이터에서는 자동 투자 시스템을 마련하였습니다.
 																	</div>
 																</div>
 															</div>
@@ -3445,12 +3974,12 @@ li {
 																</div>
 																<div id="investFaqCollapse8" class="panel-collapse collapse" role="tabpanel" aria-labelledby="investFaqHeading8">
 																	<div id="FAQbody" class="panel-body">
-																		㈜미드레이트대부가 채권추심을 합니다. ㈜미드레이트대부는 채권자로서 채권추심을 대행하여 투자고객의 자산 보호에 최선을 다하며, 전화, 문자메시지, 방문 등 적법한 절차에 따른 추심 과정을 진행하게 됩니다. 
-																		2개월 동안은 ㈜미드레이트대부에서 자체추심을 진행하며, 2개월 이상 연체될 경우 채권추심업체에 의뢰하여 추심업무를 이행하게 됩니다. 
+																		㈜크리에이터대부가 채권추심을 합니다. ㈜크리에이터대부는 채권자로서 채권추심을 대행하여 투자고객의 자산 보호에 최선을 다하며, 전화, 문자메시지, 방문 등 적법한 절차에 따른 추심 과정을 진행하게 됩니다. 
+																		2개월 동안은 ㈜크리에이터대부에서 자체추심을 진행하며, 2개월 이상 연체될 경우 채권추심업체에 의뢰하여 추심업무를 이행하게 됩니다. 
 																		차입자의 연체일수가 장기화되어 6개월 이상 연체된다면 부실채권을 매각하며, 투자금의 일부를 회수합니다. 
 																		미회수분에 대해서는 대손처리되어 원금 손실이 있을 수 있습니다. 참고로, P2P금융업체는 원금이 보장되지 않음을 명시해야 하며, 
 																		이를 고객에게 적극적으로 알려야 할 의무가 있습니다. 이를 지키지 않는 것은 유사수신행위의 규제에 관한 법률 위반입니다. 
-																		다만, 미드레이트는 단일 채권에 대한 투자금액 상한선을 정하는 등 분산투자를 권유해드리고 있으며, 분산투자가 이루어졌을 때 대손율은 약 1% 내외로 예상하고 있습니다.
+																		다만, 크리에이터는 단일 채권에 대한 투자금액 상한선을 정하는 등 분산투자를 권유해드리고 있으며, 분산투자가 이루어졌을 때 대손율은 약 1% 내외로 예상하고 있습니다.
 																	</div>
 																</div>
 															</div>
@@ -3466,7 +3995,7 @@ li {
 									<hr>
 									<div class="row">
 										<div class="col-md-12 investCont_tit">
-											<b>|</b>&nbsp;P2P 대출정보 목록조회 <span class="glyphicon glyphicon-question-sign hover" style="font-size: 12px;" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="auto bottom" data-content="미드레이트는 NH오픈플랫폼의 'P2P 투자금 지급 지시' API를 이용하여 모집된 투자금을 차입자에게 전달합니다. 이 지급 지시의 처리결과를 'P2P 대출정보 목록조회' API를 통해 실시간으로 조회하여 보여드립니다." data-original-title="" title=""></span>
+											<b>|</b>&nbsp;P2P 대출정보 목록조회 <span class="glyphicon glyphicon-question-sign hover" style="font-size: 12px;" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="auto bottom" data-content="크리에이터는 NH오픈플랫폼의 'P2P 투자금 지급 지시' API를 이용하여 모집된 투자금을 차입자에게 전달합니다. 이 지급 지시의 처리결과를 'P2P 대출정보 목록조회' API를 통해 실시간으로 조회하여 보여드립니다." data-original-title="" title=""></span>
 										</div>
 									</div>
 									<div class="row">
@@ -3530,7 +4059,7 @@ li {
 									<div class="col-xs-12 col-sm-12 col-md-12">
 										<div class="notice">
 											<div class="title">투자시 위험안내</div>
-											<div class="text">MIDRATE는 원금과 수익률을 보장하지 않으며 투자 손실의 가능성이 있습니다. 엄격한 차입자 신용 평가와 금리 산정으로 평균 수익률 연 8%를 목표로 합니다.</div>
+											<div class="text">creator는 원금과 수익률을 보장하지 않으며 투자 손실의 가능성이 있습니다. 엄격한 차입자 신용 평가와 금리 산정으로 평균 수익률 연 8%를 목표로 합니다.</div>
 										</div>
 									</div>
 								</div>
@@ -3559,7 +4088,7 @@ li {
 					<div class="alarm-title-top">이벤트 정보와 따근한 투자 상품 소식을</div>
 					<div class="alarm-title">먼저 받아보고 싶으시다면?</div>
 					<div class="alarm-subtitle">
-						SMS를 통해 미드레이트의 최신 소식과 투자정보를 보내드립니다.
+						SMS를 통해 크리에이터의 최신 소식과 투자정보를 보내드립니다.
 					</div>
 					<div class="row">
 						<div class="col-md-12">
@@ -3663,7 +4192,7 @@ src="https://www.facebook.com/tr?id=1893138164280089&ev=PageView&noscript=1"
 		// 운영서버일때 페이스북 뷰컨텐츠 추적 실행
 		var hostname = location.hostname;
 		var pathname = location.pathname;
-		if(hostname.indexOf("midrate.co.kr") > -1) {
+		if(hostname.indexOf("creator.co.kr") > -1) {
 			if(pathname.indexOf("/invest/detail/") > -1) {	// 투자상세
 				window.onload = function() { typeof fbq==="function" && fbq('track', 'ViewContent'); };
 			}
@@ -3673,7 +4202,7 @@ src="https://www.facebook.com/tr?id=1893138164280089&ev=PageView&noscript=1"
 	window.fbAsyncInit = function() {
 		var hostname = location.hostname;
 		var appId = "";
-		if(hostname.indexOf("midrate.co.kr") > -1) {
+		if(hostname.indexOf("creator.co.kr") > -1) {
 			appId = '779679155494047';
 		} else {
 			appId = '602706249888667';
@@ -3725,23 +4254,6 @@ src="https://www.facebook.com/tr?id=1893138164280089&ev=PageView&noscript=1"
 
 <!-- Javascripts
 ================================================== -->
-<script type="text/javascript" src="/js/common.js"></script>
-
-<!-- Scrolling Nav JavaScript -->
-<script type="text/javascript" src="/js/jquery.easing.min.js"></script>
-
-<!-- jquery.vide.js -->
-<script type="text/javascript" src="/js/jquery.vide.min.js"></script>
-
-<!-- printThis.js -->
-<script type="text/javascript" src="/js/printThis.js"></script>
-
-<!-- jquery.form.js -->
-<script type="text/javascript" src="/js/jquery.form.js"></script>
-
-<!-- jquery.twbsPagination.js -->
-<script type="text/javascript" src="/js/jquery.twbsPagination.min.js"></script>
-
 <!-- bootstrap-multiselect -->
 <script type="text/javascript" src="/js/bootstrap-multiselect.js"></script>
 <script type="text/javascript" id="">!function(b,e,f,g,a,c,d){b.fbq||(a=b.fbq=function(){a.callMethod?a.callMethod.apply(a,arguments):a.queue.push(arguments)},b._fbq||(b._fbq=a),a.push=a,a.loaded=!0,a.version="2.0",a.queue=[],c=e.createElement(f),c.async=!0,c.src=g,d=e.getElementsByTagName(f)[0],d.parentNode.insertBefore(c,d))}(window,document,"script","https://connect.facebook.net/en_US/fbevents.js");fbq("init","1004949496302293",{em:"too@root.com"},{agent:"tmgoogletagmanager"});fbq("track","PageView");</script>

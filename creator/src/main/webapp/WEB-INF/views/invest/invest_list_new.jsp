@@ -498,6 +498,7 @@ form {
     margin-left: 0px;
     margin-right: 0px;
 }
+
 </style>
 <body>
 	<body>
@@ -510,7 +511,7 @@ form {
 <!-- Navigation
 ==========================================-->
 <!--header start-->
-	<%@ include file="../header_new.jsp" %>
+	<%@ include file="../header.jsp" %>
 <!--header end-->
 
 <script type="text/javascript">

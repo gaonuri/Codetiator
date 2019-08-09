@@ -33,533 +33,1086 @@
 	  Author: TemplateMag.com
 	  License: https://templatemag.com/license/
 	======================================================= -->
-</head>
+<script type="text/javascript">
+$(document).ready(function() {
+	$("#investBtn").on("click", function() {
+		location.href = "${pageContext.request.contextPath}/invest_list";
+	});
+	
+	$("#loanReqBtn").on("click", function() {
+		location.href = "${pageContext.request.contextPath}/loan_guide"; 
+	});
+	
+	$("ul.tabs li").click(function () {
+		$("ul.tabs li").removeClass("active").css("background-color", "#e9e9e9").css("color","#777");
+		$(this).addClass("active").css("background-color", "#623272").css("color","#fff");
+		$(".tab_cont").hide()
+		var activeTab = $(this).attr("rel");
+		$("#" + activeTab).fadeIn()
+	});
+	
+	$("#goInvestGuideBtn").on("click", function() {
+		location.href = "${pageContext.request.contextPath}/invest_guide";
+	});
+	
+	$("#goInvestBtn").on("click", function() {
+		location.href = "${pageContext.request.contextPath}/invest_list";
+	});
+	
+// 	$("#goInvestBtn").on("click", function() {
+// 		location.href = "${pageContext.request.contextPath}/invest_list";
+// 	});
+	
+	$("#goLoanGuideBtn").on("click", function() {
+		location.href = "${pageContext.request.contextPath}/loan_guide";
+	});
 
+	$("#goLoanBtn").on("click", function() {
+		location.href = "${pageContext.request.contextPath}/getloan";
+	});
+});
+</script>
+</head>
+<style>
+.main-content {
+    opacity: 0;
+}
+.fadeIn {
+    -webkit-animation-name: fadeIn;
+    animation-name: fadeIn;
+}
+.animated {
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+}
+div {
+    margin: 0;
+    padding: 0;
+    vertical-align: middle;
+    border: none;
+    display: block;
+}
+section, span, h2 {
+	margin: 0;
+    padding: 0;
+    vertical-align: middle;
+    border: none;
+}
+video {
+    display: inline-block;
+    vertical-align: baseline;
+}
+body {
+    font-family: 'Noto Sans KR', sans-serif;
+    line-height: 1.5;
+    letter-spacing: -0.6px;
+    font-weight: 400;
+}
+.overlay {
+    height: auto;
+    background-attachment: fixed;
+    /* background: rgba(98,22,98,0.7); */
+    background: rgba(71,61,87,0.2);
+}
+.mainTop_contArea {
+    width: 1024px;
+    margin: 0 auto;
+    overflow: hidden;
+    padding: 160px 0 40px 0;
+    font-weight: 300;
+}
+.mainTop_cont {
+    /* width: 50%; */
+    float: right;
+    overflow: hidden;
+    padding-bottom: 20px;
+    /* border: 1px solid #fff; */
+}
+.mainTop_txt {
+    margin: 0 auto;
+    /* text-shadow: 0px 1px #555, 1px 1px 0px #777; */
+    color: #fff;
+}
+.mainTop_txt li {
+    line-height: 1;
+}
+.mtTxt_top {
+    font-size: 27px;
+    margin-left: 24px;
+    font-weight: 400;
+    padding-top: 15px;
+    letter-spacing: -1.6pt;
+}
+.mtTxt_bottom {
+    font-size: 100pt;
+    font-weight: 100;
+    font-style: italic;
+    letter-spacing: -6pt;
+}
+.mt_txt_sm {
+    font-size: 70pt;
+    margin-left: 10px;
+    vertical-align: baseline;
+}
+.mainTop_btn {
+    width: 190px;
+    height: 34px;
+    float: left;
+    margin-right: 16px;
+    margin-top: 30px;
+}
+.mr-blue {
+    height: 30px;
+    line-height: 30px;
+    font-size: 14px;
+    border-radius: 5px;
+    color: #fff;
+    background-color: #00A0DC;
+    text-align: center;
+    font-weight: 500;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+}
+.mr-cap {
+    width: 20px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    color: #fff;
+    background-color: #01709B;
+    float: right;
+    height: 100%;
+}
+.mr-angle {
+    margin-right: -10px;
+    width: 20px;
+    color: #fff;
+    background-color: #01709B;
+    text-align: right;
+    float: right;
+    transform: skew(-20deg);
+    -webkit-transform: skew(-20deg);
+    -ms-transform: skew(-20deg);
+    height: 100%;
+}
+.mr-angle p {
+    color: #fff;
+}
+.mr-green {
+    height: 30px;
+    line-height: 30px;
+    font-size: 14px;
+    border-radius: 5px;
+    color: #fff;
+    background-color: #01C351;
+    text-align: center;
+    font-weight: 500;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+}
+.mr-green .mr-cap {
+    color: #fff;
+    background-color: #02863A;
+}
+.mr-green .mr-angle {
+    color: #fff;
+    background-color: #02863A;
+}
+.main_summary_full {
+    background-color: rgba(0,0,0,0.2);
+    color: #fff;
+}
+.main_summary {
+    width: 1024px;
+    margin: 0 auto;
+    padding: 25px 0;
+    text-align: center;
+    color: #fff;
+}
+.main_summary ul {
+    width: 24%;
+    display: inline-block;
+    text-align: center;
+    line-height: 1.2;
+}
+ul, li {
+    list-style-type: none;
+}
+ul {
+	margin: 0;
+    padding: 0;
+    vertical-align: middle;
+    border: none;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
+}
+li {
+	margin: 0;
+    padding: 0;
+    vertical-align: middle;
+    border: none;
+    display: list-item;
+    text-align: -webkit-match-parent;
+}
+.summary_tit {
+    font-weight: 500;
+    font-size: 16px;
+}
+.summary_num {
+    font-size: 36px;
+    font-weight: 400;
+}
+a:link, a:visited {
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+}
+a {
+    background-color: transparent;
+}
+.day {
+    width: 100%;
+    background-color: #f9f9f9;
+    margin: 0 auto;
+}
+.display-none {
+    display: none;
+}
+.invGoodsArea {
+    width: 100%;
+    margin: 0 auto;
+    background-color: #f9f9f9;
+}
+.sectionTit {
+    font-size: 21pt;
+    text-align: center;
+    padding-top: 80px;
+    padding-bottom: 60px;
+}
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+    font-family: inherit;
+    font-weight: 500;
+    line-height: 1.1;
+    color: inherit;
+}
+h2 {
+    display: block;
+    font-size: 1.5em;
+    margin-block-start: 0.83em;
+    margin-block-end: 0.83em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+}
+.titLine {
+    padding-top: 8px;
+    padding-bottom: 10px;
+}
+.main_investGoods .section-cat {
+    text-align: right;
+}
+.section-cat {
+    max-width: 1140px;
+    margin: 0 auto;
+}
+.main_investGoods #allGood {
+    padding: 0 20px;
+    font-size: 15px;
+    font-weight: 500;
+    color: #555;
+}
+.glyphicon {
+    position: relative;
+    top: 1px;
+    display: inline-block;
+    font-family: 'Glyphicons Halflings';
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+.main_investGoods #goodThum {
+    max-width: 1140px;
+    overflow: hidden;
+    margin: 0 auto;
+    padding: 0 0 80px 0;
+}
+.row {
+    margin-right: -15px;
+    margin-left: -15px;
+}
+.main_investGoods .good-item-wrap {
+    padding-right: 10px;
+    padding-left: 10px;
+}
+.col-lg-4 {
+    width: 33.33333333%;
+    float: left;
+}
+@media (min-width: 992px)
+.col-md-1, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-10, .col-md-11, .col-md-12 {
+    float: left;
+}
+@media (min-width: 768px)
+.col-sm-6 {
+    width: 50%;
+}
+.col-xs-1, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9, .col-xs-10, .col-xs-11, .col-xs-12 {
+    float: left;
+}
+.col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, .col-xs-3, .col-sm-3, .col-md-3, .col-lg-3, .col-xs-4, .col-sm-4, .col-md-4, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, .col-sm-6, .col-md-6, .col-lg-6, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, .col-md-8, .col-lg-8, .col-xs-9, .col-sm-9, .col-md-9, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, .col-sm-12, .col-md-12, .col-lg-12 {
+    position: relative;
+    min-height: 1px;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+.main_investGoods .good-item {
+    background-color: #fff;
+    max-width: 380px;
+    margin: 10px auto;
+    border: 1px solid #dadada;
+    border-radius: 4px;
+    height: 326px;
+    box-shadow: 9px 13px 26px -8px #dadada;
+}
+.main_investGoods .good-item .item-top {
+    height: 147px;
+    overflow: hidden;
+    position: relative;
+    background-color: #fff;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-bottom-color: #eee;
+}
+.main_investGoods .item-top .hover-text {
+    position: absolute;
+    color: #ffffff;
+    background: rgba(0, 0, 0, 0.3);
+    opacity: 0;
+    transition: all 0.5s;
+    padding: 80px 100px;
+    width: 100%;
+    text-align: center;
+    z-index: 9999;
+    letter-spacing: -1pt;
+}
+.main_investGoods .item-top .hover-button {
+    font-weight: 500;
+    color: #fff;
+    font-size: 25px;
+}
+.main_investGoods .item-top .item-top-badge {
+    position: absolute;
+    height: 41px;
+    top: 0%;
+    width: 100%;
+    padding: 10px;
+    color: #fff;
+    font-weight: 500;
+}
+.label-rwrdgd {
+    color: #fff;
+    background-color: #fc576e;
+}
+.main_investGoods .item-top .item-top-badge span.label {
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgba(97,3,97, 0.3);
+}
+.text-right {
+    text-align: right;
+}
+
+.main_investGoods .item-top .item-top-badge span.label.label-primary.flash {
+    animation-duration: 3s;
+}
+.main_investGoods .item-top .item-top-badge span.label.label-primary {
+    color: #712594;
+    background-color: #fff;
+}
+.main_investGoods .item-top .item-top-badge span {
+    border-radius: 16px;
+    padding: 2px 7px;
+}
+.main_investGoods .item-top .item-middle-badge {
+    position: absolute;
+    top: 45%;
+    width: 100%;
+    margin-left: 20px;
+    color: #fff;
+    font-size: 20px;
+}
+.main_investGoods .item-top .item-middle-badge img {
+    max-height: 20px;
+    max-width: 20px;
+    vertical-align: text-top;
+}
+.main_investGoods .item-top img {
+    width: 100%;
+    height: 148px;
+}
+img {
+    vertical-align: middle;
+    border: 0;
+}
+html, body, div, ul, li, a, header, footer, section, article, nav, p, span, h1, h2, h3, h4 {
+    margin: 0;
+    padding: 0;
+    vertical-align: middle;
+    border: none;
+}
+.main_investGoods .item-top .item-bottom-badge {
+    position: absolute;
+    top: 70%;
+    width: 100%;
+    padding: 10px;
+    color: #fff;
+    font-weight: 500;
+    font-size: 12px;
+}
+.main_investGoods .item-bottom {
+    text-align: center;
+    padding: 5px 10px;
+    position: relative;
+}
+.main_investGoods .item-bottom .item-bottom-text {
+    color: #333;
+    text-align: left;
+}
+.row {
+    margin-right: -15px;
+    margin-left: -15px;
+}
+.main_investGoods .item-bottom h5 {
+    font-size: 14px;
+    color: #3d3d3d;
+    margin: 10px 0;
+}
+.main_investGoods .item-bottom h4 {
+    margin-top: 0px;
+    margin-bottom: 15px;
+    font-weight: 600;
+    color: #3d3d3d;
+    font-size: 17px;
+}
+.main_investGoods .item-bottom .progress {
+    margin-top: 26px;
+    margin-bottom: 0px;
+    height: 15px;
+}
+.progress {
+    height: 20px;
+    margin-bottom: 20px;
+    overflow: hidden;
+    background-color: #f5f5f5;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, .1);
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, .1);
+}
+.main_investGoods .item-bottom .progress-bar {
+    background-color: #712594;
+    line-height: 15px;
+    -webkit-animation-direction: reverse;
+    -moz-animation-direction: reverse;
+    -ms-animation-direction: reverse;
+    -o-animation-direction: reverse;
+    animation-direction: reverse;
+}
+.main_investGoods .item-bottom .item-top-text-num {
+    text-align: right;
+    font-weight: 500;
+    display: none;
+}
+small, .small {
+    font-size: 85%;
+}
+.grade {
+    text-align: center;
+    display: inline-block;
+    padding: 5px 0px;
+    width: 13%;
+}
+.circle {
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    -moz-border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -khtml-border-radius: 20px;
+    -o-border-radius: 20px;
+    background: #712594;
+    color: #fff;
+    text-align: center;
+    position: absolute;
+    bottom: 14px;
+    left: 15px;
+    padding: 10px 0;
+}
+.main_investGoods .item-bottom .cat {
+    text-align: center;
+    display: inline-block;
+    padding: 5px 0px;
+    width: 20%;
+}
+.main_investGoods .item-bottom .cat .title {
+    font-size: 12px;
+    padding-bottom: 5px;
+    color: #777;
+    font-weight: 500;
+}
+.main_investGoods .item-bottom .cat .sub {
+    font-size: 12px;
+    font-weight: 500;
+    color: #333;
+}
+.main_investGoods .item-bottom hr {
+    margin-top: 10px;
+    margin-bottom: 10px;
+        border: 0;
+    border-top: 1px solid #eee;
+}
+.main_invLoanSection {
+    width: 100%;
+}
+.tab_tit {
+    overflow: hidden;
+    text-align: center;
+    font-size: 15pt;
+    font-weight: 600;
+}
+.tab_tit li {
+    height: 80px;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 4;
+}
+.tabInv_Tit {
+    float: left;
+    background-color: #623272;
+    color: #fff;
+    width: 50%;
+}
+.tabLoan_Tit {
+    float: right;
+    background-color: #e9e9e9;
+    width: 50%;
+}
+.tab_cont {
+    height: 100%;
+    background: url(${pageContext.request.contextPath}/resources/img/main_triangles.png)no-repeat;
+    background-size: cover;
+    padding-bottom: 100px;
+    background-attachment: fixed;
+}
+.tab_aboutInv_cont {
+    height: 100%;
+    overflow: hidden;
+}
+.tab_aboutIMG_container {
+    width: 1024px;
+    margin: 0 auto;
+}
+.tab_aboutIMG_text {
+    text-align: center;
+    font-size: 16pt;
+    padding-top: 50px;
+    color: #fff;
+    line-height: 1.3;
+    margin-top: 40px;
+}
+.tab_aboutIMG_container ul {
+    float: left;
+    width: 25%;
+    text-align: center;
+    letter-spacing: -1;
+    padding: 5% 0;
+}
+.tab_inv_num {
+    font-size: 27pt;
+    font-weight: 400;
+    color: #00a0dc;
+}
+.tab_invList_tit {
+    color: #00a0dc;
+    font-size: 16pt;
+    font-weight: 500;
+    letter-spacing: -1;
+    padding: 15px 0;
+}
+.tab_list_cont {
+    color: #fefefe;
+    line-height: 1.4;
+}
+.col-md-push-3 {
+    left: 25%;
+}
+.col-md-3 {
+    width: 25%;
+}
+.mainTap_invBtn, .mainTap_loanBtn {
+    width: 220px;
+    height: 30px;
+    border-radius: 5px;
+    font-weight: 500;
+    text-align: center;
+    margin-top: 30px;
+}
+.mr-blue-secondary {
+    color: #00A0DC;
+    background-color: #fff;
+    line-height: 30px;
+    font-size: 14px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.mr-blue-secondary .mr-angle, .mr-blue-secondary .mr-cap {
+    color: #fff;
+    background-color: #01709B;
+}
+.mr-blue-secondary .mr-cap {
+    border-radius: 3px;
+}
+.mr-green-secondary {
+    color: #01C351;
+    background-color: #fff;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 30px;
+    font-size: 14px;
+}
+.mr-green-secondary .mr-cap {
+    color: #fff;
+    background-color: #02863A;
+}
+.mr-green-secondary .mr-cap {
+    border-radius: 3px;
+}
+.mr-green-secondary .mr-angle, .mr-green-secondary .mr-cap {
+    color: #fff;
+    background-color: #02863A;
+}
+.mr-angle div {
+    transform: skew(30deg);
+    -webkit-transform: skew(30deg);
+    -ms-transform: skew(30deg);
+}
+.tab_loan_num {
+    font-size: 27pt;
+    font-weight: 400;
+    color: #01c351;
+}
+.tab_loanList_tit {
+    color: #01c351;
+    font-size: 16pt;
+    font-weight: 500;
+    letter-spacing: -1;
+    padding: 15px 0;
+}
+.tab_aboutLoan_cont {
+    height: 100%;
+    overflow: hidden;
+}
+</style>
 <body>
 	<section id="container">
 	    <!-- **********************************************************************************************************************************************************
 	        TOP BAR CONTENT & NOTIFICATIONS
 	        *********************************************************************************************************************************************************** -->
 		<!--header start-->
-		<%@ include file="../header.jsp" %>
+			<%@ include file="../header.jsp" %>
 		<!--header end-->
 	    
 	    <!-- **********************************************************************************************************************************************************
 	        MAIN CONTENT
 	        *********************************************************************************************************************************************************** -->
 		<!--main content start-->
-		<section>
-			<section class="wrapper site-min-height">
-				<div class="row mt">
-					<div class="col-lg-12">
-					<!-- CHART PANELS -->
-						<table style="width:1000px;">
-							<tr valign=top>
-<%-- 							<c:forEach begin="0" end="2" step="1" varStatus="step"> --%>
-								<th>
-									<c:forEach items="${projectList1}" var="vo" varStatus="status" begin="0" end="2" step="1">
-										<c:choose>
-											<c:when test="${memVO.user_num != null}">
-												<td class="col-md-3" style="padding-left:150px;">
-													<a href="${pageContext.request.contextPath}/invest_detail?
-													project_num=${vo.project_num}
-													&p_busi_num=${vo.busi_num}
-													&user_num=${memVO.user_num}">
-														<div>
-															<img src="${pageContext.request.contextPath}/resources/img/ner.jpg" width="400px" />
-														</div>
-														<div>
-															<table style="border-left: 1px; border-right: 1px; width: 400px">
-																<tr>
-																	<td>${vo.regi_date}</td>
-																</tr>
-																<tr>
-																	<td>${vo.project_name}<span>U</span></td>
-																</tr>
-																<tr>
-																	<td witdh="400px">
-														 				<div class="progress progress-striped active">
-														  					<div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
-														  						45%
-																			</div>
-																		</div>
-														            </td>
-																</tr>
-															</table>
-															<table width="400px">
-																<tr>
-																	<td class="infomation">등급</td>
-																	<td class="infomation">연수익률</td>
-																	<td class="infomation">기간</td>
-																	<td class="infomation">모집금액</td>
-																	<td class="infomation">상환방식</td>
-																</tr>
-																<tr>
-																	<td class="infomation">${vo.grade}</td>
-																	<td class="infomation">${vo.rate}</td>
-																	<td class="infomation">${vo.refund}개월</td>
-																	<td class="infomation">${vo.price}만원</td>
-																	<td class="infomation">${vo.repay_method}</td>
-																</tr>
-															</table>
-														</div>
-													</a>
-												</td>
-											</c:when>
-											<c:when test="${memVO.busi_num != null}">
-												<td class="col-md-3" style="padding-left:150px;">
-													<a href="${pageContext.request.contextPath}/invest_detail?
-													project_num=${vo.project_num}
-													&p_busi_num=${vo.busi_num}
-													&busi_num=${memVO.busi_num}">
-														<div>
-															<img src="${pageContext.request.contextPath}/resources/img/ner.jpg" width="400px" />
-														</div>
-														<div>
-															<table style="border-left: 1px; border-right: 1px; width: 400px">
-																<tr>
-																	<td>${vo.regi_date}</td>
-																</tr>
-																<tr>
-																	<td>${vo.project_name}<span>B</span></td>
-																</tr>
-																<tr>
-																	<td witdh="400px">
-														 				<div class="progress progress-striped active">
-														  					<div class="progress-bar" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 45%">
-														  						45%
-																			</div>
-																		</div>
-														            </td>
-																</tr>
-															</table>
-															<table width="400px">
-																<tr>
-																	<td class="infomation">등급</td>
-																	<td class="infomation">연수익률</td>
-																	<td class="infomation">기간</td>
-																	<td class="infomation">모집금액</td>
-																	<td class="infomation">상환방식</td>
-																</tr>
-																<tr>
-																	<td class="infomation">${vo.grade}</td>
-																	<td class="infomation">${vo.rate}</td>
-																	<td class="infomation">${vo.refund}개월</td>
-																	<td class="infomation">${vo.price}만원</td>
-																	<td class="infomation">${vo.repay_method}</td>
-																</tr>
-															</table>
-														</div>
-													</a>
-												</td>
-											</c:when>
-											<c:otherwise>
-												<td class="col-md-3" style="padding-left:150px;">
-													<a href="${pageContext.request.contextPath}/invest_detail?
-													project_num=${vo.project_num}
-													&p_busi_num=${vo.busi_num}">
-														<div>
-															<img src="${pageContext.request.contextPath}/resources/img/ner.jpg" width="400px" />
-														</div>
-														<div>
-															<table style="border-left: 1px; border-right: 1px; width: 400px">
-																<tr>
-																	<td>${vo.regi_date}</td>
-																</tr>
-																<tr>
-																	<td>${vo.project_name}<span>N</span></td>
-																</tr>
-																<tr>
-																	<td witdh="400px">
-														 				<div class="progress progress-striped active">
-														  					<div class="progress-bar" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 45%">
-														  						45%
-																			</div>
-																		</div>
-														            </td>
-																</tr>
-															</table>
-															<table width="400px">
-																<tr>
-																	<td class="infomation">등급</td>
-																	<td class="infomation">연수익률</td>
-																	<td class="infomation">기간</td>
-																	<td class="infomation">모집금액</td>
-																	<td class="infomation">상환방식</td>
-																</tr>
-																<tr>
-																	<td class="infomation">${vo.grade}</td>
-																	<td class="infomation">${vo.rate}</td>
-																	<td class="infomation">${vo.refund}개월</td>
-																	<td class="infomation">${vo.price}만원</td>
-																	<td class="infomation">${vo.repay_method}</td>
-																</tr>
-															</table>
-														</div>
-													</a>
-												<td>
-											</c:otherwise>
-										</c:choose>
-									</c:forEach>
-								</th>
-<%-- 							</c:forEach> --%>
-							</tr>
-							
-							<tr valign=top>
-<%-- 							<c:forEach begin="0" end="2" step="1" varStatus="step"> --%>
-								<th>
-									<c:forEach items="${projectList2}" var="vo" varStatus="status" begin="0" end="2" step="1">
-										<c:choose>
-											<c:when test="${memVO.user_num != null}">
-												<td class="col-md-3" style="padding-left:150px;">
-													<a href="${pageContext.request.contextPath}/invest_detail?
-													project_num=${vo.project_num}
-													&p_busi_num=${vo.busi_num}
-													&user_num=${memVO.user_num}">
-														<div>
-															<img src="${pageContext.request.contextPath}/resources/img/ner.jpg" width="400px" />
-														</div>
-														<div>
-															<table style="border-left: 1px; border-right: 1px; width: 400px">
-																<tr>
-																	<td>${vo.regi_date}</td>
-																</tr>
-																<tr>
-																	<td>${vo.project_name}<span>U</span></td>
-																</tr>
-																<tr>
-																	<td witdh="400px">
-														 				<div class="progress progress-striped active">
-														  					<div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
-														  						45%
-																			</div>
-																		</div>
-														            </td>
-																</tr>
-															</table>
-															<table width="400px">
-																<tr>
-																	<td class="infomation">등급</td>
-																	<td class="infomation">연수익률</td>
-																	<td class="infomation">기간</td>
-																	<td class="infomation">모집금액</td>
-																	<td class="infomation">상환방식</td>
-																</tr>
-																<tr>
-																	<td class="infomation">${vo.grade}</td>
-																	<td class="infomation">${vo.rate}</td>
-																	<td class="infomation">${vo.refund}개월</td>
-																	<td class="infomation">${vo.price}만원</td>
-																	<td class="infomation">${vo.repay_method}</td>
-																</tr>
-															</table>
-														</div>
-													</a>
-												</td>
-											</c:when>
-											<c:when test="${memVO.busi_num != null}">
-												<td class="col-md-3" style="padding-left:150px;">
-													<a href="${pageContext.request.contextPath}/invest_detail?
-													project_num=${vo.project_num}
-													&p_busi_num=${vo.busi_num}
-													&busi_num=${memVO.busi_num}">
-														<div>
-															<img src="${pageContext.request.contextPath}/resources/img/ner.jpg" width="400px" />
-														</div>
-														<div>
-															<table style="border-left: 1px; border-right: 1px; width: 400px">
-																<tr>
-																	<td>${vo.regi_date}</td>
-																</tr>
-																<tr>
-																	<td>${vo.project_name}<span>B</span></td>
-																</tr>
-																<tr>
-																	<td witdh="400px">
-														 				<div class="progress progress-striped active">
-														  					<div class="progress-bar" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 45%">
-														  						45%
-																			</div>
-																		</div>
-														            </td>
-																</tr>
-															</table>
-															<table width="400px">
-																<tr>
-																	<td class="infomation">등급</td>
-																	<td class="infomation">연수익률</td>
-																	<td class="infomation">기간</td>
-																	<td class="infomation">모집금액</td>
-																	<td class="infomation">상환방식</td>
-																</tr>
-																<tr>
-																	<td class="infomation">${vo.grade}</td>
-																	<td class="infomation">${vo.rate}</td>
-																	<td class="infomation">${vo.refund}개월</td>
-																	<td class="infomation">${vo.price}만원</td>
-																	<td class="infomation">${vo.repay_method}</td>
-																</tr>
-															</table>
-														</div>
-													</a>
-												</td>
-											</c:when>
-											<c:otherwise>
-												<td class="col-md-3" style="padding-left:150px;">
-													<a href="${pageContext.request.contextPath}/invest_detail?
-													project_num=${vo.project_num}
-													&p_busi_num=${vo.busi_num}">
-														<div>
-															<img src="${pageContext.request.contextPath}/resources/img/ner.jpg" width="400px" />
-														</div>
-														<div>
-															<table style="border-left: 1px; border-right: 1px; width: 400px">
-																<tr>
-																	<td>${vo.regi_date}</td>
-																</tr>
-																<tr>
-																	<td>${vo.project_name}<span>N</span></td>
-																</tr>
-																<tr>
-																	<td witdh="400px">
-														 				<div class="progress progress-striped active">
-														  					<div class="progress-bar" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 45%">
-														  						45%
-																			</div>
-																		</div>
-														            </td>
-																</tr>
-															</table>
-															<table width="400px">
-																<tr>
-																	<td class="infomation">등급</td>
-																	<td class="infomation">연수익률</td>
-																	<td class="infomation">기간</td>
-																	<td class="infomation">모집금액</td>
-																	<td class="infomation">상환방식</td>
-																</tr>
-																<tr>
-																	<td class="infomation">${vo.grade}</td>
-																	<td class="infomation">${vo.rate}</td>
-																	<td class="infomation">${vo.refund}개월</td>
-																	<td class="infomation">${vo.price}만원</td>
-																	<td class="infomation">${vo.repay_method}</td>
-																</tr>
-															</table>
-														</div>
-													</a>
-												<td>
-											</c:otherwise>
-										</c:choose>
-									</c:forEach>
-								</th>
-<%-- 							</c:forEach> --%>
-							</tr>
-							
-							<tr valign=top>
-<%-- 							<c:forEach begin="0" end="2" step="1" varStatus="step"> --%>
-								<th>
-									<c:forEach items="${projectList3}" var="vo" varStatus="status" begin="0" end="2" step="1">
-										<c:choose>
-											<c:when test="${memVO.user_num != null}">
-												<td class="col-md-3" style="padding-left:150px;">
-													<a href="${pageContext.request.contextPath}/invest_detail?
-													project_num=${vo.project_num}
-													&p_busi_num=${vo.busi_num}
-													&user_num=${memVO.user_num}">
-														<div>
-															<img src="${pageContext.request.contextPath}/resources/img/ner.jpg" width="400px" />
-														</div>
-														<div>
-															<table style="border-left: 1px; border-right: 1px; width: 400px">
-																<tr>
-																	<td>${vo.regi_date}</td>
-																</tr>
-																<tr>
-																	<td>${vo.project_name}<span>U</span></td>
-																</tr>
-																<tr>
-																	<td witdh="400px">
-														 				<div class="progress progress-striped active">
-														  					<div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
-														  						45%
-																			</div>
-																		</div>
-														            </td>
-																</tr>
-															</table>
-															<table width="400px">
-																<tr>
-																	<td class="infomation">등급</td>
-																	<td class="infomation">연수익률</td>
-																	<td class="infomation">기간</td>
-																	<td class="infomation">모집금액</td>
-																	<td class="infomation">상환방식</td>
-																</tr>
-																<tr>
-																	<td class="infomation">${vo.grade}</td>
-																	<td class="infomation">${vo.rate}</td>
-																	<td class="infomation">${vo.refund}개월</td>
-																	<td class="infomation">${vo.price}만원</td>
-																	<td class="infomation">${vo.repay_method}</td>
-																</tr>
-															</table>
-														</div>
-													</a>
-												</td>
-											</c:when>
-											<c:when test="${memVO.busi_num != null}">
-												<td class="col-md-3" style="padding-left:150px;">
-													<a href="${pageContext.request.contextPath}/invest_detail?
-													project_num=${vo.project_num}
-													&p_busi_num=${vo.busi_num}
-													&busi_num=${memVO.busi_num}">
-														<div>
-															<img src="${pageContext.request.contextPath}/resources/img/ner.jpg" width="400px" />
-														</div>
-														<div>
-															<table style="border-left: 1px; border-right: 1px; width: 400px">
-																<tr>
-																	<td>${vo.regi_date}</td>
-																</tr>
-																<tr>
-																	<td>${vo.project_name}<span>B</span></td>
-																</tr>
-																<tr>
-																	<td witdh="400px">
-														 				<div class="progress progress-striped active">
-														  					<div class="progress-bar" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 45%">
-														  						45%
-																			</div>
-																		</div>
-														            </td>
-																</tr>
-															</table>
-															<table width="400px">
-																<tr>
-																	<td class="infomation">등급</td>
-																	<td class="infomation">연수익률</td>
-																	<td class="infomation">기간</td>
-																	<td class="infomation">모집금액</td>
-																	<td class="infomation">상환방식</td>
-																</tr>
-																<tr>
-																	<td class="infomation">${vo.grade}</td>
-																	<td class="infomation">${vo.rate}</td>
-																	<td class="infomation">${vo.refund}개월</td>
-																	<td class="infomation">${vo.price}만원</td>
-																	<td class="infomation">${vo.repay_method}</td>
-																</tr>
-															</table>
-														</div>
-													</a>
-												</td>
-											</c:when>
-											<c:otherwise>
-												<td class="col-md-3" style="padding-left:150px;">
-													<a href="${pageContext.request.contextPath}/invest_detail?
-													project_num=${vo.project_num}
-													&p_busi_num=${vo.busi_num}">
-														<div>
-															<img src="${pageContext.request.contextPath}/resources/img/ner.jpg" width="400px" />
-														</div>
-														<div>
-															<table style="border-left: 1px; border-right: 1px; width: 400px">
-																<tr>
-																	<td>${vo.regi_date}</td>
-																</tr>
-																<tr>
-																	<td>${vo.project_name}<span>N</span></td>
-																</tr>
-																<tr>
-																	<td witdh="400px">
-														 				<div class="progress progress-striped active">
-														  					<div class="progress-bar" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 45%">
-														  						45%
-																			</div>
-																		</div>
-														            </td>
-																</tr>
-															</table>
-															<table width="400px">
-																<tr>
-																	<td class="infomation">등급</td>
-																	<td class="infomation">연수익률</td>
-																	<td class="infomation">기간</td>
-																	<td class="infomation">모집금액</td>
-																	<td class="infomation">상환방식</td>
-																</tr>
-																<tr>
-																	<td class="infomation">${vo.grade}</td>
-																	<td class="infomation">${vo.rate}</td>
-																	<td class="infomation">${vo.refund}개월</td>
-																	<td class="infomation">${vo.price}만원</td>
-																	<td class="infomation">${vo.repay_method}</td>
-																</tr>
-															</table>
-														</div>
-													</a>
-												<td>
-											</c:otherwise>
-										</c:choose>
-									</c:forEach>
-								</th>
-<%-- 							</c:forEach> --%>
-							</tr>
-						</table>
+	<div id="main_container" class="animated">
+		
+	<!-- F/O, wow 공통 jsp -->
+	 
+		
+		<section class="">
+		
+			<div id="video_bg" style="position: relative;">
+				<div style="position: absolute; z-index: -1; top: 0px; left: 0px; bottom: 0px; right: 0px; overflow: hidden; background-size: cover; background-color: transparent; background-repeat: no-repeat; background-position: 50% 50%; background-image: none;">
+					<video autoplay loop muted="100" style="margin: auto; position: absolute; z-index: -1; top: 50%; left: 50%; transform: translate(-50%, -50%); visibility: visible; opacity: 1; width: auto; height: auto;">
+						<source src="${pageContext.request.contextPath}/resources/video/overwatch.mp4" type="video/mp4">
+					</video>
+				</div>
+		
+				<div class="overlay">
+					<div class="mainTop_contArea">
+						<div class="mainTop_cont">
+							<ul class="mainTop_txt">
+								<li class="mtTxt_top">평균 금리</li>
+								<li class="mtTxt_bottom">
+									<span id="totalAvgInvestRate" class="roboto">13.29</span><span class="mt_txt_sm">%</span>
+								</li>
+							</ul>
+							<div class="mr-blue mainTop_btn" id="investBtn" style="width: 190px; height: 34px; margin-right: 16px;">
+								투자하기<span class="mr-cap"></span>
+								<span class="mr-angle">
+								<div><p>&gt;</p></div>
+								</span>
+							</div>
+							<div class="mr-green mainTop_btn" id="loanReqBtn" style="width: 190px; height: 34px;">
+								대출받기<span class="mr-cap"></span>
+								<span class="mr-angle">
+								<div><p>&gt;</p></div>
+								</span>
+							</div>
+						</div>
+					</div>
+					<div class="mainBottom_contArea">
+						<div class="mainBottom_cont">
+							<div class="main_summary_full">
+								<div class="main_summary text-center">
+									<div style="font-size:18px;" id="runDays">서비스 시작 이후 <storng>1,153</storng>일째</div>
+									<div style="padding:0 0 5px 0;">
+										<span id="display_clock">2019-08-06 10:59:45</span>
+									</div>
+									<ul class="summary_cont03">
+										<li class="summary_tit">누적대출액</li>
+										<li class="summary_num"><span id="totalLoanRepayAmt">340.90</span><span class="ms_txt_sm">억 원</span></li>
+									</ul>
+									<ul class="summary_cont04">
+										<li class="summary_tit">대출잔액</li>
+										<li class="summary_num"><span id="totalLoanRestAmt">88.75</span><span class="ms_txt_sm">억 원</span></li>
+									</ul>
+									<ul class="summary_cont01">
+										<li class="summary_tit">
+											상환률
+										</li>
+										<li class="summary_num"><span id="repayRate">73.97</span><span class="ms_txt_sm">%</span></li>
+									</ul>
+									<ul class="summary_cont02">
+										<li class="summary_tit">
+											연체율 <span class="glyphicon glyphicon-question-sign hover" style="font-size: 12px;" tabindex="0" data-toggle="tooltip" data-placement="auto" data-trigger="hover" title="" data-original-title="연체기준 : 약정된 상환이 일부 혹은 전부 지연되기 시작해 30일 이상 경과한 대출"></span>
+										</li>
+										<li class="summary_num">
+											<span id="delayRate">3.38</span><span class="ms_txt_sm">%</span>
+										</li>
+										<div class="text-center" style="font-size:10px;">
+											<a id="openDelayLoanListA" href="javascript:(void(0));" onclick="fn_openDelayLoanListModal();" class="display-none" style="display: inline;">
+												연체 중 상품보기 &gt;
+											</a>
+										</div>
+									</ul>
+									<!-- 
+									<ul class="summary_cont02 display-none">
+										<li class="summary_tit">
+											부실률 <span class="glyphicon glyphicon-question-sign hover" style="font-size: 12px;"
+													tabindex="0" data-toggle="tooltip" data-placement="auto" data-trigger="hover"
+													title="부실기준 : 약정된 상환이 일부 혹은 전부 지연되기 시작해 90일 이상 경과한 대출"></span>
+										</li>
+										<li class="summary_num"><span id="bnkrpRate"></span><span class="ms_txt_sm">%</span></li>
+									</ul>
+									 -->
+								</div>
+								<div class="day display-none">
+									<div class="dayCont" style="text-align:center;">
+										<a href="/info/noticeDetail/" target="_blank">
+											<p><span>[공지사항]</span></p>
+										</a>
+									</div>
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
-			</section>
-			<!-- /wrapper -->
-	    </section>
+			</div>
+		</section>
+		
+		<!-- "main_eventSection" Area End
+		=============================================-->
+
+
+		<!-- "main_investGoods" Area Start
+		=============================================-->
+		<section class="invGoodsArea">
+			<div class="main_investGoods">
+				<h2 class="sectionTit">
+					<span class="titLine">투자상품</span>
+				</h2>
+				<div class="section-cat">
+					<a href="${pageContext.request.contextPath}/invest_list" id="allGood">
+						전체상품 보기 <i class="glyphicon glyphicon-chevron-right"></i>
+					</a>
+				</div>
+				<div class="row" id="goodThum">
+					<c:forEach items="${projectList}" var="vo" end="5" step="1">
+						<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 good-item-wrap">
+							<div class="good-item">
+								<div class="item-top">
+									<a href="${pageContext.request.contextPath}/invest_detail?
+													project_num=${vo.project_num}
+													&p_busi_num=${vo.busi_num}
+													&user_num=${memVO.user_num}">
+										<div class="hover-text">
+											<div class="clearfix"></div>
+											<div class="hover-button"></div>
+										</div>
+									</a>
+									<div class="item-top-badge">
+										<span class="label label-primary">LTV <span></span>%</span>
+									</div>
+									<div class="item-top-badge text-right">
+										<span class="label label-primary animated infinite flash">${vo.ach_state}</span>
+									</div>
+									<div class="item-middle-badge">
+										<div style="display: inline-block;">${vo.project_name}</div>
+										<div style="display: inline-block;"></div>
+									</div>
+	<!-- 								<div class="item-bottom-badge text-right"> -->
+	<!-- 									<span>자동투자 100%</span> -->
+	<!-- 								</div> -->
+									<img src="${pageContext.request.contextPath}/resources/img/overwatch.jpg">
+								</div>
+								<div class="item-bottom">
+									<div class="item-bottom-text">
+										<div class="row">
+											<div class="col-xs-6">
+												<h5>02-19-42</h5>
+											</div>
+										</div>
+										<h4 style="text-align:center;">[${vo.genre}] ${vo.project_name}</h4>
+										<div class="progress">
+											<div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="${vo.current_price / vo.price * 100}" aria-valuemin="0" aria-valuemax="100" style="min-width:20px; width:47%">
+												${vo.current_price / vo.price * 100}%
+											</div>
+										</div>
+									</div>
+									<hr>
+									<div class="grade">
+										<div class="circle grade-MA">${vo.grade}</div>
+									</div>
+									<div class="cat">
+										<div class="title">연 수익률</div>
+										<div class="sub">
+											${vo.rate}<font size="1">%</font>
+										</div>
+									</div>
+									<div class="cat">
+										<div class="title">기간</div>
+										<div class="sub">
+											${vo.refund}<font size="1">개월</font>
+										</div>
+									</div>
+									<div class="cat">
+										<div class="title">모집금액</div>
+										<div class="sub">
+											${vo.price}<font size="1">만원</font>
+										</div>
+									</div>
+									<div class="cat">
+										<div class="title">상환방식</div>
+										<div class="sub">${vo.repay_method}</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</c:forEach>
+<!-- 					<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 good-item-wrap"> -->
+<!-- 						<div class="good-item">	 -->
+<!-- 							<div class="item-top">		 -->
+<!-- 								<a href="javascript:(void(0));" onclick="fn_openInvestDetail(791)">	 -->
+<!-- 									<div class="hover-text">	 -->
+<!-- 										<div class="clearfix"></div>	 -->
+<!-- 										<div class="hover-button"></div> -->
+<!-- 									</div>	 -->
+<!-- 								</a> -->
+<!-- 								<div class="item-top-badge">			 -->
+<!-- 									<span class="label label-primary">LTV 66.67%</span>			 -->
+<!-- 								</div>			 -->
+<!-- 								<div class="item-top-badge text-right">		 -->
+<!-- 									<span class="label label-primary animated infinite flash">모집중</span>			 -->
+<!-- 								</div>		 -->
+<!-- 								<div class="item-middle-badge">	 -->
+<!-- 									<div style="display: inline-block;">리그오브레전드</div>		 -->
+<!-- 									<div style="display: inline-block;"></div>		 -->
+<!-- 								</div>			 -->
+<%-- 								<img src="${pageContext.request.contextPath}/resources/img/LOL.jpg">		 --%>
+<!-- 							</div>		 -->
+<!-- 							<div class="item-bottom">			 -->
+<!-- 								<div class="item-bottom-text">				 -->
+<!-- 									<div class="row">					 -->
+<!-- 										<div class="col-xs-6">						 -->
+<!-- 											<h5>04-19-131</h5>					 -->
+<!-- 										</div>				 -->
+<!-- 									</div>				 -->
+<!-- 									<h4 style="text-align:center;">[AOS] 리그오브레전드 (2차)</h4>				 -->
+<!-- 									<div class="progress">				 -->
+<!-- 										<div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="84" aria-valuemin="0" aria-valuemax="100" style="min-width:20px;width: 84%"> -->
+<!-- 											84%					 -->
+<!-- 										</div>				 -->
+<!-- 									</div>				 -->
+<!-- 									<div class="item-top-text-num">					 -->
+<!-- 										<small>(267명)</small>				 -->
+<!-- 									</div>			 -->
+<!-- 								</div>			 -->
+<!-- 								<hr>			 -->
+<!-- 								<div class="grade">				 -->
+<!-- 									<div class="circle grade-MA">MA</div>			 -->
+<!-- 								</div>			 -->
+<!-- 								<div class="cat">				 -->
+<!-- 									<div class="title">연 수익률</div>				 -->
+<!-- 									<div class="sub">12 -->
+<!-- 										<font size="1">%</font> -->
+<!-- 									</div>			 -->
+<!-- 								</div>	 -->
+<!-- 								<div class="cat">				 -->
+<!-- 									<div class="title">기간</div>				 -->
+<!-- 									<div class="sub">9<font size="1">개월</font></div>			 -->
+<!-- 								</div>			 -->
+<!-- 								<div class="cat">	 -->
+<!-- 									<div class="title">모집금액</div>				 -->
+<!-- 									<div class="sub">5,000<font size="1">만원</font></div>			 -->
+<!-- 								</div> -->
+<!-- 								<div class="cat"> -->
+<!-- 									<div class="title">상환방식</div>				 -->
+<!-- 									<div class="sub">만기일시</div> -->
+<!-- 								</div> -->
+<!-- 							</div> -->
+<!-- 						</div> -->
+<!-- 					</div> -->
+					<div class="clearfix visible-md-block visible-lg-block"></div>
+				</div>
+			</div>
+		</section>
+		<!-- "main_investGoods" Area End
+		=============================================-->
+
+
+		<!-- "main_invLoanSection" Area Start
+		=============================================-->
+		<section class="main_invLoanSection" style="height: 658px;">
+			<ul class="tab_tit tabs">
+				<li class="tabInv_Tit active" rel="tab1">투자하고 싶으세요?</li>
+				<li class="tabLoan_Tit" rel="tab2">대출받고 싶으세요?</li>
+			</ul>
+			<div id="tab1" class="tab_cont tab_aboutInv_cont" style="display: block;">	
+				<div class="tab_aboutIMG_container">
+					<p class="tab_aboutIMG_text">크리에이터의 투자는 1만원부터 이루어지며, <br>예치금을 이용한 일반/자동투자로 간편하고 빠르게 시작할 수 있습니다.</p>
+					<!--
+					<ul>
+						<li class="tab_aboutInv_Img">
+							<img src="/images/mainV2/main_tab_aboutInv_cont01.png;jsessionid=698A9F762E673CBEEC160726B7A07B65" alt="투자절차안내이미지"/>
+						</li>
+						<li class="tab_aboutInv_Img">
+							<img src="/images/mainV2/main_tab_aboutInv_cont02.png;jsessionid=698A9F762E673CBEEC160726B7A07B65" alt="투자절차안내이미지"/>
+						</li>
+					</ul>
+					-->
+					<ul>
+						<li class="tab_inv_num roboto"> 1.</li>
+						<!-- <li class="tab_list_img"><img src="/images/mainV2/reasonIcon01.png;jsessionid=698A9F762E673CBEEC160726B7A07B65" alt=""/></li> -->
+						<li class="tab_invList_tit">예치금 입금하기</li>
+						<li class="tab_list_cont">1분만에 가상계좌 개설 후<br>투자금을 입금하시면<br>예치금으로 충전됩니다.</li>
+					</ul>
+					<ul>
+						<li class="tab_inv_num roboto"> 2.</li>
+						<!-- <li class="tab_list_img"> <img src="/images/mainV2/reasonIcon01.png;jsessionid=698A9F762E673CBEEC160726B7A07B65" alt=""/> </li> -->
+						<li class="tab_invList_tit">다양한 투자상품</li>
+						<li class="tab_list_cont">원하는 상품에 1만원부터<br>투자하실 수 있습니다.<br>(개인/소상공인/부동산/동산)</li>
+					</ul>
+					<ul>
+						<li class="tab_inv_num roboto"> 3.</li>
+						<!-- <li class="tab_list_img"><img src="/images/mainV2/reasonIcon01.png;jsessionid=698A9F762E673CBEEC160726B7A07B65" alt=""/></li> -->
+						<li class="tab_invList_tit">투자내역 확인</li>
+						<li class="tab_list_cont">마이페이지에서 투자 채권<br>내역을 확인 가능합니다.<br>(모집완료전에는 취소 가능)</li>
+					</ul>
+					<ul>
+						<li class="tab_inv_num roboto"> 4.</li>
+						<!-- <li class="tab_list_img"><img src="/images/mainV2/reasonIcon01.png;jsessionid=698A9F762E673CBEEC160726B7A07B65" alt=""/></li> -->
+						<li class="tab_invList_tit">원리금 상환</li>
+						<li class="tab_list_cont">투자하신 상품의 원리금이<br>매 달 예치금으로 충전됩니다.<br>(마이페이지에서 확인)</li>
+					</ul>
+					 
+					<div class="row">
+						<div class="col-sm-12 col-sm-push-3 col-sm-3 col-md-push-3 col-md-3">
+							<div class="mr-blue-secondary mainTap_invBtn" id="goInvestGuideBtn">
+								투자안내가기<span class="mr-cap"></span>
+								<span class="mr-angle">
+								<div><p>&gt;</p></div>
+								</span>
+							</div>
+						</div>
+						<div class="col-sm-12 col-sm-push-3 col-sm-3 col-md-push-3 col-md-3">
+							<div class="mr-blue mainTap_invBtn" id="goInvestBtn">
+								투자하러가기<span class="mr-cap"></span>
+								<span class="mr-angle">
+								<div><p>&gt;</p></div>
+								</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="tab2" class="tab_cont tab_aboutLoan_cont" style="display: none;">
+				<div class="tab_aboutIMG_container">
+					<p class="tab_aboutIMG_text">크리에이터는 핀테크 기술력과 100% 온라인으로 이루어지는 진행 절차를 통해 <br>비용을 절감하여 이를 합리적인 중금리로 제공합니다.</p>	
+					<ul>
+						<li class="tab_loan_num roboto"> 1.</li>
+						<!-- <li class="tab_list_img"><img src="/images/mainV2/reasonIcon01.png;jsessionid=698A9F762E673CBEEC160726B7A07B65" alt=""/></li> -->
+						<li class="tab_loanList_tit">대출신청하기</li>
+						<li class="tab_list_cont">홈페이지를 통해 금융,<br>비금융데이터 및 재직,<br>신상정보를입력합니다.</li>
+					</ul>
+					<ul>
+						<li class="tab_loan_num roboto"> 2.</li>
+						<!-- <li class="tab_list_img"><img src="/images/mainV2/reasonIcon01.png;jsessionid=698A9F762E673CBEEC160726B7A07B65" alt=""/></li> -->
+						<li class="tab_loanList_tit">기본정보입력</li>
+						<li class="tab_list_cont">전문 신용평가 데이터와<br>내부 Cut-off 기준에 따라<br>1차 심사를 합니다.</li>
+					</ul>
+					<ul>
+						<li class="tab_loan_num roboto"> 3.</li>
+						<!-- <li class="tab_list_img"><img src="/images/mainV2/reasonIcon01.png;jsessionid=698A9F762E673CBEEC160726B7A07B65" alt=""/></li> -->
+						<li class="tab_loanList_tit">추가정보입력</li>
+						<li class="tab_list_cont">결합등급, 금융데이터와<br>비금융 데이터를 통해<br>2차 심사를 진행합니다.</li>
+					</ul>
+					<ul>
+						<li class="tab_loan_num roboto"> 4.</li>
+						<!-- <li class="tab_list_img"><img src="/images/mainV2/reasonIcon01.png;jsessionid=698A9F762E673CBEEC160726B7A07B65" alt=""/></li> -->
+						<li class="tab_loanList_tit">최종대출실행</li>
+						<li class="tab_list_cont">차입자 입력 정보와<br>심사 결과를 통해<br>최종금리, 한도를 부여합니다.</li>
+					</ul>
+					
+					<div class="row">
+						<div class="col-sm-12 col-sm-push-3 col-sm-3 col-md-push-3 col-md-3">
+							<div class="mr-green-secondary mainTap_loanBtn" id="goLoanGuideBtn">
+								대출안내가기<span class="mr-cap"></span>
+								<span class="mr-angle">
+								<div><p>&gt;</p></div>
+								</span>
+							</div>
+						</div>
+						<div class="col-sm-12 col-sm-push-3 col-sm-3 col-md-push-3 col-md-3">
+							<div class="mr-green mainTap_loanBtn" id="goLoanBtn">
+								대출하러가기<span class="mr-cap"></span>
+								<span class="mr-angle">
+								<div><p>&gt;</p></div>
+								</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</div>
 	    <!-- /MAIN CONTENT -->
 	    <!--main content end-->
 		
 		<!--footer start-->
-		<footer class="site-footer">
-			<div class="container">
-			<div class="row">
-		        <!-- ADDRESS -->
-				<div class="col-lg-4">
-					<img alt="logo" src="${pageContext.request.contextPath}/resources/img/test_logo.jpg" width="200px" height="200px">
-					<h4>
-						<i class="fa fa-envelope-o"></i> contact@creator.co.kr<br/>
-						<i class="fa fa-phone"></i> (02) 546-4076<br/>
-						<i class="fa fa-home"></i> 서울특별시 강남구 논현로95길 12, 4층
-					</h4>
-				</div>
-		
-				<!-- LATEST POSTS -->
-				<div class="col-lg-8">
-					<h5>
-			            플랫폼 사업자 : (주)크리에이터 | 사업자번호 : 825-88-00203 | 대표이사 신규식 <br/>
-			            TEL. 02-546-4076 | FAX. 070-4015-0577 | MAIL. contact@creator.co.kr | KakaoTalk. @creator <br/>
-			            통신판매업 2018-서울강남-04669 서울 강남구청(02-3423-5114) <br/>
-			            <br/>
-			            여신회사 : (주)크리에이터 대부| 사업자번호 : 317-88-00338 | 대표이사 백승한 <br/>
-			            P2P연계대부업 2018-금감원-1374<br/>
-			            <br/>
-			            대출금리 연 19.9%내(연체금리 연 22.9%내), 플랫폼 이용료 외 취급수수료 등 기타 부대비용 없습니다. <br/>
-			            중개수수료를 요구하거나 받는 행위는 불법입니다. 과도한 빚은 당신에게 큰 불행을 안겨줄 수 있습니다. <br/>
-						대출 시 귀하의 신용등급이 하락할 수 있습니다. 채무의 조기상환 수수료율 등 조기상환 조건 없습니다. <br/>
-						크리에이터는 투자원금과 수익을 보장하지 않으며, 투자손실에 대한 책임은 모두 투자자에게 있습니다.
-					</h5>
-					<br/>
-					<h5>
-						크리에이터는 투자원금과 수익을 보장하지 않으며, 투자손실에 대한 책임은 모두 투자자에게 있습니다.
-					</h5>
-					<br/>
-					<h5>
-						Copyright (c) 2019 Creatator
-						<br/>
-						CREATATOR 플랫폼 이용료 외 취급수수료 등 기타 부대비용 없음. 중개수수료를 요구하거나 받는 것은 불법입니다.
-					</h5>
-				</div>
-				<!-- /col-lg-8 -->
-			</div>
-		</div>
-		<!-- /container -->
-		</footer>
+		<%@ include file="../footer.jsp" %>
 		<!--footer end-->
 	
 	</section>

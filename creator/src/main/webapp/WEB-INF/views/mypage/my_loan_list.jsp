@@ -148,17 +148,17 @@
 													</thead>
 												<c:forEach items="${loanList}" var="vo" varStatus="status">
 													<tr>
-														<c:if test="${memberVO.busi_num != null}">
+														<c:if test="${memberVO.busi_num != null && memberVO.busi_num !='' }">
 														</c:if>
 														<td>${vo.project_num}</td>
-														<td><a href="invest_detail?detail_num=${vo.project_name}"/>${vo.project_name}</td>
+														<td><a href="invest_detail?detail_num=${vo.project_num}"/>${vo.project_name}</td>
 														<td>${vo.rate}%</td>
 														<td>${vo.repay_method}</td>
 														<td>${vo.refund_due_date}</td>
 														<td>${vo.refund_end}</td>
 														<td>${vo.price}</td>
 														<td>${vo.ach_rate}</td>
-														<td>${vo.ach_state}</td>
+														<td>${vo.ach_state}</td><!-- 값을 표현하지 못함 -->
 													</tr>
 												</c:forEach>
 											</table>

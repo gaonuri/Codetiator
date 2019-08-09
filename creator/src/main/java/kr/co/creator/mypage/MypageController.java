@@ -15,6 +15,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import kr.co.creator.invest.InvestService;
 import kr.co.creator.login.EmailForm;
 import kr.co.creator.login.EmailSender;
 import kr.co.creator.login.FindUtil;
@@ -25,6 +26,7 @@ import kr.co.creator.vo.Busi_userVO;
 import kr.co.creator.vo.FindPwdVO;
 import kr.co.creator.vo.HistoryVO;
 import kr.co.creator.vo.InOutVO;
+import kr.co.creator.vo.InvestVO;
 import kr.co.creator.vo.MemberListVO;
 import kr.co.creator.vo.MemberVO;
 import kr.co.creator.vo.MypageVO;
@@ -88,18 +90,60 @@ public class MypageController {
 		Busi_userVO busiVO = null;
 		accVO = service.account(userVO);
 		ioVO = service.inout(userVO);
-		useVO = service.user(userVO);
-		busiVO = service.busi(userVO); 
-				
-		model.addAttribute("user", useVO);
-		model.addAttribute("busi", busiVO);
+		if(userVO.getUser_num() != null) {
+			useVO = service.user(userVO);
+			model.addAttribute("user", useVO);
+		}
+		if(userVO.getBusi_num() != null) {
+			busiVO = service.busi(userVO);
+			model.addAttribute("busi", busiVO);
+		}
 		model.addAttribute("acnt", accVO);
 		model.addAttribute("Inout",ioVO);
-		logger.info("my_depo_mgn"+accVO);
-		logger.info("my_depo_mgn"+ioVO);
-		logger.info("my_depo_mgn"+busiVO);
+//		logger.info("my_depo_mgn"+accVO);
+//		logger.info("my_depo_mgn"+ioVO);
+//		logger.info("my_depo_mgn"+busiVO);
 		return "mypage/my_depo_mgn";
 	}
+	
+	@RequestMapping(value = "/account_insert", method = RequestMethod.POST)
+	public void account_insert(HttpSession session, Model model, PrintWriter out, AccountVO accVO) {
+		logger.info("account_insert");
+		if(session.getAttribute("memVO") == null) {
+			return;
+		}
+		if(accVO.getUser_num() != null) {
+			System.out.println("account_insert"+ accVO.getUser_num());
+		}
+		if(accVO.getBusi_num() != null) {
+			System.out.println("account_insert"+ accVO.getBusi_num());	
+		}
+			int count = 0;
+			count = service.account_insert(accVO);
+			out.print(count);
+			out.flush();
+			out.close();
+		}
+	
+	@RequestMapping(value = "/depo_update", method = RequestMethod.POST)
+	public void deposit_update(HttpSession session, Model model, PrintWriter out, AccountVO accVO) {
+		logger.info("depo_update");
+		if(session.getAttribute("memVO") == null) {
+			return;
+		}
+		System.out.println("VOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVOVO" + accVO);
+		if(accVO.getUser_num() != null) {
+			System.out.println("depo_update !!!!!!!!!!!!!!!!!!!!!!!!! user" + accVO.getUser_num());
+		}
+		if(accVO.getBusi_num() != null) {
+			System.out.println("depo_update !!!!!!!!!!!!!!!!!!!!!!!!! busi" + accVO.getBusi_num());
+		}
+		int count = 0;
+		count = service.depo_update(accVO);
+		out.print(count);
+		//out.flush();
+		out.close();
+	}//depo_update
 	
 	@RequestMapping(value = "/CertEmail", method = RequestMethod.POST)
 	public void CertEmail(HttpSession session, PrintWriter out, MemberVO memvo, FindPwdVO vo, EmailForm form, FindUtil findUtil) {
@@ -248,9 +292,4 @@ public class MypageController {
 		out.flush();
 		out.close();	
 	}//deleteUser
-	
-
-	
 }//class
-
-

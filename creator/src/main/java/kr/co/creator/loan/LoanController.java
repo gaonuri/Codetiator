@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import kr.co.creator.vo.DocumentVO;
-import kr.co.creator.vo.DocumentVO2;
 import kr.co.creator.vo.FileVO;
 import kr.co.creator.vo.GuaranteeVO;
 import kr.co.creator.vo.MemberVO;
@@ -71,12 +70,12 @@ public class LoanController {
     }
 	
 	@RequestMapping(value = "/addinfo", method = RequestMethod.GET)
-	public String addinfo(HttpSession session, ProjectVO pvo, FileVO dvo) throws Exception {
+	public String addinfo(HttpSession session, ProjectVO pvo, FileVO fvo) throws Exception {
 		if(session.getAttribute("memVO") == null) {
 			return "redirect:/login";
 		}
 		session.setAttribute("ProjectVO", pvo);
-		session.setAttribute("DocumentVO2", dvo);
+		session.setAttribute("FileVO", fvo);
 
     	return "loan/addinfo";
     }
@@ -87,6 +86,8 @@ public class LoanController {
 		int cnt = 0;
 		int gnt = 0;
 		MemberVO voFromSession = (MemberVO) session.getAttribute("memVO");
+		pvo = (ProjectVO) session.getAttribute("ProjectVO");
+		fvo = (FileVO) session.getAttribute("FileVO");
 		System.out.println("voFromSession.getBusi_num() : " + voFromSession.getBusi_num());
 		pvo.setBusi_num(voFromSession.getBusi_num());//법인 유저 넘버 가져오기
 //		String repay_count = loanDAOService.RepaySelect(rvo); //상환내역 불러오기
