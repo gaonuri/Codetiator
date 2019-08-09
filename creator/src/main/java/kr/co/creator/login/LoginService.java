@@ -85,6 +85,7 @@ public class LoginService {
 
 	public int CheckCerUserNumber(FindPwdVO vo) {
 		int cnt = 0;
+		System.out.println("88888888888888888888888888888888888888888888888888888888888 vo.cer_number : " + vo.getCer_number());
 		cnt = loginDAO.CheckCerUserNumber(vo);
 		return cnt;
 	}//CheckCerUserNumber

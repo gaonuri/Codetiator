@@ -11,7 +11,7 @@ public class FindPwdVO {
 	private String manager_name;	// 관리자이름
 	private String manager_email;	// 담당자 이메일
 	private String newPassword;		// 바꿀비밀번호
-	private String cer_number;
+	private String cer_number;		// 유저 인증번호
 
 	
 	public String getCer_number() {

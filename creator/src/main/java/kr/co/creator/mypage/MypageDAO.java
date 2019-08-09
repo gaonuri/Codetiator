@@ -101,9 +101,21 @@ public class MypageDAO {
 		return count;
 	}//deposit_update
 
-		public int account_insert(AccountVO accVO) {
+//		public int account_insert(AccountVO accVO) {
+//			int count = 0;
+//			count = sqlSession.insert("MypageMapper.accountinsert", accVO);
+//			return count;
+//		}
+
+		public int useraccount_insert(AccountVO acVO) {
 			int count = 0;
-			count = sqlSession.insert("MypageMapper.accountinsert", accVO);
+			count = sqlSession.insert("MypageMapper.useraccountinsert", acVO);
+			return count;
+		}
+
+		public int busiaccount_insert(AccountVO acVO) {
+			int count = 0;
+			count = sqlSession.insert("MypageMapper.busiaccountinsert", acVO);
 			return count;
 		}
 	
