@@ -626,11 +626,9 @@ $(document).ready(function() {
 												<div class="form-group col-md-4">
 													<input class="form-control" id="cer_number" type="text" maxlength="13"  placeholder="" style="display:none;">
 												</div>
-<<<<<<< HEAD
 												<div id="clock"><!--여기서 수정 -->
-=======
+
 												<div id="clock">
->>>>>>> branch 'master' of https://github.com/gaonuri/Codetiator.git
 												</div>
 											</div>													
 												
