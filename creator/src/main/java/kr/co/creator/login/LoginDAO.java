@@ -85,6 +85,7 @@ public class LoginDAO {
 
 	public int CheckCerUserNumber(FindPwdVO vo) {
 		int cnt = 0;
+		System.out.println("99999999999999999999999999999999999999 vo.cer_number : " + vo.getCer_number());
 		cnt = sqlSession.selectOne("LoginMapper.CheckCerUserNumber", vo);
 		return cnt;
 	}//CheckCerNumber
