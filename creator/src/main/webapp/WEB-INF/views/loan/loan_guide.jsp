@@ -215,7 +215,7 @@ p {
 	        TOP BAR CONTENT & NOTIFICATIONS
 	        *********************************************************************************************************************************************************** -->
 	    <!--header start-->
-	    <%@ include file="../header_new.jsp" %>
+	    <%@ include file="../header.jsp" %>
 	    <!--header end-->
 	   <section id="loanGuide-banner" class="text-center">
 			<div class="overlay">
