@@ -105,7 +105,7 @@ public class MypageController {
 		logger.info("=== CertEmail ===");
 		int cnt = 0;
 		if(cnt != 0) {
-			cnt = loginService.userfindChk(vo);
+			cnt = loginService.userFindChk(vo);
 			String newPassword, user_name;
 			newPassword = findUtil.getRamdomPassword(8);
 			user_name = sqlSession.selectOne("LoginMapper.selectUserName", vo);
@@ -241,6 +241,31 @@ public class MypageController {
 		out.close();	
 	}//deleteUser
 	
+	@RequestMapping(value="/updatepass1", method=RequestMethod.POST)
+	public void updatePass1(HttpSession session, PrintWriter out, MemberVO vo) {
+		logger.info("=== updatePass1 ===");
+		vo = sqlSession.selectOne("MypageMapper.UpdatePass1", vo);
+		int cnt = 0;
+		if(vo != null && vo.getBusi_num() != null && !vo.getBusi_num().equals("")) {
+			cnt = 1;
+		}
+		out.print(cnt);
+		out.flush();
+		out.close();	
+	}//updatePass1
+	
+	@RequestMapping(value="/deletebusi", method=RequestMethod.POST)
+	public void deleteBusi(HttpSession session, PrintWriter out, MemberVO vo) {
+		logger.info("=== deleteBusi ===");
+		vo = sqlSession.selectOne("MypageMapper.Deletebusi", vo);
+		int cnt = 0;
+		if(vo != null && vo.getBusi_num() != null && !vo.getBusi_num().equals("")) {
+			cnt = 1;
+		}
+		out.print(cnt);
+		out.flush();
+		out.close();	
+	}//deleteBusi
 
 	
 }//class

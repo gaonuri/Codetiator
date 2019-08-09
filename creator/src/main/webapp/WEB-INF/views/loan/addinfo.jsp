@@ -159,7 +159,7 @@
 <div class="container">
 			<div class="row" style="width: 800px;">
 				<div class="col-md-offset-2 col-md-8 col">
-					<div class="form" style="width: 750px;">
+					<div class="form" style="width: 700px;">
 						<div class="box-header"></div>
 						<div class="box-body">
 							<div class="box-wrap">
@@ -198,7 +198,7 @@
                       <div>
                         <span class="btn btn-theme02 btn-file">
                           <span class="fileupload-new"><i class="fa fa-paperclip"></i> 사진 선택</span>
-                        <span class="fileupload-exists"><i class="fa fa-undo"></i> 사진 변경</span>
+                          <span class="fileupload-exists"><i class="fa fa-undo"></i> 사진 변경</span>
                         <input type="file" id="main_img" name="img_file" class="default" />
                         </span>
                       </div>
@@ -206,26 +206,32 @@
                   </div>
                 </div>
                 <div class="form-group">
-               		<label class="control-label col-md-3">프로젝트 이름</label>
-               		<div class="col-md-4">
-                		<input type="text" id="project_name" name="project_name" class="default"/>
+               		<label class="control-label col-md-3" >프로젝트 이름</label>
+               		<div class="col-md-8">
+                		<input type="text" id="project_name" name="project_name" class="form-control onlyprojectnm" placeholder="배틀필드 시즌 10"/>
                 	</div>
                 </div>
-                  <div class="form-group">
-                  	<label class="control-label col-md-3">모집금액</label>
-                  	<div class="col-md-4">
-                    	<input type="text" id="price" name="price" class="default" />
-                    </div>
-                  </div>
-                  <div class="form-group">
-                  	<label class="control-label col-md-3">상환기간</label>
-                  	<div class="col-md-4">
-                    	<input type="text" id="refund" name="refund" class="default" />
-                    </div>
-                  </div>
+<!--                   <div class="form-group"> -->
+<!--                   	<label class="control-label col-md-3">모집금액</label> -->
+<!--                   	<div class="col-md-8 has-feedback" > -->
+<!--                			<input type="text" id="price" name="price" class="form-control onlycal "  maxlength="7"  placeholder="만원 단위로 작성" /> -->
+<!--                			<span class="form-control-feedback" aria-hidden="true" style="z-index:0 ">만원</span> -->
+<!--    	                </div> -->
+<!--                   </div> -->
+<!--                   <div class="form-group"> -->
+<!--                   	<label class="control-label col-md-3">상환기간</label> -->
+<!--                   	<div class="col-md-4"> -->
+<!--                		<select class="form-control loanPurpose-select" id="refund" name="refund"> -->
+<!-- 							<option value="">선택하세요</option> -->
+<!-- 								<option value="01">3개월</option> -->
+<!-- 								<option value="02">6개월</option> -->
+<!-- 								<option value="03">12개월</option> -->
+<!-- 						</select>                  	 -->
+<!--                     </div> -->
+<!--                   </div> -->
                   <div class="form-group">
                   	<label class="control-label col-md-3">게임유형</label>
-                  	<div class="col-md-4">
+                  	<div class="col-md-8">
                   		<select class="form-control loanPurpose-select" id="type" name="type">
 							<option value="">선택하세요</option>
 								<option value="01">PC게임</option>
@@ -237,7 +243,7 @@
                   </div>
                   <div class="form-group">
                   	<label class="control-label col-md-3">장르</label>
-                  	<div class="col-md-4">
+                  	<div class="col-md-8">
                   		<select class="form-control loanPurpose-select" id="genre" name="genre">
 							<option value="">선택하세요</option>
 								<option value="01">슈팅 게임</option>
@@ -253,7 +259,7 @@
                   </div>
                   <div class="form-group">
                   	<label class="control-label col-md-3">등급</label>
-                  	<div class="col-md-4">
+                  	<div class="col-md-8">
                     	<select class="form-control loanPurpose-select" id="grade" name="grade">
 							<option value="">선택하세요</option>
 								<option value="01">7세 이용가</option>
@@ -265,28 +271,55 @@
                   </div>
                   <div class="form-group">
                   	<label class="control-label col-md-3">상세정보</label>
-                  	<div class="col-md-4">
-                    	<input type="text" id="more_information" name="more_information" class="default" />
+                  	<div class="col-md-8">
+                    	<input type="text" id="more_information" name="more_information" class="form-control" />
                     </div>
                   </div>
-                  <div class="form-group">
-                  	<label class="control-label col-md-3">대출기간</label>
-                  	<div class="col-md-4">
-                    	<input type="text" id="loan_period" name="loan_period" class="default" />
-                    </div>
-                  </div>
-                  <div class="form-group">
-                  	<label class="control-label col-md-3">대출계좌</label>
-                  	<div class="col-md-4">
-                    	<input type="text" id="loan_amount" name="loan_amount" class="default" />
-                    </div>
-                  </div>
-                  <div class="form-group">
-                  	<label class="control-label col-md-3">대출구분</label>
-                  	<div class="col-md-4">
-                    	<input type="text" id="loan_class" name="loan_class" class="default" />
-                    </div>
-                  </div>
+<!--                   <div class="form-group"> -->
+<!--                   	<label class="control-label col-md-3">대출기간</label> -->
+<!--                   	<div class="col-md-8"> -->
+<!--                     	<select class="form-control loanPurpose-select" id="loan_period" name="loan_period"> -->
+<!-- 							<option value="">선택하세요</option> -->
+<!-- 								<option value="01">3개월</option> -->
+<!-- 								<option value="02">6개월</option> -->
+<!-- 								<option value="03">12개월</option> -->
+<!-- 						</select>                  	 -->
+<!--                     </div> -->
+<!--                   </div> -->
+<!--                   <div class="form-group"> -->
+<!--                   	<label class="control-label col-md-3">은행명</label> -->
+<!--                   	<div class="col-md-8"> -->
+<!--                     	<select class="form-control loanPurpose-select" id="loan_bank_name" name="loan_bank_name"> -->
+<!-- 							<option value="">선택하세요</option> -->
+<!-- 								<option value="01">신한은행</option> -->
+<!-- 								<option value="02">국민은행</option> -->
+<!-- 								<option value="03">우리은행</option> -->
+<!-- 								<option value="04">하나은행</option> -->
+<!-- 								<option value="05">씨티은행</option> -->
+<!-- 								<option value="06">부산은행</option> -->
+<!-- 								<option value="07">경남은행</option> -->
+<!-- 								<option value="08">광주은행</option> -->
+<!-- 								<option value="09">제주은행</option> -->
+<!-- 								<option value="10">산업은행</option>																								 -->
+<!-- 						</select>                  	 -->
+<!--                     </div> -->
+<!--                   </div>                   -->
+<!--                   <div class="form-group"> -->
+<!--                   	<label class="control-label col-md-3">대출계좌</label> -->
+<!--                   	<div class="col-md-8"> -->
+<!--                     	<input type="text" id="loan_amount" name="loan_amount" class="form-control onlybank" placeholder="'-'빼고 입력 해주세요" /> -->
+<!--                     </div> -->
+<!--                   </div> -->
+<!--                   <div class="form-group"> -->
+<!--                   	<label class="control-label col-md-3">대출구분</label> -->
+<!--                   	<div class="col-md-8"> -->
+<!--                     	<select class="form-control loanPurpose-select" id="loan_class" name="loan_class"> -->
+<!-- 							<option value="">선택하세요</option> -->
+<!-- 								<option value="만기일시">만기일시</option> -->
+<!-- 								<option value="02">원리금균등</option> -->
+<!-- 						</select>                      	 -->
+<!--                     </div> -->
+<!--                   </div> -->
                   <div class="form-group last">
                   <label class="control-label col-md-3">담보 이미지</label>
                   <div class="col-md-9">
@@ -305,102 +338,102 @@
                     </div>
                   </div>
                 </div>
-                <div class="form-group">
-                  	<label class="control-label col-md-3">담보유형</label>
-                  	<div class="col-md-4">
-                    	<input type="text" id="guarantee_type" name="guarantee_type" class="default" />
-                    </div>
-                </div>
-                <div class="form-group">
-                  	<label class="control-label col-md-3">담보명</label>
-                  	<div class="col-md-4">
-                    	<input type="text" id="guarantee_name" name="guarantee_name" class="default" />
-                    </div>
-                </div>
+<!--                 <div class="form-group"> -->
+<!--                   	<label class="control-label col-md-3">담보유형</label> -->
+<!--                   	<div class="col-md-4"> -->
+<!--                     	<input type="text" id="guarantee_type" name="guarantee_type" class="form-control" /> -->
+<!--                     </div> -->
+<!--                 </div> -->
                 <div class="form-group">
                   	<label class="control-label col-md-3">차주유형</label>
                   	<div class="col-md-4">
                     	<select class="form-control loanPurpose-select" id="debtor_type" name="debtor_type">
-							<option value="">선택하세요</option>
-								<option value="01">개인</option>
+<!-- 							<option value="">선택하세요</option> -->
 								<option value="02">법인</option>
+								<option value="01">개인</option>
 						</select>
                     </div>
                 </div>
                 <div class="form-group">
                   	<label class="control-label col-md-3">차주업종(직종)</label>
                   	<div class="col-md-4">
-                    	<input type="text" id="business_type" name="business_type" class="default" />
+                    	<input type="text" id="business_type" name="business_type" class="form-control" />
                     </div>
                 </div>
                 <div class="form-group">
-                  	<label class="control-label col-md-3">물건유형</label>
+                  	<label class="control-label col-md-3">담보명</label>
                   	<div class="col-md-4">
-                    	<select class="form-control loanPurpose-select" id="object_type" name="object_type">
-							<option value="">선택하세요</option>
-								<option value="01">아파트</option>
-								<option value="02">연립주택</option>
-								<option value="03">토지</option>
-						</select>
+                    	<input type="text" id="guarantee_name" name="guarantee_name" class="form-control" />
                     </div>
                 </div>
-                <div class="form-group">
-                  	<label class="control-label col-md-3">외부감정가</label>
-                  	<div class="col-md-4">
-                    	<input type="text" id="connoisseur" name="connoisseur" class="default" />
-                    </div>
-                </div>
+<!--                 <div class="form-group"> -->
+<!--                   	<label class="control-label col-md-3">물건유형</label> -->
+<!--                   	<div class="col-md-4"> -->
+<!--                     	<select class="form-control loanPurpose-select" id="object_type" name="object_type"> -->
+<!-- 							<option value="">선택하세요</option> -->
+<!-- 								<option value="01">아파트</option> -->
+<!-- 								<option value="02">연립주택</option> -->
+<!-- 								<option value="03">토지</option> -->
+<!-- 						</select> -->
+<!--                     </div> -->
+<!--                 </div> -->
                 <div class="form-group">
                   	<label class="control-label col-md-3">공급면적</label>
                   	<div class="col-md-4">
-                    	<input type="text" id="supply_area" name="supply_area" class="default" />
+                    	<input type="text" id="supply_area" name="supply_area" class="form-control" />
                     </div>
                 </div>
                 <div class="form-group">
                   	<label class="control-label col-md-3">전용면적</label>
                   	<div class="col-md-4">
-                    	<input type="text" id="exclusive_area" name="exclusive_area" class="default" />
+                    	<input type="text" id="exclusive_area" name="exclusive_area" class="form-control" />
                     </div>
                 </div>
-                <div class="form-group">
-                  	<label class="control-label col-md-3">면적</label>
-                  	<div class="col-md-4">
-                    	<input type="text" id="area" name="area" class="default" />
-                    </div>
-                </div>
+<!--                 <div class="form-group"> -->
+<!--                   	<label class="control-label col-md-3">면적</label> -->
+<!--                   	<div class="col-md-4"> -->
+<!--                     	<input type="text" id="area" name="area" class="form-control" /> -->
+<!--                     </div> -->
+<!--                 </div> -->
                 <div class="form-group">
                   	<label class="control-label col-md-3">소재지</label>
                   	<div class="col-md-4">
-                    	<input type="text" id="location" name="location" class="default" />
+                    	<input type="text" id="location" name="location" class="form-control" />
                     </div>
                 </div>
+<!--                 <div class="form-group"> -->
+<!--                   	<label class="control-label col-md-3">규모</label> -->
+<!--                   	<div class="col-md-4"> -->
+<!--                     	<input type="text" id="scale" name="scale" class="form-control" /> -->
+<!--                     </div> -->
+<!--                 </div> -->
                 <div class="form-group">
-                  	<label class="control-label col-md-3">규모</label>
+                  	<label class="control-label col-md-3">준공(생산)일자 </label>
                   	<div class="col-md-4">
-                    	<input type="text" id="scale" name="scale" class="default" />
+                    	<input type="text" id="comple_year" name="comple_year" class="form-control" />
                     </div>
                 </div>
+<!--                 <div class="form-group"> -->
+<!--                   	<label class="control-label col-md-3">시세</label> -->
+<!--                   	<div class="col-md-4"> -->
+<!--                     	<input type="text" id="quote" name="quote" class="form-control" /> -->
+<!--                     </div> -->
+<!--                 </div> -->
+<!--                 <div class="form-group"> -->
+<!--                   	<label class="control-label col-md-3">담보분류</label> -->
+<!--                   	<div class="col-md-4"> -->
+<!--                     	<select class="form-control loanPurpose-select" id="code" name="code"> -->
+<!-- 							<option value="">선택하세요</option> -->
+<!-- 								<option value="01">부동산담보</option> -->
+<!-- 								<option value="02">법인신용</option> -->
+<!-- 								<option value="03">개인사업자신용</option> -->
+<!-- 						</select> -->
+<!--                     </div> -->
+<!--                 </div> -->
                 <div class="form-group">
-                  	<label class="control-label col-md-3">준공년도</label>
+                  	<label class="control-label col-md-3">외부감정가</label>
                   	<div class="col-md-4">
-                    	<input type="text" id="comple_year" name="comple_year" class="default" />
-                    </div>
-                </div>
-                <div class="form-group">
-                  	<label class="control-label col-md-3">시세</label>
-                  	<div class="col-md-4">
-                    	<input type="text" id="quote" name="quote" class="default" />
-                    </div>
-                </div>
-                <div class="form-group">
-                  	<label class="control-label col-md-3">담보분류</label>
-                  	<div class="col-md-4">
-                    	<select class="form-control loanPurpose-select" id="code" name="code">
-							<option value="">선택하세요</option>
-								<option value="01">부동산담보</option>
-								<option value="02">법인신용</option>
-								<option value="03">개인사업자신용</option>
-						</select>
+                    	<input type="text" id="connoisseur" name="connoisseur" class="form-control" />
                     </div>
                 </div>
                 <div class="form-group">
@@ -538,6 +571,73 @@
 
       return false;
     });
+    
+    	$(".onlyKor").change(function(){
+    		//alert($(this).val());
+    		var korStd = /^[가-힣]{1,9}$/;
+    		if($(this).val().match(korStd)){
+    			//alert("ok");
+    		}else{
+    			alert("정확한 이름을 입력해 주세요.");
+    			$(this).val("");
+    			$(this).focus();
+    			return;
+    		}
+    	});//onlyKor
+    	
+    	$(".onlycal").change(function(){
+    		//alert($(this).val());
+    		var calStd = /^[0-9]{1,6}$/;
+    		if($(this).val().match(calStd)){
+    			//alert($(this).val().match(licenseStd));
+    		}else{
+    			alert("숫자만 입력해 주세요.");
+    			$(this).val("");
+    			$(this).focus();
+    			return;
+    		}
+    	});//onlycal
+    	
+    	$(".onlybank").change(function(){
+    		//alert($(this).val());
+    		var bankStd = /^[0-9]{12,16}$/;
+    		if($(this).val().match(bankStd)){
+    			//alert($(this).val().match(licenseStd));
+    		}else{
+    			alert("올바른 계좌번호를 입력해 주세요.");
+    			$(this).val("");
+    			$(this).focus();
+    			return;
+    		}
+    	});//onlycal
+    	
+    	$(".onlyprojectnm").change(function(){
+    		//alert($(this).val());
+    		var projectnmStd = /([가-힣\s])([0-9]{0,10})+$/;
+    		if($(this).val().match(projectnmStd)){
+    			//alert("ok");
+    		}else{
+    			alert("한글과 숫자조합으로 작성해 주세요");
+    			$(this).val("");
+    			$(this).focus();
+    			return;
+    		}
+    	});//onlyhomepage
+    	
+    	$(".onlyKrEng").change(function(){
+    		//alert($(this).val());
+    		var passStd = /^[가-힣a-zA-Z]{1,20}$/;
+    		if($(this).val().match(passStd)){
+    			//alert("ok");
+    		}else{
+    			alert("올바른 입력을 해주세요.");
+    			$(this).val("");
+    			//$(this).focus();
+    			return;
+    		}
+    	});//onlyPass
+    
+    
 	</script>
 	<script type="application/javascript">
     $(document).ready(function() {
@@ -589,7 +689,7 @@ $(document).ready(function() {
 		var main_img = $("#main_img").val();
 		var project_name = $("#project_name").val();
 		var price = $("#price").val();
-		var refund = $("#refund").val();
+// 		var refund = $("#refund").val();
 		var type = $("#type").val();
 		var genre = $("#genre").val();
 		var grade = $("#grade").val();
@@ -597,18 +697,19 @@ $(document).ready(function() {
 		var loan_period = $("#loan_period").val();
 		var loan_amount = $("#loan_amount").val();
 		var loan_class = $("#loan_class").val();
+		var loan_bank_name = $("#loan_bank_name").val(); 
 		if(main_img == "") {
 			alert("메인 사진을 올려주세요.");
 			$("#main_img").focus();
 		} else if(project_name == "") {
 			alert("프로젝트 이름을 작성 해주세요.");
 			$("#project_name").focus();
-		} else if(price == "") {
-			alert("모집금액을 입력 해주세요.");
-			$("#price").focus();
-		} else if(refund == "") {
-			alert("상환기간을 입력 해주세요.");
-			$("#refund").focus();
+// 		} else if(price == "") {
+// 			alert("모집금액을 입력 해주세요.");
+// 			$("#price").focus();
+// 		} else if(refund == "") {
+// 			alert("상환기간을 입력 해주세요.");
+// 			$("#refund").focus();
 		} else if(type == "") {
 			alert("게임유형을 선택 해주세요.");
 			$("#type").focus();
@@ -621,15 +722,18 @@ $(document).ready(function() {
 		} else if(more_information == "") {
 			alert("상세정보를 입력 해주세요.");
 			$("#more_information").focus();
-		} else if(loan_period == "") {
-			alert("대출기간을 입력 해주세요.");
-			$("#loan_period").focus();
-		} else if(loan_amount == "") {
-			alert("대출계좌를 입력 해주세요.");
-			$("#loan_amount").focus();
-		} else if(loan_class == "") {
-			alert("대출구분을 입력 해주세요.");
-			$("#loan_class").focus();
+// 		} else if(loan_period == "") {
+// 			alert("대출기간을 입력 해주세요.");
+// 			$("#loan_period").focus();
+// 		} else if(loan_bank_name == "") {
+// 			alert("은행명을 선택해 주세요.");
+// 			$("#loan_bank_name").focus();
+// 		} else if(loan_amount == "") {
+// 			alert("대출계좌를 입력 해주세요.");
+// 			$("#loan_amount").focus();
+// 		} else if(loan_class == "") {
+// 			alert("대출구분을 입력 해주세요.");
+// 			$("#loan_class").focus();
 		} else {
 			var form = new FormData(document.getElementById("addinfo_form"));
 			$.ajax({
@@ -639,7 +743,8 @@ $(document).ready(function() {
 				,processData:false
 				,contentType:false
 				,type:"POST"
-				,success:function(result){alert(result);
+				,success:function(result){
+					alert(result);
 					if(result > 0){
 						location.href = "${pageContext.request.contextPath}/sub_document";
 					} else {

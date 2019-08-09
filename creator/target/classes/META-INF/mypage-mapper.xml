@@ -116,6 +116,17 @@
 		where user_num = #{user_num}
 	</delete>
 	
+	<update id="UpdatePass1" parameterType="kr.co.creator.vo.MemberVO">
+		update busi_user_list 
+		set busi_password = #{busi_password} 
+		where busi_num = #{busi_num}
+	</update>
+	
+	<delete id="Deletebusi" parameterType="kr.co.creator.vo.MemberVO">
+		delete from busi_user_list 
+		where busi_num = #{busi_num}
+	</delete>	
+	
 	
 	
 </mapper>

@@ -283,25 +283,6 @@ $(document).ready(function() {
 									<dd>
 										<hr>
 									</dd>
-									<dt>성별</dt>
-									<dd id="sexRadio">
-										
-											
-												
-													<label class="radio-inline sexRadio-label">
-														<input type="radio" name="sexRadio" value="1">남성
-													</label>
-												
-													<label class="radio-inline sexRadio-label">
-														<input type="radio" name="sexRadio" value="2">여성
-													</label>
-												
-											
-										
-									</dd>
-									<dd>
-										<hr>
-									</dd>
 									<dt>휴대전화</dt>
 									<dd>
 											<div class="form-group" style="margin-bottom: 0px;">
@@ -314,8 +295,6 @@ $(document).ready(function() {
 																${memVO.manager_phone}
 															</c:otherwise>
 												</c:choose>
-											
-												
 												<!--
 												<button type="button" class="btn btn-purple-transparent" onclick="fn_doCert()" style="vertical-align: inherit;" id="certBtn">
 													인증하기
@@ -335,74 +314,42 @@ $(document).ready(function() {
 									<dd>
 										<hr>
 									</dd>
-									<dt>대출기간</dt>
+									
+									<dt>은행명</dt>
 									<dd>
-											<div class="form-group">
-												<select class="form-control loanPurpose-select" id="loanPeriodSelect" name="loan_period">
-													<option value="">선택하세요</option>
-													
-														
-															
-																<option value="01">1개월</option>
-															
-																<option value="02">2개월</option>
-															
-																<option value="03">3개월</option>
-															
-																<option value="04">4개월</option>
-															
-																<option value="05">5개월</option>
-															
-																<option value="06">6개월</option>
-															
-																<option value="07">7개월</option>
-															
-																<option value="08">8개월</option>
-															
-																<option value="09">9개월</option>
-															
-																<option value="10">10개월</option>
-															
-																<option value="11">11개월</option>
-															
-																<option value="12">12개월</option>
-															
-																<option value="13">13개월</option>
-															
-																<option value="14">14개월</option>
-															
-																<option value="15">15개월</option>
-															
-																<option value="16">16개월</option>
-															
-																<option value="17">17개월</option>
-															
-																<option value="18">18개월</option>
-															
-																<option value="19">19개월</option>
-															
-																<option value="20">20개월</option>
-															
-																<option value="21">21개월</option>
-															
-																<option value="22">22개월</option>
-															
-																<option value="23">23개월</option>
-															
-																<option value="24">24개월</option>
-															
-														
-													
-												</select>
-											</div>
+										<div class="form-group">
+											<select class="form-control loanPurpose-select" id="loan_bank_name" name="loan_bank_name">
+<!-- 												<option value="00">선택하세요</option> -->
+													<option value="01">신한은행</option>
+													<option value="02">국민은행</option>
+													<option value="03">우리은행</option>
+													<option value="04">하나은행</option>
+													<option value="05">씨티은행</option>
+													<option value="06">부산은행</option>
+													<option value="07">경남은행</option>
+													<option value="08">광주은행</option>
+													<option value="09">제주은행</option>
+													<option value="10">산업은행</option>																								
+											</select>
+										</div>
 									</dd>
 									<dd>
 										<hr>
 									</dd>
+									<dt>대출계좌</dt>
+									<dd>
+										<div class="form-group has-feedback">
+											<input type="text" id="loan_amount" name="loan_amount" class="form-control onlybank" placeholder="'-'빼고 입력 해주세요" />
+										</div>
+									</dd>
+									<dd>
+										<hr>
+									</dd>
+																
 									<dt>대출금액</dt>
 									<dd>
 											<div class="form-group has-feedback">
-												<input type="text" class="form-control loanAmt-text" id="loan_period" name="loan_price" maxlength="7" placeholder="1000">
+												<input type="text" class="form-control loanAmt-text" id="loan_period" name="price" maxlength="7" placeholder="1000">
 												<span class="form-control-feedback" aria-hidden="true" style="z-index:0 ">만원</span>
 											</div>
 										
@@ -410,69 +357,20 @@ $(document).ready(function() {
 									<dd>
 										<hr>
 									</dd>
-									<dt>대출구분</dt>
+									<dt>대출기간</dt>
 									<dd>
-										
-											<div class="form-group">
-												<select class="form-control loanGb-select" id="loan_class" name="loan_class">
-													<option value="">선택하세요</option>
-													<!-- 
-													
-														
-															
-																<option value="01">개인신용</option>
-															
-																<option value="02">개인담보</option>
-															
-																<option value="03">개인사업자신용</option>
-															
-																<option value="04">개인사업자담보</option>
-															
-																<option value="05">법인신용</option>
-															
-																<option value="06">법인담보</option>
-															
-														
-													
-													 -->
-												</select>
-											</div>
-										
+										<div class="form-group">
+											<select class="form-control loanPurpose-select" id="loanPeriodSelect" name="loan_period">
+<!-- 												<option value="00">선택하세요</option> -->
+													<option value="01">3개월</option>
+													<option value="02">6개월</option>
+													<option value="03">12개월</option>
+											</select>
+										</div>
 									</dd>
 									<dd>
 										<hr>
 									</dd>
-									<dt>대출유형</dt>
-									<dd>
-										
-											<div class="form-group">
-												<select class="form-control loanType-select" id="loanTypeSelect" name="loan_type">
-													<option value="">대출구분을 선택하세요</option>
-													<!-- 
-													
-														
-															
-																<option value="01">개인신용</option>
-															
-																<option value="02">법인신용</option>
-															
-																<option value="03">개인사업자신용</option>
-															
-																<option value="04">부동산담보</option>
-															
-																<option value="06">동산담보</option>
-															
-														
-													
-													 -->
-												</select>
-											</div>
-										
-									</dd>
-									<dd>
-										<hr>
-									</dd>
-									
 									<dt>상환방식</dt>
 									<dd>
 										
@@ -480,29 +378,79 @@ $(document).ready(function() {
 												<!-- 
 												<select class="form-control repayTypeCd-select" id="repayTypeCdSelect">
 													<option value="">선택하세요</option>
-													
-														
-															
 																<option value="1">원리금균등</option>
-															
 																<option value="2">원리금일시</option>
-															
 																<option value="3">만기일시</option>
-															
-														
-													
 												</select>
 												 -->
 												<select class="form-control repayTypeCd-select" id="repay_method" name="repay_method">
-													<option value="1">원리금균등</option>
 													<option value="3">만기일시</option>
+													<option value="1">원리금균등</option>
 												</select>
 											</div>
 										
 									</dd>
 									<dd>
 										<hr>
+									</dd>									
+									<dt>대출구분</dt>
+									<dd>
+										
+											<div class="form-group">
+												<select class="form-control loanGb-select" id="loan_class" name="loan_class">
+													<option value="">선택하세요</option>
+													<!-- 
+																<option value="01">개인신용</option>
+																<option value="02">개인담보</option>
+																<option value="03">개인사업자신용</option>
+																<option value="04">개인사업자담보</option>
+																<option value="05">법인신용</option>
+																<option value="06">법인담보</option>
+													 -->
+												</select>
+											</div>
 									</dd>
+									<dd>
+										<hr>
+									</dd>
+									<dt>담보유형</dt>
+									<dd>
+										
+											<div class="form-group">
+												<select class="form-control loanType-select" id="loanTypeSelect" name="guarantee_type">
+													<option value="">대출구분을 선택하세요</option>
+													<!-- 
+																<option value="01">개인신용</option>
+																<option value="02">법인신용</option>
+																<option value="03">개인사업자신용</option>
+																<option value="04">부동산담보</option>
+																<option value="06">동산담보</option>
+													 -->
+												</select>
+											</div>
+									</dd>
+									<dd>
+										<hr>
+									</dd>
+									
+									<dt>물건유형</dt>
+									<dd>
+										
+											<div class="form-group">
+												<select class="form-control loanPurpose-select" id="object_type" name="object_type">
+													<option value="">물건유형을 선택하세요</option>
+													<!-- 
+														<option value="01">아파트</option>
+														<option value="02">연립주택</option>
+														<option value="03">토지</option>
+													 -->
+												</select>
+											</div>
+									</dd>
+									<dd>
+										<hr>
+									</dd>									
+									
 									<dt></dt>
 									<dd>
 										<div class="agree-checkbox">
@@ -513,38 +461,38 @@ $(document).ready(function() {
 												</label>
 											</div>
 											<div class="checkbox">
-												<input type="checkbox" value="Y" id="agree1Checkbox" name="agreeCheckBox">
+												<input type="checkbox" value="0" id="agree1Checkbox" name="agreeCheckBox">
 												<label for="agree1Checkbox">
 													<a href="${pageContext.request.contextPath}/useTerm" target="_blank"><u>서비스 이용약관</u></a>에 동의합니다. (필수)
 												</label>
 											</div>
 											<div class="checkbox">
-												<input type="checkbox" value="Y" id="agree2Checkbox" name="agreeCheckBox">
+												<input type="checkbox" value="0" id="agree2Checkbox" name="agreeCheckBox">
 												<label for="agree2Checkbox">
 													<a href="${pageContext.request.contextPath}/pInfoProvideTerm" target="_blank"><u>개인(신용)정보제공</u></a>에 동의합니다. (필수)
 												</label>
 											</div>
 											<div class="checkbox">
-												<input type="checkbox" value="Y" id="agree3Checkbox" name="agreeCheckBox">
+												<input type="checkbox" value="0" id="agree3Checkbox" name="agreeCheckBox">
 												<label for="agree3Checkbox">
 													<a href="${pageContext.request.contextPath}/pInfoInquiryTerm" target="_blank"><u>개인(신용)정보조회</u></a>에 동의합니다. (필수)
 												</label>
 											</div>
 											<div class="checkbox">
-												<input type="checkbox" value="Y" id="agree4Checkbox" name="agreeCheckBox">
+												<input type="checkbox" value="0" id="agree4Checkbox" name="agreeCheckBox">
 												<label for="agree4Checkbox">
 													<a href="${pageContext.request.contextPath}/pInfoUseTerm" target="_blank"><u>개인(신용)정보수집, 이용</u></a>에 동의합니다. (필수)
 												</label>
 											</div>
 											
 											<div class="checkbox">
-												<input type="checkbox" value="Y" id="agree5Checkbox" name="agreeCheckBox">
+												<input type="checkbox" value="0" id="agree5Checkbox" name="agreeCheckBox">
 												<label for="agree5Checkbox">
 													<a href="${pageContext.request.contextPath}/uniqueInfoTerm" target="_blank"><u>고유식별정보 처리방침</u></a>에 동의합니다. (필수)
 												</label>
 											</div>
 											<div class="checkbox">
-												<input type="checkbox" value="Y" id="agree6Checkbox" name="chk_select">
+												<input type="checkbox" value="0" id="agree6Checkbox" name="chk_select">
 												<label for="agree6Checkbox">
 													<a href="${pageContext.request.contextPath}/pInfoSelectedTerm" target="_blank"><u>개인(신용)정보 선택적 수집, 이용 및 제공</u></a>에 동의합니다. (선택)
 												</label>
@@ -817,8 +765,22 @@ $(document).ready(function() {
 			);//숫자만 입력 되도록
 		});//pass.keydown
 	});//ready
+	
+	$(".onlybank").change(function(){
+		//alert($(this).val());
+		var bankStd = /^[0-9]{12,16}$/;
+		if($(this).val().match(bankStd)){
+			//alert($(this).val().match(licenseStd));
+		}else{
+			alert("올바른 계좌번호를 입력해 주세요.");
+			$(this).val("");
+			$(this).focus();
+			return;
+		}
+	});//onlycal
+	
 	</script>
-	<script type="text/javascript">
+<script type="text/javascript">
 	$(document).ready(function() {
 		$("#doNextStepBtn").click(function() {
 			var agree1Checkbox = $("#agree1Checkbox").is(":checked");
@@ -830,58 +792,53 @@ $(document).ready(function() {
 			var loanPeriodSelect = $('#loanPeriodSelect').val();
 			var loanAmt = $("#loan_period").val();
 			var loanGb = $("#loan_class").val();
-			var loanType = $("#loanTypeSelect").val();
+			var guaranteeType = $("#loanTypeSelect").val();
 			var repayTypeCd = $("#repay_method").val();
-			$("#btn_cert1").modal(); return;
-			if(sex == undefined) {
-				alert("성별을 선택하세요.");
-				$(".sexRadio-label").focus();
+			var loan_bank_name = $("#loan_bank_name").val(); 
+			var loan_period = $("#loan_period").val();
+			var loan_amount = $("#loan_amount").val();
+
+			if(loan_amount == "") {
+				alert("대출계좌를 입력 해주세요.");
+				$("#loan_amount").focus();
 				return;
-			} else if(loanPeriodSelect == "") {
-				alert("대출기간을 선택하세요.");
-				$("#loanPeriodSelect").focus();
-				return;
-			} else if(loanAmt == "") {
+			}
+			if(loanAmt == ""){
 				alert("대출금액을 입력하세요.");
 				$("#loan_period").focus();
 				return;
-			} else if(loanGb == "") {
+			}	
+			if(loanGb == ""){
 				alert("대출구분을 선택하세요.");
 				$("#loan_class").focus();
 				return;
-			} else if(loanType == "") {
-				alert("대출유형을 선택하세요.");
-				$("#loanTypeSelect").focus();
-				return;
-			} else if(repayTypeCd == "") {
-				alert("상환방식을 선택하세요.");
-				$("#repay_method").focus();
-				return;
-			} else if(agree1Checkbox == false) {
+			}	
+			if(agree1Checkbox == 0){
 				alert("서비스 이용약관에 동의하세요.");
-				$("#agree1Checkbox").focus();
 				return;
-			} else if(agree2Checkbox == false) {
-				alert("개인(신용)정보제공에 동의하세요.");
-				$("#agree2Checkbox").focus();
-				return;
-			} else if(agree3Checkbox == false) {
-				alert("개인(신용)정보조회에 동의하세요.");
-				$("#agree3Checkbox").focus();
-				return;
-			} else if(agree4Checkbox == false) {
-				alert("개인(신용)정보수집,이용에 동의하세요.");
-				$("#agree4Checkbox").focus();
-				return;
-			} else if(agree5Checkbox == false) {
-				alert("고유식별정보 처리방침에 동의하세요.");
-				$("#agree5Checkbox").focus();
-				return;
-			} else {
-				$("#btn_cert1").modal();
 			}
+			if(agree2Checkbox == 0){
+				alert("개인(신용)정보제공에 동의하세요.");
+				return;
+			}
+			if(agree3Checkbox == 0){
+				alert("개인(신용)정보조회에 동의하세요.");
+				return;
+			}	
+			if(agree4Checkbox == 0){
+				alert("개인(신용)정보수집,이용에 동의하세요.");
+				return;
+			}	
+			if(agree5Checkbox == 0){
+				alert("고유식별정보 처리방침에 동의하세요.");
+				return;
+			}
+			$("#btn_cert1").modal(); 
+				return;
+// 				$("#btn_cert1").modal();
 		});
 	});
+	
 	function tempFunction() {
 		$("#frmLoan").attr("action","${pageContext.request.contextPath}/addinfo");
 		document.frmLoan.submit();
@@ -922,19 +879,20 @@ $(document).ready(function() {
 			if(loanGb == "01") {	// 개인신용
 				str += "<option value=\"01\">개인신용</option>";
 			} else if(loanGb == "02") {	// 개인담보
-				str += "<option value=\"\">선택하세요</option>";
+// 				str += "<option value=\"\">선택하세요</option>";
 				str += "<option value=\"04\">부동산담보</option>";
 				str += "<option value=\"06\">동산담보</option>";
 			} else if(loanGb == "03") {	// 개인사업자신용
 				str += "<option value=\"03\">개인사업자신용</option>";
 			} else if(loanGb == "04") {	// 개인사업자담보
-				str += "<option value=\"\">선택하세요</option>";
+// 				str += "<option value=\"\">선택하세요</option>";
 				str += "<option value=\"04\">부동산담보</option>";
 				str += "<option value=\"06\">동산담보</option>";
+		////////////////////////////////////////////////////////////////////////////////////
 			} else if(loanGb == "05") {	// 법인신용
 				str += "<option value=\"02\">법인신용</option>";
 			} else if(loanGb == "06") {	// 법인담보
-				str += "<option value=\"\">선택하세요</option>";
+// 				str += "<option value=\"\">선택하세요</option>";
 				str += "<option value=\"04\">부동산담보</option>";
 				str += "<option value=\"06\">동산담보</option>";
 			} else {
@@ -945,6 +903,40 @@ $(document).ready(function() {
 			loanTypeSelect.empty();
 			loanTypeSelect.append(str);
 		});
+		
+		$("#loanTypeSelect").on("change", function() {
+			var guaranteeType = $(this).val();
+			var str = "";
+			
+			if(guaranteeType == "01") {	// 부동산 담보
+				str += "<option value=\"01\">아파트</option>";
+				str += "<option value=\"02\">주택</option>";
+				str += "<option value=\"02\">빌라</option>";
+				str += "<option value=\"02\">상가</option>";
+				str += "<option value=\"03\">토지</option>";
+			} else if(guaranteeType == "02") {	// 동산 담보
+				str += "<option value=\"01\">자동차</option>";
+				str += "<option value=\"01\">선박</option>";
+				str += "<option value=\"01\">항공기</option>";
+			} 
+		});
+		
+	////////////////////////////////////////////////////////////////////////////////////
+	
+		var loginCusGbCd = ${loginCusGbCd};
+		var str = "";
+		if(loginCusGbCd == "1") {	// 일반회원
+			//str += "<option value=\"01\">개인신용</option>";
+			str += "<option value=\"02\">개인담보</option>";
+			str += "<option value=\"03\">개인사업자신용</option>";
+			str += "<option value=\"04\">개인사업자담보</option>";
+		} else {	// 법인회원
+			str += "<option value=\"05\">법인신용</option>";
+			str += "<option value=\"06\">법인담보</option>";
+		}
+		var loan_class = $("#loan_class");
+		loan_class.append(str);
+	});
 		
 		// 날짜는 데이트피커로 입력
 		/*$(".datepicker").on("keyup", function() {
@@ -962,20 +954,6 @@ $(document).ready(function() {
 			showMonthAfterYear: true, //년 뒤에 월 표시
 		});*/
 		
-		var loginCusGbCd = ${loginCusGbCd};
-		var str = "";
-		if(loginCusGbCd == "1") {	// 일반회원
-			//str += "<option value=\"01\">개인신용</option>";
-			str += "<option value=\"02\">개인담보</option>";
-			str += "<option value=\"03\">개인사업자신용</option>";
-			str += "<option value=\"04\">개인사업자담보</option>";
-		} else {	// 법인회원
-			str += "<option value=\"05\">법인신용</option>";
-			str += "<option value=\"06\">법인담보</option>";
-		}
-		var loan_class = $("#loan_class");
-		loan_class.append(str);
-	});
 	
 	function fn_doNextStep() {
 		if(fn_validation()) {
@@ -1005,7 +983,7 @@ $(document).ready(function() {
 		var loanPeriod = $('#loanPeriodSelect').val();
 		var loanAmt = $("#loanAmtText").val();
 		var loanGb = $("#loan_class").val();
-		var loanType = $("#loanTypeSelect").val();
+		var guaranteeType = $("#loanTypeSelect").val();
 		var loanPurpose = $("#loanPurposeSelect").val();
 		var repayTypeCd = $("#repayTypeCdSelect").val();
 		var agree1 = $('input:checkbox[id="agree1Checkbox"]').is(":checked");
@@ -1023,7 +1001,7 @@ $(document).ready(function() {
 		if(!chkBool) { return; } else { chkBool = fn_checkVal("대출기간", loanPeriod, "loanPeriodSelect"); }
 		if(!chkBool) { return; } else { chkBool = fn_checkVal("대출금액", loanAmt, "loanAmtText"); }
 		if(!chkBool) { return; } else { chkBool = fn_checkVal("대출구분", loanGb, "loan_class"); }
-		if(!chkBool) { return; } else { chkBool = fn_checkVal("대출유형", loanType, "loanTypeSelect"); }
+		if(!chkBool) { return; } else { chkBool = fn_checkVal("담보유형", guaranteeType, "loanTypeSelect"); }
 		if(!chkBool) { return; } else { chkBool = fn_checkVal("대출목적", loanPurpose, "loanPurposeSelect"); }
 		if(!chkBool) { return; } else { chkBool = fn_checkVal("상환방식", repayTypeCd, "repayTypeCdSelect"); }
 		if(!chkBool) { return; } else { chkBool = fn_checkVal("서비스 이용약관", agree1, "agree1Checkbox"); }
