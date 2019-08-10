@@ -47,7 +47,6 @@
 		var check = $("input:checkbox[id=agreeCheckbox]:checked").is(":checked");
 		var count = 0; 
 		
-		alert(deposit);
 		
 		$("#deposit").text(addComma(deposit));						// 예치금
 		$("#out_able").text(addComma(deposit));						// 출금 가능액
@@ -199,51 +198,53 @@
 					return;
 				}
 				$.post (
-						"${pageContext.request.contextPath}/useraccount_insert",
+						"${pageContext.request.contextPath}/account_insert",
 						{
 							user_num:$("#user_num").val(),
-							account_name:$("#account_name").val(),
-							bank_name:$("#cusBankCdSelect").val(),
-							bank_num:$("#cusAccount").val()
-						},
-						function(data, status) {
-						if(status == "success") {
-							if(data = -1){
-								alert("다시 등록해주시기 바랍니다.");
-							} else if (data > 0) {
-								alert("계좌 등록에 성공하였습니다 즐거운 투자 Creator펀딩!");
-							}
-						}
-					}
-				);//post
-			});//blur
-		})//ready
-		$(document).ready(function(){
-			$("#receaccn").click(function(){
-				if($("#cusAccount").val() == ""){
-					alert("계좌번호를 입력해 주세요.");
-					return;
-				}
-				$.post (
-						"${pageContext.request.contextPath}/busiaccount_insert",
-						{
 							busi_num:$("#busi_num").val(),
-							account_name:$("#account_name").val(),
+							account_name:$("#cusNm").val(),
 							bank_name:$("#cusBankCdSelect").val(),
 							bank_num:$("#cusAccount").val()
 						},
 						function(data, status) {
 						if(status == "success") {
-							if(data = -1){
-								alert("다시 등록해주시기 바랍니다.");
-							} else if (data > 0) {
+							if (data > 0) {
 								alert("계좌 등록에 성공하였습니다 즐거운 투자 Creator펀딩!");
+								$("#btn_cert2").modal("hide");
+							} else {
+								alert("다시 등록해주시기 바랍니다.");
 							}
 						}
 					}
 				);//post
 			});//blur
 		})//ready
+// 		$(document).ready(function(){
+// 			$("#receaccn").click(function(){
+// 				if($("#cusAccount").val() == ""){
+// 					alert("계좌번호를 입력해 주세요.");
+// 					return;
+// 				}
+// 				$.post (
+// 						"${pageContext.request.contextPath}/busiaccount_insert",
+// 						{
+// 							busi_num:$("#busi_num").val(),
+// 							account_name:$("#account_name").val(),
+// 							bank_name:$("#cusBankCdSelect").val(),
+// 							bank_num:$("#cusAccount").val()
+// 						},
+// 						function(data, status) {
+// 						if(status == "success") {
+// 							if(data = -1){
+// 								alert("다시 등록해주시기 바랍니다.");
+// 							} else if (data > 0) {
+// 								alert("계좌 등록에 성공하였습니다 즐거운 투자 Creator펀딩!");
+// 							}
+// 						}
+// 					}
+// 				);//post
+// 			});//blur
+// 		})//ready
 /////////////////////////////////////////////////////////////////////////////////////////////예치금 계좌 발급받기 끝
 /////////////////////////////////////////////////////////////////////////////////////////////모달 시작
 		function tempFunction() {
@@ -277,37 +278,6 @@
 			}
 		}
 		$(document).ready(function(){
-			var chkemail = '';
-			
-			$("#cusEmail").blur(function(){
-				var emailStd = /([a-z0-9]{1,20}\@)([a-z]{1,20}\.)([a-z]{1,10})/gi;
-				
-				if($.trim($("#cusEmail").val()) != $(this).val().match(emailStd)){
-					alert("올바르지 않은 이메일 입니다.");
-					return;
-				}
-				$.post(
-						"${pageContext.request.contextPath}/busifindChk",
-						"${pageContext.request.contextPath}/findPwdChk",
-						{
-							Email:$("#cusEmail").val(),
-							manager_email:$("#cusEmail").val()
-						},
-						function(data,status){
-							if(data == 1){
-								alert("이메일이 확인 되었습니다. 인증번호 받기 버튼을 눌러주세요.");
-								chkemail = $("#cusEmail").val();
-							}else{
-								alert("등록된 이메일이 없습니다.");
-							}
-						}//function
-				);//post
-			});//blur
-		});//ready
-		$(document).ready(function(){
-			$("#numre").click(function(){
-			});
-			
 			$("#numre").click(function(){
 				
 // 				if($.trim($("#cusEmail").val()) == ""){
@@ -318,8 +288,9 @@
 				$.post(
 						"${pageContext.request.contextPath}/CertEmail"
 						,{
-							Email:$("#cusEmail").val(),
-							manager_email:$("#cusEmail").val()
+							user_email:$("#cusEmail").val(),
+							manager_email:$("#cusEmail").val(),
+							email:$("#cusEmail").val()
 						}
 						,function(data,status){
 							if(status == "success"){
@@ -698,33 +669,6 @@
 									</form>
 
 				<!-- Email 인증시작 -->
-<!-- 					<script type="text/javascript"> -->
-// 					var id;
-// 					var min = 29;
-// 					var sec = 59;
-// 					var minZero = "";
-// 					var secZero = "";
-// 					function setClock() {
-// 						id = setInterval(worker,1000);
-// 					}
-// 					function worker() {
-// 						if(min < 10){minZero = "0";}else{minZero = "";}
-// 						if(sec < 10){secZero = "0";}else{secZero = "";}
-// 						var now = minZero + min + " : " + secZero + sec;
-// 						clock.innerHTML = "<h6>"+now+"</h6>";
-// 						sec = parseInt(sec) - 1;
-// 						if(sec == -1) {
-// 							sec = 59;
-// 							min = parseInt(min) - 1;
-// 							if(min == -1){
-// 								clearInterval(id);
-// 								alert("인증시간이 만료 되었습니다.");
-// 								location.reload();
-								
-// 							}
-// 						}
-// 					}
-<!-- 					</script> -->
 						<div class="modal fade" id="btn_cert1"  name="cert1" role="dialog" aria-labelledby="vtAcntModalLabel" aria-hidden="true">
 							<div class="modal-dialog">
 								<div class="modal-content">
@@ -848,16 +792,16 @@
 											<div class="form-group col-xs-7 col-sm-7 col-md-4">
 												<label for="cusBankCdSelect" class="control-label">은행명</label>
 												<select id="cusBankCdSelect" class="form-control" name="cusBankCd">
-													<option id="san" value="01">신한은행</option>
-													<option id="ki" value="02">국민은행</option>
-													<option id="kb" value="03">우리은행</option>
-													<option id="su" value="04">하나은행</option>
-													<option id="chul" value="05">시티은행</option>
-													<option id="nh1" value="06">부산은행</option>
-													<option id="nh2" value="07">경남은행</option>
-													<option id="su3" value="08">광주은행</option>
-													<option id="woo" value="09">제주은행</option>
-													<option id="sc" value="10">산업은행</option>
+													<option id="san" value="신한은행">신한은행</option>
+													<option id="ki" value="국민은행">국민은행</option>
+													<option id="kb" value="우리은행">우리은행</option>
+													<option id="su" value="하나은행">하나은행</option>
+													<option id="chul" value="시티은행">시티은행</option>
+													<option id="nh1" value="부산은행">부산은행</option>
+													<option id="nh2" value="경남은행">경남은행</option>
+													<option id="su3" value="광주은행">광주은행</option>
+													<option id="woo" value="제주은행">제주은행</option>
+													<option id="sc" value="산업은행">산업은행</option>
 												</select>
 											</div>
 											<div class="form-group col-xs-12 col-sm-12 col-md-5">

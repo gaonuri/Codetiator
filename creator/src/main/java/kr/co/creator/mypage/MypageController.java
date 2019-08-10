@@ -129,12 +129,45 @@ public class MypageController {
 //		}//if
 //	}//account_insert
 	
-	@RequestMapping(value = "/useraccount_insert", method = RequestMethod.POST)
-	public void useraccount_insert(Model model, PrintWriter out, AccountVO acVO, MemberVO userVO ) {
+	@RequestMapping(value = "/account_insert", method = RequestMethod.POST)
+	public void useraccount_insert(Model model, PrintWriter out, AccountVO acVO, MemberVO userVO, InOutVO ioVO ) {
 		logger.info("useraccount_insert");
 		int count = 0;
-		count = service.useraccount_insert(acVO);
-		if(count > 0) {
+		int count1 = 0;
+		AccountVO acVO_temp = new AccountVO();
+		
+		String user_num = "";
+		String busi_num = "";
+		
+		user_num = acVO.getUser_num();
+		busi_num = acVO.getBusi_num();
+		
+		System.out.println("user_num :" + user_num);
+		System.out.println("busi_num :" + busi_num);
+		
+		// account_list 등록
+		if (!user_num.equals((""))){  // 일반회원
+			count = service.useraccount_insert(acVO);
+		}else if (!busi_num.equals((""))){  // 기업회원
+			count = service.busiaccount_insert(acVO);
+		}
+		
+		// in_out_history 등록
+		if (!user_num.equals((""))){  // 일반회원
+			acVO_temp = sqlSession.selectOne("MypageMapper.MyPageBank", acVO);	
+			ioVO.setUser_num(acVO_temp.getUser_num());
+			ioVO.setAccount_num(acVO_temp.getAccount_num());
+			count1 = service.userinoutinsert(ioVO);
+			System.out.println("◎◎◎일반회원등록 : " + count1);
+		}else if (!busi_num.equals((""))){  // 기업회원
+			acVO_temp = sqlSession.selectOne("MypageMapper.MyPageBank", acVO);	
+			ioVO.setUser_num(acVO_temp.getBusi_num());
+			ioVO.setAccount_num(acVO_temp.getAccount_num());
+			count1 = service.busiinoutinsert(ioVO);
+			System.out.println("◎◎◎기업회원등록 : " + count1);
+		}
+				
+		if(count > 0 && count1 > 0) {
 			System.out.println("account_insert"+ acVO.getUser_num());
 			out.print(count);
 			out.flush();
@@ -180,11 +213,15 @@ public class MypageController {
 	public void CertEmail(HttpSession session, PrintWriter out, MemberVO memvo, FindPwdVO vo, EmailForm form, FindUtil findUtil) throws Exception {
 		logger.info("=== CertEmail ===");
 		int cnt = 0;
+		
+		//cnt = loginService.busifindChk(vo);		
+		cnt = loginService.userFindChk(vo);
+		
 		if(cnt != 0) {
-			cnt = loginService.userFindChk(vo);
 			String newPassword, user_name;
 			newPassword = findUtil.getRamdomPassword(8);
-			user_name = sqlSession.selectOne("LoginMapper.selectUserName", vo);
+			System.out.println("7777777777777777777777777777777 + vo.getUser_password()" + newPassword);
+			user_name = sqlSession.selectOne("LoginMapper.selectName", vo);
 			vo.setNewPassword(newPassword);
 			vo.setUser_name(user_name);
 			form.setContent("인증번호는 " + newPassword + " 입니다");
@@ -192,7 +229,6 @@ public class MypageController {
 			form.setReceiver(vo.getUser_email());
 			emailSender.sendEmail(form);
 		} else {
-			cnt = loginService.busifindChk(vo);
 			String newPassword, busi_name;
 			newPassword = findUtil.getRamdomPassword(8);
 			busi_name = sqlSession.selectOne("LoginMapper.selectBusiName", vo);
@@ -203,58 +239,62 @@ public class MypageController {
 			form.setReceiver(vo.getManager_email());
 			emailSender.sendEmail(form);
 		}
-		if(cnt != 0) {
+		
+		// 인증번호 update
+		if(cnt != 0) {  // 일반회원
 			System.out.println(vo.getUser_email());
-			cnt = loginService.insertNumber(vo);
+			cnt = loginService.insertNumber1(vo);
 			out.print(cnt);
 			out.flush();
 			out.close();
-		} else {
+		} else {  // 기업회원
 			System.out.println(vo.getManager_email());
 			cnt = loginService.insertNumber(vo);
 			out.print(cnt);
 			out.flush();
 			out.close();
 		}
-		out.print(cnt);
-		memvo = (MemberVO)session.getAttribute("memVO");
-		logger.info("=== CertEmail : "+memvo.getUser_num());
-		logger.info("=== CertEmail : "+memvo.getBusi_num());
-		int updateCertNunYN = 0;
-			if(memvo.getUser_num() != null && !memvo.getUser_num().equals("")) {
-				logger.info("=== CertEmail : "+memvo.getUser_num());
-				String newPassword, user_name;
-				newPassword = findUtil.getRamdomPassword(8);
-				vo.setUser_num(memvo.getUser_num());
-				user_name = sqlSession.selectOne("LoginMapper.selectName", vo);
-				vo.setNewPassword(newPassword);
-				vo.setUser_name(user_name);
-				System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!vo.getCer_number() : " + vo.getCer_number());
-				form.setContent("인증번호는 " + newPassword + " 입니다");
-				form.setSubject("안녕하세요 " + vo.getUser_name() + "님 인증번호를 확인해 주세요");
-				form.setReceiver(vo.getEmail());
-				//emailSender.sendEmail(form);
-				System.out.println(vo.getEmail());
-				updateCertNunYN = loginService.insertUserNumber(vo);
-				
-			} else if(memvo.getBusi_num() != null && !memvo.getBusi_num().equals("")) {
-				logger.info("=== CertEmail : "+memvo.getBusi_num());
-				String newPassword = null, busi_name = null;
-				newPassword = findUtil.getRamdomPassword(8);
-				busi_name = sqlSession.selectOne("LoginMapper.selectBusiName", vo);
-				vo.setNewPassword(newPassword);
-				vo.setManager_name(busi_name);
-				form.setContent("인증번호는 " + newPassword + " 입니다");
-				form.setSubject("안녕하세요 " + vo.getManager_name() + "님 인증번호를 확인해 주세요");
-				form.setReceiver(vo.getManager_email());
-				//emailSender.sendEmail(form);
-				System.out.println(vo.getManager_email());
-				updateCertNunYN = loginService.insertNumber(vo);
-			}
-		out.print(updateCertNunYN);
-		out.flush();
-		out.close();
-	}//CertEmail
+		}//CertEmail
+	
+//		out.print(cnt);
+//		memvo = (MemberVO)session.getAttribute("memVO");
+//		logger.info("=== CertEmail : "+memvo.getUser_num());
+//		logger.info("=== CertEmail : "+memvo.getBusi_num());
+//		int updateCertNunYN = 0;
+//			if(memvo.getUser_num() != null && !memvo.getUser_num().equals("")) {
+//				logger.info("=== CertEmail : "+memvo.getUser_num());
+//				String newPassword, user_name;
+//				newPassword = findUtil.getRamdomPassword(8);
+//				vo.setUser_num(memvo.getUser_num());
+//				user_name = sqlSession.selectOne("LoginMapper.selectName", vo);
+//				vo.setNewPassword(newPassword);
+//				vo.setUser_name(user_name);
+//				System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!vo.getCer_number() : " + vo.getCer_number());
+//				form.setContent("인증번호는 " + newPassword + " 입니다");
+//				form.setSubject("안녕하세요 " + vo.getUser_name() + "님 인증번호를 확인해 주세요");
+//				form.setReceiver(vo.getEmail());
+//				//emailSender.sendEmail(form);
+//				System.out.println(vo.getEmail());
+//				updateCertNunYN = loginService.insertUserNumber(vo);
+//				
+//			} else if(memvo.getBusi_num() != null && !memvo.getBusi_num().equals("")) {
+//				logger.info("=== CertEmail : "+memvo.getBusi_num());
+//				String newPassword = null, busi_name = null;
+//				newPassword = findUtil.getRamdomPassword(8);
+//				busi_name = sqlSession.selectOne("LoginMapper.selectBusiName", vo);
+//				vo.setNewPassword(newPassword);
+//				vo.setManager_name(busi_name);
+//				form.setContent("인증번호는 " + newPassword + " 입니다");
+//				form.setSubject("안녕하세요 " + vo.getManager_name() + "님 인증번호를 확인해 주세요");
+//				form.setReceiver(vo.getManager_email());
+//				//emailSender.sendEmail(form);
+//				System.out.println(vo.getManager_email());
+//				updateCertNunYN = loginService.insertNumber(vo);
+//			}
+//		out.print(updateCertNunYN);
+//		out.flush();
+//		out.close();
+//	}//CertEmail
 	
 	@RequestMapping(value = "/DepocerNumber", method = RequestMethod.POST)
 	public void DepocerNumber(HttpSession session, PrintWriter out, MemberVO memvo, FindPwdVO vo, Busi_userVO bsvo) {
