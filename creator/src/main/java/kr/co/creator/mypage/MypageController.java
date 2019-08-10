@@ -177,7 +177,7 @@ public class MypageController {
 	}//depo_update
 	
 	@RequestMapping(value = "/CertEmail", method = RequestMethod.POST)
-	public void CertEmail(HttpSession session, PrintWriter out, MemberVO memvo, FindPwdVO vo, EmailForm form, FindUtil findUtil) {
+	public void CertEmail(HttpSession session, PrintWriter out, MemberVO memvo, FindPwdVO vo, EmailForm form, FindUtil findUtil) throws Exception {
 		logger.info("=== CertEmail ===");
 		int cnt = 0;
 		if(cnt != 0) {
