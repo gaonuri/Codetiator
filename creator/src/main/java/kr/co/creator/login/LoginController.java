@@ -20,6 +20,7 @@ import kr.co.creator.vo.CertVO;
 import kr.co.creator.vo.FindPwdVO;
 import kr.co.creator.vo.MemberListVO;
 import kr.co.creator.vo.MemberVO;
+import kr.co.creator.vo.UserVO;
 
 @Controller
 public class LoginController {
