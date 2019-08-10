@@ -2,17 +2,17 @@ package kr.co.creator.vo;
 
 // 프로젝트
 public class ProjectVO {
-	private String project_num;			// 프로젝트번호
-	private String img;					// 사진(경로)
+	private String project_num;		// 프로젝트번호
+	private String img;			// 사진(경로)
 	private String project_name;		// 이름
-	private String rate;				// 금리
-	private String price;				// 모집금액
+	private String rate;			// 금리
+	private String price;			// 모집금액
 	private String current_price;		// 현재금액
-	private String ach_rate;			// 모집현황
-	private String ach_state;			// 모집상태
+	private String ach_rate;		// 모집현황
+	private String ach_state;		// 모집상태
 	private String repay_method;		// 상환방식
-	private String deadline;			// 남은기간
-	private String refund;				// 상환기간
+	private String deadline;		// 남은기간
+	private String refund;			// 상환기간
 	private String refund_count;		// 상환차수
 	private String loan_history;		// 대출자 상환내역
 	private String guarantee_price;		// 남은대출금액
@@ -30,21 +30,27 @@ public class ProjectVO {
 	private String judge_status;		// 심사상태
 	private String ing_status;			// 1:승인 2:심사 3:반려
 	private String customer;			// 투자자수
-	private String ad_price;			// 광고금액
-	private String ad_grade;			// 광고등급
+
+
 	private String loan_bank_name;		// 대출은행명
+<<<<<<< HEAD
 	
+=======
+
+>>>>>>> branch 'master' of https://github.com/gaonuri/Codetiator.git
 	
+<<<<<<< HEAD
+=======
+	private String user_num;		// (참조)유저번호
+	private String busi_num;		// (참조)법인유저번호
+	
+>>>>>>> branch 'master' of https://github.com/gaonuri/Codetiator.git
 	public String getLoan_bank_name() {
 		return loan_bank_name;
 	}
 	public void setLoan_bank_name(String loan_bank_name) {
 		this.loan_bank_name = loan_bank_name;
 	}
-	private String user_num;			// (참조)유저번호
-	private String busi_num;			// (참조)법인유저번호
-
-
 	public String getProject_num() {
 		return project_num;
 	}

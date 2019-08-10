@@ -81,7 +81,6 @@
 		where email = #{email}
 	</update>
 	
-	<select id="CheckCerNumber" resultType="int">
 	<select id="CheckCerUserNumber" parameterType="kr.co.creator.vo.FindPwdVO" resultType="int">
 		select count(*)
 		from user_list
