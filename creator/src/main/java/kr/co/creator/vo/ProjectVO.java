@@ -34,8 +34,8 @@ public class ProjectVO {
 	private String ad_grade;		// 광고등급
 	private String loan_bank_name;		// 대출은행명
 	
-	private String user_num;			// (참조)유저번호
-	private String busi_num;			// (참조)법인유저번호
+	private String user_num;		// (참조)유저번호
+	private String busi_num;		// (참조)법인유저번호
 	
 	public String getLoan_bank_name() {
 		return loan_bank_name;
