@@ -33,11 +33,8 @@ public class ProjectVO {
 	private String ad_price;			// 광고금액
 	private String ad_grade;			// 광고등급
 	private String loan_bank_name;		// 대출은행명
-<<<<<<< HEAD
 	
-=======
 	
->>>>>>> branch 'master' of https://github.com/gaonuri/Codetiator.git
 	public String getLoan_bank_name() {
 		return loan_bank_name;
 	}
