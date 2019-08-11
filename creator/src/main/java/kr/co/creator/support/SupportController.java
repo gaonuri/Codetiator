@@ -1,4 +1,4 @@
-package kr.co.creator.support;
+	package kr.co.creator.support;
 
 import java.io.PrintWriter;
 import java.util.List;
@@ -29,12 +29,12 @@ public class SupportController {
 		return "support/faq";
 	}
 
-//	@RequestMapping(value = "/inquiry", method = RequestMethod.GET)
-//	public String inquiry() { 
-//		logger.info("inquiry");
-//				
-//		return "support/inquiry";
-//	}
+	@RequestMapping(value = "/inquiry", method = RequestMethod.GET)
+	public String inquiry() { 
+		logger.info("inquiry");
+				
+		return "support/inquiry";
+	}
 
 	@RequestMapping(value = "/support", method = RequestMethod.GET)
 	public String support(Model model, NoticeVO vo) {

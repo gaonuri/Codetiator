@@ -417,14 +417,14 @@ $(document).ready(function() {
 									<dd>
 										
 											<div class="form-group">
-												<select class="form-control loanType-select" id="loanTypeSelect" name="guarantee_type">
+												<select class="form-control loanType-select" id="guarantee_type" name="guarantee_type">
 													<option value="">대출구분을 선택하세요</option>
 													<!-- 
 																<option value="01">개인신용</option>
 																<option value="02">법인신용</option>
 																<option value="03">개인사업자신용</option>
-																<option value="04">부동산담보</option>
-																<option value="06">동산담보</option>
+																<option value="44">부동산담보</option>
+																<option value="66">동산담보</option>
 													 -->
 												</select>
 											</div>
@@ -437,13 +437,19 @@ $(document).ready(function() {
 									<dd>
 										
 											<div class="form-group">
-												<select class="form-control loanPurpose-select" id="object_type" name="object_type">
-													<option value="">물건유형을 선택하세요</option>
+												<select class="form-control objectType-select" id="object_type" name="object_type">
+													<option value="">담보유형을 선택하세요</option>
 													<!-- 
-														<option value="01">아파트</option>
-														<option value="02">연립주택</option>
-														<option value="03">토지</option>
-													 -->
+														<option value="01" id="ch1">법인신용</option>        
+														<option value="02" id="ch2">아파트</option>
+														<option value="03" id="ch3">주택</option>
+														<option value="04" id="ch4">빌라</option>
+														<option value="05" id="ch5">상가</option>
+														<option value="06" id="ch6">토지</option>
+														<option value="07" id="ch7">자동차</option>
+														<option value="08" id="ch8">선박</option>	
+														<option value="09" id="ch9">항공기</option>	
+														-->														
 												</select>
 											</div>
 									</dd>
@@ -461,38 +467,38 @@ $(document).ready(function() {
 												</label>
 											</div>
 											<div class="checkbox">
-												<input type="checkbox" value="0" id="agree1Checkbox" name="agreeCheckBox">
+												<input type="checkbox" value="0" id="agree1Checkbox" name="agree_chk_1">
 												<label for="agree1Checkbox">
 													<a href="${pageContext.request.contextPath}/useTerm" target="_blank"><u>서비스 이용약관</u></a>에 동의합니다. (필수)
 												</label>
 											</div>
 											<div class="checkbox">
-												<input type="checkbox" value="0" id="agree2Checkbox" name="agreeCheckBox">
+												<input type="checkbox" value="0" id="agree2Checkbox" name="agree_chk_2">
 												<label for="agree2Checkbox">
 													<a href="${pageContext.request.contextPath}/pInfoProvideTerm" target="_blank"><u>개인(신용)정보제공</u></a>에 동의합니다. (필수)
 												</label>
 											</div>
 											<div class="checkbox">
-												<input type="checkbox" value="0" id="agree3Checkbox" name="agreeCheckBox">
+												<input type="checkbox" value="0" id="agree3Checkbox" name="agree_chk_3">
 												<label for="agree3Checkbox">
 													<a href="${pageContext.request.contextPath}/pInfoInquiryTerm" target="_blank"><u>개인(신용)정보조회</u></a>에 동의합니다. (필수)
 												</label>
 											</div>
 											<div class="checkbox">
-												<input type="checkbox" value="0" id="agree4Checkbox" name="agreeCheckBox">
+												<input type="checkbox" value="0" id="agree4Checkbox" name="agree_chk_4">
 												<label for="agree4Checkbox">
 													<a href="${pageContext.request.contextPath}/pInfoUseTerm" target="_blank"><u>개인(신용)정보수집, 이용</u></a>에 동의합니다. (필수)
 												</label>
 											</div>
 											
 											<div class="checkbox">
-												<input type="checkbox" value="0" id="agree5Checkbox" name="agreeCheckBox">
+												<input type="checkbox" value="0" id="agree5Checkbox" name="agree_chk_5">
 												<label for="agree5Checkbox">
 													<a href="${pageContext.request.contextPath}/uniqueInfoTerm" target="_blank"><u>고유식별정보 처리방침</u></a>에 동의합니다. (필수)
 												</label>
 											</div>
 											<div class="checkbox">
-												<input type="checkbox" value="0" id="agree6Checkbox" name="chk_select">
+												<input type="checkbox" value="0" id="agree6Checkbox" name="agree_chk_6">
 												<label for="agree6Checkbox">
 													<a href="${pageContext.request.contextPath}/pInfoSelectedTerm" target="_blank"><u>개인(신용)정보 선택적 수집, 이용 및 제공</u></a>에 동의합니다. (선택)
 												</label>
@@ -726,7 +732,7 @@ $(document).ready(function() {
 	});//ready
 	
 	$(".onlybank").change(function(){
-		//alert($(this).val());
+// 		alert($(this).val());
 		var bankStd = /^[0-9]{12,16}$/;
 		if($(this).val().match(bankStd)){
 			//alert($(this).val().match(licenseStd));
@@ -751,21 +757,21 @@ $(document).ready(function() {
 			var loanPeriodSelect = $('#loanPeriodSelect').val();
 			var loanAmt = $("#loan_period").val();
 			var loanGb = $("#loan_class").val();
-			var guaranteeType = $("#loanTypeSelect").val();
+			var guaranteeType = $("#guaranteeType").val();
+			var objectType = $("#object_type").val();
 			var repayTypeCd = $("#repay_method").val();
-<<<<<<< HEAD
 			var loan_bank_name = $("#loan_bank_name").val(); 
 			var loan_period = $("#loan_period").val();
 			var loan_amount = $("#loan_amount").val();
 
+// 			if(sex == undefined) {
+// 				alert("성별을 선택하세요.");
+// 				$(".sexRadio-label").focus();
+// 				return;
+// 			}
 			if(loan_amount == "") {
 				alert("대출계좌를 입력 해주세요.");
 				$("#loan_amount").focus();
-=======
-			if(sex == undefined) {
-				alert("성별을 선택하세요.");
-				$(".sexRadio-label").focus();
->>>>>>> branch 'master' of https://github.com/gaonuri/Codetiator.git
 				return;
 			}
 			if(loanAmt == ""){
@@ -802,12 +808,12 @@ $(document).ready(function() {
 				return;
 // 				$("#btn_cert1").modal();
 		});
-	});
+	});//인풋창 제약조건 //ready
 	
 	function tempFunction() {
 		$("#frmLoan").attr("action","${pageContext.request.contextPath}/addinfo");
 		document.frmLoan.submit();
-	}
+	}//frmLoan에 있는거 addinfo로 옳김
 	
 	$(function() {
 		
@@ -825,38 +831,54 @@ $(document).ready(function() {
 		
 		$("#agreeAllCheckbox").on("change", function() {
 			if($(this).is(":checked")) {
-				$("input:checkbox[name='agreeCheckBox']").prop("checked", true);
-				$("input:checkbox[name='agreeCheckBox']").attr("checked", true);
-				$("input:checkbox[name='chk_select']").prop("checked", true);
-				$("input:checkbox[name='chk_select']").attr("checked", true);
+				$("input:checkbox[name='agree_chk_1']").prop("checked", true);
+				$("input:checkbox[name='agree_chk_1']").attr("checked", true);
+				$("input:checkbox[name='agree_chk_2']").prop("checked", true);
+				$("input:checkbox[name='agree_chk_2']").attr("checked", true);
+				$("input:checkbox[name='agree_chk_3']").prop("checked", true);
+				$("input:checkbox[name='agree_chk_3']").attr("checked", true);
+				$("input:checkbox[name='agree_chk_4']").prop("checked", true);
+				$("input:checkbox[name='agree_chk_4']").attr("checked", true);
+				$("input:checkbox[name='agree_chk_5']").prop("checked", true);
+				$("input:checkbox[name='agree_chk_5']").attr("checked", true);
+				$("input:checkbox[name='agree_chk_6']").prop("checked", true);
+				$("input:checkbox[name='agree_chk_6']").attr("checked", true);
 			} else {
-				$("input:checkbox[name='agreeCheckBox']").prop("checked", false);
-				$("input:checkbox[name='agreeCheckBox']").attr("checked", false);
-				$("input:checkbox[name='chk_select']").prop("checked", false);
-				$("input:checkbox[name='chk_select']").attr("checked", false);
+				$("input:checkbox[name='agree_chk_1']").prop("checked", false);
+				$("input:checkbox[name='agree_chk_1']").attr("checked", false);
+				$("input:checkbox[name='agree_chk_2']").prop("checked", false);
+				$("input:checkbox[name='agree_chk_2']").attr("checked", false);
+				$("input:checkbox[name='agree_chk_3']").prop("checked", false);
+				$("input:checkbox[name='agree_chk_3']").attr("checked", false);
+				$("input:checkbox[name='agree_chk_4']").prop("checked", false);
+				$("input:checkbox[name='agree_chk_4']").attr("checked", false);
+				$("input:checkbox[name='agree_chk_5']").prop("checked", false);
+				$("input:checkbox[name='agree_chk_5']").attr("checked", false);
+				$("input:checkbox[name='agree_chk_6']").prop("checked", false);
+				$("input:checkbox[name='agree_chk_6']").attr("checked", false);
 			}
-		});
+		});//checkbox allselect 기능
 		
 		$("#loan_class").on("change", function() {
-			var loanGb = $(this).val();
+			var loan_class = $(this).val();
 			var str = "";
 			
-			if(loanGb == "01") {	// 개인신용
+			if(loan_class == "01") {	// 개인신용
 				str += "<option value=\"01\">개인신용</option>";
-			} else if(loanGb == "02") {	// 개인담보
+			} else if(loan_class == "02") {	// 개인담보
 // 				str += "<option value=\"\">선택하세요</option>";
 				str += "<option value=\"04\">부동산담보</option>";
 				str += "<option value=\"06\">동산담보</option>";
-			} else if(loanGb == "03") {	// 개인사업자신용
+			} else if(loan_class == "03") {	// 개인사업자신용
 				str += "<option value=\"03\">개인사업자신용</option>";
-			} else if(loanGb == "04") {	// 개인사업자담보
+			} else if(loan_class == "04") {	// 개인사업자담보
 // 				str += "<option value=\"\">선택하세요</option>";
 				str += "<option value=\"04\">부동산담보</option>";
 				str += "<option value=\"06\">동산담보</option>";
-		////////////////////////////////////////////////////////////////////////////////////
-			} else if(loanGb == "05") {	// 법인신용
+////////////////////////////////////////////////////////////////////////////////////
+			} else if(loan_class == "05") {	// 법인신용
 				str += "<option value=\"02\">법인신용</option>";
-			} else if(loanGb == "06") {	// 법인담보
+			} else if(loan_class == "06") {	// 법인담보
 // 				str += "<option value=\"\">선택하세요</option>";
 				str += "<option value=\"04\">부동산담보</option>";
 				str += "<option value=\"06\">동산담보</option>";
@@ -864,30 +886,31 @@ $(document).ready(function() {
 				str += "<option value=\"\">대출구분을 선택하세요</option>";
 			}
 			
-			var loanTypeSelect = $("#loanTypeSelect");
-			loanTypeSelect.empty();
-			loanTypeSelect.append(str);
+			var guaranteeType = $("#guarantee_type");
+			guaranteeType.empty();
+			guaranteeType.append(str);
 		});
 		
-		$("#loanTypeSelect").on("change", function() {
+		$("#loan_class").on("change", function() {
 			var guaranteeType = $(this).val();
 			var str = "";
-			
-			if(guaranteeType == "01") {	// 부동산 담보
-				str += "<option value=\"01\">아파트</option>";
-				str += "<option value=\"02\">주택</option>";
-				str += "<option value=\"02\">빌라</option>";
-				str += "<option value=\"02\">상가</option>";
-				str += "<option value=\"03\">토지</option>";
-			} else if(guaranteeType == "02") {	// 동산 담보
-				str += "<option value=\"01\">자동차</option>";
-				str += "<option value=\"01\">선박</option>";
-				str += "<option value=\"01\">항공기</option>";
-			} 
+			if (guaranteeType == "05"){
+				str += "<option value=\"01\">법인신용</option>";
+			} else if (guaranteeType == "06") {
+				str += "<option value=\"02\">아파트</option>";
+				str += "<option value=\"03\">주택</option>";
+				str += "<option value=\"04\">빌라</option>";
+				str += "<option value=\"05\">상가</option>";
+				str += "<option value=\"06\">토지</option>";	
+			} else {
+				str += "<option value=\"\">담보유형을 선택하세요</option>";
+			}
+			var objectType = $("#object_type");
+			objectType.empty();
+			objectType.append(str);
 		});
-		
-	////////////////////////////////////////////////////////////////////////////////////
-	
+////////////////////////////////////////////////////////////////////////////////////
+
 		var loginCusGbCd = ${loginCusGbCd};
 		var str = "";
 		if(loginCusGbCd == "1") {	// 일반회원
@@ -900,9 +923,37 @@ $(document).ready(function() {
 			str += "<option value=\"06\">법인담보</option>";
 		}
 		var loan_class = $("#loan_class");
+// 		loan_class.empty();
 		loan_class.append(str);
-	});
 		
+
+	});
+	
+	$(function() {
+		$("#guarantee_type").on("change", function() {
+			var loan_class =  $(this).val();
+			var str = "";
+			
+			if(loan_class == "04") {	// 부동산 담보
+				str += "<option value=\"02\">아파트</option>";
+				str += "<option value=\"03\">주택</option>";
+				str += "<option value=\"04\">빌라</option>";
+				str += "<option value=\"05\">상가</option>";
+				str += "<option value=\"06\">토지</option>";				
+			} else if (loan_class == "06") {
+				str += "<option value=\"07\">자동차</option>";	
+				str += "<option value=\"08\">선박</option>";
+				str += "<option value=\"09\">항공기</option>";	
+			} else {
+				str += "<option value=\"\">담보유형을 선택하세요</option>";
+			}
+			
+			var objectType = $("#object_type");
+			objectType.empty();
+			objectType.append(str);
+		});
+	});
+	
 		// 날짜는 데이트피커로 입력
 		/*$(".datepicker").on("keyup", function() {
 			$(this).val("");
@@ -948,7 +999,8 @@ $(document).ready(function() {
 		var loanPeriod = $('#loanPeriodSelect').val();
 		var loanAmt = $("#loanAmtText").val();
 		var loanGb = $("#loan_class").val();
-		var guaranteeType = $("#loanTypeSelect").val();
+		var guaranteeType = $("#guarantee_type").val();
+		var objectType = $("#object_type").val();
 		var loanPurpose = $("#loanPurposeSelect").val();
 		var repayTypeCd = $("#repayTypeCdSelect").val();
 		var agree1 = $('input:checkbox[id="agree1Checkbox"]').is(":checked");
@@ -966,7 +1018,8 @@ $(document).ready(function() {
 		if(!chkBool) { return; } else { chkBool = fn_checkVal("대출기간", loanPeriod, "loanPeriodSelect"); }
 		if(!chkBool) { return; } else { chkBool = fn_checkVal("대출금액", loanAmt, "loanAmtText"); }
 		if(!chkBool) { return; } else { chkBool = fn_checkVal("대출구분", loanGb, "loan_class"); }
-		if(!chkBool) { return; } else { chkBool = fn_checkVal("담보유형", guaranteeType, "loanTypeSelect"); }
+		if(!chkBool) { return; } else { chkBool = fn_checkVal("담보유형", guaranteeType, "guarantee_type"); }
+		if(!chkBool) { return; } else { chkBool = fn_checkVal("물건유형", objectType, "object_type"); }
 		if(!chkBool) { return; } else { chkBool = fn_checkVal("대출목적", loanPurpose, "loanPurposeSelect"); }
 		if(!chkBool) { return; } else { chkBool = fn_checkVal("상환방식", repayTypeCd, "repayTypeCdSelect"); }
 		if(!chkBool) { return; } else { chkBool = fn_checkVal("서비스 이용약관", agree1, "agree1Checkbox"); }
@@ -1012,6 +1065,8 @@ $(document).ready(function() {
 		comAjax.addParam("loanPeriodCd", $("#loanPeriodSelect").val());
 		comAjax.addParam("loanAmt", $("#loanAmtText").val() + "0000");
 		comAjax.addParam("loanGbCd", $("#loan_class").val());
+		comAjax.addParam("loan_class", $("#guarantee_type").val());
+		comAjax.addParam("guarantee_type", $("#object_type").val());
 		comAjax.addParam("loanTypeCd", $("#loanTypeSelect").val());
 		comAjax.addParam("loanPurposeCd", $("#loanPurposeSelect").val());
 		comAjax.addParam("repayTypeCd", $("#repayTypeCdSelect").val());
