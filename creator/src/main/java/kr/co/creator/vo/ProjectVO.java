@@ -2,17 +2,17 @@ package kr.co.creator.vo;
 
 // 프로젝트
 public class ProjectVO {
-	private String project_num;		// 프로젝트번호
-	private String img;			// 사진(경로)
+	private String project_num;			// 프로젝트번호
+	private String img;					// 사진(경로)
 	private String project_name;		// 이름
-	private String rate;			// 금리
-	private String price;			// 모집금액
+	private String rate;				// 금리
+	private String price;				// 모집금액
 	private String current_price;		// 현재금액
-	private String ach_rate;		// 모집현황
-	private String ach_state;		// 모집상태
+	private String ach_rate;			// 모집현황
+	private String ach_state;			// 모집상태
 	private String repay_method;		// 상환방식
-	private String deadline;		// 남은기간
-	private String refund;			// 상환기간
+	private String deadline;			// 남은기간
+	private String refund;				// 상환기간
 	private String refund_count;		// 상환차수
 	private String loan_history;		// 대출자 상환내역
 	private String guarantee_price;		// 남은대출금액
@@ -30,11 +30,15 @@ public class ProjectVO {
 	private String judge_status;		// 심사상태
 	private String ing_status;			// 1:승인 2:심사 3:반려
 	private String customer;			// 투자자수
-
-
+	private String loan_count;			// 투자받은횟수
+	private String project_count;		// 총프로젝트수
+	private String rate_average;		// 평균 연수익률
+	private int sum_price;				// 누적대출액
+	private int sum_guarantee_price;	// 현재대출잔액
+	
 	private String loan_bank_name;		// 대출은행명
-	private String user_num;		// (참조)유저번호
-	private String busi_num;		// (참조)법인유저번호
+	private String user_num;			// (참조)유저번호
+	private String busi_num;			// (참조)법인유저번호
 	
 	public String getLoan_bank_name() {
 		return loan_bank_name;
@@ -237,6 +241,42 @@ public class ProjectVO {
 	public void setCustomer(String customer) {
 		this.customer = customer;
 	}//customer
+	
+	public String getLoan_count() {
+		return loan_count;
+	}
+	public void setLoan_count(String loan_count) {
+		this.loan_count = loan_count;
+	}//loan_count
+	
+	public String getProject_count() {
+		return project_count;
+	}
+	public void setProject_count(String project_count) {
+		this.project_count = project_count;
+	}//project_count
+	
+	public String getRate_average() {
+		return rate_average;
+	}
+	public void setRate_average(String rate_average) {
+		this.rate_average = rate_average;
+	}//rate_average
+	
+	public int getSum_price() {
+		return sum_price;
+	}
+	public void setSum_price(int sum_price) {
+		this.sum_price = sum_price;
+	}//sum_price
+	
+	public int getSum_guarantee_price() {
+		return sum_guarantee_price;
+	}
+	public void setSum_guarantee_price(int sum_guarantee_price) {
+		this.sum_guarantee_price = sum_guarantee_price;
+	}//sum_guarantee_price
+	
 	
 	//참조
 	public String getUser_num() {
