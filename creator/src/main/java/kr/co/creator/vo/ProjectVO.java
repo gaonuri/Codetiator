@@ -35,11 +35,11 @@ public class ProjectVO {
 	private String rate_average;		// 평균 연수익률
 	private int sum_price;				// 누적대출액
 	private int sum_guarantee_price;	// 현재대출잔액
-	
 	private String loan_bank_name;		// 대출은행명
+	
 	private String user_num;			// (참조)유저번호
 	private String busi_num;			// (참조)법인유저번호
-	
+
 	public String getLoan_bank_name() {
 		return loan_bank_name;
 	}

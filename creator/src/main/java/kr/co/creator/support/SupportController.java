@@ -56,6 +56,27 @@ public class SupportController {
 		model.addAttribute("supportlist3", support3);
 		return "support/support";
 	}
+	
+	@RequestMapping(value = "/support_test", method = RequestMethod.GET)
+	public String support_test(Model model, NoticeVO vo) {
+		logger.info("support");
+		List<NoticeVO> support = null;   // 전체
+		List<NoticeVO> support2 = null;  // 새소식
+		List<NoticeVO> support3 = null;  // 운영사항
+		
+		support = service.supportList();
+		
+		vo.setNotice_type("1");
+		support2 = service.supportList2(vo);
+		
+		vo.setNotice_type("2");
+		support3 = service.supportList2(vo);
+		
+		model.addAttribute("supportlist", support);
+		model.addAttribute("supportlist2", support2);
+		model.addAttribute("supportlist3", support3);
+		return "support/support_test";
+	}
 
 	@RequestMapping(value="/formi"
 			,method=RequestMethod.GET)
