@@ -5,6 +5,7 @@ public class InvestVO {
 	private String invest_num;		// 투자번호
 	private String invest_price;	// 투자금액
 	private String invest_date;		// 투자날짜
+	private String sum_invest_price;	// 총투자금액
 	
 	private String user_num;		// (참조)유저번호
 	private String busi_num;		// (참조)법인 유저 순서
@@ -32,6 +33,13 @@ public class InvestVO {
 	public void setInvest_date(String invest_date) {
 		this.invest_date = invest_date;
 	}//invest_date
+	
+	public String getSum_invest_price() {
+		return sum_invest_price;
+	}
+	public void setSum_invest_price(String sum_invest_price) {
+		this.sum_invest_price = sum_invest_price;
+	}//sum_invest_price
 	
 	
 	//참조

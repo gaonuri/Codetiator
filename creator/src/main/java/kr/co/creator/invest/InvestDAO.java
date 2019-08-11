@@ -33,6 +33,20 @@ public class InvestDAO {
 		return list;
 	}//invest_list
 
+	public ProjectVO project_calc() {
+		ProjectVO proCalcVO = null;
+		proCalcVO = sqlSession.selectOne("InvestMapper.project_calc");
+		
+		return proCalcVO;
+	}//invest_list_all
+
+	public InvestVO invest_calc() {
+		InvestVO inVO = null;
+		inVO = sqlSession.selectOne("InvestMapper.invest_calc");
+		
+		return inVO;
+	}//invest_calc
+
 	public InvestVO invest_detail(InvestVO inVO) {
 		System.out.println("DAO11111111111111111 : " + inVO);
 		inVO = sqlSession.selectOne("InvestMapper.investDetail", inVO);

@@ -764,11 +764,19 @@ $(document).ready(function() {
 			var loan_period = $("#loan_period").val();
 			var loan_amount = $("#loan_amount").val();
 
+<<<<<<< HEAD
 // 			if(sex == undefined) {
 // 				alert("성별을 선택하세요.");
 // 				$(".sexRadio-label").focus();
 // 				return;
 // 			}
+=======
+//			if(sex == undefined) {
+//				alert("성별을 선택하세요.");
+//				$(".sexRadio-label").focus();
+//				return;
+//			}
+>>>>>>> branch 'master' of https://github.com/gaonuri/Codetiator.git
 			if(loan_amount == "") {
 				alert("대출계좌를 입력 해주세요.");
 				$("#loan_amount").focus();

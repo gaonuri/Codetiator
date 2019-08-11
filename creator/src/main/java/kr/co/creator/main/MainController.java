@@ -25,7 +25,6 @@ public class MainController {
 		logger.info("main");
 
 		List<ProjectVO> list = null;
-		List<ProjectVO> list_g = null;
 		list = mainService.project_list(proVO);
 		model.addAttribute("projectList", list);
 		

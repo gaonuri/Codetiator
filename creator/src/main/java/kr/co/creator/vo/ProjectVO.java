@@ -30,6 +30,7 @@ public class ProjectVO {
 	private String loan_history;		// 대출자 상환내역
 	private String guarantee_price;		// 남은대출금액
 	private String customer;			// 투자자수
+<<<<<<< HEAD
 	private String rate;				// 금리
 	private String ach_rate;			// 모집현황
 	private String ach_state;			// 모집상태
@@ -92,6 +93,18 @@ public class ProjectVO {
 	public void setAgree_chk_6(String agree_chk_6) {
 		this.agree_chk_6 = agree_chk_6;
 	}
+=======
+	private String loan_count;			// 투자받은횟수
+	private String project_count;		// 총프로젝트수
+	private String rate_average;		// 평균 연수익률
+	private int sum_price;				// 누적대출액
+	private int sum_guarantee_price;	// 현재대출잔액
+	private String loan_bank_name;		// 대출은행명
+	
+	private String user_num;			// (참조)유저번호
+	private String busi_num;			// (참조)법인유저번호
+
+>>>>>>> branch 'master' of https://github.com/gaonuri/Codetiator.git
 	public String getLoan_bank_name() {
 		return loan_bank_name;
 	}
@@ -293,6 +306,42 @@ public class ProjectVO {
 	public void setCustomer(String customer) {
 		this.customer = customer;
 	}//customer
+	
+	public String getLoan_count() {
+		return loan_count;
+	}
+	public void setLoan_count(String loan_count) {
+		this.loan_count = loan_count;
+	}//loan_count
+	
+	public String getProject_count() {
+		return project_count;
+	}
+	public void setProject_count(String project_count) {
+		this.project_count = project_count;
+	}//project_count
+	
+	public String getRate_average() {
+		return rate_average;
+	}
+	public void setRate_average(String rate_average) {
+		this.rate_average = rate_average;
+	}//rate_average
+	
+	public int getSum_price() {
+		return sum_price;
+	}
+	public void setSum_price(int sum_price) {
+		this.sum_price = sum_price;
+	}//sum_price
+	
+	public int getSum_guarantee_price() {
+		return sum_guarantee_price;
+	}
+	public void setSum_guarantee_price(int sum_guarantee_price) {
+		this.sum_guarantee_price = sum_guarantee_price;
+	}//sum_guarantee_price
+	
 	
 	//참조
 	public String getUser_num() {
