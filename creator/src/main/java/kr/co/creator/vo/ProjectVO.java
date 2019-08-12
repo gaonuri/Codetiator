@@ -11,6 +11,12 @@ public class ProjectVO {
 	private String more_information;	// 상세정보
 	private String loan_bank_name;		// 대출은행명
 	private String loan_amount;			// 대출계좌
+<<<<<<< HEAD
+	private String loan_class;			// 대출구분
+	private String judge_status;		// 심사상태
+	private String ing_status;			// 1:승인 2:심사 3:반려
+	private String customer;			// 투자자수
+=======
 	private String price;				// 모집금액
 	private String loan_period;			// 대출기간
 	private String repay_method;		// 상환방식
@@ -37,8 +43,14 @@ public class ProjectVO {
 	private String deadline;			// 남은기간
 	private String refund_due_date;		// 상환예정일
 	private String refund_end;			// 상환완료일
+>>>>>>> branch 'master' of https://github.com/gaonuri/Codetiator.git
 	private String ad_price;			// 광고금액
 	private String ad_grade;			// 광고등급
+<<<<<<< HEAD
+	private String loan_bank_name;		// 대출은행명
+=======
+>>>>>>> branch 'master' of https://github.com/gaonuri/Codetiator.git
+	
 	
 	private String user_num;			// (참조)유저번호
 	private String busi_num;			// (참조)법인유저번호

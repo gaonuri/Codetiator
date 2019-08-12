@@ -82,4 +82,10 @@ public class JoinController {
 		logger.info("join");
 		return "join/join";
 	}//join
+	
+	@RequestMapping(value = "/join_new", method = RequestMethod.GET)
+	public String join_new() {
+		logger.info("join_new");
+		return "join/join_new";
+	}//join_new
 }

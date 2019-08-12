@@ -34,7 +34,7 @@
 	  Author: TemplateMag.com
 	  License: https://templatemag.com/license/
 	======================================================= -->
-		<script type="text/javascript">
+	<script type="text/javascript">
 			$(document).ready(function() {
 				$("#write_new").click(function() {
 					location.href = "${pageContext.request.contextPath}/formi";
@@ -76,6 +76,272 @@
 		</script>
 		
 </head>
+<style>
+body{
+	background-color: #f7f7f7;
+}
+
+#notice-banner{
+	width: 100%;
+	height: 430px;
+	color: #fff;
+	background: url(/images/common/common_banner_title.jpg)center 0% no-repeat;
+				/*
+				linear-gradient(120deg,  #712594, #9968fe, #ff5c5c, #a55cff, #712594);
+				*/
+	background-size: 100%;/*100% 110%, 600% 100%;
+	-webkit-animation: Gradient 100s ease normal;
+	-moz-animation: Gradient 100s ease normal;
+	animation: Gradient 100s ease normal;
+	*/
+	-webkit-background-size: cover; 
+	-moz-background-size: cover; 
+	-o-background-size: cover;
+	background-attachment: fixed;
+	
+	
+}
+/*
+@-webkit-keyframes Gradient {
+	0% {
+		background-position: 0% 50%
+	}
+	50% {
+		background-position: 100% 50%
+	}
+	100% {
+		background-position: 0% 50%
+	}
+}
+
+@-moz-keyframes Gradient {
+	0% {
+		background-position: 0% 50%
+	}
+	50% {
+		background-position: 100% 50%
+	}
+	100% {
+		background-position: 0% 50%
+	}
+}
+
+@keyframes Gradient {
+	0% {
+		background-position: 0% 50%
+	}
+	50% {
+		background-position: 100% 50%
+	}
+	100% {
+		background-position: 0% 50%
+	}
+}
+*/
+
+/* Banner Style */
+
+#notice-banner{
+	position: relative;
+	overflow: hidden;
+	/*  그라데이션 백그라운드 테스트용
+	background: url(/images/common/common_banner_title.jpg) center 0% no-repeat;
+	background-color:#712594;
+	background-size: 100%;
+	-webkit-background-size: cover; 
+	-moz-background-size: cover; 
+	-o-background-size: cover;
+	background-attachment: fixed;
+	*/
+	color: #fff;
+}
+
+@media (max-width: 767px) {
+	#notice-banner{
+		height: 347px;
+	}
+}
+
+#notice-banner .section-body{
+	color: #fff;
+	position: relative;
+	padding: 200px 20px 0px 20px;
+}
+
+@media (max-width: 767px) {
+	#notice-banner .section-body{
+		padding: 160px 20px 0px 20px;
+	}
+}
+
+#notice-banner .notice-title{
+	font-size:26pt;
+	line-height:1.2;
+	text-shadow:2px 2px 2px #555;
+	
+	
+}
+
+@media (max-width: 767px) {
+	#notice-banner .notice-title{
+		font-size:21pt;
+		line-height:1.2;
+		text-shadow:2px 2px 2px #555;
+	}
+}
+
+#board .section-body .wrap {
+	padding: 50px 0 111px 0;
+}
+@media (max-width: 767px) {
+	#board .section-body .wrap {
+		padding: 5px;
+	}
+}
+
+#board .section-body .wrap .box {
+	border-color: #d9d9de;
+	border-style: solid;
+	border-width: 1px;
+	border-radius: 4px;
+	padding: 20px 40px;
+	background-color: #fff;
+	font-size: 14px;
+}
+
+@media (max-width: 767px) {
+	#board .section-body .wrap .box {
+		padding: 5px;
+	}
+}
+
+#board .section-body .wrap .box .title {
+	font-size: 14px;
+	font-weight: normal;
+}
+
+#board .section-body .wrap .box .title a {
+	color: #5a5a5a;
+}
+
+#board .section-body .wrap .box .noticeRow {
+	background-color: #fafafa;
+	font-weight: bold;
+}
+
+#board .section-body .wrap .box .noticeSeq {
+	border-style: none;
+	background-color: #712594;
+	border-radius: 2px;
+	color: #fff;
+	padding: 5px;
+	font-size: 12px;
+}
+
+#board .section-body .wrap .box th {
+	text-align: center;
+	padding: 5px;
+}
+
+#board .section-body .wrap .box .seq {
+	text-align: center;
+	font-weight: bold;
+	color: #712594;
+}
+
+#board .section-body .wrap .box .readCnt {
+	text-align: center;
+}
+
+#board .section-body .wrap .box .indDate {
+	text-align: center;
+}
+
+@media (max-width: 767px) {
+	#board .section-body .wrap .box .seq {
+		/*display: none;*/
+		font-size: 12px;
+	}
+	#board .section-body .wrap .box .noticeSeq {
+		padding: 2px;
+		font-size: 10px;
+	}
+	#board .section-body .wrap .box .title a {
+		font-size: 12px;
+	}
+	#board .section-body .wrap .box .readCnt {
+		font-size: 12px;
+	}
+	#board .section-body .wrap .box .indDate {
+		/*display: none;*/
+		font-size: 12px;
+	}
+}
+
+#board .section-body .wrap .box .hrTop {
+	margin-top: 5px;
+	margin-bottom: 20px;
+}
+
+#board .section-body .wrap .box .detTitle {
+	font-size: 18px;
+	font-weight: bold;
+}
+
+#board .section-body .wrap .box .detInsNm {
+	font-size: 12px;
+}
+
+#board .section-body .wrap .box .detInsDate {
+	font-size: 12px;
+	color: #8c8c8c;
+}
+
+#board .section-body .wrap .box .detContent {
+	padding: 5px;
+}
+
+#board .section-body .wrap .box .detContent img{
+	max-width: 100%;
+	height: auto;
+}
+
+#board .section-body .wrap .box .button {
+	text-align: center;
+}
+
+@media (max-width: 767px) {
+	#board .section-body .wrap .box .detTitle {
+		font-size: 14px;
+	}
+	#board .section-body .wrap .box .detContent {
+		font-size: 12px;
+	}
+	#board .section-body .wrap .box .button button {
+		font-size: 12px;
+	}
+}
+
+.board_view {border-bottom:1px solid #ccc;width: 100%}
+.board_view tbody th {text-align:left;background:#f7f7f7;color:#3b3a3a}
+.board_view tbody th.list_tit {font-size:13px;color:#000;letter-spacing:0.1px}
+.board_view tbody .no_line_b th, .board_view tbody .no_line_b td {border-bottom:none}
+.board_view tbody th, .board_view tbody td {padding:15px 0 16px 16px;border-bottom:1px solid #ccc}
+.board_view tbody td.view_text {border-top:1px solid #ccc; border-bottom:1px solid #ccc;padding:20px 15px 20px 15px}
+.board_view tbody th.th_file {padding:0 0 0 15px; vertical-align:middle}
+
+
+.nav-tabs > li > a {
+	
+}
+/* xd �쟻�슜�떆 */
+@media (max-width: 767px) {
+	.nav-tabs > li > a {
+		padding: 5px 10px;
+		font-size: 12px;
+	}
+}
+</style>
 
 <body>
 	<section id="container">
@@ -103,10 +369,13 @@
 		
 
 		<!--main content start-->
-	    <section id="main-content">
-	     	 <section class="wrapper">
-	     	 	<br>
-	       	 	<<div class="box">
+	    <section id="board">
+		<div class="container">
+			<div class="section-body">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="wrap">
+							<div class="box">
 								<div role="tabpanel">
 									<!-- Nav tabs -->
 									<ul class="nav nav-tabs" role="tablist" id="notiTab">
@@ -114,16 +383,10 @@
 											<a href="#allTab" aria-controls="all" role="tab" data-toggle="tab" id="all">전체</a>
 										</li>
 										<li role="presentation">
-											<a href="#eventTab" aria-controls="event" role="tab" data-toggle="tab" id="event">이벤트</a>
+											<a href="#eventTab" aria-controls="event" role="tab" data-toggle="tab" id="event">새소식</a>
 										</li>
 										<li role="presentation">
 											<a href="#mngmntTab" aria-controls="mngmnt" role="tab" data-toggle="tab" id="mngmnt">운영사항</a>
-										</li>
-										<li role="presentation">
-											<a href="#systemTab" aria-controls="system" role="tab" data-toggle="tab" id="system">시스템</a>
-										</li>
-										<li role="presentation">
-											<a href="#rgstrDocuTab" aria-controls="rgstrDocu" role="tab" data-toggle="tab" id="rgstrDocu">등기서류</a>
 										</li>
 									</ul>
 									<!-- Tab panes -->
@@ -142,7 +405,20 @@
 														<th scope="col">등록일</th>
 													</tr>
 												</thead>
-												<tbody id="allBody"><tr class="noticeRow">	<td class="seq"><span class="noticeSeq">공지<span></span></span></td>	<td class="title noticeTitle">		<a href="javascript:(void(0));" onclick="fn_openBoardDetail(&quot;91&quot;,&quot;EVENT&quot;)" name="">[상품권 발송안내]★오늘은 둘 다 땡긴다 TWO★ 부동산·홈쇼핑 '2개' 상품에 투자하면 '신세계 백화점 상품권'이 쑤욱!</a>	</td>	<td class="indDate">2019.08.07</td></tr><tr class="noticeRow">	<td class="seq"><span class="noticeSeq">공지<span></span></span></td>	<td class="title noticeTitle">		<a href="javascript:(void(0));" onclick="fn_openBoardDetail(&quot;89&quot;,&quot;EVENT&quot;)" name="">[동시투자 이벤트 2탄]★오늘은 둘 다 땡긴다 TWO★ 부동산·홈쇼핑 '2개' 상품에 투자하면 '신세계 백화점 상품권'이 쑤욱! (7/26 ~ 상품마감시까지)</a>	</td>	<td class="indDate">2019.07.26</td></tr><tr class="noticeRow">	<td class="seq"><span class="noticeSeq">공지<span></span></span></td>	<td class="title noticeTitle">		<a href="javascript:(void(0));" onclick="fn_openBoardDetail(&quot;86&quot;,&quot;EVENT&quot;)" name="">[출석체크 이벤트] 7월 ★여름맞이★ 룰렛 이벤트 (7/3~7/31, 룰렛으로 BR 아이스크림에 도전하세요!)</a>	</td>	<td class="indDate">2019.07.16</td></tr><tr class="noticeRow">	<td class="seq"><span class="noticeSeq">공지<span></span></span></td>	<td class="title noticeTitle">		<a href="javascript:(void(0));" onclick="fn_openBoardDetail(&quot;256&quot;,&quot;NOTI&quot;)" name="">[홈쇼핑] 최대박네 대창막창 스페셜리워드 추첨결과 안내_수정</a>	</td>	<td class="indDate">2019.06.18</td></tr><tr class="noticeRow">	<td class="seq"><span class="noticeSeq">공지<span></span></span></td>	<td class="title noticeTitle">		<a href="javascript:(void(0));" onclick="fn_openBoardDetail(&quot;253&quot;,&quot;NOTI&quot;)" name="">『농협은행 P2P자금관리(예치금) 3시간 지연출금제』시행 안내</a>	</td>	<td class="indDate">2019.06.14</td></tr><tr class="noticeRow">	<td class="seq"><span class="noticeSeq">공지<span></span></span></td>	<td class="title noticeTitle">		<a href="javascript:(void(0));" onclick="fn_openBoardDetail(&quot;251&quot;,&quot;NOTI&quot;)" name="">미드레이트대부 대부거래표준약관 개정 안내 (19.6.20 시행)</a>	</td>	<td class="indDate">2019.06.13</td></tr><tr class="noticeRow">	<td class="seq"><span class="noticeSeq">공지<span></span></span></td>	<td class="title noticeTitle">		<a href="javascript:(void(0));" onclick="fn_openBoardDetail(&quot;79&quot;,&quot;EVENT&quot;)" name="">[홈쇼핑] 한샘오젠 식기건조대 스페셜리워드 추첨결과 안내_수정</a>	</td>	<td class="indDate">2019.06.11</td></tr><tr class="noticeRow">	<td class="seq"><span class="noticeSeq">공지<span></span></span></td>	<td class="title noticeTitle">		<a href="javascript:(void(0));" onclick="fn_openBoardDetail(&quot;57&quot;,&quot;SYSTEM&quot;)" name="">[블록체인서비스 출시] NH스마트고지서 원리금수취권 발급 방법 안내</a>	</td>	<td class="indDate">2019.04.16</td></tr><tr class="noticeRow">	<td class="seq"><span class="noticeSeq">공지<span></span></span></td>	<td class="title noticeTitle">		<a href="javascript:(void(0));" onclick="fn_openBoardDetail(&quot;54&quot;,&quot;SYSTEM&quot;)" name="">상환 시 원금 차액보정 프로세스 적용완료(19.1.28)</a>	</td>	<td class="indDate">2019.01.28</td></tr><tr class="noticeRow">	<td class="seq"><span class="noticeSeq">공지<span></span></span></td>	<td class="title noticeTitle">		<a href="javascript:(void(0));" onclick="fn_openBoardDetail(&quot;48&quot;,&quot;NOTI&quot;)" name="">개인투자자 투자한도 상향 안내(시행일자 18.02.27) -소득적격 증빙서류 안내</a>	</td>	<td class="indDate">2018.02.26</td></tr><tr class="noticeRow">	<td class="seq"><span class="noticeSeq">공지<span></span></span></td>	<td class="title noticeTitle">		<a href="javascript:(void(0));" onclick="fn_openBoardDetail(&quot;43&quot;,&quot;NOTI&quot;)" name="">미성년자 P2P금융 플랫폼 이용 시 필요한 서류 안내</a>	</td>	<td class="indDate">2017.12.11</td></tr><tr class="noticeRow">	<td class="seq"><span class="noticeSeq">공지<span></span></span></td>	<td class="title noticeTitle">		<a href="javascript:(void(0));" onclick="fn_openBoardDetail(&quot;39&quot;,&quot;NOTI&quot;)" name="">미드레이트 투자 적립 포인트 비율 변경 안내 - 투자 대기 포인트 관련 (RPM)</a>	</td>	<td class="indDate">2017.09.25</td></tr><tr>	<td class="seq">92</td>	<td class="title">		<a href="javascript:(void(0));" onclick="fn_openBoardDetail(&quot;92&quot;,&quot;EVENT&quot;)" name="">[홈쇼핑] 쿠쿠 회전 블렌더(3차) 스페셜리워드 추첨결과 안내</a>	</td>	<td class="indDate">2019.08.08</td></tr><tr>	<td class="seq">270</td>	<td class="title">		<a href="javascript:(void(0));" onclick="fn_openBoardDetail(&quot;270&quot;,&quot;NOTI&quot;)" name="">[중도상환안내] 부동산 363호</a>	</td>	<td class="indDate">2019.08.08</td></tr><tr>	<td class="seq">269</td>	<td class="title">		<a href="javascript:(void(0));" onclick="fn_openBoardDetail(&quot;269&quot;,&quot;NOTI&quot;)" name="">[모집취소안내] 부동산 컨소시움33호</a>	</td>	<td class="indDate">2019.08.06</td></tr></tbody>
+												<c:forEach items="${supportlist}" var="vo" varStatus="status">
+													<tbody id="allBody">
+													<tr class="noticeRow">	
+													<td><a href="support_detail?notice_num=${vo.notice_num}">공지</a><span></span></span></td>
+											     	<td class="title noticeTitle"><a href="support_detail?notice_num=${vo.notice_num}">${vo.title}</a>	</td>	
+											     	<td class="indDate">${vo.notice_date}</td>
+											     	</tr>
+										     		
+<!-- 										     		<tr>	<td class="seq">92</td>	 -->
+<!-- 										     		<td class="title">		<a href="javascript:(void(0));" onclick="fn_openBoardDetail(&quot;92&quot;,&quot;EVENT&quot;)" name="">[홈쇼핑] 쿠쿠 회전 블렌더(3차) 스페셜리워드 추첨결과 안내</a>	</td> -->
+<!-- 										     		<td class="indDate">2019.08.08</td> -->
+<!-- 										     		</tr> -->
+									     			</tbody>
+									     		</c:forEach>
 											</table>
 										</div>
 										<div role="tabpanel" class="tab-pane fade" id="eventTab">
@@ -159,8 +435,20 @@
 														<th scope="col">등록일</th>
 													</tr>
 												</thead>
-												<tbody id="eventBody">
-												</tbody>
+												<c:forEach items="${supportlist2}" var="vo" varStatus="status">
+													<tbody id="eventBody">
+													<tr class="noticeRow">	
+													<td><a href="support_detail?notice_num=${vo.notice_num}">공지</a><span></span></span></td>
+											     	<td class="title noticeTitle"><a href="support_detail?notice_num=${vo.notice_num}">${vo.title}</a>	</td>	
+											     	<td class="indDate">${vo.notice_date}</td>
+											     	</tr>
+										     		
+<!-- 										     		<tr>	<td class="seq">92</td>	 -->
+<!-- 										     		<td class="title">		<a href="javascript:(void(0));" onclick="fn_openBoardDetail(&quot;92&quot;,&quot;EVENT&quot;)" name="">[홈쇼핑] 쿠쿠 회전 블렌더(3차) 스페셜리워드 추첨결과 안내</a>	</td> -->
+<!-- 										     		<td class="indDate">2019.08.08</td> -->
+<!-- 										     		</tr> -->
+									     			</tbody>
+									     		</c:forEach>
 											</table>
 										</div>
 										<div role="tabpanel" class="tab-pane fade" id="mngmntTab">
@@ -178,42 +466,6 @@
 													</tr>
 												</thead>
 												<tbody id="mngmntBody">
-												</tbody>
-											</table>
-										</div>
-										<div role="tabpanel" class="tab-pane fade in active" id="systemTab">
-											<table class="table table-hover">
-												<colgroup>
-													<col width="15%">
-													<col width="*">
-													<col width="15%">
-												</colgroup>
-												<thead style="display: none;">
-													<tr>
-														<th scope="col">순번</th>
-														<th scope="col">제목</th>
-														<th scope="col">등록일</th>
-													</tr>
-												</thead>
-												<tbody id="systemBody">
-												</tbody>
-											</table>
-										</div>
-										<div role="tabpanel" class="tab-pane fade in active" id="rgstrDocuTab">
-											<table class="table table-hover">
-												<colgroup>
-													<col width="15%">
-													<col width="*">
-													<col width="15%">
-												</colgroup>
-												<thead style="display: none;">
-													<tr>
-														<th scope="col">순번</th>
-														<th scope="col">제목</th>
-														<th scope="col">등록일</th>
-													</tr>
-												</thead>
-												<tbody id="rgstrDocuBody">
 												</tbody>
 											</table>
 										</div>
@@ -237,10 +489,13 @@
 										<ul class="pagination pagination-sm" id="PAGE_NAVI"><li class="page-item first disabled"><a href="#" class="page-link">«</a></li><li class="page-item prev disabled"><a href="#" class="page-link">&lt;</a></li><li class="page-item active"><a href="#" class="page-link">1</a></li><li class="page-item"><a href="#" class="page-link">2</a></li><li class="page-item"><a href="#" class="page-link">3</a></li><li class="page-item"><a href="#" class="page-link">4</a></li><li class="page-item"><a href="#" class="page-link">5</a></li><li class="page-item next"><a href="#" class="page-link">&gt;</a></li><li class="page-item last"><a href="#" class="page-link">»</a></li></ul>
 									</div>
 								</div>
-							</div>iv>
-	        <!-- row -->
-	      </section>
-	    </section>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
 	    <!-- /MAIN CONTENT -->
 	    <!--main content end-->
 		<!--footer start-->
