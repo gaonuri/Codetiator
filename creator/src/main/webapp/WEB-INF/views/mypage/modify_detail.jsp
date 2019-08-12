@@ -657,19 +657,7 @@ $(document).ready(function() {
 							<br><br><span><font size="2">반드시 본인명의 계좌 은행을 선택해주세요.</font></span><br>
 							</td>
 							<td class="condition-content">
-								<select id="cusBankCdSelect" class="form-control" name="cusBankCd">
-									<option value="">${mypagebank.bank_name}</option>
-										<option value="01">신한은행</option>
-										<option value="02">국민은행</option>
-										<option value="03">우리은행</option>
-										<option value="04">하나은행</option>
-										<option value="05">씨티은행</option>
-										<option value="06">부산은행</option>
-										<option value="07">경남은행</option>
-										<option value="08">광주은행</option>
-										<option value="09">제주은행</option>
-										<option value="10">산업은행</option>		
-								</select>
+								<input type="text" class="form-control" id="cusBankCdSelect" maxlength="14" name="cusBankCd" readonly="readonly" value="${mypagebank.bank_name}">
 							</td>
 						</tr>
 						<tr>
@@ -677,7 +665,7 @@ $(document).ready(function() {
 							<br><br><p><font size="2">계좌번호를 정확히 입력해주세요.</font></p>
 							</td>
 							<td class="condition-content">
-								<input type="text" class="form-control" id="cusAccount" maxlength="14" value="${mypagebank.bank_num}">
+								<input type="text" class="form-control" id="cusAccount" maxlength="14" readonly="readonly" value="${mypagebank.bank_num}">
 							</td>
 							<td></td>
 						</tr>
@@ -885,10 +873,10 @@ $(document).ready(function() {
 										</div>
 										<div class="row">
 											<div class="col-xs-12 col-sm-12 col-md-12">
-												<span class="modal-body-light">&nbsp;● 인증된 이메일로 인증번호를 발송하였습니다.</span>
+												<span class="modal-body-light">&nbsp;● 인증된 이메일로 인증번호를 발송합니다.</span>
 											</div>
 											<div class="col-xs-12 col-sm-12 col-md-12">
-												<span class="modal-body-light">&nbsp;● 문의사항은 1:1문의사항을 이용하시기 바랍니다.</span>
+												<span class="modal-body-light">&nbsp;● 타인 도용시 법적인 제제를 받을 수 있습니다.</span>
 											</div>
 										</div>
 										<div id="pInfDiv" style="">
@@ -928,12 +916,12 @@ $(document).ready(function() {
 											</div>
 												<div class="clearfix"></div>
 												<div class="col-xs-12 col-sm-12 col-md-12">
-													<span class="modal-body-light font-purple">&nbsp;● 정상처리가 불가할 경우 1:1문의사항을 이용하시기 바랍니다.</span>
+													<span class="modal-body-light ">&nbsp;● 정상처리가 불가할 경우 <a href="${pageContext.request.contextPath}/inquiry" target="_blank" class="font-purple">1:1문의사항</a>을 이용하시기 바랍니다.</span>
 												</div>
 												<div class="clearfix"></div>
 												<div class="col-xs-12 col-sm-12 col-md-12">
 													<span class="modal-body-strong">※ 본인과 다를시 불이익이 발생 할 수 있습니다.</span>
-													<span class="modal-body-light">&nbsp;<a href="${pageContext.request.contextPath}/support" target="_blank">공지사항</a>을 참고하세요.</span>
+													<span class="modal-body-light">&nbsp;<a href="${pageContext.request.contextPath}/support" target="_blank" class="font-purple">공지사항</a>을 참고하세요.</span>
 												</div>
 											</div>
 										</div>
