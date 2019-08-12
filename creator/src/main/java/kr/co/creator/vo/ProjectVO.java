@@ -40,6 +40,7 @@ public class ProjectVO {
 	private String ad_price;			// 광고금액
 	private String ad_grade;			// 광고등급
 	
+	
 	private String user_num;			// (참조)유저번호
 	private String busi_num;			// (참조)법인유저번호
 	
