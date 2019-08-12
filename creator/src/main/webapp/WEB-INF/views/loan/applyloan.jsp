@@ -172,7 +172,7 @@ $(document).ready(function() {
     margin-left: auto;
 }
 #loanGuide-banner {
-    background: url(${pageContext.request.contextPath}/resources/bootstrap/img/blog-bg.jpg)no-repeat center center fixed;
+    background: url(${pageContext.request.contextPath}/resources/img/bgImg_loanIntro01.jpg)no-repeat center center fixed;
     background-size: cover;
     background-attachment: fixed;
     width: 100%;
@@ -580,9 +580,8 @@ $(document).ready(function() {
 												<div class="form-group col-md-4">
 													<input class="form-control" id="cer_number" type="text" maxlength="13"  placeholder="" style="display:none;">
 												</div>
-												<div id="clock"><!--여기서 수정 -->
-
 												<div id="clock">
+												
 												</div>
 											</div>													
 												
@@ -753,42 +752,20 @@ $(document).ready(function() {
 			var agree3Checkbox = $("#agree3Checkbox").is(":checked");
 			var agree4Checkbox = $("#agree4Checkbox").is(":checked");
 			var agree5Checkbox = $("#agree5Checkbox").is(":checked");
-			var sex = $(':radio[name="sexRadio"]:checked').val();
 			var loanPeriodSelect = $('#loanPeriodSelect').val();
 			var loanAmt = $("#loan_period").val();
 			var loanGb = $("#loan_class").val();
-<<<<<<< HEAD
 			var guaranteeType = $("#loanTypeSelect").val();
 			var repayTypeCd = $("#repay_method").val();
-=======
 			var guaranteeType = $("#guaranteeType").val();
 			var objectType = $("#object_type").val();
 			var repayTypeCd = $("#repay_method").val();
->>>>>>> branch 'master' of https://github.com/gaonuri/Codetiator.git
 			var loan_bank_name = $("#loan_bank_name").val(); 
 			var loan_period = $("#loan_period").val();
 			var loan_amount = $("#loan_amount").val();
-
-// 			if(sex == undefined) {
-// 				alert("성별을 선택하세요.");
-// 				$(".sexRadio-label").focus();
-// 				return;
-// 			}
-//			if(sex == undefined) {
-//				alert("성별을 선택하세요.");
-//				$(".sexRadio-label").focus();
-//				return;
-//			}
 			if(loan_amount == "") {
 				alert("대출계좌를 입력 해주세요.");
-<<<<<<< HEAD
 				$("#loan_amount").focus();
-			if(sex == undefined) {
-				alert("성별을 선택하세요.");
-				$(".sexRadio-label").focus();
-=======
-				$("#loan_amount").focus();
->>>>>>> branch 'master' of https://github.com/gaonuri/Codetiator.git
 				return;
 			}
 			if(loanAmt == ""){
@@ -830,7 +807,7 @@ $(document).ready(function() {
 	function tempFunction() {
 		$("#frmLoan").attr("action","${pageContext.request.contextPath}/addinfo");
 		document.frmLoan.submit();
-	}//frmLoan에 있는거 addinfo로 옳김
+	}
 	
 	$(function() {
 		

@@ -282,7 +282,6 @@ public class MypageController {
 			out.flush();
 			out.close();
 		}
-<<<<<<< HEAD
 		out.print(cnt);
 		memvo = (MemberVO)session.getAttribute("memVO");
 		logger.info("=== CertEmail : "+memvo.getUser_num());
@@ -322,8 +321,6 @@ public class MypageController {
 		out.flush();
 		out.close();
 	}//CertEmail
-=======
-		}//CertEmail
 	
 //		out.print(cnt);
 //		memvo = (MemberVO)session.getAttribute("memVO");
@@ -364,7 +361,6 @@ public class MypageController {
 //		out.flush();
 //		out.close();
 //	}//CertEmail
->>>>>>> branch 'master' of https://github.com/gaonuri/Codetiator.git
 	
 	@RequestMapping(value = "/DepocerNumber", method = RequestMethod.POST)
 	public void DepocerNumber(HttpSession session, PrintWriter out, MemberVO memvo, FindPwdVO vo, Busi_userVO bsvo) {
@@ -525,9 +521,6 @@ public class MypageController {
 		out.flush();
 		out.close();	
 	}//deleteBusi
-<<<<<<< HEAD
-=======
 
 	
->>>>>>> branch 'master' of https://github.com/gaonuri/Codetiator.git
 }//class

@@ -1,9 +1,12 @@
 package kr.co.creator.vo;
 
+import org.springframework.web.multipart.MultipartFile;
+
 // 프로젝트
 public class ProjectVO {
 	private String project_num;			// 프로젝트번호
-	private String img;					// 사진(경로)
+	private MultipartFile img;
+	private String img_path;					// 사진(경로)
 	private String project_name;		// 이름
 	private String type;				// 게임유형
 	private String genre;				// 장르
@@ -11,17 +14,13 @@ public class ProjectVO {
 	private String more_information;	// 상세정보
 	private String loan_bank_name;		// 대출은행명
 	private String loan_amount;			// 대출계좌
-<<<<<<< HEAD
 	private String loan_class;			// 대출구분
 	private String judge_status;		// 심사상태
 	private String ing_status;			// 1:승인 2:심사 3:반려
 	private String customer;			// 투자자수
-=======
 	private String price;				// 모집금액
 	private String loan_period;			// 대출기간
 	private String repay_method;		// 상환방식
-	private String loan_class;			// 대출구분
-	private String judge_status;		// 심사상태
 	private String agree_chk_1;			// 서비스 이용약관
 	private String agree_chk_2;			// 개인정보제공
 	private String agree_chk_3;			// 개인정보조회
@@ -29,13 +28,11 @@ public class ProjectVO {
 	private String agree_chk_5;			// 고유식별정보 처리방침
 	private String agree_chk_6;			// 개인정보 선택적 수집,이용
 	private String end_date;			// 종료날짜
-	private String ing_status;			// 1:승인 2:심사 3:반려
 	private String regi_date;			// 등록날짜
 	private String refund_count;		// 상환차수
 	private String refund;				// 상환기간
 	private String loan_history;		// 대출자 상환내역
 	private String guarantee_price;		// 남은대출금액
-	private String customer;			// 투자자수
 	private String rate;				// 금리
 	private String ach_rate;			// 모집현황
 	private String ach_state;			// 모집상태
@@ -43,13 +40,8 @@ public class ProjectVO {
 	private String deadline;			// 남은기간
 	private String refund_due_date;		// 상환예정일
 	private String refund_end;			// 상환완료일
->>>>>>> branch 'master' of https://github.com/gaonuri/Codetiator.git
 	private String ad_price;			// 광고금액
 	private String ad_grade;			// 광고등급
-<<<<<<< HEAD
-	private String loan_bank_name;		// 대출은행명
-=======
->>>>>>> branch 'master' of https://github.com/gaonuri/Codetiator.git
 	
 	
 	private String user_num;			// (참조)유저번호
@@ -122,13 +114,19 @@ public class ProjectVO {
 		this.project_num = project_num;
 	}//project_num
 	
-	public String getImg() {
+	
+	public MultipartFile getImg() {
 		return img;
 	}
-	public void setImg(String img) {
+	public void setImg(MultipartFile img) {
 		this.img = img;
-	}//img
-	
+	}
+	public String getImg_path() {
+		return img_path;
+	}
+	public void setImg_path(String img_path) {
+		this.img_path = img_path;
+	}
 	public String getProject_name() {
 		return project_name;
 	}
