@@ -350,7 +350,7 @@
                 <div class="form-group">
                   	<label class="control-label col-md-3">차주유형</label>
                   	<div class="col-md-8">
-                    	<select class="form-control loanPurpose-select" id="debtor_type" name="debtor_type" p>
+                    	<select class="form-control loanPurpose-select" id="debtor_type" name="debtor_type">
 <!-- 							<option value="">선택하세요</option> -->
 								<option value="02">법인</option>
 								<option value="01">개인</option>

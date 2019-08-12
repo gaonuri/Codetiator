@@ -39,6 +39,8 @@ public class ProjectVO {
 	private String refund_end;			// 상환완료일
 	private String ad_price;			// 광고금액
 	private String ad_grade;			// 광고등급
+	private String guarantee_type;		// 담보유형(부동산, 동산)
+	private String object_type;			// 물건유형(아파트, 연립주택)
 	
 	
 	private String user_num;			// (참조)유저번호
@@ -50,6 +52,18 @@ public class ProjectVO {
 	private int sum_price;				// 누적대출액
 	private int sum_guarantee_price;	// 현재대출잔액
 
+	public String getGuarantee_type() {
+		return guarantee_type;
+	}
+	public void setGuarantee_type(String guarantee_type) {
+		this.guarantee_type = guarantee_type;
+	}
+	public String getObject_type() {
+		return object_type;
+	}
+	public void setObject_type(String object_type) {
+		this.object_type = object_type;
+	}
 	public String getAd_price() {
 		return ad_price;
 	}

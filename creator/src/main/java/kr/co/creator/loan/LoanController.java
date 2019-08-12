@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import kr.co.creator.vo.Busi_userVO;
 import kr.co.creator.vo.DocumentVO;
 import kr.co.creator.vo.FileVO;
 import kr.co.creator.vo.GuaranteeVO;
@@ -269,5 +270,19 @@ public class LoanController {
 		
     	return "support/pInfoSelectedTerm";
     }
+	
+	@RequestMapping(value="/applyloaninsert", method=RequestMethod.POST)
+	public void applyLoanInsert(PrintWriter out, ProjectVO pvo) {
+		logger.info("=== applyLoanInsert ===");
+		int cnt = 0;
+		cnt = loanDAOService.applyLoanInsert(pvo);
+		int cnt1 = 0;
+		if(cnt > 0) {
+			cnt1 = loanDAOService.applyLoanInsert1(pvo);
+		}
+		out.print(cnt1);
+		out.flush();
+		out.close();
+	}//applyLoanInsert
 	
 }

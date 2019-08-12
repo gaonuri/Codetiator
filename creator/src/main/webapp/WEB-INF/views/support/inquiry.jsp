@@ -69,9 +69,9 @@
 			$.post(
 					"${pageContext.request.contextPath}/inquiryemail",
 					{
-						receiver:$("#inputEmail").val(),
-						content:$("#inputContents").val(),
-						subject:$("#inputTitle").val()
+						receiver:$("#adEmail").val(),
+						content:$("#inputTitle").val() + $("#inputContents").val(),
+						subject:$("#inputEmail").val()
 					},
 					function(data,status){
 						if(status == "success"){
@@ -397,13 +397,14 @@
 <!-- 						<form action="inquiryemail" method="post"> -->
 							<fieldset>
 								<div class="form-group margin-b-9">
-									<input class="form-control " id="inputTitle" type="text" name="subject"  placeholder="*제목">
+									<input class="form-control " type="text" id="inputTitle" name="content"  placeholder="*제목">
 								</div>
 								<div class="form-group margin-b-9">
 									<textarea class="form-control " rows="6" id="inputContents" name="content" style="resize: none;" placeholder="*문의사항에 대해 자세히 적어주시면 담당자가 최대한 빨리 연락드리겠습니다."></textarea>
 								</div>
 								<div class="form-group margin-b-9">
-									<input class="form-control onlyEm" id="inputEmail" type="email" name="receiver" placeholder="*이메일주소">
+									<input class="form-control onlyEm" id="inputEmail" type="email" name="subject" placeholder="*이메일주소">
+									<input type="hidden" name="receiver" id="adEmail" value="didmeto22@gmail.com"/>
 								</div>
 							</fieldset>
 							<div class="form-group">
