@@ -60,6 +60,13 @@ public class MypageController {
 		return "mypage/my_dashboard";
 	}
 	
+	@RequestMapping(value = "/my_dashboard_new", method = RequestMethod.GET)
+	public String my_dashboard_new(HttpSession session, Model model, MemberVO userVO, MypageVO myVO) {
+		logger.info("my_dashboard_new");
+
+		return "mypage/my_dashboard_new";
+	}//my_dashboard_new
+	
 	@RequestMapping(value = "/my_invest_list", method = RequestMethod.GET)
 	public String invest(HttpSession session, Model model, MemberVO userVO, MypageVO myVO) {
 		logger.info("my_dashboard");
@@ -69,6 +76,13 @@ public class MypageController {
 		model.addAttribute("investList", invest);
 		return "mypage/my_invest_list";
 	}
+	
+	@RequestMapping(value = "/my_invest_list_new", method = RequestMethod.GET)
+	public String my_invest_list_new(HttpSession session, Model model, MemberVO userVO, MypageVO myVO) {
+		logger.info("my_invest_list_new");
+
+		return "mypage/my_invest_list_new";
+	}//my_invest_list_new
 	
 	@RequestMapping(value = "/my_loan_list", method = RequestMethod.GET)
 	public String loan(HttpSession session, Model model, MemberVO userVO, ProjectVO proVO) {
@@ -80,9 +94,18 @@ public class MypageController {
 		return "mypage/my_loan_list";
 	}
 	
+	@RequestMapping(value = "/my_loan_list_new", method = RequestMethod.GET)
+	public String my_loan_list_new(HttpSession session, Model model, MemberVO userVO, ProjectVO proVO) {
+		logger.info("my_loan_list_new");
+
+		return "mypage/my_loan_list_new";
+	}//my_loan_list_new
+	
 	@RequestMapping(value = "/my_depo_mgn", method = RequestMethod.GET)
 	public String my_modify(HttpSession session, Model model, MemberVO userVO, UserVO useVO, Busi_userVO busiVO, AccountVO accVO, InOutVO ioVO) {
 		logger.info("my_depo_mgn");
+		System.out.println("ioVO.getInput_history() : "+ ioVO.getInput_history());
+		System.out.println("ioVO.getOutput_history() : "+ ioVO.getOutput_history());
 		userVO = (MemberVO)session.getAttribute("memberVO");
 		accVO = service.account(userVO);
 		ioVO = service.inout(userVO);
@@ -106,6 +129,13 @@ public class MypageController {
 //		logger.info("my_depo_mgn"+busiVO);
 		return "mypage/my_depo_mgn";
 	}
+	
+	@RequestMapping(value = "/my_depo_mgn_new", method = RequestMethod.GET)
+	public String my_depo_mgn_new(HttpSession session, Model model, MemberVO userVO, UserVO useVO, Busi_userVO busiVO, AccountVO accVO, InOutVO ioVO) {
+		logger.info("my_depo_mgn_new");
+
+		return "mypage/my_depo_mgn_new";
+	}//my_depo_mgn_new
 	
 //	@RequestMapping(value = "/account_insert", method = RequestMethod.POST)
 //	public void account_insert(HttpSession session, Model model, PrintWriter out, AccountVO accVO, MemberVO userVO ) {
@@ -254,7 +284,45 @@ public class MypageController {
 			out.flush();
 			out.close();
 		}
-		}//CertEmail
+		out.print(cnt);
+		memvo = (MemberVO)session.getAttribute("memVO");
+		logger.info("=== CertEmail : "+memvo.getUser_num());
+		logger.info("=== CertEmail : "+memvo.getBusi_num());
+		int updateCertNunYN = 0;
+			if(memvo.getUser_num() != null && !memvo.getUser_num().equals("")) {
+				logger.info("=== CertEmail : "+memvo.getUser_num());
+				String newPassword, user_name;
+				newPassword = findUtil.getRamdomPassword(8);
+				vo.setUser_num(memvo.getUser_num());
+				user_name = sqlSession.selectOne("LoginMapper.selectName", vo);
+				vo.setNewPassword(newPassword);
+				vo.setUser_name(user_name);
+				System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!vo.getCer_number() : " + vo.getCer_number());
+				form.setContent("인증번호는 " + newPassword + " 입니다");
+				form.setSubject("안녕하세요 " + vo.getUser_name() + "님 인증번호를 확인해 주세요");
+				form.setReceiver(vo.getEmail());
+				//emailSender.sendEmail(form);
+				System.out.println(vo.getEmail());
+				updateCertNunYN = loginService.insertUserNumber(vo);
+				
+			} else if(memvo.getBusi_num() != null && !memvo.getBusi_num().equals("")) {
+				logger.info("=== CertEmail : "+memvo.getBusi_num());
+				String newPassword = null, busi_name = null;
+				newPassword = findUtil.getRamdomPassword(8);
+				busi_name = sqlSession.selectOne("LoginMapper.selectBusiName", vo);
+				vo.setNewPassword(newPassword);
+				vo.setManager_name(busi_name);
+				form.setContent("인증번호는 " + newPassword + " 입니다");
+				form.setSubject("안녕하세요 " + vo.getManager_name() + "님 인증번호를 확인해 주세요");
+				form.setReceiver(vo.getManager_email());
+				//emailSender.sendEmail(form);
+				System.out.println(vo.getManager_email());
+				updateCertNunYN = loginService.insertNumber(vo);
+			}
+		out.print(updateCertNunYN);
+		out.flush();
+		out.close();
+	}//CertEmail
 	
 //		out.print(cnt);
 //		memvo = (MemberVO)session.getAttribute("memVO");
@@ -333,6 +401,13 @@ public class MypageController {
 		
 		return "mypage/my_modify";
 	}//my_modify
+	
+	@RequestMapping(value = "/my_modify_new", method = RequestMethod.GET)
+	public String my_modify_new() {
+		logger.info("my_modify_new");
+		
+		return "mypage/my_modify_new";
+	}//my_modify_new
 	
 	@RequestMapping(value = "/mypagemodifyu", method = RequestMethod.POST)
 	public void myPageModifyU(HttpSession session, PrintWriter out, MemberListVO vo) {
