@@ -33,6 +33,65 @@
 	  Author: TemplateMag.com
 	  License: https://templatemag.com/license/
 	======================================================= -->
+	<script type="text/javascript">
+	
+	$(document).ready(function(){
+		$(".onlyEm").change(function(){
+			//alert($(this).val());
+			var emailStd = /([a-z0-9]{1,20}\@)([a-z]{1,20}\.)([a-z]{1,10})/gi;
+			if($(this).val().match(emailStd)){
+				//alert("ok");
+			}else{
+				alert("올바르지 않은 이메일 입니다.");
+				//$(this).val("");
+				$(this).focus();
+				return;
+			}
+		});//onlyEm
+	});//onlyEm
+	
+	$(document).ready(function(){
+		$("#insertContactMsgBtn").click(function(){
+			
+			var emailStd = /([a-z0-9]{1,20}\@)([a-z]{1,20}\.)([a-z]{1,10})/gi;
+			
+			if($.trim($("#inputTitle").val()) == "") {
+				alert("제목을 확인해 주세요.");
+				return;
+			} else if($.trim($("#inputContents").val()) == "") {
+				alert("문의 내용을 확인해 주세요.");
+				return;
+			} else if($.trim($("#inputEmail").val()) == "" ) {
+				alert("이메일을 확인해 주세요.");
+				return;
+			}
+			
+			$.post(
+					"${pageContext.request.contextPath}/inquiryemail",
+					{
+						receiver:$("#inputEmail").val(),
+						content:$("#inputContents").val(),
+						subject:$("#inputTitle").val()
+					},
+					function(data,status){
+						if(status == "success"){
+							if(data > 0){
+								alert("이상하다?");
+							} else if(data == 0){
+								alert("등록 되었습니다.");
+								location.href="/creator/inquiry";
+							} else {
+								alert("잠시 후, 다시 시도해 주세요.");
+							}
+						} else {
+							alert("시스템 관리자에게 문의 바랍니다.");
+						}
+					}
+			);//post
+		});//click
+	});//ready	
+	
+</script>
 </head>
 <style>
 
@@ -335,23 +394,23 @@
 						1:1 상담
 					</div>
 					<div class="body">
-						<form>
+<!-- 						<form action="inquiryemail" method="post"> -->
 							<fieldset>
 								<div class="form-group margin-b-9">
-									<input class="form-control" id="inputTitle" type="text" placeholder="* 제목">
+									<input class="form-control " id="inputTitle" type="text" name="subject"  placeholder="*제목">
 								</div>
 								<div class="form-group margin-b-9">
-									<textarea class="form-control" rows="6" id="inputContents" style="resize: none;" placeholder="* 문의사항에 대해 자세히 적어주시면 담당자가 최대한 빨리 연락드리겠습니다."></textarea>
+									<textarea class="form-control " rows="6" id="inputContents" name="content" style="resize: none;" placeholder="*문의사항에 대해 자세히 적어주시면 담당자가 최대한 빨리 연락드리겠습니다."></textarea>
 								</div>
 								<div class="form-group margin-b-9">
-									<input class="form-control" id="inputEmail" type="email" placeholder="* 이메일주소">
+									<input class="form-control onlyEm" id="inputEmail" type="email" name="receiver" placeholder="*이메일주소">
 								</div>
 							</fieldset>
-						</form>
-						<div class="form-group">
-							<button type="button" class="btn btn-purple-transparent btn-block" id="insertContactMsgBtn" 
-									style="background-color:#712594; color:#fff; font-size:13pt;">등록</button>
-						</div>
+							<div class="form-group">
+								<input type="submit" class="btn btn-purple-transparent btn-block" id="insertContactMsgBtn" 
+										style="background-color:#712594; color:#fff; font-size:13pt;" value="등록" />
+							</div>
+<!-- 						</form> -->
 					</div>
 				</div>
 			</div>

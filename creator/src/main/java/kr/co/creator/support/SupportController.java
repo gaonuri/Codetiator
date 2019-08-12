@@ -35,7 +35,7 @@ public class SupportController {
 				
 		return "support/inquiry";
 	}
-
+	
 	@RequestMapping(value = "/support", method = RequestMethod.GET)
 	public String support(Model model, NoticeVO vo) {
 		logger.info("support");
