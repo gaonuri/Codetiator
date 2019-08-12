@@ -31,6 +31,20 @@ public class InvestService {
 		return list;
 	}//invest_list
 
+	public ProjectVO project_calc() {
+		ProjectVO proCalcVO = null;
+		proCalcVO = investDAO.project_calc();
+		
+		return proCalcVO;
+	}//invest_list_all
+
+	public InvestVO invest_calc() {
+		InvestVO inVO = null;
+		inVO = investDAO.invest_calc();
+		
+		return inVO;
+	}//invest_calc
+
 	public InvestVO invest_detail(InvestVO inVO) {
 		inVO = investDAO.invest_detail(inVO);
 		

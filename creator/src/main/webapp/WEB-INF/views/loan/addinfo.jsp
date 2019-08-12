@@ -272,7 +272,10 @@
                   <div class="form-group">
                   	<label class="control-label col-md-3">상세정보</label>
                   	<div class="col-md-8">
-                    	<input type="text" id="more_information" name="more_information" class="form-control" />
+                    	<textarea id="more_information" name="more_information" class="form-control onlySS"  
+                    		maxlength="300" style="resize: none;"
+                    		placeholder="게임 최초 시즌 10 달성! 드디어 최초 공개로 대 판타지영역 추가!"></textarea>
+                    		<span class="control-label col-md-offset-11" aria-hidden="true" id="counter" ></span>
                     </div>
                   </div>
 <!--                   <div class="form-group"> -->
@@ -346,8 +349,8 @@
 <!--                 </div> -->
                 <div class="form-group">
                   	<label class="control-label col-md-3">차주유형</label>
-                  	<div class="col-md-4">
-                    	<select class="form-control loanPurpose-select" id="debtor_type" name="debtor_type">
+                  	<div class="col-md-8">
+                    	<select class="form-control loanPurpose-select" id="debtor_type" name="debtor_type" p>
 <!-- 							<option value="">선택하세요</option> -->
 								<option value="02">법인</option>
 								<option value="01">개인</option>
@@ -356,14 +359,14 @@
                 </div>
                 <div class="form-group">
                   	<label class="control-label col-md-3">차주업종(직종)</label>
-                  	<div class="col-md-4">
-                    	<input type="text" id="business_type" name="business_type" class="form-control" />
+                  	<div class="col-md-8">
+                    	<input type="text" id="business_type" name="business_type" class="form-control onlyAll" placeholder="게임회사CEO"/>
                     </div>
                 </div>
                 <div class="form-group">
                   	<label class="control-label col-md-3">담보명</label>
-                  	<div class="col-md-4">
-                    	<input type="text" id="guarantee_name" name="guarantee_name" class="form-control" />
+                  	<div class="col-md-8">
+                    	<input type="text" id="guarantee_name" name="guarantee_name" class="form-control onlyAll" placeholder="제이플라츠빌딩"/>
                     </div>
                 </div>
 <!--                 <div class="form-group"> -->
@@ -379,14 +382,16 @@
 <!--                 </div> -->
                 <div class="form-group">
                   	<label class="control-label col-md-3">공급면적</label>
-                  	<div class="col-md-4">
-                    	<input type="text" id="supply_area" name="supply_area" class="form-control" />
+                  	<div class="col-md-8 has-feedback">
+                    	<input type="text" id="supply_area" name="supply_area" class="form-control onlycal" placeholder="110"/>
+                    	<span class="form-control-feedback" aria-hidden="true" style="z-index:0 ">m<sup>2</sup></span>
                     </div>
                 </div>
                 <div class="form-group">
                   	<label class="control-label col-md-3">전용면적</label>
-                  	<div class="col-md-4">
-                    	<input type="text" id="exclusive_area" name="exclusive_area" class="form-control" />
+                  	<div class="col-md-8 has-feedback">
+                    	<input type="text" id="exclusive_area" name="exclusive_area" class="form-control onlycal" placeholder="84"/>
+                    	<span class="form-control-feedback" aria-hidden="true" style="z-index:0 ">m<sup>2</sup></span>
                     </div>
                 </div>
 <!--                 <div class="form-group"> -->
@@ -397,8 +402,8 @@
 <!--                 </div> -->
                 <div class="form-group">
                   	<label class="control-label col-md-3">소재지</label>
-                  	<div class="col-md-4">
-                    	<input type="text" id="location" name="location" class="form-control" />
+                  	<div class="col-md-8">
+                    	<input type="text" id="location" name="location" class="form-control onlyAll" placeholder="서울특별시 금천구 가산디지털1로 186"/>
                     </div>
                 </div>
 <!--                 <div class="form-group"> -->
@@ -409,8 +414,8 @@
 <!--                 </div> -->
                 <div class="form-group">
                   	<label class="control-label col-md-3">준공(생산)일자 </label>
-                  	<div class="col-md-4">
-                    	<input type="text" id="comple_year" name="comple_year" class="form-control" />
+                  	<div class="col-md-8">
+                    	<input type="text" id="comple_year" name="comple_year" class="form-control  onlycal" placeholder="199202"/>
                     </div>
                 </div>
 <!--                 <div class="form-group"> -->
@@ -432,39 +437,40 @@
 <!--                 </div> -->
                 <div class="form-group">
                   	<label class="control-label col-md-3">외부감정가</label>
-                  	<div class="col-md-4">
-                    	<input type="text" id="connoisseur" name="connoisseur" class="form-control" />
+                  	<div class="col-md-8 has-feedback">
+                    	<input type="text" id="connoisseur" name="connoisseur" class="form-control  onlycal" placeholder="1520"/>
+                    	<span class="form-control-feedback" aria-hidden="true" style="z-index:0 ">만원</span>
                     </div>
                 </div>
                 <div class="form-group">
                   	<label class="control-label col-md-3">참고파일1</label>
-                  	<div class="col-md-4">
+                  	<div class="col-md-8">
                     	<input type="file" class="reference_file1" name="reference_file1_file"/>
                     </div>
                   </div>
                   <div class="form-group">
                   	<label class="control-label col-md-3">참고파일2</label>
-                  	<div class="col-md-4">
+                  	<div class="col-md-8">
                     	<input type="file" class="reference_file2" name="reference_file2_file"/>
                     </div>
                   </div>
                   <div class="form-group">
                   	<label class="control-label col-md-3">참고파일3</label>
-                  	<div class="col-md-4">
+                  	<div class="col-md-8">
                     	<input type="file" class="reference_file3" name="reference_file3_file"/>
                     </div>
                   </div>
                 <div class="bottom">
-								<input type="button" class="btn btn-purple-transparent btn-block" id="doNextStepBtn"
-										value="프로젝트 제출" />
+					<input type="button" class="btn btn-purple-transparent btn-block" id="doNextStepBtn"
+							value="프로젝트 제출" />
 <!-- 									<button type="submit" class="btn btn-purple-transparent btn-block" id="doNextStepBtn">본인 인증 및 대출 가능여부 확인</button> -->
-									<p>※ 대출심사 결격사유 : 최근 현금서비스 3회 이상 이용 고객 및 기타 당사가 규정하는 채무불이행 사유가 있는 고객.</p>
-									<div class="page" style="text-align: right;">2/4</div>
+					<p>※ 대출심사 결격사유 : 최근 현금서비스 3회 이상 이용 고객 및 기타 당사가 규정하는 채무불이행 사유가 있는 고객.</p>
+					<div class="page" style="text-align: right;">2/4</div>
 				</div>
               </form>
-             	 </div>
-              </div>
-              </div>
+           	 </div>
+            </div>
+           </div>
 						<div class="box-footer"></div>
 					</div>
 				</div>
@@ -472,7 +478,7 @@
 		</div>
 	</section>
             </div>
-					</div>
+				</div>
 				</div>
 			</section>
 			<!-- /wrapper -->
@@ -583,7 +589,7 @@
     	
     	$(".onlyKrEng").change(function(){
     		//alert($(this).val());
-    		var passStd = /^[가-힣a-zA-Z]{1,20}$/;
+    		var passStd = /^[가-힣a-zA-Z]{1,20}+$/;
     		if($(this).val().match(passStd)){
     			//alert("ok");
     		}else{
@@ -593,7 +599,28 @@
     			return;
     		}
     	});//onlyPass
-    
+    	
+    	$(".onlyAll").change(function(){
+    		//alert($(this).val());
+    		var korStd = /^[가-힣a-zA-Z0-9\s]+$/;
+    		if($(this).val().match(korStd)){
+    			//alert("ok");
+    		}else{
+    			alert("올바른 형식으로 작성해 주세요");
+    			$(this).val("");
+    			$(this).focus();
+    			return;
+    		}
+    	});//onlyAll 
+    	
+		$(function() {
+	       $("#more_information").keyup(function (e){
+	           var content = $(this).val();
+	           $(this).height(((content.split("\n").length + 1) * 1.5) + "em");
+	           $("#counter").html(content.length + "/300");
+	       });
+	       $("#more_information").keyup();
+		});// 텍트스박스 카운트    	
     
 	</script>
 	<script type="application/javascript">
@@ -645,52 +672,80 @@ $(document).ready(function() {
 	$("#doNextStepBtn").click(function() {
 		var main_img = $("#main_img").val();
 		var project_name = $("#project_name").val();
-		var price = $("#price").val();
-// 		var refund = $("#refund").val();
 		var type = $("#type").val();
 		var genre = $("#genre").val();
 		var grade = $("#grade").val();
 		var more_information = $("#more_information").val();
-		var loan_period = $("#loan_period").val();
-		var loan_amount = $("#loan_amount").val();
-		var loan_class = $("#loan_class").val();
-		var loan_bank_name = $("#loan_bank_name").val(); 
+		
+		var guarantee_img = $("#guarantee_img").val();
+		var debtor_type = $("#debtor_type").val();
+		var business_type = $("#business_type").val();
+		var guarantee_name = $("#guarantee_name").val();
+		var supply_area = $("#supply_area").val();
+		var exclusive_area = $("#exclusive_area").val();
+		var location = $("#location").val();
+		var comple_year = $("#comple_year").val();
+		var connoisseur = $("#connoisseur").val();
+		
 		if(main_img == "") {
 			alert("메인 사진을 올려주세요.");
 			$("#main_img").focus();
+			
 		} else if(project_name == "") {
 			alert("프로젝트 이름을 작성 해주세요.");
 			$("#project_name").focus();
-// 		} else if(price == "") {
-// 			alert("모집금액을 입력 해주세요.");
-// 			$("#price").focus();
-// 		} else if(refund == "") {
-// 			alert("상환기간을 입력 해주세요.");
-// 			$("#refund").focus();
+			
 		} else if(type == "") {
 			alert("게임유형을 선택 해주세요.");
 			$("#type").focus();
+			
 		} else if(genre == "") {
 			alert("장르를 선택 해주세요.");
 			$("#genre").focus();
+			
 		} else if(grade == "") {
 			alert("등급을 선택 해주세요.");
 			$("#grade").focus();
+			
 		} else if(more_information == "") {
 			alert("상세정보를 입력 해주세요.");
 			$("#more_information").focus();
-// 		} else if(loan_period == "") {
-// 			alert("대출기간을 입력 해주세요.");
-// 			$("#loan_period").focus();
-// 		} else if(loan_bank_name == "") {
-// 			alert("은행명을 선택해 주세요.");
-// 			$("#loan_bank_name").focus();
-// 		} else if(loan_amount == "") {
-// 			alert("대출계좌를 입력 해주세요.");
-// 			$("#loan_amount").focus();
-// 		} else if(loan_class == "") {
-// 			alert("대출구분을 입력 해주세요.");
-// 			$("#loan_class").focus();
+			
+		} else if(guarantee_img == "") {
+			alert("담보 사진을 올려주세요.");
+			$("#guarantee_img").focus();
+			
+		} else if(debtor_type == "") {
+			alert("차주유형을 선택해 주세요.");
+			$("#debtor_type").focus();
+			
+		} else if(business_type == "") {
+			alert("차주업종을 입력 해주세요.");
+			$("#business_type").focus();
+			
+		} else if(guarantee_name == "") {
+			alert("담보명을 입력 해주세요.");
+			$("#guarantee_name").focus();
+			
+		} else if(supply_area == "") {
+			alert("공급면적을 입력 해주세요.");
+			$("#supply_area").focus();
+			
+		} else if(exclusive_area == "") {
+			alert("전용면적을 선택해 주세요.");
+			$("#exclusive_area").focus();
+			
+		} else if(location == "") {
+			alert("소재지를 입력 해주세요.");
+			$("#location").focus();
+			
+		} else if(comple_year == "") {
+			alert("준공(생산)일자를 입력 해주세요.");
+			$("#comple_year").focus();
+			
+		} else if(connoisseur == "") {
+			alert("외부감정가을 입력 해주세요.");
+			$("#connoisseur").focus();
 		} else {
 			var form = new FormData(document.getElementById("addinfo_form"));
 			$.ajax({
@@ -708,10 +763,10 @@ $(document).ready(function() {
 						alert("잠시 후 다시 시도해 주세요.");
 					}
 				}
-					,error:function(xhr){
-						alert("fail");
-					}
-				});//ajax
+				,error:function(xhr){
+					alert("fail");
+				}
+			});//ajax
 		}
 	});//click
 });//ready

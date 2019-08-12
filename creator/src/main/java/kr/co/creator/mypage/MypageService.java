@@ -110,13 +110,25 @@ public class MypageService {
 		return count;
 	}//useraccount_insert
 	
+	public int userinoutinsert(InOutVO ioVO) {
+		int count = 0;
+		count = dao.userinoutinsert(ioVO);
+		return count;
+	}//useraccount_insert
+	
 	public int busiaccount_insert(AccountVO acVO) {
 		int count = 0;
 		count = dao.busiaccount_insert(acVO);
 		return count;
 	}//busiaccount_insert
-
-
+	
+	public int busiinoutinsert(InOutVO ioVO) {
+		int count = 0;
+		count = dao.busiinoutinsert(ioVO);
+		return count;
+	}//busiaccount_insert
+	
+	
 }//class
 
 

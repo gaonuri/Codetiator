@@ -5,48 +5,104 @@ public class ProjectVO {
 	private String project_num;			// 프로젝트번호
 	private String img;					// 사진(경로)
 	private String project_name;		// 이름
-	private String rate;				// 금리
-	private String price;				// 모집금액
-	private String current_price;		// 현재금액
-	private String ach_rate;			// 모집현황
-	private String ach_state;			// 모집상태
-	private String repay_method;		// 상환방식
-	private String deadline;			// 남은기간
-	private String refund;				// 상환기간
-	private String refund_count;		// 상환차수
-	private String loan_history;		// 대출자 상환내역
-	private String guarantee_price;		// 남은대출금액
-	private String refund_due_date;		// 상환예정일
-	private String refund_end;			// 상환완료일
 	private String type;				// 게임유형
 	private String genre;				// 장르
 	private String grade;				// 등급
 	private String more_information;	// 상세정보
-	private String regi_date;			// 등록날짜
-	private String end_date;			// 종료날짜
-	private String loan_period;			// 대출기간
+	private String loan_bank_name;		// 대출은행명
 	private String loan_amount;			// 대출계좌
+	private String price;				// 모집금액
+	private String loan_period;			// 대출기간
+	private String repay_method;		// 상환방식
 	private String loan_class;			// 대출구분
 	private String judge_status;		// 심사상태
+	private String agree_chk_1;			// 서비스 이용약관
+	private String agree_chk_2;			// 개인정보제공
+	private String agree_chk_3;			// 개인정보조회
+	private String agree_chk_4;			// 개인정보수집,이용
+	private String agree_chk_5;			// 고유식별정보 처리방침
+	private String agree_chk_6;			// 개인정보 선택적 수집,이용
+	private String end_date;			// 종료날짜
 	private String ing_status;			// 1:승인 2:심사 3:반려
+	private String regi_date;			// 등록날짜
+	private String refund_count;		// 상환차수
+	private String refund;				// 상환기간
+	private String loan_history;		// 대출자 상환내역
+	private String guarantee_price;		// 남은대출금액
 	private String customer;			// 투자자수
-<<<<<<< HEAD
+	private String rate;				// 금리
+	private String ach_rate;			// 모집현황
+	private String ach_state;			// 모집상태
+	private String current_price;		// 현재금액
+	private String deadline;			// 남은기간
+	private String refund_due_date;		// 상환예정일
+	private String refund_end;			// 상환완료일
 	private String ad_price;			// 광고금액
 	private String ad_grade;			// 광고등급
-	private String loan_bank_name;		// 대출은행명
-=======
->>>>>>> branch 'master' of https://github.com/gaonuri/Codetiator.git
 	
+	private String user_num;			// (참조)유저번호
+	private String busi_num;			// (참조)법인유저번호
+	
+	private String loan_count;			// 투자받은횟수
+	private String project_count;		// 총프로젝트수
+	private String rate_average;		// 평균 연수익률
+	private int sum_price;				// 누적대출액
+	private int sum_guarantee_price;	// 현재대출잔액
+
+	public String getAd_price() {
+		return ad_price;
+	}
+	public void setAd_price(String ad_price) {
+		this.ad_price = ad_price;
+	}
+	public String getAd_grade() {
+		return ad_grade;
+	}
+	public void setAd_grade(String ad_grade) {
+		this.ad_grade = ad_grade;
+	}
+	public String getAgree_chk_1() {
+		return agree_chk_1;
+	}
+	public void setAgree_chk_1(String agree_chk_1) {
+		this.agree_chk_1 = agree_chk_1;
+	}
+	public String getAgree_chk_2() {
+		return agree_chk_2;
+	}
+	public void setAgree_chk_2(String agree_chk_2) {
+		this.agree_chk_2 = agree_chk_2;
+	}
+	public String getAgree_chk_3() {
+		return agree_chk_3;
+	}
+	public void setAgree_chk_3(String agree_chk_3) {
+		this.agree_chk_3 = agree_chk_3;
+	}
+	public String getAgree_chk_4() {
+		return agree_chk_4;
+	}
+	public void setAgree_chk_4(String agree_chk_4) {
+		this.agree_chk_4 = agree_chk_4;
+	}
+	public String getAgree_chk_5() {
+		return agree_chk_5;
+	}
+	public void setAgree_chk_5(String agree_chk_5) {
+		this.agree_chk_5 = agree_chk_5;
+	}
+	public String getAgree_chk_6() {
+		return agree_chk_6;
+	}
+	public void setAgree_chk_6(String agree_chk_6) {
+		this.agree_chk_6 = agree_chk_6;
+	}
 	public String getLoan_bank_name() {
 		return loan_bank_name;
 	}
 	public void setLoan_bank_name(String loan_bank_name) {
 		this.loan_bank_name = loan_bank_name;
 	}
-	private String user_num;			// (참조)유저번호
-	private String busi_num;			// (참조)법인유저번호
-
-
 	public String getProject_num() {
 		return project_num;
 	}
@@ -242,6 +298,42 @@ public class ProjectVO {
 	public void setCustomer(String customer) {
 		this.customer = customer;
 	}//customer
+	
+	public String getLoan_count() {
+		return loan_count;
+	}
+	public void setLoan_count(String loan_count) {
+		this.loan_count = loan_count;
+	}//loan_count
+	
+	public String getProject_count() {
+		return project_count;
+	}
+	public void setProject_count(String project_count) {
+		this.project_count = project_count;
+	}//project_count
+	
+	public String getRate_average() {
+		return rate_average;
+	}
+	public void setRate_average(String rate_average) {
+		this.rate_average = rate_average;
+	}//rate_average
+	
+	public int getSum_price() {
+		return sum_price;
+	}
+	public void setSum_price(int sum_price) {
+		this.sum_price = sum_price;
+	}//sum_price
+	
+	public int getSum_guarantee_price() {
+		return sum_guarantee_price;
+	}
+	public void setSum_guarantee_price(int sum_guarantee_price) {
+		this.sum_guarantee_price = sum_guarantee_price;
+	}//sum_guarantee_price
+	
 	
 	//참조
 	public String getUser_num() {
