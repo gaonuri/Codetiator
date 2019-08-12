@@ -11,17 +11,14 @@ public class ProjectVO {
 	private String more_information;	// 상세정보
 	private String loan_bank_name;		// 대출은행명
 	private String loan_amount;			// 대출계좌
-<<<<<<< HEAD
 	private String loan_class;			// 대출구분
+	private String loan_request;		// 대출신청일자
 	private String judge_status;		// 심사상태
 	private String ing_status;			// 1:승인 2:심사 3:반려
 	private String customer;			// 투자자수
-=======
 	private String price;				// 모집금액
 	private String loan_period;			// 대출기간
 	private String repay_method;		// 상환방식
-	private String loan_class;			// 대출구분
-	private String judge_status;		// 심사상태
 	private String agree_chk_1;			// 서비스 이용약관
 	private String agree_chk_2;			// 개인정보제공
 	private String agree_chk_3;			// 개인정보조회
@@ -29,13 +26,11 @@ public class ProjectVO {
 	private String agree_chk_5;			// 고유식별정보 처리방침
 	private String agree_chk_6;			// 개인정보 선택적 수집,이용
 	private String end_date;			// 종료날짜
-	private String ing_status;			// 1:승인 2:심사 3:반려
 	private String regi_date;			// 등록날짜
 	private String refund_count;		// 상환차수
 	private String refund;				// 상환기간
 	private String loan_history;		// 대출자 상환내역
 	private String guarantee_price;		// 남은대출금액
-	private String customer;			// 투자자수
 	private String rate;				// 금리
 	private String ach_rate;			// 모집현황
 	private String ach_state;			// 모집상태
@@ -43,13 +38,9 @@ public class ProjectVO {
 	private String deadline;			// 남은기간
 	private String refund_due_date;		// 상환예정일
 	private String refund_end;			// 상환완료일
->>>>>>> branch 'master' of https://github.com/gaonuri/Codetiator.git
 	private String ad_price;			// 광고금액
 	private String ad_grade;			// 광고등급
-<<<<<<< HEAD
-	private String loan_bank_name;		// 대출은행명
-=======
->>>>>>> branch 'master' of https://github.com/gaonuri/Codetiator.git
+	
 	
 	
 	private String user_num;			// (참조)유저번호
@@ -61,6 +52,13 @@ public class ProjectVO {
 	private int sum_price;				// 누적대출액
 	private int sum_guarantee_price;	// 현재대출잔액
 
+	
+	public String getLoan_request() {
+		return loan_request;
+	}
+	public void setLoan_request(String loan_request) {
+		this.loan_request = loan_request;
+	}
 	public String getAd_price() {
 		return ad_price;
 	}

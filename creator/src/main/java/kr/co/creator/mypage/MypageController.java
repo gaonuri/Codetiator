@@ -104,6 +104,8 @@ public class MypageController {
 	@RequestMapping(value = "/my_depo_mgn", method = RequestMethod.GET)
 	public String my_modify(HttpSession session, Model model, MemberVO userVO, UserVO useVO, Busi_userVO busiVO, AccountVO accVO, InOutVO ioVO) {
 		logger.info("my_depo_mgn");
+		System.out.println("ioVO.getInput_history() : "+ ioVO.getInput_history());
+		System.out.println("ioVO.getOutput_history() : "+ ioVO.getOutput_history());
 		userVO = (MemberVO)session.getAttribute("memberVO");
 		accVO = service.account(userVO);
 		ioVO = service.inout(userVO);
@@ -282,7 +284,6 @@ public class MypageController {
 			out.flush();
 			out.close();
 		}
-<<<<<<< HEAD
 		out.print(cnt);
 		memvo = (MemberVO)session.getAttribute("memVO");
 		logger.info("=== CertEmail : "+memvo.getUser_num());
@@ -322,8 +323,6 @@ public class MypageController {
 		out.flush();
 		out.close();
 	}//CertEmail
-=======
-		}//CertEmail
 	
 //		out.print(cnt);
 //		memvo = (MemberVO)session.getAttribute("memVO");
@@ -364,7 +363,6 @@ public class MypageController {
 //		out.flush();
 //		out.close();
 //	}//CertEmail
->>>>>>> branch 'master' of https://github.com/gaonuri/Codetiator.git
 	
 	@RequestMapping(value = "/DepocerNumber", method = RequestMethod.POST)
 	public void DepocerNumber(HttpSession session, PrintWriter out, MemberVO memvo, FindPwdVO vo, Busi_userVO bsvo) {
@@ -525,9 +523,6 @@ public class MypageController {
 		out.flush();
 		out.close();	
 	}//deleteBusi
-<<<<<<< HEAD
-=======
 
 	
->>>>>>> branch 'master' of https://github.com/gaonuri/Codetiator.git
 }//class

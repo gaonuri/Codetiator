@@ -243,21 +243,21 @@ $(document).ready(function() {
 					
 					<div class="wrap" id="largeMenu">
 						<div class="menu">
-							<div class="item" id="menu2">
+							<div class="item active" id="menu2"> <a href="/creator/my_invest_list">
 								<img src="${pageContext.request.contextPath}/resources/img/ic_mypage_invest_list.png">
-								<span class="text" id="menuL2">투자 내역</span>
+								<span class="text" id="menuL2">투자 내역</span> </a>
 							</div>
-							<div class="item" id="menu4">
+							<div class="item" id="menu4"> <a href="/creator/my_loan_list">
 								<img src="${pageContext.request.contextPath}/resources/img/ic_mypage_loan_list.png">
-								<span class="text" id="menuL4">대출 내역</span>
+								<span class="text" id="menuL4">대출 내역</span> </a>
 							</div>
-							<div class="item active" id="menu5">
+							<div class="item" id="menu5">  <a href="/creator/my_depo_mgn">
 								<img src="${pageContext.request.contextPath}/resources/img/ic_mypage_depositandwithdraw.png">
-								<span class="text" id="menuL5">예치금 관리</span>
+								<span class="text" id="menuL5">예치금 관리</span> </a>
 							</div>
-							<div class="item" id="menu8">
+							<div class="item" id="menu8"> <a href="/creator/my_modify">
 								<img src="${pageContext.request.contextPath}/resources/img/ic_mypage_setting.png">
-								<span class="text" id="menuL8">기본 정보 수정</span>
+								<span class="text" id="menuL8">기본 정보 수정</span> </a>
 							</div>
 						</div>
 					</div>
