@@ -42,20 +42,15 @@ public class ProjectVO {
 	private String ad_grade;			// 광고등급
 	private String guarantee_type;		// 담보유형(부동산, 동산)
 	private String object_type;			// 물건유형(아파트, 연립주택)
-<<<<<<< HEAD
-	
-=======
->>>>>>> branch 'master' of https://github.com/gaonuri/Codetiator.git
-	
-	private String user_num;			// (참조)유저번호
-	private String busi_num;			// (참조)법인유저번호
-	
 	private String loan_count;			// 투자받은횟수
 	private String project_count;		// 총프로젝트수
 	private String rate_average;		// 평균 연수익률
 	private int sum_price;				// 누적대출액
 	private int sum_guarantee_price;	// 현재대출잔액
-
+	
+	private String user_num;			// (참조)유저번호
+	private String busi_num;			// (참조)법인유저번호
+	
 	public String getGuarantee_type() {
 		return guarantee_type;
 	}
@@ -67,11 +62,8 @@ public class ProjectVO {
 	}
 	public void setObject_type(String object_type) {
 		this.object_type = object_type;
-<<<<<<< HEAD
 	}
-=======
 	
->>>>>>> branch 'master' of https://github.com/gaonuri/Codetiator.git
 	public String getLoan_request() {
 		return loan_request;
 	}
