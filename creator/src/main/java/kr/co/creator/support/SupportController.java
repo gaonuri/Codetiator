@@ -1,4 +1,4 @@
-package kr.co.creator.support;
+	package kr.co.creator.support;
 
 import java.io.PrintWriter;
 import java.util.List;
@@ -29,13 +29,13 @@ public class SupportController {
 		return "support/faq";
 	}
 
-//	@RequestMapping(value = "/inquiry", method = RequestMethod.GET)
-//	public String inquiry() { 
-//		logger.info("inquiry");
-//				
-//		return "support/inquiry";
-//	}
-
+	@RequestMapping(value = "/inquiry", method = RequestMethod.GET)
+	public String inquiry() { 
+		logger.info("inquiry");
+				
+		return "support/inquiry";
+	}
+	
 	@RequestMapping(value = "/support", method = RequestMethod.GET)
 	public String support(Model model, NoticeVO vo) {
 		logger.info("support");
@@ -55,6 +55,27 @@ public class SupportController {
 		model.addAttribute("supportlist2", support2);
 		model.addAttribute("supportlist3", support3);
 		return "support/support";
+	}
+	
+	@RequestMapping(value = "/support_test", method = RequestMethod.GET)
+	public String support_test(Model model, NoticeVO vo) {
+		logger.info("support");
+		List<NoticeVO> support = null;   // 전체
+		List<NoticeVO> support2 = null;  // 새소식
+		List<NoticeVO> support3 = null;  // 운영사항
+		
+		support = service.supportList();
+		
+		vo.setNotice_type("1");
+		support2 = service.supportList2(vo);
+		
+		vo.setNotice_type("2");
+		support3 = service.supportList2(vo);
+		
+		model.addAttribute("supportlist", support);
+		model.addAttribute("supportlist2", support2);
+		model.addAttribute("supportlist3", support3);
+		return "support/support_test";
 	}
 
 	@RequestMapping(value="/formi"

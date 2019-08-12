@@ -4,25 +4,25 @@ package kr.co.creator.vo;
 public class GuaranteeVO {
 	private String guarantee_num;			// 담보번호
 	private String guarantee_type;			// 담보유형(부동산, 동산)
+	private String object_type;				// 물건유형(아파트, 연립주택)
 	private String guarantee_img;			// 담보문사진경로
-	private String guarantee_name;			// 담보이름
 	private String debtor_type;				// 차주유형(개인, 법인)
 	private String business_type;			// 차주업종(직종)
-	private String object_type;				// 물건유형(아파트, 연립주택)
-	private String connoisseur;				// 외부감정가
+	private String guarantee_name;			// 담보이름
 	private String supply_area;				// 공급면적
 	private String exclusive_area;			// 전용면적
-	private String area;					// 면적
-	private String judge_status;			// 심사상태
 	private String map;						// 지도
 	private String location;				// 소재지
-	private String scale;					// 규모
 	private String comple_year;				// 준공년도
-	private String quote;					// 시세
-	private String code;					// 담보분류
+	private String connoisseur;				// 외부감정가
+	private String judge_status;			// 심사상태
 	private String reference_file1;			// 참고파일1
 	private String reference_file2;			// 참고파일2
 	private String reference_file3;			// 참고파일3
+	private String scale;					// 규모
+	private String area;					// 면적
+	private String quote;					// 시세
+	private String code;					// 담보분류
 	
 	private String project_num;				// (참조)프로젝트번호
 	

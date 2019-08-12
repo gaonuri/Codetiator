@@ -8,7 +8,14 @@ public class InOutVO {
 	
 	private String account_num;		// (참조)계좌등록번호
 	private String user_num; 		// (참조)유저번호
+	private String busi_num; 		// (참조)유저번호
 	
+	public String getBusi_num() {
+		return busi_num;
+	}
+	public void setBusi_num(String busi_num) {
+		this.busi_num = busi_num;
+	}
 	public String getIn_out_num() {
 		return in_out_num;
 	}
