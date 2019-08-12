@@ -36,7 +36,7 @@ public class InvestService {
 		proCalcVO = investDAO.project_calc();
 		
 		return proCalcVO;
-	}//invest_list_all
+	}//project_calc
 
 	public InvestVO invest_calc() {
 		InvestVO inVO = null;
