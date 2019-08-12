@@ -30,8 +30,6 @@ public class ProjectVO {
 	private String loan_history;		// 대출자 상환내역
 	private String guarantee_price;		// 남은대출금액
 	private String customer;			// 투자자수
-<<<<<<< HEAD
-=======
 	private String rate;				// 금리
 	private String ach_rate;			// 모집현황
 	private String ach_state;			// 모집상태
@@ -39,13 +37,9 @@ public class ProjectVO {
 	private String deadline;			// 남은기간
 	private String refund_due_date;		// 상환예정일
 	private String refund_end;			// 상환완료일
->>>>>>> branch 'master' of https://github.com/gaonuri/Codetiator.git
 	private String ad_price;			// 광고금액
 	private String ad_grade;			// 광고등급
-<<<<<<< HEAD
-	private String loan_bank_name;		// 대출은행명
 	
-=======
 	
 	private String user_num;			// (참조)유저번호
 	private String busi_num;			// (참조)법인유저번호
@@ -104,7 +98,6 @@ public class ProjectVO {
 	public void setAgree_chk_6(String agree_chk_6) {
 		this.agree_chk_6 = agree_chk_6;
 	}
->>>>>>> branch 'master' of https://github.com/gaonuri/Codetiator.git
 	public String getLoan_bank_name() {
 		return loan_bank_name;
 	}
