@@ -3,6 +3,7 @@ package kr.co.creator.login;
 import java.io.PrintWriter;
 import java.util.List;
 
+import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -10,6 +11,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -317,6 +319,17 @@ public class LoginController {
 		model.addAttribute("memberList", list);
 		return "login/login";
 	}//busi_user_list
+	
+    @RequestMapping(value="inquiryemail",method=RequestMethod.POST)
+    public void inquiryEmail(EmailForm form, PrintWriter out) throws Exception{
+    	System.out.println("sub : " + form.getSubject());
+    	System.out.println("rec : " + form.getReceiver());
+    	System.out.println("con : " + form.getContent());
+    	if(!form.getSubject().equals("") && !form.getReceiver().equals("") && !form.getContent().equals("")) {
+    		emailSender.sendEmail(form);
+    	}
+    	out.close();
+    }
 
 }//class
 
