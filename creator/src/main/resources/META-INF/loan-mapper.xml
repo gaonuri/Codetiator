@@ -38,25 +38,25 @@
 		</selectKey>
 	</insert>
 
-	<insert id="insert_project"
-			parameterType="kr.co.creator.vo.ProjectVO">
-			INSERT INTO project_list (busi_num, img, project_name, price, refund, type, genre, grade, more_information, en_date,
-										loan_period, loan_amount, loan_class, loan_type, repay_method, judge_status, repay_count)
-			VALUES (#{busi_num}, #{img}, #{project_name}, #{price}, #{refund}, #{type}, #{genre}, #{grade}, #{more_information}, now(),
-					#{loan_period}, #{loan_amount}, #{loan_class}, #{loan_type}, #{repay_method}, 1, #{repay_count})
+	<insert id="insert_project"	parameterType="kr.co.creator.vo.ProjectVO">
+			INSERT INTO project_list (busi_num, img, project_name, type, genre, grade, more_information, loan_bank_name,
+									loan_amount, price, loan_period, repay_method, loan_class, judge_status, agree_chk_1, 
+									agree_chk_2, agree_chk_3, agree_chk_4, agree_chk_5, agree_chk_6)
+			VALUES (#{busi_num}, #{img}, #{project_name}, #{type}, #{genre}, #{grade}, #{more_information}, #{loan_bank_name},
+					#{loan_amount}, #{price}, #{loan_period}, #{repay_method}, #{loan_class}, 1, #{agree_chk_1}, 
+					#{agree_chk_2}, #{agree_chk_3}, #{agree_chk_4}, #{agree_chk_5}, #{agree_chk_6})
 		<selectKey resultType="String" keyProperty="project_num" order="AFTER">
 			SELECT LAST_INSERT_ID()
 		</selectKey>
 	</insert>
 	
 	<insert id="insert_guarantee" parameterType="kr.co.creator.vo.GuaranteeVO">
-		INSERT INTO guarantee (guarantee_type, guarantee_img, guarantee_name, debtor_type,
-								business_type, object_type, connoisseur, supply_area, exclusive_area, 
-								area, map, location, scale, comple_year, quote, code, judge_status, reference_file1, 
-								reference_file2, reference_file3, project_num)
-		VALUES (#{guarantee_type}, #{guarantee_img}, #{guarantee_name}, #{debtor_type}, #{business_type}, #{object_type}, #{connoisseur}, 
-				#{supply_area}, #{exclusive_area}, #{area}, #{map}, #{location}, #{scale}, #{comple_year}, #{quote}, 
-				#{code}, 1, #{reference_file1}, #{reference_file2}, #{reference_file3}, #{project_num})
+		INSERT INTO guarantee (guarantee_type, object_type, guarantee_img, debtor_type, business_type, guarantee_name, 
+								supply_area, exclusive_area, map, location, comple_year, connoisseur, judge_status, 
+								reference_file1, reference_file2, reference_file3, project_num)
+		VALUES (#{guarantee_type}, #{object_type}, #{guarantee_img}, #{debtor_type}, #{business_type}, #{guarantee_name}, 
+				#{supply_area}, #{exclusive_area}, #{map}, #{location}, #{comple_year}, #{connoisseur}, 1, 
+				#{reference_file1}, #{reference_file2}, #{reference_file3}, #{project_num})
 		<selectKey resultType="String" keyProperty="guarantee_num" order="AFTER">
 			SELECT LAST_INSERT_ID()
 		</selectKey>
@@ -64,7 +64,7 @@
 	</insert>
 	
 	<select id="RepaySelect" parameterType="kr.co.creator.vo.RepayVO" resultType="java.lang.String">
-		SELECT count(loan_history) repay_count
+		SELECT count(loan_history) refund_count
 		FROM repay_list
 		WHERE repay_num = #{repay_num}
 	</select>

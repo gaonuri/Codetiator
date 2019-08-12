@@ -20,6 +20,7 @@ import kr.co.creator.vo.CertVO;
 import kr.co.creator.vo.FindPwdVO;
 import kr.co.creator.vo.MemberListVO;
 import kr.co.creator.vo.MemberVO;
+import kr.co.creator.vo.UserVO;
 
 @Controller
 public class LoginController {
@@ -41,6 +42,12 @@ public class LoginController {
 		logger.info("login");
 		return "login/login";
 	}//login
+	
+	@RequestMapping(value="/login_new", method=RequestMethod.GET)
+	public String login_new() {
+		logger.info("login_new");
+		return "login/login_new";
+	}//login_new
 
 	@RequestMapping(value="/loginuser", method=RequestMethod.POST)
 	public void loginUser(MemberVO vo, HttpSession session, PrintWriter out) {
@@ -79,12 +86,15 @@ public class LoginController {
 		out.close();
 	}//loginBusi 
 	
-//	@RequestMapping(value="/logout", method=RequestMethod.GET)
-//	public String logout(MemberVO vo, HttpSession session) {
-//		logger.info("=== logout ===");
-//		
-//		return "login/logoutTime";
-//	}//logout
+	@RequestMapping(value="/logout", method=RequestMethod.GET)
+	public String logout(MemberVO vo, HttpSession session) {
+		logger.info("=== logout ===");
+//		session.setAttribute("memVO", null);
+//		session.setAttribute("memberVO", null);
+//		session.setAttribute("mypageVO", null);
+		session.invalidate();
+		return "redirect:/login";
+	}//logout
 	
 	@RequestMapping(value = "/logouttime", method = RequestMethod.POST)
 	public void logoutTime(MemberVO vo, HttpSession session, PrintWriter out, HttpServletRequest request) {
@@ -140,6 +150,8 @@ public class LoginController {
 		out.close();
 	}//sendNewPassword
 	
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////start
+	
 	@RequestMapping(value = "/busifindChk", method = RequestMethod.POST)
 	public void busifindChk(PrintWriter out, FindPwdVO vo) {
 		logger.info("=== busifindChk ===");
@@ -191,16 +203,100 @@ public class LoginController {
 	}//CheckCerUserNumber
 	
 	@RequestMapping(value = "/CheckCerNumber", method = RequestMethod.POST)
-	public void CheckCerNumber(PrintWriter out, Busi_userVO vo, EmailForm form, FindUtil findUtil) throws Exception {
+	public void CheckCerNumber(PrintWriter out, Busi_userVO vo, HttpSession session) throws Exception {
 		logger.info("=== CheckCerNumber ===");
 		int cnt = 0;
 		cnt = loginService.CheckCerNumber(vo);
 		if(cnt > 0) {
+			session.setAttribute("cerchk", vo);
 			out.print(cnt);
 			out.flush();
 			out.close();
 		}
 	}//CheckCerNumber
+	
+	@RequestMapping(value = "/userdataupdatefinal", method = RequestMethod.POST)
+	public void userDataUpdateFinal(PrintWriter out, Busi_userVO vo, HttpSession session) {
+		logger.info("=== userDataUpdateFinal ===");
+		vo = (Busi_userVO)session.getAttribute("cerchk");
+		int cnt = 0;
+		cnt = loginService.CheckCerNumber(vo);
+		if(cnt > 0) {
+			sqlSession.update("LoginMapper.userDataUpdateFinal", vo);
+		}
+		out.print(cnt);
+		out.flush();
+		out.close();
+	}//userDataUpdateFinal
+	
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	@RequestMapping(value = "/userfindchk", method = RequestMethod.POST)
+	public void userFindChk(PrintWriter out, FindPwdVO vo, HttpSession session) {
+		logger.info("=== userFindChk ===");
+		int cnt = 0;
+		cnt = loginService.userFindChk(vo);
+		out.print(cnt);
+		out.flush();
+		out.close();
+	}//userFindChk
+	
+	@RequestMapping(value = "/userceremail", method = RequestMethod.POST)
+	public void userCerEmail(PrintWriter out, FindPwdVO vo, EmailForm form, FindUtil findUtil) throws Exception {
+		logger.info("=== userCerEmail ===");
+		int cnt = 0;
+		cnt = loginService.userFindChk(vo);
+		if(cnt > 0) {
+			String newPassword, user_name;
+			newPassword = findUtil.getRamdomPassword(8);
+			user_name = sqlSession.selectOne("LoginMapper.selectName", vo);
+			vo.setNewPassword(newPassword);
+			vo.setUser_name(user_name);
+			form.setContent("인증번호는 " + newPassword + " 입니다");
+			form.setSubject("안녕하세요 " + vo.getUser_name() + "님 인증번호를 확인해 주세요");
+			form.setReceiver(vo.getEmail());
+			emailSender.sendEmail(form);
+		}
+		if(cnt > 0) {
+			System.out.println(vo.getEmail());
+			cnt = loginService.insertNumber1(vo);
+			out.print(cnt);
+			out.flush();
+			out.close();
+		}
+		out.print(cnt);
+		out.flush();
+		out.close();
+	}//userCerEmail
+	
+	@RequestMapping(value = "/usercheckcernumber", method = RequestMethod.POST)
+	public void userCheckCerNumber(PrintWriter out, UserVO vo, HttpSession session) throws Exception {
+		logger.info("=== userCheckCerNumber ===");
+		int cnt = 0;
+		cnt = loginService.CheckCerNumber1(vo);
+		if(cnt > 0) {
+			session.setAttribute("cerchk1", vo);
+			out.print(cnt);
+			out.flush();
+			out.close();
+		}
+	}//userCheckCerNumber
+	
+	@RequestMapping(value = "/userdataupdatefinal1", method = RequestMethod.POST)
+	public void userDataUpdateFinal1(PrintWriter out, UserVO vo, HttpSession session) {
+		logger.info("=== userDataUpdateFinal ===");
+		vo = (UserVO)session.getAttribute("cerchk1");
+		int cnt = 0;
+		cnt = loginService.CheckCerNumber1(vo);
+		if(cnt > 0) {
+			sqlSession.update("LoginMapper.userDataUpdateFinal1", vo);
+		}
+		out.print(cnt);
+		out.flush();
+		out.close();
+	}//userDataUpdateFinal1
+	
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// end
 	
 	@RequestMapping(value = "/user_list", method = RequestMethod.GET)
 	public String user_list(Model model) {

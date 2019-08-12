@@ -90,7 +90,7 @@ public class MypageDAO {
 
 	public int bankNumChk(AccountVO accvo) {
 		int cnt = 0;
-		cnt = sqlSession.selectOne("MypageMapper.joinEmailChk", accvo);
+		cnt = sqlSession.selectOne("MypageMapper.bankNumChk", accvo);
 		return cnt;
 	}//bankNumChk
 
@@ -112,12 +112,25 @@ public class MypageDAO {
 			count = sqlSession.insert("MypageMapper.useraccountinsert", acVO);
 			return count;
 		}
+		
+		public int userinoutinsert(InOutVO ioVO) {
+			int count = 0;
+			count = sqlSession.insert("MypageMapper.userinoutinsert", ioVO);
+			return count;
+		}
 
 		public int busiaccount_insert(AccountVO acVO) {
 			int count = 0;
 			count = sqlSession.insert("MypageMapper.busiaccountinsert", acVO);
 			return count;
 		}
+		
+		public int busiinoutinsert(InOutVO ioVO) {
+			int count = 0;
+			count = sqlSession.insert("MypageMapper.busiinoutinsert", ioVO);
+			return count;
+		}
+		
 	
 }//class
 

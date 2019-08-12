@@ -896,9 +896,9 @@ $(document).ready(function() {
 		});
 		
 		$('#fBLogo').hover(function() {
-			$(this).attr("src", "/images/common/btn_footer_sns_facebook_hover.png");
+			$(this).attr("src", "${pageContext.request.contextPath}/resources/img/btn_footer_sns_facebook_hover.png");
 		}, function() {
-			$(this).attr("src", "/images/common/btn_footer_sns_facebook_default.png");
+			$(this).attr("src", "${pageContext.request.contextPath}/resources/img/btn_footer_sns_facebook_default.png");
 		});
 		
 		// 숫자만 입력 체크

@@ -75,6 +75,12 @@
 		where manager_email = #{manager_email}
 	</update>
 	
+	<update id="insertNumber1" parameterType="kr.co.creator.vo.FindPwdVO">
+		update user_list
+		set cer_number = #{newPassword} 
+		where email = #{email}
+	</update>
+	
 	<select id="CheckCerUserNumber" parameterType="kr.co.creator.vo.FindPwdVO" resultType="int">
 		select count(*)
 		from user_list
@@ -86,6 +92,24 @@
 		from busi_user_list
 		where cer_number = #{cer_number}
 	</select>
+	
+	<select id="CheckCerNumber1" resultType="int">
+		select count(*)
+		from user_list
+		where cer_number = #{cer_number}
+	</select>
+	
+	<update id="userDataUpdateFinal" parameterType="kr.co.creator.vo.Busi_userVO">
+		update busi_user_list
+		set manager_name = #{manager_name}, manager_phone = #{manager_phone}, manager_birth = #{manager_birth} 
+		where busi_num = #{busi_num} and cer_number = #{cer_number}
+	</update>
+	
+	<update id="userDataUpdateFinal1" parameterType="kr.co.creator.vo.UserVO">
+		update user_list
+		set user_name = #{user_name}, phone = #{phone}, jumin = #{jumin} 
+		where user_num = #{user_num} and cer_number = #{cer_number}
+	</update>
 	 
 	<insert id="historyTime" parameterType="kr.co.creator.vo.MemberVO" >
 		insert into history (user_num, busi_num, log_in_out_time, log_in_out_type)
@@ -112,5 +136,4 @@
 		order by history_num desc
 		limit 3
 	</select>
-	
 </mapper>

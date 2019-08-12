@@ -70,12 +70,13 @@ public class LoanController {
     }
 	
 	@RequestMapping(value = "/addinfo", method = RequestMethod.GET)
-	public String addinfo(HttpSession session, ProjectVO pvo, FileVO fvo) throws Exception {
+	public String addinfo(HttpSession session, ProjectVO pvo, FileVO fvo, GuaranteeVO gvo) throws Exception {
 		if(session.getAttribute("memVO") == null) {
 			return "redirect:/login";
 		}
 		session.setAttribute("ProjectVO", pvo);
 		session.setAttribute("FileVO", fvo);
+		session.setAttribute("GuaranteeVO", gvo);
 
     	return "loan/addinfo";
     }
@@ -88,12 +89,19 @@ public class LoanController {
 		MemberVO voFromSession = (MemberVO) session.getAttribute("memVO");
 		pvo = (ProjectVO) session.getAttribute("ProjectVO");
 		fvo = (FileVO) session.getAttribute("FileVO");
+		gvo = (GuaranteeVO) session.getAttribute("GuaranteeVO");
 		System.out.println("voFromSession.getBusi_num() : " + voFromSession.getBusi_num());
 		pvo.setBusi_num(voFromSession.getBusi_num());//법인 유저 넘버 가져오기
+		System.out.println("pvo.getBusi_num() : " + pvo.getBusi_num());
 //		String repay_count = loanDAOService.RepaySelect(rvo); //상환내역 불러오기
 //		pvo.setRepay_count(repay_count);
+		System.out.println("pvo : " + pvo);
+		System.out.println("fvo : " + fvo);
+		System.out.println("gvo : " + gvo);
 		if(fvo.getImg_file() != null && fvo.getImg_file().getSize() > 0) {
 			pvo.setImg	(UtilForFile.fileUpByType(fvo.getImg_file()    , "loan", pvo.getProject_num()));
+			System.out.println("pvo.getImg_file :" + fvo.getImg_file());
+			System.out.println("pvo.getImg :" + pvo.getImg());
 			saveFileCnt++;
 		}
 		if(fvo.getGuarantee_img_file() != null && fvo.getGuarantee_img_file().getSize() > 0) {
@@ -112,6 +120,7 @@ public class LoanController {
 			gvo.setReference_file3	(UtilForFile.fileUpByType(fvo.getReference_file3_file()    , "loan", pvo.getProject_num()));
 			saveFileCnt++;
 		}
+		System.out.println("saveFileCnt : " + saveFileCnt);
 		if(saveFileCnt > 0) {
 			cnt = loanDAOService.insert_project(pvo); //프로젝트 DB에 넣기
 			if(cnt > 0) {
@@ -145,6 +154,7 @@ public class LoanController {
 		gvo = (GuaranteeVO) session.getAttribute("GuaranteeVO");
 		System.out.println("voFromSession.getBusi_num() : " + voFromSession.getBusi_num());
 		pvo.setBusi_num(voFromSession.getBusi_num());//법인 유저 넘버 가져오기
+		System.out.println("pvo.getBusi_num() : " + pvo.getBusi_num());
 		//fileupload
 		int cnt = 0;
 		DocumentVO dvo = new DocumentVO();

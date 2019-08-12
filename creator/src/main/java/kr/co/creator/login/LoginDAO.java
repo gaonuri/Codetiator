@@ -10,6 +10,8 @@ import kr.co.creator.vo.Busi_userVO;
 import kr.co.creator.vo.FindPwdVO;
 import kr.co.creator.vo.HistoryVO;
 import kr.co.creator.vo.MemberListVO;
+import kr.co.creator.vo.MemberVO;
+import kr.co.creator.vo.UserVO;
 
 @Repository
 public class LoginDAO {
@@ -46,6 +48,12 @@ public class LoginDAO {
 		cnt = sqlSession.insert("LoginMapper.insertNumber", vo);
 		return cnt;
 	}//insertNumber
+	
+	public int insertNumber1(FindPwdVO vo) {
+		int cnt = 0;
+		cnt = sqlSession.insert("LoginMapper.insertNumber1", vo);
+		return cnt;
+	}//insertNumber
 
 	public int busifindChk(FindPwdVO vo) {
 		int cnt = 0;
@@ -53,17 +61,23 @@ public class LoginDAO {
 		return cnt;
 	}//busifindChk
 
-	public int userfindChk(FindPwdVO vo) {
+	public int userFindChk(FindPwdVO vo) {
 		int cnt = 0;
-		cnt = sqlSession.selectOne("LoginMapper.userfindChk", vo);
+		cnt = sqlSession.selectOne("LoginMapper.findPwdChk", vo);
 		return cnt;
-	}//userfindChk
+	}//userFindChk
 	
 	public int CheckCerNumber(Busi_userVO vo) {
 		int cnt = 0;
 		cnt = sqlSession.selectOne("LoginMapper.CheckCerNumber", vo);
 		return cnt;
 	}//CheckCerNumber
+	
+	public int CheckCerNumber1(UserVO vo) {
+		int cnt = 0;
+		cnt = sqlSession.selectOne("LoginMapper.CheckCerNumber1", vo);
+		return cnt;
+	}//CheckCerNumber	
 	
 	public List<HistoryVO> historyIn(HistoryVO hvo) {
 		List<HistoryVO> list = null;
@@ -76,6 +90,18 @@ public class LoginDAO {
 		list = sqlSession.selectList("LoginMapper.historyOut", hvo);
 		return list;
 	}//historyOut
+	
+	public int userChk(MemberVO vo) {
+		int cnt = 0;
+		cnt = sqlSession.selectOne("LoginMapper.findPwdChk", vo);
+		return cnt;
+	}//userfindChk
+	
+	public int busiChk(MemberVO vo) {
+		int cnt = 0;
+		cnt = sqlSession.selectOne("LoginMapper.busifindChk", vo);
+		return cnt;
+	}//userfindChk
 
 	public int insertUserNumber(FindPwdVO vo) {
 		int cnt = 0;

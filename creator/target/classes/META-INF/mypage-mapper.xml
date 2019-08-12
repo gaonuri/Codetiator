@@ -46,7 +46,9 @@
 	</select>
 	
 	<select id="bankNumChk" parameterType="java.lang.String" resultType="int">
-		select count(*) from account_list where bank_num = #{bank_num}
+		select count(*) 
+		from account_list 
+		where bank_num = #{bank_num}
 	</select>
 	
 	<select id="Account"
@@ -59,7 +61,7 @@
 		, deposit
 		from account_list
 		where user_num = #{user_num}
-<!-- 		OR busi_num = #{busi_num} -->
+		OR busi_num = #{busi_num}
 	</select>
 	
 	<insert id="useraccountinsert" parameterType="kr.co.creator.vo.AccountVO">
@@ -68,10 +70,22 @@
 		value(#{account_name}, #{bank_num}, #{bank_name}, #{user_num})
 	</insert>
 	
+	<insert id="userinoutinsert" parameterType="kr.co.creator.vo.AccountVO">
+		insert into in_out
+		(account_num, user_num)
+		value(#{account_num}, #{user_num})
+	</insert>
+	
 	<insert id="busiaccountinsert" parameterType="kr.co.creator.vo.AccountVO">
 		insert into account_list
 		(account_name, bank_num, bank_name, busi_num)
 		value(#{account_name}, #{bank_num}, #{bank_name}, #{busi_num})
+	</insert>
+	
+	<insert id="busiinoutinsert" parameterType="kr.co.creator.vo.AccountVO">
+		insert into in_out
+		(account_num, busi_num)
+		value(#{account_num}, #{busi_num})
 	</insert>
 	
 <!-- 	<insert id="accountinsert" parameterType="kr.co.creator.vo.AccountVO"> -->
@@ -164,6 +178,17 @@
 		delete from user_list 
 		where user_num = #{user_num}
 	</delete>
+	
+	<update id="UpdatePass1" parameterType="kr.co.creator.vo.MemberVO">
+		update busi_user_list 
+		set busi_password = #{busi_password} 
+		where busi_num = #{busi_num}
+	</update>
+	
+	<delete id="Deletebusi" parameterType="kr.co.creator.vo.MemberVO">
+		delete from busi_user_list 
+		where busi_num = #{busi_num}
+	</delete>	
 	
 	
 	
