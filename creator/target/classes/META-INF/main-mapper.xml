@@ -13,6 +13,11 @@
 		ORDER BY p.regi_date DESC
 	</select>
 	
+	<select id="project_calc" resultType="kr.co.creator.vo.ProjectVO">
+		SELECT	COUNT(*) project_count, CAST(SUM(rate) / COUNT(*) AS DECIMAL(4, 2)) rate_average
+		FROM	project_list 
+	</select>
+	
 <!-- 	<select id="projectList1" resultType="kr.co.creator.vo.ProjectVO"> -->
 <!-- 		select *  -->
 <!-- 		from project_list -->

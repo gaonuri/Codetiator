@@ -21,12 +21,14 @@ public class MainController {
 	MainService mainService;
 	
 	@RequestMapping(value = "/main", method = RequestMethod.GET)
-	public String main(Model model, ProjectVO proVO) {
+	public String main(Model model, ProjectVO proVO, ProjectVO proCalcVO) {
 		logger.info("main");
 
 		List<ProjectVO> list = null;
 		list = mainService.project_list(proVO);
+		proCalcVO = mainService.project_calc();
 		model.addAttribute("projectList", list);
+		model.addAttribute("proCalcVO", proCalcVO);
 		
 		return "main/main";
 	}//main

@@ -756,7 +756,7 @@ small, .small {
 							<ul class="mainTop_txt">
 								<li class="mtTxt_top">평균 금리</li>
 								<li class="mtTxt_bottom">
-									<span id="totalAvgInvestRate" class="roboto">13.29</span><span class="mt_txt_sm">%</span>
+									<span id="totalAvgInvestRate" class="roboto">${proCalcVO.rate_average}</span><span class="mt_txt_sm">%</span>
 								</li>
 							</ul>
 							<div class="mr-blue mainTop_btn" id="investBtn" style="width: 190px; height: 34px; margin-right: 16px;">
@@ -777,37 +777,6 @@ small, .small {
 						<div class="mainBottom_cont">
 							<div class="main_summary_full">
 								<div class="main_summary text-center">
-									<div style="font-size:18px;" id="runDays">서비스 시작 이후 <storng>1,153</storng>일째</div>
-									<div style="padding:0 0 5px 0;">
-										<span id="display_clock">2019-08-06 10:59:45</span>
-									</div>
-									<ul class="summary_cont03">
-										<li class="summary_tit">누적대출액</li>
-										<li class="summary_num"><span id="totalLoanRepayAmt">340.90</span><span class="ms_txt_sm">억 원</span></li>
-									</ul>
-									<ul class="summary_cont04">
-										<li class="summary_tit">대출잔액</li>
-										<li class="summary_num"><span id="totalLoanRestAmt">88.75</span><span class="ms_txt_sm">억 원</span></li>
-									</ul>
-									<ul class="summary_cont01">
-										<li class="summary_tit">
-											상환률
-										</li>
-										<li class="summary_num"><span id="repayRate">73.97</span><span class="ms_txt_sm">%</span></li>
-									</ul>
-									<ul class="summary_cont02">
-										<li class="summary_tit">
-											연체율 <span class="glyphicon glyphicon-question-sign hover" style="font-size: 12px;" tabindex="0" data-toggle="tooltip" data-placement="auto" data-trigger="hover" title="" data-original-title="연체기준 : 약정된 상환이 일부 혹은 전부 지연되기 시작해 30일 이상 경과한 대출"></span>
-										</li>
-										<li class="summary_num">
-											<span id="delayRate">3.38</span><span class="ms_txt_sm">%</span>
-										</li>
-										<div class="text-center" style="font-size:10px;">
-											<a id="openDelayLoanListA" href="javascript:(void(0));" onclick="fn_openDelayLoanListModal();" class="display-none" style="display: inline;">
-												연체 중 상품보기 &gt;
-											</a>
-										</div>
-									</ul>
 									<!-- 
 									<ul class="summary_cont02 display-none">
 										<li class="summary_tit">
