@@ -60,6 +60,13 @@ public class MypageController {
 		return "mypage/my_dashboard";
 	}
 	
+	@RequestMapping(value = "/my_dashboard_new", method = RequestMethod.GET)
+	public String my_dashboard_new(HttpSession session, Model model, MemberVO userVO, MypageVO myVO) {
+		logger.info("my_dashboard_new");
+
+		return "mypage/my_dashboard_new";
+	}//my_dashboard_new
+	
 	@RequestMapping(value = "/my_invest_list", method = RequestMethod.GET)
 	public String invest(HttpSession session, Model model, MemberVO userVO, MypageVO myVO) {
 		logger.info("my_dashboard");
@@ -70,6 +77,13 @@ public class MypageController {
 		return "mypage/my_invest_list";
 	}
 	
+	@RequestMapping(value = "/my_invest_list_new", method = RequestMethod.GET)
+	public String my_invest_list_new(HttpSession session, Model model, MemberVO userVO, MypageVO myVO) {
+		logger.info("my_invest_list_new");
+
+		return "mypage/my_invest_list_new";
+	}//my_invest_list_new
+	
 	@RequestMapping(value = "/my_loan_list", method = RequestMethod.GET)
 	public String loan(HttpSession session, Model model, MemberVO userVO, ProjectVO proVO) {
 		logger.info("my_loan_list");
@@ -79,6 +93,13 @@ public class MypageController {
 		model.addAttribute("loanList",loan);
 		return "mypage/my_loan_list";
 	}
+	
+	@RequestMapping(value = "/my_loan_list_new", method = RequestMethod.GET)
+	public String my_loan_list_new(HttpSession session, Model model, MemberVO userVO, ProjectVO proVO) {
+		logger.info("my_loan_list_new");
+
+		return "mypage/my_loan_list_new";
+	}//my_loan_list_new
 	
 	@RequestMapping(value = "/my_depo_mgn", method = RequestMethod.GET)
 	public String my_modify(HttpSession session, Model model, MemberVO userVO, UserVO useVO, Busi_userVO busiVO, AccountVO accVO, InOutVO ioVO) {
@@ -106,6 +127,13 @@ public class MypageController {
 //		logger.info("my_depo_mgn"+busiVO);
 		return "mypage/my_depo_mgn";
 	}
+	
+	@RequestMapping(value = "/my_depo_mgn_new", method = RequestMethod.GET)
+	public String my_depo_mgn_new(HttpSession session, Model model, MemberVO userVO, UserVO useVO, Busi_userVO busiVO, AccountVO accVO, InOutVO ioVO) {
+		logger.info("my_depo_mgn_new");
+
+		return "mypage/my_depo_mgn_new";
+	}//my_depo_mgn_new
 	
 //	@RequestMapping(value = "/account_insert", method = RequestMethod.POST)
 //	public void account_insert(HttpSession session, Model model, PrintWriter out, AccountVO accVO, MemberVO userVO ) {
@@ -177,9 +205,8 @@ public class MypageController {
 	}//depo_update
 	
 	@RequestMapping(value = "/CertEmail", method = RequestMethod.POST)
-	public void CertEmail(HttpSession session, PrintWriter out, MemberVO memvo, FindPwdVO vo, EmailForm form, FindUtil findUtil) {
+	public void CertEmail(HttpSession session, PrintWriter out, MemberVO memvo, FindPwdVO vo, EmailForm form, FindUtil findUtil) throws Exception {
 		logger.info("=== CertEmail ===");
-<<<<<<< HEAD
 		int cnt = 0;
 		if(cnt != 0) {
 			cnt = loginService.userFindChk(vo);
@@ -218,7 +245,6 @@ public class MypageController {
 			out.close();
 		}
 		out.print(cnt);
-=======
 		memvo = (MemberVO)session.getAttribute("memVO");
 		logger.info("=== CertEmail : "+memvo.getUser_num());
 		logger.info("=== CertEmail : "+memvo.getBusi_num());
@@ -254,7 +280,6 @@ public class MypageController {
 				updateCertNunYN = loginService.insertNumber(vo);
 			}
 		out.print(updateCertNunYN);
->>>>>>> branch 'master' of https://github.com/gaonuri/Codetiator.git
 		out.flush();
 		out.close();
 	}//CertEmail
@@ -296,6 +321,13 @@ public class MypageController {
 		
 		return "mypage/my_modify";
 	}//my_modify
+	
+	@RequestMapping(value = "/my_modify_new", method = RequestMethod.GET)
+	public String my_modify_new() {
+		logger.info("my_modify_new");
+		
+		return "mypage/my_modify_new";
+	}//my_modify_new
 	
 	@RequestMapping(value = "/mypagemodifyu", method = RequestMethod.POST)
 	public void myPageModifyU(HttpSession session, PrintWriter out, MemberListVO vo) {
@@ -385,7 +417,6 @@ public class MypageController {
 		out.flush();
 		out.close();	
 	}//deleteUser
-<<<<<<< HEAD
 	
 	@RequestMapping(value="/updatepass1", method=RequestMethod.POST)
 	public void updatePass1(HttpSession session, PrintWriter out, MemberVO vo) {
@@ -412,8 +443,4 @@ public class MypageController {
 		out.flush();
 		out.close();	
 	}//deleteBusi
-
-	
-=======
->>>>>>> branch 'master' of https://github.com/gaonuri/Codetiator.git
 }//class

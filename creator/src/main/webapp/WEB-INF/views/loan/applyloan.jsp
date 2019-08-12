@@ -753,7 +753,6 @@ $(document).ready(function() {
 			var loanGb = $("#loan_class").val();
 			var guaranteeType = $("#loanTypeSelect").val();
 			var repayTypeCd = $("#repay_method").val();
-<<<<<<< HEAD
 			var loan_bank_name = $("#loan_bank_name").val(); 
 			var loan_period = $("#loan_period").val();
 			var loan_amount = $("#loan_amount").val();
@@ -761,11 +760,9 @@ $(document).ready(function() {
 			if(loan_amount == "") {
 				alert("대출계좌를 입력 해주세요.");
 				$("#loan_amount").focus();
-=======
 			if(sex == undefined) {
 				alert("성별을 선택하세요.");
 				$(".sexRadio-label").focus();
->>>>>>> branch 'master' of https://github.com/gaonuri/Codetiator.git
 				return;
 			}
 			if(loanAmt == ""){

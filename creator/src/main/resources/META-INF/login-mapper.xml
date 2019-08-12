@@ -74,16 +74,13 @@
 		set cer_number = #{newPassword} 
 		where manager_email = #{manager_email}
 	</update>
-	
-<<<<<<< HEAD
+
 	<update id="insertNumber1" parameterType="kr.co.creator.vo.FindPwdVO">
 		update user_list
 		set cer_number = #{newPassword} 
 		where email = #{email}
 	</update>
 	
-	<select id="CheckCerNumber" resultType="int">
-=======
 	<select id="CheckCerUserNumber" parameterType="kr.co.creator.vo.FindPwdVO" resultType="int">
 		select count(*)
 		from user_list
@@ -91,7 +88,6 @@
 	</select>
 	
 	<select id="CheckCerNumber" parameterType="kr.co.creator.vo.Busi_userVO" resultType="int">
->>>>>>> branch 'master' of https://github.com/gaonuri/Codetiator.git
 		select count(*)
 		from busi_user_list
 		where cer_number = #{cer_number}
