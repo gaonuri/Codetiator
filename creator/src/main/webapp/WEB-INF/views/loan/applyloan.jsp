@@ -592,7 +592,7 @@ $(document).ready(function() {
 							<!-- /.modal-dialog -->
 		    		</div>
 						<!-- Email 인증끝. -->
-	    </div>
+	    		</div>
 	    <!--main content end-->
 		
 		<!--footer start-->
