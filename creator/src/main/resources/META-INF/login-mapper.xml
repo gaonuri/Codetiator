@@ -74,13 +74,13 @@
 		set cer_number = #{newPassword} 
 		where manager_email = #{manager_email}
 	</update>
-
+	
 	<update id="insertNumber1" parameterType="kr.co.creator.vo.FindPwdVO">
 		update user_list
 		set cer_number = #{newPassword} 
 		where email = #{email}
 	</update>
-
+	
 	<select id="CheckCerUserNumber" parameterType="kr.co.creator.vo.FindPwdVO" resultType="int">
 		select count(*)
 		from user_list

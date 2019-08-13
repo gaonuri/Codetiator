@@ -562,10 +562,14 @@ $(document).ready(function() {
 													<label for="ssnNo" class="control-label" id="aa" style="display:none;">인증번호를 입력하세요.</label>
 												</div>
 											</div>		
-											</div>													
+											<div class="row">
+												<div class="form-group col-xs-6 col-sm-6 col-md-6">
+													<label for="ssnNo" class="control-label">인증번호를 입력하세요.</label>
+												</div>
+											</div>													       
 											<div class="row">
 												<div class="col-xs-12 col-sm-12 col-md-12">
-												<span class="modal-body-light">&nbsp;● 정상처리가 불가할 경우 1:1문의사항을 이용하시기 바랍니다.</span>
+													<span class="modal-body-light">&nbsp;● 정상처리가 불가할 경우 1:1문의사항을 이용하시기 바랍니다.</span>
 												</div>
 <!-- 												<div class="clearfix"></div> -->
 												<div class="col-xs-12 col-sm-12 col-md-12">
@@ -578,17 +582,17 @@ $(document).ready(function() {
 												</div>
 											</div>
 										</div>
-										<div class="modal-footer">
+									</div>
+									<div class="modal-footer">
 										<button type="button" id="btn_certi_complete" class="btn btn-purple-transparent" >확 인</button>
 									</div>
 								</div>
 								<!-- /.modal-content -->
 							</div>
 							<!-- /.modal-dialog -->
-						</div>
+		    		</div>
 						<!-- Email 인증끝. -->
-	    		</div>
-	    
+	    </div>
 	    <!--main content end-->
 		
 		<!--footer start-->
