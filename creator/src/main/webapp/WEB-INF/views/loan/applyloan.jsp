@@ -587,7 +587,6 @@ $(document).ready(function() {
 						</div>
 						<!-- Email 인증끝. -->
 	    		</div>
-	    
 	    <!--main content end-->
 		
 		<!--footer start-->
