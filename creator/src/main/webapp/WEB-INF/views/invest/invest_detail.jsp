@@ -840,13 +840,8 @@ $("#waterbubbleChart").waterbubble({
 	<div id="wowslider_engine" style="position: absolute; left: -1000px; top: -1000px; opacity: 0.1;">
 		<a href="http://wowslider.com">wowslider.com</a>
 	</div>
-
 	<!-- for all pages -->
 	
-
-	
- 
-
 <!-- Navigation
 ==========================================-->
 	<!--header start-->
@@ -1845,7 +1840,6 @@ $(document).ready(function() {
 	}
 });	
 </script>
-
 	<section id="invest-good">
 		<div class="container">
 			<section id="investDetail-banner" class="text-center">
@@ -1968,8 +1962,6 @@ $(document).ready(function() {
 										${proVO.rate}<font size="2">%</font>
 									</div>
 								</div>
-							
-							
 								<div class="row">
 									<div class="col-xs-5 col-sm-5 col-md-5 left">
 										투자기간
@@ -1983,18 +1975,16 @@ $(document).ready(function() {
 										투자한도
 									</div>
 									<div class="col-xs-7 col-sm-7 col-md-7 right">
-										<span class="font-light-blue" id="lmtAmt"></span><font size="2" class="font-light-blue">만원</font>
+										<span class="font-light-blue" id="lmtAmt">${500 - inVO.invest_price}</span><font size="2" class="font-light-blue">만원</font>
 										 <span class="glyphicon glyphicon-question-sign hover" style="font-size: 12px;" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="auto bottom" data-html="true" data-content="<strong>※ 현재 이 상품에 투자 가능한 금액입니다.</strong>
 												<br>
 												<br>
 												총 투자한도 : 
 												
-												
 												${500 - inVO.invest_price}만원
 												
 												<br>
 												동일차입자 한도 : 
-												
 												
 													원
 												
@@ -2174,7 +2164,6 @@ $(document).ready(function() {
 									${guaVO.supply_area} / ${guaVO.exclusive_area}
 								</td>
 							</tr>
-						
 							<tr>
 								<td scope="col" class="title_td">
 									LTV
@@ -2206,37 +2195,37 @@ $(document).ready(function() {
 							<col width="60%">
 						</colgroup>
 						<tbody class="tb_vert" style="border-top:1px solid #333;">
-									<tr>
-										<td scope="col" class="title_td">
-											유형
-										</td>
-										<td scope="col">
-											${guaVO.debtor_type}
-										</td>
-									</tr>
-									<tr>
-										<td scope="col" class="title_td">
-											업종
-										</td>
-										<td scope="col">
-											${guaVO.business_type}
-										</td>
-									</tr>
-									<tr>
-										<td scope="col" class="title_td">
-											대출목적
-										</td>
-										<td scope="col">
-											사업운영자금
-										</td>
-									</tr>
-									<tr>
-										<td scope="col" class="title_td">
-											　
-										</td>
-										<td scope="col">
-										</td>
-									</tr>
+							<tr>
+								<td scope="col" class="title_td">
+									유형
+								</td>
+								<td scope="col">
+									${guaVO.debtor_type}
+								</td>
+							</tr>
+							<tr>
+								<td scope="col" class="title_td">
+									업종
+								</td>
+								<td scope="col">
+									${guaVO.business_type}
+								</td>
+							</tr>
+							<tr>
+								<td scope="col" class="title_td">
+									대출목적
+								</td>
+								<td scope="col">
+									사업운영자금
+								</td>
+							</tr>
+							<tr>
+								<td scope="col" class="title_td">
+									　
+								</td>
+								<td scope="col">
+								</td>
+							</tr>
 						</tbody>
 					</table>
 				</div>

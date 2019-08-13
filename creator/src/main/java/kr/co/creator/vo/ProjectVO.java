@@ -13,20 +13,12 @@ public class ProjectVO {
 	private String grade;				// 등급
 	private String more_information;	// 상세정보
 	private String loan_bank_name;		// 대출은행명
-<<<<<<< HEAD
-	private String loan_amount;			// 대출계좌
-	private String loan_class;			// 대출구분
-	private String judge_status;		// 심사상태
-	private String ing_status;			// 1:승인 2:심사 3:반려
-	private String customer;			// 투자자수
-=======
 	private String loan_amount;			// 대출계좌
 	private String loan_class;			// 대출구분
 	private String loan_request;		// 대출신청일자
 	private String judge_status;		// 심사상태
 	private String ing_status;			// 1:승인 2:심사 3:반려
 	private String customer;			// 투자자수
->>>>>>> branch 'master' of https://github.com/gaonuri/Codetiator.git
 	private String price;				// 모집금액
 	private String loan_period;			// 대출기간
 	private String repay_method;		// 상환방식
@@ -48,24 +40,9 @@ public class ProjectVO {
 	private String current_price;		// 현재금액
 	private String deadline;			// 남은기간
 	private String refund_due_date;		// 상환예정일
-<<<<<<< HEAD
 	private String refund_end;			// 상환완료일
-=======
-	private String refund_end;			// 상환완료일
->>>>>>> branch 'master' of https://github.com/gaonuri/Codetiator.git
-	private String ad_price;			// 광고금액
-<<<<<<< HEAD
-	private String ad_grade;			// 광고등급
-	
-	
-	private String user_num;			// (참조)유저번호
-	private String busi_num;			// (참조)법인유저번호
-	
-=======
-	private String ad_grade;			// 광고등급
 	private String guarantee_type;		// 담보유형(부동산, 동산)
 	private String object_type;			// 물건유형(아파트, 연립주택)
->>>>>>> branch 'master' of https://github.com/gaonuri/Codetiator.git
 	private String loan_count;			// 투자받은횟수
 	private String project_count;		// 총프로젝트수
 	private String rate_average;		// 평균 연수익률
@@ -93,18 +70,6 @@ public class ProjectVO {
 	}
 	public void setLoan_request(String loan_request) {
 		this.loan_request = loan_request;
-	}
-	public String getAd_price() {
-		return ad_price;
-	}
-	public void setAd_price(String ad_price) {
-		this.ad_price = ad_price;
-	}
-	public String getAd_grade() {
-		return ad_grade;
-	}
-	public void setAd_grade(String ad_grade) {
-		this.ad_grade = ad_grade;
 	}
 	public String getAgree_chk_1() {
 		return agree_chk_1;
