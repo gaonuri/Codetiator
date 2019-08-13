@@ -162,12 +162,18 @@ public class InvestController {
 	}//invest
 	
 	@RequestMapping(value = "/invest_finished", method = RequestMethod.GET)
-	public String invest_finished(Model model) {
+	public String invest_finished(Model model, ProjectVO proVO, ProjectVO proCalcVO, InvestVO inVO) {
 		logger.info("invest_finished");
 		
 		List<ProjectVO> list = null;
 		list = investService.invest_finished();
+		proVO = investService.project_detail(proVO);
+		proCalcVO = investService.project_calc();
+		inVO = investService.invest_calc();
 		model.addAttribute("investFinished", list);
+		model.addAttribute("proVO", proVO);
+		model.addAttribute("proCalcVO", proCalcVO);
+		model.addAttribute("inVO", inVO);
 		
 		return "invest/invest_finished";
 	}//invest_finish

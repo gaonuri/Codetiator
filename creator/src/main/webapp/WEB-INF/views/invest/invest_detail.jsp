@@ -1940,7 +1940,7 @@ $(document).ready(function() {
 							</div>
 							<div class="amt">
 								<font class="font-purple">
-										${proVO.current_price}</font><font size="2">만원</font>
+										${proVO.current_price}</font><font size="2"></font>
 									/ ${proVO.price}<font size="2">만원</font>
 							</div>
 							<hr>
@@ -1995,16 +1995,25 @@ $(document).ready(function() {
 								</div>
 							</div>
 							<c:choose>
-								<c:when test="${memVO != null && (memVO.user_num != '' && memVO.user_num != null) || (memVO.busi_num != '' && memVO.busi_num != null)}">
-									<button type="button" class="btn btn-purple-transparent btn-block" id="investBtn1">
-										투자신청 <i class="glyphicon glyphicon glyphicon-ok"></i>
-									</button>					
+								<c:when test="${proVO.ach_state == '투자하기'}">
+									<c:choose>
+										<c:when test="${memVO != null && (memVO.user_num != '' && memVO.user_num != null) || (memVO.busi_num != '' && memVO.busi_num != null)}">
+											<button type="button" class="btn btn-purple-transparent btn-block" id="investBtn1">
+												투자신청 <i class="glyphicon glyphicon glyphicon-ok"></i>
+											</button>					
+										</c:when>
+										<c:otherwise>
+											<button type="button" class="btn btn-purple-transparent btn-block" id="investBtn2">
+												투자신청 <i class="glyphicon glyphicon glyphicon-ok"></i>
+											</button>
+										</c:otherwise>
+									</c:choose>
 								</c:when>
-								<c:otherwise>
-									<button type="button" class="btn btn-purple-transparent btn-block" id="investBtn2">
-										투자신청 <i class="glyphicon glyphicon glyphicon-ok"></i>
-									</button>
-								</c:otherwise>
+									<c:otherwise>
+										<button type="button" class="btn btn-purple-transparent btn-block" disabled="disabled">
+											${proVO.ach_state} <i class="glyphicon glyphicon glyphicon-ok"></i>
+										</button>
+									</c:otherwise>
 							</c:choose>
 						</div>
 					</div>
@@ -2463,7 +2472,7 @@ $(document).ready(function() {
 												지목
 											</td>
 											<td class="text-left">
-												전 및 임야
+												토지
 											</td>
 										</tr>
 										<tr>

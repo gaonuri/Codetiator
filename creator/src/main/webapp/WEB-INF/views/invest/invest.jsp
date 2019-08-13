@@ -489,13 +489,13 @@ html {
 																	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 col">
 																		<form class="form-inline amtForm">
 																			<div class="form-group">
-																				<span name="amtPlus100" id="amtPlus100_771">+100만</span>
-																				<span name="amtPlus50" id="amtPlus50_771">+50만</span>
-																				<span name="amtPlus10" id="amtPlus10_771">+10만</span>
-																				<span name="amtPlus5" id="amtPlus5_771">+5만</span>
-																				<span name="amtPlus1" id="amtPlus1_771">+1만</span>
-																				<span name="amtPlusAll" id="amtPlusAll_771">전액</span>
-																				<span name="amtReset" id="amtReset_771" class="gray">정정</span>
+																				<span name="amtPlus100" id="amtPlus100_771" border="1">+100만</span>
+																				<span name="amtPlus50" id="amtPlus50_771" border="1">+50만</span>
+																				<span name="amtPlus10" id="amtPlus10_771" border="1">+10만</span>
+																				<span name="amtPlus5" id="amtPlus5_771" border="1">+5만</span>
+																				<span name="amtPlus1" id="amtPlus1_771" border="1">+1만</span>
+																				<span name="amtPlusAll" id="amtPlusAll_771" border="1">전액</span>
+																				<span name="amtReset" id="amtReset_771" class="gray" border="1">정정</span>
 																				<br><span>금액을 1만원이상, 만원단위로 입력해주시기 바랍니다.</span>
 																			</div>
 																		</form>
