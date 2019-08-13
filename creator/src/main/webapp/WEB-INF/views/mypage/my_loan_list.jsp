@@ -238,7 +238,7 @@
 											</div>
 											<div class="row">
 												<div class="col-sm-12 col-md-12">
-													<button class="btn btn-purple-transparent btn-block" type="button" id="myloan"">대출하기</button>
+													<button class="btn btn-purple-transparent btn-block" type="button" id="myloan">대출하기</button>
 												</div>
 											</div>
 										</div>

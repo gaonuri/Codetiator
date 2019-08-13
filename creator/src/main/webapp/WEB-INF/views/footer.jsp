@@ -287,7 +287,7 @@ footer .legal_copyright {
 			<div class="col-xs-12 col-sm-4 col-md-4">
 				<div class="company">
 					<a class="brand_logo" href="/">
-						<img src="${pageContext.request.contextPath}/resources/img/logo_creator_kor_white.png" alt="creator">
+						<img src="${pageContext.request.contextPath}/resources/footlogo.png" alt="creator">
 					</a>
 					<div class="logo">
 						<a href="https://www.facebook.com/creator.co.kr/" target="_blank">

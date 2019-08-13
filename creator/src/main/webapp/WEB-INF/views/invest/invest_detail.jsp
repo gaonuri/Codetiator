@@ -1893,7 +1893,7 @@ $(document).ready(function() {
 			<div class="rpm_banner col-sm-12 col-md-12">
 				<p style="text-align:center; padding:16px 0 6px 0;">
 					<a href="/info/noticeDetail/39" target="_blank">
-						<img src="${pageContext.request.contextPath}/resources/img/rpm_txtIMG.png" class="" alt="Recovery Plan of creator" style="max-width:300px;">
+						<img src="${pageContext.request.contextPath}/resources/investtext.png" class="" alt="Recovery Plan of creator" style="max-width:300px;">
 					</a>
 				</p>
 			</div>
