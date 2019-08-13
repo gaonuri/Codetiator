@@ -697,6 +697,7 @@ html {
 }
 #invest-content {
     padding: 41px 0 96px 0;
+    margin-left: 310px;
 }
 .container {
     width: 1170px;
