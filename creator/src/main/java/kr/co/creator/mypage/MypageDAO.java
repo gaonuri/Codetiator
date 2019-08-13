@@ -131,10 +131,16 @@ public class MypageDAO {
 			return count;
 		}
 
-		public AccountVO informaiton(MemberVO memVO) {
-			AccountVO accVO = null;
-			accVO = sqlSession.selectOne("MypageMapper.account_list", memVO);
-			return accVO;
+		public UserVO useinformation(MemberVO userVO) {
+			UserVO useVO = null;
+			useVO = sqlSession.selectOne("MypageMapper.User", userVO);
+			return useVO;
+		}
+
+		public Busi_userVO businformation(MemberVO userVO) {
+			Busi_userVO busiVO = null;
+			busiVO = sqlSession.selectOne("MypageMapper.Busi", userVO);
+			return busiVO;
 		}
 		
 	

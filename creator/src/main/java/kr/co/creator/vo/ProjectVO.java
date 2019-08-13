@@ -48,7 +48,14 @@ public class ProjectVO {
 	private String rate_average;		// 평균 연수익률
 	private int sum_price;				// 누적대출액
 	private int sum_guarantee_price;	// 현재대출잔액
+	private String refund_request;		// 상환요청
 	
+	public String getRefund_request() {
+		return refund_request;
+	}
+	public void setRefund_request(String refund_request) {
+		this.refund_request = refund_request;
+	}
 	private String user_num;			// (참조)유저번호
 	private String busi_num;			// (참조)법인유저번호
 	

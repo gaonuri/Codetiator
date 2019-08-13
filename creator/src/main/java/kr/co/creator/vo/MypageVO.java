@@ -23,36 +23,7 @@ public class MypageVO {
 	private String user_num;			// (참조)유저번호
 	private String busi_num;			// (참조)법인유저번호
 	private String refund_due_date;		// 상환예정일
-	private String user_name;			// 회원 이름
-	private String manager_name;		// 담당자명
-	private String email;				// 회원 이메일
-	private String manager_email;		// 담당자 이메일 
 	
-	
-	public String getUser_name() {
-		return user_name;
-	}
-	public void setUser_name(String user_name) {
-		this.user_name = user_name;
-	}
-	public String getManager_name() {
-		return manager_name;
-	}
-	public void setManager_name(String manager_name) {
-		this.manager_name = manager_name;
-	}
-	public String getEmail() {
-		return email;
-	}
-	public void setEmail(String email) {
-		this.email = email;
-	}
-	public String getManager_email() {
-		return manager_email;
-	}
-	public void setManager_email(String manager_email) {
-		this.manager_email = manager_email;
-	}
 	public String getRefund_due_date() {
 		return refund_due_date;
 	}

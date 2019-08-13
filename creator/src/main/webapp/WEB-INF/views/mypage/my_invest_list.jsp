@@ -65,7 +65,7 @@
 						<div class="box left">
 							<div class="row">
 								<div class="col-xs-12 col-sm-12 col-md-12">
-									<span class="cusNm">여기에 넣으세요</span>&nbsp;
+									<span class="cusNm">${useinfo.user_name}${businfo.manager_name}</span>&nbsp;
 									
 										님
 									
@@ -80,7 +80,7 @@
 							
 							<div class="row">
 								<div class="col-xs-10 col-sm-11 col-md-10" style="margin-top: 8px;">
-									<span class="email">whitesky1203@naver.com</span>
+									<span class="email">${useinfo.email}${businfo.manager_email}</span>
 								</div>
 								<div class="col-xs-2 col-sm-1 col-md-1" style="margin-top: 8px;">
 									<div id="depositUnFold" style="display: none;cursor: pointer;">
@@ -100,7 +100,7 @@
 									</div>
 									<div class="row">
 										<div class="col-xs-12 text-right" style="margin-top: 5px;">
-											<span class="amt">0 <font size="2">원</font></span>
+											<span class="amt">${acc.deposit} <font size="2">원</font></span>
 										</div>
 									</div>
 								</div>
@@ -302,10 +302,10 @@
 														투자일자<span name="investListSortDesc" id="investListSortDescINVEST_YMD"></span>
 													</th>
 													<th scope="col" class="clickable" name="investListSortTitle" id="investListSortTitleBANNER_TITLE">
-														상품별호수<span name="investListSortDesc" id="investListSortDescBANNER_TITLE"></span>
+														프로젝트번호<span name="investListSortDesc" id="investListSortDescBANNER_TITLE"></span>
 													</th>
 													<th scope="col" class="clickable" name="investListSortTitle" id="investListSortTitleLOAN_NM">
-														상품명<span name="investListSortDesc" id="investListSortDescLOAN_NM"></span>
+														프로젝트명<span name="investListSortDesc" id="investListSortDescLOAN_NM"></span>
 													</th>
 													<th scope="col" class="clickable" name="investListSortTitle" id="investListSortTitleINVEST_RATE">
 														금리(%)<span name="investListSortDesc" id="investListSortDescINVEST_RATE"></span>
@@ -331,12 +331,12 @@
 												<tr>
 													<c:if test="${memberVO.user_num != null}">
 													</c:if>
-													<td>${vo.invest_date}</td>
-													<td><a href="invest_detail?detail_num=${vo.project_name}"/>${vo.project_num}</td>
-													<td><a href="invest_detail?detail_num=${vo.project_name}"/>${vo.project_name}</td>
-													<td>${vo.rate}%</td>
-													<td>${vo.invest_price}만원</td>
-													<td>${vo.refund_count}</td>
+													<td>&nbsp;&nbsp;&nbsp;${vo.invest_date}</td>
+													<td><a href="invest_detail?detail_num=${vo.project_name}"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${vo.project_num}</td>
+													<td><a href="invest_detail?detail_num=${vo.project_name}"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${vo.project_name}</td>
+													<td>&nbsp;&nbsp;&nbsp;&nbsp;${vo.rate}%</td>
+													<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${vo.invest_price}만원</td>
+													<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${vo.refund_count}</td>
 													<td>${vo.refund_due_date}</td>
 													<td>${vo.refund_end}</td>
 													<td>${vo.ach_state}</td>
