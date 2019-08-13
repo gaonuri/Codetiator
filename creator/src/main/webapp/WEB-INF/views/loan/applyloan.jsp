@@ -721,21 +721,13 @@ $(document).ready(function() {
 			var loanAmt = $("#loan_period").val();
 			var loanGb = $("#loan_class").val();
 			var guaranteeType = $("#loanTypeSelect").val();
-<<<<<<< HEAD
 			var repayTypeCd = $("#repay_method").val();
-=======
-			var repayTypeCd = $("#repay_method").val();
->>>>>>> branch 'master' of https://github.com/gaonuri/Codetiator.git
 			var guaranteeType = $("#guaranteeType").val();
 			var objectType = $("#object_type").val();
 			var repayTypeCd = $("#repay_method").val();
 			var loan_bank_name = $("#loan_bank_name").val(); 
 			var loan_period = $("#loan_period").val();
 			var loan_amount = $("#loan_amount").val();
-<<<<<<< HEAD
-
-=======
->>>>>>> branch 'master' of https://github.com/gaonuri/Codetiator.git
 			if(loan_amount == "") {
 				alert("대출계좌를 입력 해주세요.");
 				$("#loan_amount").focus();
@@ -777,12 +769,10 @@ $(document).ready(function() {
 		});
 	});//인풋창 제약조건 //ready
 	
-<<<<<<< HEAD
 	function tempFunction() {
 		$("#frmLoan").attr("action","${pageContext.request.contextPath}/addinfo");
 		document.frmLoan.submit();
 	}
-=======
 	$(document).ready(function() {
 		function tempFunction() {
 		$.ajaxSetup({cache:false});
@@ -812,7 +802,6 @@ $(document).ready(function() {
 // 		$("#frmLoan").attr("action","${pageContext.request.contextPath}/applyloaninsert");
 // 		document.frmLoan.submit();
 // 	}//frmLoan에 있는거 addinfo로 옳김
->>>>>>> branch 'master' of https://github.com/gaonuri/Codetiator.git
 	
 	$(function() {
 		
