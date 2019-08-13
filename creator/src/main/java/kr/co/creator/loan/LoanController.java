@@ -75,7 +75,8 @@ public class LoanController {
 		if(session.getAttribute("memVO") == null) {
 			return "redirect:/login";
 		}
-		session.setAttribute("ProjectVO", pvo);
+		pvo = (ProjectVO) session.getAttribute("applyProjectVO");
+		session.setAttribute("applyProjectVO", pvo);
 		session.setAttribute("FileVO", fvo);
 		session.setAttribute("GuaranteeVO", gvo);
 
@@ -83,51 +84,57 @@ public class LoanController {
     }
 	
 	@RequestMapping(value = "/addinfo_process", method = RequestMethod.POST)
-	public void addinfo_process(HttpSession session, ProjectVO pvo, FileVO fvo, GuaranteeVO gvo, RepayVO rvo, PrintWriter out) throws Exception {
+	public void addinfo_process(HttpSession session, ProjectVO pvo, GuaranteeVO gvo, PrintWriter out) {
+		logger.info("111");
 		int saveFileCnt = 0;
 		int cnt = 0;
 		int gnt = 0;
+		logger.info("222");
 		MemberVO voFromSession = (MemberVO) session.getAttribute("memVO");
-		pvo = (ProjectVO) session.getAttribute("ProjectVO");
-		fvo = (FileVO) session.getAttribute("FileVO");
-		gvo = (GuaranteeVO) session.getAttribute("GuaranteeVO");
+		logger.info("333");
+		ProjectVO pvo2 = (ProjectVO) session.getAttribute("applyProjectVO");
+		logger.info("444"+pvo2);
+		pvo.setProject_num(pvo2.getProject_num());
+		gvo.setGuarantee_num(pvo2.getGuarantee_num());
+		System.out.println("pvo2.getProject_num() : " + pvo2.getProject_num());
 		System.out.println("voFromSession.getBusi_num() : " + voFromSession.getBusi_num());
 		pvo.setBusi_num(voFromSession.getBusi_num());//법인 유저 넘버 가져오기
 		System.out.println("pvo.getBusi_num() : " + pvo.getBusi_num());
 //		String repay_count = loanDAOService.RepaySelect(rvo); //상환내역 불러오기
 //		pvo.setRepay_count(repay_count);
 		System.out.println("pvo : " + pvo);
-		System.out.println("fvo : " + fvo);
 		System.out.println("gvo : " + gvo);
-		if(fvo.getImg_file() != null && fvo.getImg_file().getSize() > 0) {
-			pvo.setImg	(UtilForFile.fileUpByType(fvo.getImg_file()    , "loan", pvo.getProject_num()));
-			System.out.println("pvo.getImg_file :" + fvo.getImg_file());
-			System.out.println("pvo.getImg :" + pvo.getImg());
+		System.out.println("pvo_img : " + pvo.getImg());
+		if(pvo.getImg() != null && pvo.getImg().getSize() > 0) {
+			pvo.setImg_path(UtilForFile.fileUpByType(pvo.getImg(), "loan", pvo.getProject_num()));
+			System.out.println("프로젝트 넘버 : " + pvo.getProject_num());
 			saveFileCnt++;
 		}
-		if(fvo.getGuarantee_img_file() != null && fvo.getGuarantee_img_file().getSize() > 0) {
-			gvo.setGuarantee_img	(UtilForFile.fileUpByType(fvo.getGuarantee_img_file()    , "loan", pvo.getProject_num()));
+		if(gvo.getGuarantee_img() != null && gvo.getGuarantee_img().getSize() > 0) {
+			gvo.setGuarantee_img_path(UtilForFile.fileUpByType(gvo.getGuarantee_img(), "loan", pvo.getProject_num()));
 			saveFileCnt++;
 		}
-		if(fvo.getReference_file1_file() != null && fvo.getReference_file1_file().getSize() > 0) {
-			gvo.setReference_file1	(UtilForFile.fileUpByType(fvo.getReference_file1_file()    , "loan", pvo.getProject_num()));
+		if(gvo.getReference_file1() != null && gvo.getReference_file1().getSize() > 0) {
+			gvo.setReference_file1_path(UtilForFile.fileUpByType(gvo.getReference_file1()    , "loan", pvo.getProject_num()));
 			saveFileCnt++;
 		}
-		if(fvo.getReference_file2_file() != null && fvo.getReference_file2_file().getSize() > 0) {
-			gvo.setReference_file2	(UtilForFile.fileUpByType(fvo.getReference_file2_file()    , "loan", pvo.getProject_num()));
+		if(gvo.getReference_file2() != null && gvo.getReference_file2().getSize() > 0) {
+			gvo.setReference_file2_path(UtilForFile.fileUpByType(gvo.getReference_file2()    , "loan", pvo.getProject_num()));
 			saveFileCnt++;
 		}
-		if(fvo.getReference_file3_file() != null && fvo.getReference_file3_file().getSize() > 0) {
-			gvo.setReference_file3	(UtilForFile.fileUpByType(fvo.getReference_file3_file()    , "loan", pvo.getProject_num()));
+		if(gvo.getReference_file3() != null && gvo.getReference_file3().getSize() > 0) {
+			gvo.setReference_file3_path(UtilForFile.fileUpByType(gvo.getReference_file3()    , "loan", pvo.getProject_num()));
 			saveFileCnt++;
 		}
 		System.out.println("saveFileCnt : " + saveFileCnt);
 		if(saveFileCnt > 0) {
-			cnt = loanDAOService.insert_project(pvo); //프로젝트 DB에 넣기
+			cnt = loanDAOService.update_project(pvo); //프로젝트 DB에 넣기
+			System.out.println("프로젝트 업데이트 성공");
 			if(cnt > 0) {
 				gvo.setProject_num(pvo.getProject_num());
-				gnt = loanDAOService.guaranteeInsert(gvo); //담보 DB에 넣기
-				session.setAttribute("ProjectVO", pvo);
+				gnt = loanDAOService.update_guarantee(gvo); //담보 DB에 넣기
+			System.out.println("담보 업데이트 성공");
+				session.setAttribute("applyProjectVO", pvo);
 				session.setAttribute("GuaranteeVO", gvo);
 			}
 		}
@@ -136,30 +143,29 @@ public class LoanController {
     }
 	
 	@RequestMapping(value = "/sub_document", method = RequestMethod.GET)
-	public String sub_document(HttpSession session, ProjectVO pvo, FileVO dvo, GuaranteeVO gvo) throws Exception {
+	public String sub_document(HttpSession session, ProjectVO pvo) throws Exception {
 		if(session.getAttribute("memVO") == null) {
 			return "redirect:/login";
 		}
-		session.setAttribute("ProjectVO", pvo);
-		session.setAttribute("FileVO", dvo);
-		session.setAttribute("GuaranteeVO", gvo);
+		pvo = (ProjectVO) session.getAttribute("applyProjectVO");
+		session.setAttribute("applyProjectVO", pvo);
 		
     	return "loan/sub_document";
     }
 	
 	@RequestMapping(value = "/sub_document_process", method = RequestMethod.POST)
-	public void sub_document_process(HttpSession session, MemberVO vo, ProjectVO pvo, FileVO fvo, GuaranteeVO gvo, PrintWriter out) {
+	public void sub_document_process(HttpSession session, MemberVO vo, FileVO fvo, ProjectVO pvo, GuaranteeVO gvo, PrintWriter out) {
 		MemberVO voFromSession = (MemberVO) session.getAttribute("memVO");
-		pvo = (ProjectVO) session.getAttribute("ProjectVO");
-		fvo = (FileVO) session.getAttribute("FileVO");
-		gvo = (GuaranteeVO) session.getAttribute("GuaranteeVO");
+		ProjectVO pvo2 = (ProjectVO) session.getAttribute("applyProjectVO");
 		System.out.println("voFromSession.getBusi_num() : " + voFromSession.getBusi_num());
 		pvo.setBusi_num(voFromSession.getBusi_num());//법인 유저 넘버 가져오기
+		pvo.setProject_num(pvo2.getProject_num());
 		System.out.println("pvo.getBusi_num() : " + pvo.getBusi_num());
 		//fileupload
 		int cnt = 0;
 		DocumentVO dvo = new DocumentVO();
 			int saveFileCnt = 0;
+
 			if(fvo.getBusi_regi() != null && fvo.getBusi_regi().getSize() > 0) {
 				dvo.setBusi_regi(UtilForFile.fileUpByType(fvo.getBusi_regi()    , "loan", pvo.getProject_num()));
 				saveFileCnt++;
@@ -200,7 +206,6 @@ public class LoanController {
 				dvo.setCopy_bankbook(UtilForFile.fileUpByType(fvo.getCopy_bankbook(), "loan", pvo.getProject_num()));
 				saveFileCnt++;
 			}
-
 			if(saveFileCnt > 0) {
 				dvo.setProject_num(pvo.getProject_num());
 				cnt = loanDAOService.documentInsert(dvo); //서류 DB에 넣기
@@ -272,14 +277,17 @@ public class LoanController {
     }
 	
 	@RequestMapping(value="/applyloaninsert", method=RequestMethod.POST)
-	public void applyLoanInsert(PrintWriter out, ProjectVO pvo) {
+	public void applyLoanInsert(HttpSession session, PrintWriter out, ProjectVO pvo) {
 		logger.info("=== applyLoanInsert ===");
+		MemberVO voFromSession = (MemberVO) session.getAttribute("memVO");
+		pvo.setBusi_num(voFromSession.getBusi_num());//법인 유저 넘버 가져오기
 		int cnt = 0;
 		cnt = loanDAOService.applyLoanInsert(pvo);
 		int cnt1 = 0;
 		if(cnt > 0) {
 			cnt1 = loanDAOService.applyLoanInsert1(pvo);
 		}
+		session.setAttribute("applyProjectVO", pvo);
 		out.print(cnt1);
 		out.flush();
 		out.close();

@@ -102,6 +102,7 @@ $(document).ready(function(){
 						if(data > 0){
 							alert("해당 이메일로 인증번호를 발송했습니다.");
 							$("#cer_number").css("display","block");
+							$("#aa").css("display","block");
 							setClock();
 						} else if(data == 0){
 							alert("존재하지 않는 이메일 입니다.");
@@ -179,7 +180,7 @@ $(document).ready(function() {
     margin-left: auto;
 }
 #loanGuide-banner {
-    background: url(${pageContext.request.contextPath}/resources/bootstrap/img/blog-bg.jpg)no-repeat center center fixed;
+    background: url(${pageContext.request.contextPath}/resources/img/bgImg_loanIntro01.jpg)no-repeat center center fixed;
     background-size: cover;
     background-attachment: fixed;
     width: 100%;
@@ -294,13 +295,13 @@ $(document).ready(function() {
 						            <div class="form-group">
 						           		<label class="control-label col-md-3" >이름</label>
 						           		<div class="col-md-8">
-						            		<input type="text" id="project_name" name="project_name" class="form-control onlyprojectnm" value="<c:choose><c:when test="${memVO != null && memVO.user_name != null && memVO.user_name != ''}">${memVO.user_name}</c:when><c:otherwise>${memVO.manager_name}</c:otherwise></c:choose>"/>
+						            		<input type="text" id="project_name" name="project_name" class="form-control onlyprojectnm" readonly="readonly" value="<c:choose><c:when test="${memVO != null && memVO.user_name != null && memVO.user_name != ''}">${memVO.user_name}</c:when><c:otherwise>${memVO.manager_name}</c:otherwise></c:choose>"/>
 						            	</div>
 						            </div>
 						            <div class="form-group">
 						           		<label class="control-label col-md-3" >휴대전화</label>
 						           		<div class="col-md-8">
-						            		<input type="text" id="project_name" name="project_name" class="form-control onlyprojectnm" value="<c:choose><c:when test="${memVO != null && memVO.phone != null && memVO.phone != ''}">${memVO.phone}</c:when><c:otherwise>${memVO.manager_phone}</c:otherwise></c:choose>"/>
+						            		<input type="text" id="project_name" name="project_name" class="form-control onlyprojectnm" readonly="readonly" value="<c:choose><c:when test="${memVO != null && memVO.phone != null && memVO.phone != ''}">${memVO.phone}</c:when><c:otherwise>${memVO.manager_phone}</c:otherwise></c:choose>"/>
 						            	</div>
 						            </div>            
 						            <div class="form-group">
@@ -308,16 +309,16 @@ $(document).ready(function() {
 						              	<div class="col-md-8">
 						              		<select class="form-control loanPurpose-select" id="loan_bank_name" name="loan_bank_name">
 <!-- 												<option value="00">선택하세요</option> -->						              		
-												<option value="01">신한은행</option>
-												<option value="02">국민은행</option>
-												<option value="03">우리은행</option>
-												<option value="04">하나은행</option>
-												<option value="05">씨티은행</option>
-												<option value="06">부산은행</option>
-												<option value="07">경남은행</option>
-												<option value="08">광주은행</option>
-												<option value="09">제주은행</option>
-												<option value="10">산업은행</option>
+												<option value="신한은행">신한은행</option>
+												<option value="국민은행">국민은행</option>
+												<option value="우리은행">우리은행</option>
+												<option value="하나은행">하나은행</option>
+												<option value="씨티은행">씨티은행</option>
+												<option value="부산은행">부산은행</option>
+												<option value="경남은행">경남은행</option>
+												<option value="광주은행">광주은행</option>
+												<option value="제주은행">제주은행</option>
+												<option value="산업은행">산업은행</option>
 											</select>
 						                </div>
 						            </div>
@@ -339,9 +340,9 @@ $(document).ready(function() {
 						              	<div class="col-md-8">
 						              		<select class="form-control loanPurpose-select" id="loanPeriodSelect" name="loan_period">
 <!-- 												<option value="00">선택하세요</option> -->
-												<option value="01">3개월</option>
-												<option value="02">6개월</option>
-												<option value="03">12개월</option>
+												<option value="3개월">3개월</option>
+												<option value="6개월">6개월</option>
+												<option value="12개월">12개월</option>
 											</select>
 						                </div>
 						            </div>
@@ -350,8 +351,8 @@ $(document).ready(function() {
 						              	<div class="col-md-8">
 											<select class="form-control repayTypeCd-select" id="repayTypeCdSelect">
 <!-- 												<option value="">선택하세요</option> -->
-												<option value="3">만기일시</option>
-												<option value="1">원리금균등</option>
+												<option value="만기일시">만기일시</option>
+												<option value="원리금균등">원리금균등</option>
 <!-- 												<option value="2">원리금일시</option> -->
 											</select>
 						                </div>
@@ -506,7 +507,7 @@ $(document).ready(function() {
 										</button>
 										<div class="modal-title" id="vtAcntModalLabel">
 											<div style="">
-												예치금 계좌 발급을 위한 인증을 진행하여 주십시오
+												대출 승인을 위한 인증절차 입니다.
 											</div>
 										</div>
 									</div>
@@ -521,11 +522,11 @@ $(document).ready(function() {
 										<div class="row">
 											<div class="form-group col-xs-5 col-sm-5 col-md-3">
 												<label for="cusNm" class="control-label">이 름</label>
-												<input class="form-control" id="manager_name" type="text" value="${memVO.manager_name}" readonly="">
+												<input class="form-control" id="manager_name" type="text" value="${memVO.manager_name}" readonly="readonly">
 											</div>
 											<div class="form-group col-xs-12 col-sm-12 col-md-5">
 												<label for="cusAccount" class="control-label" >Email_주소</label>
-												<input class="form-control" id="manager_email" type="text" value="${memVO.manager_email}" readonly="">
+												<input class="form-control" id="manager_email" type="text" value="${memVO.manager_email}" readonly="readonly">
 											</div>
 											<div class="form-group col-xs-12 col-sm-12 col-md-4">
 												<br style="line-height:24px";">
@@ -541,7 +542,6 @@ $(document).ready(function() {
 											</div>
 										</div>
 										<div id="pInfDiv" style="">
-											<hr>
 											<div class="row">
 												<div class="col-xs-12 col-sm-12 col-md-12">
 													<div class="modal-body-title">
@@ -550,29 +550,26 @@ $(document).ready(function() {
 												</div>
 											</div>
 											<div class="row">
- 
-												<div class="form-group col-xs-6 col-sm-6 col-md-6">
-													<label for="ssnNo" class="control-label">인증번호를 입력하세요.</label>
-												</div>
-											</div>		
-											
-											<div class="row">
 												<div class="form-group col-md-4">
 													<input class="form-control" id="cer_number" type="text" maxlength="13"  placeholder="" style="display:none;">
 												</div>
 												<div id="clock"><!--여기서 수정 -->
-											</div>													
-												
-											
+												</div>													
+											</div>
+											<div class="row">
+												<div class="form-group col-xs-6 col-sm-6 col-md-6">
+													<label for="ssnNo" class="control-label" id="aa" style="display:none;">인증번호를 입력하세요.</label>
+												</div>
+											</div>		
 											<div class="row">
 												<div class="col-xs-12 col-sm-12 col-md-12">
-												<span class="modal-body-light">&nbsp;● 정상처리가 불가할 경우 1:1문의사항을 이용하시기 바랍니다.</span>
-											</div>
-												<div class="clearfix"></div>
+													<span class="modal-body-light">&nbsp;● 정상처리가 불가할 경우 1:1문의사항을 이용하시기 바랍니다.</span>
+												</div>
+<!-- 												<div class="clearfix"></div> -->
 												<div class="col-xs-12 col-sm-12 col-md-12">
 													<span class="modal-body-light font-purple">&nbsp;● 주민등록번호 없이도 사이트 이용은 가능하며 최초 투자시 한 번만 등록하시면 됩니다.</span>
 												</div>
-												<div class="clearfix"></div>
+<!-- 												<div class="clearfix"></div> -->
 												<div class="col-xs-12 col-sm-12 col-md-12">
 													<span class="modal-body-strong">※ 미성년자는 가상계좌 발급시 추가 인증이 필요합니다.</span>
 													<span class="modal-body-light">&nbsp;<a href="${pageContext.request.contextPath}/support" target="_blank">공지사항</a>을 참고하세요.</span>
@@ -587,10 +584,9 @@ $(document).ready(function() {
 								<!-- /.modal-content -->
 							</div>
 							<!-- /.modal-dialog -->
-						</div>
+		    		</div>
 						<!-- Email 인증끝. -->
 	    		</div>
-	    
 	    <!--main content end-->
 		
 		<!--footer start-->
@@ -707,42 +703,20 @@ $(document).ready(function() {
 			var agree3Checkbox = $("#agree3Checkbox").is(":checked");
 			var agree4Checkbox = $("#agree4Checkbox").is(":checked");
 			var agree5Checkbox = $("#agree5Checkbox").is(":checked");
-			var sex = $(':radio[name="sexRadio"]:checked').val();
 			var loanPeriodSelect = $('#loanPeriodSelect').val();
 			var loanAmt = $("#loan_period").val();
 			var loanGb = $("#loan_class").val();
-<<<<<<< HEAD
 			var guaranteeType = $("#loanTypeSelect").val();
 			var repayTypeCd = $("#repay_method").val();
-=======
 			var guaranteeType = $("#guaranteeType").val();
 			var objectType = $("#object_type").val();
 			var repayTypeCd = $("#repay_method").val();
->>>>>>> branch 'master' of https://github.com/gaonuri/Codetiator.git
 			var loan_bank_name = $("#loan_bank_name").val(); 
 			var loan_period = $("#loan_period").val();
 			var loan_amount = $("#loan_amount").val();
-
-// 			if(sex == undefined) {
-// 				alert("성별을 선택하세요.");
-// 				$(".sexRadio-label").focus();
-// 				return;
-// 			}
-//			if(sex == undefined) {
-//				alert("성별을 선택하세요.");
-//				$(".sexRadio-label").focus();
-//				return;
-//			}
 			if(loan_amount == "") {
 				alert("대출계좌를 입력 해주세요.");
-<<<<<<< HEAD
 				$("#loan_amount").focus();
-			if(sex == undefined) {
-				alert("성별을 선택하세요.");
-				$(".sexRadio-label").focus();
-=======
-				$("#loan_amount").focus();
->>>>>>> branch 'master' of https://github.com/gaonuri/Codetiator.git
 				return;
 			}
 			if(loanAmt == ""){
@@ -781,30 +755,31 @@ $(document).ready(function() {
 		});
 	});//인풋창 제약조건 //ready
 	
+	function tempFunction() {
+//		$("#frmLoan").attr("action","${pageContext.request.contextPath}/addinfo");
+//		document.frmLoan.submit();
+		var form = new FormData(document.getElementById("frmLoan"));
+		$.ajax({
+			url:"${pageContext.request.contextPath}/applyloaninsert"
+			,data:form
+			,dataType:'json'
+			,processData:false
+			,contentType:false
+			,type:"POST"
+			,success:function(result){
+				if(result > 0){
+					location.href = "${pageContext.request.contextPath}/addinfo";
+				} else {
+					alert("잠시 후 다시 시도해 주세요.");
+				}
+			}
+			,error:function(xhr){
+				alert("fail");
+			}
+		});//ajax
+	}//tempFunction
 	$(document).ready(function() {
-		function tempFunction() {
 		$.ajaxSetup({cache:false});
-			var form = new FormData(document.getElementById("frmLoan"));
-			$.ajax({
-				url:"${pageContext.request.contextPath}/applyloaninsert"
-				,data:form
-				,dataType:'json'
-				,processData:false
-				,contentType:false
-				,type:"POST"
-				,success:function(result){
-					alert(result);
-					if(result > 0){
-						location.href = "${pageContext.request.contextPath}/addinfo";
-					} else {
-						alert("잠시 후 다시 시도해 주세요.");
-					}
-				}
-				,error:function(xhr){
-					alert("fail");
-				}
-			});//ajax
-		}
 	});//ready
 
 // 		$("#frmLoan").attr("action","${pageContext.request.contextPath}/applyloaninsert");
@@ -859,25 +834,25 @@ $(document).ready(function() {
 			var loan_class = $(this).val();
 			var str = "";
 			
-			if(loan_class == "01") {	// 개인신용
-				str += "<option value=\"01\">개인신용</option>";
-			} else if(loan_class == "02") {	// 개인담보
+			if(loan_class == "개인신용") {	// 개인신용
+				str += "<option value=\"개인신용\">개인신용</option>";
+			} else if(loan_class == "개인담보") {	// 개인담보
 // 				str += "<option value=\"\">선택하세요</option>";
-				str += "<option value=\"04\">부동산담보</option>";
-				str += "<option value=\"06\">동산담보</option>";
-			} else if(loan_class == "03") {	// 개인사업자신용
-				str += "<option value=\"03\">개인사업자신용</option>";
-			} else if(loan_class == "04") {	// 개인사업자담보
+				str += "<option value=\"부동산담보\">부동산담보</option>";
+				str += "<option value=\"동산담보\">동산담보</option>";
+			} else if(loan_class == "개인사업자신용") {	// 개인사업자신용
+				str += "<option value=\"개인사업자신용\">개인사업자신용</option>";
+			} else if(loan_class == "개인사업자담보") {	// 개인사업자담보
 // 				str += "<option value=\"\">선택하세요</option>";
-				str += "<option value=\"04\">부동산담보</option>";
-				str += "<option value=\"06\">동산담보</option>";
+				str += "<option value=\"부동산담보\">부동산담보</option>";
+				str += "<option value=\"동산담보\">동산담보</option>";
 ////////////////////////////////////////////////////////////////////////////////////
-			} else if(loan_class == "05") {	// 법인신용
-				str += "<option value=\"02\">법인신용</option>";
-			} else if(loan_class == "06") {	// 법인담보
+			} else if(loan_class == "법인신용") {	// 법인신용
+				str += "<option value=\"법인신용\">법인신용</option>";
+			} else if(loan_class == "법인담보") {	// 법인담보
 // 				str += "<option value=\"\">선택하세요</option>";
-				str += "<option value=\"04\">부동산담보</option>";
-				str += "<option value=\"06\">동산담보</option>";
+				str += "<option value=\"부동산담보\">부동산담보</option>";
+				str += "<option value=\"동산담보\">동산담보</option>";
 			} else {
 				str += "<option value=\"\">대출구분을 선택하세요</option>";
 			}
@@ -890,14 +865,14 @@ $(document).ready(function() {
 		$("#loan_class").on("change", function() {
 			var guaranteeType = $(this).val();
 			var str = "";
-			if (guaranteeType == "05"){
-				str += "<option value=\"01\">법인신용</option>";
-			} else if (guaranteeType == "06") {
-				str += "<option value=\"02\">아파트</option>";
-				str += "<option value=\"03\">주택</option>";
-				str += "<option value=\"04\">빌라</option>";
-				str += "<option value=\"05\">상가</option>";
-				str += "<option value=\"06\">토지</option>";	
+			if (guaranteeType == "법인신용"){
+				str += "<option value=\"법인신용\">법인신용</option>";
+			} else if (guaranteeType == "법인담보") {
+				str += "<option value=\"아파트\">아파트</option>";
+				str += "<option value=\"주택\">주택</option>";
+				str += "<option value=\"빌라\">빌라</option>";
+				str += "<option value=\"상가\">상가</option>";
+				str += "<option value=\"토지\">토지</option>";	
 			} else {
 				str += "<option value=\"\">담보유형을 선택하세요</option>";
 			}
@@ -911,12 +886,12 @@ $(document).ready(function() {
 		var str = "";
 		if(loginCusGbCd == "1") {	// 일반회원
 			//str += "<option value=\"01\">개인신용</option>";
-			str += "<option value=\"02\">개인담보</option>";
-			str += "<option value=\"03\">개인사업자신용</option>";
-			str += "<option value=\"04\">개인사업자담보</option>";
+			str += "<option value=\"개인담보\">개인담보</option>";
+			str += "<option value=\"개인사업자신용\">개인사업자신용</option>";
+			str += "<option value=\"개인사업자담보\">개인사업자담보</option>";
 		} else {	// 법인회원
-			str += "<option value=\"05\">법인신용</option>";
-			str += "<option value=\"06\">법인담보</option>";
+			str += "<option value=\"법인신용\">법인신용</option>";
+			str += "<option value=\"법인담보\">법인담보</option>";
 		}
 		var loan_class = $("#loan_class");
 // 		loan_class.empty();
@@ -930,16 +905,16 @@ $(document).ready(function() {
 			var loan_class =  $(this).val();
 			var str = "";
 			
-			if(loan_class == "04") {	// 부동산 담보
-				str += "<option value=\"02\">아파트</option>";
-				str += "<option value=\"03\">주택</option>";
-				str += "<option value=\"04\">빌라</option>";
-				str += "<option value=\"05\">상가</option>";
-				str += "<option value=\"06\">토지</option>";				
-			} else if (loan_class == "06") {
-				str += "<option value=\"07\">자동차</option>";	
-				str += "<option value=\"08\">선박</option>";
-				str += "<option value=\"09\">항공기</option>";	
+			if(loan_class == "부동산담보") {	// 부동산 담보
+				str += "<option value=\"아파트\">아파트</option>";
+				str += "<option value=\"주택\">주택</option>";
+				str += "<option value=\"빌라\">빌라</option>";
+				str += "<option value=\"상가\">상가</option>";
+				str += "<option value=\"토지\">토지</option>";				
+			} else if (loan_class == "동산담보") {
+				str += "<option value=\"자동차\">자동차</option>";	
+				str += "<option value=\"선박\">선박</option>";
+				str += "<option value=\"항공기\">항공기</option>";	
 			} else {
 				str += "<option value=\"\">담보유형을 선택하세요</option>";
 			}

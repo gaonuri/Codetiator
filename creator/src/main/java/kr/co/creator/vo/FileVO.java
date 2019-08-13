@@ -6,16 +6,14 @@ public class FileVO {
 
 	private MultipartFile copy_id;
 	private MultipartFile copy_bankbook;
-	private MultipartFile busi_regi;
-	private MultipartFile jumin_chobon;
-	private MultipartFile cer_ingam;
-	private MultipartFile cer_budong;
-	private MultipartFile cer_dong;
+	private MultipartFile busi_regi; 					// 사업자등록증
+	private MultipartFile jumin_chobon;					// 주민등록초본
+	private MultipartFile cer_ingam;					// 인감증명서
+	private MultipartFile cer_budong;					// 부동산증명서
+	private MultipartFile cer_dong;						// 동산증명서
 	private MultipartFile cer_income;
 	private MultipartFile cer_vat;
 	private MultipartFile cer_other;
-	private MultipartFile img_file;
-	private MultipartFile guarantee_img_file;
 	private MultipartFile reference_file1_file;			// 참고파일1
 	private MultipartFile reference_file2_file;			// 참고파일2
 	private MultipartFile reference_file3_file;			// 참고파일3
@@ -80,18 +78,6 @@ public class FileVO {
 	public void setCer_other(MultipartFile cer_other) {
 		this.cer_other = cer_other;
 	}
-	public MultipartFile getImg_file() {
-		return img_file;
-	}
-	public void setImg_file(MultipartFile img_file) {
-		this.img_file = img_file;
-	}
-	public MultipartFile getGuarantee_img_file() {
-		return guarantee_img_file;
-	}
-	public void setGuarantee_img_file(MultipartFile guarantee_img_file) {
-		this.guarantee_img_file = guarantee_img_file;
-	}
 	public MultipartFile getReference_file1_file() {
 		return reference_file1_file;
 	}
@@ -110,5 +96,4 @@ public class FileVO {
 	public void setReference_file3_file(MultipartFile reference_file3_file) {
 		this.reference_file3_file = reference_file3_file;
 	}
-
 }//class

@@ -20,20 +20,20 @@ public class LoanDAOService {
 		return cnt;
 	}
 
-	public int insert_project(ProjectVO pvo) {
-		int insert_project_yn = 0;
-		insert_project_yn = dao.insert_project(pvo);
-		return insert_project_yn;
-	}//insert_project
+	public int update_project(ProjectVO pvo) {
+		int update_project_yn = 0;
+		update_project_yn = dao.update_project(pvo);
+		return update_project_yn;
+	}//update_project
 	
 	public String RepaySelect(RepayVO vo) {
 		String rvo = dao.RepaySelect(vo);
 		return rvo;
 	}
 	
-	public int guaranteeInsert(GuaranteeVO gvo) {
+	public int update_guarantee(GuaranteeVO gvo) {
 		int gnt = 0;
-		gnt = dao.guaranteeInsert(gvo);
+		gnt = dao.update_guarantee(gvo);
 		return gnt;
 	}
 

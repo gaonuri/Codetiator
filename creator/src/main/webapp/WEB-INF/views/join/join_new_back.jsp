@@ -64,6 +64,7 @@
 
 <script type="text/javascript">
 
+
 var chkemail = '';
 var chklicense = '';
 
@@ -992,53 +993,7 @@ $(document).ready(function() {
 		$("#cusGbLabel02").addClass("btn labelBtn-purple btn-block active");
 		$("#cusGbLabel01").addClass("btn labelBtn-purple btn-block checked");
 	});
-	$("#allTeamCheckbox01").on("change", function() {
-		if($(this).is(":checked")){
-			$("#user_chk_email").prop("checked", true);
-			$("#user_chk_email").attr("checked", true);
-			$("#user_terms_of_service").prop("checked", true);
-			$("#user_terms_of_service").attr("checked", true);
-			$("#user_privacy_policy_agree").prop("checked", true);
-			$("#user_privacy_policy_agree").attr("checked", true);
-		} else {
-			$("#user_chk_email").prop("checked", false);
-			$("#user_chk_email").attr("checked", false);
-			$("#user_terms_of_service").prop("checked", false);
-			$("#user_terms_of_service").attr("checked", false);
-			$("#user_privacy_policy_agree").prop("checked", false);
-			$("#user_privacy_policy_agree").attr("checked", false);
-		}
-		fn_setRegistBtn("01");
-	});
-	
-	$("#allTeamCheckbox02").on("change", function() {
-		if($(this).is(":checked")){
-			$("#busi_chk_email").prop("checked", true);
-			$("#busi_chk_email").attr("checked", true);
-			$("#busi_terms_of_service").prop("checked", true);
-			$("#busi_terms_of_service").attr("checked", true);
-			$("#busi_privacy_policy_agree").prop("checked", true);
-			$("#busi_privacy_policy_agree").attr("checked", true);
-		} else {
-			$("#busi_chk_email").prop("checked", false);
-			$("#busi_chk_email").attr("checked", false);
-			$("#busi_terms_of_service").prop("checked", false);
-			$("#busi_terms_of_service").attr("checked", false);
-			$("#busi_privacy_policy_agree").prop("checked", false);
-			$("#busi_privacy_policy_agree").attr("checked", false);
-		}
-		fn_setRegistBtn("02");
-	});
-	
-	$("#busi_chk_email, #busi_terms_of_service, #busi_privacy_policy_agree").on("change", function() {
-		fn_setRegistBtn("01");
-	});
-	
-	$("#busi_chk_email, #busi_chk_email, #busi_privacy_policy_agree").on("change", function() {
-		fn_setRegistBtn("02");
-	});
 });
-
 </script>
 <body>
     <!-- /MAIN CONTENT -->
@@ -1084,43 +1039,76 @@ $(document).ready(function() {
 						<div class="body" id="cusGb01" style="display: block;">
 							<h4><b>기본정보</b></h4>
 							<div class="form-group margin-b-12">
-								<input class="form-control-reg onlyKor" id="user_name" type="text" placeholder="*이름" maxlength="50">
+								<input class="form-control-reg" id="inputCusNm01" type="text" placeholder="*이름" maxlength="50">
 							</div>
 							<div class="form-group margin-b-12">
-								<input class="form-control-reg onlyEmail" id="email" type="email" placeholder="*이메일" >
+								<input class="form-control-reg" id="inputEmail01" type="email" placeholder="*이메일" onblur="fn_checkEmail();">
 								<p class="help-block" id="emailResultText01" style="display: none;"></p>
 							</div>
 							<div class="form-group margin-b-12">
-								<input class="form-control-reg onlyPass" id="user_password" type="password" placeholder="*비밀번호">
+								<input class="form-control-reg" id="inputPswd01" type="password" placeholder="*비밀번호" onblur="fn_checkInputPswd();">
 								<p class="help-block" id="pswdResultText01">영문,숫자,특수문자(~,!,# 등) 포함 8~20자</p>
 							</div>
 							
 							<div class="form-group margin-b-12 has-feedback">
-								<input class="form-control-reg onlyPass" id="user_password_re" type="password" placeholder="*비밀번호 확인" >
-								<span class="form-control-feedback glyphicon" id="pswdChkResultIcon01" aria-hidden="true" style="position: absolute;top: 0;right: 0;z-index: 2;display: block;width: 34px;height: 34px;text-align: center;pointer-events: none;line-height: 44px;color: green;"></span>
+								<input class="form-control-reg" id="inputPswdChk01" type="password" placeholder="*비밀번호 확인" onblur="fn_checkPswd();"> <span class="form-control-feedback glyphicon" id="pswdChkResultIcon01" aria-hidden="true" style="position: absolute;top: 0;right: 0;z-index: 2;display: block;width: 34px;height: 34px;text-align: center;pointer-events: none;line-height: 44px;color: green;"></span>
 								<p class="help-block" id="pswdChkResultText01">비밀번호를 한번 더 입력해 주세요.</p>
+								<span id="pswdChkResultStatus01" class="sr-only">(success)</span>
 							</div>
 							<div class="form-group margin-b-12">
-								<input class="form-control-reg onlyJumin" id="jumin" type="text" placeholder="*생년월일">
-								<p class="help-block" id="pswdChkResultText01">YYYYMMDD형식으로 입력해 주세요.</p>
+								<input class="form-control-reg" id="inputRcmndCusCd01" type="text" placeholder="추천인코드" onblur="fn_checkRcmndCusNo();" maxlength="6">
 								<input id="inputRcmndCusNo01" type="hidden">
 							</div>
+							<hr style="margin-top: 20px;margin-bottom: 20px;border-left-width: 0px;border-bottom-width: 0px;border-right-width: 0px;">
+							<h4>
+								<b>(선택) 추가정보</b> <span class="glyphicon glyphicon-question-sign hover" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="auto left" data-html="true" data-content="믿을만한 사람들에게 투자하기 원하신다면 <strong>추가정보를 입력하세요!</strong><br>
+										대출시 투자모집과 금리 책정에서 유리하며, 투자시 더욱 안전한 상품을 분류하여 보여드립니다.<br>
+										<span class='font-purple'>* 추가정보는 선택사항이며 입력하지 않아도 무방합니다.</span>" data-original-title="" title="">
+								</span>
+							</h4>
 							<div class="form-group margin-b-12">
-								<input class="form-control-reg onlyPhone" id="phone" type="text" placeholder="*휴대폰 번호">
-								<p class="help-block" id="pswdChkResultText01">'-'을 제외한 숫자만 입력해 주세요.</p>
+								<input class="form-control-reg" id="inputLocal" type="text" placeholder="거주지역(예:경기 성남)">
 							</div>
 							<div class="form-group margin-b-12">
-								<input class="form-control-reg" id="addr" type="text" readonly="readonly" placeholder="*주소">
+								<input class="form-control-reg" id="inputHometown" type="text" placeholder="고향(예:강원 원주)">
 							</div>
 							<div class="form-group margin-b-12">
-								<input class="form-control-reg" id="addrdetail" type="text" placeholder="*상세주소">
+								<input class="form-control-reg" id="inputSchool" type="text" placeholder="출신학교(예:서울대)">
+							</div>
+							<div class="form-group margin-b-12 display-none">
+								<select class="form-control-reg" id="religionSelect">
+									<option value="">종교</option>
+									
+										
+											
+												<option value="01">개신교</option>
+											
+												<option value="02">천주교</option>
+											
+												<option value="03">불교</option>
+											
+												<option value="04">원불교</option>
+											
+												<option value="05">유교</option>
+											
+												<option value="06">천도교</option>
+											
+												<option value="07">증산교</option>
+											
+												<option value="08">대종교</option>
+											
+												<option value="09">무교</option>
+											
+												<option value="99">기타</option>
+											
+										
+									
+								</select>
 							</div>
 							<hr style="margin-top: 20px;margin-bottom: 20px;border-left-width: 0px;border-bottom-width: 0px;border-right-width: 0px;">
-							
 							<div class="form-group margin-b-12">
 								<table>
-									<tbody>
-									<tr>
+									<tbody><tr>
 										<td>
 											<label class="ui-checkbox" style="margin-bottom:12px;">
 												<input type="checkbox" id="allTeamCheckbox01">
@@ -1132,33 +1120,23 @@ $(document).ready(function() {
 									</tr>
 									<tr>
 										<td>
-											<label class="ui-checkbox row" >
-												<input type="checkbox" name="checkbox1" id="user_chk_email" value="0">
-												<span>
-													이메일 수신 여부[선택]
-												</span>
-											</label>
-										</td>
-									</tr>
-									<tr>
-										<td>
-											<label class="ui-checkbox row">
-												<input type="checkbox" name="checkbox1" id="user_terms_of_service" value="0">
+											<label class="ui-checkbox">
+												<input type="checkbox" id="useTermCheckbox01">
 												<span>
 													이용약관 동의
 												</span>
-												<a href="/creator/useTerm" target="_blank">[보기]</a>
+												<a href="/info/useTerm" target="_blank"> [보기]</a>
 											</label>
 										</td>
 									</tr>
 									<tr>
 										<td>
-											<label class="ui-checkbox row">
-												<input type="checkbox" name="checkbox1" id="user_privacy_policy_agree" value="0">
+											<label class="ui-checkbox">
+												<input type="checkbox" id="pInfoTermCheckbox01">
 												<span>
 													개인정보 처리방침 동의
 												</span>
-												<a href="/creator/pInfoProvideTerm" target="_blank">[보기]</a>
+												<a href="/info/pInfoTerm" target="_blank"> [보기]</a>
 											</label>
 										</td>
 									</tr>
@@ -1166,104 +1144,180 @@ $(document).ready(function() {
 							</div>
 							<hr style="margin-top: 20px;margin-bottom: 20px;border-left-width: 0px;border-bottom-width: 0px;border-right-width: 0px;">
 							<div class="form-group margin-b-6">
-								<button type="button" class="btn btn-purple-transparent btn-block" style="background-color: #712594;" id="join_btn" >회원가입</button>
+								<button type="button" class="btn btn-purple-transparent btn-block" onclick="fn_register()" id="registerBtn01" disabled="">회원가입</button>
 							</div>
+							<div class="form-group margin-b-12 facebook">
+								<img src="${pageContext.request.contextPath}/resources/img/icon_join_facebook.png">
+								<button type="button" class="btn btn-facebook btn-block" onclick="loginFacebook()" id="fbRegisterBtn01" disabled="">페이스북으로 간편 가입</button>
+							</div>
+							
 						</div>
-				<!-- ========================================================================= -->
+						
 						<div class="body" id="cusGb02" style="display: none;">
 							<h4>사업자정보</h4>
 							<div class="form-group margin-b-12">
-								<input class="form-control-reg" id="busi_resi_num" type="text" placeholder="*사업자등록번호" maxlength="10">
+								<input class="form-control-reg" id="inputBizRgstNo02" type="text" placeholder="*사업자등록번호" maxlength="10" onblur="fn_checkInputBizRgstNo();">
 								<p class="help-block" id="bizRgstNoResultText02">'-'을 제외한 숫자만 입력해 주세요.</p>
 							</div>
 							<div class="form-group margin-b-12 has-feedback">
-								<input class="form-control-reg" id="busi_resi_num_re" type="text" placeholder="*사업자등록번호 확인" maxlength="10" >
+								<input class="form-control-reg" id="inputBizRgstNoChk02" type="text" placeholder="*사업자등록번호 확인" maxlength="10" onblur="fn_checkBizRgstNo();"> <span class="form-control-feedback glyphicon" id="bizRgstNoChkResultIcon02" aria-hidden="true"></span>
 								<p class="help-block" id="bizRgstNoChkResultText02">사업자등록번호를 한번 더 입력해 주세요.</p>
+								<span id="bizRgstNoChkResultStatus02" class="sr-only">(success)</span>
 							</div>
 							<div class="form-group margin-b-12">
-								<input class="form-control-reg" id="busi_password" type="password" placeholder="*비밀번호" >
-								<p class="help-block onlyPass" id="pswdResultText02">영문,숫자,특수문자(~,!,# 등) 포함 8~20자</p>
+								<input class="form-control-reg" id="inputPswd02" type="password" placeholder="*비밀번호" onblur="fn_checkInputPswd();">
+								<p class="help-block" id="pswdResultText02">영문,숫자,특수문자(~,!,# 등) 포함 8~20자</p>
 							</div>
 							<div class="form-group margin-b-12 has-feedback">
-								<input class="form-control-reg" id="busi_password_re" type="password" placeholder="*비밀번호 확인" >
+								<input class="form-control-reg" id="inputPswdChk02" type="password" placeholder="*비밀번호 확인" onblur="fn_checkPswd();"> <span class="form-control-feedback glyphicon" id="pswdChkResultIcon02" aria-hidden="true"></span>
 								<p class="help-block" id="pswdChkResultText02">비밀번호를 한번 더 입력해 주세요.</p>
+								<span id="pswdChkResultStatus02" class="sr-only">(success)</span>
 							</div>
+							<form id="fileFrm" name="fileFrm" enctype="multipart/form-data">
+								<div class="fileDiv">
+									<dl style="margin-bottom: 0px;">
+										<dt style="text-align: left;font-weight: normal;" class="margin-b-12">*사업자등록증 사본 등록</dt>
+										<dd>
+											<p>
+												<input type="file" name="file_0" id="file_0">
+											</p>
+										</dd>
+									</dl>
+								</div>
+							</form>
 							<hr style="margin-top: 20px;margin-bottom: 20px;border-left-width: 0px;border-bottom-width: 0px;border-right-width: 0px;">
 							<h4>기업정보</h4>
 							<div class="form-group margin-b-12">
-								<input class="form-control-reg" id="com_name" type="text" placeholder="*업체명" maxlength="50">
+								<input class="form-control-reg" id="inputCusNm02" type="text" placeholder="*업체명" maxlength="50">
 							</div>
 							<div class="form-group margin-b-12">
-								<input class="form-control-reg" id="presen_name" type="text" placeholder="*대표자명" maxlength="50">
+								<input class="form-control-reg" id="inputCeoNm02" type="text" placeholder="*대표자명" maxlength="50">
 							</div>
 							<div class="form-group margin-b-12">
-								<input class="form-control-reg" id="cor_num" type="text" placeholder="*법인번호" maxlength="13">
+								<input class="form-control-reg" id="inputCrprtnNo02" type="text" placeholder="*법인번호" maxlength="13">
 								<p class="help-block" id="crprtnNoResultText02">'-'을 제외한 숫자만 입력해 주세요.</p>
 							</div>
 							<div class="form-group margin-b-12">
-								<input class="form-control-reg onlyhomepage" id="homepage" type="url" placeholder="홈페이지URL" maxlength="255">
+								<input class="form-control-reg" id="inputHmpgURL02" type="url" placeholder="홈페이지URL" maxlength="255">
 							</div>
 							<hr style="margin-top: 20px;margin-bottom: 20px;border-left-width: 0px;border-bottom-width: 0px;border-right-width: 0px;">
 							<h4>본사정보</h4>
 							<div class="form-group margin-b-12">
-								<ul class="list-unstyled">
+								<ul class="list-inline" style="display: -ms-inline-flexbox;">
 									<li>
-										<input type="text" class="form-control-reg hqAddr1-text" id="address" maxlength="100" placeholder="*주소" readonly="readonly">
+										<input type="text" class="form-control-reg hqZipCd-text" id="hqZipCdText" maxlength="5" placeholder="*우편번호" readonly="">
+									</li>
+									<li>
+										<button type="button" class="btn btn-purple-transparent" id="hqAddrBtn" onclick="gfn_findAddr('hqZipCdText', 'hqAddr1Text', 'hqAddr2Text');">주소검색</button>
 									</li>
 								</ul>
 								<ul class="list-unstyled">
 									<li>
-										<input type="text" class="form-control-reg addr2-text" id="addressdetail" maxlength="100" value="" placeholder="상세주소">
+										<input type="text" class="form-control-reg hqAddr1-text" id="hqAddr1Text" maxlength="100" placeholder="*주소" readonly="">
+									</li>
+								</ul>
+								<ul class="list-unstyled">
+									<li>
+										<input type="text" class="form-control-reg addr2-text" id="hqAddr2Text" maxlength="100" value="" placeholder="상세주소">
 									</li>
 								</ul>
 							</div>
 							<div class="form-group margin-b-12">
-								<input class="form-control-reg onlyNum" id="pre_phone" type="tel" placeholder="대표전화번호" maxlength="20">
+								<input class="form-control-reg" id="inputHqTelNo02" type="tel" placeholder="대표전화번호" maxlength="20">
 								<p class="help-block">'-'을 제외한 숫자만 입력해 주세요.</p>
 							</div>
 							<div class="form-group margin-b-12">
-								<input class="form-control-reg onlyNum" id="fax_num" type="tel" placeholder="팩스번호" maxlength="20">
+								<input class="form-control-reg" id="inputHqFaxNo02" type="tel" placeholder="팩스번호" maxlength="20">
+								<p class="help-block">'-'을 제외한 숫자만 입력해 주세요.</p>
+							</div>
+							<hr style="margin-top: 20px;margin-bottom: 20px;border-left-width: 0px;border-bottom-width: 0px;border-right-width: 0px;">
+							<h4>사업장정보</h4>
+							<div class="form-group margin-b-12">
+								<label class="ui-checkbox">
+									<input type="checkbox" id="pobCheckbox"> <span>본사정보와 동일합니다.</span>
+								</label>
+							</div>
+							<div class="form-group margin-b-12">
+								<ul class="list-inline" style="display: -ms-inline-flexbox;">
+									<li>
+										<input type="text" class="form-control-reg pobZipCd-text" id="pobZipCdText" maxlength="5" placeholder="*우편번호" readonly="">
+									</li>
+									<li>
+										<button type="button" class="btn btn-purple-transparent" id="pobAddrBtn" onclick="gfn_findAddr('pobZipCdText', 'pobAddr1Text', 'pobAddr2Text');">주소검색</button>
+									</li>
+								</ul>
+								<ul class="list-unstyled">
+									<li>
+										<input type="text" class="form-control-reg pobAddr1-text" id="pobAddr1Text" maxlength="100" placeholder="*주소" readonly="">
+									</li>
+								</ul>
+								<ul class="list-unstyled">
+									<li>
+										<input type="text" class="form-control-reg addr2-text" id="pobAddr2Text" maxlength="100" value="" placeholder="상세주소">
+									</li>
+								</ul>
+							</div>
+							<div class="form-group margin-b-12">
+								<input class="form-control-reg" id="inputPobTelNo02" type="tel" placeholder="대표전화번호" maxlength="20">
+								<p class="help-block">'-'을 제외한 숫자만 입력해 주세요.</p>
+							</div>
+							<div class="form-group margin-b-12">
+								<input class="form-control-reg" id="inputPobFaxNo02" type="tel" placeholder="팩스번호" maxlength="20">
 								<p class="help-block">'-'을 제외한 숫자만 입력해 주세요.</p>
 							</div>
 							<hr style="margin-top: 20px;margin-bottom: 20px;border-left-width: 0px;border-bottom-width: 0px;border-right-width: 0px;">
 							<h4>담당자정보</h4>
 							<div class="form-group margin-b-12">
-								<input class="form-control-reg onlyKrEng" id="manager_name" type="text" placeholder="*담당자명" maxlength="50">
+								<input class="form-control-reg" id="inputMngrNm02" type="text" placeholder="*담당자명" maxlength="50">
 							</div>
 							<div class="form-group margin-b-12">
-								<input class="form-control-reg onlyJumin" id="manager_birth" type="text" placeholder="*담당자 생년월일" maxlength="8">
+								<input class="form-control-reg" id="inputMngrBirthDate02" type="text" placeholder="*담당자 생년월일" maxlength="8">
 								<p class="help-block">'19801214'와 같은 형식으로 입력해 주세요.</p>
 							</div>
+							<div class="form-group margin-b-12" style="padding: 0px 0 20px 0;" id="mngrSexRadio">
+								
+									
+										
+											<label class="radio-inline sexRadio-label">
+												<input type="radio" name="mngrSexRadio" value="1">남성
+											</label>
+										
+											<label class="radio-inline sexRadio-label">
+												<input type="radio" name="mngrSexRadio" value="2">여성
+											</label>
+										
+									
+								
+							</div>
 							<div class="form-group margin-b-12">
-								<input class="form-control-reg onlyEmail" id="manager_email" type="email" placeholder="*담당자 이메일" onblur="fn_checkEmail();">
+								<input class="form-control-reg" id="inputEmail02" type="email" placeholder="*담당자 이메일" onblur="fn_checkEmail();">
 								<p class="help-block" id="emailResultText02" style="display: none;"></p>
 							</div>
 							<div class="form-group margin-b-12">
-								<input class="form-control-reg onlyNum" id="office_num" type="tel" placeholder="*사무실번호" maxlength="20">
+								<input class="form-control-reg" id="inputMngrTelNo02" type="tel" placeholder="*사무실번호" maxlength="20">
 								<p class="help-block">'-'을 제외한 숫자만 입력해 주세요.</p>
 							</div>
 							<div class="form-group margin-b-12">
-								<input class="form-control-reg onlyNum" id="manager_phone" type="tel" placeholder="*휴대전화번호" maxlength="20">
+								<input class="form-control-reg" id="inputMpNo02" type="tel" placeholder="*휴대전화번호" maxlength="20">
 								<p class="help-block">'-'을 제외한 숫자만 입력해 주세요.</p>
 							</div>
 							<div class="form-group margin-b-12">
-								<input class="form-control-reg onlyNum" id="manager_fax_num" type="tel" placeholder="팩스번호" maxlength="20">
+								<input class="form-control-reg" id="inputFaxNo02" type="tel" placeholder="팩스번호" maxlength="20">
 								<p class="help-block">'-'을 제외한 숫자만 입력해 주세요.</p>
 							</div>
 							<div class="form-group margin-b-12">
-								<input class="form-control-reg onlyKrEng" id="manager_task" type="text" placeholder="*담당업무" maxlength="255">
+								<input class="form-control-reg" id="inpuWrkNm02" type="text" placeholder="*담당업무" maxlength="255">
 							</div>
 							<div class="form-group margin-b-12">
-								<input class="form-control-reg onlyKrEng" id="manager_rank" type="text" placeholder="*직급" maxlength="50">
+								<input class="form-control-reg" id="inpuJobNm02" type="text" placeholder="*직급" maxlength="50">
 							</div>
 							<div class="form-group margin-b-12">
-								<input class="form-control-reg onlyKrEng" id="manager_depart" type="text" placeholder="*근무부서" maxlength="50">
+								<input class="form-control-reg" id="inpuDeptNm02" type="text" placeholder="*근무부서" maxlength="50">
 							</div>
 							<hr style="margin-top: 20px;margin-bottom: 20px;border-left-width: 0px;border-bottom-width: 0px;border-right-width: 0px;">
 							<div class="form-group margin-b-12">
 								<table>
-									<tbody>
-									<tr>
+									<tbody><tr>
 										<td>
 											<label class="ui-checkbox" style="margin-bottom:12px;">
 												<input type="checkbox" id="allTeamCheckbox02">
@@ -1275,33 +1329,23 @@ $(document).ready(function() {
 									</tr>
 									<tr>
 										<td>
-											<label class="ui-checkbox row" >
-												<input type="checkbox" name="checkbox1" id="busi_chk_email" value="0">
-												<span>
-													이메일 수신 여부[선택]
-												</span>
-											</label>
-										</td>
-									</tr>
-									<tr>
-										<td>
-											<label class="ui-checkbox row">
-												<input type="checkbox" name="checkbox1" id="busi_terms_of_service" value="0">
+											<label class="ui-checkbox">
+												<input type="checkbox" id="useTermCheckbox02">
 												<span>
 													이용약관 동의
 												</span>
-												<a href="/creator/useTerm" target="_blank">[보기]</a>
+												<a href="/info/useTerm" target="_blank"> [보기]</a>
 											</label>
 										</td>
 									</tr>
 									<tr>
 										<td>
-											<label class="ui-checkbox row">
-												<input type="checkbox" name="checkbox1" id="busi_privacy_policy_agree" value="0">
+											<label class="ui-checkbox">
+												<input type="checkbox" id="pInfoTermCheckbox02">
 												<span>
 													개인정보 처리방침 동의
 												</span>
-												<a href="/creator/pInfoProvideTerm" target="_blank">[보기]</a>
+												<a href="/info/pInfoTerm" target="_blank"> [보기]</a>
 											</label>
 										</td>
 									</tr>
@@ -1309,7 +1353,7 @@ $(document).ready(function() {
 							</div>
 							<hr style="margin-top: 20px;margin-bottom: 20px;border-left-width: 0px;border-bottom-width: 0px;border-right-width: 0px;">
 							<div class="form-group margin-b-6">
-								<button type="button" class="btn btn-purple-transparent btn-block" style="background-color: #712594;" id="join_btn1" >회원가입</button>
+								<button type="button" class="btn btn-purple-transparent btn-block" onclick="fn_register()" id="registerBtn02" disabled="">회원가입</button>
 							</div>
 						</div>
 						<input id="cusGbCd" type="hidden" value="01">
@@ -1430,74 +1474,12 @@ td {
     vertical-align: inherit;
 }
 .ui-checkbox {
-	position: relative;
-	margin: 0 20px 0 15px;
-	display: inline;
+    position: relative;
+    margin: 0 20px 0 15px;
+    display: inline;
 }
-
-.ui-checkbox input[type=checkbox]+span:hover {
-	cursor: pointer
-}
-
-.ui-checkbox input[type=checkbox]:disabled+span:hover {
-	cursor: not-allowed
-}
-
 .ui-checkbox input[type=checkbox] {
-	display: none
-}
-
-.ui-checkbox input[type=checkbox]+span {
-	font-weight: 400
-}
-
-.ui-checkbox input[type=checkbox]+span:before {
-	content: "";
-	width: 18px;
-	height: 18px;
-	display: inline-block;
-	vertical-align: top;
-	margin-right: 10px;
-	margin-left: -17px;
-	background-color: transparent;
-	/*border-radius: 2px;*/
-	border: 2px solid #555
-}
-
-.ui-checkbox input[type=checkbox]:disabled+span:before {
-	opacity: .65;
-	border: 1px solid #ccc;
-	cursor: no-drop
-}
-
-.ui-checkbox input[type=checkbox]:checked+span:before {
-	border: 1px solid #712594
-}
-
-.ui-checkbox input[type=checkbox]:checked+span:after {
-	content: "\f00c";
-	width: 8px;
-	height: 8px;
-	position: absolute;
-	top: 0;
-	left: -14px;
-	color: #712594;
-	font-family: FontAwesome;
-	background-size: 14px 14px;
-	display: block
-}
-
-.ui-checkbox input[type=checkbox]:disabled:checked+span:before {
-	opacity: .65;
-	background-color: #ccc;
-	border: 1px solid #ccc
-}
-
-.ui-checkbox input[type=checkbox]:disabled:checked+span:after {
-	opacity: .65;
-	cursor: no-drop;
-	font-family: FontAwesome;
-	content: "\f00c"
+    display: none;
 }
 input[type="radio"], input[type="checkbox"] {
     margin: 4px 0 0;
@@ -1509,6 +1491,18 @@ input[type="checkbox"], input[type="radio"] {
     -moz-box-sizing: border-box;
     box-sizing: border-box;
     padding: 0;
+}
+.ui-checkbox input[type=checkbox]+span:before {
+    content: "";
+    width: 18px;
+    height: 18px;
+    display: inline-block;
+    vertical-align: top;
+    margin-right: 10px;
+    margin-left: -17px;
+    background-color: transparent;
+    /* border-radius: 2px; */
+    border: 2px solid #555;
 }
 label {
     font-size: 14px;
@@ -1577,7 +1571,6 @@ input[type="radio" i] {
     padding: initial;
     border: initial;
 }
-
 </style>
 </html>
 

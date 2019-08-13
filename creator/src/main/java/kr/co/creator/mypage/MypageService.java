@@ -127,7 +127,18 @@ public class MypageService {
 		count = dao.busiinoutinsert(ioVO);
 		return count;
 	}//busiaccount_insert
-	
+
+	public UserVO useinformation(MemberVO userVO) {
+		UserVO useVO = null;
+		useVO = (UserVO) dao.useinformation(userVO);
+		return useVO;
+	}
+
+	public Busi_userVO businformation(MemberVO userVO) {
+		Busi_userVO busiVO = null;
+		busiVO = (Busi_userVO) dao.businformation(userVO);
+		return busiVO;
+	}
 	
 }//class
 

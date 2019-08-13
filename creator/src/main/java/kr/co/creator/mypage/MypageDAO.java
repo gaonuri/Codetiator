@@ -130,6 +130,18 @@ public class MypageDAO {
 			count = sqlSession.insert("MypageMapper.busiinoutinsert", ioVO);
 			return count;
 		}
+
+		public UserVO useinformation(MemberVO userVO) {
+			UserVO useVO = null;
+			useVO = sqlSession.selectOne("MypageMapper.User", userVO);
+			return useVO;
+		}
+
+		public Busi_userVO businformation(MemberVO userVO) {
+			Busi_userVO busiVO = null;
+			busiVO = sqlSession.selectOne("MypageMapper.Busi", userVO);
+			return busiVO;
+		}
 		
 	
 }//class

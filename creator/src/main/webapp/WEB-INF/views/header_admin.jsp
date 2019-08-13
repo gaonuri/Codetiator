@@ -27,10 +27,10 @@
 						<ul class="dropdown-menu extended tasks-bar">
 							<div class="notify-arrow notify-arrow-green"></div>
 							<li>
-								<a href="${pageContext.request.contextPath}/loan_guide">프로젝트 현황</a>
+								<a href="${pageContext.request.contextPath}/invest_list">프로젝트 현황</a>
 							</li>
 							<li>
-								<a href="${pageContext.request.contextPath}/loan/getloan">프로젝트 심사 관리</a>
+								<a href="${pageContext.request.contextPath}/project_evaluate_mgn">프로젝트 심사 관리</a>
 							</li>
 							<li>
 								<a href="${pageContext.request.contextPath}/loan_guide">대출 심사</a>

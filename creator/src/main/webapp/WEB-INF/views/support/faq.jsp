@@ -359,13 +359,13 @@
 												<div class="panel-heading" role="tab" id="normalFaqHeading1">
 													<h4 class="panel-title">
 														<a data-toggle="collapse" data-parent="#normalFaqAccordion" href="#normalFaqCollapse1" aria-expanded="false" aria-controls="normalFaqCollapse1">
-															Q1. 미드레이트는 어떤 회사인가요?
+															Q1. 크리에이트는 어떤 회사인가요?
 														</a>
 													</h4>
 												</div>
 												<div id="normalFaqCollapse1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="normalFaqHeading1">
 													<div class="panel-body">
-														미드레이트는 대출 희망자와 투자자를 온라인으로 직접 연결하는 온라인 P2P(Peer to Peer) 대출-투자 플랫폼 서비스 업체입니다. 저렴하고 편리한 대출과 안정적이고 높은 중금리 수익 상품을 경험하실 수 있습니다.
+														크리에이트는 대출 희망자와 투자자를 온라인으로 직접 연결하는 온라인 P2P(Peer to Peer) 대출-투자 플랫폼 서비스 업체입니다. 저렴하고 편리한 대출과 안정적이고 높은 중금리 수익 상품을 경험하실 수 있습니다.
 													</div>
 												</div>
 											</div>
@@ -380,7 +380,7 @@
 												</div>
 												<div id="normalFaqCollapse2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="normalFaqHeading2">
 													<div class="panel-body">
-														미드레이트는 기존 금융권에서 소요되는 지점 운영, 인건비용을 줄이고 차별화된 신용 평가 알고리즘을 통해 더 정확한 부실위험 판단으로 부도율을 감소시킵니다. 이 과정에서 절감한 비용을 차입자와 투자자들의 금리 산정에 혜택을 드리고 있습니다.
+														크리에이트는 기존 금융권에서 소요되는 지점 운영, 인건비용을 줄이고 차별화된 신용 평가 알고리즘을 통해 더 정확한 부실위험 판단으로 부도율을 감소시킵니다. 이 과정에서 절감한 비용을 차입자와 투자자들의 금리 산정에 혜택을 드리고 있습니다.
 													</div>
 												</div>
 											</div>
@@ -438,13 +438,13 @@
 												<div class="panel-heading" role="tab" id="normalFaqHeading6">
 													<h4 class="panel-title">
 														<a data-toggle="collapse" data-parent="#normalFaqAccordion" href="#normalFaqCollapse6" aria-expanded="false" aria-controls="normalFaqCollapse6">
-															Q6. 미드레이트와 미드레이트대부는 어떤 관계인가요?
+															Q6. 크리에이트와 크리에이트대부는 어떤 관계인가요?
 														</a>
 													</h4>
 												</div>
 												<div id="normalFaqCollapse6" class="panel-collapse collapse" role="tabpanel" aria-labelledby="normalFaqHeading6">
 													<div class="panel-body">
-														미드레이트는 P2P금융플랫폼 서비스를 제공하고 있으며, 미드레이트 대부는 P2P금융서비스를 제공하기 위해서 필수적인 여신기능을 담당하기 위해 미드레이트에서 설립한 제휴여신기관(P2P연계대부업자)입니다. 미드레이트대부는 일반 대부업은 일절 하지 않으며 미드레이트에서 펀딩이 성사된 차입자에게만 여신을 실행합니다.
+														크리에이트는 P2P금융플랫폼 서비스를 제공하고 있으며, 크리에이트 대부는 P2P금융서비스를 제공하기 위해서 필수적인 여신기능을 담당하기 위해 크리에이트에서 설립한 제휴여신기관(P2P연계대부업자)입니다. 크리에이트대부는 일반 대부업은 일절 하지 않으며 크리에이트에서 펀딩이 성사된 차입자에게만 여신을 실행합니다.
 													</div>
 												</div>
 											</div>
@@ -468,13 +468,13 @@
 												<div class="panel-heading" role="tab" id="normalFaqHeading8">
 													<h4 class="panel-title">
 														<a data-toggle="collapse" data-parent="#normalFaqAccordion" href="#normalFaqCollapse8" aria-expanded="false" aria-controls="normalFaqCollapse8">
-															Q8. 미드레이트 사이트가 깨져서 보여요.
+															Q8. 크리에이트 사이트가 깨져서 보여요.
 														</a>
 													</h4>
 												</div>
 												<div id="normalFaqCollapse8" class="panel-collapse collapse" role="tabpanel" aria-labelledby="normalFaqHeading8">
 													<div class="panel-body">
-														미드레이트는 Internet Explore 9.0 이상과 크롬, 사파리 기반의 웹 브라우저에서 정상 작동합니다. Internet Explore 9.0 하위 버전을 사용 중이시라면 업데이트 후 이용하시면 됩니다.
+														크리에이트는 Internet Explore 9.0 이상과 크롬, 사파리 기반의 웹 브라우저에서 정상 작동합니다. Internet Explore 9.0 하위 버전을 사용 중이시라면 업데이트 후 이용하시면 됩니다.
 													</div>
 												</div>
 											</div>
@@ -483,13 +483,13 @@
 												<div class="panel-heading" role="tab" id="normalFaqHeading9">
 													<h4 class="panel-title">
 														<a data-toggle="collapse" data-parent="#normalFaqAccordion" href="#normalFaqCollapse9" aria-expanded="false" aria-controls="normalFaqCollapse9">
-															Q9. 모바일 기기(스마트폰)에서 보는 미드레이트와 PC에서 보는 미드레이트는 같은 사이트인가요?
+															Q9. 모바일 기기(스마트폰)에서 보는 크리에이트와 PC에서 보는 크리에이트는 같은 사이트인가요?
 														</a>
 													</h4>
 												</div>
 												<div id="normalFaqCollapse9" class="panel-collapse collapse" role="tabpanel" aria-labelledby="normalFaqHeading9">
 													<div class="panel-body">
-														모두 같은 미드레이트입니다. 미드레이트 플랫폼은 최신 기술인 반응형 웹 기반으로 개발되었기 때문에 보시는 크기에 따라 최적화된 화면으로 자동 조정됩니다.
+														모두 같은 크리에이트입니다. 크리에이트 플랫폼은 최신 기술인 반응형 웹 기반으로 개발되었기 때문에 보시는 크기에 따라 최적화된 화면으로 자동 조정됩니다.
 													</div>
 												</div>
 											</div>
@@ -504,7 +504,7 @@
 												</div>
 												<div id="normalFaqCollapse10" class="panel-collapse collapse" role="tabpanel" aria-labelledby="normalFaqHeading10">
 													<div class="panel-body">
-														미드레이트에서 운영하는 포인트 제도로 '1포인트=1원'의 가치를 지니며, [마이페이지]-[포인트 관리]에서 적립/사용내역을 확인하실 수 있습니다. 퍼플포인트는 투자 시 예치금과 합산하여 1만원 이상이면 사용 가능합니다. (예시: 포인트 1,100pp + 예치금 8,900원 = 총 1만원 투자)
+														크리에이트에서 운영하는 포인트 제도로 '1포인트=1원'의 가치를 지니며, [마이페이지]-[포인트 관리]에서 적립/사용내역을 확인하실 수 있습니다. 퍼플포인트는 투자 시 예치금과 합산하여 1만원 이상이면 사용 가능합니다. (예시: 포인트 1,100pp + 예치금 8,900원 = 총 1만원 투자)
 														<br><br>
 														단, 적립/이벤트로 지급되는 포인트는 회사 사정에 따라 변동 될 수 있으며, 투자 이외의 용도로는 사용 불가합니다. 포인트 지급률이 변동되는 경우 공지 사항의 게시판을 통해 고지됩니다.
 														<br><br>
@@ -512,7 +512,7 @@
 														<br><br>
 														▶자동투자 시 포인트 사용 설정: [마이페이지]-[자동투자 설정]-[추가설정 더 보기]-[자동투자 포인트 사용 설정] '적용'
 														<br><br>
-														▶자세한 내용은 <a href="https://blog.naver.com/midrate/221032833529" target="_blank"><strong>미드레이트 블로그</strong></a>를 참고하여 주세요.
+														▶자세한 내용은 <a href="https://blog.naver.com/midrate/221032833529" target="_blank"><strong>크리에이트 블로그</strong></a>를 참고하여 주세요.
 													</div>
 												</div>
 											</div>
@@ -584,7 +584,7 @@
 													</div>
 													<div id="investFaqCollapse3" class="panel-collapse collapse" role="tabpanel" aria-labelledby="investFaqHeading3">
 														<div class="panel-body">
-															투자 시 발생된 이자수익은 과세대상입니다. 현행 세법에 따라 비영업대금에 대한 이익은 이자소득으로 간주되어 25%의 세율이 적용됩니다. (소득세법 제16조 제1항 제11) 여기에 주민세가 2.5% 추가되어 총 27.5%를 세금으로 원천징수 하고있습니다. 미드레이트에서는 회원님의 이자 수익에대해서 납세금을 납부하며, 세후의 순수익에 대하여 회원님의 예치금 계좌로 입금해 드립니다.
+															투자 시 발생된 이자수익은 과세대상입니다. 현행 세법에 따라 비영업대금에 대한 이익은 이자소득으로 간주되어 25%의 세율이 적용됩니다. (소득세법 제16조 제1항 제11) 여기에 주민세가 2.5% 추가되어 총 27.5%를 세금으로 원천징수 하고있습니다. 크리에이트에서는 회원님의 이자 수익에대해서 납세금을 납부하며, 세후의 순수익에 대하여 회원님의 예치금 계좌로 입금해 드립니다.
 														</div>
 													</div>
 												</div>
@@ -658,7 +658,7 @@
 													</div>
 													<div id="investFaqCollapse6" class="panel-collapse collapse" role="tabpanel" aria-labelledby="investFaqHeading6">
 														<div class="panel-body">
-															투자 회원님의 이자소득에 대한 세금은 미드레이트에서 원천징수합니다. 따라서 별도로 소득 신고를 하실 필요가 없습니다.
+															투자 회원님의 이자소득에 대한 세금은 크리에이트에서 원천징수합니다. 따라서 별도로 소득 신고를 하실 필요가 없습니다.
 														</div>
 													</div>
 												</div>
@@ -667,16 +667,16 @@
 													<div class="panel-heading" role="tab" id="investFaqHeading7">
 														<h4 class="panel-title">
 															<a data-toggle="collapse" data-parent="#investFaqAccordion" href="#investFaqCollapse7" aria-expanded="false" aria-controls="investFaqCollapse7">
-																Q7. 미드레이트에 투자하면 원금이 보장되나요?
+																Q7. 크리에이트에 투자하면 원금이 보장되나요?
 															</a>
 														</h4>
 													</div>
 													<div id="investFaqCollapse7" class="panel-collapse collapse" role="tabpanel" aria-labelledby="investFaqHeading7">
 														<div class="panel-body">
-															미드레이트의 투자상품은 원금이 보장되지 않습니다. 미드레이트와 같은 P2P대출 플랫폼에서의 투자는 현행 법률상 '유사수신행위의 규제에 관한 법률'에 의해 원금과 수익을 보장할 수 없으며, '원금 보장이 안됨'을 명시하지 않는 것은 법률 위반입니다.
-															미드레이트는 이에 대해 충분한 사전 고지 의무를 다하고자 합니다.
-															투자고객님은 이를 인지하시고 신중한 결정 부탁드립니다. 다만, 미드레이트는 자체신용평가시스템을 통해 대출고객의 신용도를 세밀하고 정밀하게 평가하여 리스크를 낮추고 있습니다.
-															투자고객님께서는 반드시 분산투자를 통해 부도에 대한 위험을 낮추실 수 있습니다. 분산투자가 어렵게 느껴지는 투자회원님을 위해 미드레이트에서는 자동 투자 시스템을 마련하였습니다.
+															크리에이트의 투자상품은 원금이 보장되지 않습니다. 크리에이트와 같은 P2P대출 플랫폼에서의 투자는 현행 법률상 '유사수신행위의 규제에 관한 법률'에 의해 원금과 수익을 보장할 수 없으며, '원금 보장이 안됨'을 명시하지 않는 것은 법률 위반입니다.
+															크리에이트는 이에 대해 충분한 사전 고지 의무를 다하고자 합니다.
+															투자고객님은 이를 인지하시고 신중한 결정 부탁드립니다. 다만, 크리에이트는 자체신용평가시스템을 통해 대출고객의 신용도를 세밀하고 정밀하게 평가하여 리스크를 낮추고 있습니다.
+															투자고객님께서는 반드시 분산투자를 통해 부도에 대한 위험을 낮추실 수 있습니다. 분산투자가 어렵게 느껴지는 투자회원님을 위해 크리에이트에서는 자동 투자 시스템을 마련하였습니다.
 														</div>
 													</div>
 												</div>
@@ -691,12 +691,12 @@
 													</div>
 													<div id="investFaqCollapse8" class="panel-collapse collapse" role="tabpanel" aria-labelledby="investFaqHeading8">
 														<div class="panel-body">
-															㈜미드레이트대부가 채권추심을 합니다. ㈜미드레이트대부는 채권자로서 채권추심을 대행하여 투자고객의 자산 보호에 최선을 다하며, 전화, 문자메시지, 방문 등 적법한 절차에 따른 추심 과정을 진행하게 됩니다. 
-															2개월 동안은 ㈜미드레이트대부에서 자체추심을 진행하며, 2개월 이상 연체될 경우 채권추심업체에 의뢰하여 추심업무를 이행하게 됩니다. 
+															㈜크리에이트대부가 채권추심을 합니다. ㈜크리에이트대부는 채권자로서 채권추심을 대행하여 투자고객의 자산 보호에 최선을 다하며, 전화, 문자메시지, 방문 등 적법한 절차에 따른 추심 과정을 진행하게 됩니다. 
+															2개월 동안은 ㈜크리에이트대부에서 자체추심을 진행하며, 2개월 이상 연체될 경우 채권추심업체에 의뢰하여 추심업무를 이행하게 됩니다. 
 															차입자의 연체일수가 장기화되어 6개월 이상 연체된다면 부실채권을 매각하며, 투자금의 일부를 회수합니다. 
 															미회수분에 대해서는 대손처리되어 원금 손실이 있을 수 있습니다. 참고로, P2P금융업체는 원금이 보장되지 않음을 명시해야 하며, 
 															이를 고객에게 적극적으로 알려야 할 의무가 있습니다. 이를 지키지 않는 것은 유사수신행위의 규제에 관한 법률 위반입니다. 
-															다만, 미드레이트는 단일 채권에 대한 투자금액 상한선을 정하는 등 분산투자를 권유해드리고 있으며, 분산투자가 이루어졌을 때 대손율은 약 1% 내외로 예상하고 있습니다.
+															다만, 크리에이트는 단일 채권에 대한 투자금액 상한선을 정하는 등 분산투자를 권유해드리고 있으며, 분산투자가 이루어졌을 때 대손율은 약 1% 내외로 예상하고 있습니다.
 														</div>
 													</div>
 												</div>
@@ -711,10 +711,10 @@
 													</div>
 													<div id="investFaqCollapse9" class="panel-collapse collapse" role="tabpanel" aria-labelledby="investFaqHeading9">
 														<div class="panel-body">
-															미드레이트는 대출을 포함한 모든 과정에서 고객의 주민등록번호를 수집하지 않는 것을 원칙으로 하고 있습니다. 
-															다만 원천징수와 관련, 미드레이트가 투자 고객을 대신하여 투자 수익에 대한 납세금을 납부하는 과정 및 대출에 필요한 인적사항을 확인하는 과정에서 필요한 회원님의 주민등록번호를 수집하게 됩니다. 
+															크리에이트는 대출을 포함한 모든 과정에서 고객의 주민등록번호를 수집하지 않는 것을 원칙으로 하고 있습니다. 
+															다만 원천징수와 관련, 크리에이트가 투자 고객을 대신하여 투자 수익에 대한 납세금을 납부하는 과정 및 대출에 필요한 인적사항을 확인하는 과정에서 필요한 회원님의 주민등록번호를 수집하게 됩니다. 
 															주민등록번호는 암호화하여 저장되며 원천징수 신고 시에만 복호화하여 사용됩니다. 
-															단방향 암호화 방식을 이용하여 미드레이트 임직원을 포함한 모든 인원이 열람할 수 없도록 관리하고 있으니 안심하셔도 좋습니다.
+															단방향 암호화 방식을 이용하여 크리에이트 임직원을 포함한 모든 인원이 열람할 수 없도록 관리하고 있으니 안심하셔도 좋습니다.
 														</div>
 													</div>
 												</div>
@@ -730,7 +730,7 @@
 													<div id="investFaqCollapse10" class="panel-collapse collapse" role="tabpanel" aria-labelledby="investFaqHeading10">
 														<div class="panel-body">
 															원리금수취권이란 말 그대로 원금과 이자를 받을 수 있는 권리를 말합니다. 
-															투자회원님은 미드레이트를 통해 대출채권에 참여함으로써 대출고객이 상환하는 원리금을 수취할 수 있는 권리를 갖게 되며 대출행위, 채권관리 등의 책임과 권한은 미드레이트에게 있습니다. 
+															투자회원님은 크리에이트를 통해 대출채권에 참여함으로써 대출고객이 상환하는 원리금을 수취할 수 있는 권리를 갖게 되며 대출행위, 채권관리 등의 책임과 권한은 크리에이트에게 있습니다. 
 															이 모든 사항은 법적으로 정당하게 보호받을 수 있습니다.<br><br>
 															원리금수취권은 '마이페이지'의 ‘투자 내역’에서 각 상품을 눌러 상세 일정을 보시면 우측 상단에 ‘원리금수취권’ 버튼을 통해서 다운로드 받으실 수 있습니다.
 														</div>
@@ -741,14 +741,14 @@
 													<div class="panel-heading" role="tab" id="investFaqHeading11">
 														<h4 class="panel-title">
 															<a data-toggle="collapse" data-parent="#investFaqAccordion" href="#investFaqCollapse11" aria-expanded="false" aria-controls="investFaqCollapse11">
-																Q11. 미드레이트가 파산하면 어떻게 되나요?
+																Q11. 크리에이트가 파산하면 어떻게 되나요?
 															</a>
 														</h4>
 													</div>
 													<div id="investFaqCollapse11" class="panel-collapse collapse" role="tabpanel" aria-labelledby="investFaqHeading11">
 														<div class="panel-body">
 															회사가 부도가 나더라도 대출 채권 계약이 소멸되지 않습니다. 대출고객은 여전히 원리금 상환의무를 가지며 투자회원님의 원리금 수취권도 법적으로 보호됩니다. 
-															단, 미드레이트의 부도에 따라 원리금 수취 및 배분의 주체가 달라질 수는 있으나 대출회원님 및 투자회원님 모두 보호받습니다.
+															단, 크리에이트의 부도에 따라 원리금 수취 및 배분의 주체가 달라질 수는 있으나 대출회원님 및 투자회원님 모두 보호받습니다.
 														</div>
 													</div>
 												</div>
@@ -837,7 +837,7 @@
 													</div>
 													<div id="loanFaqCollapse2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="loanFaqHeading2">
 														<div class="panel-body">
-															대출신청은 미드레이트 홈페이지의&nbsp;'대출하기'&nbsp;메뉴를 통해서 신청이 가능합니다. 신청 후 안내해드리는 필요 서류까지 제출해주셔야 모든 대출 신청 절차가 완료됩니다. 
+															대출신청은 크리에이트 홈페이지의&nbsp;'대출하기'&nbsp;메뉴를 통해서 신청이 가능합니다. 신청 후 안내해드리는 필요 서류까지 제출해주셔야 모든 대출 신청 절차가 완료됩니다. 
 															신청 후 대출실행까지의 과정은 아래와 같습니다.&nbsp;<br><br>
 															※ 대출신청 → 추가정보 → 서류제출 및 심사 → 심사결과 통보 → 고객승인 → 상품 등록 및 투자고객 모집 → 대출실행
 														</div>
@@ -899,17 +899,17 @@
 													<div class="panel-heading" role="tab" id="loanFaqHeading5">
 														<h4 class="panel-title">
 															<a data-toggle="collapse" data-parent="#loanFaqAccordion" href="#loanFaqCollapse5" aria-expanded="false" aria-controls="loanFaqCollapse5">
-																Q5. 미드레이트 금리와 대출 금액은 어떻게 산정되나요?
+																Q5. 크리에이트 금리와 대출 금액은 어떻게 산정되나요?
 															</a>
 														</h4>
 													</div>
 													<div id="loanFaqCollapse5" class="panel-collapse collapse" role="tabpanel" aria-labelledby="loanFaqHeading5">
 														<div class="panel-body">
 															▷금리 산정<br>
-															    - 미드레이트 자체 신용 평가 시스템이 대출신청 시 입력하신 정보 및 증빙서류들을 토대로 '미드레이트 등급'을 책정하며 등급별로 설정된 금리는 대출기간, 대출유형 등에 따라 소폭 조정됩니다.
+															    - 크리에이트 자체 신용 평가 시스템이 대출신청 시 입력하신 정보 및 증빙서류들을 토대로 '크리에이트 등급'을 책정하며 등급별로 설정된 금리는 대출기간, 대출유형 등에 따라 소폭 조정됩니다.
 															          예측 위험률이 높을수록 금리가 상승합니다.<br><br>
 															▷최대 대출금액<br>
-															    - 미드레이트는 대출 상품에 따라 대출금액의 한도가 다릅니다.&nbsp;<br><br>
+															    - 크리에이트는 대출 상품에 따라 대출금액의 한도가 다릅니다.&nbsp;<br><br>
 															▷개인신용 대출: 최대 3,000만원&nbsp;<br><br>
 															▷법인·사업자 대출:&nbsp;최대 1억원&nbsp;<br><br>
 															▷담보 대출(부동산, 동산):&nbsp;담보물 가치 평가 후 차입자와 협의 후 진행
@@ -929,7 +929,7 @@
 													</div>
 													<div id="loanFaqCollapse6" class="panel-collapse collapse" role="tabpanel" aria-labelledby="loanFaqHeading6">
 														<div class="panel-body">
-															미드레이트는 대출금 중도상환에 따른 중도상환 수수료가 없습니다.<br>
+															크리에이트는 대출금 중도상환에 따른 중도상환 수수료가 없습니다.<br>
 															단, 중도상환 시점 기준 잔존원금과 이자 전액을 일시에 상환하셔야 합니다.
 														</div>
 													</div>
@@ -945,7 +945,7 @@
 													</div>
 													<div id="loanFaqCollapse7" class="panel-collapse collapse" role="tabpanel" aria-labelledby="loanFaqHeading7">
 														<div class="panel-body">
-															최대 24.0% 이내의 연체 이자율을 적용하게 됩니다. 또한, 채권의 보전을 위해 반드시 필요하다고 미드레이트가 판단하는 경우, 그리고 여신거래약관에서 규정한 "기한의 이익상실" 사유에 해당하는 경우에는 미드레이트가 지정하는 업체에 채권의 추심을 위임할 수 있습니다.
+															최대 24.0% 이내의 연체 이자율을 적용하게 됩니다. 또한, 채권의 보전을 위해 반드시 필요하다고 크리에이트가 판단하는 경우, 그리고 여신거래약관에서 규정한 "기한의 이익상실" 사유에 해당하는 경우에는 크리에이트가 지정하는 업체에 채권의 추심을 위임할 수 있습니다.
 														</div>
 													</div>
 												</div>
@@ -960,7 +960,7 @@
 													</div>
 													<div id="loanFaqCollapse8" class="panel-collapse collapse" role="tabpanel" aria-labelledby="loanFaqHeading8">
 														<div class="panel-body">
-															미드레이트 대출은 고객 여러분의 신용등급에 어떠한 영향을 주지 않습니다. 그러나 상환 과정에서 연체가 일어나면 투자자 보호 차원에서 신용평가사에 연체 사실을 통보하게 되며, 이에 따라 신용등급의 하락 및 연체 관련 불이익(연체이력 등재)을 받으실 수 있습니다.
+															크리에이트 대출은 고객 여러분의 신용등급에 어떠한 영향을 주지 않습니다. 그러나 상환 과정에서 연체가 일어나면 투자자 보호 차원에서 신용평가사에 연체 사실을 통보하게 되며, 이에 따라 신용등급의 하락 및 연체 관련 불이익(연체이력 등재)을 받으실 수 있습니다.
 														</div>
 													</div>
 												</div>
@@ -969,13 +969,13 @@
 													<div class="panel-heading" role="tab" id="loanFaqHeading9">
 														<h4 class="panel-title">
 															<a data-toggle="collapse" data-parent="#loanFaqAccordion" href="#loanFaqCollapse9" aria-expanded="false" aria-controls="loanFaqCollapse9">
-																Q9. 미드레이트는 어떤 방식으로 대출금을 상환받나요?
+																Q9. 크리에이트는 어떤 방식으로 대출금을 상환받나요?
 															</a>
 														</h4>
 													</div>
 													<div id="loanFaqCollapse9" class="panel-collapse collapse" role="tabpanel" aria-labelledby="loanFaqHeading9">
 														<div class="panel-body">
-															미드레이트의 상환방식은 원리금 균등상환과 만기일시상환이 있습니다. 
+																의 상환방식은 원리금 균등상환과 만기일시상환이 있습니다. 
 															<br><br>
 															원리금 균등상환이란 원리금 만기까지의 대출원금과 이자를 미리 계산하여 상환 기간 동안 매월 일정한 금액을 상환하는 방식을 말합니다. 초기 상환회차에는 이자를 많이 상환하나, 후기로 갈수록 이자가 줄어들고 원금을 많이 상환하기 때문에 결과적으로 매월 상환해야하는 금액은 같아집니다. 
 															<br><br>

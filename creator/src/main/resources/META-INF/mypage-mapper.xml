@@ -42,7 +42,14 @@
 	<select id="loanList"
 		resultType="kr.co.creator.vo.ProjectVO">
 		select *
-		from project_list
+		from project_list p, account_list a
+		where p.project_num = a.project_num 
+		<if test="user_num != null and user_num != ''">
+				AND p.user_num = #{user_num}
+		</if>
+		<if test="busi_num != null and busi_num != ''">
+			OR p.busi_num = #{busi_num}
+		</if>
 	</select>
 	
 	<select id="bankNumChk" parameterType="java.lang.String" resultType="int">
@@ -54,11 +61,7 @@
 	<select id="Account"
 		parameterType="kr.co.creator.vo.MemberVO"
 		resultType="kr.co.creator.vo.AccountVO">
-		select 
-		  account_name
-		, bank_name
-		, bank_num
-		, deposit
+		select *
 		from account_list
 		where user_num = #{user_num}
 		OR busi_num = #{busi_num}
@@ -117,7 +120,7 @@
 		parameterType="kr.co.creator.vo.MemberVO"
 		resultType="kr.co.creator.vo.UserVO">
 		select *
-		from user_list 
+		from user_list
 		where user_num = #{user_num}
 	</select>
 	
@@ -125,7 +128,7 @@
 		parameterType="kr.co.creator.vo.MemberVO"
 		resultType="kr.co.creator.vo.Busi_userVO">
 		select *
-		from busi_user_list 
+		from busi_user_list
 		where busi_num = #{busi_num}
 	</select>
 	
