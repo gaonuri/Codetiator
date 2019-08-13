@@ -68,39 +68,27 @@ public class MypageController {
 	}//my_dashboard_new
 	
 	@RequestMapping(value = "/my_invest_list", method = RequestMethod.GET)
-	public String invest(HttpSession session, Model model, MemberVO userVO, MypageVO myVO) {
+	public String invest(HttpSession session, Model model, MemberVO userVO, AccountVO accVO) {
 		logger.info("my_dashboard");
 		userVO = (MemberVO)session.getAttribute("memberVO");
 		List<MypageVO> invest = null;
 		invest = service.invest_detail(userVO);
+		accVO = service.information(userVO);
 		model.addAttribute("investList", invest);
 		return "mypage/my_invest_list";
 	}
 	
-	@RequestMapping(value = "/my_invest_list_new", method = RequestMethod.GET)
-	public String my_invest_list_new(HttpSession session, Model model, MemberVO userVO, MypageVO myVO) {
-		logger.info("my_invest_list_new");
-
-		return "mypage/my_invest_list_new";
-	}//my_invest_list_new
-	
 	@RequestMapping(value = "/my_loan_list", method = RequestMethod.GET)
-	public String loan(HttpSession session, Model model, MemberVO userVO, ProjectVO proVO) {
+	public String loan(HttpSession session, Model model, MemberVO userVO, ProjectVO proVO, AccountVO accVO) {
 		logger.info("my_loan_list");
 		userVO = (MemberVO)session.getAttribute("memberVO");
 		List<ProjectVO> loan= null;
 		loan = service.loan_list(userVO);
+		accVO = service.information(userVO);
 		model.addAttribute("loanList",loan);
 		return "mypage/my_loan_list";
 	}
-	
-	@RequestMapping(value = "/my_loan_list_new", method = RequestMethod.GET)
-	public String my_loan_list_new(HttpSession session, Model model, MemberVO userVO, ProjectVO proVO) {
-		logger.info("my_loan_list_new");
 
-		return "mypage/my_loan_list_new";
-	}//my_loan_list_new
-	
 	@RequestMapping(value = "/my_depo_mgn", method = RequestMethod.GET)
 	public String my_modify(HttpSession session, Model model, MemberVO userVO, UserVO useVO, Busi_userVO busiVO, AccountVO accVO, InOutVO ioVO) {
 		logger.info("my_depo_mgn");
