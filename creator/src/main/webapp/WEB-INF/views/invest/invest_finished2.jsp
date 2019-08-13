@@ -33,6 +33,18 @@
 	  Author: TemplateMag.com
 	  License: https://templatemag.com/license/
 	======================================================= -->
+<style>
+    .overlay_info {border-radius: 6px; margin-bottom: 12px; float:left;position: relative; border: 1px solid #ccc; border-bottom: 2px solid #ddd;background-color:#fff;}
+    .overlay_info:nth-of-type(n) {border:0; box-shadow: 0px 1px 2px #888;}
+    .overlay_info a {display: block; background: #d95050; background: #d95050 url(http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/arrow_white.png) no-repeat right 14px center; text-decoration: none; color: #fff; padding:12px 36px 12px 14px; font-size: 14px; border-radius: 6px 6px 0 0}
+    .overlay_info a strong {background:url(http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/place_icon.png) no-repeat; padding-left: 27px;}
+    .overlay_info .desc {padding:14px;position: relative; min-width: 190px; height: 56px}
+    .overlay_info img {vertical-align: top;}
+    .overlay_info .address {font-size: 12px; color: #333; position: absolute; left: 80px; right: 14px; top: 24px; white-space: normal}
+    .overlay_info:after {content:'';position: absolute; margin-left: -11px; left: 50%; bottom: -12px; width: 22px; height: 12px; background:url(http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/vertex_white.png) no-repeat 0 bottom;}
+</style>
+	
+	
 </head>
 
 <body>
@@ -70,48 +82,39 @@
 										<th class="col">모집상태</th>
 									</tr>
 								</thead>
-								<c:forEach items="${investList}" var="vo" varStatus="status">
+								<c:forEach items="${investFinished}" var="vo" varStatus="status">
+									<input id="project_num" type="hidden" value="${vo.project_num}" />
 										<tr>
-											<td>
-												<input id="project_num" type="hidden" value="${vo.project_num}" />
-												<c:choose>
-													<c:when test="${memVO.user_num != null}">
-														<a href="${pageContext.request.contextPath}/invest_detail?project_num=${vo.project_num}&p_busi_num=${vo.busi_num}&user_num=${memVO.user_num}">${vo.project_name}u</a>
-													</c:when>
-													<c:when test="${memVO.busi_num != null}">
-														<a href="${pageContext.request.contextPath}/invest_detail?project_num=${vo.project_num}&p_busi_num=${vo.busi_num}&busi_num=${memVO.busi_num}">${vo.project_name}b</a>
-													</c:when>
-													<c:otherwise>
-														<a href="${pageContext.request.contextPath}/invest_detail?project_num=${vo.project_num}">${vo.project_name}</a>
-													</c:otherwise>
-												</c:choose>
-											</td>
-											<td>${vo.grade}</td>
-											<td>${vo.rate}%</td>
-											<td>${vo.refund}개월</td>
-											<td>${vo.price}만원</td>
-											<td>${vo.repay_method}</td>
-											<td>${vo.ach_rate}</td>
-											<td>
-												<c:choose>
-													<c:when test="${vo.ach_state == '투자하기'}">
-														<c:choose>
-															<c:when test="${memVO.user_num != null}">
-																<a href="${pageContext.request.contextPath}/invest?user_num=${memVO.user_num}&project_num=${vo.project_num}">${vo.ach_state}u</a>
-															</c:when>
-															<c:when test="${memVO.busi_num != null}">
-																<a href="${pageContext.request.contextPath}/invest?busi_num=${memVO.busi_num}&project_num=${vo.project_num}">${vo.ach_state}u</a>
-															</c:when>
-															<c:otherwise>
-																<a href="${pageContext.request.contextPath}/login">${vo.ach_state}</a>
-															</c:otherwise>
-														</c:choose>
-													</c:when>
-													<c:otherwise>
-														${vo.ach_state}
-													</c:otherwise>
-												</c:choose>
-											</td>
+											<c:choose>
+												<c:when test="${memVO.user_num != null}">
+													<td><a href="${pageContext.request.contextPath}/invest_detail?project_num=${vo.project_num}&p_busi_num=${vo.busi_num}&user_num=${memVO.user_num}">${vo.project_name}u</a></td>
+													<td><a href="${pageContext.request.contextPath}/invest_detail?project_num=${vo.project_num}&p_busi_num=${vo.busi_num}&user_num=${memVO.user_num}">${vo.grade}u</a></td>
+													<td><a href="${pageContext.request.contextPath}/invest_detail?project_num=${vo.project_num}&p_busi_num=${vo.busi_num}&user_num=${memVO.user_num}">${vo.rate}%u</a></td>
+													<td><a href="${pageContext.request.contextPath}/invest_detail?project_num=${vo.project_num}&p_busi_num=${vo.busi_num}&user_num=${memVO.user_num}">${vo.refund}개월u</a></td>
+													<td><a href="${pageContext.request.contextPath}/invest_detail?project_num=${vo.project_num}&p_busi_num=${vo.busi_num}&user_num=${memVO.user_num}">${vo.price}만원u</a></td>
+													<td><a href="${pageContext.request.contextPath}/invest_detail?project_num=${vo.project_num}&p_busi_num=${vo.busi_num}&user_num=${memVO.user_num}">${vo.repay_method}u</a></td>
+													<td><a href="${pageContext.request.contextPath}/invest_detail?project_num=${vo.project_num}&p_busi_num=${vo.busi_num}&user_num=${memVO.user_num}">${vo.ach_rate}u</a></td>
+												</c:when>
+												<c:when test="${memVO.busi_num != null}">
+													<td><a href="${pageContext.request.contextPath}/invest_detail?project_num=${vo.project_num}&p_busi_num=${vo.busi_num}&busi_num=${memVO.busi_num}">${vo.project_name}b</a></td>
+													<td><a href="${pageContext.request.contextPath}/invest_detail?project_num=${vo.project_num}&p_busi_num=${vo.busi_num}&busi_num=${memVO.busi_num}">${vo.grade}b</a></td>
+													<td><a href="${pageContext.request.contextPath}/invest_detail?project_num=${vo.project_num}&p_busi_num=${vo.busi_num}&busi_num=${memVO.busi_num}">${vo.rate}%b</a></td>
+													<td><a href="${pageContext.request.contextPath}/invest_detail?project_num=${vo.project_num}&p_busi_num=${vo.busi_num}&busi_num=${memVO.busi_num}">${vo.refund}개월b</a></td>
+													<td><a href="${pageContext.request.contextPath}/invest_detail?project_num=${vo.project_num}&p_busi_num=${vo.busi_num}&busi_num=${memVO.busi_num}">${vo.price}만원b</a></td>
+													<td><a href="${pageContext.request.contextPath}/invest_detail?project_num=${vo.project_num}&p_busi_num=${vo.busi_num}&busi_num=${memVO.busi_num}">${vo.repay_method}b</a></td>
+													<td><a href="${pageContext.request.contextPath}/invest_detail?project_num=${vo.project_num}&p_busi_num=${vo.busi_num}&busi_num=${memVO.busi_num}">${vo.ach_rate}b</a></td>
+												</c:when>
+												<c:otherwise>
+													<td><a href="${pageContext.request.contextPath}/invest_detail?project_num=${vo.project_num}">${vo.project_name}</a></td>
+													<td><a href="${pageContext.request.contextPath}/invest_detail?project_num=${vo.project_num}">${vo.grade}</a></td>
+													<td><a href="${pageContext.request.contextPath}/invest_detail?project_num=${vo.project_num}">${vo.rate}</a></td>
+													<td><a href="${pageContext.request.contextPath}/invest_detail?project_num=${vo.project_num}">${vo.refund}개월</a></td>
+													<td><a href="${pageContext.request.contextPath}/invest_detail?project_num=${vo.project_num}">${vo.price}만원</a></td>
+													<td><a href="${pageContext.request.contextPath}/invest_detail?project_num=${vo.project_num}">${vo.repay_method}</a></td>
+													<td><a href="${pageContext.request.contextPath}/invest_detail?project_num=${vo.project_num}">${vo.ach_rate}</a></td>
+												</c:otherwise>
+											</c:choose>
+											<td>${vo.ach_state}</td>
 										</tr>
 								</c:forEach>
 							</table>

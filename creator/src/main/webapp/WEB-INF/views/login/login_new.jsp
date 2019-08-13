@@ -543,78 +543,22 @@ $(document).ready(function() {
 						</div>
 						<div class="body" id="cusGb01">
 							<div class="form-group margin-b-6" style="margin-bottom: 6px;">
-								<input class="form-control-lgn" id="loginId01" type="text" placeholder="*이메일(대소문자 구분 입력)">
+								<input class="form-control-lgn" id="email" type="email" placeholder="*이메일">
 							</div>
 							<div class="form-group margin-b-6 pswdWrap">
-								<input class="form-control-lgn" id="loginPswd01" type="password" placeholder="*비밀번호" onkeypress="fn_hitEnterKey(event, 'login')">
-								<i class="fa fa-eye-slash fa-lg"></i>
+								<input class="form-control-lgn" id="user_password" type="password" placeholder="*비밀번호" >
+<!-- 								<i class="fa fa-eye-slash fa-lg"></i> -->
 							</div>
-							<div class="form-group margin-b-6 text-left">
-								<label class="ui-checkbox" style="margin: 5px 20px 10px;">
-									<input type="checkbox" name="saveInfoCb01" id="saveInfoCb01"> <span>내 아이디 기억하기</span>
-								</label>
-							</div>
+<!-- 							<div class="form-group margin-b-6 text-left"> -->
+<!-- 								<label class="ui-checkbox" style="margin: 5px 20px 10px;"> -->
+<!-- 									<input type="checkbox" name="saveInfoCb01" id="saveInfoCb01"> <span>내 아이디 기억하기</span> -->
+<!-- 								</label> -->
+<!-- 							</div> -->
 							<!-- 
 							<div class="sep-line"></div>
 							 -->
-							<div class="form-group margin-b-6" style="margin-bottom: 6px;height: 0px;">
-								<div class="text-left display-none font-red" id="error01">
-									<hr>없는 아이디거나 비밀번호가 일치하지 않습니다.<br>다시 시도해주세요.
-								</div>
-								<div class="text-left display-none font-red" id="errPswdErrCnt01">
-									<hr>비밀번호 5회 이상 입력 오류 상태입니다.
-									<div style="padding: 5px 0 30px 0;">
-										<div class="left">
-											<img src="${pageContext.request.contextPath}/resources/img/icon_login_lock.png">
-										</div>
-										<div class="left font-purple">
-											<a class="text-muted" href="/findpwd" style="text-decoration: underline;">비밀번호를 잊으셨나요?</a>
-										</div>
-									</div>
-								</div>
-								<div class="text-left display-none font-red" id="errNotFound01">
-									<hr>없는 아이디거나 비밀번호가 일치하지 않습니다.<br>다시 시도해주세요.
-								</div>
-								<div class="text-left display-none font-red" id="errUseYn01">
-									<hr>사용 중지된 계정입니다.<br>고객센터로 문의하세요.[02-546-4076]
-								</div>
-							</div>
 							<div class="form-group margin-b-6" style="margin-bottom: 6px;">
-								<button type="button" class="btn btn-purple-transparent btn-block" onclick="fn_loginCheck()">로그인</button>
-							</div>
-							<hr style="margin-bottom: 20px;margin-top: 20px;">
-							<div class="form-group margin-b-6" style="margin-bottom: 6px;">
-								<input class="form-control-lgn" id="mpNo01" type="text" placeholder="휴대전화번호 간편로그인" onkeypress="fn_hitEnterKey(event, 'send')">
-								<input class="form-control-lgn display-none" id="authText01" type="text" placeholder="*인증번호" onkeypress="fn_hitEnterKey(event, 'cnfrm')" maxlength="6">
-							</div>
-							<div class="form-group margin-b-6" style="margin-bottom: 6px;">
-								<div class="text-left display-none font-red" id="authTextError01">
-									없는 아이디거나 비밀번호가 일치하지 않습니다.<br>다시 시도해주세요.
-								</div>
-								<div class="text-left display-none font-red" id="authTextErrPswdErrCnt01">
-									비밀번호 5회 이상 입력 오류 상태입니다.
-									<div style="padding: 5px 0 30px 0;">
-										<div class="left">
-											<img src="${pageContext.request.contextPath}/resources/img/icon_login_lock.png">
-										</div>
-										<div class="left font-purple">
-											<a class="text-muted" href="/findpwd" style="text-decoration: underline;">비밀번호를 잊으셨나요?</a>
-										</div>
-									</div>
-								</div>
-								<div class="text-left display-none font-red" id="authTextErrUseYn01">
-									사용 중지된 계정입니다.<br>고객센터로 문의하세요.[02-546-4076]
-								</div>
-								<div class="text-left display-none font-red" id="authTextErrAuthText01">
-									인증번호를 정확히 입력해 주세요.
-								</div>
-								<div class="text-left display-none font-red" id="authTextErrTimeOut01">
-									인증번호 입력시간이 초과되었습니다. 이메일 로그인을 이용해 주세요.
-								</div>
-							</div>
-							<div class="form-group margin-b-6" style="margin-bottom: 6px;">
-								<button type="button" class="btn btn-purple-transparent btn-block" id="authTextSendBtn" onclick="fn_authTextSend()">인증번호 발송</button>
-								<button type="button" class="btn btn-purple-transparent btn-block display-none" id="authTextCnfrmBtn" onclick="fn_authTextCnfrm()">인증번호 확인</button>
+								<button type="button" class="btn btn-purple-transparent btn-block" id="login_btn" >로그인</button>
 							</div>
 							<hr style="margin-bottom: 20px;margin-top: 20px;">
 							<div class="form-group margin-b-12 facebook">
@@ -624,64 +568,33 @@ $(document).ready(function() {
 							<hr style="margin-bottom: 20px;margin-top: 20px;">
 							<div class="form-group margin-b-12">
 								<div class="left" id="findpwdBtn01">
-									<a class="text-muted" href="/findpwd" style="text-decoration: underline;">비밀번호를 잊으셨나요?</a>
+									<a class="text-muted" href="./findpwd" style="text-decoration: underline;">비밀번호를 잊으셨나요?</a>
 								</div>
 								<div class="right">
-									<a class="text-muted" href="/register" style="text-decoration: underline;">회원 가입하기</a>
+									<a class="text-muted" href="./join" style="text-decoration: underline;">회원 가입하기</a>
 								</div>
 							</div>
 						</div>
-						
+					<!-- ========================================================================================= -->
 						<div class="body" id="cusGb02" style="display: none;">
 							<div class="form-group margin-b-6" style="margin-bottom: 6px;">
-								<input class="form-control-lgn" id="loginId02" type="text" placeholder="*사업자등록번호" maxlength="10">
+								<input class="form-control-lgn" id="busi_resi_num" type="text" placeholder="*사업자등록번호" maxlength="10">
+								<span>'-'을 제외한 숫자만 입력해 주세요.</span>
 							</div>
 							<div class="form-group margin-b-6" style="margin-bottom: 6px;">
-								<input class="form-control-lgn" id="loginPswd02" type="password" placeholder="*비밀번호" onkeypress="fn_hitEnterKey(event, 'login')">
-							</div>
-							<div class="form-group margin-b-6" style="margin-bottom: 6px;">
-								<label class="ui-checkbox" style="margin: 5px 20px 10px;">
-									<input type="checkbox" name="saveInfoCb02" id="saveInfoCb02"> <span style="font-family: 'Noto Sans KR', sans-serif;">사업자등록번호 기억하기</span>
-								</label>
-							</div>
-							<div class="form-group margin-b-6 text-left">
-								<label class="ui-checkbox" style="margin: 5px 20px 10px;">
-									<input type="checkbox" name="showPswdCb01" id="showPswdCb02"> <span style="font-family: 'Noto Sans KR', sans-serif;">비밀번호 보이기</span>
-								</label>
+								<input class="form-control-lgn" id="busi_password" type="password" placeholder="*비밀번호" >
 							</div>
 							<div class="sep-line"></div>
-							<div class="form-group margin-b-6" style="margin-bottom: 6px;">
-								<div class="text-left display-none font-red" id="error02">
-									<hr>없는 아이디거나 비밀번호가 일치하지 않습니다.<br>다시 시도해주세요.
-								</div>
-								<div class="text-left display-none font-red" id="errPswdErrCnt02">
-									<hr>비밀번호 5회 이상 입력 오류 상태입니다.
-									<div style="padding: 5px 0 30px 0;">
-										<div class="left">
-											<img src="${pageContext.request.contextPath}/resources/img/icon_login_lock.png">
-										</div>
-										<div class="left font-purple">
-											<a class="text-muted" href="/findpwd" style="text-decoration: underline;">비밀번호를 잊으셨나요?</a>
-										</div>
-									</div>
-								</div>
-								<div class="text-left display-none font-red" id="errNotFound02">
-									<hr>없는 아이디거나 비밀번호가 일치하지 않습니다.<br>다시 시도해주세요.
-								</div>
-								<div class="text-left display-none font-red" id="errUseYn02">
-									<hr>사용 중지된 계정입니다.<br>고객센터로 문의하세요.[02-546-4076]
-								</div>
-							</div>
 							<div class="form-group margin-b-12">
-								<button type="button" class="btn btn-purple-transparent btn-block" onclick="fn_loginCheck()">로그인</button>
+								<button type="button" class="btn btn-purple-transparent btn-block" id="login_btn1" >로그인</button>
 							</div>
 							<hr>
 							<div class="form-group margin-b-12">
 								<div class="left" id="findpwdBtn02">
-									<a class="text-muted" href="/findpwd" style="text-decoration: underline;">비밀번호를 잊으셨나요?</a>
+									<a class="text-muted" href="./findpwd" style="text-decoration: underline;">비밀번호를 잊으셨나요?</a>
 								</div>
 								<div class="right">
-									<a class="text-muted" href="/register" style="text-decoration: underline;">회원 가입하기</a>
+									<a class="text-muted" href="./join" style="text-decoration: underline;">회원 가입하기</a>
 								</div>
 							</div>
 						</div>

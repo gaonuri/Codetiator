@@ -40,20 +40,36 @@ public class ProjectVO {
 	private String current_price;		// 현재금액
 	private String deadline;			// 남은기간
 	private String refund_due_date;		// 상환예정일
+<<<<<<< HEAD
 	private String refund_end;			// 상환완료일
 	private String ad_price;			// 광고금액
 	private String ad_grade;			// 광고등급
+=======
+	private String refund_end;			// 상환완료일
+>>>>>>> branch 'master' of https://github.com/gaonuri/Codetiator.git
 	private String guarantee_type;		// 담보유형(부동산, 동산)
+<<<<<<< HEAD
 	private String object_type;			// 물건유형(아파트, 연립주택)
+=======
+	private String object_type;			// 물건유형(아파트, 연립주택)
+>>>>>>> branch 'master' of https://github.com/gaonuri/Codetiator.git
 	private String loan_count;			// 투자받은횟수
 	private String project_count;		// 총프로젝트수
 	private String rate_average;		// 평균 연수익률
 	private int sum_price;				// 누적대출액
 	private int sum_guarantee_price;	// 현재대출잔액
+	private String refund_request;		// 상환요청
 	
+	public String getRefund_request() {
+		return refund_request;
+	}
+	public void setRefund_request(String refund_request) {
+		this.refund_request = refund_request;
+	}
 	private String user_num;			// (참조)유저번호
 	private String busi_num;			// (참조)법인유저번호
 	private String guarantee_num;		// 담보번호
+	
 	
 	public String getGuarantee_type() {
 		return guarantee_type;
@@ -67,24 +83,11 @@ public class ProjectVO {
 	public void setObject_type(String object_type) {
 		this.object_type = object_type;
 	}
-
 	public String getLoan_request() {
 		return loan_request;
 	}
 	public void setLoan_request(String loan_request) {
 		this.loan_request = loan_request;
-	}
-	public String getAd_price() {
-		return ad_price;
-	}
-	public void setAd_price(String ad_price) {
-		this.ad_price = ad_price;
-	}
-	public String getAd_grade() {
-		return ad_grade;
-	}
-	public void setAd_grade(String ad_grade) {
-		this.ad_grade = ad_grade;
 	}
 	public String getAgree_chk_1() {
 		return agree_chk_1;

@@ -523,8 +523,6 @@ form {
 
 <form id="commonForm" name="commonForm"></form>
 
- 
-
 <!-- Navigation
 ==========================================-->
 	<!--header start-->
@@ -1046,6 +1044,17 @@ form {
 	}
 </script>
 
+	<!-- comma -->
+	<script type="text/javascript">
+	$("#investAll").val(addComma($("#investAllValue").val()));
+	
+	function addComma(num) {
+		var regexp = /\B(?=(\d{3})+(?!\d))/g;
+		return num.toString().replace(regexp, ',');
+	}//addComma
+	</script>
+	<!-- comma -->
+
 	<!-- begin this page -->
 	<section id="investList-banner" class="text-center">
 		<div class="overlay">
@@ -1059,7 +1068,8 @@ form {
 									총 투자금액
 								</div>
 								<div class="amt">
-									${inVO.sum_invest_price * 10000} <font size="4">원</font>
+									<span id="investAll">${inVO.sum_invest_price * 10000}</span> <font size="4">원</font>
+									<input type="hidden" id="investAllValue" value="${inVO.sum_invest_price * 10000}" />
 								</div>
 							</div>
 						</div>
@@ -1147,51 +1157,7 @@ form {
 	==========================================-->
 	<section id="invest-good">
 		<div class="container"> <!-- Container -->
-			<div class="section-title text-center">
-				<div class="date" id="today"></div>
-				<div class="subTitle">
-					현재까지 <font class="font-purple"><strong><span id="totalLoanCnt">${proCalcVO.project_count}</span></strong></font> 개, 총 투자건수 <font class="font-purple"><strong><span id="totalInvestCnt">${inVO.invest_count}</span></strong></font> 회
-				</div>
-			</div>
-			<div class="section-cat">
-				<span class="item">
-					<a href="javascript:(void(0));" onclick="fn_selectLoanType('')" id="loanTypeSelector" class="active">
-						전체
-					</a>
-				</span>| 
-				<span class="item">
-					<a href="javascript:(void(0));" onclick="fn_selectLoanType('01')" id="loanTypeSelector01">
-						개인신용
-					</a>
-				</span>| 
-				<span class="item">
-					<a href="javascript:(void(0));" onclick="fn_selectLoanType('02')" id="loanTypeSelector02">
-						법인신용
-					</a>
-				</span>|
-				<span class="item">
-					<a href="javascript:(void(0));" onclick="fn_selectLoanType('03')" id="loanTypeSelector03">
-						개인사업자
-					</a>
-				</span>|
-				<span class="item">
-					<a href="javascript:(void(0));" onclick="fn_selectLoanType('04')" id="loanTypeSelector04">
-						부동산담보
-					</a>
-				</span>|
-				<span class="item">
-					<a href="javascript:(void(0));" onclick="fn_selectLoanType('06')" id="loanTypeSelector06">
-						동산담보
-					</a>
-				</span>
-			</div>
 			<div class="section-selector">
-				<select class="form-control" name="pageSelector" id="pageSelector">
-					<option value="6">6개씩 보기</option>
-					<option value="12">12개씩 보기</option>
-					<option value="24">24개씩 보기</option>
-					<option value="48">48개씩 보기</option>
-				</select>
 				<div class="selector-box">
 					<a href="javascript:(void(0));" onclick="fn_showList()" id="listSelector" class="active">
 						<i class="glyphicon glyphicon-th-list"></i>
@@ -1242,7 +1208,6 @@ form {
 								<div class="item-bottom-text">
 									<div class="row">
 										<div class="col-xs-6">
-											<h5>04-19-136</h5>
 										</div>
 									</div>
 									<h4 style="text-align:center;">[${vo.genre}] ${vo.project_name}</h4>
