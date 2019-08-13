@@ -16,6 +16,7 @@ public class InvestService {
 
 	@Autowired
 	InvestDAO investDAO;
+	
 
 //	public AccountVO invest(AccountVO vo) {
 //		System.out.println("Service111111111 : " + vo);

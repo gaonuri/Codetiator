@@ -2961,7 +2961,7 @@ $(document).ready(function() {
 														</div>
 														<div id="investFaqCollapse3" class="panel-collapse collapse" role="tabpanel" aria-labelledby="investFaqHeading3" aria-expanded="false" style="height: 0px;">
 															<div id="FAQbody" class="panel-body">
-																투자 시 발생된 이자수익은 과세대상입니다. 현행 세법에 따라 비영업대금에 대한 이익은 이자소득으로 간주되어 25%의 세율이 적용됩니다. (소득세법 제16조 제1항 제11) 여기에 주민세가 2.5% 추가되어 총 27.5%를 세금으로 원천징수 하고있습니다. 미드레이트에서는 회원님의 이자 수익에대해서 납세금을 납부하며, 세후의 순수익에 대하여 회원님의 예치금 계좌로 입금해 드립니다.
+																투자 시 발생된 이자수익은 과세대상입니다. 현행 세법에 따라 비영업대금에 대한 이익은 이자소득으로 간주되어 25%의 세율이 적용됩니다. (소득세법 제16조 제1항 제11) 여기에 주민세가 2.5% 추가되어 총 27.5%를 세금으로 원천징수 하고있습니다. 크리에이터에서는 회원님의 이자 수익에대해서 납세금을 납부하며, 세후의 순수익에 대하여 회원님의 예치금 계좌로 입금해 드립니다.
 															</div>
 														</div>
 													</div>
@@ -3017,7 +3017,7 @@ $(document).ready(function() {
 																 3. 법정대리인 신분증 사본<br>
 																 4. 미성년자 계좌 사본
 																<br><br>
-																* 이메일 주소: contact@midrate.co.kr<br>
+																* 이메일 주소: contact@creator.co.kr<br>
 																* 우편 주소: (우)06131 서울특별시 강남구 논현로95길 12, 4층
 															</div>
 														</div>
@@ -3032,7 +3032,7 @@ $(document).ready(function() {
 														</div>
 														<div id="investFaqCollapse6" class="panel-collapse collapse" role="tabpanel" aria-labelledby="investFaqHeading6" aria-expanded="false">
 															<div id="FAQbody" class="panel-body">
-																투자 회원님의 이자소득에 대한 세금은 미드레이트에서 원천징수합니다. 따라서 별도로 소득 신고를 하실 필요가 없습니다.
+																투자 회원님의 이자소득에 대한 세금은 크리에이터에서 원천징수합니다. 따라서 별도로 소득 신고를 하실 필요가 없습니다.
 															</div>
 														</div>
 													</div>
@@ -3040,16 +3040,16 @@ $(document).ready(function() {
 														<div class="panel-heading" role="tab" id="investFaqHeading7">
 															<h4 class="panel-title" id="FAQhead">
 																<a data-toggle="collapse" data-parent="#investFaqAccordion" href="#investFaqCollapse7" aria-expanded="false" aria-controls="investFaqCollapse7" class="collapsed">
-																	Q7. 미드레이트에 투자하면 원금이 보장되나요?
+																	Q7. 크리에이터에 투자하면 원금이 보장되나요?
 																</a>
 															</h4>
 														</div>
 														<div id="investFaqCollapse7" class="panel-collapse collapse" role="tabpanel" aria-labelledby="investFaqHeading7" aria-expanded="false">
 															<div id="FAQbody" class="panel-body">
-																미드레이트의 투자상품은 원금이 보장되지 않습니다. 미드레이트와 같은 P2P대출 플랫폼에서의 투자는 현행 법률상 '유사수신행위의 규제에 관한 법률'에 의해 원금과 수익을 보장할 수 없으며, '원금 보장이 안됨'을 명시하지 않는 것은 법률 위반입니다.
-																미드레이트는 이에 대해 충분한 사전 고지 의무를 다하고자 합니다.
-																투자고객님은 이를 인지하시고 신중한 결정 부탁드립니다. 다만, 미드레이트는 자체신용평가시스템을 통해 대출고객의 신용도를 세밀하고 정밀하게 평가하여 리스크를 낮추고 있습니다.
-																투자고객님께서는 반드시 분산투자를 통해 부도에 대한 위험을 낮추실 수 있습니다. 분산투자가 어렵게 느껴지는 투자회원님을 위해 미드레이트에서는 자동 투자 시스템을 마련하였습니다.
+																크리에이터의 투자상품은 원금이 보장되지 않습니다. 크리에이터와 같은 P2P대출 플랫폼에서의 투자는 현행 법률상 '유사수신행위의 규제에 관한 법률'에 의해 원금과 수익을 보장할 수 없으며, '원금 보장이 안됨'을 명시하지 않는 것은 법률 위반입니다.
+																크리에이터는 이에 대해 충분한 사전 고지 의무를 다하고자 합니다.
+																투자고객님은 이를 인지하시고 신중한 결정 부탁드립니다. 다만, 크리에이터는 자체신용평가시스템을 통해 대출고객의 신용도를 세밀하고 정밀하게 평가하여 리스크를 낮추고 있습니다.
+																투자고객님께서는 반드시 분산투자를 통해 부도에 대한 위험을 낮추실 수 있습니다. 분산투자가 어렵게 느껴지는 투자회원님을 위해 크리에이터에서는 자동 투자 시스템을 마련하였습니다.
 															</div>
 														</div>
 													</div>
@@ -3063,12 +3063,12 @@ $(document).ready(function() {
 														</div>
 														<div id="investFaqCollapse8" class="panel-collapse collapse" role="tabpanel" aria-labelledby="investFaqHeading8" aria-expanded="false">
 															<div id="FAQbody" class="panel-body">
-																㈜미드레이트대부가 채권추심을 합니다. ㈜미드레이트대부는 채권자로서 채권추심을 대행하여 투자고객의 자산 보호에 최선을 다하며, 전화, 문자메시지, 방문 등 적법한 절차에 따른 추심 과정을 진행하게 됩니다. 
-																2개월 동안은 ㈜미드레이트대부에서 자체추심을 진행하며, 2개월 이상 연체될 경우 채권추심업체에 의뢰하여 추심업무를 이행하게 됩니다. 
+																㈜크리에이터대부가 채권추심을 합니다. ㈜크리에이터대부는 채권자로서 채권추심을 대행하여 투자고객의 자산 보호에 최선을 다하며, 전화, 문자메시지, 방문 등 적법한 절차에 따른 추심 과정을 진행하게 됩니다. 
+																2개월 동안은 ㈜크리에이터대부에서 자체추심을 진행하며, 2개월 이상 연체될 경우 채권추심업체에 의뢰하여 추심업무를 이행하게 됩니다. 
 																차입자의 연체일수가 장기화되어 6개월 이상 연체된다면 부실채권을 매각하며, 투자금의 일부를 회수합니다. 
 																미회수분에 대해서는 대손처리되어 원금 손실이 있을 수 있습니다. 참고로, P2P금융업체는 원금이 보장되지 않음을 명시해야 하며, 
 																이를 고객에게 적극적으로 알려야 할 의무가 있습니다. 이를 지키지 않는 것은 유사수신행위의 규제에 관한 법률 위반입니다. 
-																다만, 미드레이트는 단일 채권에 대한 투자금액 상한선을 정하는 등 분산투자를 권유해드리고 있으며, 분산투자가 이루어졌을 때 대손율은 약 1% 내외로 예상하고 있습니다.
+																다만, 크리에이터는 단일 채권에 대한 투자금액 상한선을 정하는 등 분산투자를 권유해드리고 있으며, 분산투자가 이루어졌을 때 대손율은 약 1% 내외로 예상하고 있습니다.
 															</div>
 														</div>
 													</div>

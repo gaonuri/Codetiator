@@ -413,7 +413,7 @@ $(document).ready(function() {
 			,processData:false
 			,contentType:false
 			,type:"POST"
-			,success:function(result){alert(result);
+			,success:function(result){
 				if(result > 0){
 					location.href = "${pageContext.request.contextPath}/loan_judge";
 				} else {
