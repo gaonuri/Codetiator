@@ -563,11 +563,6 @@ $(document).ready(function() {
 												</div>
 											</div>		
 											<div class="row">
-												<div class="form-group col-xs-6 col-sm-6 col-md-6">
-													<label for="ssnNo" class="control-label">인증번호를 입력하세요.</label>
-												</div>
-											</div>													       
-											<div class="row">
 												<div class="col-xs-12 col-sm-12 col-md-12">
 													<span class="modal-body-light">&nbsp;● 정상처리가 불가할 경우 1:1문의사항을 이용하시기 바랍니다.</span>
 												</div>
