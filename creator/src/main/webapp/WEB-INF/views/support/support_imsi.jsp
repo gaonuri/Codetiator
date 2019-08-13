@@ -405,96 +405,20 @@ body{
 														<th scope="col">등록일</th>
 													</tr>
 												</thead>
-												<tbody id="allBody">
-												<tr class="noticeRow">	
-												<td class="seq"><span class="noticeSeq">공지<span></span></span></td>
-												<td class="title noticeTitle">		<a href="javascript:(void(0));">[상품권 발송안내]★오늘은 둘 다 땡긴다 TWO★ 부동산·홈쇼핑 '2개' 상품에 투자하면 '신세계 백화점 상품권'이 쑤욱!</a>	</td>
-												<td class="indDate">2019.08.07</td>
-												</tr>
-												
-												<tr class="noticeRow">	
-												<td class="seq"><span class="noticeSeq">공지<span></span></span></td>	
-												<td class="title noticeTitle">		<a href="javascript:(void(0));" >[동시투자 이벤트 2탄]★오늘은 둘 다 땡긴다 TWO★ 부동산·홈쇼핑 '2개' 상품에 투자하면 '신세계 백화점 상품권'이 쑤욱! (7/26 ~ 상품마감시까지)</a>	</td>
-												<td class="indDate">2019.07.26</td>
-												</tr>
-												
-												<tr class="noticeRow">	
-												<td class="seq"><span class="noticeSeq">공지<span></span></span></td>
-												<td class="title noticeTitle">		<a href="javascript:(void(0));" >[출석체크 이벤트] 7월 ★여름맞이★ 룰렛 이벤트 (7/3~7/31, 룰렛으로 BR 아이스크림에 도전하세요!)</a>	</td>
-												<td class="indDate">2019.07.16</td>
-												</tr>
-												
-												<tr class="noticeRow">	
-												<td class="seq"><span class="noticeSeq">공지<span></span></span></td>	
-												<td class="title noticeTitle">		<a href="javascript:(void(0));" >[홈쇼핑] 최대박네 대창막창 스페셜리워드 추첨결과 안내_수정</a>	</td>
-												<td class="indDate">2019.06.18</td>
-												</tr>
-												
-												<tr class="noticeRow">	
-												<td class="seq"><span class="noticeSeq">공지<span></span></span></td>	
-												<td class="title noticeTitle">		<a href="javascript:(void(0));" >『농협은행 P2P자금관리(예치금) 3시간 지연출금제』시행 안내</a>	</td>
-												<td class="indDate">2019.06.14</td>
-												</tr>
-												
-												<tr class="noticeRow">	
-												<td class="seq"><span class="noticeSeq">공지<span></span></span></td>
-												<td class="title noticeTitle">		<a href="javascript:(void(0));" >크리에이트대부 대부거래표준약관 개정 안내 (19.6.20 시행)</a>	</td>
-												<td class="indDate">2019.06.13</td>
-												</tr>
-												
-												<tr class="noticeRow">	
-												<td class="seq"><span class="noticeSeq">공지<span></span></span></td>	
-												<td class="title noticeTitle">		<a href="javascript:(void(0));" >[홈쇼핑] 한샘오젠 식기건조대 스페셜리워드 추첨결과 안내_수정</a>	</td>
-												<td class="indDate">2019.06.11</td>
-												</tr>
-												
-												<tr class="noticeRow">	
-												<td class="seq"><span class="noticeSeq">공지<span></span></span></td>
-												<td class="title noticeTitle">		<a href="javascript:(void(0));" >[블록체인서비스 출시] NH스마트고지서 원리금수취권 발급 방법 안내</a>	</td>
-												<td class="indDate">2019.04.16</td>
-												</tr>
-												
-												<tr class="noticeRow">	
-												<td class="seq"><span class="noticeSeq">공지<span></span></span></td>	
-												<td class="title noticeTitle">		<a href="javascript:(void(0));" >상환 시 원금 차액보정 프로세스 적용완료(19.1.28)</a>	</td>
-												<td class="indDate">2019.01.28</td>
-												</tr>
-												
-												<tr class="noticeRow">	<td class="seq"><span class="noticeSeq">공지<span></span></span></td>	
-												<td class="title noticeTitle">		<a href="javascript:(void(0));" >개인투자자 투자한도 상향 안내(시행일자 18.02.27) -소득적격 증빙서류 안내</a>	</td>
-												<td class="indDate">2018.02.26</td>
-												</tr>
-												
-												<tr class="noticeRow">	
-												<td class="seq"><span class="noticeSeq">공지<span></span></span></td>
-												<td class="title noticeTitle">		<a href="javascript:(void(0));" >미성년자 P2P금융 플랫폼 이용 시 필요한 서류 안내</a>	</td>
-												<td class="indDate">2017.12.11</td>
-												</tr>
-												
-												<tr class="noticeRow">	
-												<td class="seq"><span class="noticeSeq">공지<span></span></span></td>
-												<td class>크리에이트 투자 적립 포인트 비율 변경 안내 - 투자 대기 포인트 관련 (RPM)</a>	</td>
-												<td class="indDate">2017.09.25</td>
-												</tr>
-												
-												<tr>	
-												<td class="seq">92</td>
-												<td class="title">		<a href="javascript:(void(0));" >[홈쇼핑] 쿠쿠 회전 블렌더(3차) 스페셜리워드 추첨결과 안내</a>	</td>
-												<td class="indDate">2019.08.08</td>
-												</tr>
-												
-												<tr>	
-												<td class="seq">270</td>
-												<td class="title">		<a href="javascript:(void(0));" >[중도상환안내] 부동산 363호</a>	</td>
-												<td class="indDate">2019.08.08</td>
-												</tr>
-												
-												<tr>	
-												<td class="seq">269</td>	
-												<td class="title">		<a href="javascript:(void(0));" >[모집취소안내] 부동산 컨소시움33호</a>	</td>
-												<td class="indDate">2019.08.06</td>
-												</tr>
-												</tbody>
+												<c:forEach items="${supportlist}" var="vo" varStatus="status">
+													<tbody id="allBody">
+													<tr class="noticeRow">	
+													<td><a href="support_detail?notice_num=${vo.notice_num}">공지</a><span></span></span></td>
+											     	<td class="title noticeTitle"><a href="support_detail?notice_num=${vo.notice_num}">${vo.title}</a>	</td>	
+											     	<td class="indDate">${vo.notice_date}</td>
+											     	</tr>
+										     		
+<!-- 										     		<tr>	<td class="seq">92</td>	 -->
+<!-- 										     		<td class="title">		<a href="javascript:(void(0));" onclick="fn_openBoardDetail(&quot;92&quot;,&quot;EVENT&quot;)" name="">[홈쇼핑] 쿠쿠 회전 블렌더(3차) 스페셜리워드 추첨결과 안내</a>	</td> -->
+<!-- 										     		<td class="indDate">2019.08.08</td> -->
+<!-- 										     		</tr> -->
+									     			</tbody>
+									     		</c:forEach>
 											</table>
 										</div>
 										<div role="tabpanel" class="tab-pane fade" id="eventTab">
@@ -511,8 +435,20 @@ body{
 														<th scope="col">등록일</th>
 													</tr>
 												</thead>
-												<tbody id="eventBody">
-												</tbody>
+												<c:forEach items="${supportlist2}" var="vo" varStatus="status">
+													<tbody id="eventBody">
+													<tr class="noticeRow">	
+													<td><a href="support_detail?notice_num=${vo.notice_num}">공지</a><span></span></span></td>
+											     	<td class="title noticeTitle"><a href="support_detail?notice_num=${vo.notice_num}">${vo.title}</a>	</td>	
+											     	<td class="indDate">${vo.notice_date}</td>
+											     	</tr>
+										     		
+<!-- 										     		<tr>	<td class="seq">92</td>	 -->
+<!-- 										     		<td class="title">		<a href="javascript:(void(0));" onclick="fn_openBoardDetail(&quot;92&quot;,&quot;EVENT&quot;)" name="">[홈쇼핑] 쿠쿠 회전 블렌더(3차) 스페셜리워드 추첨결과 안내</a>	</td> -->
+<!-- 										     		<td class="indDate">2019.08.08</td> -->
+<!-- 										     		</tr> -->
+									     			</tbody>
+									     		</c:forEach>
 											</table>
 										</div>
 										<div role="tabpanel" class="tab-pane fade" id="mngmntTab">

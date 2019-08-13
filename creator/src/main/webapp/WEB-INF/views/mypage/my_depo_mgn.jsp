@@ -365,22 +365,22 @@
 									<!-- Nav tabs -->
 									<ul class="nav nav-pills" role="tablist">
 										<li id="smallMenuLi2">
-											<a href="javascript:(void(0));" onclick="gfn_goMypageMenu(&quot;2&quot;)">
+											<a href="javascript:(void(0));" >
 												<span class="smallMenuItem">투자 내역</span>
 											</a>
 										</li>
 										<li id="smallMenuLi4">
-											<a href="javascript:(void(0));" onclick="gfn_goMypageMenu(&quot;4&quot;)">
+											<a href="javascript:(void(0));" >
 												<span class="smallMenuItem">대출 내역</span>
 											</a>
 										</li>
 										<li id="smallMenuLi5">
-											<a href="javascript:(void(0));" onclick="gfn_goMypageMenu(&quot;5&quot;)">
+											<a href="javascript:(void(0));" >
 												<span class="smallMenuItem">예치금 관리</span>
 											</a>
 										</li>
 										<li id="smallMenuLi8">
-											<a href="javascript:(void(0));" onclick="gfn_goMypageMenu(&quot;8&quot;)">
+											<a href="javascript:(void(0));" >
 												<span class="smallMenuItem">기본 정보 수정</span>
 											</a>
 										</li>

@@ -69,7 +69,7 @@
 						<div class="box left">
 							<div class="row">
 								<div class="col-xs-12 col-sm-12 col-md-12">
-									<span class="cusNm">ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ</span>&nbsp;
+									<span class="cusNm">${useinfo.user_name}${businfo.manager_name}</span>&nbsp;
 									
 										님
 									
@@ -84,7 +84,7 @@
 							
 							<div class="row">
 								<div class="col-xs-10 col-sm-11 col-md-10" style="margin-top: 8px;">
-									<span class="email">whitesky1203@naver.com</span>
+									<span class="email">${useinfo.email}${businfo.manager_email}</span>
 								</div>
 								<div class="col-xs-2 col-sm-1 col-md-1" style="margin-top: 8px;">
 									<div id="depositUnFold" style="display: none;cursor: pointer;">
@@ -104,7 +104,7 @@
 									</div>
 									<div class="row">
 										<div class="col-xs-12 text-right" style="margin-top: 5px;">
-											<span class="amt">0 <font size="2">원</font></span>
+											<span class="amt">${acc.deposit} <font size="2">원</font></span>
 										</div>
 									</div>
 								</div>
@@ -140,134 +140,110 @@
 				
 <div class="col-sm-12 col-md-9 col col-box" id="mypage-main">
 <!-- ExcelDownload JavaScript -->
+<script type="text/javascript" src="/js/excel/jquery.table2excel.js"></script>
+
 					<div class="wrap">
 						<div class="box right">
 							<div class="row">
-								<div class="col-md-12">
-									<c:choose>
-										<c:when test="${price == null || price == ''}">
-											<div id="reqListDiv" class="display-none">
-												<div class="title">
-													<font class="font-purple">●</font> 대출 신청 현황
-												</div>
-												<hr>
+								<c:choose>
+									<c:when test="${ loanList == null || loanList.size() < 1}">
+										<div class="col-md-12">
+											<div class="title">
+												대출 내역이 없습니다.
+											</div>
+											<div class="subTitle" style="margin-top: 10px;">
+												미드레이트는 최적의 알고리즘으로 간편하면서도 합리적인 대출을 제공합니다.
+											</div>
+											<div class="loanReqGuide">
 												<div class="row">
-													<div class="col-md-12" id="reqListBody">
+													<div class="col-sm-4 col-md-4 wrap">
+														<div class="box">
+															<div class="top">
+																개인신용 대출
+															</div>
+															<div class="middle">
+																금리 : 4.5 ~ 15.5%
+																<br>한도 : 최대 3,000만원
+															</div>
+															<div class="bottom">
+																<ul>
+																	<li>
+																		3개월 이상의 재직기간 및 소득증빙
+																	</li>
+																	<li>
+																		NICE, KCB 신용등급 참고
+																	</li>
+																	<li>
+																		고금리 대환 및 기타 목적 대출
+																	</li>
+																	<li>
+																		현금서비스 3회 이내
+																	</li>
+																</ul>
+															</div>
+														</div>
 													</div>
-												</div>
-												
-												<div class="row" id="reqListNextPageDiv">
-													<div class="col-xs-12 col-sm-12 col-md-12">
-														<div class="alarm-box-bottom">
-															<a href="javascript:(void(0));" onclick="fn_selectReqListNextPage()" id="reqListNextPageBtn" class="display-none" style="display: none;">
-																<i class="glyphicon glyphicon-menu-down"></i>
-															</a>
-															<a href="javascript:(void(0));" onclick="fn_reqListResetPage()" id="reqListResetPageBtn" class="display-none">
-																<i class="glyphicon glyphicon-menu-up"></i>
-															</a>
+													<div class="col-sm-4 col-md-4 wrap">
+														<div class="box">
+															<div class="top">
+																사업자 대출
+															</div>
+															<div class="middle">
+																금리 : 5.5 ~ 15.5%
+																<br>한도 : 최대 1억원
+															</div>
+															<div class="bottom">
+																<ul>
+																	<li>
+																		6개월 이상 사업장 운영 및 3개월 매출 증빙자료
+																	</li>
+																	<li>
+																		NICE, KCB 신용등급 참고
+																	</li>
+																	<li>
+																		최근 대환대출 및 사업자금 마련
+																	</li>
+																	<li>
+																		현금서비스 3회 이내
+																	</li>
+																</ul>
+															</div>
+														</div>
+													</div>
+													<div class="col-sm-4 col-md-4 wrap">
+														<div class="box">
+															<div class="top">
+																담보 대출
+															</div>
+															<div class="middle">
+																금리 : 5.5 ~ 15.5%
+																<br>한도 : 최대 1억원
+															</div>
+															<div class="bottom">
+																<ul>
+																	<li>
+																		본인 명의의 담보 제공
+																	</li>
+																	<li>
+																		NICE, KCB 신용등급 참고
+																	</li>
+																	<li>
+																		직장 정보 및 소득증빙 자료 참고
+																	</li>
+																</ul>
+															</div>
 														</div>
 													</div>
 												</div>
 											</div>
-								
-									<div id="noReqListDiv" class="display-none" style="display: block;">
-										<div class="title">
-											대출 내역이 없습니다.
-										</div>
-										<div class="subTitle" style="margin-top: 10px;">
-											미드레이트는 최적의 알고리즘으로 간편하면서도 합리적인 대출을 제공합니다.
-										</div>
-										<div class="loanReqGuide">
 											<div class="row">
-												<div class="col-sm-4 col-md-4 wrap">
-													<div class="box">
-														<div class="top">
-															개인신용 대출
-														</div>
-														<div class="middle">
-															금리 : 4.5 ~ 15.5%
-															<br>한도 : 최대 3,000만원
-														</div>
-														<div class="bottom">
-															<ul>
-																<li>
-																	3개월 이상의 재직기간 및 소득증빙
-																</li>
-																<li>
-																	NICE, KCB 신용등급 참고
-																</li>
-																<li>
-																	고금리 대환 및 기타 목적 대출
-																</li>
-																<li>
-																	현금서비스 3회 이내
-																</li>
-															</ul>
-														</div>
-													</div>
-												</div>
-												<div class="col-sm-4 col-md-4 wrap">
-													<div class="box">
-														<div class="top">
-															사업자 대출
-														</div>
-														<div class="middle">
-															금리 : 5.5 ~ 15.5%
-															<br>한도 : 최대 1억원
-														</div>
-														<div class="bottom">
-															<ul>
-																<li>
-																	6개월 이상 사업장 운영 및 3개월 매출 증빙자료
-																</li>
-																<li>
-																	NICE, KCB 신용등급 참고
-																</li>
-																<li>
-																	최근 대환대출 및 사업자금 마련
-																</li>
-																<li>
-																	현금서비스 3회 이내
-																</li>
-															</ul>
-														</div>
-													</div>
-												</div>
-												<div class="col-sm-4 col-md-4 wrap">
-													<div class="box">
-														<div class="top">
-															담보 대출
-														</div>
-														<div class="middle">
-															금리 : 5.5 ~ 15.5%
-															<br>한도 : 최대 1억원
-														</div>
-														<div class="bottom">
-															<ul>
-																<li>
-																	본인 명의의 담보 제공
-																</li>
-																<li>
-																	NICE, KCB 신용등급 참고
-																</li>
-																<li>
-																	직장 정보 및 소득증빙 자료 참고
-																</li>
-															</ul>
-														</div>
-													</div>
+												<div class="col-sm-12 col-md-12">
+													<button class="btn btn-purple-transparent btn-block" type="button" id="myloan"">대출하기</button>
 												</div>
 											</div>
 										</div>
-										<div class="row">
-											<div class="col-sm-12 col-md-12">
-												<button class="btn btn-purple-transparent btn-block" type="button" id="myloan"">대출하기</button>
-											</div>
-										</div>
-									</div>
-								</div>
-							</c:when>
-						<c:otherwise>
+								</c:when>
+							<c:otherwise>
 							<div class="col-xs-12 col-sm-12 col-md-12">
 								<div id="goodList" style="display: block;margin-top: 29px;">
 									<div class="goodlist-title">

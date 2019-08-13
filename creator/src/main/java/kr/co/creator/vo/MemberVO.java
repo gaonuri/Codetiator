@@ -38,7 +38,22 @@ public class MemberVO {
 	private String busi_privacy_policy_agree;	// 개인정보처리동의
 	private String busi_join_date;				// 가입일
 	private String busi_phone_key;				// 휴대폰 인증
+	private String account_name;				// 예금주 명
+	private String deposit;						// 예치금
+
 	
+	public String getAccount_name() {
+		return account_name;
+	}
+	public void setAccount_name(String account_name) {
+		this.account_name = account_name;
+	}
+	public String getDeposit() {
+		return deposit;
+	}
+	public void setDeposit(String deposit) {
+		this.deposit = deposit;
+	}
 	
 	public String getUser_num() {
 		return user_num;

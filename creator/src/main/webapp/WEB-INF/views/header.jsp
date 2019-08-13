@@ -599,7 +599,6 @@ li {
 											${memVO.user_name}${memVO.manager_name}님
 										</a>
 										<ul class="dropdown-menu">
-											<li><a href="${pageContext.request.contextPath}/my_dashboard?user_num=${memberVO.user_num}&busi_num=${memberVO.busi_num}">대시보드</a></li>
 											<li><a href="${pageContext.request.contextPath}/my_invest_list?user_num=${memberVO.user_num}&busi_num=${memberVO.busi_num}">투자내역</a></li>
 											<li><a href="${pageContext.request.contextPath}/my_loan_list?user_num=${memberVO.user_num}&busi_num=${memberVO.busi_num}">대출내역</a></li>
 											<li><a href="${pageContext.request.contextPath}/my_depo_mgn?user_num=${memberVO.user_num}&busi_num=${memberVO.busi_num}">예치금관리</a></li>
