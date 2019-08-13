@@ -59,6 +59,7 @@ public class ProjectVO {
 	private String user_num;			// (참조)유저번호
 	private String busi_num;			// (참조)법인유저번호
 	
+	
 	public String getGuarantee_type() {
 		return guarantee_type;
 	}
@@ -71,7 +72,6 @@ public class ProjectVO {
 	public void setObject_type(String object_type) {
 		this.object_type = object_type;
 	}
-
 	public String getLoan_request() {
 		return loan_request;
 	}

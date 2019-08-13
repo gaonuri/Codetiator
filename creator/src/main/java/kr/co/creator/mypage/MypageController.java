@@ -81,6 +81,7 @@ public class MypageController {
 		model.addAttribute("acc", accVO);
 		return "mypage/my_loan_list";
 	}
+	
 	@RequestMapping(value = "/my_depo_mgn", method = RequestMethod.GET)
 	public String my_modify(HttpSession session, Model model, MemberVO userVO, UserVO useVO, Busi_userVO busiVO, AccountVO accVO, InOutVO ioVO) {
 		logger.info("my_depo_mgn");
