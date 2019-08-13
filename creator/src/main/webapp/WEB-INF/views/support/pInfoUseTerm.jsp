@@ -123,6 +123,10 @@
     overflow: scroll;
     max-height: 500px;
 }
+#section-content {
+	padding: 50px 0 111px 0;
+	margin-left:25px;
+}
 
 </style>
 <body>
@@ -146,12 +150,12 @@
 	        MAIN CONTENT
 	        *********************************************************************************************************************************************************** -->
 		<!--main content start-->
-		<section id="main-content">
+		<section id="section-content">
 			<section class="wrapper site-min-height">
-				<div class="row mt">
+<!-- 				<div class="row mt"> -->
 					<div class="col-lg-12">
 						<div class="container">
-							<div class="section-body">
+<!-- 							<div class="section-body"> -->
 								<div class="row">
 									<div class="col-md-12">
 										<div class="wrap">
@@ -204,8 +208,8 @@
 								</div>
 							</div>
 						</div>
-					</div>
-				</div>
+<!-- 					</div> -->
+<!-- 				</div> -->
 			</section>
 			<!-- /wrapper -->
 	    </section>

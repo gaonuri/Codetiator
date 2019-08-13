@@ -102,6 +102,7 @@ $(document).ready(function(){
 						if(data > 0){
 							alert("해당 이메일로 인증번호를 발송했습니다.");
 							$("#cer_number").css("display","block");
+							$("#aa").css("display","block");
 							setClock();
 						} else if(data == 0){
 							alert("존재하지 않는 이메일 입니다.");
@@ -294,13 +295,13 @@ $(document).ready(function() {
 						            <div class="form-group">
 						           		<label class="control-label col-md-3" >이름</label>
 						           		<div class="col-md-8">
-						            		<input type="text" id="project_name" name="project_name" class="form-control onlyprojectnm" value="<c:choose><c:when test="${memVO != null && memVO.user_name != null && memVO.user_name != ''}">${memVO.user_name}</c:when><c:otherwise>${memVO.manager_name}</c:otherwise></c:choose>"/>
+						            		<input type="text" id="project_name" name="project_name" class="form-control onlyprojectnm" readonly="readonly" value="<c:choose><c:when test="${memVO != null && memVO.user_name != null && memVO.user_name != ''}">${memVO.user_name}</c:when><c:otherwise>${memVO.manager_name}</c:otherwise></c:choose>"/>
 						            	</div>
 						            </div>
 						            <div class="form-group">
 						           		<label class="control-label col-md-3" >휴대전화</label>
 						           		<div class="col-md-8">
-						            		<input type="text" id="project_name" name="project_name" class="form-control onlyprojectnm" value="<c:choose><c:when test="${memVO != null && memVO.phone != null && memVO.phone != ''}">${memVO.phone}</c:when><c:otherwise>${memVO.manager_phone}</c:otherwise></c:choose>"/>
+						            		<input type="text" id="project_name" name="project_name" class="form-control onlyprojectnm" readonly="readonly" value="<c:choose><c:when test="${memVO != null && memVO.phone != null && memVO.phone != ''}">${memVO.phone}</c:when><c:otherwise>${memVO.manager_phone}</c:otherwise></c:choose>"/>
 						            	</div>
 						            </div>            
 						            <div class="form-group">
@@ -506,7 +507,7 @@ $(document).ready(function() {
 										</button>
 										<div class="modal-title" id="vtAcntModalLabel">
 											<div style="">
-												예치금 계좌 발급을 위한 인증을 진행하여 주십시오
+												대출 승인을 위한 인증절차 입니다.
 											</div>
 										</div>
 									</div>
@@ -521,11 +522,11 @@ $(document).ready(function() {
 										<div class="row">
 											<div class="form-group col-xs-5 col-sm-5 col-md-3">
 												<label for="cusNm" class="control-label">이 름</label>
-												<input class="form-control" id="manager_name" type="text" value="${memVO.manager_name}" readonly="">
+												<input class="form-control" id="manager_name" type="text" value="${memVO.manager_name}" readonly="readonly">
 											</div>
 											<div class="form-group col-xs-12 col-sm-12 col-md-5">
 												<label for="cusAccount" class="control-label" >Email_주소</label>
-												<input class="form-control" id="manager_email" type="text" value="${memVO.manager_email}" readonly="">
+												<input class="form-control" id="manager_email" type="text" value="${memVO.manager_email}" readonly="readonly">
 											</div>
 											<div class="form-group col-xs-12 col-sm-12 col-md-4">
 												<br style="line-height:24px";">
@@ -549,38 +550,37 @@ $(document).ready(function() {
 													</div>
 												</div>
 											</div>
-											<div class="row">
- 
-												<div class="form-group col-xs-6 col-sm-6 col-md-6">
-													<label for="ssnNo" class="control-label">인증번호를 입력하세요.</label>
-												</div>
-											</div>		
 											
 											<div class="row">
 												<div class="form-group col-md-4">
 													<input class="form-control" id="cer_number" type="text" maxlength="13"  placeholder="" style="display:none;">
 												</div>
 												<div id="clock"><!--여기서 수정 -->
-											</div>													
+												</div>													
+											</div>
+											<div class="row">
+												<div class="form-group col-xs-6 col-sm-6 col-md-6">
+													<label for="ssnNo" class="control-label" id="aa" style="display:none;">인증번호를 입력하세요.</label>
+												</div>
+											</div>		
 												
 											
 											<div class="row">
 												<div class="col-xs-12 col-sm-12 col-md-12">
 												<span class="modal-body-light">&nbsp;● 정상처리가 불가할 경우 1:1문의사항을 이용하시기 바랍니다.</span>
-											</div>
-												<div class="clearfix"></div>
+												</div>
+<!-- 												<div class="clearfix"></div> -->
 												<div class="col-xs-12 col-sm-12 col-md-12">
 													<span class="modal-body-light font-purple">&nbsp;● 주민등록번호 없이도 사이트 이용은 가능하며 최초 투자시 한 번만 등록하시면 됩니다.</span>
 												</div>
-												<div class="clearfix"></div>
+<!-- 												<div class="clearfix"></div> -->
 												<div class="col-xs-12 col-sm-12 col-md-12">
 													<span class="modal-body-strong">※ 미성년자는 가상계좌 발급시 추가 인증이 필요합니다.</span>
 													<span class="modal-body-light">&nbsp;<a href="${pageContext.request.contextPath}/support" target="_blank">공지사항</a>을 참고하세요.</span>
 												</div>
 											</div>
 										</div>
-									</div>
-									<div class="modal-footer">
+										<div class="modal-footer">
 										<button type="button" id="btn_certi_complete" class="btn btn-purple-transparent" >확 인</button>
 									</div>
 								</div>
@@ -707,42 +707,21 @@ $(document).ready(function() {
 			var agree3Checkbox = $("#agree3Checkbox").is(":checked");
 			var agree4Checkbox = $("#agree4Checkbox").is(":checked");
 			var agree5Checkbox = $("#agree5Checkbox").is(":checked");
-			var sex = $(':radio[name="sexRadio"]:checked').val();
 			var loanPeriodSelect = $('#loanPeriodSelect').val();
 			var loanAmt = $("#loan_period").val();
 			var loanGb = $("#loan_class").val();
-<<<<<<< HEAD
 			var guaranteeType = $("#loanTypeSelect").val();
 			var repayTypeCd = $("#repay_method").val();
-=======
 			var guaranteeType = $("#guaranteeType").val();
 			var objectType = $("#object_type").val();
 			var repayTypeCd = $("#repay_method").val();
->>>>>>> branch 'master' of https://github.com/gaonuri/Codetiator.git
 			var loan_bank_name = $("#loan_bank_name").val(); 
 			var loan_period = $("#loan_period").val();
 			var loan_amount = $("#loan_amount").val();
 
-// 			if(sex == undefined) {
-// 				alert("성별을 선택하세요.");
-// 				$(".sexRadio-label").focus();
-// 				return;
-// 			}
-//			if(sex == undefined) {
-//				alert("성별을 선택하세요.");
-//				$(".sexRadio-label").focus();
-//				return;
-//			}
 			if(loan_amount == "") {
 				alert("대출계좌를 입력 해주세요.");
-<<<<<<< HEAD
 				$("#loan_amount").focus();
-			if(sex == undefined) {
-				alert("성별을 선택하세요.");
-				$(".sexRadio-label").focus();
-=======
-				$("#loan_amount").focus();
->>>>>>> branch 'master' of https://github.com/gaonuri/Codetiator.git
 				return;
 			}
 			if(loanAmt == ""){
