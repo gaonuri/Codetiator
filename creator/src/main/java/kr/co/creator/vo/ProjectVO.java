@@ -1,9 +1,12 @@
 package kr.co.creator.vo;
 
+import org.springframework.web.multipart.MultipartFile;
+
 // 프로젝트
 public class ProjectVO {
 	private String project_num;			// 프로젝트번호
-	private String img;					// 사진(경로)
+	private MultipartFile img;
+	private String img_path;					// 사진(경로)
 	private String project_name;		// 이름
 	private String type;				// 게임유형
 	private String genre;				// 장르
@@ -38,20 +41,25 @@ public class ProjectVO {
 	private String deadline;			// 남은기간
 	private String refund_due_date;		// 상환예정일
 	private String refund_end;			// 상환완료일
-	private String ad_price;			// 광고금액
-	private String ad_grade;			// 광고등급
 	private String guarantee_type;		// 담보유형(부동산, 동산)
+<<<<<<< HEAD
 	private String object_type;			// 물건유형(아파트, 연립주택)
 	
 	private String user_num;			// (참조)유저번호
 	private String busi_num;			// (참조)법인유저번호
 	
+=======
+	private String object_type;			// 물건유형(아파트, 연립주택)
+>>>>>>> branch 'master' of https://github.com/gaonuri/Codetiator.git
 	private String loan_count;			// 투자받은횟수
 	private String project_count;		// 총프로젝트수
 	private String rate_average;		// 평균 연수익률
 	private int sum_price;				// 누적대출액
 	private int sum_guarantee_price;	// 현재대출잔액
-
+	
+	private String user_num;			// (참조)유저번호
+	private String busi_num;			// (참조)법인유저번호
+	
 	public String getGuarantee_type() {
 		return guarantee_type;
 	}
@@ -64,23 +72,15 @@ public class ProjectVO {
 	public void setObject_type(String object_type) {
 		this.object_type = object_type;
 	}
+<<<<<<< HEAD
+=======
+
+>>>>>>> branch 'master' of https://github.com/gaonuri/Codetiator.git
 	public String getLoan_request() {
 		return loan_request;
 	}
 	public void setLoan_request(String loan_request) {
 		this.loan_request = loan_request;
-	}
-	public String getAd_price() {
-		return ad_price;
-	}
-	public void setAd_price(String ad_price) {
-		this.ad_price = ad_price;
-	}
-	public String getAd_grade() {
-		return ad_grade;
-	}
-	public void setAd_grade(String ad_grade) {
-		this.ad_grade = ad_grade;
 	}
 	public String getAgree_chk_1() {
 		return agree_chk_1;
@@ -131,13 +131,19 @@ public class ProjectVO {
 		this.project_num = project_num;
 	}//project_num
 	
-	public String getImg() {
+	
+	public MultipartFile getImg() {
 		return img;
 	}
-	public void setImg(String img) {
+	public void setImg(MultipartFile img) {
 		this.img = img;
-	}//img
-	
+	}
+	public String getImg_path() {
+		return img_path;
+	}
+	public void setImg_path(String img_path) {
+		this.img_path = img_path;
+	}
 	public String getProject_name() {
 		return project_name;
 	}

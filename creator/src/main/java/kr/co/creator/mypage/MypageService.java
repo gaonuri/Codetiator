@@ -127,6 +127,12 @@ public class MypageService {
 		count = dao.busiinoutinsert(ioVO);
 		return count;
 	}//busiaccount_insert
+
+	public AccountVO information(MemberVO memVO) {
+		AccountVO accVO = null;
+		accVO = (AccountVO) dao.informaiton(memVO);
+		return accVO;
+	}
 	
 	
 }//class

@@ -47,7 +47,7 @@
     color: #fff;
 }
 #loanGuide-banner {
-    background: url(${pageContext.request.contextPath}/resources/bootstrap/img/blog-bg.jpg)no-repeat center center fixed;
+    background: url(${pageContext.request.contextPath}/resources/img/bgImg_loanIntro01.jpg)no-repeat center center fixed;
     background-size: cover;
     background-attachment: fixed;
     width: 100%;
@@ -73,14 +73,6 @@
     padding-left: 15px;
     margin-right: auto;
     margin-left: auto;
-}
-#loanGuide-banner {
-    background: url(${pageContext.request.contextPath}/resources/bootstrap/img/blog-bg.jpg)no-repeat center center fixed;
-    background-size: cover;
-    background-attachment: fixed;
-    width: 100%;
-    height: 80px;
-    padding: 100px 0 200px 0;
 }
 .text-center {
     text-align: center;

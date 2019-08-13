@@ -42,7 +42,7 @@
 			INSERT INTO project_list (busi_num, img, project_name, type, genre, grade, more_information, loan_bank_name,
 									loan_amount, price, loan_period, repay_method, loan_class, judge_status, agree_chk_1, 
 									agree_chk_2, agree_chk_3, agree_chk_4, agree_chk_5, agree_chk_6)
-			VALUES (#{busi_num}, #{img}, #{project_name}, #{type}, #{genre}, #{grade}, #{more_information}, #{loan_bank_name},
+			VALUES (#{busi_num}, #{img_path}, #{project_name}, #{type}, #{genre}, #{grade}, #{more_information}, #{loan_bank_name},
 					#{loan_amount}, #{price}, #{loan_period}, #{repay_method}, #{loan_class}, 1, #{agree_chk_1}, 
 					#{agree_chk_2}, #{agree_chk_3}, #{agree_chk_4}, #{agree_chk_5}, #{agree_chk_6})
 		<selectKey resultType="String" keyProperty="project_num" order="AFTER">
@@ -50,13 +50,23 @@
 		</selectKey>
 	</insert>
 	
+	<update id="update_project" parameterType="kr.co.creator.vo.ProjectVO">
+		update project_list
+		set (busi_num, img, project_name, type, genre, grade, more_information, loan_bank_name,
+									loan_amount, price, loan_period, repay_method, loan_class, judge_status, agree_chk_1, 
+									agree_chk_2, agree_chk_3, agree_chk_4, agree_chk_5, agree_chk_6) = (#{busi_num}, #{img_path}, #{project_name}, #{type}, #{genre}, #{grade}, #{more_information}, #{loan_bank_name},
+					#{loan_amount}, #{price}, #{loan_period}, #{repay_method}, #{loan_class}, 1, #{agree_chk_1}, 
+					#{agree_chk_2}, #{agree_chk_3}, #{agree_chk_4}, #{agree_chk_5}, #{agree_chk_6})
+		where project_num = #{project_num}
+	</update>
+	
 	<insert id="insert_guarantee" parameterType="kr.co.creator.vo.GuaranteeVO">
 		INSERT INTO guarantee (guarantee_type, object_type, guarantee_img, debtor_type, business_type, guarantee_name, 
 								supply_area, exclusive_area, map, location, comple_year, connoisseur, judge_status, 
 								reference_file1, reference_file2, reference_file3, project_num)
-		VALUES (#{guarantee_type}, #{object_type}, #{guarantee_img}, #{debtor_type}, #{business_type}, #{guarantee_name}, 
+		VALUES (#{guarantee_type}, #{object_type}, #{guarantee_img_path}, #{debtor_type}, #{business_type}, #{guarantee_name}, 
 				#{supply_area}, #{exclusive_area}, #{map}, #{location}, #{comple_year}, #{connoisseur}, 1, 
-				#{reference_file1}, #{reference_file2}, #{reference_file3}, #{project_num})
+				#{reference_file1_path}, #{reference_file2_path}, #{reference_file3_path}, #{project_num})
 		<selectKey resultType="String" keyProperty="guarantee_num" order="AFTER">
 			SELECT LAST_INSERT_ID()
 		</selectKey>

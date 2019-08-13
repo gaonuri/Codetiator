@@ -1034,18 +1034,6 @@ form {
 		comSubmit.submit();
 	}
 	
-	function fn_goAutoInvest() {
-		if(confirm("자동투자를 설정해 두시면 오픈 직후 바로 투자하실 수 있습니다. 지금 설정하시겠습니까?")){
-			// 운영서버일때 페이스북 쿼리 실행
-			var hostname = location.hostname;
-			if(hostname.indexOf("midrate.co.kr") > -1) {
-				fbq('track', 'goAutoInvest');
-			}
-			gfn_goMypageMenu(3);
-		} else {
-			return;
-		}
-	}
 	
 	// input에서 enter키 입력시
 	function fn_hitEnterKey(event) {
@@ -1085,18 +1073,6 @@ form {
 								</div>
 							</div>
 						</div>
-						<!-- 
-						<div class="box-wrap">
-							<div class="box">
-								<div class="text">
-									총 투자자
-								</div>
-								<div class="amt">
-									3,969 <font size="4">명</font>
-								</div>
-							</div>
-						</div>
-						 -->
 						<div class="content-text large">
 							<a href="${pageContext.request.contextPath}/invest_guide" class="btn btn-transparent solid">
 								<i class="glyphicon glyphicon-info-sign" style="font-size: 25px;"></i>
@@ -1163,15 +1139,6 @@ form {
 						</div>
 					</div>
 				</div>
-				
-				<!-- 
-				<div id="eventListBody">
-					
-						
-					
-				</div>
-				 -->
-				
 			</div>
 		</div>
 	</section>

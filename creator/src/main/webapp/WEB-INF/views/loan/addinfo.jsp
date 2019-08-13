@@ -75,7 +75,7 @@
     margin-left: auto;
 }
 #loanGuide-banner {
-    background: url(${pageContext.request.contextPath}/resources/bootstrap/img/blog-bg.jpg)no-repeat center center fixed;
+    background: url(${pageContext.request.contextPath}/resources/img/bgImg_loanIntro01.jpg)no-repeat center center fixed;
     background-size: cover;
     background-attachment: fixed;
     width: 100%;
@@ -199,7 +199,7 @@
                         <span class="btn btn-theme02 btn-file">
                           <span class="fileupload-new"><i class="fa fa-paperclip"></i> 사진 선택</span>
                           <span class="fileupload-exists"><i class="fa fa-undo"></i> 사진 변경</span>
-                        <input type="file" id="main_img" name="img_file" class="default" />
+                        <input type="file" id="main_img" name="img" class="default" />
                         </span>
                       </div>
                     </div>
@@ -278,51 +278,6 @@
                     		<span class="control-label col-md-offset-11" aria-hidden="true" id="counter" ></span>
                     </div>
                   </div>
-<!--                   <div class="form-group"> -->
-<!--                   	<label class="control-label col-md-3">대출기간</label> -->
-<!--                   	<div class="col-md-8"> -->
-<!--                     	<select class="form-control loanPurpose-select" id="loan_period" name="loan_period"> -->
-<!-- 							<option value="">선택하세요</option> -->
-<!-- 								<option value="01">3개월</option> -->
-<!-- 								<option value="02">6개월</option> -->
-<!-- 								<option value="03">12개월</option> -->
-<!-- 						</select>                  	 -->
-<!--                     </div> -->
-<!--                   </div> -->
-<!--                   <div class="form-group"> -->
-<!--                   	<label class="control-label col-md-3">은행명</label> -->
-<!--                   	<div class="col-md-8"> -->
-<!--                     	<select class="form-control loanPurpose-select" id="loan_bank_name" name="loan_bank_name"> -->
-<!-- 							<option value="">선택하세요</option> -->
-<!-- 								<option value="01">신한은행</option> -->
-<!-- 								<option value="02">국민은행</option> -->
-<!-- 								<option value="03">우리은행</option> -->
-<!-- 								<option value="04">하나은행</option> -->
-<!-- 								<option value="05">씨티은행</option> -->
-<!-- 								<option value="06">부산은행</option> -->
-<!-- 								<option value="07">경남은행</option> -->
-<!-- 								<option value="08">광주은행</option> -->
-<!-- 								<option value="09">제주은행</option> -->
-<!-- 								<option value="10">산업은행</option>																								 -->
-<!-- 						</select>                  	 -->
-<!--                     </div> -->
-<!--                   </div>                   -->
-<!--                   <div class="form-group"> -->
-<!--                   	<label class="control-label col-md-3">대출계좌</label> -->
-<!--                   	<div class="col-md-8"> -->
-<!--                     	<input type="text" id="loan_amount" name="loan_amount" class="form-control onlybank" placeholder="'-'빼고 입력 해주세요" /> -->
-<!--                     </div> -->
-<!--                   </div> -->
-<!--                   <div class="form-group"> -->
-<!--                   	<label class="control-label col-md-3">대출구분</label> -->
-<!--                   	<div class="col-md-8"> -->
-<!--                     	<select class="form-control loanPurpose-select" id="loan_class" name="loan_class"> -->
-<!-- 							<option value="">선택하세요</option> -->
-<!-- 								<option value="만기일시">만기일시</option> -->
-<!-- 								<option value="02">원리금균등</option> -->
-<!-- 						</select>                      	 -->
-<!--                     </div> -->
-<!--                   </div> -->
                   <div class="form-group last">
                   <label class="control-label col-md-3">담보 이미지</label>
                   <div class="col-md-9">
@@ -335,7 +290,7 @@
                         <span class="btn btn-theme02 btn-file">
                           <span class="fileupload-new"><i class="fa fa-paperclip"></i> 사진 선택</span>
                         <span class="fileupload-exists"><i class="fa fa-undo"></i> 사진 변경</span>
-                        <input type="file" id="guarantee_img" name="guarantee_img_file" class="default" />
+                        <input type="file" id="guarantee_img" name="guarantee_img" class="default" />
                         </span>
                       </div>
                     </div>
@@ -445,19 +400,19 @@
                 <div class="form-group">
                   	<label class="control-label col-md-3">참고파일1</label>
                   	<div class="col-md-8">
-                    	<input type="file" class="reference_file1" name="reference_file1_file"/>
+                    	<input type="file" class="reference_file1" name="reference_file1"/>
                     </div>
                   </div>
                   <div class="form-group">
                   	<label class="control-label col-md-3">참고파일2</label>
                   	<div class="col-md-8">
-                    	<input type="file" class="reference_file2" name="reference_file2_file"/>
+                    	<input type="file" class="reference_file2" name="reference_file2"/>
                     </div>
                   </div>
                   <div class="form-group">
                   	<label class="control-label col-md-3">참고파일3</label>
                   	<div class="col-md-8">
-                    	<input type="file" class="reference_file3" name="reference_file3_file"/>
+                    	<input type="file" class="reference_file3" name="reference_file3"/>
                     </div>
                   </div>
                 <div class="bottom">

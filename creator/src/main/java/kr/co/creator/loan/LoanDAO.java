@@ -24,7 +24,7 @@ public class LoanDAO {
 
 	public int insert_project(ProjectVO pvo) {
 		int insert_project_yn = 0;
-		insert_project_yn = sqlSession.insert("LoanMapper.insert_project", pvo);
+		insert_project_yn = sqlSession.update("LoanMapper.update_project", pvo);
 		return insert_project_yn;
 	}//insert_project
 

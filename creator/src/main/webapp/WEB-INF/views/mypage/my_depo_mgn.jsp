@@ -37,7 +37,7 @@
 	/////////////////////////////////////////////////////////////////////////////////////////////금액 버튼 시작
 	$(document).ready(function() {
 		$("#depobu").click(function() {
-			location.href = "${pageContext.request.contextPath}/formi";
+			location.href = "${pageContext.request.contextPath}/my_depo_mgn";
 		});//click
 	});//ready
 	
@@ -410,7 +410,7 @@
 							
 							<div class="row">
 								<div class="col-xs-10 col-sm-11 col-md-10" style="margin-top: 8px;">
-									<span class="email">whitesky1203@naver.com</span>
+									<span class="email">${user.email}${busi.manager_email}</span>
 								</div>
 								<div class="col-xs-2 col-sm-1 col-md-1" style="margin-top: 8px;">
 									<div id="depositUnFold" style="display: none;cursor: pointer;">
@@ -427,28 +427,15 @@
 										<div class="col-xs-7">
 											<span class="myDeposit">기본 예치금</span>
 										</div>
-										<div class="col-xs-5 text-right">
-											<a href="/mypage/5#listWrap">
-												<span class="tranList font-purple"><strong>거래 내역 &gt;</strong></span>
-											</a>
-										</div>
 									</div>
 									<div class="row">
 										<div class="col-xs-12 text-right" style="margin-top: 5px;">
-											<span class="amt">0 <font size="2">원</font></span>
+											<span class="amt">${acnt.deposit} <font size="2">원</font></span>
 										</div>
 									</div>
 								</div>
-								<div class="account-box">
-									
-									
-									<div class="row">
-										<div class="col-xs-12">
-											<span class="account">예치금 계좌 <a href="/mypage/5" class="font-red"><strong>미발급 상태</strong></a>입니다.</span>
-										</div>
-									</div>
-									
-								</div>
+								<br>
+								<br>
 								<button type="button" class="btn btn-purple-transparent btn-block" id="depobu" style="margin-top: 4px;">나의 예치금</button>
 							</div>
 						</div>
@@ -456,7 +443,7 @@
 					
 					<div class="wrap" id="largeMenu">
 						<div class="menu">
-							<div class="item active" id="menu2"> <a href="/creator/my_invest_list">
+							<div class="item" id="menu2"> <a href="/creator/my_invest_list">
 								<img src="${pageContext.request.contextPath}/resources/img/ic_mypage_invest_list.png">
 								<span class="text" id="menuL2">투자 내역</span> </a>
 							</div>
@@ -464,7 +451,7 @@
 								<img src="${pageContext.request.contextPath}/resources/img/ic_mypage_loan_list.png">
 								<span class="text" id="menuL4">대출 내역</span> </a>
 							</div>
-							<div class="item" id="menu5">  <a href="/creator/my_depo_mgn">
+							<div class="item active" id="menu5">  <a href="/creator/my_depo_mgn">
 								<img src="${pageContext.request.contextPath}/resources/img/ic_mypage_depositandwithdraw.png">
 								<span class="text" id="menuL5">예치금 관리</span> </a>
 							</div>
