@@ -39,4 +39,16 @@ public class LoanDAO {
 		return gnt;
 	}
 
+	public int applyLoanInsert(ProjectVO pvo) {
+		int cnt = 0;
+		cnt = sqlSession.insert("LoanMapper.ApplyLoanInsert", pvo);
+		return cnt;
+	}
+
+	public int applyLoanInsert1(ProjectVO pvo) {
+		int cnt = 0;
+		cnt = sqlSession.insert("LoanMapper.ApplyLoanInsert1", pvo);
+		return cnt;
+	}
+
 }//class

@@ -39,6 +39,17 @@
 				location.href ="${pageContext.request.contextPath}/invest/invest_detail"
 			});
 		});
+	
+	$(document).ready(function() {
+		$("#depobu").click(function() {
+			location.href = "${pageContext.request.contextPath}/my_depo_mgn";
+		});//click
+	});//ready
+	$(document).ready(function() {
+		$("#myloan").click(function() {
+			location.href = "${pageContext.request.contextPath}/getloan";
+		});//click
+	});//ready
 	</script>
 </head>
      
@@ -54,104 +65,17 @@
 				
 			<div class="row">
 				<div class="col-sm-12 col-md-3 col col-box">
-					<div class="wrap" id="smallMenu">
-						<div class="wrap">
-							<div class="box quick">
-								<div role="tabpanel" class="smallMenuTap">
-									<!-- Nav tabs -->
-									<ul class="nav nav-pills" role="tablist">
-										<li id="smallMenuLi1" class="active">
-											<a href="javascript:(void(0));" onclick="gfn_goMypageMenu(&quot;1&quot;)">
-												<span class="smallMenuItem">대시보드</span>
-											</a>
-										</li>
-										<li id="smallMenuLi2">
-											<a href="javascript:(void(0));" onclick="gfn_goMypageMenu(&quot;2&quot;)">
-												<span class="smallMenuItem">투자 내역</span>
-											</a>
-										</li>
-										<li id="smallMenuLi3">
-											<a href="javascript:(void(0));" onclick="gfn_goMypageMenu(&quot;3&quot;)">
-												<span class="smallMenuItem">자동투자 설정</span>
-											</a>
-										</li>
-										<li id="smallMenuLi4">
-											<a href="javascript:(void(0));" onclick="gfn_goMypageMenu(&quot;4&quot;)">
-												<span class="smallMenuItem">대출 내역</span>
-											</a>
-										</li>
-										<li id="smallMenuLi5">
-											<a href="javascript:(void(0));" onclick="gfn_goMypageMenu(&quot;5&quot;)">
-												<span class="smallMenuItem">예치금 관리</span>
-											</a>
-										</li>
-										<li id="smallMenuLi6">
-											<a href="javascript:(void(0));" onclick="gfn_goMypageMenu(&quot;6&quot;)">
-												<span class="smallMenuItem">포인트 관리</span>
-											</a>
-										</li>
-										<li id="smallMenuLi9">
-											<a href="javascript:(void(0));" onclick="gfn_goMypageMenu(&quot;9&quot;)">
-												<span class="smallMenuItem">이벤트</span>
-											</a>
-										</li>
-										<li id="smallMenuLi7">
-											<a href="javascript:(void(0));" onclick="gfn_goMypageMenu(&quot;7&quot;)">
-												<span class="smallMenuItem">크리에이터 알림</span>
-											</a>
-										</li>
-										<li id="smallMenuLi8">
-											<a href="javascript:(void(0));" onclick="gfn_goMypageMenu(&quot;8&quot;)">
-												<span class="smallMenuItem">기본 정보 수정</span>
-											</a>
-										</li>
-									</ul>
-								</div>
-							</div>
-						</div>
-						
-					</div>
-					
 					<div class="wrap">
 						<div class="box left">
 							<div class="row">
 								<div class="col-xs-12 col-sm-12 col-md-12">
-									<span class="cusNm">김도엽</span>&nbsp;
+									<span class="cusNm">ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ</span>&nbsp;
 									
 										님
 									
 								</div>
 							</div>
 							
-							<div class="row">
-								<div class="col-xs-12 col-sm-12 col-md-12">
-									<span class="invstrTypeNm">개인투자자</span>
-									
-										<span class="glyphicon glyphicon-question-sign hover" style="font-size: 12px;" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="auto bottom" data-html="true" data-content="<strong>금융위원회의 가이드라인에 따라 아래와 같은 투자자 구분에 의한 인증 서류를 제출 시 해당 투자 한도가 적용됩니다.</strong>
-															<br>1. 개인투자자	
-															<br> - 동일차입자 500만원, 총 2,000만원
-															<br> ※ 단, 부동산 상품이면 총 1,000만원
-															<br> - 제출서류 없음
-															<br>
-															<br>2. 소득요건을 구비한 개인투자자
-															<br> - 동일차입자 2,000만원, 총 4,000만원
-															<br> - 아래 요건 중 하나 이상 해당 시 종합소득 과세표준 확정신고서, 종합소득세 신고서 접수증 제출
-															<br>  1) 이자, 배당소득이 2천만원(종합과세기준금액)을 초과하는 자
-															<br>  2) 사업, 근로소득 1억원을 초과하는 자
-															<br>  3) 그 밖에 창업자·벤처기업 등에 대한 투자의 전문성 등을 고려하여 금융위원회가 정하여 고시하는 자
-															<br>
-															<br>3. 개인전문투자자 : 제한없음 
-															<br> - 아래 세가지 요건 모두 충족 시, 금융투자협회 전문투자자 확인증 제출
-															<br>  1) 금융 투자업자에게 계좌 개설 1년 경과
-															<br>  2) 금융 투자 상품 잔고 5억원 이상
-															<br>  3) 소득액 1억원 또는 재산가액 10억원 이상
-															<br>
-															<br>※ 인증서류 제출 : 고객센터(contact@creator.co.kr)" data-original-title="" title="">
-										</span>
-									
-									
-								</div>
-							</div>
 							<div class="row">
 								<div class="col-xs-12 col-sm-12 col-md-12">
 									
@@ -177,80 +101,37 @@
 										<div class="col-xs-7">
 											<span class="myDeposit">기본 예치금</span>
 										</div>
-										<div class="col-xs-5 text-right">
-											<a href="/mypage/5#listWrap">
-												<span class="tranList font-purple"><strong>거래 내역 &gt;</strong></span>
-											</a>
-										</div>
 									</div>
 									<div class="row">
 										<div class="col-xs-12 text-right" style="margin-top: 5px;">
 											<span class="amt">0 <font size="2">원</font></span>
-										</div>
-									</div>
-									<div class="row" style="margin-top: 20px;">
-										<div class="col-xs-7">
-											<span class="myDeposit">자동투자 예치금</span>
-										</div>
-										<div class="col-xs-5 text-right">
-											<a href="/mypage/3#listWrap">
-											<span class="tranList font-purple"><strong>투자 설정 &gt;</strong></span>
-										</a>
-										</div>
-									</div>
-									<div class="row">
-										<div class="col-xs-12 text-right" style="margin-top: 5px;">
-											<span class="amt">0 <font size="2">원</font></span>
-										</div>
-									</div>
-									<div class="row" style="margin-top: 20px;">
-										<div class="col-xs-6">
-											<span class="myDeposit">퍼플포인트</span>
-										</div>
-										<div class="col-xs-6 text-right">
-											<a href="/mypage/6">
-											<span class="tranList font-purple"><strong>포인트 내역 &gt;</strong></span>
-										</a>
-										</div>
-									</div>
-									<div class="row">
-										<div class="col-xs-12 text-right" style="margin-top: 5px;">
-											<span class="amt">0 <font size="2">pp</font></span>
 										</div>
 									</div>
 								</div>
 								<div class="account-box">
-									
-									
-									<div class="row">
-										<div class="col-xs-12">
-											<span class="account">예치금 계좌 <a href="/mypage/5" class="font-red"><strong>미발급 상태</strong></a>입니다.</span>
-										</div>
-									</div>
-									
 								</div>
-								<button type="button" class="btn btn-purple-transparent btn-block" onclick="fn_setMenu('5')" style="margin-top: 4px;">나의 예치금</button>
+								<button type="button" class="btn btn-purple-transparent btn-block" id="depobu" style="margin-top: 4px;">나의 예치금</button>
 							</div>
 						</div>
 					</div>
 					
-					<div class="wrap" id="largeMenu">
+					<div class="wrap" id="largeMenu">	
 						<div class="menu">
-							<div class="item" id="menu2">
+							<div class="item" id="menu2"> <a href="/creator/my_invest_list">
 								<img src="${pageContext.request.contextPath}/resources/img/ic_mypage_invest_list.png">
-								<span class="text" id="menuL2">투자 내역</span>
+								<span class="text" id="menuL2">투자 내역</span> </a>
 							</div>
-							<div class="item active" id="menu4">
+							<div class="item active" id="menu4"> <a href="/creator/my_loan_list">
 								<img src="${pageContext.request.contextPath}/resources/img/ic_mypage_loan_list.png">
-								<span class="text" id="menuL4">대출 내역</span>
+								<span class="text" id="menuL4">대출 내역</span> </a>
 							</div>
-							<div class="item" id="menu5">
+							<div class="item" id="menu5">  <a href="/creator/my_depo_mgn">
 								<img src="${pageContext.request.contextPath}/resources/img/ic_mypage_depositandwithdraw.png">
-								<span class="text" id="menuL5">예치금 관리</span>
+								<span class="text" id="menuL5">예치금 관리</span> </a>
 							</div>
-							<div class="item" id="menu8">
+							<div class="item" id="menu8"> <a href="/creator/my_modify">
 								<img src="${pageContext.request.contextPath}/resources/img/ic_mypage_setting.png">
-								<span class="text" id="menuL8">기본 정보 수정</span>
+								<span class="text" id="menuL8">기본 정보 수정</span> </a>
 							</div>
 						</div>
 					</div>
@@ -259,549 +140,35 @@
 				
 <div class="col-sm-12 col-md-9 col col-box" id="mypage-main">
 <!-- ExcelDownload JavaScript -->
-<script type="text/javascript" src="/js/excel/jquery.table2excel.js"></script>
-
-<script type="text/javascript">
-	//페이지 처리 전역변수
-	var gvar_reqListPageNo = 1;
-	var gvar_reqListLimit = 5;
-	
-	var gvar_repayListPageNo = 1;
-	var gvar_repayListLimit = 5;
-
-	$(function() {
-		fn_selectLoanInfo();
-	});
-	
-	function fn_selectLoanInfo() {
-		var comAjax = new ComAjax();
-		comAjax.setUrl("/mypage/selectLoanInfo");
-		comAjax.addParam("CUS_NO", "1000009711");
-		comAjax.setCallback("fn_selectLoanInfoCallback");
-		comAjax.ajax();
-	}
-	
-	function fn_selectLoanInfoCallback(data){
-		var REST_REPAY_AMT = data.restAmtMap.REST_REPAY_AMT;
-		var ACC_REPAY_AMT = data.restAmtMap.ACC_REPAY_AMT;
-		var NEXT_REPAY_AMT = data.nextAmtMap.NEXT_REPAY_AMT;
-		var LOAN_CNT = data.repayCntMap.LOAN_CNT;
-		
-		$("span[name=REST_REPAY_AMT]").text(comma(REST_REPAY_AMT));
-		$("span[name=ACC_REPAY_AMT]").text(comma(ACC_REPAY_AMT));
-		$("span[name=NEXT_REPAY_AMT]").text(comma(NEXT_REPAY_AMT));
-		if(LOAN_CNT > 0) {
-			$("#loanCusDiv").show();
-		}
-
-		$('input:radio[name=docuRadio]:input[value="1"]').attr("checked", true);
-		
-		$("#docuPrintBtn").on("click", function(e) {
-			e.preventDefault();
-			fn_docuPrint();
-		});
-		
-		$("#sinhanLinkBtn").on("click", function(e) {
-			e.preventDefault();
-			fn_goSinhanLink();
-		});
-		
-		// 엑셀다운로드
-		var btn = $('#btnExport');
-		var tbl = 'tblExport';
-
-		btn.on('click', function () {
-			if(confirm("목록을 엑셀 파일로 다운로드합니다. 진행하시겠습니까?")){
-				fn_selectLoanRepayExcelList();
-				
-				var dt = new Date();
-				var year =  itoStr( dt.getFullYear() );
-				var month = itoStr( dt.getMonth() + 1 );
-				var day =   itoStr( dt.getDate() );
-				var hour =  itoStr( dt.getHours() );
-				var mins =  itoStr( dt.getMinutes() );
-				
-				var postfix = year + month + day + "_" + hour + mins;
-				var fileName = "MIDRATE_상환일정_"+ postfix + ".xls";
-				$("#"+tbl).table2excel({
-					exclude: ".noExl",
-					name: fileName,
-					filename: fileName,
-					fileext: ".xls",
-					exclude_img: true,
-					exclude_links: true,
-					exclude_inputs: true
-				});
-			} else {
-				return false;
-			}
-		});
-		
-		$(":radio[name='docuRadio']").click(function(){
-			var docuNo = $(':radio[name="docuRadio"]:checked').val();
-			$("div[name='docu']").hide();
-			$('#docu'+docuNo).show();
-			if(docuNo == "1") {
-				$('#docuPrintBtn').show();
-			} else {
-				$('#docuPrintBtn').hide();
-			}
-		});
-		
-		var cusBankCdSelect = "";
-		var cusAccount = "";
-		$("#cusBankCdSelect").val(cusBankCdSelect);
-		$("#cusAccount").val(cusAccount);
-		if(cusAccount == "") {
-			$("#registAccountY").show();
-			$("#registAccountN").hide();
-		} else {
-			$("#registAccountY").hide();
-			$("#registAccountN").show();
-		}
-		
-		// 전역 변수 세팅
-		fn_selectLoanReqList(gvar_reqListPageNo);
-		fn_selectLoanRepayList(gvar_repayListPageNo);
-	}
-	
-	function fn_selectLoanReqList(pageNo){
-		var startLimit = (pageNo-1) * gvar_reqListLimit;
-		var endLimit = gvar_reqListLimit;
-		var comAjax = new ComAjax();
-		comAjax.setUrl("/mypage/selectLoanReqList");
-		comAjax.setCallback("fn_selectLoanReqListCallback");
-		comAjax.addParam("startLimit", startLimit);
-		comAjax.addParam("endLimit", endLimit);
-		comAjax.ajax();
-	}
-	
-	function fn_selectLoanReqListCallback(data){
-		var body = $("#reqListBody");
-		var str = "";
-		var idx = 0;
-
-		// 리스트 생성
-		$.each(data.list, function(key, value) {
-			idx = idx + 1;
-			
-			str += "<div class=\"item-wrap\" id=\"itemWrap"+value.LOAN_REQ_NO+"\">";
-			str += "	<div class=\"loanItem\">";
-			str += "		<div class=\"row\">";
-			str += "			<div class=\"col-xs-4 col-sm-4 col-md-offset-1 col-md-2 col\">";
-			str += "				<div class=\"item-title\">";
-			str += "					금액";
-			str += "				</div>";
-			str += "				<div class=\"item-val\">";
-			str += "					"+comma(value.LOAN_AMT)+"<font size=\"1\">원</font>";
-			str += "				</div>";
-			str += "			</div>";
-			str += "			<div class=\"col-xs-4 col-sm-4 col-md-2 col\">";
-			str += "				<div class=\"item-title\">";
-			str += "					기간";
-			str += "				</div>";
-			str += "				<div class=\"item-val\">";
-			str += "					"+value.LOAN_PERIOD_NM+"<font size=\"1\">개월</font>";
-			str += "				</div>";
-			str += "			</div>";
-			str += "			<div class=\"col-xs-4 col-sm-4 col-md-2 col\">";
-			str += "				<div class=\"item-title\">";
-			str += "					금리";
-			str += "				</div>";
-			str += "				<div class=\"item-val\">";
-			if(value.LOAN_RATE == "") {
-				str += "				미확정";
-			} else {
-				str += "				"+value.LOAN_RATE+"<font size=\"1\">%</font>";
-			}
-			str += "				</div>";
-			str += "			</div>";
-			str += "			<div class=\"col-xs-12 xd\">";
-			str += "				<hr>";
-			str += "			</div>";
-			str += "			<div class=\"col-xs-4 col-sm-4 col-md-2 col\">";
-			str += "				<div class=\"item-title\">";
-			if(value.REPAY_TYPE_CD == "1") {
-				str += "				월 상환예정금";
-			} else {
-				str += "				상환예정금";
-			}
-			str += "				</div>";
-			str += "				<div class=\"item-val\">";
-			if(value.MONTH_REPAY_AMT == "") {
-				str += "				미확정";
-			} else {
-				if(value.REPAY_TYPE_CD == "1") {
-					str += "			"+comma(value.MONTH_REPAY_AMT)+"<font size=\"1\">원</font>";
-				} else {
-					str += "			"+comma(value.REPAY_AMT)+"<font size=\"1\">원</font>";
-				}
-			}
-			str += "				</div>";
-			str += "			</div>";
-			str += "			<div class=\"col-xs-8 col-sm-8 col-md-2 col\">";
-			str += "				<div class=\"item-title\">";
-			str += "				신청상태";
-			str += "				</div>";
-			str += "				<div class=\"item-val\">";
-			if(value.REQ_STATS_CD == "04") {
-				str += "				<a class=\"active\" href='javascript:(void(0));' onclick='fn_acceptLoanReq(\""+value.LOAN_REQ_NO+"\")'>";
-				str += "					대출 승인하기";
-				str += "				</a>";
-			} else if(value.REQ_STATS_CD == "09") {
-				str += "				<a class=\"active\" href='javascript:(void(0));' onclick='fn_openDocPrintPopup(\""+value.LOAN_REQ_NO+"\")'>";
-				str += "					계약서 제출";
-				str += "				</a>";
-			} else if(value.REQ_STATS_CD == "05") {
-				str += "				<a class=\"active\" href='javascript:(void(0));' onclick='fn_openLoanReqEval(\""+value.LOAN_REQ_NO+"\")'>";
-				str += "					심사결과 보기";
-				str += "				</a>";
-			} else if(value.REQ_STATS_CD != "04" && value.REQ_STATS_CD != "05" && value.REQ_STATS_CD != "09") {
-				str += "				<a>";
-				str += "					"+value.REQ_STATS_NM;
-				str += "				</a>";
-			}
-			str += "				</div>";
-			str += "			</div>";
-			str += "		</div>";
-			str += "	</div>";
-			str += "</div>";
-		});
-
-		body.append(str);
-		
-		if(gvar_reqListLimit == idx) {
-			$('#reqListNextPageBtn').show();
-		} else {
-			$('#reqListNextPageBtn').hide();
-		}
-		
-		if(gvar_reqListPageNo == 1 && idx == 0) {
-			$('#noReqListDiv').show();
-		} else {
-			$('#reqListDiv').show();
-		}
-	}
-	
-	function fn_selectReqListNextPage() {
-		// 다음페이지로 지정
-		gvar_reqListPageNo = gvar_reqListPageNo + 1;
-		if(gvar_reqListPageNo > 0) {
-			$("#reqListResetPageBtn").show();
-		}
-		fn_selectLoanReqList(gvar_reqListPageNo);
-	}
-	
-	function fn_reqListResetPage() {
-		// 첫 페이지로 리셋
-		$("#reqListBody").empty();
-		$("#reqListResetPageBtn").hide();
-		gfn_scrollLink("reqListDiv", 90);
-		
-		gvar_reqListPageNo = 1;
-		fn_selectLoanReqList(gvar_reqListPageNo);
-	}
-	
-	function fn_selectLoanRepayList(pageNo){
-		var startLimit = (pageNo-1) * gvar_repayListLimit;
-		var endLimit = gvar_repayListLimit;
-		var comAjax = new ComAjax();
-		comAjax.setUrl("/mypage/selectLoanRepayList");
-		comAjax.setCallback("fn_selectLoanRepayListCallback");
-		comAjax.addParam("startLimit", startLimit);
-		comAjax.addParam("endLimit", endLimit);
-		comAjax.ajax();
-	}
-	
-	function fn_selectLoanRepayListCallback(data){
-		var body = $("#repayListBody");
-		var str = "";
-		var idx = 0;
-
-		// 리스트 생성
-		$.each(data.list, function(key, value) {
-			idx = idx + 1;
-			str += "<div class=\"goodlist-item\">";
-			str += "	<div class=\"row\">";
-			str += "		<a href='javascript:(void(0));' onclick='fn_openLoanRepaySchedule(\""+value.LOAN_NO+"\")' style=\"color: #5a5a5a;\">";
-			str += "			<div class=\"col-xs-4 col-md-2 col\">";
-			str += "				<div class=\"item-title\">상품번호</div>";
-			str += "				<div class=\"normal\">"+value.LOAN_GD_ID+"</div>";
-			str += "			</div>";
-			str += "			<div class=\"col-xs-4 col-md-2 col\">";
-			str += "				<div class=\"item-title\">신청일자</div>";
-			str += "				<div class=\"normal\">"+value.REQ_DATE+"</div>";
-			str += "			</div>";
-			str += "			<div class=\"col-xs-4 col-md-2 col\">";
-			str += "				<div class=\"item-title\">대출일자</div>";
-			str += "				<div class=\"normal\">";
-			str += "					"+value.APLY_AMT_TRAN_DATE;
-			str += "				</div>";
-			str += "			</div>";
-			str += "			<div class=\"col-xs-12 col-md-12 xd\">";
-			str += "				<hr>";
-			str += "			</div>";
-			str += "			<div class=\"col-xs-4 col-md-2 col\">";
-			str += "				<div class=\"item-title\">대출금액</div>";
-			str += "				<div class=\"normal\">";
-			str += "					"+comma(value.LOAN_AMT)+"<font size=\"1\">원</font>";
-			str += "				</div>";
-			str += "			</div>";
-			str += "			<div class=\"col-xs-4 col-md-2 col\">";
-			str += "				<div class=\"item-title\">상환기간</div>";
-			str += "				<div class=\"normal\">";
-			str += "					"+value.LOAN_PERIOD_NM+"<font size=\"1\">개월</font>";
-			str += "				</div>";
-			str += "			</div>";
-			str += "			<div class=\"col-xs-4 col-md-2 col\">";
-			str += "				<div class=\"item-title\">대출금리</div>";
-			str += "				<div class=\"normal\">";
-			str += "					"+value.LOAN_RATE+"<font size=\"1\">%</font>";
-			str += "				</div>";
-			str += "			</div>";
-			str += "		</a>";
-			str += "	</div>";
-			str += "</div>";
-		});
-
-		body.append(str);
-		
-		if(gvar_repayListLimit == idx) {
-			$('#repayListNextPageBtn').show();
-		} else {
-			$('#repayListNextPageBtn').hide();
-		}
-	}
-	
-	function fn_selectRepayListNextPage() {
-		// 다음페이지로 지정
-		gvar_repayListPageNo = gvar_repayListPageNo + 1;
-		if(gvar_repayListPageNo > 0) {
-			$("#repayListResetPageBtn").show();
-		}
-		fn_selectLoanRepayList(gvar_repayListPageNo);
-	}
-	
-	function fn_repayListResetPage() {
-		// 첫 페이지로 리셋
-		$("#repayListBody").empty();
-		$("#repayListResetPageBtn").hide();
-		gfn_scrollLink("goodList", 120);
-		
-		gvar_repayListPageNo = 1;
-		fn_selectLoanRepayList(gvar_repayListPageNo);
-	}
-
-	function fn_openLoanRepaySchedule(loanNo) {
-		location.href='/mypage/loanRepaySchedule/'+loanNo;
-	}
-	
-	function fn_acceptLoanReq(loanReqNo) {
-		var comAjax = new ComAjax();
-		comAjax.setUrl("/mypage/acceptLoanReq");
-		comAjax.setCallback("fn_acceptLoanReqCallback");
-		comAjax.addParam("LOAN_REQ_NO", loanReqNo);
-		comAjax.ajax();
-	}
-	
-	function fn_acceptLoanReqCallback(data){
-		var resultMsg = data.resultMsg;
-		alert(resultMsg);
-		document.location.href = document.URL;
-	}
-	
-	function fn_openDocPrintPopup(loanReqNo) {
-		$('#selectedLoanReqNo').val(loanReqNo);
-		var comAjax = new ComAjax();
-		comAjax.setUrl("/mypage/selectLoanDocuInfo");
-		comAjax.setCallback("fn_openDocPrintPopupCallback");
-		comAjax.addParam("LOAN_REQ_NO",loanReqNo);
-		comAjax.ajax();
-	}
-	
-	function fn_openDocPrintPopupCallback(data){
-		var docMpNo = gfn_viewTelNo(data.map.MP_NO+"");
-		var loanAmtWon = gfn_viewKorean(data.map.LOAN_AMT+"", "");
-		
-		$('#docCusNm').text(data.map.CUS_NM);
-		$('#docMpNo').text(docMpNo);
-		$('#docBirthDate').text(data.map.BIRTH_DATE);
-		$('#docSexNm').text(data.map.SEX_NM);
-		$('#docHomeAddr').text(data.map.HOME_ADDR);
-		$('#docLoanAmtWon').text(loanAmtWon);
-		$('#docLoanAmt').text(comma(data.map.LOAN_AMT));
-		$('#docMonthRepayAmt').text(comma(data.map.MONTH_REPAY_AMT));
-		$('#docLoanRate').text(data.map.LOAN_RATE);
-		$('#docDelayRate').text(data.map.DELAY_RATE);
-		$('#docRepayTypeNm').text(data.map.REPAY_TYPE_NM);
-		$('#docAplyAmtTranDay').text(data.map.APLY_AMT_TRAN_DAY);
-		$('#docCmmntAmt').text(comma(data.map.CMMTN_AMT));
-		$('#docuPrintModal').modal('show');
-	}
-	
-	function fn_docuPrint() {
-		var docuNo = $(':radio[name="docuRadio"]:checked').val();
-		$('#docu'+docuNo).printThis({
-			debug: false,			   // show the iframe for debugging
-			importCSS: false,			// import page CSS
-			importStyle: true,		 // import style tags
-			printContainer: true,	   // grab outer container as well as the contents of the selector
-			pageTitle: "",			  // add title to print page
-			removeInline: false,		// remove all inline styles from print elements
-			header: null,			   // prefix to html
-			formValues: true			// preserve input/form values
-		});
-	}
-	
-	function fn_updateCusAccount() {
-		var cusBankCd = $("#cusBankCdSelect").val();
-		if(cusBankCd == "") {
-			alert("은행명을 선택하세요.");
-			$("#cusBankCdSelect").focus();
-			return;
-		}
-		
-		var cusAccount = $("#cusAccount").val();
-		if(cusAccount == "") {
-			alert("계좌번호를 입력해주세요.");
-			$("#cusAccount").focus();
-			return;
-		}
-		
-		var cusNm = "김도엽";
-		
-		$("#updateCusAccountBtn").attr("disabled", true);
-		
-		var comAjax = new ComAjax();
-		comAjax.setUrl("/mypage/updateCusAccount");
-		comAjax.setCallback("fn_updateCusAccountCallback");
-		comAjax.addParam("WD_ACNT_BNK_CD", cusBankCd);
-		comAjax.addParam("WD_ACNT_NO", cusAccount);
-		comAjax.addParam("CUS_NM", cusNm);
-		comAjax.ajax();
-	}
-	
-	function fn_updateCusAccountCallback(data){
-		var resultMsg = data.resultMsg;
-		alert(resultMsg);
-		$("#updateCusAccountBtn").attr("disabled", false);
-	}
-	
-	function fn_insertDocuFile() {
-		var docuFile = $("#docuFile").val();
-		if(docuFile == "") {
-			alert("등록할 파일을 선택해 주세요.");
-			return;
-		}
-		
-		$("#insertDocuFileBtn").attr("disabled", true);
-		
-		var loanReqNo = $('#selectedLoanReqNo').val();
-		var url = "/mypage/insertDocuFile";
-		// 파일첨부 ajax 스크립트
-		$('#fileForm').ajaxForm({
-			url: url,
-			type : 'POST',
-			dataType : 'JSON',
-			data : {
-				LOAN_REQ_NO : loanReqNo,
-				ID : loanReqNo,
-				BRD_ID : 'LOANDOCU'
-			},
-			success: function(data){
-				fn_insertDocuFileCallback(data);
-			}
-		});
-		// submit 필수
-		$("#fileForm").submit();
-	}
-	
-	function fn_insertDocuFileCallback(data){
-		var resultMsg = data.resultMsg;
-		alert(resultMsg);
-		$("#insertDocuFileBtn").attr("disabled", false);
-	}
-	
-	function fn_openLoanReqEval(loanReqNo) {
-		$('#selectedLoanReqNo').val(loanReqNo);
-		$('#loanReqEvalModal').modal('show');
-	}
-	
-	function fn_goSinhanLink() {
-		var loanReqNo = $('#selectedLoanReqNo').val();
-		var comAjax = new ComAjax();
-		comAjax.setUrl("/mypage/updateSinhanLink");
-		comAjax.setCallback("fn_goSinhanLinkCallback");
-		comAjax.addParam("LOAN_REQ_NO", loanReqNo);
-		comAjax.ajax();
-	}
-	
-	function fn_goSinhanLinkCallback(data){
-		if($(window).width() < 767) {
-			window.open('http://bit.ly/2kyVQkN', '_blank'); 
-		} else {
-			window.open('http://bit.ly/2kYbnLF', '_blank'); 
-		}
-	}
-	
-	function fn_selectLoanRepayExcelList(){
-		var comAjax = new ComAjax();
-		comAjax.setUrl("/mypage/selectLoanRepayExcelList");
-		comAjax.setCallback("fn_selectLoanRepayExcelListCallback");
-		comAjax.addParam("CUS_NO", "1000009711");
-		comAjax.ajax();
-	}
-	
-	function fn_selectLoanRepayExcelListCallback(data){
-		var exportBody = $("table#tblExport>tbody");
-		exportBody.empty();
-		if(data.excelList.length == 0){
-			var exportStr = "<tr><td colspan='6'>조회된 결과가 없습니다.</td></tr>";
-			exportBody.append(exportStr);
-		} else {
-			var exportStr = "";
-			$.each(data.excelList, function(key, value){
-				exportStr += "<tr>";
-				exportStr += "	<td>" + value.LOAN_GD_ID + "</td>";
-				exportStr += "	<td>" + value.REQ_DATE + "</td>";
-				exportStr += "	<td>" + value.APLY_AMT_TRAN_DATE + "</td>";
-				exportStr += "	<td>" + value.LOAN_AMT + "</td>";
-				exportStr += "	<td>" + value.LOAN_PERIOD_NM + "</td>"; 
-				exportStr += "	<td>" + value.LOAN_RATE + "</td>";
-				exportStr += "</tr>";
-			});
-			exportBody.append(exportStr);
-		}
-	}
-	
-</script>
 					<div class="wrap">
 						<div class="box right">
 							<div class="row">
 								<div class="col-md-12">
-									<div id="reqListDiv" class="display-none">
-										<div class="title">
-											<font class="font-purple">●</font> 대출 신청 현황
-										</div>
-										<hr>
-										<div class="row">
-											<div class="col-md-12" id="reqListBody">
-											</div>
-										</div>
-										
-										<div class="row" id="reqListNextPageDiv">
-											<div class="col-xs-12 col-sm-12 col-md-12">
-												<div class="alarm-box-bottom">
-													<a href="javascript:(void(0));" onclick="fn_selectReqListNextPage()" id="reqListNextPageBtn" class="display-none" style="display: none;">
-														<i class="glyphicon glyphicon-menu-down"></i>
-													</a>
-													<a href="javascript:(void(0));" onclick="fn_reqListResetPage()" id="reqListResetPageBtn" class="display-none">
-														<i class="glyphicon glyphicon-menu-up"></i>
-													</a>
+									<c:choose>
+										<c:when test="${price == null || price == ''}">
+											<div id="reqListDiv" class="display-none">
+												<div class="title">
+													<font class="font-purple">●</font> 대출 신청 현황
+												</div>
+												<hr>
+												<div class="row">
+													<div class="col-md-12" id="reqListBody">
+													</div>
+												</div>
+												
+												<div class="row" id="reqListNextPageDiv">
+													<div class="col-xs-12 col-sm-12 col-md-12">
+														<div class="alarm-box-bottom">
+															<a href="javascript:(void(0));" onclick="fn_selectReqListNextPage()" id="reqListNextPageBtn" class="display-none" style="display: none;">
+																<i class="glyphicon glyphicon-menu-down"></i>
+															</a>
+															<a href="javascript:(void(0));" onclick="fn_reqListResetPage()" id="reqListResetPageBtn" class="display-none">
+																<i class="glyphicon glyphicon-menu-up"></i>
+															</a>
+														</div>
+													</div>
 												</div>
 											</div>
-										</div>
-									</div>
 								
 									<div id="noReqListDiv" class="display-none" style="display: block;">
 										<div class="title">
@@ -894,14 +261,68 @@
 										</div>
 										<div class="row">
 											<div class="col-sm-12 col-md-12">
-												<button class="btn btn-purple-transparent btn-block" type="button" onclick="location.href='/loan/loanReq'">대출하기</button>
+												<button class="btn btn-purple-transparent btn-block" type="button" id="myloan"">대출하기</button>
 											</div>
 										</div>
 									</div>
 								</div>
+							</c:when>
+						<c:otherwise>
+							<div class="col-xs-12 col-sm-12 col-md-12">
+								<div id="goodList" style="display: block;margin-top: 29px;">
+									<div class="goodlist-title">
+										<div class="row">
+											<table class="table">
+													<thead>
+														<tr>
+															<th scope="col" class="clickable" name="investListSortTitle" id="investListSortTitleBANNER_TITLE">
+																프로젝트번호<span name="investListSortDesc" id="investListSortDescBANNER_TITLE"></span>
+															</th>
+															<th scope="col" class="clickable" name="investListSortTitle" id="investListSortTitleLOAN_NM">
+																프로젝트명<span name="investListSortDesc" id="investListSortDescLOAN_NM"></span>
+															</th>
+															<th scope="col" class="clickable" name="investListSortTitle" id="investListSortTitleBANNER_TITLE">
+																신청일자<span name="investListSortDesc" id="investListSortDescBANNER_TITLE"></span>
+															</th>
+															<th scope="col" class="clickable" name="investListSortTitle" id="investListSortTitleINVEST_RATE">
+																대출일자<span name="investListSortDesc" id="investListSortDescINVEST_RATE"></span>
+															</th>
+															<th scope="col" colspan="clickable" class="clickable" name="investListSortTitle" id="investListSortTitleRND_CNT">
+																대출금액<span name="investListSortDesc" id="investListSortDescRND_CNT"></span>
+															</th>
+															<th scope="col" class="clickable" name="investListSortTitle" id="investListSortTitleMAX_DSTRBTN_DATE">
+																상환기간<span name="investListSortDesc" id="investListSortDescMAX_DSTRBTN_DATE"></span>
+															</th>
+															<th scope="col" class="clickable" name="investListSortTitle" id="investListSortTitleMAX_DSTRBTN_DATE">
+																금리<span name="investListSortDesc" id="investListSortDescMAX_DSTRBTN_DATE"></span>
+															</th>
+														</tr>
+													</thead>
+												<c:forEach items="${loanList}" var="vo" varStatus="status">
+													<tr>
+														<c:if test="${memberVO.busi_num != null && memberVO.busi_num !='' }">
+														</c:if>
+														<td>${vo.project_num}</td>
+														<td><a href="invest_detail?detail_num=${vo.project_num}"/>${vo.project_name}</td>
+														<td>${vo.refund_request}</td>
+														<td>${vo.regi_date}</td>
+														<td>${vo.price}</td>
+														<td>${vo.refund}</td>
+														<td>${vo.rate}%</td>
+													</tr>
+												</c:forEach>
+											</table>
+										</div>
+									</div>
+									<div id="repayListBody">
+									</div>
+								</div>
 							</div>
-						</div>
-					</div>
+						</c:otherwise>
+					</c:choose>
+				</div>
+			</div>
+		</div>
 					
 					<div class="display-none" id="loanCusDiv">
 						<div class="wrap">
@@ -1019,43 +440,8 @@
 											</font> 상환일정
 										</div>
 									</div>
-									<div class="col-xs-12 col-sm-6 col-md-6 text-right">
-										<a id="btnExport">
-											<button type="button" class="btn btn-purple-transparent btn-gradiation">
-												EXCEL <i class="glyphicon glyphicon-download-alt"></i>
-											</button>
-										</a>
-									</div>
 									
-									<div class="col-xs-12 col-sm-12 col-md-12">
-										<div id="goodList" style="display: block;margin-top: 29px;">
-											<div class="goodlist-title">
-												<div class="row">
-													<div class="col-xs-4 col-md-2">
-														<div class="name">상품번호</div>
-													</div>
-													<div class="col-xs-4 col-md-2">
-														<div class="name">신청일자</div>
-													</div>
-													<div class="col-xs-4 col-md-2">
-														<div class="round">대출일자</div>
-													</div>
-													<div class="col-xs-4 col-md-2">
-														<div class="day">대출금액</div>
-													</div>
-													<div class="col-xs-4 col-md-2">
-														<div class="investAmt">상환기간</div>
-													</div>
-													<div class="col-xs-4 col-md-2">
-														<div class="rate">대출금리</div>
-													</div>
-												</div>
-											</div>
-	
-											<div id="repayListBody">
-											</div>
-										</div>
-									</div>
+									
 								</div>
 								
 								<div class="row" id="repayListNextPageDiv">

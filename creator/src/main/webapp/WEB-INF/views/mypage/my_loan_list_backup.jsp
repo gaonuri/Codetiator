@@ -50,12 +50,6 @@
 	        <!-- sidebar menu start-->
 	        <ul class="sidebar-menu" id="nav-accordion">
 	          <li class="mt">
-	            <a href="/creator/my_dashboard">
-	              <i class="fa fa-dashboard"></i>
-	              <span>대시 보드</span>
-	              </a>
-	          </li>
-	          <li class="mt">
 	            <a href="/creator/my_invest_list">
 	              <i class="fa fa-ticket"></i>
 	              <span>투자 내역</span>

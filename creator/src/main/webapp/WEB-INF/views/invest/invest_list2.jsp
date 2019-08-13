@@ -217,6 +217,24 @@ html {
 .font-purple {
     color: #712594 !important;
 }
+
+.item-middle-badge img {
+    max-height: 20px;
+    max-width: 20px;
+    vertical-align: text-top;
+}
+
+.item-top img {
+    width: 100%;
+    height: 148px;
+    z-index: -1;
+}
+
+img {
+    vertical-align: middle;
+    border: 0;
+}
+
 b, strong {
     font-weight: bold;
 }
@@ -509,10 +527,10 @@ form {
 
 <!-- Navigation
 ==========================================-->
-<!--header start-->
+	<!--header start-->
 	<%@ include file="../header.jsp" %>
-<!--header end-->
-<script type="text/javascript">
+	<!--header end-->
+	<script type="text/javascript">
 
 	$(function() {
 		$("#topGuideButton").on("click", function() {
@@ -1053,7 +1071,7 @@ form {
 									총 투자금액
 								</div>
 								<div class="amt">
-									34,417,220,000 <font size="4">원</font>
+									${inVO.sum_invest_price * 10000} <font size="4">원</font>
 								</div>
 							</div>
 						</div>
@@ -1063,7 +1081,7 @@ form {
 									평균 연 수익률
 								</div>
 								<div class="amt">
-									13.29 <font size="4">%</font>
+									${proCalcVO.rate_average} <font size="4">%</font>
 								</div>
 							</div>
 						</div>
@@ -1080,24 +1098,24 @@ form {
 						</div>
 						 -->
 						<div class="content-text large">
-							<a href="/invest/guide" class="btn btn-transparent solid">
+							<a href="${pageContext.request.contextPath}/invest_guide" class="btn btn-transparent solid">
 								<i class="glyphicon glyphicon-info-sign" style="font-size: 25px;"></i>
 								<br>
 								투자안내
 							</a>
-							<a href="/invest/history" class="btn btn-transparent solid">
+							<a href="${pageContext.request.contextPath}/invest_finished" class="btn btn-transparent solid">
 								<i class="glyphicon glyphicon-folder-open" style="font-size: 25px;"></i>
 								<br>
 								상환완료 투자
 							</a>
 						</div>
 						<div class="content-text small">
-							<a href="/invest/guide" class="btn btn-transparent solid">
+							<a href="${pageContext.request.contextPath}/invest_guide" class="btn btn-transparent solid">
 								<i class="glyphicon glyphicon-info-sign" style="font-size: 25px;"></i>
 								<br>
 								투자안내
 							</a>
-							<a href="/invest/history" class="btn btn-transparent solid">
+							<a href="${pageContext.request.contextPath}/invest_finished" class="btn btn-transparent solid">
 								<i class="glyphicon glyphicon-folder-open" style="font-size: 25px;"></i>
 								<br>
 								상환완료 투자
@@ -1163,9 +1181,9 @@ form {
 	<section id="invest-good">
 		<div class="container"> <!-- Container -->
 			<div class="section-title text-center">
-				<div class="date" id="today">2019.08.08</div>
+				<div class="date" id="today"></div>
 				<div class="subTitle">
-					현재까지 <font class="font-purple"><strong><span id="totalLoanCnt">792</span></strong></font> 개, 총 투자건수 <font class="font-purple"><strong><span id="totalInvestCnt">116,600</span></strong></font> 회
+					현재까지 <font class="font-purple"><strong><span id="totalLoanCnt">${proCalcVO.project_count}</span></strong></font> 개, 총 투자건수 <font class="font-purple"><strong><span id="totalInvestCnt">${inVO.invest_count}</span></strong></font> 회
 				</div>
 			</div>
 			<div class="section-cat">
@@ -1218,7 +1236,81 @@ form {
 					</a>
 				</div>
 			</div>
-			<div class="row" id="goodThum"><div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 good-item-wrap">	<div class="good-item">		<div class="item-top">			<a href="javascript:(void(0));" onclick="fn_openInvestDetail(790)">				<div class="hover-text">					<div class="clearfix"></div>					<div class="hover-button"></div>				</div>			</a>			<div class="item-top-badge">		<span class="label label-primary">LTV 42%</span>			</div>			<div class="item-top-badge text-right">		<span class="label label-primary animated infinite flash">모집중</span>			</div>		<div class="item-middle-badge">			<div style="display: inline-block;">부동산 431호</div>		<div style="display: inline-block;"><img src="/images/investV2/banner_icon_nmvbls.png"></div>		</div>			<div class="item-bottom-badge text-right">			<span>자동투자 100%</span>			</div>	<img src="/images/investV2/banner_bg_nmvbls.png" class="img-responsive">		</div>		<div class="item-bottom">			<div class="item-bottom-text">				<div class="row">					<div class="col-xs-6">						<h5>04-19-136</h5>					</div>				</div>				<h4 style="text-align:center;">[부동산] 경기도 파주시 문산읍 토지(3차)</h4>				<div class="progress">				<div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="57" aria-valuemin="0" aria-valuemax="100" style="min-width:20px;width: 57%">						57%					</div>				</div>				<div class="item-top-text-num">					<small>(168명)</small>				</div>			</div>			<hr>			<div class="grade">				<div class="circle grade-MA">MA</div>			</div>			<div class="cat">				<div class="title">연 수익률</div>				<div class="sub">13<font size="1">%</font></div>			</div>			<div class="cat">				<div class="title">기간</div>				<div class="sub">9<font size="1">개월</font></div>			</div>			<div class="cat">				<div class="title">모집금액</div>				<div class="sub">2,500<font size="1">만원</font></div>			</div>			<div class="cat">				<div class="title">상환방식</div>				<div class="sub">만기일시</div>			</div>		</div>	</div></div><div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 good-item-wrap">	<div class="good-item">		<div class="item-top">			<a href="javascript:(void(0));" onclick="fn_openInvestDetail(784)">				<div class="hover-text">					<div class="clearfix"></div>					<div class="hover-button"></div>				</div>			</a>			<div class="item-top-badge">		<span class="label label-primary">LTV 65.22%</span>			</div>			<div class="item-top-badge text-right">		<span class="label label-primary">준비중</span>			</div>		<div class="item-middle-badge">			<div style="display: inline-block;">부동산 432호</div>		<div style="display: inline-block;"><img src="/images/investV2/banner_icon_nmvbls.png"></div>		</div>			<div class="item-bottom-badge text-right">		<span>자동투자 100%</span>			</div>	<img src="/images/investV2/banner_bg_nmvbls.png" class="img-responsive">		</div>		<div class="item-bottom">			<div class="item-bottom-text">				<div class="row">					<div class="col-xs-6">						<h5>04-19-130</h5>					</div>			<div class="col-xs-6 text-right">				<h5>8/8 14</h5>			</div>				</div>				<h4 style="text-align:center;">[부동산] 인천 서구 석남동 다세대</h4>				<div class="progress">				<div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="min-width:20px;width: 0%">						0%					</div>				</div>				<div class="item-top-text-num">					<small>(0명)</small>				</div>			</div>			<hr>			<div class="grade">				<div class="circle grade-MA">MA</div>			</div>			<div class="cat">				<div class="title">연 수익률</div>				<div class="sub">12<font size="1">%</font></div>			</div>			<div class="cat">				<div class="title">기간</div>				<div class="sub">9<font size="1">개월</font></div>			</div>			<div class="cat">				<div class="title">모집금액</div>				<div class="sub">1,500<font size="1">만원</font></div>			</div>			<div class="cat">				<div class="title">상환방식</div>				<div class="sub">만기일시</div>			</div>		</div>	</div></div><div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 good-item-wrap">	<div class="good-item">		<div class="item-top">			<a href="javascript:(void(0));" onclick="fn_openInvestDetail(792)">				<div class="hover-text">					<div class="clearfix"></div>					<div class="hover-button"></div>				</div>			</a>			<div class="item-top-badge">		<span class="label label-primary">LTV 44.74%</span>			</div>			<div class="item-top-badge text-right">			<span class="label label-primary">상환중</span>			</div>		<div class="item-middle-badge">			<div style="display: inline-block;">부동산 430호</div>		<div style="display: inline-block;"><img src="/images/investV2/banner_icon_nmvbls.png"></div>		</div>			<div class="item-bottom-badge text-right">			<span>자동투자 100%</span>			</div>	<img src="/images/investV2/banner_bg_nmvbls.png" class="img-responsive">		</div>		<div class="item-bottom">			<div class="item-bottom-text">				<div class="row">					<div class="col-xs-6">						<h5>04-19-137</h5>					</div>				</div>				<h4 style="text-align:center;">[부동산] 서울시 관악구 봉천동 다세대</h4>				<div class="progress">				<div class="progress-bar progress-bar-striped" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="min-width:20px;width: 100%">						100%					</div>				</div>				<div class="item-top-text-num">					<small>(186명)</small>				</div>			</div>			<hr>			<div class="grade">				<div class="circle grade-MA">MA</div>			</div>			<div class="cat">				<div class="title">연 수익률</div>				<div class="sub">11<font size="1">%</font></div>			</div>			<div class="cat">				<div class="title">기간</div>				<div class="sub">9<font size="1">개월</font></div>			</div>			<div class="cat">				<div class="title">모집금액</div>				<div class="sub">3,500<font size="1">만원</font></div>			</div>			<div class="cat">				<div class="title">상환방식</div>				<div class="sub">만기일시</div>			</div>		</div>	</div></div><div class="clearfix"></div><div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 good-item-wrap">	<div class="good-item">		<div class="item-top">			<a href="javascript:(void(0));" onclick="fn_openInvestDetail(791)">				<div class="hover-text">					<div class="clearfix"></div>					<div class="hover-button"></div>				</div>			</a>			<div class="item-top-badge">			<span class="label label-rwrdgd">리워드</span>			</div>			<div class="item-top-badge text-right">			<span class="label label-primary">모집완료</span>			</div>		<div class="item-middle-badge">			<div style="display: inline-block;">홈쇼핑 120호</div>		<div style="display: inline-block;"><img src="/images/investV2/banner_icon_homeshopping.png"></div>		</div>			<div class="item-bottom-badge text-right">			<span>자동투자 100%</span>			</div>	<img src="/images/investV2/banner_bg_homeshopping.png" class="img-responsive">		</div>		<div class="item-bottom">			<div class="item-bottom-text">				<div class="row">					<div class="col-xs-6">						<h5>02-19-42</h5>					</div>				</div>				<h4 style="text-align:center;">[홈쇼핑] 쿠쿠 회전 블렌더(3차)</h4>				<div class="progress">				<div class="progress-bar progress-bar-striped" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="min-width:20px;width: 100%">						100%					</div>				</div>				<div class="item-top-text-num">					<small>(277명)</small>				</div>			</div>			<hr>			<div class="grade">				<div class="circle grade-MA">MA</div>			</div>			<div class="cat">				<div class="title">연 수익률</div>				<div class="sub">15.5<font size="1">%</font></div>			</div>			<div class="cat">				<div class="title">기간</div>				<div class="sub">6<font size="1">개월</font></div>			</div>			<div class="cat">				<div class="title">모집금액</div>				<div class="sub">7,000<font size="1">만원</font></div>			</div>			<div class="cat">				<div class="title">상환방식</div>				<div class="sub">만기일시</div>			</div>		</div>	</div></div><div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 good-item-wrap">	<div class="good-item">		<div class="item-top">			<a href="javascript:(void(0));" onclick="fn_openInvestDetail(785)">				<div class="hover-text">					<div class="clearfix"></div>					<div class="hover-button"></div>				</div>			</a>			<div class="item-top-badge">		<span class="label label-primary">LTV 66.67%</span>			</div>			<div class="item-top-badge text-right">			<span class="label label-primary">상환중</span>			</div>		<div class="item-middle-badge">			<div style="display: inline-block;">부동산 429호</div>		<div style="display: inline-block;"><img src="/images/investV2/banner_icon_nmvbls.png"></div>		</div>			<div class="item-bottom-badge text-right">			<span>자동투자 100%</span>			</div>	<img src="/images/investV2/banner_bg_nmvbls.png" class="img-responsive">		</div>		<div class="item-bottom">			<div class="item-bottom-text">				<div class="row">					<div class="col-xs-6">						<h5>04-19-131</h5>					</div>				</div>				<h4 style="text-align:center;">[부동산] 서울 마포구 망원동 다세대</h4>				<div class="progress">				<div class="progress-bar progress-bar-striped" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="min-width:20px;width: 100%">						100%					</div>				</div>				<div class="item-top-text-num">					<small>(277명)</small>				</div>			</div>			<hr>			<div class="grade">				<div class="circle grade-MA">MA</div>			</div>			<div class="cat">				<div class="title">연 수익률</div>				<div class="sub">12<font size="1">%</font></div>			</div>			<div class="cat">				<div class="title">기간</div>				<div class="sub">9<font size="1">개월</font></div>			</div>			<div class="cat">				<div class="title">모집금액</div>				<div class="sub">5,000<font size="1">만원</font></div>			</div>			<div class="cat">				<div class="title">상환방식</div>				<div class="sub">만기일시</div>			</div>		</div>	</div></div><div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 good-item-wrap">	<div class="good-item">		<div class="item-top">			<a href="javascript:(void(0));" onclick="fn_openInvestDetail(782)">				<div class="hover-text">					<div class="clearfix"></div>					<div class="hover-button"></div>				</div>			</a>			<div class="item-top-badge">			<span class="label label-rwrdgd">리워드</span>			</div>			<div class="item-top-badge text-right">			<span class="label label-primary">상환중</span>			</div>		<div class="item-middle-badge">			<div style="display: inline-block;">홈쇼핑 119호</div>		<div style="display: inline-block;"><img src="/images/investV2/banner_icon_homeshopping.png"></div>		</div>			<div class="item-bottom-badge text-right">			<span>자동투자 100%</span>			</div>	<img src="/images/investV2/banner_bg_homeshopping.png" class="img-responsive">		</div>		<div class="item-bottom">			<div class="item-bottom-text">				<div class="row">					<div class="col-xs-6">						<h5>02-19-41</h5>					</div>				</div>				<h4 style="text-align:center;">[홈쇼핑] 도깨비방망이(V9000)</h4>				<div class="progress">				<div class="progress-bar progress-bar-striped" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="min-width:20px;width: 100%">						100%					</div>				</div>				<div class="item-top-text-num">					<small>(186명)</small>				</div>			</div>			<hr>			<div class="grade">				<div class="circle grade-MA">MA</div>			</div>			<div class="cat">				<div class="title">연 수익률</div>				<div class="sub">15<font size="1">%</font></div>			</div>			<div class="cat">				<div class="title">기간</div>				<div class="sub">6<font size="1">개월</font></div>			</div>			<div class="cat">				<div class="title">모집금액</div>				<div class="sub">5,000<font size="1">만원</font></div>			</div>			<div class="cat">				<div class="title">상환방식</div>				<div class="sub">만기일시</div>			</div>		</div>	</div></div><div class="clearfix"></div></div>
+			<div class="row" id="goodThum">
+				<c:forEach items="${investList}" var="vo">
+					<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 good-item-wrap">
+						<div class="good-item">
+							<div class="item-top">
+								<a href="${pageContext.request.contextPath}/invest_detail?
+														project_num=${vo.project_num}
+														&p_busi_num=${vo.busi_num}
+														&user_num=${memVO.user_num}">
+									<div class="hover-text">
+										<div class="clearfix"></div>
+										<div class="hover-button"></div>
+									</div>
+									<img src="${pageContext.request.contextPath}/resources/img/overwatch.jpg">
+								</a>
+								<div class="item-top-badge">
+									<span class="label label-primary">LTV ${(proVO.price / guaVO.connoisseur) * 100}%</span>
+								</div>
+								<div class="item-top-badge text-right">
+									<span class="label label-primary animated infinite flash">
+										<c:choose>
+											<c:when test="${vo.ach_state == '투자하기'}">
+												모집중
+											</c:when>
+											<c:otherwise>
+												${vo.ach_state}
+											</c:otherwise>
+										</c:choose>
+									</span>
+								</div>
+								<div class="item-middle-badge">
+									<div style="display: inline-block;">${vo.project_name}</div>
+									<div style="display: inline-block;"></div>
+								</div>
+							</div>
+							<div class="item-bottom">
+								<div class="item-bottom-text">
+									<div class="row">
+										<div class="col-xs-6">
+											<h5>04-19-136</h5>
+										</div>
+									</div>
+									<h4 style="text-align:center;">[${vo.genre}] ${vo.project_name}</h4>
+									<div class="progress">
+										<div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="${vo.current_price / vo.price * 100}" aria-valuemin="0" aria-valuemax="100" style="min-width:20px;width: 57%">
+											${vo.current_price / vo.price * 100}%					
+										</div>
+									</div>
+								</div>
+								<hr>
+								<div class="grade">
+									<div class="circle grade-MA">${vo.grade}</div>
+								</div>
+								<div class="cat">
+									<div class="title">연 수익률</div>
+									<div class="sub">${vo.rate}<font size="1">%</font></div>
+								</div>
+								<div class="cat">
+									<div class="title">기간</div>
+									<div class="sub">${vo.refund}개월<font size="1">개월</font></div>
+								</div>
+								<div class="cat">
+									<div class="title">모집금액</div>
+									<div class="sub">${vo.price}<font size="1">만원</font></div>
+								</div>
+								<div class="cat">
+									<div class="title">상환방식</div>
+									<div class="sub">${vo.repay_method}</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</c:forEach>
+				<div class="clearfix visible-md-block visible-lg-block"></div>
+			</div>
 			<div id="goodList">
 				<div class="goodlist-title">
 					<div class="row col">
@@ -1266,7 +1358,79 @@ form {
 				<div class="goodlist-title-short">
 					<hr>
 				</div>
-				<div id="goodListBody"><div class="goodlist-item">	<div class="row">		<div class="col-xs-9 col-sm-9 col-md-4">			<a href="javascript:(fn_openInvestDetail(790));">				<div class="id">04-19-136</div>				<div class="title">[부동산] 경기도 파주시 문산읍 토지(3차)</div>			</a>		</div>		<div class="col-xs-3 col-sm-3 col-md-1 col">			<div class="item-title">등급</div>			<a href="javascript:(fn_openInvestDetail(790));">				<div class="grade grade-font-MA">MA</div>			</a>		</div>		<div class="col-xs-3 col-sm-3 col-md-1 col">			<div class="item-title">연 수익률</div>			<a href="javascript:(fn_openInvestDetail(790));">				<div class="rate">13<font size="1">%</font></div>			</a>		</div>		<div class="col-xs-3 col-sm-3 col-md-1 col">			<div class="item-title">기간</div>			<a href="javascript:(fn_openInvestDetail(790));">				<div class="period">9<font size="1">개월</font></div>			</a>		</div>		<div class="col-xs-3 col-sm-3 col-md-1 col">			<div class="item-title">모집금액</div>			<a href="javascript:(fn_openInvestDetail(790));">				<div class="amt">2,500<font size="1">만원</font></div>			</a>		</div>		<div class="col-xs-3 col-sm-3 col-md-1 col">			<div class="item-title">상환방식</div>			<a href="javascript:(fn_openInvestDetail(790));">				<div class="amt">만기일시</div>			</a>		</div>		<div class="col-xs-9 col-sm-9 col-md-1 col">			<div class="progress">					<div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="57" aria-valuemin="0" aria-valuemax="100" style="min-width:20px;width: 57%">					57%				</div>			</div>		</div>		<div class="col-xs-3 col-sm-3 col-md-2 col">			<div class="invest">		<a href="javascript:(fn_openInvestReq(790));">			<span class="active">투자하기</span>		</a>			</div>		</div>	</div></div><div class="goodlist-item">	<div class="row">		<div class="col-xs-9 col-sm-9 col-md-4">			<a href="javascript:(fn_openInvestDetail(784));">				<div class="id">04-19-130</div>				<div class="title">[부동산] 인천 서구 석남동 다세대</div>			</a>		</div>		<div class="col-xs-3 col-sm-3 col-md-1 col">			<div class="item-title">등급</div>			<a href="javascript:(fn_openInvestDetail(784));">				<div class="grade grade-font-MA">MA</div>			</a>		</div>		<div class="col-xs-3 col-sm-3 col-md-1 col">			<div class="item-title">연 수익률</div>			<a href="javascript:(fn_openInvestDetail(784));">				<div class="rate">12<font size="1">%</font></div>			</a>		</div>		<div class="col-xs-3 col-sm-3 col-md-1 col">			<div class="item-title">기간</div>			<a href="javascript:(fn_openInvestDetail(784));">				<div class="period">9<font size="1">개월</font></div>			</a>		</div>		<div class="col-xs-3 col-sm-3 col-md-1 col">			<div class="item-title">모집금액</div>			<a href="javascript:(fn_openInvestDetail(784));">				<div class="amt">1,500<font size="1">만원</font></div>			</a>		</div>		<div class="col-xs-3 col-sm-3 col-md-1 col">			<div class="item-title">상환방식</div>			<a href="javascript:(fn_openInvestDetail(784));">				<div class="amt">만기일시</div>			</a>		</div>		<div class="col-xs-9 col-sm-9 col-md-1 col">			<div class="progress">					<div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="min-width:20px;width: 0%">					0%				</div>			</div>		</div>		<div class="col-xs-3 col-sm-3 col-md-2 col">			<div class="invest">		<a href="javascript:(fn_goAutoInvest());">			<span class="active">준비중</span>		</a>			</div>		</div>	</div></div><div class="goodlist-item">	<div class="row">		<div class="col-xs-9 col-sm-9 col-md-4">			<a href="javascript:(fn_openInvestDetail(792));">				<div class="id">04-19-137</div>				<div class="title">[부동산] 서울시 관악구 봉천동 다세대</div>			</a>		</div>		<div class="col-xs-3 col-sm-3 col-md-1 col">			<div class="item-title">등급</div>			<a href="javascript:(fn_openInvestDetail(792));">				<div class="grade grade-font-MA">MA</div>			</a>		</div>		<div class="col-xs-3 col-sm-3 col-md-1 col">			<div class="item-title">연 수익률</div>			<a href="javascript:(fn_openInvestDetail(792));">				<div class="rate">11<font size="1">%</font></div>			</a>		</div>		<div class="col-xs-3 col-sm-3 col-md-1 col">			<div class="item-title">기간</div>			<a href="javascript:(fn_openInvestDetail(792));">				<div class="period">9<font size="1">개월</font></div>			</a>		</div>		<div class="col-xs-3 col-sm-3 col-md-1 col">			<div class="item-title">모집금액</div>			<a href="javascript:(fn_openInvestDetail(792));">				<div class="amt">3,500<font size="1">만원</font></div>			</a>		</div>		<div class="col-xs-3 col-sm-3 col-md-1 col">			<div class="item-title">상환방식</div>			<a href="javascript:(fn_openInvestDetail(792));">				<div class="amt">만기일시</div>			</a>		</div>		<div class="col-xs-9 col-sm-9 col-md-1 col">			<div class="progress">					<div class="progress-bar progress-bar-striped" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="min-width:20px;width: 100%">					100%				</div>			</div>		</div>		<div class="col-xs-3 col-sm-3 col-md-2 col">			<div class="invest">			<span>상환중</span>			</div>		</div>	</div></div><div class="goodlist-item">	<div class="row">		<div class="col-xs-9 col-sm-9 col-md-4">			<a href="javascript:(fn_openInvestDetail(791));">				<div class="id">02-19-42</div>				<div class="title">[홈쇼핑] 쿠쿠 회전 블렌더(3차)</div>			</a>		</div>		<div class="col-xs-3 col-sm-3 col-md-1 col">			<div class="item-title">등급</div>			<a href="javascript:(fn_openInvestDetail(791));">				<div class="grade grade-font-MA">MA</div>			</a>		</div>		<div class="col-xs-3 col-sm-3 col-md-1 col">			<div class="item-title">연 수익률</div>			<a href="javascript:(fn_openInvestDetail(791));">				<div class="rate">15.5<font size="1">%</font></div>			</a>		</div>		<div class="col-xs-3 col-sm-3 col-md-1 col">			<div class="item-title">기간</div>			<a href="javascript:(fn_openInvestDetail(791));">				<div class="period">6<font size="1">개월</font></div>			</a>		</div>		<div class="col-xs-3 col-sm-3 col-md-1 col">			<div class="item-title">모집금액</div>			<a href="javascript:(fn_openInvestDetail(791));">				<div class="amt">7,000<font size="1">만원</font></div>			</a>		</div>		<div class="col-xs-3 col-sm-3 col-md-1 col">			<div class="item-title">상환방식</div>			<a href="javascript:(fn_openInvestDetail(791));">				<div class="amt">만기일시</div>			</a>		</div>		<div class="col-xs-9 col-sm-9 col-md-1 col">			<div class="progress">					<div class="progress-bar progress-bar-striped" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="min-width:20px;width: 100%">					100%				</div>			</div>		</div>		<div class="col-xs-3 col-sm-3 col-md-2 col">			<div class="invest">			<span>모집완료</span>			</div>		</div>	</div></div><div class="goodlist-item">	<div class="row">		<div class="col-xs-9 col-sm-9 col-md-4">			<a href="javascript:(fn_openInvestDetail(785));">				<div class="id">04-19-131</div>				<div class="title">[부동산] 서울 마포구 망원동 다세대</div>			</a>		</div>		<div class="col-xs-3 col-sm-3 col-md-1 col">			<div class="item-title">등급</div>			<a href="javascript:(fn_openInvestDetail(785));">				<div class="grade grade-font-MA">MA</div>			</a>		</div>		<div class="col-xs-3 col-sm-3 col-md-1 col">			<div class="item-title">연 수익률</div>			<a href="javascript:(fn_openInvestDetail(785));">				<div class="rate">12<font size="1">%</font></div>			</a>		</div>		<div class="col-xs-3 col-sm-3 col-md-1 col">			<div class="item-title">기간</div>			<a href="javascript:(fn_openInvestDetail(785));">				<div class="period">9<font size="1">개월</font></div>			</a>		</div>		<div class="col-xs-3 col-sm-3 col-md-1 col">			<div class="item-title">모집금액</div>			<a href="javascript:(fn_openInvestDetail(785));">				<div class="amt">5,000<font size="1">만원</font></div>			</a>		</div>		<div class="col-xs-3 col-sm-3 col-md-1 col">			<div class="item-title">상환방식</div>			<a href="javascript:(fn_openInvestDetail(785));">				<div class="amt">만기일시</div>			</a>		</div>		<div class="col-xs-9 col-sm-9 col-md-1 col">			<div class="progress">					<div class="progress-bar progress-bar-striped" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="min-width:20px;width: 100%">					100%				</div>			</div>		</div>		<div class="col-xs-3 col-sm-3 col-md-2 col">			<div class="invest">			<span>상환중</span>			</div>		</div>	</div></div><div class="goodlist-item">	<div class="row">		<div class="col-xs-9 col-sm-9 col-md-4">			<a href="javascript:(fn_openInvestDetail(782));">				<div class="id">02-19-41</div>				<div class="title">[홈쇼핑] 도깨비방망이(V9000)</div>			</a>		</div>		<div class="col-xs-3 col-sm-3 col-md-1 col">			<div class="item-title">등급</div>			<a href="javascript:(fn_openInvestDetail(782));">				<div class="grade grade-font-MA">MA</div>			</a>		</div>		<div class="col-xs-3 col-sm-3 col-md-1 col">			<div class="item-title">연 수익률</div>			<a href="javascript:(fn_openInvestDetail(782));">				<div class="rate">15<font size="1">%</font></div>			</a>		</div>		<div class="col-xs-3 col-sm-3 col-md-1 col">			<div class="item-title">기간</div>			<a href="javascript:(fn_openInvestDetail(782));">				<div class="period">6<font size="1">개월</font></div>			</a>		</div>		<div class="col-xs-3 col-sm-3 col-md-1 col">			<div class="item-title">모집금액</div>			<a href="javascript:(fn_openInvestDetail(782));">				<div class="amt">5,000<font size="1">만원</font></div>			</a>		</div>		<div class="col-xs-3 col-sm-3 col-md-1 col">			<div class="item-title">상환방식</div>			<a href="javascript:(fn_openInvestDetail(782));">				<div class="amt">만기일시</div>			</a>		</div>		<div class="col-xs-9 col-sm-9 col-md-1 col">			<div class="progress">					<div class="progress-bar progress-bar-striped" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="min-width:20px;width: 100%">					100%				</div>			</div>		</div>		<div class="col-xs-3 col-sm-3 col-md-2 col">			<div class="invest">			<span>상환중</span>			</div>		</div>	</div></div></div>
+				<div id="goodListBody">
+					<c:forEach items="${investList}" var="vo">
+						<div class="goodlist-item">
+							<div class="row">
+								<div class="col-xs-9 col-sm-9 col-md-4">
+									<a href="${pageContext.request.contextPath}/invest_detail?project_num=${vo.project_num}&p_busi_num=${vo.busi_num}&user_num=${memVO.user_num}">
+										<div class="id">04-19-136</div>
+										<div class="title">[${vo.genre}] ${vo.project_name}</div>
+									</a>
+								</div>
+								<div class="col-xs-3 col-sm-3 col-md-1 col">
+									<div class="item-title">등급</div>
+									<a href="${pageContext.request.contextPath}/invest_detail?project_num=${vo.project_num}&p_busi_num=${vo.busi_num}&user_num=${memVO.user_num}">
+										<div class="grade grade-font-MA">${vo.grade}</div>
+									</a>
+								</div>
+								<div class="col-xs-3 col-sm-3 col-md-1 col">
+									<div class="item-title">연 수익률</div>
+									<a href="${pageContext.request.contextPath}/invest_detail?project_num=${vo.project_num}&p_busi_num=${vo.busi_num}&user_num=${memVO.user_num}">
+										<div class="rate">${vo.rate}<font size="1">%</font></div>
+									</a>
+								</div>
+								<div class="col-xs-3 col-sm-3 col-md-1 col">
+									<div class="item-title">기간</div>
+									<a href="${pageContext.request.contextPath}/invest_detail?project_num=${vo.project_num}&p_busi_num=${vo.busi_num}&user_num=${memVO.user_num}">
+										<div class="period">${vo.refund}<font size="1">개월</font></div>
+									</a>
+								</div>
+								<div class="col-xs-3 col-sm-3 col-md-1 col">
+									<div class="item-title">모집금액</div>
+									<a href="${pageContext.request.contextPath}/invest_detail?project_num=${vo.project_num}&p_busi_num=${vo.busi_num}&user_num=${memVO.user_num}">
+										<div class="amt">${vo.price}<font size="1">만원</font></div>
+									</a>
+								</div>
+								<div class="col-xs-3 col-sm-3 col-md-1 col">
+									<div class="item-title">상환방식</div>
+									<a href="${pageContext.request.contextPath}/invest_detail?project_num=${vo.project_num}&p_busi_num=${vo.busi_num}&user_num=${memVO.user_num}">
+										<div class="amt">${vo.repay_method}</div>
+									</a>
+								</div>
+								<div class="col-xs-9 col-sm-9 col-md-1 col">
+									<div class="progress">
+										<div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="${vo.current_price / vo.price * 100}" aria-valuemin="0" aria-valuemax="100" style="min-width:20px; width: 90%;">
+											<span id="investing"></span>${vo.current_price / vo.price * 100}%
+										</div>
+									</div>
+								</div>
+								<div class="col-xs-3 col-sm-3 col-md-2 col">
+									<div class="invest">
+										<c:choose>
+											<c:when test="${vo.ach_state == '투자하기'}">
+												<c:choose>
+													<c:when test="${memVO.user_num != null}">
+														<a href="${pageContext.request.contextPath}/invest?user_num=${memVO.user_num}&project_num=${vo.project_num}"><span class="active">${vo.ach_state}u</span></a>
+													</c:when>
+													<c:when test="${memVO.busi_num != null}">
+														<a href="${pageContext.request.contextPath}/invest?busi_num=${memVO.busi_num}&project_num=${vo.project_num}"><span class="active">${vo.ach_state}u</span></a>
+													</c:when>
+													<c:otherwise>
+														<a href="${pageContext.request.contextPath}/login"><span class="active">${vo.ach_state}</span></a>
+													</c:otherwise>
+												</c:choose>
+											</c:when>
+											<c:otherwise>
+												<span class="active">${vo.ach_state}</span>
+											</c:otherwise>
+										</c:choose>
+									</div>
+								</div>
+							</div>
+						</div>
+					</c:forEach>
+				</div>
 			</div>
 			<div class="row">
 				<div class="col-md-push-6 col-md-6">
@@ -1427,6 +1591,7 @@ src="https://www.facebook.com/tr?id=1893138164280089&ev=PageView&noscript=1"
 </script>
 
 <script type="text/javascript" id="">!function(b,e,f,g,a,c,d){b.fbq||(a=b.fbq=function(){a.callMethod?a.callMethod.apply(a,arguments):a.queue.push(arguments)},b._fbq||(b._fbq=a),a.push=a,a.loaded=!0,a.version="2.0",a.queue=[],c=e.createElement(f),c.async=!0,c.src=g,d=e.getElementsByTagName(f)[0],d.parentNode.insertBefore(c,d))}(window,document,"script","https://connect.facebook.net/en_US/fbevents.js");fbq("init","1004949496302293",{em:"too@root.com"},{agent:"tmgoogletagmanager"});fbq("track","PageView");</script>
+
 </body>
 
 </html>

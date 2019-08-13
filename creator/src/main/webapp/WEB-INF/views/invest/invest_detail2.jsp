@@ -837,7 +837,9 @@ $("#waterbubbleChart").waterbubble({
 });
 </script>
 <body>
-	<div id="wowslider_engine" style="position: absolute; left: -1000px; top: -1000px; opacity: 0.1;"><a href="http://wowslider.com">wowslider.com</a></div>
+	<div id="wowslider_engine" style="position: absolute; left: -1000px; top: -1000px; opacity: 0.1;">
+		<a href="http://wowslider.com">wowslider.com</a>
+	</div>
 
 	<!-- for all pages -->
 	
@@ -847,9 +849,9 @@ $("#waterbubbleChart").waterbubble({
 
 <!-- Navigation
 ==========================================-->
-<!--header start-->
+	<!--header start-->
 	<%@ include file="../header.jsp" %>
-<!--header end-->
+	<!--header end-->
 
 <script type="text/javascript">
 	$(function() {
@@ -974,31 +976,6 @@ $(document).ready(function() {
 				$('#eventHtml2').show();
 			} else if(eventDispYn == "H") {
 				$('#eventHtml3').show();
-			}
-		}
-		
-		// 엄브렐러 배너 표시
-		var LOAN_PERIOD_NM = "9";
-		var LOAN_AMT = "25000000";
-		var REPAY_TYPE_CD = "3";
-		if(LOAN_PERIOD_NM <= 18 && LOAN_AMT <= 30000000
-			&& REPAY_TYPE_CD == '1' && LOAN_TYPE_CD == "01") {
-			$('#umbrellarBanner').show();
-		}
-		
-		// 자동투자 배너 표시
-		var OPEN_AUTO_INVEST_YN = "Y";
-		var AUTO_INVEST_YN = "Y";
-		var APLY_RESULT_YN = "N";
-		if(OPEN_AUTO_INVEST_YN == 'Y') {
-			if(AUTO_INVEST_YN == 'Y') {
-				if(APLY_RESULT_YN == 'N') {
-					$('#runAutoInvestBanner').show();
-				} else {
-					
-				}
-			} else {
-				$('#autoInvestBanner').show();
 			}
 		}
 		
@@ -1257,14 +1234,14 @@ $(document).ready(function() {
 		sec = parseInt(et - nt) / 1000;
 	}
 	
-	function fn_doInvest() {
-		var LOAN_NOS = [];
-		LOAN_NOS.push("790");
-		var comSubmit = new ComSubmit();
-		comSubmit.setUrl("/invest/req");
-		comSubmit.addParam("LOAN_NOS", LOAN_NOS);
-		comSubmit.submit();
-	}
+// 	function fn_doInvest() {
+// 		var LOAN_NOS = [];
+// 		LOAN_NOS.push("790");
+// 		var comSubmit = new ComSubmit();
+// 		comSubmit.setUrl("/invest/req");
+// 		comSubmit.addParam("LOAN_NOS", LOAN_NOS);
+// 		comSubmit.submit();
+// 	}
 	
 	function fn_doEventInvest() {
 		var LOAN_NOS = [];
@@ -1875,20 +1852,8 @@ $(document).ready(function() {
 				<div class="overlay">
 					<div class="section-body">
 						<div class="bannerWrap">
-							
-								
-									<img src="${pageContext.request.contextPath}/resources/img/banner_bg_nmvbls.png">
-								
-								
-								
-								
-								
-								
-								
-								
-							
+							<img src="${pageContext.request.contextPath}/resources/img/banner_bg_nmvbls.png">
 						</div>
-						
 						<div id="loanHeadNmWrap">
 							<div class="row">
 								<div class="col-sm-12 col-md-12">
@@ -1897,13 +1862,17 @@ $(document).ready(function() {
 											<div id="BadgeList" class="col-xs-12">
 												<ol class="investBadgeList" style="padding-left: 0px;margin-top: 0px;">
 													<li class="badge_status" id="REQ_STATS_CD">
-														<span>모집중</span>
+														<c:choose>
+															<c:when test="${proVO.ach_state == '투자하기'}">
+																<span>모집중</span>
+															</c:when>
+															<c:otherwise>
+																${proVO.ach_state}
+															</c:otherwise>
+														</c:choose>
 													</li>
 													<li class="badge_deal" id="BANNER_TITLE">
-														<span>부동산 431호</span>
-													</li>
-													<li class="badge_percent" id="AUTO_INVEST_LIMIT_PCRNT">
-														자동투자 <span>100.0</span>%
+														<span>부동산</span>
 													</li>
 												</ol>
 											</div>
@@ -1911,7 +1880,7 @@ $(document).ready(function() {
 												<div class="loanGdId" style="">
 													04-19-136
 												</div>
-												<div class="loanNm" style="">[부동산] 경기도 파주시 문산읍 토지(3차)</div>
+												<div class="loanNm" style="">[${proVO.genre}] ${proVO.project_name}</div>
 											</div>
 											<div class="col-md-2 col-sm-2 col-xs-12" style=" margin-top:30px;">
 												<div class="social">
@@ -1977,35 +1946,17 @@ $(document).ready(function() {
 							</div>
 							<div class="amt">
 								<font class="font-purple">
-								
-									
-										1,473</font><font size="2">만원</font>
-									
-									
-								
-									/ 2,500<font size="2">만원</font>
+										${proVO.current_price}</font><font size="2">만원</font>
+									/ ${proVO.price}<font size="2">만원</font>
 							</div>
 							<hr>
 							<div class="option">
-							
-								
-								<div class="row">
-									<div class="col-xs-5 col-sm-5 col-md-5 left">
-										자동투자
-									</div>
-									<div class="col-xs-7 col-sm-7 col-md-7 right">
-										100.0<font size="2">%</font>
-									</div>
-								</div>
-								
-							
-							
 								<div class="row">
 									<div class="col-xs-5 col-sm-5 col-md-5 left">
 										상환방식
 									</div>
 									<div class="col-xs-7 col-sm-7 col-md-7 right">
-										만기일시
+										${proVO.repay_method}
 									</div>
 								</div>
 							
@@ -2014,7 +1965,7 @@ $(document).ready(function() {
 										연 수익률
 									</div>
 									<div class="col-xs-7 col-sm-7 col-md-7 right">
-										13.0<font size="2">%</font>
+										${proVO.rate}<font size="2">%</font>
 									</div>
 								</div>
 							
@@ -2024,10 +1975,7 @@ $(document).ready(function() {
 										투자기간
 									</div>
 									<div class="col-xs-7 col-sm-7 col-md-7 right">
-									
-										9<font size="2">개월</font>
-									
-									
+										${proVO.refund}<font size="2">개월</font>
 									</div>
 								</div>
 								<div class="row display-none" id="lmtAmtDiv">
@@ -2042,7 +1990,7 @@ $(document).ready(function() {
 												총 투자한도 : 
 												
 												
-													원
+												${500 - inVO.invest_price}만원
 												
 												<br>
 												동일차입자 한도 : 
@@ -2056,22 +2004,18 @@ $(document).ready(function() {
 									</div>
 								</div>
 							</div>
-							
-							
-								
-								
-									
-										
-											<button type="button" class="btn btn-purple-transparent btn-block" onclick="fn_doInvest()">
-												투자신청 <i class="glyphicon glyphicon glyphicon-ok"></i>
-											</button>
-										
-										
-									
-									
-								
-								
-							
+							<c:choose>
+								<c:when test="${memVO != null && (memVO.user_num != '' && memVO.user_num != null) || (memVO.busi_num != '' && memVO.busi_num != null)}">
+									<button type="button" class="btn btn-purple-transparent btn-block" id="investBtn1">
+										투자신청 <i class="glyphicon glyphicon glyphicon-ok"></i>
+									</button>					
+								</c:when>
+								<c:otherwise>
+									<button type="button" class="btn btn-purple-transparent btn-block" id="investBtn2">
+										투자신청 <i class="glyphicon glyphicon glyphicon-ok"></i>
+									</button>
+								</c:otherwise>
+							</c:choose>
 						</div>
 					</div>
 				</div>
@@ -2087,33 +2031,6 @@ $(document).ready(function() {
 									<button type="button" class="close" aria-label="Close" onclick="gfn_closeDiv('autoInvestBanner')">
 										<span aria-hidden="true">×</span>
 									</button>
-									<a href="/invest/guide#autoInvest"><strong>자동투자</strong></a>는 오픈예정시간 <strong><span class="font-purple">30분 전</span></strong> 실행됩니다.
-								</div>
-							</div>
-						</div>
-					</div>
-					
-					<div class="row display-none" id="runAutoInvestBanner" style="display: block;">
-						<div class="col-md-12 col-box">
-							<div class="wrap">
-								<div class="box umbrellar">
-									<button type="button" class="close" aria-label="Close" onclick="gfn_closeDiv('runAutoInvestBanner')">
-										<span aria-hidden="true">×</span>
-									</button>
-									<a href="/invest/guide#autoInvest" style="color: #712594;"><strong>자동투자</strong></a>가 실행된 상태입니다.
-								</div>
-							</div>
-						</div>
-					</div>
-					
-					<div class="row display-none" id="umbrellarBanner">
-						<div class="col-md-12 col-box">
-							<div class="wrap">
-								<div class="box umbrellar">
-									<button type="button" class="close" aria-label="Close" onclick="gfn_closeDiv('umbrellarBanner')">
-										<span aria-hidden="true">×</span>
-									</button>
-									<a href="/invest/guide#umbrellar"><strong>크리에이터 엄브렐러</strong></a>로<div class="xd"></div> 보호받을 수 있는 상품입니다.
 								</div>
 							</div>
 						</div>
@@ -2128,399 +2045,25 @@ $(document).ready(function() {
 							</div>
 						</div>
 					</div>
-					
 					<div class="row display-none" id="standardBanner" style="display: block;">
 					</div>
-					
 					<div class="row" id="loanDetDiv">
 						<div class="col-md-12 col-box" style="padding-bottom:15px;">
 							<div class="wrap">
 								<div class="box loanDet">
-								
-									
-										
 
-
-<!-- 카카오 지도 web API -->
-<!-- 
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c7dcba21d939640b5090083d64029a03"></script>
- -->
-<!-- 네이버 Maps API -->
-<script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=0jj742ww77"></script>
-<script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=0jj742ww77&amp;submodules=panorama"></script><script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps-panorama.js"></script>
-
-<script type="text/javascript">
-	$(function() {
-		fn_setSameBrrwr();
-		fn_setNmvbls();
-		fn_setNmvblsScore();
-		
-		var MAP_DISP_YN = "Y";
-		if(MAP_DISP_YN == "Y") {
-			fn_setMap();
-		} else {
-			$("#map").hide();
-		}
-		
-		var PANO_DISP_YN = "Y";
-		if(PANO_DISP_YN == "Y") {
-			fn_setPano();
-		} else {
-			$("#pano").hide();
-		}
-	});
-	
-	function fn_setNmvbls() {
-		// 담보물 가치평가 세팅
-		var NMVBLS_TYPE_CD = "06";
-		if(NMVBLS_TYPE_CD == '07' || NMVBLS_TYPE_CD == '19') {	// 배당금, NPL 유형
-			
-			var title = "예상 간략배당표";
-			$('#nmvblsValueTitle').text(title);
-			
-			Highcharts.setOptions({
-				colors : ['#e4d9f7', '#8a3faa', '#e23b5b', '#443b3d']
-			});
-			$('#nmvblsValueChart').highcharts({
-				chart: {
-					type: 'column',
-					backgroundColor: '#fbf9ff',
-					height:400,
-					marginTop:40,
-					animation: true
-				},
-				title: {
-					text: ''
-				},
-				xAxis: {
-					categories : ['']
-				},
-				yAxis: {
-					min: 0,
-					title: {
-						text: title + ' 항목별 비율'
-					},
-					stackLabels: {
-						enabled: true,
-						style: {
-							color: (Highcharts.theme && Highcharts.theme.background2) || '#712594'
-						},
-						formatter: function () {
-							return comma(Math.round(this.total/10000)) + "만원";
-						}
-					}
-				},
-				credits: {
-					enabled: false
-				},
-				tooltip: {
-					headerFormat: '',
-					pointFormat: '',
-					formatter: function () {
-						return this.series.name + ":"
-							+ comma(Math.round(this.point.y/10000)) + "만원"
-							+ " (" + Math.round(this.point.percentage * 100) / 100 + "%)";
-					},
-					borderColor: '#712594'
-				},
-				plotOptions: {
-					column: {
-						stacking: 'percent'
-					}
-				},
-				series: [{
-					name: '잔여금액',
-					data: [2980000000]
-				}, {
-					name: '대출금액',
-					data: [150000000]
-				}, {
-					name: '집행비용&당해세 등',
-					data: [5520000000]
-				}, {
-					name: '선순위금액',
-					data: [3420000000]
-				}]
-			});
-			
-			$("#nmvblsValueDiv2Span1").text(comma(Math.round(0/10000)));
-			$("#nmvblsValueDiv2Span2").text(comma(Math.round(5520000000/10000)));
-			$("#nmvblsValueDiv2Span3").text(comma(Math.round(3420000000/10000)));
-			$("#nmvblsValueDiv2Span4").text(comma(Math.round(150000000/10000)));
-			$("#nmvblsValueDiv2Span5").text(comma(Math.round(2980000000/10000)));
-			
-			$('#nmvblsValueDiv2').show();
-		} else {
-			// 일반 유형
-			var title = "담보물 가치평가";
-			$('#nmvblsValueTitle').text(title);
-			
-			Highcharts.setOptions({
-				colors : ['#e4d9f7', '#8a3faa', '#e23b5b', '#443b3d']
-			});
-			$('#nmvblsValueChart').highcharts({
-				chart: {
-					type: 'column',
-					backgroundColor: '#fbf9ff',
-					height: 400,
-					marginTop:40,
-					animation: true
-				},
-				title: {
-					text: ''
-				},
-				xAxis: {
-					categories : ['']
-				},
-				yAxis: {
-					min: 0,
-					title: {
-						text: '단위 : %'
-					},
-					stackLabels: {
-						enabled: true,
-						style: {
-							color: (Highcharts.theme && Highcharts.theme.background2) || '#712594'
-						},
-						formatter: function () {
-							return comma(Math.round(this.total/10000)) + "만원";
-						}
-					}
-				},
-				credits: {
-					enabled: false
-				},
-				tooltip: {
-					headerFormat: '',
-					pointFormat: '',
-					formatter: function () {
-						return this.series.name + ":"
-							+ comma(Math.round(this.point.y/10000)) + "만원"
-							+ " (" + Math.round(this.point.percentage * 100) / 100 + "%)";
-					},
-					borderColor: '#712594'
-				},
-				plotOptions: {
-					column: {
-						stacking: 'percent'
-					}
-				},
-				series: [{
-					name: '잔여금액',
-					data: [2980000000]
-				}, {
-					name: '담보여력',
-					data: [1950000000]
-				}, {
-					name: '대출금액',
-					data: [150000000]
-				}, {
-					name: '선순위금액',
-					data: [3420000000]
-				}]
-			});
-			
-			$("#nmvblsValueDiv1Span1").text(comma(Math.round(8500000000/10000)));
-			$("#nmvblsValueDiv1Span2").text(comma(Math.round(5520000000/10000)));
-			$("#nmvblsValueDiv1Span3").text(comma(Math.round(3420000000/10000)));
-			$("#nmvblsValueDiv1Span4").text(comma(Math.round(150000000/10000)));
-			$("#nmvblsValueDiv1Span5").text(comma(Math.round(2980000000/10000)));
-			$("#nmvblsValueDiv1Span6").text(comma(Math.round(1950000000/10000)));
-			
-			$('#nmvblsValueDiv1').show();
-			
-			// LTV 계산기 세팅
-			var NMVBLS_OUTER_VL_AMT = "8500000000";
-			var NMVBLS_PRR_ORDR_AMT = "3420000000";
-			var LOAN_AMT = "150000000";
-			$("#calcOuterVlAmt").val(Math.round(NMVBLS_OUTER_VL_AMT/10000));
-			$("#calcPrrOrdrAmt").val(Math.round(NMVBLS_PRR_ORDR_AMT/10000));
-			$("#calcLoanAmt").val(LOAN_AMT/10000);
-			
-			$("#ltvCalcDiv").show();
-		}
-	}
-	
-	function fn_setNmvblsScore() {
-		// 담보물 가치평가 세팅
-		var NMVBLS_TOTAL_SCORE = "10";
-		var NMVBLS_SCORE_1 = "8";
-		var NMVBLS_SCORE_2 = "6.5";
-		var NMVBLS_SCORE_3 = "7.5";
-		var NMVBLS_SCORE_4 = "7";
-		var NMVBLS_GRD = "MA";
-		$("#NMVBLS_TOTAL_SCORE").text(NMVBLS_TOTAL_SCORE);
-		$("#NMVBLS_SCORE_1").text(NMVBLS_SCORE_1);
-		$("#NMVBLS_SCORE_2").text(NMVBLS_SCORE_2);
-		$("#NMVBLS_SCORE_3").text(NMVBLS_SCORE_3);
-		$("#NMVBLS_SCORE_4").text(NMVBLS_SCORE_4);
-		$("#NMVBLS_GRD").text(NMVBLS_GRD);
-		
-		$("#nmvblsScoreChart").highcharts({
-			chart: {
-				polar : true,
-				type : 'line',
-				height: 250
-			},
-			exporting: {
-				enabled: false
-			},
-			colors : ['#712594'],
-			title : {
-				text : ''
-			},
-			pane : {
-				size : '85%'
-			},
-			xAxis : {
-				categories : [ '안정성', '환가성', '수익성', '상환성' ],
-				tickmarkPlacement : 'on',
-				lineWidth : 0
-			},
-			yAxis : {
-				gridLineInterpolation : 'polygon',
-				lineWidth : 0,
-				min : 0,
-				max : 10,
-				tickInterval: 2
-			},
-			tooltip : {
-				formatter: function () {
-					var s = '<b>' + this.x + '</b>';
-					$.each(this.points, function () {
-						if(this.x == "안정성") {
-							s += '<br/>' + NMVBLS_SCORE_1 + '점';
-						} else if(this.x == "환가성") {
-							s += '<br/>' + NMVBLS_SCORE_2 + '점';
-						} else if(this.x == "수익성") {
-							s += '<br/>' + NMVBLS_SCORE_3 + '점';
-						} else if(this.x == "상환성") {
-							s += '<br/>' + NMVBLS_SCORE_4 + '점';
-						}
-					});
-					return s;
-				},
-				shared : true
-			},
-			legend: {
-				enabled: false
-			},
-			credits: {
-				enabled: false
-			},
-			series : [
-				{
-					name : '',
-					data : [ parseInt(NMVBLS_SCORE_1), parseInt(NMVBLS_SCORE_2), parseInt(NMVBLS_SCORE_3), parseInt(NMVBLS_SCORE_4) ],
-					pointPlacement : 'on'
-				}
-			]
-		});
-		
-		$("#nmvblsScoreChartDiv").show();
-	}
-	
-	function fn_setSameBrrwr() {
-		var comAjax = new ComAjax();
-		comAjax.setUrl("/invest/selectSameBrrwrInfo");
-		comAjax.setCallback("fn_setSameBrrwrCallback");
-		comAjax.addParam("LOAN_NO", "790");
-		comAjax.ajax();
-	}
-	
-	function fn_setSameBrrwrCallback(data) {
-		var loanCnt	= data.map.LOAN_CNT;
-		var repayCnt = data.map.REPAY_CNT;
-		var loanAmtSum = data.map.LOAN_AMT_SUM;
-		var loanRestPrncplAmtSum = data.map.LOAN_REST_PRNCPL_AMT_SUM;
-		
-		if(parseInt(loanCnt) > 0) {
-			$("#loanCnt").text(comma(loanCnt));
-			$("#repayCnt").text(comma(repayCnt));
-			$("#loanAmtSum").text(comma(Math.round(loanAmtSum / 10000)));
-			$("#loanRestPrncplAmtSum").text(comma(Math.round(loanRestPrncplAmtSum / 10000)));
-			
-			if(data.list.length > 0) {
-				var body = $("#sameBrrwrListBody");
-				body.empty();
-				var str = "";
-				$.each(data.list, function(key, value) {
-					str += "<tr>";
-					str += "	<td>";
-					str += "		<a href=\"javascript:(void(0));\" onclick=\"fn_openInvestDetail(" + value.LOAN_NO + ")\">";
-					str += "			" + value.LOAN_FULL_NM;
-					str += "		</a>";
-					str += "	</td>";
-					str += "</tr>";
-				});
-				body.append(str);
-				$("#sameBrrwrListA").show();
-			}
-		} else {
-			$("#loanCnt").text("0");
-			$("#repayCnt").text("0");
-			$("#loanAmtSum").text("0");
-			$("#loanRestPrncplAmtSum").text("0");
-		}
-	}
-	
-	function fn_openSameBrrwrModal() {
-		$("#sameBrrwrModal").modal('show');
-	}
-	
-	function fn_setMap() {
-		var NMVBLS_LAT = "37.862049";
-		var NMVBLS_LNG = "126.782824";
-			
-		var HOME_PATH = window.HOME_PATH || '.';
-		var position = new naver.maps.LatLng(NMVBLS_LAT, NMVBLS_LNG);
-		var draggable = true;
-		if($(window).width() < 767) {
-			draggable = false;
-		}
-		var map = new naver.maps.Map('map', {
-			center: position,
-			draggable : draggable,
-			zoom: 10
-		});
-	
-		var markerOptions = {
-			position: position,
-			map: map,
-			icon: {
-				url: HOME_PATH +'/img/example/pin_default.png',
-				size: new naver.maps.Size(22, 35),
-				origin: new naver.maps.Point(0, 0),
-				anchor: new naver.maps.Point(11, 35)
-			}
+	<!-- 카카오 지도 web API -->
+	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=634dddac053ddf6be0b6aa5a165b2da8"></script>
+	<script>
+		var container = document.getElementById('map');
+		var options = {
+			center: new kakao.maps.LatLng(33.450701, 126.570667),
+			level: 3
 		};
-	
-		var marker = new naver.maps.Marker(markerOptions);
-	}
-	
-	function fn_setPano() {
-		var NMVBLS_LAT = "37.862049";
-		var NMVBLS_LNG = "126.782824";
-		var NMVBLS_POV_PAN = "0";
-		var NMVBLS_POV_TILT = "25";
-		var NMVBLS_POV_FOV = "100";
-		var panoramaOptions = {
-			position: new naver.maps.LatLng(NMVBLS_LAT, NMVBLS_LNG),
-			//size: new naver.maps.Size(800, 600),
-			pov: {
-				pan: NMVBLS_POV_PAN,
-				tilt: NMVBLS_POV_TILT,
-				fov: NMVBLS_POV_FOV
-			}
-		};
-		
-		if($(window).width() < 767) {
-			$("#pano").css("height", "300px");
-		}
-		
-		var pano = new naver.maps.Panorama("pano", panoramaOptions);
-	}
-</script>
+		var map = new kakao.maps.Map(container, options);
+	</script>
+	<!-- 카카오 지도 web API -->
+
 
 <div id="loanNoticeListDiv" class="display-none">
 	<div class="row">
@@ -2541,16 +2084,11 @@ $(document).ready(function() {
 						</tr>
 					</thead>
 					<tbody>
-					
-						
-						
-							<tr>
-								<td colspan="2">
-									모집중인 상품입니다.
-								</td>
-							</tr>
-						
-					
+						<tr>
+							<td colspan="2">
+								모집중인 상품입니다.
+							</td>
+						</tr>
 					</tbody>
 				</table>
 			</div>
@@ -2587,16 +2125,16 @@ $(document).ready(function() {
 						<tbody>
 							<tr>
 								<td>
-									부동산담보
+									${guaVO.guarantee_type}
 								</td>
 								<td>
-									9개월
+									${proVO.refund}개월
 								</td>
 								<td>
-									2,500만원
+									${proVO.price}만원
 								</td>
 								<td>
-									0만원
+									${proVO.guarantee_price}만원
 								</td>
 							</tr>
 						</tbody>
@@ -2619,48 +2157,40 @@ $(document).ready(function() {
 							<col width="60%">
 						</colgroup>
 						<tbody class="tb_vert">
+							<tr>
+								<td scope="col" class="title_td">
+									유형
+								</td>
+								<td scope="col">
+									${guaVO.guarantee_type}
+								</td>
+							</tr>
 						
-							
-								
-									<tr>
-										<td scope="col" class="title_td">
-											유형
-										</td>
-										<td scope="col">
-											토지
-										</td>
-									</tr>
-								
-									<tr>
-										<td scope="col" class="title_td">
-											면적(㎡/py)
-										</td>
-										<td scope="col">
-											18,703 / 5,658
-										</td>
-									</tr>
-								
-									<tr>
-										<td scope="col" class="title_td">
-											LTV
-										</td>
-										<td scope="col">
-											42.00%
-										</td>
-									</tr>
-								
-									<tr>
-										<td scope="col" class="title_td">
-											담보권
-										</td>
-										<td scope="col">
-											근저당부질권
-										</td>
-									</tr>
-								
-							
-							
+							<tr>
+								<td scope="col" class="title_td">
+									면적(㎡/py)
+								</td>
+								<td scope="col">
+									${guaVO.supply_area} / ${guaVO.exclusive_area}
+								</td>
+							</tr>
 						
+							<tr>
+								<td scope="col" class="title_td">
+									LTV
+								</td>
+								<td scope="col">
+									${(proVO.price / guaVO.connoisseur) * 100}%
+								</td>
+							</tr>
+							<tr>
+								<td scope="col" class="title_td">
+									담보권
+								</td>
+								<td scope="col">
+									근저당부질권
+								</td>
+							</tr>
 						</tbody>
 					</table>
 				</div>
@@ -2676,48 +2206,37 @@ $(document).ready(function() {
 							<col width="60%">
 						</colgroup>
 						<tbody class="tb_vert" style="border-top:1px solid #333;">
-						
-							
-								
 									<tr>
 										<td scope="col" class="title_td">
 											유형
 										</td>
 										<td scope="col">
-											법인
+											${guaVO.debtor_type}
 										</td>
 									</tr>
-								
 									<tr>
 										<td scope="col" class="title_td">
 											업종
 										</td>
 										<td scope="col">
-											대부업
+											${guaVO.business_type}
 										</td>
 									</tr>
-								
 									<tr>
 										<td scope="col" class="title_td">
 											대출목적
 										</td>
 										<td scope="col">
-											유동화 자금
+											사업운영자금
 										</td>
 									</tr>
-								
 									<tr>
 										<td scope="col" class="title_td">
 											　
 										</td>
 										<td scope="col">
-											　
 										</td>
 									</tr>
-								
-							
-							
-						
 						</tbody>
 					</table>
 				</div>
@@ -2749,10 +2268,10 @@ $(document).ready(function() {
 						</thead>
 						<tbody>
 							<tr>
-								<td><span id="loanCnt">5</span>건</td>
+								<td><span id="loanCnt">${proVO.loan_count}</span>건</td>
 								<td><span id="repayCnt">1</span>건</td>
-								<td><span id="loanAmtSum">41,000</span>만원</td>
-								<td><span id="loanRestPrncplAmtSum">35,500</span>만원</td>
+								<td><span id="loanAmtSum">${proVO.sum_price}</span>만원</td>
+								<td><span id="loanRestPrncplAmtSum">${proVO.sum_guarantee_price}</span>만원</td>
 							</tr>
 						</tbody>
 					</table>
@@ -2786,7 +2305,6 @@ $(document).ready(function() {
 								</p>
 							</div>
 						</div>
-						
 						<div class="wrap_gTable" style="margin-bottom:10px;">
 							<div class="content">
 								<table class="table" align="right">
@@ -2822,12 +2340,79 @@ $(document).ready(function() {
 						</div>
 					</div>
 					<div class="col-xs-12 col-sm-12 col-md-6 col wrap_gGraph display-none" id="nmvblsScoreChartDiv" style="display: block;">
-						<div id="nmvblsScoreChart" data-highcharts-chart="1"><div id="highcharts-2wv0c4m-6" dir="ltr" class="highcharts-container " style="position: relative; overflow: hidden; width: 387px; height: 250px; text-align: left; line-height: normal; z-index: 0; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);"><svg version="1.1" class="highcharts-root" style="font-family:&quot;Lucida Grande&quot;, &quot;Lucida Sans Unicode&quot;, Arial, Helvetica, sans-serif;font-size:12px;" xmlns="http://www.w3.org/2000/svg" width="387" height="250" viewBox="0 0 387 250"><desc>Created with Highcharts 6.2.0</desc><defs><clipPath id="highcharts-2wv0c4m-7"><rect x="0" y="0" width="367" height="225" fill="none"></rect></clipPath><clipPath id="highcharts-2wv0c4m-12"><circle cx="183.5" cy="112.5" r="95.625"></circle></clipPath></defs><rect fill="#ffffff" class="highcharts-background" x="0" y="0" width="387" height="250" rx="0" ry="0"></rect><rect fill="none" class="highcharts-plot-background" x="10" y="10" width="367" height="225"></rect><g class="highcharts-pane-group" data-z-index="0"></g><g class="highcharts-grid highcharts-xaxis-grid " data-z-index="1"><path fill="none" stroke="#e6e6e6" stroke-width="1" data-z-index="1" class="highcharts-grid-line" d="M 193.5 122.5 L 193.5 26.875" opacity="1"></path><path fill="none" stroke="#e6e6e6" stroke-width="1" data-z-index="1" class="highcharts-grid-line" d="M 193.5 122.5 L 289.125 122.5" opacity="1"></path><path fill="none" stroke="#e6e6e6" stroke-width="1" data-z-index="1" class="highcharts-grid-line" d="M 193.5 122.5 L 193.5 218.125" opacity="1"></path><path fill="none" stroke="#e6e6e6" stroke-width="1" data-z-index="1" class="highcharts-grid-line" d="M 193.5 122.5 L 97.875 122.50000000000001" opacity="1"></path><path fill="none" stroke="#e6e6e6" stroke-width="1" data-z-index="1" class="highcharts-grid-line" d="M 193.5 122.5 L 193.49999999999997 26.875" opacity="1"></path></g><g class="highcharts-grid highcharts-yaxis-grid " data-z-index="1"><path fill="none" stroke="#e6e6e6" stroke-width="1" data-z-index="1" class="highcharts-grid-line" d="M 193.5 122.5 L 193.5 122.5 L 193.5 122.5 L 193.5 122.5 L 193.5 122.5 L 193.5 122.5" opacity="1"></path><path fill="none" stroke="#e6e6e6" stroke-width="1" data-z-index="1" class="highcharts-grid-line" d="M 193.5 103.375 L 193.5 103.375 L 174.375 122.5 L 193.5 141.625 L 212.625 122.5 L 193.5 103.375" opacity="1"></path><path fill="none" stroke="#e6e6e6" stroke-width="1" data-z-index="1" class="highcharts-grid-line" d="M 193.5 84.25 L 193.5 84.25 L 155.25 122.5 L 193.5 160.75 L 231.75 122.5 L 193.5 84.25" opacity="1"></path><path fill="none" stroke="#e6e6e6" stroke-width="1" data-z-index="1" class="highcharts-grid-line" d="M 193.5 65.125 L 193.5 65.125 L 136.125 122.5 L 193.5 179.875 L 250.875 122.5 L 193.5 65.125" opacity="1"></path><path fill="none" stroke="#e6e6e6" stroke-width="1" data-z-index="1" class="highcharts-grid-line" d="M 193.5 46 L 193.5 46 L 117 122.50000000000001 L 193.5 199 L 270 122.5 L 193.5 46" opacity="1"></path><path fill="none" stroke="#e6e6e6" stroke-width="1" data-z-index="1" class="highcharts-grid-line" d="M 193.5 26.875 L 193.49999999999997 26.875 L 97.875 122.50000000000001 L 193.5 218.125 L 289.125 122.5 L 193.5 26.875" opacity="1"></path></g><rect fill="none" class="highcharts-plot-border" data-z-index="1" x="10" y="10" width="367" height="225"></rect><g class="highcharts-axis highcharts-xaxis " data-z-index="2"><path fill="none" class="highcharts-axis-line" data-z-index="7" d="M 193.5 26.875 A 95.625 95.625 0 1 1 193.40437501593746 26.87504781249602 M 193.5 122.5 A 0 0 0 1 0 193.5 122.5 "></path></g><g class="highcharts-axis highcharts-yaxis " data-z-index="2"><path fill="none" class="highcharts-axis-line" data-z-index="7" d="M 193.5 122.5 L 193.5 26.875"></path></g><g class="highcharts-series-group" data-z-index="3"><g data-z-index="0.1" class="highcharts-series highcharts-series-0 highcharts-line-series highcharts-color-0 " transform="translate(10,10) scale(1 1)" clip-path="url(#highcharts-2wv0c4m-12)"><path fill="none" d="M 183.5 36 L 240.875 112.5000000000002 L 183.49999999999952 179.4375 L 116.5625 112.49999999999929 L 183.5 36" class="highcharts-graph" data-z-index="1" stroke="#712594" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"></path><path fill="none" d="M 173.5 36 L 183.5 36 L 240.875 112.5000000000002 L 183.49999999999952 179.4375 L 116.5625 112.49999999999929 L 183.5 36 L 193.5 36" stroke-linejoin="round" stroke="rgba(192,192,192,0.0001)" stroke-width="22" visibility="visible" data-z-index="2" class="highcharts-tracker-line"></path></g><g data-z-index="0.1" class="highcharts-markers highcharts-series-0 highcharts-line-series highcharts-color-0 highcharts-tracker" transform="translate(10,10) scale(1 1)"><path fill="#712594" d="M 187 36 A 4 4 0 1 1 186.99999800000018 35.99600000066666 Z" class="highcharts-point highcharts-color-0"></path><path fill="#712594" d="M 244 113 A 4 4 0 1 1 243.99999800000018 112.99600000066667 Z" class="highcharts-point highcharts-color-0"></path><path fill="#712594" d="M 187 179 A 4 4 0 1 1 186.99999800000018 178.99600000066667 Z" class="highcharts-point highcharts-color-0"></path><path fill="#712594" d="M 120 112 A 4 4 0 1 1 119.99999800000016 111.99600000066667 Z" class="highcharts-point highcharts-color-0"></path></g></g><text x="194" text-anchor="middle" class="highcharts-title" data-z-index="4" style="color:#333333;font-size:18px;fill:#333333;" y="24"></text><text x="194" text-anchor="middle" class="highcharts-subtitle" data-z-index="4" style="color:#666666;fill:#666666;" y="24"></text><g class="highcharts-axis-labels highcharts-xaxis-labels " data-z-index="7"><text x="193.5" style="color:#666666;cursor:default;font-size:11px;fill:#666666;" transform="translate(0,0)" text-anchor="middle" y="15.875" opacity="1">안정성</text><text x="304.125" style="color:#666666;cursor:default;font-size:11px;fill:#666666;" transform="translate(0,0)" text-anchor="start" y="126.5" opacity="1">환가성</text><text x="193.5" style="color:#666666;cursor:default;font-size:11px;fill:#666666;" transform="translate(0,0)" text-anchor="middle" y="237.125" opacity="1">수익성</text><text x="82.875" style="color:#666666;cursor:default;font-size:11px;fill:#666666;" transform="translate(0,0)" text-anchor="end" y="126.50000000000001" opacity="1">상환성</text><text x="0" style="color:#666666;cursor:default;font-size:11px;fill:#666666;" transform="translate(0,0)" text-anchor="middle" y="-9999">4</text></g><g class="highcharts-axis-labels highcharts-yaxis-labels " data-z-index="7"><text x="190.5" style="color:#666666;cursor:default;font-size:11px;fill:#666666;" text-anchor="end" transform="translate(0,0)" y="120.5" opacity="1">0</text><text x="190.5" style="color:#666666;cursor:default;font-size:11px;fill:#666666;" text-anchor="end" transform="translate(0,0)" y="101.375" opacity="1">2</text><text x="190.5" style="color:#666666;cursor:default;font-size:11px;fill:#666666;" text-anchor="end" transform="translate(0,0)" y="82.25" opacity="1">4</text><text x="190.5" style="color:#666666;cursor:default;font-size:11px;fill:#666666;" text-anchor="end" transform="translate(0,0)" y="63.125" opacity="1">6</text><text x="190.5" style="color:#666666;cursor:default;font-size:11px;fill:#666666;" text-anchor="end" transform="translate(0,0)" y="44" opacity="1">8</text><text x="0" style="color:#666666;cursor:default;font-size:11px;fill:#666666;" text-anchor="end" transform="translate(0,0)" y="-9999">10</text></g></svg></div></div>
+						<div id="nmvblsScoreChart" data-highcharts-chart="1">
+							<div id="highcharts-2wv0c4m-6" dir="ltr" class="highcharts-container " style="position: relative; overflow: hidden; width: 387px; height: 250px; text-align: left; line-height: normal; z-index: 0; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
+								<svg version="1.1" class="highcharts-root" style="font-family:&quot;Lucida Grande&quot;, &quot;Lucida Sans Unicode&quot;, Arial, Helvetica, sans-serif;font-size:12px;" xmlns="http://www.w3.org/2000/svg" width="387" height="250" viewBox="0 0 387 250">
+									<desc>Created with Highcharts 6.2.0</desc>
+									<defs>
+										<clipPath id="highcharts-2wv0c4m-7">
+											<rect x="0" y="0" width="367" height="225" fill="none"></rect>
+										</clipPath>
+										<clipPath id="highcharts-2wv0c4m-12">
+											<circle cx="183.5" cy="112.5" r="95.625"></circle>
+										</clipPath>
+									</defs>
+									<rect fill="#ffffff" class="highcharts-background" x="0" y="0" width="387" height="250" rx="0" ry="0"></rect>
+									<rect fill="none" class="highcharts-plot-background" x="10" y="10" width="367" height="225"></rect>
+									<g class="highcharts-pane-group" data-z-index="0"></g>
+									<g class="highcharts-grid highcharts-xaxis-grid " data-z-index="1">
+										<path fill="none" stroke="#e6e6e6" stroke-width="1" data-z-index="1" class="highcharts-grid-line" d="M 193.5 122.5 L 193.5 26.875" opacity="1"></path>
+										<path fill="none" stroke="#e6e6e6" stroke-width="1" data-z-index="1" class="highcharts-grid-line" d="M 193.5 122.5 L 289.125 122.5" opacity="1"></path>
+										<path fill="none" stroke="#e6e6e6" stroke-width="1" data-z-index="1" class="highcharts-grid-line" d="M 193.5 122.5 L 193.5 218.125" opacity="1"></path>
+										<path fill="none" stroke="#e6e6e6" stroke-width="1" data-z-index="1" class="highcharts-grid-line" d="M 193.5 122.5 L 97.875 122.50000000000001" opacity="1"></path>
+										<path fill="none" stroke="#e6e6e6" stroke-width="1" data-z-index="1" class="highcharts-grid-line" d="M 193.5 122.5 L 193.49999999999997 26.875" opacity="1"></path>
+									</g>
+									<g class="highcharts-grid highcharts-yaxis-grid " data-z-index="1">
+										<path fill="none" stroke="#e6e6e6" stroke-width="1" data-z-index="1" class="highcharts-grid-line" d="M 193.5 122.5 L 193.5 122.5 L 193.5 122.5 L 193.5 122.5 L 193.5 122.5 L 193.5 122.5" opacity="1"></path>
+										<path fill="none" stroke="#e6e6e6" stroke-width="1" data-z-index="1" class="highcharts-grid-line" d="M 193.5 103.375 L 193.5 103.375 L 174.375 122.5 L 193.5 141.625 L 212.625 122.5 L 193.5 103.375" opacity="1"></path>
+										<path fill="none" stroke="#e6e6e6" stroke-width="1" data-z-index="1" class="highcharts-grid-line" d="M 193.5 84.25 L 193.5 84.25 L 155.25 122.5 L 193.5 160.75 L 231.75 122.5 L 193.5 84.25" opacity="1"></path>
+										<path fill="none" stroke="#e6e6e6" stroke-width="1" data-z-index="1" class="highcharts-grid-line" d="M 193.5 65.125 L 193.5 65.125 L 136.125 122.5 L 193.5 179.875 L 250.875 122.5 L 193.5 65.125" opacity="1"></path>
+										<path fill="none" stroke="#e6e6e6" stroke-width="1" data-z-index="1" class="highcharts-grid-line" d="M 193.5 46 L 193.5 46 L 117 122.50000000000001 L 193.5 199 L 270 122.5 L 193.5 46" opacity="1"></path>
+										<path fill="none" stroke="#e6e6e6" stroke-width="1" data-z-index="1" class="highcharts-grid-line" d="M 193.5 26.875 L 193.49999999999997 26.875 L 97.875 122.50000000000001 L 193.5 218.125 L 289.125 122.5 L 193.5 26.875" opacity="1"></path>
+									</g>
+									<rect fill="none" class="highcharts-plot-border" data-z-index="1" x="10" y="10" width="367" height="225"></rect>
+									<g class="highcharts-axis highcharts-xaxis " data-z-index="2">
+										<path fill="none" class="highcharts-axis-line" data-z-index="7" d="M 193.5 26.875 A 95.625 95.625 0 1 1 193.40437501593746 26.87504781249602 M 193.5 122.5 A 0 0 0 1 0 193.5 122.5 "></path>
+									</g>
+									<g class="highcharts-axis highcharts-yaxis " data-z-index="2">
+										<path fill="none" class="highcharts-axis-line" data-z-index="7" d="M 193.5 122.5 L 193.5 26.875"></path>
+									</g>
+									<g class="highcharts-series-group" data-z-index="3">
+										<g data-z-index="0.1" class="highcharts-series highcharts-series-0 highcharts-line-series highcharts-color-0 " transform="translate(10,10) scale(1 1)" clip-path="url(#highcharts-2wv0c4m-12)">
+											<path fill="none" d="M 183.5 36 L 240.875 112.5000000000002 L 183.49999999999952 179.4375 L 116.5625 112.49999999999929 L 183.5 36" class="highcharts-graph" data-z-index="1" stroke="#712594" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"></path>
+											<path fill="none" d="M 173.5 36 L 183.5 36 L 240.875 112.5000000000002 L 183.49999999999952 179.4375 L 116.5625 112.49999999999929 L 183.5 36 L 193.5 36" stroke-linejoin="round" stroke="rgba(192,192,192,0.0001)" stroke-width="22" visibility="visible" data-z-index="2" class="highcharts-tracker-line"></path>
+										</g>
+										<g data-z-index="0.1" class="highcharts-markers highcharts-series-0 highcharts-line-series highcharts-color-0 highcharts-tracker" transform="translate(10,10) scale(1 1)">
+											<path fill="#712594" d="M 187 36 A 4 4 0 1 1 186.99999800000018 35.99600000066666 Z" class="highcharts-point highcharts-color-0"></path>
+											<path fill="#712594" d="M 244 113 A 4 4 0 1 1 243.99999800000018 112.99600000066667 Z" class="highcharts-point highcharts-color-0"></path>
+											<path fill="#712594" d="M 187 179 A 4 4 0 1 1 186.99999800000018 178.99600000066667 Z" class="highcharts-point highcharts-color-0"></path>
+											<path fill="#712594" d="M 120 112 A 4 4 0 1 1 119.99999800000016 111.99600000066667 Z" class="highcharts-point highcharts-color-0"></path>
+										</g>
+									</g>
+									<text x="194" text-anchor="middle" class="highcharts-title" data-z-index="4" style="color:#333333;font-size:18px;fill:#333333;" y="24"></text>
+									<text x="194" text-anchor="middle" class="highcharts-subtitle" data-z-index="4" style="color:#666666;fill:#666666;" y="24"></text>
+									<g class="highcharts-axis-labels highcharts-xaxis-labels " data-z-index="7">
+										<text x="193.5" style="color:#666666;cursor:default;font-size:11px;fill:#666666;" transform="translate(0,0)" text-anchor="middle" y="15.875" opacity="1">안정성</text>
+										<text x="304.125" style="color:#666666;cursor:default;font-size:11px;fill:#666666;" transform="translate(0,0)" text-anchor="start" y="126.5" opacity="1">환가성</text>
+										<text x="193.5" style="color:#666666;cursor:default;font-size:11px;fill:#666666;" transform="translate(0,0)" text-anchor="middle" y="237.125" opacity="1">수익성</text>
+										<text x="82.875" style="color:#666666;cursor:default;font-size:11px;fill:#666666;" transform="translate(0,0)" text-anchor="end" y="126.50000000000001" opacity="1">상환성</text>
+										<text x="0" style="color:#666666;cursor:default;font-size:11px;fill:#666666;" transform="translate(0,0)" text-anchor="middle" y="-9999">4</text>
+									</g>
+									<g class="highcharts-axis-labels highcharts-yaxis-labels " data-z-index="7">
+										<text x="190.5" style="color:#666666;cursor:default;font-size:11px;fill:#666666;" text-anchor="end" transform="translate(0,0)" y="120.5" opacity="1">0</text>
+										<text x="190.5" style="color:#666666;cursor:default;font-size:11px;fill:#666666;" text-anchor="end" transform="translate(0,0)" y="101.375" opacity="1">2</text>
+										<text x="190.5" style="color:#666666;cursor:default;font-size:11px;fill:#666666;" text-anchor="end" transform="translate(0,0)" y="82.25" opacity="1">4</text>
+										<text x="190.5" style="color:#666666;cursor:default;font-size:11px;fill:#666666;" text-anchor="end" transform="translate(0,0)" y="63.125" opacity="1">6</text>
+										<text x="190.5" style="color:#666666;cursor:default;font-size:11px;fill:#666666;" text-anchor="end" transform="translate(0,0)" y="44" opacity="1">8</text>
+										<text x="0" style="color:#666666;cursor:default;font-size:11px;fill:#666666;" text-anchor="end" transform="translate(0,0)" y="-9999">10</text>
+									</g>
+								</svg>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-		
 	</div>
 </div>
 <hr>
@@ -2837,13 +2422,6 @@ $(document).ready(function() {
 		<div class="investCont_tit col-md-12">
 			<b>|</b>&nbsp;담보 상세
 		</div>
-		
-			
-			
-			
-			
-			
-		
 	</div>
 	<div class="row">
 		<div class="col-md-12">
@@ -2868,13 +2446,13 @@ $(document).ready(function() {
 					<tbody>
 						<tr>
 							<td align="center">
-								토지
+								${guaVO.object_type}
 							</td>
 							<td align="center">
-								토지(㎡/py) : 18,703 / 5,658
+								토지(㎡/py) : ${guaVO.supply_area} / ${guaVO.exclusive_area}
 							</td>
 							<td align="center">
-								8,500,000,000원
+								${guaVO.connoisseur}원
 							</td>
 						</tr>
 					</tbody>
@@ -2899,10 +2477,10 @@ $(document).ready(function() {
 					<tbody class="table_underline">
 						<tr>
 							<td align="center">
-								3,420,000,000원
+								${guaVO.connoisseur}원
 							</td>
 							<td align="center">
-								42.0%
+								${proVO.price / guaVO.connoisseur * 100}%
 							</td>
 							<td align="center">
 								150.0%
@@ -2914,103 +2492,331 @@ $(document).ready(function() {
 		</div>
 	</div>
 	
-	<div class="row">
-		<div class="col-md-12">
-			<div class="title_2nd">
-				현황사진
-			</div>
-			<div class="nmvblsImg">
-				<ul>
-					<li>
-						<div class="display-none" id="rollingImgHtml">
-							<div id="wowslider-container1" class="ws_gestures" style="font-size: 10px;">
-								<div class="ws_images" style="overflow: visible;"><div style="position: relative; width: 100%; font-size: 0px; line-height: 0; max-height: 100%; overflow: hidden;"></div>
-									
-								<div style="position: absolute; top: 0px; left: 0px; right: 0px; bottom: 0px; overflow: hidden;"><div class="ws_list" style="position: absolute; top: 0px; height: 100%; transform: translate3d(0px, 0px, 0px); width: 0%;"><div class="ws_swipe_left" style="position: absolute; top: 0px; height: 100%; overflow: hidden;"></div><ul style="width: 100%;">
-									
-									</ul><div class="ws_swipe_right" style="position: absolute; top: 0px; height: 100%; overflow: hidden;"></div></div></div><div class="ws_cover" style="position: absolute; left: 0px; top: 0px; width: 100%; height: 100%; z-index: 10; background: rgb(255, 255, 255); opacity: 0;"><a href="http://wowslider.com/" style="display: block; position: absolute; left: 0px; top: 0px; width: 100%; height: 100%;" target=""></a></div><div class="ws_effect ws_basic_linear" style="position: absolute; top: 0px; left: 0px; width: 100%; height: 100%; overflow: hidden;"><div style="position: absolute; display: none; z-index: 2; width: 200%; height: 100%; transform: translate3d(0px, 0px, 0px);"><div style="position: absolute; left: auto; top: auto; width: 50%; height: 100%; overflow: hidden;"></div><div style="position: absolute; left: auto; top: auto; width: 50%; height: 100%; overflow: hidden;"></div></div></div><div style="position: absolute; padding: 0px; z-index: 56; right: 15px; bottom: 15px;"><a href="http://wowslider.com" style="position: relative; display: block; font-size: 15px; width: auto; height: auto; font-family: Arial; font-weight: normal; font-style: normal; padding: 1px 5px; margin: 0px; border-radius: 10px; outline: none;" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></div><div class="ws_controls"></div><a href="#" class="ws_fullscreen"></a></div>
-								<div class="ws_thumbs" style="overflow: hidden;">
-									<div style="transition: all 0ms linear 0s; top: -30px; left: 50px;">
-									
-									</div>
-								</div>
-								<div class="ws_shadow"></div>
+<!-- 	<div class="row"> -->
+<!-- 		<div class="col-md-12"> -->
+<!-- 			<div class="title_2nd"> -->
+<!-- 				현황사진 -->
+<!-- 			</div> -->
+<!-- 			<div class="nmvblsImg"> -->
+<!-- 				<ul> -->
+<!-- 					<li> -->
+<!-- 						<div class="display-none" id="rollingImgHtml"> -->
+<!-- 							<div id="wowslider-container1" class="ws_gestures" style="font-size: 10px;"> -->
+<!-- 								<div class="ws_images" style="overflow: visible;"> -->
+<!-- 									<div style="position: relative; width: 100%; font-size: 0px; line-height: 0; max-height: 100%; overflow: hidden;"></div> -->
+<!-- 									<div style="position: absolute; top: 0px; left: 0px; right: 0px; bottom: 0px; overflow: hidden;"> -->
+<!-- 										<div class="ws_list" style="position: absolute; top: 0px; height: 100%; transform: translate3d(0px, 0px, 0px); width: 0%;"> -->
+<!-- 										<div class="ws_swipe_left" style="position: absolute; top: 0px; height: 100%; overflow: hidden;"></div> -->
+<!-- 										<ul style="width: 100%;"> -->
+<!-- 										</ul> -->
+<!-- 										<div class="ws_swipe_right" style="position: absolute; top: 0px; height: 100%; overflow: hidden;"></div> -->
+<!-- 										</div> -->
+<!-- 									</div> -->
+<!-- 									<div class="ws_cover" style="position: absolute; left: 0px; top: 0px; width: 100%; height: 100%; z-index: 10; background: rgb(255, 255, 255); opacity: 0;"> -->
+<!-- 										<a href="http://wowslider.com/" style="display: block; position: absolute; left: 0px; top: 0px; width: 100%; height: 100%;" target=""></a> -->
+<!-- 									</div> -->
+<!-- 									<div class="ws_effect ws_basic_linear" style="position: absolute; top: 0px; left: 0px; width: 100%; height: 100%; overflow: hidden;"> -->
+<!-- 										<div style="position: absolute; display: none; z-index: 2; width: 200%; height: 100%; transform: translate3d(0px, 0px, 0px);"> -->
+<!-- 											<div style="position: absolute; left: auto; top: auto; width: 50%; height: 100%; overflow: hidden;"></div> -->
+<!-- 											<div style="position: absolute; left: auto; top: auto; width: 50%; height: 100%; overflow: hidden;"></div> -->
+<!-- 										</div> -->
+<!-- 									</div> -->
+<!-- 									<div style="position: absolute; padding: 0px; z-index: 56; right: 15px; bottom: 15px;"> -->
+<!-- 										<a href="http://wowslider.com" style="position: relative; display: block; font-size: 15px; width: auto; height: auto; font-family: Arial; font-weight: normal; font-style: normal; padding: 1px 5px; margin: 0px; border-radius: 10px; outline: none;" target="_blank"> -->
+<!-- 											&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -->
+<!-- 										</a> -->
+<!-- 									</div> -->
+<!-- 									<div class="ws_controls"></div> -->
+<!-- 									<a href="#" class="ws_fullscreen"></a> -->
+<!-- 								</div> -->
+<!-- 								<div class="ws_thumbs" style="overflow: hidden;"> -->
+<!-- 									<div style="transition: all 0ms linear 0s; top: -30px; left: 50px;"> -->
+<!-- 									</div> -->
+<!-- 								</div> -->
+<!-- 								<div class="ws_shadow"></div> -->
+<!-- 							</div> -->
+<!-- 							<script type="text/javascript" src="/js/wowSlider/wowslider.js"></script> -->
+<!-- 							<script type="text/javascript" src="/js/wowSlider/script.js"></script> -->
+<!-- 						</div> -->
+<!-- 					</li> -->
+<!-- 					<li> -->
+<!-- 						<div id="pano" style="width: 775px; height: 400px; margin-bottom: 20px; position: relative; overflow: hidden; background: url(&quot;https://ssl.pstatic.net/static/maps/mantle/1x/pattern_1.png&quot;) 0px 0px repeat scroll transparent;"> -->
+<!-- 						<div style="position: absolute; display: block; margin: 0px; padding: 0px; border: 0px none; top: 0px; left: 0px; overflow: visible; width: 100%; height: 100%; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); z-index: 0;"> -->
+<!-- 						<div style="position: absolute; display: block; margin: 0px; padding: 0px; border: 0px none; top: 0px; left: 0px; overflow: visible; width: 100%; height: 100%; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); z-index: 0;"> -->
+<!-- 						<div style="overflow: visible; width: 775px; height: 400px; position: absolute; display: block; margin: 0px; padding: 0px; border: 0px none; top: 0px; left: 0px; z-index: 1;"> -->
+<!-- 						<div style="overflow: visible; width: 100%; height: 0px; position: absolute; display: none; margin: 0px; padding: 0px; border: 0px none; top: 0px; left: 0px; z-index: 0; user-select: none;"></div> -->
+<!-- 						<div style="overflow: visible; width: 100%; height: 0px; position: absolute; display: block; margin: 0px; padding: 0px; border: 0px none; top: 0px; left: 0px; z-index: 1; user-select: none;"></div> -->
+<!-- 						<div style="position: absolute; width: 0px; height: 0px; left: 50%; top: 50%; z-index: 101; display: block;"></div> -->
+<!-- 						<div style="position: absolute; width: 0px; height: 0px; left: 50%; top: 50%; z-index: 102; display: block;"></div> -->
+<!-- 						<div style="position: absolute; width: 0px; height: 0px; left: 50%; top: 50%; z-index: 103; display: block;"></div> -->
+<!-- 						<div style="position: absolute; width: 0px; height: 0px; left: 50%; top: 50%; z-index: 104; display: block;"></div> -->
+<!-- 						<div style="position: absolute; width: 0px; height: 0px; left: 50%; top: 50%; z-index: 105; display: block;"></div> -->
+<!-- 						<div style="position: absolute; width: 0px; height: 0px; left: 50%; top: 50%; z-index: 106; display: block;"></div> -->
+<!-- 						<div style="position: absolute; width: 100%; height: 100%; z-index: 90;"> -->
+<!-- 						<div class="cube cube_0" style="position: absolute; top: 50%; left: 50%; display: none; perspective-origin: 50% 50%; perspective: 324.941px;"> -->
+<!-- 						<div class="cube_face_0_1" width="256" height="256" style="position: absolute;"> -->
+<!-- 						<div class="cube_face_preview" style="position: absolute; width: 128px; height: 128px; background-image: url(&quot;https://pvimg.pstatic.net/api/get?type=img&amp;pano_id=sPgzN7J+JOJcRxYVRH2Gcg==&amp;suffix=_P &quot;); background-repeat: no-repeat; background-position: -128px 0px; transform: translate(64px, 64px) scale(2.00781);"></div> -->
+<!-- 						</div> -->
+<!-- 						<div class="cube_face_1_1" width="256" height="256" style="position: absolute;"> -->
+<!-- 						<div class="cube_face_preview" style="position: absolute; width: 128px; height: 128px; background-image: url(&quot;https://pvimg.pstatic.net/api/get?type=img&amp;pano_id=sPgzN7J+JOJcRxYVRH2Gcg==&amp;suffix=_P &quot;); background-repeat: no-repeat; background-position: -256px 0px; transform: translate(64px, 64px) scale(2.00781);"></div> -->
+<!-- 						</div> -->
+<!-- 						<div class="cube_face_2_1" width="256" height="256" style="position: absolute;"> -->
+<!-- 						<div class="cube_face_preview" style="position: absolute; width: 128px; height: 128px; background-image: url(&quot;https://pvimg.pstatic.net/api/get?type=img&amp;pano_id=sPgzN7J+JOJcRxYVRH2Gcg==&amp;suffix=_P &quot;); background-repeat: no-repeat; background-position: -384px 0px; transform: translate(64px, 64px) scale(2.00781);"></div> -->
+<!-- 						</div> -->
+<!-- 						<div class="cube_face_3_1" width="256" height="256" style="position: absolute;"> -->
+<!-- 						<div class="cube_face_preview" style="position: absolute; width: 128px; height: 128px; background-image: url(&quot;https://pvimg.pstatic.net/api/get?type=img&amp;pano_id=sPgzN7J+JOJcRxYVRH2Gcg==&amp;suffix=_P &quot;); background-repeat: no-repeat; background-position: 0px 0px; transform: translate(64px, 64px) scale(2.00781);"></div> -->
+<!-- 						</div> -->
+<!-- 						<div class="cube_face_4_1" width="256" height="256" style="position: absolute;"> -->
+<!-- 						<div class="cube_face_preview" style="position: absolute; width: 128px; height: 128px; background-image: url(&quot;https://pvimg.pstatic.net/api/get?type=img&amp;pano_id=sPgzN7J+JOJcRxYVRH2Gcg==&amp;suffix=_P &quot;); background-repeat: no-repeat; background-position: -640px 0px; transform: translate(64px, 64px) scale(2.00781);"></div> -->
+<!-- 						</div> -->
+<!-- 						<div class="cube_face_5_1" width="256" height="256" style="position: absolute;"> -->
+<!-- 						<div class="cube_face_preview" style="position: absolute; width: 128px; height: 128px; background-image: url(&quot;https://pvimg.pstatic.net/api/get?type=img&amp;pano_id=sPgzN7J+JOJcRxYVRH2Gcg==&amp;suffix=_P &quot;); background-repeat: no-repeat; background-position: -512px 0px; transform: translate(64px, 64px) scale(2.00781);"></div> -->
+<!-- 						</div> -->
+<!-- 						</div> -->
+<!-- 						<div class="cube cube_1" style="position: absolute; top: 50%; left: 50%; display: none; perspective-origin: 50% 50%; perspective: 324.941px;"> -->
+<!-- 						<div class="cube_face_0_2" width="512" height="512" style="position: absolute;"> -->
+<!-- 						<div class="cube_face_preview" style="position: absolute; width: 128px; height: 128px; background-image: url(&quot;https://pvimg.pstatic.net/api/get?type=img&amp;pano_id=sPgzN7J+JOJcRxYVRH2Gcg==&amp;suffix=_P &quot;); background-repeat: no-repeat; background-position: -128px 0px; transform: translate(192px, 192px) scale(4.00781);"></div> -->
+<!-- 						</div> -->
+<!-- 						<div class="cube_face_1_2" width="512" height="512" style="position: absolute;"> -->
+<!-- 						<div class="cube_face_preview" style="position: absolute; width: 128px; height: 128px; background-image: url(&quot;https://pvimg.pstatic.net/api/get?type=img&amp;pano_id=sPgzN7J+JOJcRxYVRH2Gcg==&amp;suffix=_P &quot;); background-repeat: no-repeat; background-position: -256px 0px; transform: translate(192px, 192px) scale(4.00781);"></div> -->
+<!-- 						</div> -->
+<!-- 						<div class="cube_face_2_2" width="512" height="512" style="position: absolute;"> -->
+<!-- 						<div class="cube_face_preview" style="position: absolute; width: 128px; height: 128px; background-image: url(&quot;https://pvimg.pstatic.net/api/get?type=img&amp;pano_id=sPgzN7J+JOJcRxYVRH2Gcg==&amp;suffix=_P &quot;); background-repeat: no-repeat; background-position: -384px 0px; transform: translate(192px, 192px) scale(4.00781);"></div> -->
+<!-- 						</div> -->
+<!-- 						<div class="cube_face_3_2" width="512" height="512" style="position: absolute;"> -->
+<!-- 						<div class="cube_face_preview" style="position: absolute; width: 128px; height: 128px; background-image: url(&quot;https://pvimg.pstatic.net/api/get?type=img&amp;pano_id=sPgzN7J+JOJcRxYVRH2Gcg==&amp;suffix=_P &quot;); background-repeat: no-repeat; background-position: 0px 0px; transform: translate(192px, 192px) scale(4.00781);"></div> -->
+<!-- 						</div> -->
+<!-- 						<div class="cube_face_4_2" width="512" height="512" style="position: absolute;"> -->
+<!-- 						<div class="cube_face_preview" style="position: absolute; width: 128px; height: 128px; background-image: url(&quot;https://pvimg.pstatic.net/api/get?type=img&amp;pano_id=sPgzN7J+JOJcRxYVRH2Gcg==&amp;suffix=_P &quot;); background-repeat: no-repeat; background-position: -640px 0px; transform: translate(192px, 192px) scale(4.00781);"></div> -->
+<!-- 						</div> -->
+<!-- 						<div class="cube_face_5_2" width="512" height="512" style="position: absolute;"> -->
+<!-- 						<div class="cube_face_preview" style="position: absolute; width: 128px; height: 128px; background-image: url(&quot;https://pvimg.pstatic.net/api/get?type=img&amp;pano_id=sPgzN7J+JOJcRxYVRH2Gcg==&amp;suffix=_P &quot;); background-repeat: no-repeat; background-position: -512px 0px; transform: translate(192px, 192px) scale(4.00781);"></div> -->
+<!-- 						</div> -->
+<!-- 						</div> -->
+<!-- 						<div class="cube cube_2" style="position: absolute; top: 50%; left: 50%; display: block; perspective-origin: 50% 50%; perspective: 324.941px;"> -->
+<!-- 						<div class="cube_face_0_4" width="1024" height="1024" style="position: absolute; transform: matrix3d(0, 0.845, -1.813, 0, 0, 1.813, 0.845, 0, 2, 0, 0, 0, -1024, -1360.82, 820.239, 1);"> -->
+<!-- 						<div class="cube_face_preview" style="position: absolute; width: 128px; height: 128px; background-image: url(&quot;https://pvimg.pstatic.net/api/get?type=img&amp;pano_id=sPgzN7J+JOJcRxYVRH2Gcg==&amp;suffix=_P &quot;); background-repeat: no-repeat; background-position: -128px 0px; transform: translate(448px, 448px) scale(8.00781);"></div> -->
+<%-- 						<canvas class="cube_face_canvas_0_4" width="1024" height="1024" style="position: absolute;"></canvas> --%>
+<!-- 						</div> -->
+<!-- 						<div class="cube_face_1_4" width="1024" height="1024" style="position: absolute; transform: matrix3d(2, 0, 0, 0, 0, 1.813, 0.845, 0, 0, -0.845, 1.813, 0, -1024, -495.298, -1035.88, 1);"> -->
+<!-- 						<div class="cube_face_preview" style="position: absolute; width: 128px; height: 128px; background-image: url(&quot;https://pvimg.pstatic.net/api/get?type=img&amp;pano_id=sPgzN7J+JOJcRxYVRH2Gcg==&amp;suffix=_P &quot;); background-repeat: no-repeat; background-position: -256px 0px; transform: translate(448px, 448px) scale(8.00781);"></div> -->
+<%-- 						<canvas class="cube_face_canvas_1_4" width="1024" height="1024" style="position: absolute;"></canvas> --%>
+<!-- 						</div> -->
+<!-- 						<div class="cube_face_2_4" width="1024" height="1024" style="position: absolute; transform: matrix3d(0, -0.845, 1.813, 0, 0, 1.813, 0.845, 0, -2, 0, 0, 0, 1024, -495.298, -1035.88, 1);"> -->
+<!-- 						<div class="cube_face_preview" style="position: absolute; width: 128px; height: 128px; background-image: url(&quot;https://pvimg.pstatic.net/api/get?type=img&amp;pano_id=sPgzN7J+JOJcRxYVRH2Gcg==&amp;suffix=_P &quot;); background-repeat: no-repeat; background-position: -384px 0px; transform: translate(448px, 448px) scale(8.00781);"></div> -->
+<%-- 						<canvas class="cube_face_canvas_2_4" width="1024" height="1024" style="position: absolute;"></canvas> --%>
+<!-- 						</div> -->
+<!-- 						<div class="cube_face_3_4" width="1024" height="1024" style="position: absolute; transform: matrix3d(-2, 0, 0, 0, 0, 1.813, 0.845, 0, 0, 0.845, -1.813, 0, 1024, -1360.82, 820.239, 1);"> -->
+<!-- 						<div class="cube_face_preview" style="position: absolute; width: 128px; height: 128px; background-image: url(&quot;https://pvimg.pstatic.net/api/get?type=img&amp;pano_id=sPgzN7J+JOJcRxYVRH2Gcg==&amp;suffix=_P &quot;); background-repeat: no-repeat; background-position: 0px 0px; transform: translate(448px, 448px) scale(8.00781);"></div> -->
+<!-- 						</div> -->
+<!-- 						<div class="cube_face_4_4" width="1024" height="1024" style="position: absolute; transform: matrix3d(0, 0.845, -1.813, 0, -2, 0, 0, 0, 0, 1.813, 0.845, 0, 1024, -1360.82, 820.239, 1);"> -->
+<!-- 						<div class="cube_face_preview" style="position: absolute; width: 128px; height: 128px; background-image: url(&quot;https://pvimg.pstatic.net/api/get?type=img&amp;pano_id=sPgzN7J+JOJcRxYVRH2Gcg==&amp;suffix=_P &quot;); background-repeat: no-repeat; background-position: -640px 0px; transform: translate(448px, 448px) scale(8.00781);"></div> -->
+<%-- 						<canvas class="cube_face_canvas_4_4" width="1024" height="1024" style="position: absolute;"></canvas> --%>
+<!-- 						</div> -->
+<!-- 						<div class="cube_face_5_4" width="1024" height="1024" style="position: absolute; transform: matrix3d(0, 0.845, -1.813, 0, 2, 0, 0, 0, 0, -1.813, -0.845, 0, -1024, 495.298, 1685.76, 1);"> -->
+<!-- 						<div class="cube_face_preview" style="position: absolute; width: 128px; height: 128px; background-image: url(&quot;https://pvimg.pstatic.net/api/get?type=img&amp;pano_id=sPgzN7J+JOJcRxYVRH2Gcg==&amp;suffix=_P &quot;); background-repeat: no-repeat; background-position: -512px 0px; transform: translate(448px, 448px) scale(8.00781);"></div> -->
+<!-- 						</div> -->
+<!-- 						</div> -->
+<!-- 						</div> -->
+<!-- 						<div style="position: absolute; width: 0px; height: 0px; left: 50%; top: 50%; z-index: 91; display: block;"></div> -->
+<!-- 						<div style="position: absolute; width: 0px; height: 0px; left: 50%; top: 50%; z-index: 107; display: block; perspective: 357.435px; perspective-origin: 50% 50%;"> -->
+<!-- 						<div class="arrow_container_#0" style="position: absolute; width: 0px; height: 0px; left: 50%; top: 50%; z-index: 1; transform: matrix3d(-0.895, -1.546, 3.315, 0, -3.658, 0.378, -0.811, 0, 0, -7.963, -3.713, 0, 653.819, 1625.78, -782.849, 1);"> -->
+<!-- 						<img class="arrow_image" src="https://ssl.pstatic.net/static/maps/mantle/1x/panorama_arrow.png" width="126" height="126" style="max-width: none !important; max-height: none !important; min-width: 0px !important; min-height: 0px !important; width: 126px; height: 126px;"></div> -->
+<!-- 						<div class="arrow_container_#1" style="position: absolute; width: 0px; height: 0px; left: 50%; top: 50%; z-index: 1; transform: matrix3d(-0.852, 1.55, -3.324, 0, 3.668, 0.36, -0.772, 0, 0, -7.963, -3.713, 0, -545.418, 1433.68, -370.908, 1);"> -->
+<!-- 						<img class="arrow_image" src="https://ssl.pstatic.net/static/maps/mantle/1x/panorama_arrow.png" width="126" height="126" style="max-width: none !important; max-height: none !important; min-width: 0px !important; min-height: 0px !important; width: 126px; height: 126px;"></div> -->
+<!-- 						</div> -->
+<!-- 						<div style="position: absolute; width: 0px; height: 0px; left: 50%; top: 50%; z-index: 108; display: block;"> -->
+<!-- 						<div style="position: absolute; pointer-events: none; margin: 0px; padding: 0px; border: 0px solid transparent; display: none; box-sizing: content-box;"> -->
+<!-- 						<span style="position: relative; margin: 0px; padding: 0px; border: 0px solid transparent; display: block; box-sizing: content-box; text-shadow: rgb(0, 0, 0) -1px -1px 0px, rgb(0, 0, 0) 1px -1px 0px, rgb(0, 0, 0) 1px -1px 0px, rgb(0, 0, 0) 1px 1px 0px, rgb(0, 0, 0) 0px 0px 1px; width: 200px; height: 20px; left: -100px; top: -30px; text-align: center; font-weight: bold; color: rgb(255, 255, 255); font-size: 14px; line-height: 20px; letter-spacing: -0.5px;">문향로75번길</span> -->
+<!-- 						</div> -->
+<!-- 						<div style="position: absolute; pointer-events: none; margin: 0px; padding: 0px; border: 0px solid transparent; display: none; box-sizing: content-box;"><span style="position: relative; margin: 0px; padding: 0px; border: 0px solid transparent; display: block; box-sizing: content-box; text-shadow: rgb(0, 0, 0) -1px -1px 0px, rgb(0, 0, 0) 1px -1px 0px, rgb(0, 0, 0) 1px -1px 0px, rgb(0, 0, 0) 1px 1px 0px, rgb(0, 0, 0) 0px 0px 1px; width: 200px; height: 20px; left: -100px; top: -30px; text-align: center; font-weight: bold; color: rgb(255, 255, 255); font-size: 14px; line-height: 20px; letter-spacing: -0.5px;">문향로75번길</span> -->
+<!-- 						</div> -->
+<!-- 						</div> -->
+<!-- 						</div> -->
+<!-- 						</div> -->
+<!-- 						</div> -->
+<!-- 						<div style="position: absolute; z-index: 100; margin: 0px; padding: 0px; pointer-events: none; bottom: 0px; right: 0px;"> -->
+<!-- 						<div style="border: 0px none; margin: 0px; padding: 0px; pointer-events: none; float: right; height: 22px;"> -->
+<!-- 						<a href="https://ssl.pstatic.net/static/maps/mantle/notice/legal.html" target="_blank" style="display: block; width: 48px; height: 17px; overflow: hidden; margin: 0px 5px 5px 12px; pointer-events: auto;"> -->
+<!-- 						<img src="https://ssl.pstatic.net/static/maps/mantle/1x/naver-normal-new.png" width="48" height="17" alt="NAVER" style="display:block;width:48px;height:17px;overflow:hidden;border:0 none;margin:0;padding:0;max-width:none !important;max-height:none !important;min-width:0 !important;min-height:0 !important;"> -->
+<!-- 						</a> -->
+<!-- 						</div> -->
+<!-- 						</div> -->
+<!-- 						</div> -->
+<!-- 						<div id="map" style="width: 100%; height: 300px; margin-bottom: 20px; position: relative; overflow: hidden; background: url(&quot;https://ssl.pstatic.net/static/maps/mantle/1x/pattern_1.png&quot;) 0px 0px repeat transparent;"> -->
+<!-- 						<div style="position: absolute; display: block; margin: 0px; padding: 0px; border: 0px none; top: 0px; left: 0px; overflow: visible; width: 100%; height: 100%; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); z-index: 0; cursor: url(&quot;https://ssl.pstatic.net/static/maps/mantle/1x/openhand.cur&quot;), default;"> -->
+<!-- 						<div style="position: absolute; display: block; margin: 0px; padding: 0px; border: 0px none; top: 0px; left: 0px; overflow: visible; width: 100%; height: 100%; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); z-index: 0;"> -->
+<!-- 						<div style="overflow: visible; width: 100%; height: 0px; position: absolute; display: block; margin: 0px; padding: 0px; border: 0px none; top: 0px; left: 0px; z-index: 1; zoom: 1;"> -->
+<!-- 						<div style="overflow: visible; width: 100%; height: 0px; position: absolute; margin: 0px; padding: 0px; border: 0px none; top: 0px; left: 0px; z-index: 0; user-select: none; zoom: 1; display: none;"> -->
+<!-- 						<div style="position: absolute; top: 0px; left: 0px; z-index: 0; margin: 0px; padding: 0px; border: 0px solid transparent; display: block; width: 0px; height: 0px; overflow: visible; box-sizing: content-box !important;"> -->
+<!-- 						<div draggable="false" unselectable="on" style="position: absolute; top: 62px; left: 173px; z-index: 0; margin: 0px; padding: 0px; border: 0px solid transparent; user-select: none; -webkit-user-drag: none; box-sizing: content-box !important; opacity: 1; width: 256px; height: 256px;" data-ntranid="NTran-17"> -->
+<!-- 						<img draggable="false" unselectable="on" alt="" width="256" height="256" src="https://simg.pstatic.net/onetile/get/203/0/0/8/205/193/bl_vc_bg/ol_vc_an" style="margin: 0px; padding: 0px; border: 0px solid transparent; display: block; user-select: none; -webkit-user-drag: none; box-sizing: content-box !important; max-width: none !important; max-height: none !important; min-width: 0px !important; min-height: 0px !important; opacity: 1; position: absolute; left: 0px; top: 0px; z-index: 0; width: 256px; height: 256px;"></div> -->
+<!-- 						<div draggable="false" unselectable="on" style="position: absolute; top: 318px; left: 173px; z-index: 0; margin: 0px; padding: 0px; border: 0px solid transparent; user-select: none; -webkit-user-drag: none; box-sizing: content-box !important; opacity: 1; width: 256px; height: 256px;" data-ntranid="NTran-20"> -->
+<!-- 						<img draggable="false" unselectable="on" alt="" width="256" height="256" src="https://simg.pstatic.net/onetile/get/203/0/0/8/205/192/bl_vc_bg/ol_vc_an" style="margin: 0px; padding: 0px; border: 0px solid transparent; display: block; user-select: none; -webkit-user-drag: none; box-sizing: content-box !important; max-width: none !important; max-height: none !important; min-width: 0px !important; min-height: 0px !important; opacity: 1; position: absolute; left: 0px; top: 0px; z-index: 0; width: 256px; height: 256px;"></div> -->
+<!-- 						<div draggable="false" unselectable="on" style="position: absolute; top: -194px; left: 173px; z-index: 0; margin: 0px; padding: 0px; border: 0px solid transparent; user-select: none; -webkit-user-drag: none; box-sizing: content-box !important; opacity: 1; width: 256px; height: 256px;" data-ntranid="NTran-16"> -->
+<!-- 						<img draggable="false" unselectable="on" alt="" width="256" height="256" src="https://simg.pstatic.net/onetile/get/203/0/0/8/205/194/bl_vc_bg/ol_vc_an" style="margin: 0px; padding: 0px; border: 0px solid transparent; display: block; user-select: none; -webkit-user-drag: none; box-sizing: content-box !important; max-width: none !important; max-height: none !important; min-width: 0px !important; min-height: 0px !important; opacity: 1; position: absolute; left: 0px; top: 0px; z-index: 0; width: 256px; height: 256px;"></div> -->
+<!-- 						<div draggable="false" unselectable="on" style="position: absolute; top: -194px; left: 429px; z-index: 0; margin: 0px; padding: 0px; border: 0px solid transparent; user-select: none; -webkit-user-drag: none; box-sizing: content-box !important; opacity: 1; width: 256px; height: 256px;" data-ntranid="NTran-18"> -->
+<!-- 						<img draggable="false" unselectable="on" alt="" width="256" height="256" src="https://simg.pstatic.net/onetile/get/203/0/0/8/206/194/bl_vc_bg/ol_vc_an" style="margin: 0px; padding: 0px; border: 0px solid transparent; display: block; user-select: none; -webkit-user-drag: none; box-sizing: content-box !important; max-width: none !important; max-height: none !important; min-width: 0px !important; min-height: 0px !important; opacity: 1; position: absolute; left: 0px; top: 0px; z-index: 0; width: 256px; height: 256px;"></div> -->
+<!-- 						<div draggable="false" unselectable="on" style="position: absolute; top: 318px; left: -83px; z-index: 0; margin: 0px; padding: 0px; border: 0px solid transparent; user-select: none; -webkit-user-drag: none; box-sizing: content-box !important; opacity: 1; width: 256px; height: 256px;" data-ntranid="NTran-19"> -->
+<!-- 						<img draggable="false" unselectable="on" alt="" width="256" height="256" src="https://simg.pstatic.net/onetile/get/203/0/0/8/204/192/bl_vc_bg/ol_vc_an" style="margin: 0px; padding: 0px; border: 0px solid transparent; display: block; user-select: none; -webkit-user-drag: none; box-sizing: content-box !important; max-width: none !important; max-height: none !important; min-width: 0px !important; min-height: 0px !important; opacity: 1; position: absolute; left: 0px; top: 0px; z-index: 0; width: 256px; height: 256px;"></div> -->
+<!-- 						<div draggable="false" unselectable="on" style="position: absolute; top: 62px; left: 429px; z-index: 0; margin: 0px; padding: 0px; border: 0px solid transparent; user-select: none; -webkit-user-drag: none; box-sizing: content-box !important; opacity: 1; width: 256px; height: 256px;" data-ntranid="NTran-21"> -->
+<!-- 						<img draggable="false" unselectable="on" alt="" width="256" height="256" src="https://simg.pstatic.net/onetile/get/203/0/0/8/206/193/bl_vc_bg/ol_vc_an" style="margin: 0px; padding: 0px; border: 0px solid transparent; display: block; user-select: none; -webkit-user-drag: none; box-sizing: content-box !important; max-width: none !important; max-height: none !important; min-width: 0px !important; min-height: 0px !important; opacity: 1; position: absolute; left: 0px; top: 0px; z-index: 0; width: 256px; height: 256px;"></div> -->
+<!-- 						<div draggable="false" unselectable="on" style="position: absolute; top: 62px; left: -83px; z-index: 0; margin: 0px; padding: 0px; border: 0px solid transparent; user-select: none; -webkit-user-drag: none; box-sizing: content-box !important; opacity: 1; width: 256px; height: 256px;" data-ntranid="NTran-22"> -->
+<!-- 						<img draggable="false" unselectable="on" alt="" width="256" height="256" src="https://simg.pstatic.net/onetile/get/203/0/0/8/204/193/bl_vc_bg/ol_vc_an" style="margin: 0px; padding: 0px; border: 0px solid transparent; display: block; user-select: none; -webkit-user-drag: none; box-sizing: content-box !important; max-width: none !important; max-height: none !important; min-width: 0px !important; min-height: 0px !important; opacity: 1; position: absolute; left: 0px; top: 0px; z-index: 0; width: 256px; height: 256px;"></div> -->
+<!-- 						<div draggable="false" unselectable="on" style="position: absolute; top: 318px; left: 429px; z-index: 0; margin: 0px; padding: 0px; border: 0px solid transparent; user-select: none; -webkit-user-drag: none; box-sizing: content-box !important; opacity: 1; width: 256px; height: 256px;" data-ntranid="NTran-26"> -->
+<!-- 						<img draggable="false" unselectable="on" alt="" width="256" height="256" src="https://simg.pstatic.net/onetile/get/203/0/0/8/206/192/bl_vc_bg/ol_vc_an" style="margin: 0px; padding: 0px; border: 0px solid transparent; display: block; user-select: none; -webkit-user-drag: none; box-sizing: content-box !important; max-width: none !important; max-height: none !important; min-width: 0px !important; min-height: 0px !important; opacity: 1; position: absolute; left: 0px; top: 0px; z-index: 0; width: 256px; height: 256px;"></div> -->
+<!-- 						<div draggable="false" unselectable="on" style="position: absolute; top: -194px; left: -83px; z-index: 0; margin: 0px; padding: 0px; border: 0px solid transparent; user-select: none; -webkit-user-drag: none; box-sizing: content-box !important; opacity: 1; width: 256px; height: 256px;" data-ntranid="NTran-24"> -->
+<!-- 						<img draggable="false" unselectable="on" alt="" width="256" height="256" src="https://simg.pstatic.net/onetile/get/203/0/0/8/204/194/bl_vc_bg/ol_vc_an" style="margin: 0px; padding: 0px; border: 0px solid transparent; display: block; user-select: none; -webkit-user-drag: none; box-sizing: content-box !important; max-width: none !important; max-height: none !important; min-width: 0px !important; min-height: 0px !important; opacity: 1; position: absolute; left: 0px; top: 0px; z-index: 0; width: 256px; height: 256px;"></div> -->
+<!-- 						<div draggable="false" unselectable="on" style="position: absolute; top: -194px; left: 685px; z-index: 0; margin: 0px; padding: 0px; border: 0px solid transparent; user-select: none; -webkit-user-drag: none; box-sizing: content-box !important; opacity: 1; width: 256px; height: 256px;" data-ntranid="NTran-27"> -->
+<!-- 						<img draggable="false" unselectable="on" alt="" width="256" height="256" src="https://simg.pstatic.net/onetile/get/203/0/0/8/207/194/bl_vc_bg/ol_vc_an" style="margin: 0px; padding: 0px; border: 0px solid transparent; display: block; user-select: none; -webkit-user-drag: none; box-sizing: content-box !important; max-width: none !important; max-height: none !important; min-width: 0px !important; min-height: 0px !important; opacity: 1; position: absolute; left: 0px; top: 0px; z-index: 0; width: 256px; height: 256px;"></div> -->
+<!-- 						<div draggable="false" unselectable="on" style="position: absolute; top: 318px; left: -339px; z-index: 0; margin: 0px; padding: 0px; border: 0px solid transparent; user-select: none; -webkit-user-drag: none; box-sizing: content-box !important; opacity: 1; width: 256px; height: 256px;" data-ntranid="NTran-23"> -->
+<!-- 						<img draggable="false" unselectable="on" alt="" width="256" height="256" src="https://simg.pstatic.net/onetile/get/203/0/0/8/203/192/bl_vc_bg/ol_vc_an" style="margin: 0px; padding: 0px; border: 0px solid transparent; display: block; user-select: none; -webkit-user-drag: none; box-sizing: content-box !important; max-width: none !important; max-height: none !important; min-width: 0px !important; min-height: 0px !important; opacity: 1; position: absolute; left: 0px; top: 0px; z-index: 0; width: 256px; height: 256px;"></div> -->
+<!-- 						<div draggable="false" unselectable="on" style="position: absolute; top: 62px; left: 685px; z-index: 0; margin: 0px; padding: 0px; border: 0px solid transparent; user-select: none; -webkit-user-drag: none; box-sizing: content-box !important; opacity: 1; width: 256px; height: 256px;" data-ntranid="NTran-25"> -->
+<!-- 						<img draggable="false" unselectable="on" alt="" width="256" height="256" src="https://simg.pstatic.net/onetile/get/203/0/0/8/207/193/bl_vc_bg/ol_vc_an" style="margin: 0px; padding: 0px; border: 0px solid transparent; display: block; user-select: none; -webkit-user-drag: none; box-sizing: content-box !important; max-width: none !important; max-height: none !important; min-width: 0px !important; min-height: 0px !important; opacity: 1; position: absolute; left: 0px; top: 0px; z-index: 0; width: 256px; height: 256px;"></div> -->
+<!-- 						<div draggable="false" unselectable="on" style="position: absolute; top: 62px; left: -339px; z-index: 0; margin: 0px; padding: 0px; border: 0px solid transparent; user-select: none; -webkit-user-drag: none; box-sizing: content-box !important; opacity: 1; width: 256px; height: 256px;" data-ntranid="NTran-28"> -->
+<!-- 						<img draggable="false" unselectable="on" alt="" width="256" height="256" src="https://simg.pstatic.net/onetile/get/203/0/0/8/203/193/bl_vc_bg/ol_vc_an" style="margin: 0px; padding: 0px; border: 0px solid transparent; display: block; user-select: none; -webkit-user-drag: none; box-sizing: content-box !important; max-width: none !important; max-height: none !important; min-width: 0px !important; min-height: 0px !important; opacity: 1; position: absolute; left: 0px; top: 0px; z-index: 0; width: 256px; height: 256px;"></div> -->
+<!-- 						<div draggable="false" unselectable="on" style="position: absolute; top: 318px; left: 685px; z-index: 0; margin: 0px; padding: 0px; border: 0px solid transparent; user-select: none; -webkit-user-drag: none; box-sizing: content-box !important; opacity: 1; width: 256px; height: 256px;" data-ntranid="NTran-29"> -->
+<!-- 						<img draggable="false" unselectable="on" alt="" width="256" height="256" src="https://simg.pstatic.net/onetile/get/203/0/0/8/207/192/bl_vc_bg/ol_vc_an" style="margin: 0px; padding: 0px; border: 0px solid transparent; display: block; user-select: none; -webkit-user-drag: none; box-sizing: content-box !important; max-width: none !important; max-height: none !important; min-width: 0px !important; min-height: 0px !important; opacity: 1; position: absolute; left: 0px; top: 0px; z-index: 0; width: 256px; height: 256px;"></div> -->
+<!-- 						<div draggable="false" unselectable="on" style="position: absolute; top: -194px; left: -339px; z-index: 0; margin: 0px; padding: 0px; border: 0px solid transparent; user-select: none; -webkit-user-drag: none; box-sizing: content-box !important; opacity: 1; width: 256px; height: 256px;" data-ntranid="NTran-30"> -->
+<!-- 						<img draggable="false" unselectable="on" alt="" width="256" height="256" src="https://simg.pstatic.net/onetile/get/203/0/0/8/203/194/bl_vc_bg/ol_vc_an" style="margin: 0px; padding: 0px; border: 0px solid transparent; display: block; user-select: none; -webkit-user-drag: none; box-sizing: content-box !important; max-width: none !important; max-height: none !important; min-width: 0px !important; min-height: 0px !important; opacity: 1; position: absolute; left: 0px; top: 0px; z-index: 0; width: 256px; height: 256px;"></div> -->
+<!-- 						</div> -->
+<!-- 						</div> -->
+<!-- 						<div style="overflow: visible; width: 100%; height: 0px; position: absolute; margin: 0px; padding: 0px; border: 0px none; top: 0px; left: 0px; z-index: 1; user-select: none; zoom: 1;"> -->
+<!-- 						<div style="position: absolute; top: 0px; left: 0px; z-index: 0; margin: 0px; padding: 0px; border: 0px solid transparent; display: block; width: 0px; height: 0px; overflow: visible; box-sizing: content-box !important;"> -->
+<!-- 						<div draggable="false" unselectable="on" style="position: absolute; top: 116px; left: 184px; z-index: 0; margin: 0px; padding: 0px; border: 0px solid transparent; user-select: none; -webkit-user-drag: none; box-sizing: content-box !important; opacity: 1; width: 256px; height: 256px;" data-ntranid="NTran-31"> -->
+<!-- 						<img draggable="false" unselectable="on" alt="" width="256" height="256" src="https://simg.pstatic.net/onetile/get/203/0/0/9/412/386/bl_vc_bg/ol_vc_an" style="margin: 0px; padding: 0px; border: 0px solid transparent; display: block; user-select: none; -webkit-user-drag: none; box-sizing: content-box !important; max-width: none !important; max-height: none !important; min-width: 0px !important; min-height: 0px !important; opacity: 1; position: absolute; left: 0px; top: 0px; z-index: 0; width: 256px; height: 256px;"></div> -->
+<!-- 						<div draggable="false" unselectable="on" style="position: absolute; top: 372px; left: 184px; z-index: 0; margin: 0px; padding: 0px; border: 0px solid transparent; user-select: none; -webkit-user-drag: none; box-sizing: content-box !important; opacity: 1; width: 256px; height: 256px;" data-ntranid="NTran-32"> -->
+<!-- 						<img draggable="false" unselectable="on" alt="" width="256" height="256" src="https://simg.pstatic.net/onetile/get/203/0/0/9/412/385/bl_vc_bg/ol_vc_an" style="margin: 0px; padding: 0px; border: 0px solid transparent; display: block; user-select: none; -webkit-user-drag: none; box-sizing: content-box !important; max-width: none !important; max-height: none !important; min-width: 0px !important; min-height: 0px !important; opacity: 1; position: absolute; left: 0px; top: 0px; z-index: 0; width: 256px; height: 256px;"></div> -->
+<!-- 						<div draggable="false" unselectable="on" style="position: absolute; top: -140px; left: 184px; z-index: 0; margin: 0px; padding: 0px; border: 0px solid transparent; user-select: none; -webkit-user-drag: none; box-sizing: content-box !important; opacity: 1; width: 256px; height: 256px;" data-ntranid="NTran-34"> -->
+<!-- 						<img draggable="false" unselectable="on" alt="" width="256" height="256" src="https://simg.pstatic.net/onetile/get/203/0/0/9/412/387/bl_vc_bg/ol_vc_an" style="margin: 0px; padding: 0px; border: 0px solid transparent; display: block; user-select: none; -webkit-user-drag: none; box-sizing: content-box !important; max-width: none !important; max-height: none !important; min-width: 0px !important; min-height: 0px !important; opacity: 1; position: absolute; left: 0px; top: 0px; z-index: 0; width: 256px; height: 256px;"></div> -->
+<!-- 						<div draggable="false" unselectable="on" style="position: absolute; top: -140px; left: 440px; z-index: 0; margin: 0px; padding: 0px; border: 0px solid transparent; user-select: none; -webkit-user-drag: none; box-sizing: content-box !important; opacity: 1; width: 256px; height: 256px;" data-ntranid="NTran-35"> -->
+<!-- 						<img draggable="false" unselectable="on" alt="" width="256" height="256" src="https://simg.pstatic.net/onetile/get/203/0/0/9/413/387/bl_vc_bg/ol_vc_an" style="margin: 0px; padding: 0px; border: 0px solid transparent; display: block; user-select: none; -webkit-user-drag: none; box-sizing: content-box !important; max-width: none !important; max-height: none !important; min-width: 0px !important; min-height: 0px !important; opacity: 1; position: absolute; left: 0px; top: 0px; z-index: 0; width: 256px; height: 256px;"></div> -->
+<!-- 						<div draggable="false" unselectable="on" style="position: absolute; top: 372px; left: -72px; z-index: 0; margin: 0px; padding: 0px; border: 0px solid transparent; user-select: none; -webkit-user-drag: none; box-sizing: content-box !important; opacity: 1; width: 256px; height: 256px;" data-ntranid="NTran-33"> -->
+<!-- 						<img draggable="false" unselectable="on" alt="" width="256" height="256" src="https://simg.pstatic.net/onetile/get/203/0/0/9/411/385/bl_vc_bg/ol_vc_an" style="margin: 0px; padding: 0px; border: 0px solid transparent; display: block; user-select: none; -webkit-user-drag: none; box-sizing: content-box !important; max-width: none !important; max-height: none !important; min-width: 0px !important; min-height: 0px !important; opacity: 1; position: absolute; left: 0px; top: 0px; z-index: 0; width: 256px; height: 256px;"></div> -->
+<!-- 						<div draggable="false" unselectable="on" style="position: absolute; top: 116px; left: 440px; z-index: 0; margin: 0px; padding: 0px; border: 0px solid transparent; user-select: none; -webkit-user-drag: none; box-sizing: content-box !important; opacity: 1; width: 256px; height: 256px;" data-ntranid="NTran-41"> -->
+<!-- 						<img draggable="false" unselectable="on" alt="" width="256" height="256" src="https://simg.pstatic.net/onetile/get/203/0/0/9/413/386/bl_vc_bg/ol_vc_an" style="margin: 0px; padding: 0px; border: 0px solid transparent; display: block; user-select: none; -webkit-user-drag: none; box-sizing: content-box !important; max-width: none !important; max-height: none !important; min-width: 0px !important; min-height: 0px !important; opacity: 1; position: absolute; left: 0px; top: 0px; z-index: 0; width: 256px; height: 256px;"></div> -->
+<!-- 						<div draggable="false" unselectable="on" style="position: absolute; top: 116px; left: -72px; z-index: 0; margin: 0px; padding: 0px; border: 0px solid transparent; user-select: none; -webkit-user-drag: none; box-sizing: content-box !important; opacity: 1; width: 256px; height: 256px;" data-ntranid="NTran-36"> -->
+<!-- 						<img draggable="false" unselectable="on" alt="" width="256" height="256" src="https://simg.pstatic.net/onetile/get/203/0/0/9/411/386/bl_vc_bg/ol_vc_an" style="margin: 0px; padding: 0px; border: 0px solid 1transparent; display: block; user-select: none; -webkit-user-drag: none; box-sizing: content-box !important; max-width: none !important; max-height: none !important; min-width: 0px !important; min-height: 0px !important; opacity: 1; position: absolute; left: 0px; top: 0px; z-index: 0; width: 256px; height: 256px;"></div> -->
+<!-- 						<div draggable="false" unselectable="on" style="position: absolute; top: 372px; left: 440px; z-index: 0; margin: 0px; padding: 0px; border: 0px solid transparent; user-select: none; -webkit-user-drag: none; box-sizing: content-box !important; opacity: 1; width: 256px; height: 256px;" data-ntranid="NTran-37"> -->
+<!-- 						<img draggable="false" unselectable="on" alt="" width="256" height="256" src="https://simg.pstatic.net/onetile/get/203/0/0/9/413/385/bl_vc_bg/ol_vc_an" style="margin: 0px; padding: 0px; border: 0px solid transparent; display: block; user-select: none; -webkit-user-drag: none; box-sizing: content-box !important; max-width: none !important; max-height: none !important; min-width: 0px !important; min-height: 0px !important; opacity: 1; position: absolute; left: 0px; top: 0px; z-index: 0; width: 256px; height: 256px;"></div> -->
+<!-- 						<div draggable="false" unselectable="on" style="position: absolute; top: -140px; left: -72px; z-index: 0; margin: 0px; padding: 0px; border: 0px solid transparent; user-select: none; -webkit-user-drag: none; box-sizing: content-box !important; opacity: 1; width: 256px; height: 256px;" data-ntranid="NTran-38"> -->
+<!-- 						<img draggable="false" unselectable="on" alt="" width="256" height="256" src="https://simg.pstatic.net/onetile/get/203/0/0/9/411/387/bl_vc_bg/ol_vc_an" style="margin: 0px; padding: 0px; border: 0px solid transparent; display: block; user-select: none; -webkit-user-drag: none; box-sizing: content-box !important; max-width: none !important; max-height: none !important; min-width: 0px !important; min-height: 0px !important; opacity: 1; position: absolute; left: 0px; top: 0px; z-index: 0; width: 256px; height: 256px;"></div> -->
+<!-- 						<div draggable="false" unselectable="on" style="position: absolute; top: -140px; left: 696px; z-index: 0; margin: 0px; padding: 0px; border: 0px solid transparent; user-select: none; -webkit-user-drag: none; box-sizing: content-box !important; opacity: 1; width: 256px; height: 256px;" data-ntranid="NTran-39"> -->
+<!-- 						<img draggable="false" unselectable="on" alt="" width="256" height="256" src="https://simg.pstatic.net/onetile/get/203/0/0/9/414/387/bl_vc_bg/ol_vc_an" style="margin: 0px; padding: 0px; border: 0px solid transparent; display: block; user-select: none; -webkit-user-drag: none; box-sizing: content-box !important; max-width: none !important; max-height: none !important; min-width: 0px !important; min-height: 0px !important; opacity: 1; position: absolute; left: 0px; top: 0px; z-index: 0; width: 256px; height: 256px;"></div> -->
+<!-- 						<div draggable="false" unselectable="on" style="position: absolute; top: 372px; left: -328px; z-index: 0; margin: 0px; padding: 0px; border: 0px solid transparent; user-select: none; -webkit-user-drag: none; box-sizing: content-box !important; opacity: 1; width: 256px; height: 256px;" data-ntranid="NTran-40"> -->
+<!-- 						<img draggable="false" unselectable="on" alt="" width="256" height="256" src="https://simg.pstatic.net/onetile/get/203/0/0/9/410/385/bl_vc_bg/ol_vc_an" style="margin: 0px; padding: 0px; border: 0px solid transparent; display: block; user-select: none; -webkit-user-drag: none; box-sizing: content-box !important; max-width: none !important; max-height: none !important; min-width: 0px !important; min-height: 0px !important; opacity: 1; position: absolute; left: 0px; top: 0px; z-index: 0; width: 256px; height: 256px;"></div> -->
+<!-- 						<div draggable="false" unselectable="on" style="position: absolute; top: 116px; left: 696px; z-index: 0; margin: 0px; padding: 0px; border: 0px solid transparent; user-select: none; -webkit-user-drag: none; box-sizing: content-box !important; opacity: 1; width: 256px; height: 256px;" data-ntranid="NTran-42"> -->
+<!-- 						<img draggable="false" unselectable="on" alt="" width="256" height="256" src="https://simg.pstatic.net/onetile/get/203/0/0/9/414/386/bl_vc_bg/ol_vc_an" style="margin: 0px; padding: 0px; border: 0px solid transparent; display: block; user-select: none; -webkit-user-drag: none; box-sizing: content-box !important; max-width: none !important; max-height: none !important; min-width: 0px !important; min-height: 0px !important; opacity: 1; position: absolute; left: 0px; top: 0px; z-index: 0; width: 256px; height: 256px;"></div> -->
+<!-- 						<div draggable="false" unselectable="on" style="position: absolute; top: 116px; left: -328px; z-index: 0; margin: 0px; padding: 0px; border: 0px solid transparent; user-select: none; -webkit-user-drag: none; box-sizing: content-box !important; opacity: 1; width: 256px; height: 256px;" data-ntranid="NTran-43"> -->
+<!-- 						<img draggable="false" unselectable="on" alt="" width="256" height="256" src="https://simg.pstatic.net/onetile/get/203/0/0/9/410/386/bl_vc_bg/ol_vc_an" style="margin: 0px; padding: 0px; border: 0px solid transparent; display: block; user-select: none; -webkit-user-drag: none; box-sizing: content-box !important; max-width: none !important; max-height: none !important; min-width: 0px !important; min-height: 0px !important; opacity: 1; position: absolute; left: 0px; top: 0px; z-index: 0; width: 256px; height: 256px;"></div> -->
+<!-- 						<div draggable="false" unselectable="on" style="position: absolute; top: 372px; left: 696px; z-index: 0; margin: 0px; padding: 0px; border: 0px solid transparent; user-select: none; -webkit-user-drag: none; box-sizing: content-box !important; opacity: 1; width: 256px; height: 256px;" data-ntranid="NTran-44"> -->
+<!-- 						<img draggable="false" unselectable="on" alt="" width="256" height="256" src="https://simg.pstatic.net/onetile/get/203/0/0/9/414/385/bl_vc_bg/ol_vc_an" style="margin: 0px; padding: 0px; border: 0px solid transparent; display: block; user-select: none; -webkit-user-drag: none; box-sizing: content-box !important; max-width: none !important; max-height: none !important; min-width: 0px !important; min-height: 0px !important; opacity: 1; position: absolute; left: 0px; top: 0px; z-index: 0; width: 256px; height: 256px;"></div> -->
+<!-- 						<div draggable="false" unselectable="on" style="position: absolute; top: -140px; left: -328px; z-index: 0; margin: 0px; padding: 0px; border: 0px solid transparent; user-select: none; -webkit-user-drag: none; box-sizing: content-box !important; opacity: 1; width: 256px; height: 256px;" data-ntranid="NTran-45"> -->
+<!-- 						<img draggable="false" unselectable="on" alt="" width="256" height="256" src="https://simg.pstatic.net/onetile/get/203/0/0/9/410/387/bl_vc_bg/ol_vc_an" style="margin: 0px; padding: 0px; border: 0px solid transparent; display: block; user-select: none; -webkit-user-drag: none; box-sizing: content-box !important; max-width: none !important; max-height: none !important; min-width: 0px !important; min-height: 0px !important; opacity: 1; position: absolute; left: 0px; top: 0px; z-index: 0; width: 256px; height: 256px;"></div> -->
+<!-- 						</div> -->
+<!-- 						</div> -->
+<!-- 						<div style="overflow: visible; width: 100%; height: 0px; position: absolute; display: block; margin: 0px; padding: 0px; border: 0px none; top: 0px; left: 0px; z-index: 100;"> -->
+<!-- 						<div style="overflow: visible; width: 100%; height: 0px; position: absolute; margin: 0px; padding: 0px; border: 0px none; top: 0px; left: 0px; z-index: 101;"></div> -->
+<!-- 						<div style="overflow: visible; width: 100%; height: 0px; position: absolute; margin: 0px; padding: 0px; border: 0px none; top: 0px; left: 0px; z-index: 103;"> -->
+<!-- 						<div title="" style="position: absolute; overflow: hidden; box-sizing: content-box !important; cursor: inherit; left: 552px; top: 150px; width: 22px; height: 33px;"> -->
+<!-- 						<img draggable="false" unselectable="on" src="https://ssl.pstatic.net/static/maps/mantle/1x/marker-default.png" alt="" style="margin: 0px; padding: 0px; border: 0px solid transparent; display: block; user-select: none; -webkit-user-drag: none; box-sizing: content-box !important; max-width: none !important; max-height: none !important; min-width: 0px !important; min-height: 0px !important; position: absolute; cursor: pointer; width: 22px; height: 33px; left: 0px; top: 0px;"></div> -->
+<!-- 						</div> -->
+<!-- 						<div style="overflow: visible; width: 100%; height: 0px; position: absolute; margin: 0px; padding: 0px; border: 0px none; top: 0px; left: 0px; z-index: 106;"></div> -->
+<!-- 						</div> -->
+<!-- 						</div> -->
+<!-- 						<div style="position: absolute; display: none; margin: 0px; padding: 0px; border: 0px none; top: 0px; left: 0px; overflow: visible; width: 100%; height: 100%; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); background-color: rgb(255, 255, 255); z-index: 10000; opacity: 0.5;"></div> -->
+<!-- 						</div> -->
+<!-- 						</div> -->
+<!-- 						<div style="position: absolute; z-index: 100; margin: 0px; padding: 0px; pointer-events: none; bottom: 0px; right: 0px;"> -->
+<!-- 						<div style="border: 0px none; margin: 0px; padding: 0px; pointer-events: none; float: right; height: 21px;"> -->
+<!-- 						<div style="position: relative; width: 52px; height: 14px; margin: 0px 12px 7px 2px; overflow: hidden; pointer-events: auto;"> -->
+<!-- 						<span style="display:block;margin:0;padding:0 4px;text-align:center;font-size:10px;line-height:11px;font-family:Helvetica,AppleSDGothicNeo-Light,nanumgothic,NanumGothic,&quot;나눔고딕&quot;,Dotum,&quot;돋움&quot;,sans-serif;font-weight:bold;color:#000;text-shadow:-1px 0 rgba(255, 255, 255, 0.3), 0 1px rgba(255, 255, 255, 0.3), 1px 0 rgba(255, 255, 255, 0.3), 0 -1px rgba(255, 255, 255, 0.3);">400m</span> -->
+<!-- 						<img src="https://ssl.pstatic.net/static/maps/mantle/1x/scale-normal-b.png" width="44" height="4" alt="" style="position:absolute;left:4px;;bottom:0;z-index:2;display:block;width:44px;height:4px;overflow:hidden;margin:0;padding:0;border:0 none;max-width:none !important;max-height:none !important;min-width:0 !important;min-height:0 !important;"> -->
+<!-- 						<img src="https://ssl.pstatic.net/static/maps/mantle/1x/scale-normal-l.png" width="4" height="10" alt="" style="position:absolute;left:0;bottom:0;z-index:2;display:block;width:4px;height:10px;overflow:hidden;margin:0;padding:0;border:0 none;max-width:none !important;max-height:none !important;min-width:0 !important;min-height:0 !important;"> -->
+<!-- 						<img src="https://ssl.pstatic.net/static/maps/mantle/1x/scale-normal-r.png" width="4" height="10" alt="" style="position:absolute;right:0;bottom:0;z-index:2;display:block;width:4px;height:10px;overflow:hidden;margin:0;padding:0;border:0 none;max-width:none !important;max-height:none !important;min-width:0 !important;min-height:0 !important;"></div> -->
+<!-- 						</div> -->
+<!-- 						<div style="border: 0px none; margin: -1px 0px 0px; padding: 0px; pointer-events: none; float: right; height: 22px;"> -->
+<!-- 						<a href="https://ssl.pstatic.net/static/maps/mantle/notice/legal.html" target="_blank" style="display: block; width: 48px; height: 17px; overflow: hidden; margin: 0px 5px 5px 12px; pointer-events: auto;"> -->
+<!-- 						<img src="https://ssl.pstatic.net/static/maps/mantle/1x/naver-normal-new.png" width="48" height="17" alt="NAVER" style="display:block;width:48px;height:17px;overflow:hidden;border:0 none;margin:0;padding:0;max-width:none !important;max-height:none !important;min-width:0 !important;min-height:0 !important;"></a> -->
+<!-- 						</div> -->
+<!-- 						</div> -->
+<!-- 						<div style="position: absolute; z-index: 100; margin: 0px; padding: 0px; pointer-events: none; bottom: 0px; left: 0px;"> -->
+<!-- 						<div style="border: 0px none; margin: 0px; padding: 0px; pointer-events: none; float: left; height: 19px;"> -->
+<!-- 						<div class="map_copyright" style="margin: 0px; padding: 0px 0px 2px 10px; height: 19px; line-height: 19px; color: rgb(68, 68, 68); font-family: Helvetica, AppleSDGothicNeo-Light, nanumgothic, NanumGothic, 나눔고딕, Dotum, 돋움, sans-serif; font-size: 11px; clear: both; white-space: nowrap; pointer-events: none;"> -->
+<!-- 						<div style="float: left;"> -->
+<!-- 						<span style="white-space: pre; color: rgb(68, 68, 68);">© NAVER Corp.</span> -->
+<!-- 						</div> -->
+<!-- 						<a href="#" style="font-family: Helvetica, AppleSDGothicNeo-Light, nanumgothic, NanumGothic, 나눔고딕, Dotum, 돋움, sans-serif; font-size: 11px; line-height: 19px; margin: 0px 0px 0px 5px; padding: 0px; color: rgb(68, 68, 68); float: left; pointer-events: auto; text-decoration: underline; display: none;">더보기</a> -->
+<!-- 						<div style="float: left;"> -->
+<!-- 						<a target="_blank" href="http://www.openstreetmap.org/copyright" style="pointer-events: auto; white-space: pre; color: rgb(68, 68, 68);"> /OpenStreetMap</a> -->
+<!-- 						</div> -->
+<!-- 						</div> -->
+<!-- 						</div> -->
+<!-- 						</div> -->
+<!-- 						<div style="border: 1px solid rgb(41, 41, 48); background: rgb(255, 255, 255); padding: 15px; color: rgb(51, 51, 51); position: absolute; font-size: 11px; line-height: 1.5; clear: both; display: none; max-width: 350px !important; max-height: 300px !important;"> -->
+<!-- 						<h5 style="font-size: 12px; margin-top: 0px; margin-bottom: 10px;">지도 데이터</h5> -->
+<!-- 						<a href="#" style="position: absolute; top: 8px; right: 8px; width: 14px; height: 14px; font-size: 14px; line-height: 14px; display: block; overflow: hidden; color: rgb(68, 68, 68); text-decoration: none; font-weight: bold; text-align: center;">╳</a> -->
+<!-- 						<div> -->
+<!-- 						<span style="white-space: pre; color: rgb(68, 68, 68); float: left;">© NAVER Corp.</span> -->
+<!-- 						<a target="_blank" href="http://www.openstreetmap.org/copyright" style="pointer-events: auto; white-space: pre; color: rgb(68, 68, 68); float: left;"> /OpenStreetMap</a> -->
+<!-- 						</div> -->
+<!-- 						</div> -->
+<!-- 						</div> -->
+<!-- 					</li> -->
+<!-- 				</ul> -->
+<!-- 			</div> -->
+<!-- 		</div> -->
+<!-- 	</div> -->
+	
+			<div class="bottom_table">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="content">
+							<div id="map" style="width:800px;height:300px;"></div>
+							<table border="0" class="table">
+								<colgroup>
+									<col width="30%">
+									<col width="70%">
+								</colgroup>
+									<tbody>
+										<tr>
+											<td class="bgBL">
+												소재지
+											</td>
+											<td class="text-left">
+												${guaVO.location}
+											</td>
+										</tr>
+										<tr>
+											<td class="bgBL">
+												용도지역
+											</td>
+											<td class="text-left">
+												제1종일반주거지역
+											</td>
+										</tr>
+										<tr>
+											<td class="bgBL">
+												지목
+											</td>
+											<td class="text-left">
+												전 및 임야
+											</td>
+										</tr>
+										<tr>
+											<td class="bgBL">
+												면적(㎡/py)
+											</td>
+											<td class="text-left">
+												${guaVO.supply_area} / ${guaVO.exclusive_area}
+											</td>
+										</tr>
+									</tbody>
+								</table>
 							</div>
-							<script type="text/javascript" src="/js/wowSlider/wowslider.js"></script>
-							<script type="text/javascript" src="/js/wowSlider/script.js"></script>
 						</div>
-					</li>
-					<li>
-						<div id="pano" style="width: 775px; height: 400px; margin-bottom: 20px; position: relative; overflow: hidden; background: url(&quot;https://ssl.pstatic.net/static/maps/mantle/1x/pattern_1.png&quot;) 0px 0px repeat scroll transparent;"><div style="position: absolute; display: block; margin: 0px; padding: 0px; border: 0px none; top: 0px; left: 0px; overflow: visible; width: 100%; height: 100%; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); z-index: 0;"><div style="position: absolute; display: block; margin: 0px; padding: 0px; border: 0px none; top: 0px; left: 0px; overflow: visible; width: 100%; height: 100%; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); z-index: 0;"><div style="overflow: visible; width: 775px; height: 400px; position: absolute; display: block; margin: 0px; padding: 0px; border: 0px none; top: 0px; left: 0px; z-index: 1;"><div style="overflow: visible; width: 100%; height: 0px; position: absolute; display: none; margin: 0px; padding: 0px; border: 0px none; top: 0px; left: 0px; z-index: 0; user-select: none;"></div><div style="overflow: visible; width: 100%; height: 0px; position: absolute; display: block; margin: 0px; padding: 0px; border: 0px none; top: 0px; left: 0px; z-index: 1; user-select: none;"></div><div style="position: absolute; width: 0px; height: 0px; left: 50%; top: 50%; z-index: 101; display: block;"></div><div style="position: absolute; width: 0px; height: 0px; left: 50%; top: 50%; z-index: 102; display: block;"></div><div style="position: absolute; width: 0px; height: 0px; left: 50%; top: 50%; z-index: 103; display: block;"></div><div style="position: absolute; width: 0px; height: 0px; left: 50%; top: 50%; z-index: 104; display: block;"></div><div style="position: absolute; width: 0px; height: 0px; left: 50%; top: 50%; z-index: 105; display: block;"></div><div style="position: absolute; width: 0px; height: 0px; left: 50%; top: 50%; z-index: 106; display: block;"></div><div style="position: absolute; width: 100%; height: 100%; z-index: 90;"><div class="cube cube_0" style="position: absolute; top: 50%; left: 50%; display: none; perspective-origin: 50% 50%; perspective: 324.941px;"><div class="cube_face_0_1" width="256" height="256" style="position: absolute;"><div class="cube_face_preview" style="position: absolute; width: 128px; height: 128px; background-image: url(&quot;https://pvimg.pstatic.net/api/get?type=img&amp;pano_id=sPgzN7J+JOJcRxYVRH2Gcg==&amp;suffix=_P &quot;); background-repeat: no-repeat; background-position: -128px 0px; transform: translate(64px, 64px) scale(2.00781);"></div></div><div class="cube_face_1_1" width="256" height="256" style="position: absolute;"><div class="cube_face_preview" style="position: absolute; width: 128px; height: 128px; background-image: url(&quot;https://pvimg.pstatic.net/api/get?type=img&amp;pano_id=sPgzN7J+JOJcRxYVRH2Gcg==&amp;suffix=_P &quot;); background-repeat: no-repeat; background-position: -256px 0px; transform: translate(64px, 64px) scale(2.00781);"></div></div><div class="cube_face_2_1" width="256" height="256" style="position: absolute;"><div class="cube_face_preview" style="position: absolute; width: 128px; height: 128px; background-image: url(&quot;https://pvimg.pstatic.net/api/get?type=img&amp;pano_id=sPgzN7J+JOJcRxYVRH2Gcg==&amp;suffix=_P &quot;); background-repeat: no-repeat; background-position: -384px 0px; transform: translate(64px, 64px) scale(2.00781);"></div></div><div class="cube_face_3_1" width="256" height="256" style="position: absolute;"><div class="cube_face_preview" style="position: absolute; width: 128px; height: 128px; background-image: url(&quot;https://pvimg.pstatic.net/api/get?type=img&amp;pano_id=sPgzN7J+JOJcRxYVRH2Gcg==&amp;suffix=_P &quot;); background-repeat: no-repeat; background-position: 0px 0px; transform: translate(64px, 64px) scale(2.00781);"></div></div><div class="cube_face_4_1" width="256" height="256" style="position: absolute;"><div class="cube_face_preview" style="position: absolute; width: 128px; height: 128px; background-image: url(&quot;https://pvimg.pstatic.net/api/get?type=img&amp;pano_id=sPgzN7J+JOJcRxYVRH2Gcg==&amp;suffix=_P &quot;); background-repeat: no-repeat; background-position: -640px 0px; transform: translate(64px, 64px) scale(2.00781);"></div></div><div class="cube_face_5_1" width="256" height="256" style="position: absolute;"><div class="cube_face_preview" style="position: absolute; width: 128px; height: 128px; background-image: url(&quot;https://pvimg.pstatic.net/api/get?type=img&amp;pano_id=sPgzN7J+JOJcRxYVRH2Gcg==&amp;suffix=_P &quot;); background-repeat: no-repeat; background-position: -512px 0px; transform: translate(64px, 64px) scale(2.00781);"></div></div></div><div class="cube cube_1" style="position: absolute; top: 50%; left: 50%; display: none; perspective-origin: 50% 50%; perspective: 324.941px;"><div class="cube_face_0_2" width="512" height="512" style="position: absolute;"><div class="cube_face_preview" style="position: absolute; width: 128px; height: 128px; background-image: url(&quot;https://pvimg.pstatic.net/api/get?type=img&amp;pano_id=sPgzN7J+JOJcRxYVRH2Gcg==&amp;suffix=_P &quot;); background-repeat: no-repeat; background-position: -128px 0px; transform: translate(192px, 192px) scale(4.00781);"></div></div><div class="cube_face_1_2" width="512" height="512" style="position: absolute;"><div class="cube_face_preview" style="position: absolute; width: 128px; height: 128px; background-image: url(&quot;https://pvimg.pstatic.net/api/get?type=img&amp;pano_id=sPgzN7J+JOJcRxYVRH2Gcg==&amp;suffix=_P &quot;); background-repeat: no-repeat; background-position: -256px 0px; transform: translate(192px, 192px) scale(4.00781);"></div></div><div class="cube_face_2_2" width="512" height="512" style="position: absolute;"><div class="cube_face_preview" style="position: absolute; width: 128px; height: 128px; background-image: url(&quot;https://pvimg.pstatic.net/api/get?type=img&amp;pano_id=sPgzN7J+JOJcRxYVRH2Gcg==&amp;suffix=_P &quot;); background-repeat: no-repeat; background-position: -384px 0px; transform: translate(192px, 192px) scale(4.00781);"></div></div><div class="cube_face_3_2" width="512" height="512" style="position: absolute;"><div class="cube_face_preview" style="position: absolute; width: 128px; height: 128px; background-image: url(&quot;https://pvimg.pstatic.net/api/get?type=img&amp;pano_id=sPgzN7J+JOJcRxYVRH2Gcg==&amp;suffix=_P &quot;); background-repeat: no-repeat; background-position: 0px 0px; transform: translate(192px, 192px) scale(4.00781);"></div></div><div class="cube_face_4_2" width="512" height="512" style="position: absolute;"><div class="cube_face_preview" style="position: absolute; width: 128px; height: 128px; background-image: url(&quot;https://pvimg.pstatic.net/api/get?type=img&amp;pano_id=sPgzN7J+JOJcRxYVRH2Gcg==&amp;suffix=_P &quot;); background-repeat: no-repeat; background-position: -640px 0px; transform: translate(192px, 192px) scale(4.00781);"></div></div><div class="cube_face_5_2" width="512" height="512" style="position: absolute;"><div class="cube_face_preview" style="position: absolute; width: 128px; height: 128px; background-image: url(&quot;https://pvimg.pstatic.net/api/get?type=img&amp;pano_id=sPgzN7J+JOJcRxYVRH2Gcg==&amp;suffix=_P &quot;); background-repeat: no-repeat; background-position: -512px 0px; transform: translate(192px, 192px) scale(4.00781);"></div></div></div><div class="cube cube_2" style="position: absolute; top: 50%; left: 50%; display: block; perspective-origin: 50% 50%; perspective: 324.941px;"><div class="cube_face_0_4" width="1024" height="1024" style="position: absolute; transform: matrix3d(0, 0.845, -1.813, 0, 0, 1.813, 0.845, 0, 2, 0, 0, 0, -1024, -1360.82, 820.239, 1);"><div class="cube_face_preview" style="position: absolute; width: 128px; height: 128px; background-image: url(&quot;https://pvimg.pstatic.net/api/get?type=img&amp;pano_id=sPgzN7J+JOJcRxYVRH2Gcg==&amp;suffix=_P &quot;); background-repeat: no-repeat; background-position: -128px 0px; transform: translate(448px, 448px) scale(8.00781);"></div><canvas class="cube_face_canvas_0_4" width="1024" height="1024" style="position: absolute;"></canvas></div><div class="cube_face_1_4" width="1024" height="1024" style="position: absolute; transform: matrix3d(2, 0, 0, 0, 0, 1.813, 0.845, 0, 0, -0.845, 1.813, 0, -1024, -495.298, -1035.88, 1);"><div class="cube_face_preview" style="position: absolute; width: 128px; height: 128px; background-image: url(&quot;https://pvimg.pstatic.net/api/get?type=img&amp;pano_id=sPgzN7J+JOJcRxYVRH2Gcg==&amp;suffix=_P &quot;); background-repeat: no-repeat; background-position: -256px 0px; transform: translate(448px, 448px) scale(8.00781);"></div><canvas class="cube_face_canvas_1_4" width="1024" height="1024" style="position: absolute;"></canvas></div><div class="cube_face_2_4" width="1024" height="1024" style="position: absolute; transform: matrix3d(0, -0.845, 1.813, 0, 0, 1.813, 0.845, 0, -2, 0, 0, 0, 1024, -495.298, -1035.88, 1);"><div class="cube_face_preview" style="position: absolute; width: 128px; height: 128px; background-image: url(&quot;https://pvimg.pstatic.net/api/get?type=img&amp;pano_id=sPgzN7J+JOJcRxYVRH2Gcg==&amp;suffix=_P &quot;); background-repeat: no-repeat; background-position: -384px 0px; transform: translate(448px, 448px) scale(8.00781);"></div><canvas class="cube_face_canvas_2_4" width="1024" height="1024" style="position: absolute;"></canvas></div><div class="cube_face_3_4" width="1024" height="1024" style="position: absolute; transform: matrix3d(-2, 0, 0, 0, 0, 1.813, 0.845, 0, 0, 0.845, -1.813, 0, 1024, -1360.82, 820.239, 1);"><div class="cube_face_preview" style="position: absolute; width: 128px; height: 128px; background-image: url(&quot;https://pvimg.pstatic.net/api/get?type=img&amp;pano_id=sPgzN7J+JOJcRxYVRH2Gcg==&amp;suffix=_P &quot;); background-repeat: no-repeat; background-position: 0px 0px; transform: translate(448px, 448px) scale(8.00781);"></div></div><div class="cube_face_4_4" width="1024" height="1024" style="position: absolute; transform: matrix3d(0, 0.845, -1.813, 0, -2, 0, 0, 0, 0, 1.813, 0.845, 0, 1024, -1360.82, 820.239, 1);"><div class="cube_face_preview" style="position: absolute; width: 128px; height: 128px; background-image: url(&quot;https://pvimg.pstatic.net/api/get?type=img&amp;pano_id=sPgzN7J+JOJcRxYVRH2Gcg==&amp;suffix=_P &quot;); background-repeat: no-repeat; background-position: -640px 0px; transform: translate(448px, 448px) scale(8.00781);"></div><canvas class="cube_face_canvas_4_4" width="1024" height="1024" style="position: absolute;"></canvas></div><div class="cube_face_5_4" width="1024" height="1024" style="position: absolute; transform: matrix3d(0, 0.845, -1.813, 0, 2, 0, 0, 0, 0, -1.813, -0.845, 0, -1024, 495.298, 1685.76, 1);"><div class="cube_face_preview" style="position: absolute; width: 128px; height: 128px; background-image: url(&quot;https://pvimg.pstatic.net/api/get?type=img&amp;pano_id=sPgzN7J+JOJcRxYVRH2Gcg==&amp;suffix=_P &quot;); background-repeat: no-repeat; background-position: -512px 0px; transform: translate(448px, 448px) scale(8.00781);"></div></div></div></div><div style="position: absolute; width: 0px; height: 0px; left: 50%; top: 50%; z-index: 91; display: block;"></div><div style="position: absolute; width: 0px; height: 0px; left: 50%; top: 50%; z-index: 107; display: block; perspective: 357.435px; perspective-origin: 50% 50%;"><div class="arrow_container_#0" style="position: absolute; width: 0px; height: 0px; left: 50%; top: 50%; z-index: 1; transform: matrix3d(-0.895, -1.546, 3.315, 0, -3.658, 0.378, -0.811, 0, 0, -7.963, -3.713, 0, 653.819, 1625.78, -782.849, 1);"><img class="arrow_image" src="https://ssl.pstatic.net/static/maps/mantle/1x/panorama_arrow.png" width="126" height="126" style="max-width: none !important; max-height: none !important; min-width: 0px !important; min-height: 0px !important; width: 126px; height: 126px;"></div><div class="arrow_container_#1" style="position: absolute; width: 0px; height: 0px; left: 50%; top: 50%; z-index: 1; transform: matrix3d(-0.852, 1.55, -3.324, 0, 3.668, 0.36, -0.772, 0, 0, -7.963, -3.713, 0, -545.418, 1433.68, -370.908, 1);"><img class="arrow_image" src="https://ssl.pstatic.net/static/maps/mantle/1x/panorama_arrow.png" width="126" height="126" style="max-width: none !important; max-height: none !important; min-width: 0px !important; min-height: 0px !important; width: 126px; height: 126px;"></div></div><div style="position: absolute; width: 0px; height: 0px; left: 50%; top: 50%; z-index: 108; display: block;"><div style="position: absolute; pointer-events: none; margin: 0px; padding: 0px; border: 0px solid transparent; display: none; box-sizing: content-box;"><span style="position: relative; margin: 0px; padding: 0px; border: 0px solid transparent; display: block; box-sizing: content-box; text-shadow: rgb(0, 0, 0) -1px -1px 0px, rgb(0, 0, 0) 1px -1px 0px, rgb(0, 0, 0) 1px -1px 0px, rgb(0, 0, 0) 1px 1px 0px, rgb(0, 0, 0) 0px 0px 1px; width: 200px; height: 20px; left: -100px; top: -30px; text-align: center; font-weight: bold; color: rgb(255, 255, 255); font-size: 14px; line-height: 20px; letter-spacing: -0.5px;">문향로75번길</span></div><div style="position: absolute; pointer-events: none; margin: 0px; padding: 0px; border: 0px solid transparent; display: none; box-sizing: content-box;"><span style="position: relative; margin: 0px; padding: 0px; border: 0px solid transparent; display: block; box-sizing: content-box; text-shadow: rgb(0, 0, 0) -1px -1px 0px, rgb(0, 0, 0) 1px -1px 0px, rgb(0, 0, 0) 1px -1px 0px, rgb(0, 0, 0) 1px 1px 0px, rgb(0, 0, 0) 0px 0px 1px; width: 200px; height: 20px; left: -100px; top: -30px; text-align: center; font-weight: bold; color: rgb(255, 255, 255); font-size: 14px; line-height: 20px; letter-spacing: -0.5px;">문향로75번길</span></div></div></div></div></div><div style="position: absolute; z-index: 100; margin: 0px; padding: 0px; pointer-events: none; bottom: 0px; right: 0px;"><div style="border: 0px none; margin: 0px; padding: 0px; pointer-events: none; float: right; height: 22px;"><a href="https://ssl.pstatic.net/static/maps/mantle/notice/legal.html" target="_blank" style="display: block; width: 48px; height: 17px; overflow: hidden; margin: 0px 5px 5px 12px; pointer-events: auto;"><img src="https://ssl.pstatic.net/static/maps/mantle/1x/naver-normal-new.png" width="48" height="17" alt="NAVER" style="display:block;width:48px;height:17px;overflow:hidden;border:0 none;margin:0;padding:0;max-width:none !important;max-height:none !important;min-width:0 !important;min-height:0 !important;"></a></div></div></div>
-						<div id="map" style="width: 100%; height: 300px; margin-bottom: 20px; position: relative; overflow: hidden; background: url(&quot;https://ssl.pstatic.net/static/maps/mantle/1x/pattern_1.png&quot;) 0px 0px repeat transparent;"><div style="position: absolute; display: block; margin: 0px; padding: 0px; border: 0px none; top: 0px; left: 0px; overflow: visible; width: 100%; height: 100%; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); z-index: 0; cursor: url(&quot;https://ssl.pstatic.net/static/maps/mantle/1x/openhand.cur&quot;), default;"><div style="position: absolute; display: block; margin: 0px; padding: 0px; border: 0px none; top: 0px; left: 0px; overflow: visible; width: 100%; height: 100%; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); z-index: 0;"><div style="overflow: visible; width: 100%; height: 0px; position: absolute; display: block; margin: 0px; padding: 0px; border: 0px none; top: 0px; left: 0px; z-index: 1; zoom: 1;"><div style="overflow: visible; width: 100%; height: 0px; position: absolute; margin: 0px; padding: 0px; border: 0px none; top: 0px; left: 0px; z-index: 0; user-select: none; zoom: 1; display: none;"><div style="position: absolute; top: 0px; left: 0px; z-index: 0; margin: 0px; padding: 0px; border: 0px solid transparent; display: block; width: 0px; height: 0px; overflow: visible; box-sizing: content-box !important;"><div draggable="false" unselectable="on" style="position: absolute; top: 62px; left: 173px; z-index: 0; margin: 0px; padding: 0px; border: 0px solid transparent; user-select: none; -webkit-user-drag: none; box-sizing: content-box !important; opacity: 1; width: 256px; height: 256px;" data-ntranid="NTran-17"><img draggable="false" unselectable="on" alt="" width="256" height="256" src="https://simg.pstatic.net/onetile/get/203/0/0/8/205/193/bl_vc_bg/ol_vc_an" style="margin: 0px; padding: 0px; border: 0px solid transparent; display: block; user-select: none; -webkit-user-drag: none; box-sizing: content-box !important; max-width: none !important; max-height: none !important; min-width: 0px !important; min-height: 0px !important; opacity: 1; position: absolute; left: 0px; top: 0px; z-index: 0; width: 256px; height: 256px;"></div><div draggable="false" unselectable="on" style="position: absolute; top: 318px; left: 173px; z-index: 0; margin: 0px; padding: 0px; border: 0px solid transparent; user-select: none; -webkit-user-drag: none; box-sizing: content-box !important; opacity: 1; width: 256px; height: 256px;" data-ntranid="NTran-20"><img draggable="false" unselectable="on" alt="" width="256" height="256" src="https://simg.pstatic.net/onetile/get/203/0/0/8/205/192/bl_vc_bg/ol_vc_an" style="margin: 0px; padding: 0px; border: 0px solid transparent; display: block; user-select: none; -webkit-user-drag: none; box-sizing: content-box !important; max-width: none !important; max-height: none !important; min-width: 0px !important; min-height: 0px !important; opacity: 1; position: absolute; left: 0px; top: 0px; z-index: 0; width: 256px; height: 256px;"></div><div draggable="false" unselectable="on" style="position: absolute; top: -194px; left: 173px; z-index: 0; margin: 0px; padding: 0px; border: 0px solid transparent; user-select: none; -webkit-user-drag: none; box-sizing: content-box !important; opacity: 1; width: 256px; height: 256px;" data-ntranid="NTran-16"><img draggable="false" unselectable="on" alt="" width="256" height="256" src="https://simg.pstatic.net/onetile/get/203/0/0/8/205/194/bl_vc_bg/ol_vc_an" style="margin: 0px; padding: 0px; border: 0px solid transparent; display: block; user-select: none; -webkit-user-drag: none; box-sizing: content-box !important; max-width: none !important; max-height: none !important; min-width: 0px !important; min-height: 0px !important; opacity: 1; position: absolute; left: 0px; top: 0px; z-index: 0; width: 256px; height: 256px;"></div><div draggable="false" unselectable="on" style="position: absolute; top: -194px; left: 429px; z-index: 0; margin: 0px; padding: 0px; border: 0px solid transparent; user-select: none; -webkit-user-drag: none; box-sizing: content-box !important; opacity: 1; width: 256px; height: 256px;" data-ntranid="NTran-18"><img draggable="false" unselectable="on" alt="" width="256" height="256" src="https://simg.pstatic.net/onetile/get/203/0/0/8/206/194/bl_vc_bg/ol_vc_an" style="margin: 0px; padding: 0px; border: 0px solid transparent; display: block; user-select: none; -webkit-user-drag: none; box-sizing: content-box !important; max-width: none !important; max-height: none !important; min-width: 0px !important; min-height: 0px !important; opacity: 1; position: absolute; left: 0px; top: 0px; z-index: 0; width: 256px; height: 256px;"></div><div draggable="false" unselectable="on" style="position: absolute; top: 318px; left: -83px; z-index: 0; margin: 0px; padding: 0px; border: 0px solid transparent; user-select: none; -webkit-user-drag: none; box-sizing: content-box !important; opacity: 1; width: 256px; height: 256px;" data-ntranid="NTran-19"><img draggable="false" unselectable="on" alt="" width="256" height="256" src="https://simg.pstatic.net/onetile/get/203/0/0/8/204/192/bl_vc_bg/ol_vc_an" style="margin: 0px; padding: 0px; border: 0px solid transparent; display: block; user-select: none; -webkit-user-drag: none; box-sizing: content-box !important; max-width: none !important; max-height: none !important; min-width: 0px !important; min-height: 0px !important; opacity: 1; position: absolute; left: 0px; top: 0px; z-index: 0; width: 256px; height: 256px;"></div><div draggable="false" unselectable="on" style="position: absolute; top: 62px; left: 429px; z-index: 0; margin: 0px; padding: 0px; border: 0px solid transparent; user-select: none; -webkit-user-drag: none; box-sizing: content-box !important; opacity: 1; width: 256px; height: 256px;" data-ntranid="NTran-21"><img draggable="false" unselectable="on" alt="" width="256" height="256" src="https://simg.pstatic.net/onetile/get/203/0/0/8/206/193/bl_vc_bg/ol_vc_an" style="margin: 0px; padding: 0px; border: 0px solid transparent; display: block; user-select: none; -webkit-user-drag: none; box-sizing: content-box !important; max-width: none !important; max-height: none !important; min-width: 0px !important; min-height: 0px !important; opacity: 1; position: absolute; left: 0px; top: 0px; z-index: 0; width: 256px; height: 256px;"></div><div draggable="false" unselectable="on" style="position: absolute; top: 62px; left: -83px; z-index: 0; margin: 0px; padding: 0px; border: 0px solid transparent; user-select: none; -webkit-user-drag: none; box-sizing: content-box !important; opacity: 1; width: 256px; height: 256px;" data-ntranid="NTran-22"><img draggable="false" unselectable="on" alt="" width="256" height="256" src="https://simg.pstatic.net/onetile/get/203/0/0/8/204/193/bl_vc_bg/ol_vc_an" style="margin: 0px; padding: 0px; border: 0px solid transparent; display: block; user-select: none; -webkit-user-drag: none; box-sizing: content-box !important; max-width: none !important; max-height: none !important; min-width: 0px !important; min-height: 0px !important; opacity: 1; position: absolute; left: 0px; top: 0px; z-index: 0; width: 256px; height: 256px;"></div><div draggable="false" unselectable="on" style="position: absolute; top: 318px; left: 429px; z-index: 0; margin: 0px; padding: 0px; border: 0px solid transparent; user-select: none; -webkit-user-drag: none; box-sizing: content-box !important; opacity: 1; width: 256px; height: 256px;" data-ntranid="NTran-26"><img draggable="false" unselectable="on" alt="" width="256" height="256" src="https://simg.pstatic.net/onetile/get/203/0/0/8/206/192/bl_vc_bg/ol_vc_an" style="margin: 0px; padding: 0px; border: 0px solid transparent; display: block; user-select: none; -webkit-user-drag: none; box-sizing: content-box !important; max-width: none !important; max-height: none !important; min-width: 0px !important; min-height: 0px !important; opacity: 1; position: absolute; left: 0px; top: 0px; z-index: 0; width: 256px; height: 256px;"></div><div draggable="false" unselectable="on" style="position: absolute; top: -194px; left: -83px; z-index: 0; margin: 0px; padding: 0px; border: 0px solid transparent; user-select: none; -webkit-user-drag: none; box-sizing: content-box !important; opacity: 1; width: 256px; height: 256px;" data-ntranid="NTran-24"><img draggable="false" unselectable="on" alt="" width="256" height="256" src="https://simg.pstatic.net/onetile/get/203/0/0/8/204/194/bl_vc_bg/ol_vc_an" style="margin: 0px; padding: 0px; border: 0px solid transparent; display: block; user-select: none; -webkit-user-drag: none; box-sizing: content-box !important; max-width: none !important; max-height: none !important; min-width: 0px !important; min-height: 0px !important; opacity: 1; position: absolute; left: 0px; top: 0px; z-index: 0; width: 256px; height: 256px;"></div><div draggable="false" unselectable="on" style="position: absolute; top: -194px; left: 685px; z-index: 0; margin: 0px; padding: 0px; border: 0px solid transparent; user-select: none; -webkit-user-drag: none; box-sizing: content-box !important; opacity: 1; width: 256px; height: 256px;" data-ntranid="NTran-27"><img draggable="false" unselectable="on" alt="" width="256" height="256" src="https://simg.pstatic.net/onetile/get/203/0/0/8/207/194/bl_vc_bg/ol_vc_an" style="margin: 0px; padding: 0px; border: 0px solid transparent; display: block; user-select: none; -webkit-user-drag: none; box-sizing: content-box !important; max-width: none !important; max-height: none !important; min-width: 0px !important; min-height: 0px !important; opacity: 1; position: absolute; left: 0px; top: 0px; z-index: 0; width: 256px; height: 256px;"></div><div draggable="false" unselectable="on" style="position: absolute; top: 318px; left: -339px; z-index: 0; margin: 0px; padding: 0px; border: 0px solid transparent; user-select: none; -webkit-user-drag: none; box-sizing: content-box !important; opacity: 1; width: 256px; height: 256px;" data-ntranid="NTran-23"><img draggable="false" unselectable="on" alt="" width="256" height="256" src="https://simg.pstatic.net/onetile/get/203/0/0/8/203/192/bl_vc_bg/ol_vc_an" style="margin: 0px; padding: 0px; border: 0px solid transparent; display: block; user-select: none; -webkit-user-drag: none; box-sizing: content-box !important; max-width: none !important; max-height: none !important; min-width: 0px !important; min-height: 0px !important; opacity: 1; position: absolute; left: 0px; top: 0px; z-index: 0; width: 256px; height: 256px;"></div><div draggable="false" unselectable="on" style="position: absolute; top: 62px; left: 685px; z-index: 0; margin: 0px; padding: 0px; border: 0px solid transparent; user-select: none; -webkit-user-drag: none; box-sizing: content-box !important; opacity: 1; width: 256px; height: 256px;" data-ntranid="NTran-25"><img draggable="false" unselectable="on" alt="" width="256" height="256" src="https://simg.pstatic.net/onetile/get/203/0/0/8/207/193/bl_vc_bg/ol_vc_an" style="margin: 0px; padding: 0px; border: 0px solid transparent; display: block; user-select: none; -webkit-user-drag: none; box-sizing: content-box !important; max-width: none !important; max-height: none !important; min-width: 0px !important; min-height: 0px !important; opacity: 1; position: absolute; left: 0px; top: 0px; z-index: 0; width: 256px; height: 256px;"></div><div draggable="false" unselectable="on" style="position: absolute; top: 62px; left: -339px; z-index: 0; margin: 0px; padding: 0px; border: 0px solid transparent; user-select: none; -webkit-user-drag: none; box-sizing: content-box !important; opacity: 1; width: 256px; height: 256px;" data-ntranid="NTran-28"><img draggable="false" unselectable="on" alt="" width="256" height="256" src="https://simg.pstatic.net/onetile/get/203/0/0/8/203/193/bl_vc_bg/ol_vc_an" style="margin: 0px; padding: 0px; border: 0px solid transparent; display: block; user-select: none; -webkit-user-drag: none; box-sizing: content-box !important; max-width: none !important; max-height: none !important; min-width: 0px !important; min-height: 0px !important; opacity: 1; position: absolute; left: 0px; top: 0px; z-index: 0; width: 256px; height: 256px;"></div><div draggable="false" unselectable="on" style="position: absolute; top: 318px; left: 685px; z-index: 0; margin: 0px; padding: 0px; border: 0px solid transparent; user-select: none; -webkit-user-drag: none; box-sizing: content-box !important; opacity: 1; width: 256px; height: 256px;" data-ntranid="NTran-29"><img draggable="false" unselectable="on" alt="" width="256" height="256" src="https://simg.pstatic.net/onetile/get/203/0/0/8/207/192/bl_vc_bg/ol_vc_an" style="margin: 0px; padding: 0px; border: 0px solid transparent; display: block; user-select: none; -webkit-user-drag: none; box-sizing: content-box !important; max-width: none !important; max-height: none !important; min-width: 0px !important; min-height: 0px !important; opacity: 1; position: absolute; left: 0px; top: 0px; z-index: 0; width: 256px; height: 256px;"></div><div draggable="false" unselectable="on" style="position: absolute; top: -194px; left: -339px; z-index: 0; margin: 0px; padding: 0px; border: 0px solid transparent; user-select: none; -webkit-user-drag: none; box-sizing: content-box !important; opacity: 1; width: 256px; height: 256px;" data-ntranid="NTran-30"><img draggable="false" unselectable="on" alt="" width="256" height="256" src="https://simg.pstatic.net/onetile/get/203/0/0/8/203/194/bl_vc_bg/ol_vc_an" style="margin: 0px; padding: 0px; border: 0px solid transparent; display: block; user-select: none; -webkit-user-drag: none; box-sizing: content-box !important; max-width: none !important; max-height: none !important; min-width: 0px !important; min-height: 0px !important; opacity: 1; position: absolute; left: 0px; top: 0px; z-index: 0; width: 256px; height: 256px;"></div></div></div><div style="overflow: visible; width: 100%; height: 0px; position: absolute; margin: 0px; padding: 0px; border: 0px none; top: 0px; left: 0px; z-index: 1; user-select: none; zoom: 1;"><div style="position: absolute; top: 0px; left: 0px; z-index: 0; margin: 0px; padding: 0px; border: 0px solid transparent; display: block; width: 0px; height: 0px; overflow: visible; box-sizing: content-box !important;"><div draggable="false" unselectable="on" style="position: absolute; top: 116px; left: 184px; z-index: 0; margin: 0px; padding: 0px; border: 0px solid transparent; user-select: none; -webkit-user-drag: none; box-sizing: content-box !important; opacity: 1; width: 256px; height: 256px;" data-ntranid="NTran-31"><img draggable="false" unselectable="on" alt="" width="256" height="256" src="https://simg.pstatic.net/onetile/get/203/0/0/9/412/386/bl_vc_bg/ol_vc_an" style="margin: 0px; padding: 0px; border: 0px solid transparent; display: block; user-select: none; -webkit-user-drag: none; box-sizing: content-box !important; max-width: none !important; max-height: none !important; min-width: 0px !important; min-height: 0px !important; opacity: 1; position: absolute; left: 0px; top: 0px; z-index: 0; width: 256px; height: 256px;"></div><div draggable="false" unselectable="on" style="position: absolute; top: 372px; left: 184px; z-index: 0; margin: 0px; padding: 0px; border: 0px solid transparent; user-select: none; -webkit-user-drag: none; box-sizing: content-box !important; opacity: 1; width: 256px; height: 256px;" data-ntranid="NTran-32"><img draggable="false" unselectable="on" alt="" width="256" height="256" src="https://simg.pstatic.net/onetile/get/203/0/0/9/412/385/bl_vc_bg/ol_vc_an" style="margin: 0px; padding: 0px; border: 0px solid transparent; display: block; user-select: none; -webkit-user-drag: none; box-sizing: content-box !important; max-width: none !important; max-height: none !important; min-width: 0px !important; min-height: 0px !important; opacity: 1; position: absolute; left: 0px; top: 0px; z-index: 0; width: 256px; height: 256px;"></div><div draggable="false" unselectable="on" style="position: absolute; top: -140px; left: 184px; z-index: 0; margin: 0px; padding: 0px; border: 0px solid transparent; user-select: none; -webkit-user-drag: none; box-sizing: content-box !important; opacity: 1; width: 256px; height: 256px;" data-ntranid="NTran-34"><img draggable="false" unselectable="on" alt="" width="256" height="256" src="https://simg.pstatic.net/onetile/get/203/0/0/9/412/387/bl_vc_bg/ol_vc_an" style="margin: 0px; padding: 0px; border: 0px solid transparent; display: block; user-select: none; -webkit-user-drag: none; box-sizing: content-box !important; max-width: none !important; max-height: none !important; min-width: 0px !important; min-height: 0px !important; opacity: 1; position: absolute; left: 0px; top: 0px; z-index: 0; width: 256px; height: 256px;"></div><div draggable="false" unselectable="on" style="position: absolute; top: -140px; left: 440px; z-index: 0; margin: 0px; padding: 0px; border: 0px solid transparent; user-select: none; -webkit-user-drag: none; box-sizing: content-box !important; opacity: 1; width: 256px; height: 256px;" data-ntranid="NTran-35"><img draggable="false" unselectable="on" alt="" width="256" height="256" src="https://simg.pstatic.net/onetile/get/203/0/0/9/413/387/bl_vc_bg/ol_vc_an" style="margin: 0px; padding: 0px; border: 0px solid transparent; display: block; user-select: none; -webkit-user-drag: none; box-sizing: content-box !important; max-width: none !important; max-height: none !important; min-width: 0px !important; min-height: 0px !important; opacity: 1; position: absolute; left: 0px; top: 0px; z-index: 0; width: 256px; height: 256px;"></div><div draggable="false" unselectable="on" style="position: absolute; top: 372px; left: -72px; z-index: 0; margin: 0px; padding: 0px; border: 0px solid transparent; user-select: none; -webkit-user-drag: none; box-sizing: content-box !important; opacity: 1; width: 256px; height: 256px;" data-ntranid="NTran-33"><img draggable="false" unselectable="on" alt="" width="256" height="256" src="https://simg.pstatic.net/onetile/get/203/0/0/9/411/385/bl_vc_bg/ol_vc_an" style="margin: 0px; padding: 0px; border: 0px solid transparent; display: block; user-select: none; -webkit-user-drag: none; box-sizing: content-box !important; max-width: none !important; max-height: none !important; min-width: 0px !important; min-height: 0px !important; opacity: 1; position: absolute; left: 0px; top: 0px; z-index: 0; width: 256px; height: 256px;"></div><div draggable="false" unselectable="on" style="position: absolute; top: 116px; left: 440px; z-index: 0; margin: 0px; padding: 0px; border: 0px solid transparent; user-select: none; -webkit-user-drag: none; box-sizing: content-box !important; opacity: 1; width: 256px; height: 256px;" data-ntranid="NTran-41"><img draggable="false" unselectable="on" alt="" width="256" height="256" src="https://simg.pstatic.net/onetile/get/203/0/0/9/413/386/bl_vc_bg/ol_vc_an" style="margin: 0px; padding: 0px; border: 0px solid transparent; display: block; user-select: none; -webkit-user-drag: none; box-sizing: content-box !important; max-width: none !important; max-height: none !important; min-width: 0px !important; min-height: 0px !important; opacity: 1; position: absolute; left: 0px; top: 0px; z-index: 0; width: 256px; height: 256px;"></div><div draggable="false" unselectable="on" style="position: absolute; top: 116px; left: -72px; z-index: 0; margin: 0px; padding: 0px; border: 0px solid transparent; user-select: none; -webkit-user-drag: none; box-sizing: content-box !important; opacity: 1; width: 256px; height: 256px;" data-ntranid="NTran-36"><img draggable="false" unselectable="on" alt="" width="256" height="256" src="https://simg.pstatic.net/onetile/get/203/0/0/9/411/386/bl_vc_bg/ol_vc_an" style="margin: 0px; padding: 0px; border: 0px solid transparent; display: block; user-select: none; -webkit-user-drag: none; box-sizing: content-box !important; max-width: none !important; max-height: none !important; min-width: 0px !important; min-height: 0px !important; opacity: 1; position: absolute; left: 0px; top: 0px; z-index: 0; width: 256px; height: 256px;"></div><div draggable="false" unselectable="on" style="position: absolute; top: 372px; left: 440px; z-index: 0; margin: 0px; padding: 0px; border: 0px solid transparent; user-select: none; -webkit-user-drag: none; box-sizing: content-box !important; opacity: 1; width: 256px; height: 256px;" data-ntranid="NTran-37"><img draggable="false" unselectable="on" alt="" width="256" height="256" src="https://simg.pstatic.net/onetile/get/203/0/0/9/413/385/bl_vc_bg/ol_vc_an" style="margin: 0px; padding: 0px; border: 0px solid transparent; display: block; user-select: none; -webkit-user-drag: none; box-sizing: content-box !important; max-width: none !important; max-height: none !important; min-width: 0px !important; min-height: 0px !important; opacity: 1; position: absolute; left: 0px; top: 0px; z-index: 0; width: 256px; height: 256px;"></div><div draggable="false" unselectable="on" style="position: absolute; top: -140px; left: -72px; z-index: 0; margin: 0px; padding: 0px; border: 0px solid transparent; user-select: none; -webkit-user-drag: none; box-sizing: content-box !important; opacity: 1; width: 256px; height: 256px;" data-ntranid="NTran-38"><img draggable="false" unselectable="on" alt="" width="256" height="256" src="https://simg.pstatic.net/onetile/get/203/0/0/9/411/387/bl_vc_bg/ol_vc_an" style="margin: 0px; padding: 0px; border: 0px solid transparent; display: block; user-select: none; -webkit-user-drag: none; box-sizing: content-box !important; max-width: none !important; max-height: none !important; min-width: 0px !important; min-height: 0px !important; opacity: 1; position: absolute; left: 0px; top: 0px; z-index: 0; width: 256px; height: 256px;"></div><div draggable="false" unselectable="on" style="position: absolute; top: -140px; left: 696px; z-index: 0; margin: 0px; padding: 0px; border: 0px solid transparent; user-select: none; -webkit-user-drag: none; box-sizing: content-box !important; opacity: 1; width: 256px; height: 256px;" data-ntranid="NTran-39"><img draggable="false" unselectable="on" alt="" width="256" height="256" src="https://simg.pstatic.net/onetile/get/203/0/0/9/414/387/bl_vc_bg/ol_vc_an" style="margin: 0px; padding: 0px; border: 0px solid transparent; display: block; user-select: none; -webkit-user-drag: none; box-sizing: content-box !important; max-width: none !important; max-height: none !important; min-width: 0px !important; min-height: 0px !important; opacity: 1; position: absolute; left: 0px; top: 0px; z-index: 0; width: 256px; height: 256px;"></div><div draggable="false" unselectable="on" style="position: absolute; top: 372px; left: -328px; z-index: 0; margin: 0px; padding: 0px; border: 0px solid transparent; user-select: none; -webkit-user-drag: none; box-sizing: content-box !important; opacity: 1; width: 256px; height: 256px;" data-ntranid="NTran-40"><img draggable="false" unselectable="on" alt="" width="256" height="256" src="https://simg.pstatic.net/onetile/get/203/0/0/9/410/385/bl_vc_bg/ol_vc_an" style="margin: 0px; padding: 0px; border: 0px solid transparent; display: block; user-select: none; -webkit-user-drag: none; box-sizing: content-box !important; max-width: none !important; max-height: none !important; min-width: 0px !important; min-height: 0px !important; opacity: 1; position: absolute; left: 0px; top: 0px; z-index: 0; width: 256px; height: 256px;"></div><div draggable="false" unselectable="on" style="position: absolute; top: 116px; left: 696px; z-index: 0; margin: 0px; padding: 0px; border: 0px solid transparent; user-select: none; -webkit-user-drag: none; box-sizing: content-box !important; opacity: 1; width: 256px; height: 256px;" data-ntranid="NTran-42"><img draggable="false" unselectable="on" alt="" width="256" height="256" src="https://simg.pstatic.net/onetile/get/203/0/0/9/414/386/bl_vc_bg/ol_vc_an" style="margin: 0px; padding: 0px; border: 0px solid transparent; display: block; user-select: none; -webkit-user-drag: none; box-sizing: content-box !important; max-width: none !important; max-height: none !important; min-width: 0px !important; min-height: 0px !important; opacity: 1; position: absolute; left: 0px; top: 0px; z-index: 0; width: 256px; height: 256px;"></div><div draggable="false" unselectable="on" style="position: absolute; top: 116px; left: -328px; z-index: 0; margin: 0px; padding: 0px; border: 0px solid transparent; user-select: none; -webkit-user-drag: none; box-sizing: content-box !important; opacity: 1; width: 256px; height: 256px;" data-ntranid="NTran-43"><img draggable="false" unselectable="on" alt="" width="256" height="256" src="https://simg.pstatic.net/onetile/get/203/0/0/9/410/386/bl_vc_bg/ol_vc_an" style="margin: 0px; padding: 0px; border: 0px solid transparent; display: block; user-select: none; -webkit-user-drag: none; box-sizing: content-box !important; max-width: none !important; max-height: none !important; min-width: 0px !important; min-height: 0px !important; opacity: 1; position: absolute; left: 0px; top: 0px; z-index: 0; width: 256px; height: 256px;"></div><div draggable="false" unselectable="on" style="position: absolute; top: 372px; left: 696px; z-index: 0; margin: 0px; padding: 0px; border: 0px solid transparent; user-select: none; -webkit-user-drag: none; box-sizing: content-box !important; opacity: 1; width: 256px; height: 256px;" data-ntranid="NTran-44"><img draggable="false" unselectable="on" alt="" width="256" height="256" src="https://simg.pstatic.net/onetile/get/203/0/0/9/414/385/bl_vc_bg/ol_vc_an" style="margin: 0px; padding: 0px; border: 0px solid transparent; display: block; user-select: none; -webkit-user-drag: none; box-sizing: content-box !important; max-width: none !important; max-height: none !important; min-width: 0px !important; min-height: 0px !important; opacity: 1; position: absolute; left: 0px; top: 0px; z-index: 0; width: 256px; height: 256px;"></div><div draggable="false" unselectable="on" style="position: absolute; top: -140px; left: -328px; z-index: 0; margin: 0px; padding: 0px; border: 0px solid transparent; user-select: none; -webkit-user-drag: none; box-sizing: content-box !important; opacity: 1; width: 256px; height: 256px;" data-ntranid="NTran-45"><img draggable="false" unselectable="on" alt="" width="256" height="256" src="https://simg.pstatic.net/onetile/get/203/0/0/9/410/387/bl_vc_bg/ol_vc_an" style="margin: 0px; padding: 0px; border: 0px solid transparent; display: block; user-select: none; -webkit-user-drag: none; box-sizing: content-box !important; max-width: none !important; max-height: none !important; min-width: 0px !important; min-height: 0px !important; opacity: 1; position: absolute; left: 0px; top: 0px; z-index: 0; width: 256px; height: 256px;"></div></div></div><div style="overflow: visible; width: 100%; height: 0px; position: absolute; display: block; margin: 0px; padding: 0px; border: 0px none; top: 0px; left: 0px; z-index: 100;"><div style="overflow: visible; width: 100%; height: 0px; position: absolute; margin: 0px; padding: 0px; border: 0px none; top: 0px; left: 0px; z-index: 101;"></div><div style="overflow: visible; width: 100%; height: 0px; position: absolute; margin: 0px; padding: 0px; border: 0px none; top: 0px; left: 0px; z-index: 103;"><div title="" style="position: absolute; overflow: hidden; box-sizing: content-box !important; cursor: inherit; left: 552px; top: 150px; width: 22px; height: 33px;"><img draggable="false" unselectable="on" src="https://ssl.pstatic.net/static/maps/mantle/1x/marker-default.png" alt="" style="margin: 0px; padding: 0px; border: 0px solid transparent; display: block; user-select: none; -webkit-user-drag: none; box-sizing: content-box !important; max-width: none !important; max-height: none !important; min-width: 0px !important; min-height: 0px !important; position: absolute; cursor: pointer; width: 22px; height: 33px; left: 0px; top: 0px;"></div></div><div style="overflow: visible; width: 100%; height: 0px; position: absolute; margin: 0px; padding: 0px; border: 0px none; top: 0px; left: 0px; z-index: 106;"></div></div></div><div style="position: absolute; display: none; margin: 0px; padding: 0px; border: 0px none; top: 0px; left: 0px; overflow: visible; width: 100%; height: 100%; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); background-color: rgb(255, 255, 255); z-index: 10000; opacity: 0.5;"></div></div></div><div style="position: absolute; z-index: 100; margin: 0px; padding: 0px; pointer-events: none; bottom: 0px; right: 0px;"><div style="border: 0px none; margin: 0px; padding: 0px; pointer-events: none; float: right; height: 21px;"><div style="position: relative; width: 52px; height: 14px; margin: 0px 12px 7px 2px; overflow: hidden; pointer-events: auto;"><span style="display:block;margin:0;padding:0 4px;text-align:center;font-size:10px;line-height:11px;font-family:Helvetica,AppleSDGothicNeo-Light,nanumgothic,NanumGothic,&quot;나눔고딕&quot;,Dotum,&quot;돋움&quot;,sans-serif;font-weight:bold;color:#000;text-shadow:-1px 0 rgba(255, 255, 255, 0.3), 0 1px rgba(255, 255, 255, 0.3), 1px 0 rgba(255, 255, 255, 0.3), 0 -1px rgba(255, 255, 255, 0.3);">400m</span><img src="https://ssl.pstatic.net/static/maps/mantle/1x/scale-normal-b.png" width="44" height="4" alt="" style="position:absolute;left:4px;;bottom:0;z-index:2;display:block;width:44px;height:4px;overflow:hidden;margin:0;padding:0;border:0 none;max-width:none !important;max-height:none !important;min-width:0 !important;min-height:0 !important;"><img src="https://ssl.pstatic.net/static/maps/mantle/1x/scale-normal-l.png" width="4" height="10" alt="" style="position:absolute;left:0;bottom:0;z-index:2;display:block;width:4px;height:10px;overflow:hidden;margin:0;padding:0;border:0 none;max-width:none !important;max-height:none !important;min-width:0 !important;min-height:0 !important;"><img src="https://ssl.pstatic.net/static/maps/mantle/1x/scale-normal-r.png" width="4" height="10" alt="" style="position:absolute;right:0;bottom:0;z-index:2;display:block;width:4px;height:10px;overflow:hidden;margin:0;padding:0;border:0 none;max-width:none !important;max-height:none !important;min-width:0 !important;min-height:0 !important;"></div></div><div style="border: 0px none; margin: -1px 0px 0px; padding: 0px; pointer-events: none; float: right; height: 22px;"><a href="https://ssl.pstatic.net/static/maps/mantle/notice/legal.html" target="_blank" style="display: block; width: 48px; height: 17px; overflow: hidden; margin: 0px 5px 5px 12px; pointer-events: auto;"><img src="https://ssl.pstatic.net/static/maps/mantle/1x/naver-normal-new.png" width="48" height="17" alt="NAVER" style="display:block;width:48px;height:17px;overflow:hidden;border:0 none;margin:0;padding:0;max-width:none !important;max-height:none !important;min-width:0 !important;min-height:0 !important;"></a></div></div><div style="position: absolute; z-index: 100; margin: 0px; padding: 0px; pointer-events: none; bottom: 0px; left: 0px;"><div style="border: 0px none; margin: 0px; padding: 0px; pointer-events: none; float: left; height: 19px;"><div class="map_copyright" style="margin: 0px; padding: 0px 0px 2px 10px; height: 19px; line-height: 19px; color: rgb(68, 68, 68); font-family: Helvetica, AppleSDGothicNeo-Light, nanumgothic, NanumGothic, 나눔고딕, Dotum, 돋움, sans-serif; font-size: 11px; clear: both; white-space: nowrap; pointer-events: none;"><div style="float: left;"><span style="white-space: pre; color: rgb(68, 68, 68);">© NAVER Corp.</span></div><a href="#" style="font-family: Helvetica, AppleSDGothicNeo-Light, nanumgothic, NanumGothic, 나눔고딕, Dotum, 돋움, sans-serif; font-size: 11px; line-height: 19px; margin: 0px 0px 0px 5px; padding: 0px; color: rgb(68, 68, 68); float: left; pointer-events: auto; text-decoration: underline; display: none;">더보기</a><div style="float: left;"><a target="_blank" href="http://www.openstreetmap.org/copyright" style="pointer-events: auto; white-space: pre; color: rgb(68, 68, 68);"> /OpenStreetMap</a></div></div></div></div><div style="border: 1px solid rgb(41, 41, 48); background: rgb(255, 255, 255); padding: 15px; color: rgb(51, 51, 51); position: absolute; font-size: 11px; line-height: 1.5; clear: both; display: none; max-width: 350px !important; max-height: 300px !important;"><h5 style="font-size: 12px; margin-top: 0px; margin-bottom: 10px;">지도 데이터</h5><a href="#" style="position: absolute; top: 8px; right: 8px; width: 14px; height: 14px; font-size: 14px; line-height: 14px; display: block; overflow: hidden; color: rgb(68, 68, 68); text-decoration: none; font-weight: bold; text-align: center;">╳</a><div><span style="white-space: pre; color: rgb(68, 68, 68); float: left;">© NAVER Corp.</span><a target="_blank" href="http://www.openstreetmap.org/copyright" style="pointer-events: auto; white-space: pre; color: rgb(68, 68, 68); float: left;"> /OpenStreetMap</a></div></div></div>
-					</li>
-				</ul>
-			</div>
-		</div>
-	</div>
-	
-	<div class="bottom_table">
-		<div class="row">
-			<div class="col-md-12">
-				<div class="content">
-					<table border="0" class="table">
-						<colgroup>
-							<col width="30%">
-							<col width="70%">
-						</colgroup>
-						<tbody>
-						
-							
-								
-									<tr>
-										<td class="bgBL">
-											소재지
-										</td>
-										<td class="text-left">
-											경기도 파주시 문산읍 당동리 3필지
-										</td>
-									</tr>
-								
-									<tr>
-										<td class="bgBL">
-											용도지역
-										</td>
-										<td class="text-left">
-											제1종일반주거지역
-										</td>
-									</tr>
-								
-									<tr>
-										<td class="bgBL">
-											지목
-										</td>
-										<td class="text-left">
-											전 및 임야
-										</td>
-									</tr>
-								
-									<tr>
-										<td class="bgBL">
-											면적(㎡/py)
-										</td>
-										<td class="text-left">
-											18,703 / 5,658
-										</td>
-									</tr>
-								
-							
-							
-						
-						</tbody>
-					</table>
+					</div>
 				</div>
-			</div>
-		</div>
-	</div>
-	
-	
-		
-			
 				<div class="row">
 					<div class="col-md-12">
 						<div class="tabSubTit">
@@ -3018,24 +2824,22 @@ $(document).ready(function() {
 						</div>
 						<div class="content">
 							본 부동산 목적물은 경기도 파주시 문산읍 당동리 소재 토지 3필지로 <span style="color:#f39c12;"><strong>후순위</strong> <strong>근저당부 질권 대출 목적의 투자모집 진행 건</strong></span>입니다.<br>
-본건 토지는 파주 당동산업단지 맞은편에 위치하며 주변에 주거단지 개발이 확장중에 있습니다.
+							본건 토지는 파주 당동산업단지 맞은편에 위치하며 주변에 주거단지 개발이 확장중에 있습니다.
 						</div>
 					</div>
 				</div>
-			
 				<div class="row">
 					<div class="col-md-12">
 						<div class="tabSubTit">
 							감정가액 및 유효담보가액
 						</div>
 						<div class="content">
-							인근 부동산 시세를 바탕으로 한 <span style="color:#f39c12;"><strong>*감정가액은 85.0억원</strong></span>이며 <span style="color:#f39c12;"><strong>LTV는 약 42.00%</strong></span>입니다. 부동산시장을 통한 급매가 및 인근지역 유사물건의 낙찰가액을 고려한 <strong>유효담보가액은 약 55.2억원</strong>입니다. 유효담보가액을 고려하더라도 <strong>약 19.5억원의 담보여력</strong>이 있습니다.<br>
-<br>
-*본건 토지는 제1종일반주거지역으로 부동산시장을 통해 확인된 실거래가액은 평단가 200~230만원 수준이나, 대형 물건임을 감안하여 평단가 150만원 수준으로 저감 평가하였습니다.(2019년도 공시지가액 67.4억원)
+							인근 부동산 시세를 바탕으로 한 <span style="color:#f39c12;"><strong>*감정가액은 ${guaVO.connoisseur}억원</strong></span>이며 <span style="color:#f39c12;"><strong>LTV는 약 42.00%</strong></span>입니다. 부동산시장을 통한 급매가 및 인근지역 유사물건의 낙찰가액을 고려한 <strong>유효담보가액은 약 55.2억원</strong>입니다. 유효담보가액을 고려하더라도 <strong>약 19.5억원의 담보여력</strong>이 있습니다.<br>
+							<br>
+							*본건 토지는 제1종일반주거지역으로 부동산시장을 통해 확인된 실거래가액은 평단가 200~230만원 수준이나, 대형 물건임을 감안하여 평단가 150만원 수준으로 저감 평가하였습니다.(2019년도 공시지가액 67.4억원)
 						</div>
 					</div>
 				</div>
-			
 				<div class="row">
 					<div class="col-md-12">
 						<div class="tabSubTit">
@@ -3046,7 +2850,6 @@ $(document).ready(function() {
 						</div>
 					</div>
 				</div>
-			
 				<div class="row">
 					<div class="col-md-12">
 						<div class="tabSubTit">
@@ -3057,462 +2860,54 @@ $(document).ready(function() {
 						</div>
 					</div>
 				</div>
-			
-		
-		
-	
-	
-	
-	
-	<div class="row valuation">
-		<div class="col-md-12">
-			<div class="title_2nd">
-				<span id="nmvblsValueTitle">담보물 가치평가</span>
-			</div>
-			<div class="content">
-				<div class="row col">
-					<div class="col-xs-12 col-sm-5 col-md-5 col">
-						<div id="nmvblsValueChart" data-highcharts-chart="0"><div id="highcharts-2wv0c4m-0" dir="ltr" class="highcharts-container " style="position: relative; overflow: hidden; width: 323px; height: 400px; text-align: left; line-height: normal; z-index: 0; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);"><svg version="1.1" class="highcharts-root" style="font-family:&quot;Lucida Grande&quot;, &quot;Lucida Sans Unicode&quot;, Arial, Helvetica, sans-serif;font-size:12px;" xmlns="http://www.w3.org/2000/svg" width="323" height="400" viewBox="0 0 323 400"><desc>Created with Highcharts 6.2.0</desc><defs><clipPath id="highcharts-2wv0c4m-1"><rect x="0" y="0" width="241" height="276" fill="none"></rect></clipPath></defs><rect fill="#fbf9ff" class="highcharts-background" x="0" y="0" width="323" height="400" rx="0" ry="0"></rect><rect fill="none" class="highcharts-plot-background" x="72" y="40" width="241" height="276"></rect><g class="highcharts-pane-group" data-z-index="0"></g><g class="highcharts-grid highcharts-xaxis-grid " data-z-index="1"><path fill="none" data-z-index="1" class="highcharts-grid-line" d="M 312.5 40 L 312.5 316" opacity="1"></path><path fill="none" data-z-index="1" class="highcharts-grid-line" d="M 71.5 40 L 71.5 316" opacity="1"></path></g><g class="highcharts-grid highcharts-yaxis-grid " data-z-index="1"><path fill="none" stroke="#e6e6e6" stroke-width="1" data-z-index="1" class="highcharts-grid-line" d="M 72 316.5 L 313 316.5" opacity="1"></path><path fill="none" stroke="#e6e6e6" stroke-width="1" data-z-index="1" class="highcharts-grid-line" d="M 72 247.5 L 313 247.5" opacity="1"></path><path fill="none" stroke="#e6e6e6" stroke-width="1" data-z-index="1" class="highcharts-grid-line" d="M 72 178.5 L 313 178.5" opacity="1"></path><path fill="none" stroke="#e6e6e6" stroke-width="1" data-z-index="1" class="highcharts-grid-line" d="M 72 109.5 L 313 109.5" opacity="1"></path><path fill="none" stroke="#e6e6e6" stroke-width="1" data-z-index="1" class="highcharts-grid-line" d="M 72 39.5 L 313 39.5" opacity="1"></path></g><rect fill="none" class="highcharts-plot-border" data-z-index="1" x="72" y="40" width="241" height="276"></rect><g class="highcharts-axis highcharts-xaxis " data-z-index="2"><path fill="none" class="highcharts-tick" stroke="#ccd6eb" stroke-width="1" d="M 313.5 316 L 313.5 326" opacity="1"></path><path fill="none" class="highcharts-tick" stroke="#ccd6eb" stroke-width="1" d="M 71.5 316 L 71.5 326" opacity="1"></path><path fill="none" class="highcharts-axis-line" stroke="#ccd6eb" stroke-width="1" data-z-index="7" d="M 72 316.5 L 313 316.5"></path></g><g class="highcharts-axis highcharts-yaxis " data-z-index="2"><text x="26.078125" data-z-index="7" text-anchor="middle" transform="translate(0,0) rotate(270 26.078125 178)" class="highcharts-axis-title" style="color:#666666;fill:#666666;" y="178"><tspan>단위 : %</tspan></text><path fill="none" class="highcharts-axis-line" data-z-index="7" d="M 72 40 L 72 316"></path></g><g class="highcharts-series-group" data-z-index="3"><g data-z-index="0.1" class="highcharts-series highcharts-series-0 highcharts-column-series highcharts-color-0 highcharts-tracker " transform="translate(72,40) scale(1 1)" clip-path="url(#highcharts-2wv0c4m-1)"><rect x="62.5" y="-0.5" width="116" height="98" fill="rgb(228,217,247)" stroke="#ffffff" stroke-width="1" class="highcharts-point highcharts-color-0 "></rect></g><g data-z-index="0.1" class="highcharts-markers highcharts-series-0 highcharts-column-series highcharts-color-0 " transform="translate(72,40) scale(1 1)" clip-path="none"></g><g data-z-index="0.1" class="highcharts-series highcharts-series-1 highcharts-column-series highcharts-color-1 highcharts-tracker " transform="translate(72,40) scale(1 1)" clip-path="url(#highcharts-2wv0c4m-1)"><rect x="62.5" y="97.5" width="116" height="63" fill="rgb(138,63,170)" stroke="#ffffff" stroke-width="1" class="highcharts-point highcharts-color-1 "></rect></g><g data-z-index="0.1" class="highcharts-markers highcharts-series-1 highcharts-column-series highcharts-color-1 " transform="translate(72,40) scale(1 1)" clip-path="none"></g><g data-z-index="0.1" class="highcharts-series highcharts-series-2 highcharts-column-series highcharts-color-2 highcharts-tracker " transform="translate(72,40) scale(1 1)" clip-path="url(#highcharts-2wv0c4m-1)"><rect x="62.5" y="160.5" width="116" height="5" fill="rgb(226,59,91)" stroke="#ffffff" stroke-width="1" class="highcharts-point highcharts-color-2 "></rect></g><g data-z-index="0.1" class="highcharts-markers highcharts-series-2 highcharts-column-series highcharts-color-2 " transform="translate(72,40) scale(1 1)" clip-path="none"></g><g data-z-index="0.1" class="highcharts-series highcharts-series-3 highcharts-column-series highcharts-color-3 highcharts-tracker " transform="translate(72,40) scale(1 1)" clip-path="url(#highcharts-2wv0c4m-1)"><rect x="62.5" y="165.5" width="116" height="111" fill="rgb(68,59,61)" stroke="#ffffff" stroke-width="1" class="highcharts-point highcharts-color-3 "></rect></g><g data-z-index="0.1" class="highcharts-markers highcharts-series-3 highcharts-column-series highcharts-color-3 " transform="translate(72,40) scale(1 1)" clip-path="none"></g></g><g class="highcharts-exporting-group" data-z-index="3"><g class="highcharts-button highcharts-contextbutton" stroke-linecap="round" transform="translate(289,10)"><title>Chart context menu</title><rect fill="#ffffff" class=" highcharts-button-box" x="0.5" y="0.5" width="24" height="22" rx="2" ry="2" stroke="none" stroke-width="1"></rect><path fill="#666666" d="M 6 6.5 L 20 6.5 M 6 11.5 L 20 11.5 M 6 16.5 L 20 16.5" class="highcharts-button-symbol" data-z-index="1" stroke="#666666" stroke-width="3"></path><text x="0" data-z-index="1" style="font-weight:normal;color:#333333;cursor:pointer;fill:#333333;" y="12"></text></g></g><text x="162" text-anchor="middle" class="highcharts-title" data-z-index="4" style="color:#333333;font-size:18px;fill:#333333;" y="24"></text><text x="162" text-anchor="middle" class="highcharts-subtitle" data-z-index="4" style="color:#666666;fill:#666666;" y="24"></text><g class="highcharts-stack-labels" visibility="visible" data-z-index="6" transform="translate(72,40)"><text x="121" style="color:#712594;font-size:11px;font-weight:bold;fill:#712594;" text-anchor="middle" visibility="hidden" transform="translate(0,0)" y="-6"><tspan x="121" y="-6" class="highcharts-text-outline" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="2px" stroke-linejoin="round" style="">850,000만원</tspan><tspan x="121" y="-6">850,000만원</tspan></text></g><g class="highcharts-legend" data-z-index="7" transform="translate(67,338)"><rect fill="none" class="highcharts-legend-box" rx="0" ry="0" x="0" y="0" width="190" height="47" visibility="visible"></rect><g data-z-index="1"><g><g class="highcharts-legend-item highcharts-column-series highcharts-color-0 highcharts-series-0" data-z-index="1" transform="translate(8,3)"><text x="21" style="color:#333333;font-size:12px;font-weight:bold;cursor:pointer;fill:#333333;" text-anchor="start" data-z-index="2" y="15"><tspan>잔여금액</tspan></text><rect x="2" y="4" width="12" height="12" fill="#e4d9f7" rx="6" ry="6" class="highcharts-point" data-z-index="3"></rect></g><g class="highcharts-legend-item highcharts-column-series highcharts-color-1 highcharts-series-1" data-z-index="1" transform="translate(105,3)"><text x="21" y="15" style="color:#333333;font-size:12px;font-weight:bold;cursor:pointer;fill:#333333;" text-anchor="start" data-z-index="2"><tspan>담보여력</tspan></text><rect x="2" y="4" width="12" height="12" fill="#8a3faa" rx="6" ry="6" class="highcharts-point" data-z-index="3"></rect></g><g class="highcharts-legend-item highcharts-column-series highcharts-color-2 highcharts-series-2" data-z-index="1" transform="translate(8,21)"><text x="21" y="15" style="color:#333333;font-size:12px;font-weight:bold;cursor:pointer;fill:#333333;" text-anchor="start" data-z-index="2"><tspan>대출금액</tspan></text><rect x="2" y="4" width="12" height="12" fill="#e23b5b" rx="6" ry="6" class="highcharts-point" data-z-index="3"></rect></g><g class="highcharts-legend-item highcharts-column-series highcharts-color-3 highcharts-series-3" data-z-index="1" transform="translate(105,21)"><text x="21" y="15" style="color:#333333;font-size:12px;font-weight:bold;cursor:pointer;fill:#333333;" text-anchor="start" data-z-index="2"><tspan>선순위금액</tspan></text><rect x="2" y="4" width="12" height="12" fill="#443b3d" rx="6" ry="6" class="highcharts-point" data-z-index="3"></rect></g></g></g></g><g class="highcharts-axis-labels highcharts-xaxis-labels " data-z-index="7"><text x="192.5" style="color:#666666;cursor:default;font-size:11px;fill:#666666;" text-anchor="middle" transform="translate(0,0)" y="335" opacity="1"></text></g><g class="highcharts-axis-labels highcharts-yaxis-labels " data-z-index="7"><text x="57" style="color:#666666;cursor:default;font-size:11px;fill:#666666;" text-anchor="end" transform="translate(0,0)" y="320" opacity="1">0</text><text x="57" style="color:#666666;cursor:default;font-size:11px;fill:#666666;" text-anchor="end" transform="translate(0,0)" y="251" opacity="1">25</text><text x="57" style="color:#666666;cursor:default;font-size:11px;fill:#666666;" text-anchor="end" transform="translate(0,0)" y="182" opacity="1">50</text><text x="57" style="color:#666666;cursor:default;font-size:11px;fill:#666666;" text-anchor="end" transform="translate(0,0)" y="113" opacity="1">75</text><text x="57" style="color:#666666;cursor:default;font-size:11px;fill:#666666;" text-anchor="end" transform="translate(0,0)" y="44" opacity="1">100</text></g><g class="highcharts-label highcharts-tooltip highcharts-color-0" style="pointer-events:none;white-space:nowrap;" data-z-index="8" transform="translate(107,-9999)" opacity="0" visibility="visible"><path fill="none" class="highcharts-label-box highcharts-tooltip-box highcharts-shadow" d="M 3.5 0.5 L 79.5 0.5 85.5 -5.5 91.5 0.5 170 0.5 C 173.5 0.5 173.5 0.5 173.5 3.5 L 173.5 31.5 C 173.5 34.5 173.5 34.5 170.5 34.5 L 3.5 34.5 C 0.5 34.5 0.5 34.5 0.5 31.5 L 0.5 3.5 C 0.5 0.5 0.5 0.5 3.5 0.5" stroke="#000000" stroke-opacity="0.049999999999999996" stroke-width="5" transform="translate(1, 1)"></path><path fill="none" class="highcharts-label-box highcharts-tooltip-box highcharts-shadow" d="M 3.5 0.5 L 79.5 0.5 85.5 -5.5 91.5 0.5 170 0.5 C 173.5 0.5 173.5 0.5 173.5 3.5 L 173.5 31.5 C 173.5 34.5 173.5 34.5 170.5 34.5 L 3.5 34.5 C 0.5 34.5 0.5 34.5 0.5 31.5 L 0.5 3.5 C 0.5 0.5 0.5 0.5 3.5 0.5" stroke="#000000" stroke-opacity="0.09999999999999999" stroke-width="3" transform="translate(1, 1)"></path><path fill="none" class="highcharts-label-box highcharts-tooltip-box highcharts-shadow" d="M 3.5 0.5 L 79.5 0.5 85.5 -5.5 91.5 0.5 170 0.5 C 173.5 0.5 173.5 0.5 173.5 3.5 L 173.5 31.5 C 173.5 34.5 173.5 34.5 170.5 34.5 L 3.5 34.5 C 0.5 34.5 0.5 34.5 0.5 31.5 L 0.5 3.5 C 0.5 0.5 0.5 0.5 3.5 0.5" stroke="#000000" stroke-opacity="0.15" stroke-width="1" transform="translate(1, 1)"></path><path fill="rgba(247,247,247,0.85)" class="highcharts-label-box highcharts-tooltip-box" d="M 3.5 0.5 L 79.5 0.5 85.5 -5.5 91.5 0.5 170 0.5 C 173.5 0.5 173.5 0.5 173.5 3.5 L 173.5 31.5 C 173.5 34.5 173.5 34.5 170.5 34.5 L 3.5 34.5 C 0.5 34.5 0.5 34.5 0.5 31.5 L 0.5 3.5 C 0.5 0.5 0.5 0.5 3.5 0.5" stroke="#712594" stroke-width="1"></path><text x="8" data-z-index="1" style="font-size:12px;color:#333333;cursor:default;fill:#333333;" y="20"><tspan>잔여금액:298,000만원 (35.06%)</tspan></text></g></svg></div></div> 
-					</div>
-					<div id="nmvblsValueList" class="col-xs-12 col-sm-push-1 col-sm-5 col-md-push-1 col-md-5 col">
-						<div class="panel panel-default">
-							<div class="panel-body nmvblsValue display-none" id="nmvblsValueDiv1" style="display: block;">
-								<div class="row col nmvblsValueTxt">
-									<div class="col-xs-1 col-sm-1 col-md-1 col">
-										<span style="color: #eaeaea;">■</span>
-									</div>
-									<div class="col-xs-6 col-sm-6 col-md-6 col text-center">
-										외부감정가(A)
-									</div>
-									<div class="col-xs-5 col-sm-5 col-md-5 col text-center">
-										<span id="nmvblsValueDiv1Span1">850,000</span>만원
-									</div>
-								</div>
-								<div class="row col nmvblsValueTxt">
-									<div class="col-xs-1 col-sm-1 col-md-1 col">
-										<span style="color: #420058;">■</span>
-									</div>
-									<div class="col-xs-6 col-sm-6 col-md-6 col text-center">
-										유효담보가(B)
-									</div>
-									<div class="col-xs-5 col-sm-5 col-md-5 col text-center">
-										<span id="nmvblsValueDiv1Span2">552,000</span>만원
-									</div>
-								</div>
-								<div class="row col nmvblsValueTxt">
-									<div class="col-xs-1 col-sm-1 col-md-1 col">
-										<span style="color: #443b3d;">■</span>
-									</div>
-									<div class="col-xs-6 col-sm-6 col-md-6 col text-center">
-										선순위금액(C)
-									</div>
-									<div class="col-xs-5 col-sm-5 col-md-5 col text-center">
-										<span id="nmvblsValueDiv1Span3">342,000</span>만원
-									</div>
-								</div> 
-								<div class="row col nmvblsValueTxt">
-									<div class="col-xs-1 col-sm-1 col-md-1 col">
-										<span style="color: #e23b5b;">■</span>
-									</div>
-									<div class="col-xs-6 col-sm-6 col-md-6 col text-center">
-										대출금액(D)
-									</div>
-									<div class="col-xs-5 col-sm-5 col-md-5 col text-center">
-										<span id="nmvblsValueDiv1Span4">15,000</span>만원
-									</div>
-								</div>
-								<div class="row col nmvblsValueTxt">
-									<div class="col-xs-1 col-sm-1 col-md-1 col">
-										<span style="color: #e4d9f7;">■</span>
-									</div>
-									<div class="col-xs-6 col-sm-6 col-md-6 col text-center">
-										잔여금액=A-B
-									</div>
-									<div class="col-xs-5 col-sm-5 col-md-5 col text-center">
-										<span id="nmvblsValueDiv1Span5">298,000</span>만원
-									</div>
-								</div>
-								<div class="row col nmvblsValueTxt">
-									<div class="col-xs-1 col-sm-1 col-md-1 col">
-										<span style="color: #8a3faa;">■</span>
-									</div>
-									<div class="col-xs-6 col-sm-6 col-md-6 col text-center">
-										담보여력=B-(C+D)
-									</div>
-									<div class="col-xs-5 col-sm-5 col-md-5 col text-center">
-										<span id="nmvblsValueDiv1Span6">195,000</span>만원
-									</div>
-								</div>
-							</div>
-							
-							<div class="panel-body nmvblsValue display-none" id="nmvblsValueDiv2">
-								<div class="row col nmvblsValueTxt">
-									<div class="col-xs-1 col-sm-1 col-md-1 col">
-										<span style="color: #afb6bb;">■</span>
-									</div>
-									<div class="col-xs-6 col-sm-6 col-md-6 col text-left">
-										예상배당금액(A)
-									</div>
-									<div class="col-xs-5 col-sm-5 col-md-5 col text-right">
-										<span id="nmvblsValueDiv2Span1"></span>만원
-									</div>
-								</div>
-								<div class="row col nmvblsValueTxt">
-									<div class="col-xs-1 col-sm-1 col-md-1 col">
-										<span style="color: #ff874d;">■</span>
-									</div>
-									<div class="col-xs-6 col-sm-6 col-md-6 col text-left">
-										집행비용&amp;당해세 등(B)
-									</div>
-									<div class="col-xs-5 col-sm-5 col-md-5 col text-right">
-										<span id="nmvblsValueDiv2Span2"></span>만원
-									</div>
-								</div>
-								<div class="row col nmvblsValueTxt">
-									<div class="col-xs-1 col-sm-1 col-md-1 col">
-										<span style="color: #ef8e8e;">■</span>
-									</div>
-									<div class="col-xs-6 col-sm-6 col-md-6 col text-left">
-										선순위금액(C)
-									</div>
-									<div class="col-xs-5 col-sm-5 col-md-5 col text-right">
-										<span id="nmvblsValueDiv2Span3"></span>만원
-									</div>
-								</div>
-								<div class="row col nmvblsValueTxt">
-									<div class="col-xs-1 col-sm-1 col-md-1 col">
-										<span style="color: #814595;">■</span>
-									</div>
-									<div class="col-xs-6 col-sm-6 col-md-6 col text-left">
-										대출금액(D)
-									</div>
-									<div class="col-xs-5 col-sm-5 col-md-5 col text-right">
-										<span id="nmvblsValueDiv2Span4"></span>만원
-									</div>
-								</div>
-								<div class="row col nmvblsValueTxt">
-									<div class="col-xs-1 col-sm-1 col-md-1 col">
-										<span style="color: #7aadf2;">■</span>
-									</div>
-									<div class="col-xs-6 col-sm-6 col-md-6 col text-left">
-										잔여금액=A-B-C-D
-									</div>
-									<div class="col-xs-5 col-sm-5 col-md-5 col text-right">
-										<span id="nmvblsValueDiv2Span5"></span>만원
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				
-				<div class="display-none" id="ltvCalcDiv" style="display: block;">
-					<div class="row col">
-						<div class="col-xs-5 col-sm-6 col-md-6 col">
-							<div class="title_2nd">
-								LTV 계산기
-							</div>
-						</div>
-						<div class="col-xs-7 col-sm-6 col-md-6 text-right col">
-							<div class="title_2nd">
-								<button type="button" class="btn btn-purple-transparent" onclick="fn_calcLtv()">
-									계산
-								</button>
-								<button type="button" class="btn btn-purple-transparent" onclick="fn_calcLtvReset()">
-									초기화
-								</button>
-							</div>
-						</div>
-					</div>
-					<div class="row col">
-						<div class="col-md-4 col" style="margin-top:10px;">
-							<div class="input-group">
-								<span class="input-group-addon" id="calcOuterVlAmt-addon">감정가<sup>1)</sup></span>
-								<input type="text" class="form-control text-right" id="calcOuterVlAmt" onkeypress="hitCalcLtvEnterKey(event);return gfn_setNumber(event, 6);" aria-describedby="calcOuterVlAmt-addon" value="0">
-								<span class="input-group-addon">만원</span>
-							</div>
-						</div>
-						<div class="col-md-4 xd-col" style="margin-top:10px;">
-							<div class="input-group">
-								<span class="input-group-addon" id="calcPrrOrdrAmt-addon">선순위금액<sup>2)</sup></span>
-								<input type="text" class="form-control text-right" id="calcPrrOrdrAmt" onkeypress="hitCalcLtvEnterKey(event);return gfn_setNumber(event, 6);" aria-describedby="calcPrrOrdrAmt-addon" value="0">
-								<span class="input-group-addon">만원</span>
-							</div>
-						</div>
-						<div class="col-md-4 col" style="margin-top:10px;">
-							<div class="input-group">
-								<span class="input-group-addon" id="calcLoanAmt-addon">대출금액<sup>3)</sup></span>
-								<input type="text" class="form-control text-right" id="calcLoanAmt" onkeypress="hitCalcLtvEnterKey(event);return gfn_setNumber(event, 6);" aria-describedby="calcLoanAmt-addon" value="0">
-								<span class="input-group-addon">만원</span>
-							</div>
-						</div>
-					</div>
-					<div class="row col display-none" id="calcLtvDiv">
-						<div class="col-md-push-9 col-md-3 col" style="margin-top:10px;">
-							<div class="input-group">
-								<span class="input-group-addon" id="basic-addon1">LTV</span>
-								<input type="text" class="form-control text-right font-purple font-bold" id="calcLtv" aria-describedby="basic-addon1" value="0.0">
-								<span class="input-group-addon">%</span>
-							</div>
-						</div>
-						<div class="col-md-1 xd-col">
-						</div>
-						<div class="col-md-pull-4 col-md-8 col text-center" style="margin-top:10px;">
-							<div id="showCalcLtvListBtn">
-								<button type="button" class="btn btn-default btn-block" onclick="fn_showCalcLtvList()">
-									계산내역 보기 <i class="glyphicon glyphicon-menu-down"></i>
-								</button>
-							</div>
-							<div class="display-none" id="hideCalcLtvListBtn">
-								<button type="button" class="btn btn-default btn-block" onclick="fn_hideCalcLtvList()">
-									계산내역 닫기 <i class="glyphicon glyphicon-menu-up"></i>
-								</button>
-							</div>
-							<div class="display-none" id="calcLtvListDiv" style="margin-top:1px;">
-								<table class="table table-bordered">
-									<colgroup>
-										<col width="65%">
-										<col width="20%">
-										<col width="15%">
-									</colgroup>
-									<tbody>
-										<tr>
-											<td class="text-right">
-												1. 감정가
-											</td>
-											<td class="text-right">
-												<span id="calcListOuterVlAmt"></span>
-											</td>
-											<td class="text-left">
-												만원
-											</td>
-										</tr>
-										<tr>
-											<td class="text-right">
-												2. 선순위 금액
-											</td>
-											<td class="text-right">
-												<span id="calcListPrrOrdrAmt"></span>
-											</td>
-											<td class="text-left">
-												만원
-											</td>
-										</tr>
-										<tr>
-											<td class="text-right">
-												3. 대출금액
-											</td>
-											<td class="text-right">
-												<span id="calcListLoanAmt"></span>
-											</td>
-											<td class="text-left">
-												만원
-											</td>
-										</tr>
-										<tr>
-											<td class="text-right">
-												담보여력=1-(2+3)
-											</td>
-											<td class="text-right">
-												<span id="calcListRsrvAmt"></span>
-											</td>
-											<td class="text-left">
-												만원
-											</td>
-										</tr>
-									</tbody>
-								</table>
-							</div>
-						</div>
-					</div>
-				
-					<div class="display-none" id="calcActnCaseDiv">
-						<div class="row col">
-							<div class="col-xs-6 col-sm-6 col-md-6 col" style="margin-top:20px;">
-								<div style="font-size: 16px; font-weight: bold;">
-									<div style="border-width: 1px; border-color: #712594; padding: 0px 0px 0px 20px; border-left-style: solid;">
-										경매 진행시
-									</div>
-								</div>
-							</div>
-							<div class="col-xs-6 col-sm-6 col-md-6 text-right col" style="margin-top:20px;">
-								<button type="button" class="btn btn-purple-transparent" onclick="fn_calcActn()">
-									계산
-								</button>
-								<button type="button" class="btn btn-purple-transparent" onclick="fn_calcActnReset()">
-									초기화
-								</button>
-							</div>
-						</div>
-						<div class="row col">
-							<div class="col-md-4 col" style="margin-top:10px;">
-								<div class="input-group">
-									<span class="input-group-addon" id="calcBidRate-addon">낙찰가율</span>
-									<input type="text" class="form-control text-right" id="calcBidRate" onkeypress="hitCalcActnEnterKey(event);return gfn_setNumber(event, -2);" aria-describedby="calcBidRate-addon" value="0">
-									<span class="input-group-addon">%</span>
-								</div>
-							</div>
-							<div class="col-md-4 xd-col" style="margin-top:10px;">
-								<div class="input-group">
-									<span class="input-group-addon" id="calcAllctnAmt-addon">배당가능액<sup>4)</sup></span>
-									<input type="text" class="form-control text-right" id="calcAllctnAmt" aria-describedby="calcAllctnAmt-addon" value="0">
-									<span class="input-group-addon">만원</span>
-								</div>
-							</div>
-							<div class="col-md-4 col" style="margin-top:10px;">
-								<div class="input-group">
-									<span class="input-group-addon" id="calcLoanAmt-addon">배당잔액</span>
-									<input type="text" class="form-control text-right font-purple font-bold" id="calcAllctnRestAmt" aria-describedby="calcLoanAmt-addon" value="0">
-									<span class="input-group-addon">만원</span>
-								</div>
-							</div>
-						</div>
-						
-						<div class="row col display-none" id="calcActnDiv">
-							<div class="col-md-8 col text-center" style="margin-top:10px;">
-								<div id="showCalcActnListBtn">
-									<button type="button" class="btn btn-default btn-block" onclick="fn_showCalcActnList()">
-										계산내역 보기 <i class="glyphicon glyphicon-menu-down"></i>
-									</button>
-								</div>
-								<div class="display-none" id="hideCalcActnListBtn">
-									<button type="button" class="btn btn-default btn-block" onclick="fn_hideCalcActnList()">
-										계산내역 닫기 <i class="glyphicon glyphicon-menu-up"></i>
-									</button>
-								</div>
-								<div class="display-none" id="calcActnListDiv" style="margin-top:1px;">
-									<table class="table table-bordered">
-										<colgroup>
-											<col width="65%">
-											<col width="20%">
-											<col width="15%">
-										</colgroup>
-										<tbody>
-											<tr>
-												<td class="text-right">
-													낙찰가율
-												</td>
-												<td class="text-right">
-													<span id="calcListBidRate"></span>
-												</td>
-												<td class="text-left">
-													%
-												</td>
-											</tr>
-											<tr>
-												<td class="text-right">
-													배당가능금액<sup>4)</sup>=감정가<sup>1)</sup>×낙찰가율
-												</td>
-												<td class="text-right">
-													<span id="calcListAllctnAmt"></span>
-												</td>
-												<td class="text-left">
-													만원
-												</td>
-											</tr>
-											<tr>
-												<td class="text-right">
-													배당잔액=4-(2+3)
-												</td>
-												<td class="text-right">
-													<span id="calcListAllctnRestAmt"></span>
-												</td>
-												<td class="text-left">
-													만원
-												</td>
-											</tr>
-										</tbody>
-									</table>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div style="margin-top:10px;">
-						<p class="calcLtv">
-							* 감정가액은 임의로 입력 가능합니다.<br>
-							* 선순위 및 대출 금액은 원금 또는 채권최고액 기준으로 입력 가능합니다.<br>
-							* 낙찰가율은 임의로 입력 가능합니다.<br>
-							* 본 계산은 투자자의 이해를 돕기 위함이오니, 권리분석에 참고하시기 바랍니다.
-						</p>
-					</div>
-					<div class="text-center valuationBtn">
-						<a href="http://nland.kbstar.com/quics?page=B025914&amp;cc=b043428:b043506/" target="_blank">
-							<img src="${pageContext.request.contextPath}/resources/img/img_invest_kbstar.png">
-						</a>
-						<a href="http://rt.molit.go.kr/" target="_blank">
-							<img src="${pageContext.request.contextPath}/resources/img/img_invest_molit.png">
-						</a>
-					</div>
-				</div>
 			</div>
 		</div>
 	</div>
 </div>
-
 <div id="strctrDiv" class="infoOpenDiv">
 	<div class="row">
 		<div class="investCont_tit col-md-12">
 			<b>|</b>&nbsp;상품구조<span style="color:#5a5a5a;font-size:20px;"> : 근저당부질권</span>
 		</div>
 		<div class="col-md-12 planCont" style="margin-bottom: 30px;">
-		
-		
 			<div class="md">
 				<img src="${pageContext.request.contextPath}/resources/img/img_invest_nmvbls_strctr2_l.png" class="img-responsive" style="margin: 30px auto;">
 			</div>
 			<div class="xd">
 				<img src="${pageContext.request.contextPath}/resources/img/img_invest_nmvbls_strctr2_s.png" class="img-responsive" style="margin: 30px auto;">
 			</div>
-		
-		
-		
-		
-		
 		</div>
 	</div>
 	<hr>
 </div>
-
-
 <div id="planDiv" class="infoOpenDiv">
 	<div class="row">
 		<div class="investCont_tit col-md-12">
 			<b>|</b>&nbsp;상환계획
 		</div>
 		<div class="col-md-12 planCont" style="margin-bottom: 30px;">
+			<div class="tabSubTit">
+				자체상환 또는 리파이낸싱
+			</div>
+			<div>
+				차주는 고정적인 수익을 바탕으로 자체상환 계획입니다. 만기 전 연장 신청할 경우 담보물 재평가 후 리파이낸싱을 통하여 상환됩니다.
+			</div>
 		
-			
-				
-					<div class="tabSubTit">
-						자체상환 또는 리파이낸싱
-					</div>
-					<div>
-						차주는 고정적인 수익을 바탕으로 자체상환 계획입니다. 만기 전 연장 신청할 경우 담보물 재평가 후 리파이낸싱을 통하여 상환됩니다.
-					</div>
-				
-					<div class="tabSubTit">
-						NPL매각
-					</div>
-					<div>
-						만약 본 상품 부실발생시, NPL매입전문 업체에게 채권매각하여 회수합니다. 크리에이터는 물건 심사시 사전에 NPL매입의 수익률 민감도 분석을 통하여 합리적으로 매입 가능한 수준의 대출금액을 승인합니다.
+			<div class="tabSubTit">
+				NPL매각
+			</div>
+			<div>
+				만약 본 상품 부실발생시, NPL매입전문 업체에게 채권매각하여 회수합니다. 크리에이터는 물건 심사시 사전에 NPL매입의 수익률 민감도 분석을 통하여 합리적으로 매입 가능한 수준의 대출금액을 승인합니다.
 
-					</div>
-				
-					<div class="tabSubTit">
-						경매회수
-					</div>
-					<div>
-						시장의 예기치 못한 상황으로 채권매각이 원활하지 않을 시, 담보권리를 기반으로 경매진행하여 회수합니다. 크리에이터는 경매 낙찰가율을 고려한 유효담보가액을 산정하여 담보여력을 평가한 뒤 대출금액을 승인합니다.
-					</div>
-				
-			
-			
+			</div>
 		
-		
-		
+			<div class="tabSubTit">
+				경매회수
+			</div>
+			<div>
+				시장의 예기치 못한 상황으로 채권매각이 원활하지 않을 시, 담보권리를 기반으로 경매진행하여 회수합니다. 크리에이터는 경매 낙찰가율을 고려한 유효담보가액을 산정하여 담보여력을 평가한 뒤 대출금액을 승인합니다.
+			</div>
 			<img src="${pageContext.request.contextPath}/resources/img/img_invest_nmvbls_auction.png" class="img-responsive" style="margin: 30px auto;">
-		
-		
 		</div>
 	</div>
 	<hr>
@@ -3523,120 +2918,90 @@ $(document).ready(function() {
 		<div class="investCont_tit col-md-12">
 			<b>|</b>&nbsp;투자자보호
 		</div>
-		
-			
-			
-			
-				
-					<div class="col-xs-12 col-sm-4 col-md-4 safeDivWrap">
-						<div class="safeDivCont">
-							<div class="safeCont_tit">
-								담보권
-							</div>
-						</div>
-						<div class="safeDivNum">
-							<i class="fa fa-check-circle"></i>
-						</div>
-						<div class="safeDivCont">
-							<div class="safeCont_txt">
-								후순위 근저당부 질권
-							</div>
-						</div>
-					</div>
-				
-					<div class="col-xs-12 col-sm-4 col-md-4 safeDivWrap">
-						<div class="safeDivCont">
-							<div class="safeCont_tit">
-								인출조건
-							</div>
-						</div>
-						<div class="safeDivNum">
-							<i class="fa fa-check-circle"></i>
-						</div>
-						<div class="safeDivCont">
-							<div class="safeCont_txt">
-								대출약정서<br>
-근저당설정계약서
-							</div>
-						</div>
-					</div>
-				
-					<div class="col-xs-12 col-sm-4 col-md-4 safeDivWrap">
-						<div class="safeDivCont">
-							<div class="safeCont_tit">
-								기타보강
-							</div>
-						</div>
-						<div class="safeDivNum">
-							<i class="fa fa-check-circle"></i>
-						</div>
-						<div class="safeDivCont">
-							<div class="safeCont_txt">
-								질권설정 승낙서<br>
-대표이사 연대보증
-							</div>
-						</div>
-					</div>
-				
-			
-			
-		
-	</div>
-</div>
-
-<!-- 동일차입자 상품 Modal -->
-<div class="modal fade" id="sameBrrwrModal" role="dialog" aria-labelledby="sameBrrwrModalLabel" aria-hidden="true">
-	<div class="modal-dialog">
-		<div class="modal-content font-purple">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-					<span aria-hidden="true">×</span>
-				</button>
-				동일차입자 상품
+		<div class="col-xs-12 col-sm-4 col-md-4 safeDivWrap">
+			<div class="safeDivCont">
+				<div class="safeCont_tit">
+					담보권
+				</div>
 			</div>
-			<div class="modal-body">
-				<table class="table table-bordered">
-					<tbody id="sameBrrwrListBody"><tr>	<td>		<a href="javascript:(void(0));" onclick="fn_openInvestDetail(777)">			04-19-126 [부동산 425호] 경기도 파주시 문산읍 토지(2차)		</a>	</td></tr><tr>	<td>		<a href="javascript:(void(0));" onclick="fn_openInvestDetail(771)">			04-19-121 [부동산 422호] 경기도 파주시 문산읍 토지(1차)		</a>	</td></tr><tr>	<td>		<a href="javascript:(void(0));" onclick="fn_openInvestDetail(741)">			04-19-99 [부동산 402호] 제주 서귀포시 오피스텔 수익권(2차)		</a>	</td></tr><tr>	<td>		<a href="javascript:(void(0));" onclick="fn_openInvestDetail(707)">			04-19-74 [부동산 399호] 제주 서귀포시 오피스텔 수익권(1차)		</a>	</td></tr></tbody>
-				</table>
+			<div class="safeDivNum">
+				<i class="fa fa-check-circle"></i>
+			</div>
+			<div class="safeDivCont">
+				<div class="safeCont_txt">
+					후순위 근저당부질권
+				</div>
+			</div>
+		</div>
+	
+		<div class="col-xs-12 col-sm-4 col-md-4 safeDivWrap">
+			<div class="safeDivCont">
+				<div class="safeCont_tit">
+					인출조건
+				</div>
+			</div>
+			<div class="safeDivNum">
+				<i class="fa fa-check-circle"></i>
+			</div>
+			<div class="safeDivCont">
+				<div class="safeCont_txt">
+					대출약정서<br>
+					근저당설정계약서
+				</div>
+			</div>
+		</div>
+	
+		<div class="col-xs-12 col-sm-4 col-md-4 safeDivWrap">
+			<div class="safeDivCont">
+				<div class="safeCont_tit">
+					기타보강
+				</div>
+			</div>
+			<div class="safeDivNum">
+				<i class="fa fa-check-circle"></i>
+			</div>
+			<div class="safeDivCont">
+				<div class="safeCont_txt">
+					질권설정 승낙서<br>
+					대표이사 연대보증
+				</div>
 			</div>
 		</div>
 	</div>
 </div>
-									
-									
-									
-									
-									
-								
-								
-								
-
+								<!-- 동일차입자 상품 Modal -->
+								<div class="modal fade" id="sameBrrwrModal" role="dialog" aria-labelledby="sameBrrwrModalLabel" aria-hidden="true">
+									<div class="modal-dialog">
+										<div class="modal-content font-purple">
+											<div class="modal-header">
+												<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+													<span aria-hidden="true">×</span>
+												</button>
+												동일차입자 상품
+											</div>
+											<div class="modal-body">
+												<table class="table table-bordered">
+													<tbody id="sameBrrwrListBody"><tr>	<td>		<a href="javascript:(void(0));" onclick="fn_openInvestDetail(777)">			04-19-126 [부동산 425호] 경기도 파주시 문산읍 토지(2차)		</a>	</td></tr><tr>	<td>		<a href="javascript:(void(0));" onclick="fn_openInvestDetail(771)">			04-19-121 [부동산 422호] 경기도 파주시 문산읍 토지(1차)		</a>	</td></tr><tr>	<td>		<a href="javascript:(void(0));" onclick="fn_openInvestDetail(741)">			04-19-99 [부동산 402호] 제주 서귀포시 오피스텔 수익권(2차)		</a>	</td></tr><tr>	<td>		<a href="javascript:(void(0));" onclick="fn_openInvestDetail(707)">			04-19-74 [부동산 399호] 제주 서귀포시 오피스텔 수익권(1차)		</a>	</td></tr></tbody>
+												</table>
+											</div>
+										</div>
+									</div>
+								</div>
 								<div class="display-none infoOpenDiv" id="loanFileHtml" style="display: block;">
 									<hr>
-									
 									<div class="row">
 										<div class="investCont_tit col-md-12">
 											<b>|</b>&nbsp;참고파일
 										</div>
 										<div class="col-md-12" style=" margin-top:30px;">
-										
-											
-												
-													<div class="loanFile">
-														<a class="fileItem" target="_blank" href="https://creator.co.kr/img/loan/790/cde5c5a80901478486e01a27b4b8eba3.pdf">
-															
-															
-															등기부등본
-														</a>
-													</div>
-												
-											
-											
-										
+											<div class="loanFile">
+												<a class="fileItem" target="_blank" href="https://creator.co.kr/img/loan/790/cde5c5a80901478486e01a27b4b8eba3.pdf">
+													등기부등본
+												</a>
+											</div>
 										</div>
 									</div>
 								</div>
-									
 								<div class="display-none infoOpenDiv" id="eventHtml1">
 									<hr>
 									<div class="row">
@@ -3807,181 +3172,180 @@ $(document).ready(function() {
 									</div>
 								</div>
 								
-								<div>
-									<hr>
-									<div class="row">
-										<div class="investCont_tit col-md-12">
-											<b>|</b>&nbsp;자주 묻는 질문
-										</div>
-										<div class="col-md-12" style=" margin-top:20px;">
-											<div class="tab-content">
-												<div role="tabpanel" class="tab-pane fade in active" id="investTab">
-													<div class="wrap" id="investFaqWrap investDetail_FAQ">
-														<div class="panel-group" id="investFaqAccordion" role="tablist" aria-multiselectable="true">
-															<div class="panel panel-default">
-																<div class="panel-heading" role="tab" id="investFaqHeading1">
-																	<h4 class="panel-title" id="FAQhead">
-																		<a data-toggle="collapse" data-parent="#investFaqAccordion" href="#investFaqCollapse1" aria-expanded="false" aria-controls="investFaqCollapse1">
-																			Q1. 투자는 어떻게 하나요?
-																		</a>
-																	</h4>
-																</div>
-																<div id="investFaqCollapse1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="investFaqHeading1">
-																	<div id="FAQbody" class="panel-body">
-																		투자를 희망하는 회원님은 다음과 같은 과정을 통해 투자에 참여하실 수 있습니다.?
-																		<br><br>
-																		1. 회원가입하기<br>
-																		2. [마이페이지]→[예치금 관리]에서 ‘예치금 계좌 발급받기’<br>
-																		3. 예치금 입금하기<br>
-																		4. 투자하기(수동투자 혹은 자동투자)<br>
-																		5. 원리금 상환<br>
-																		<br>자세한 내용은 <a href="/invest/guide" target="_blank">'투자안내'</a>를 참고하시기 바랍니다.
-																	</div>
-																</div>
+								<!-- 자주묻는질문 start -->
+						<div>
+							<hr>
+							<div class="row">
+								<div class="investCont_tit col-md-12">
+									<b>|</b>&nbsp;자주 묻는 질문
+								</div>
+								<div class="col-md-12" style=" margin-top:20px;">
+									<div class="tab-content">
+										<div role="tabpanel" class="tab-pane fade in active" id="investTab">
+											<div class="wrap" id="investFaqWrap investDetail_FAQ">
+												<div class="panel-group" id="investFaqAccordion" role="tablist" aria-multiselectable="true">
+													<div class="panel panel-default">
+														<div class="panel-heading" role="tab" id="investFaqHeading1">
+															<h4 class="panel-title" id="FAQhead">
+																<a data-toggle="collapse" data-parent="#investFaqAccordion" href="#investFaqCollapse1" aria-expanded="false" aria-controls="investFaqCollapse1" class="collapsed">
+																	Q1. 투자는 어떻게 하나요?
+																</a>
+															</h4>
+														</div>
+														<div id="investFaqCollapse1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="investFaqHeading1" aria-expanded="false" style="height: 0px;">
+															<div id="FAQbody" class="panel-body">
+																투자를 희망하는 회원님은 다음과 같은 과정을 통해 투자에 참여하실 수 있습니다.?
+																<br><br>
+																1. 회원가입하기<br>
+																2. [마이페이지]→[예치금 관리]에서 ‘예치금 계좌 발급받기’<br>
+																3. 예치금 입금하기<br>
+																4. 투자하기(수동투자 혹은 자동투자)<br>
+																5. 원리금 상환<br>
+																<br>자세한 내용은 <a href="/invest/guide" target="_blank">'투자안내'</a>를 참고하시기 바랍니다.
 															</div>
-															<div class="panel panel-default">
-																<div class="panel-heading" role="tab" id="investFaqHeading2">
-																	<h4 class="panel-title" id="FAQhead">
-																		<a data-toggle="collapse" data-parent="#investFaqAccordion" href="#investFaqCollapse2" aria-expanded="false" aria-controls="investFaqCollapse2">
-																			Q2. 자동투자는 무엇인가요?
-																		</a>
-																	</h4>
-																</div>
-																<div id="investFaqCollapse2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="investFaqHeading2">
-																	<div id="FAQbody" class="panel-body">
-																		자동투자는 고객님께서 설정한 조건에 따라 상품 오픈 30분전에 자동으로 투자가 되는 시스템으로, 설정방법은 아래와 같습니다.
-																		<br><br>
-																		● 자동투자 설정방법 ●<br>
-																		1. [마이페이지]→[자동투자 설정] 우측 상단[OFF]에서 [ON]으로 변경합니다.<br>
-																		2. 자동투자 예치금 설정: 자동투자로 운영하고 싶은 총 금액을 입력합니다.<br>
-																		3. 자동투자 1회 실행 금액을 입력합니다.<br>
-																		4. 자동투자 상세 설정 후 화면 우측 상단의 ‘조건저장’ 버튼을 누릅니다. <br>
-																		<br><br>
-																		▶ [자동투자 테스트]를 통해 오픈예정 상품에 맞는 조건을 손쉽게 설정할 수 있습니다. <br>
-																		▶ 자동투자는 오픈시간 30분 전 1회만 실행되므로, 그 이후에 자동 투자를 설정하여도 자동 투자가 이루어지지 않습니다. 
-																	</div>
-																</div>
+														</div>
+													</div>
+													<div class="panel panel-default">
+														<div class="panel-heading" role="tab" id="investFaqHeading2">
+															<h4 class="panel-title" id="FAQhead">
+																<a data-toggle="collapse" data-parent="#investFaqAccordion" href="#investFaqCollapse2" aria-expanded="false" aria-controls="investFaqCollapse2" class="collapsed">
+																	Q2. 자동투자는 무엇인가요?
+																</a>
+															</h4>
+														</div>
+														<div id="investFaqCollapse2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="investFaqHeading2" aria-expanded="false" style="height: 0px;">
+															<div id="FAQbody" class="panel-body">
+																자동투자는 고객님께서 설정한 조건에 따라 상품 오픈 30분전에 자동으로 투자가 되는 시스템으로, 설정방법은 아래와 같습니다.
+																<br><br>
+																● 자동투자 설정방법 ●<br>
+																1. [마이페이지]→[자동투자 설정] 우측 상단[OFF]에서 [ON]으로 변경합니다.<br>
+																2. 자동투자 예치금 설정: 자동투자로 운영하고 싶은 총 금액을 입력합니다.<br>
+																3. 자동투자 1회 실행 금액을 입력합니다.<br>
+																4. 자동투자 상세 설정 후 화면 우측 상단의 ‘조건저장’ 버튼을 누릅니다. <br>
+																<br><br>
+																▶ [자동투자 테스트]를 통해 오픈예정 상품에 맞는 조건을 손쉽게 설정할 수 있습니다. <br>
+																▶ 자동투자는 오픈시간 30분 전 1회만 실행되므로, 그 이후에 자동 투자를 설정하여도 자동 투자가 이루어지지 않습니다. 
 															</div>
-															<div class="panel panel-default">
-																<div class="panel-heading" role="tab" id="investFaqHeading3">
-																	<h4 class="panel-title" id="FAQhead">
-																		<a data-toggle="collapse" data-parent="#investFaqAccordion" href="#investFaqCollapse3" aria-expanded="false" aria-controls="investFaqCollapse3">
-																			Q3. 이자수익에 적용되는 세율은 몇 % 인가요?
-																		</a>
-																	</h4>
-																</div>
-																<div id="investFaqCollapse3" class="panel-collapse collapse" role="tabpanel" aria-labelledby="investFaqHeading3">
-																	<div id="FAQbody" class="panel-body">
-																		투자 시 발생된 이자수익은 과세대상입니다. 현행 세법에 따라 비영업대금에 대한 이익은 이자소득으로 간주되어 25%의 세율이 적용됩니다. (소득세법 제16조 제1항 제11) 여기에 주민세가 2.5% 추가되어 총 27.5%를 세금으로 원천징수 하고있습니다. 크리에이터에서는 회원님의 이자 수익에대해서 납세금을 납부하며, 세후의 순수익에 대하여 회원님의 예치금 계좌로 입금해 드립니다.
-																	</div>
-																</div>
+														</div>
+													</div>
+													<div class="panel panel-default">
+														<div class="panel-heading" role="tab" id="investFaqHeading3">
+															<h4 class="panel-title" id="FAQhead">
+																<a data-toggle="collapse" data-parent="#investFaqAccordion" href="#investFaqCollapse3" aria-expanded="false" aria-controls="investFaqCollapse3" class="collapsed">
+																	Q3. 이자수익에 적용되는 세율은 몇 % 인가요?
+																</a>
+															</h4>
+														</div>
+														<div id="investFaqCollapse3" class="panel-collapse collapse" role="tabpanel" aria-labelledby="investFaqHeading3" aria-expanded="false" style="height: 0px;">
+															<div id="FAQbody" class="panel-body">
+																투자 시 발생된 이자수익은 과세대상입니다. 현행 세법에 따라 비영업대금에 대한 이익은 이자소득으로 간주되어 25%의 세율이 적용됩니다. (소득세법 제16조 제1항 제11) 여기에 주민세가 2.5% 추가되어 총 27.5%를 세금으로 원천징수 하고있습니다. 미드레이트에서는 회원님의 이자 수익에대해서 납세금을 납부하며, 세후의 순수익에 대하여 회원님의 예치금 계좌로 입금해 드립니다.
 															</div>
-															<div class="panel panel-default">
-																	<div class="panel-heading" role="tab" id="investFaqHeading4">
-																	<h4 class="panel-title" id="FAQhead">
-																		<a data-toggle="collapse" data-parent="#investFaqAccordion" href="#investFaqCollapse4" aria-expanded="false" aria-controls="investFaqCollapse4">
-																			Q4. 가이드라인에 따른 투자한도 상향은 어떻게 하나요?
-																		</a>
-																	</h4>
-																</div>
-																<div id="investFaqCollapse4" class="panel-collapse collapse" role="tabpanel" aria-labelledby="investFaqHeading4">
-																	<div id="FAQbody" class="panel-body">
-																		금융위원회의 “P2P대출 가이드라인 개정안”에 따라 현재 일반 개인투자자는 총투자금액 2,000만원, 동일차입자 500만원의 투자한도가 적용됩니다. (단, 부동산 상품은 총투자한도 최대 1,000만원) 따라서 투자한도 상향을 원하시는 고객님들은 아래의 조건 참고하셔서 고객센터로 서류 제출해주시기 바랍니다.
-																		<br><br>
-																		● 소득적격 개인투자자 (총투자한도 4,000만원, 동일차입자 2,000만원)<br>
-																		택1) 종합소득 과세표준 확정신고서 &amp; 종합소득세 신고서 접수증<br>
-																		택2) 근로소득원천징수영수증 (근로소득만 증빙하는 경우)<br>
-																		<br><br>
-																		● 개인전문투자자 (한도 제한없음)<br>
-																		서류) 금융투자협회 지정 전문투자자 확인증<br>
-																		<br><br>
-																		● 법인투자자 (한도 제한없음)<br>
-																		택1) 사업자 등록증 사본<br>
-																		택2) 법인등록증 &amp; 법인통장 사본<br>
-																		<br><br>
-																		자세한 내용은 공지사항을 참고하여 주시기 바랍니다.
-																	</div>
-																</div>
+														</div>
+													</div>
+													<div class="panel panel-default">
+															<div class="panel-heading" role="tab" id="investFaqHeading4">
+															<h4 class="panel-title" id="FAQhead">
+																<a data-toggle="collapse" data-parent="#investFaqAccordion" href="#investFaqCollapse4" aria-expanded="false" aria-controls="investFaqCollapse4" class="collapsed">
+																	Q4. 가이드라인에 따른 투자한도 상향은 어떻게 하나요?
+																</a>
+															</h4>
+														</div>
+														<div id="investFaqCollapse4" class="panel-collapse collapse" role="tabpanel" aria-labelledby="investFaqHeading4" aria-expanded="false" style="height: 0px;">
+															<div id="FAQbody" class="panel-body">
+																금융위원회의 “P2P대출 가이드라인 개정안”에 따라 현재 일반 개인투자자는 총투자금액 2,000만원, 동일차입자 500만원의 투자한도가 적용됩니다. (단, 부동산 상품은 총투자한도 최대 1,000만원) 따라서 투자한도 상향을 원하시는 고객님들은 아래의 조건 참고하셔서 고객센터로 서류 제출해주시기 바랍니다.
+																<br><br>
+																● 소득적격 개인투자자 (총투자한도 4,000만원, 동일차입자 2,000만원)<br>
+																택1) 종합소득 과세표준 확정신고서 &amp; 종합소득세 신고서 접수증<br>
+																택2) 근로소득원천징수영수증 (근로소득만 증빙하는 경우)<br>
+																<br><br>
+																● 개인전문투자자 (한도 제한없음)<br>
+																서류) 금융투자협회 지정 전문투자자 확인증<br>
+																<br><br>
+																● 법인투자자 (한도 제한없음)<br>
+																택1) 사업자 등록증 사본<br>
+																택2) 법인등록증 &amp; 법인통장 사본<br>
+																<br><br>
+																자세한 내용은 공지사항을 참고하여 주시기 바랍니다.
 															</div>
-															<div class="panel panel-default">
-																<div class="panel-heading" role="tab" id="investFaqHeading5">
-																	<h4 class="panel-title" id="FAQhead">
-																		<a data-toggle="collapse" data-parent="#investFaqAccordion" href="#investFaqCollapse5" aria-expanded="false" aria-controls="investFaqCollapse5">
-																			Q5. 미성년자도 투자가 가능한가요?
-																		</a>
-																	</h4>
-																</div>
-																<div id="investFaqCollapse5" class="panel-collapse collapse" role="tabpanel" aria-labelledby="investFaqHeading5">
-																	<div id="FAQbody" class="panel-body">
-																		네. 투자가 가능합니다. 19세 미만의 미성년자 회원의 경우 아래의 절차에 따라 서비스 이용이 가능하며, 법정대리인의 동의절차 등 관련서류 제출 및 승인과정이 필요합니다. 
-																		<br><br>
-																		● 가입 및 투자절차<br>
-																		 1. 개인회원 가입<br>
-																		 2. 가상계좌 발급 시 본인 인증 확인 요청<br>
-																		 3. 필요서류 제출 및 관리자 승인(이메일 또는 우편 발송)<br>
-																		 4. 서류 확인 및 관리자 승인<br>
-																		 5. 서비스 이용
-																		<br><br>
-																		●  필요서류<br>
-																		 1. 법정대리인 동의서(*공지사항 첨부양식)<br>
-																		 2. 가족관계 확인이 가능한 주민등록등본or가족관계증명서<br>
-																		 3. 법정대리인 신분증 사본<br>
-																		 4. 미성년자 계좌 사본
-																		<br><br>
-																		* 이메일 주소: contact@creator.co.kr<br>
-																		* 우편 주소: (우)06131 서울특별시 강남구 논현로95길 12, 4층
-																	</div>
-																</div>
+														</div>
+													</div>
+													<div class="panel panel-default">
+														<div class="panel-heading" role="tab" id="investFaqHeading5">
+															<h4 class="panel-title" id="FAQhead">
+																<a data-toggle="collapse" data-parent="#investFaqAccordion" href="#investFaqCollapse5" aria-expanded="false" aria-controls="investFaqCollapse5" class="collapsed">
+																	Q5. 미성년자도 투자가 가능한가요?
+																</a>
+															</h4>
+														</div>
+														<div id="investFaqCollapse5" class="panel-collapse collapse" role="tabpanel" aria-labelledby="investFaqHeading5" aria-expanded="false">
+															<div id="FAQbody" class="panel-body">
+																네. 투자가 가능합니다. 19세 미만의 미성년자 회원의 경우 아래의 절차에 따라 서비스 이용이 가능하며, 법정대리인의 동의절차 등 관련서류 제출 및 승인과정이 필요합니다. 
+																<br><br>
+																● 가입 및 투자절차<br>
+																 1. 개인회원 가입<br>
+																 2. 가상계좌 발급 시 본인 인증 확인 요청<br>
+																 3. 필요서류 제출 및 관리자 승인(이메일 또는 우편 발송)<br>
+																 4. 서류 확인 및 관리자 승인<br>
+																 5. 서비스 이용
+																<br><br>
+																●  필요서류<br>
+																 1. 법정대리인 동의서(*공지사항 첨부양식)<br>
+																 2. 가족관계 확인이 가능한 주민등록등본or가족관계증명서<br>
+																 3. 법정대리인 신분증 사본<br>
+																 4. 미성년자 계좌 사본
+																<br><br>
+																* 이메일 주소: contact@midrate.co.kr<br>
+																* 우편 주소: (우)06131 서울특별시 강남구 논현로95길 12, 4층
 															</div>
-															<div class="panel panel-default">
-																<div class="panel-heading" role="tab" id="investFaqHeading6">
-																	<h4 class="panel-title" id="FAQhead">
-																		<a data-toggle="collapse" data-parent="#investFaqAccordion" href="#investFaqCollapse6" aria-expanded="false" aria-controls="investFaqCollapse6">
-																			Q6. 투자 시 종합 소득세 신고는 어떻게 하나요?
-																		</a>
-																	</h4>
-																</div>
-																<div id="investFaqCollapse6" class="panel-collapse collapse" role="tabpanel" aria-labelledby="investFaqHeading6">
-																	<div id="FAQbody" class="panel-body">
-																		투자 회원님의 이자소득에 대한 세금은 크리에이터에서 원천징수합니다. 따라서 별도로 소득 신고를 하실 필요가 없습니다.
-																	</div>
-																</div>
+														</div>
+													</div>
+													<div class="panel panel-default">
+														<div class="panel-heading" role="tab" id="investFaqHeading6">
+															<h4 class="panel-title" id="FAQhead">
+																<a data-toggle="collapse" data-parent="#investFaqAccordion" href="#investFaqCollapse6" aria-expanded="false" aria-controls="investFaqCollapse6" class="collapsed">
+																	Q6. 투자 시 종합 소득세 신고는 어떻게 하나요?
+																</a>
+															</h4>
+														</div>
+														<div id="investFaqCollapse6" class="panel-collapse collapse" role="tabpanel" aria-labelledby="investFaqHeading6" aria-expanded="false">
+															<div id="FAQbody" class="panel-body">
+																투자 회원님의 이자소득에 대한 세금은 미드레이트에서 원천징수합니다. 따라서 별도로 소득 신고를 하실 필요가 없습니다.
 															</div>
-															<div class="panel panel-default">
-																<div class="panel-heading" role="tab" id="investFaqHeading7">
-																	<h4 class="panel-title" id="FAQhead">
-																		<a data-toggle="collapse" data-parent="#investFaqAccordion" href="#investFaqCollapse7" aria-expanded="false" aria-controls="investFaqCollapse7">
-																			Q7. 크리에이터에 투자하면 원금이 보장되나요?
-																		</a>
-																	</h4>
-																</div>
-																<div id="investFaqCollapse7" class="panel-collapse collapse" role="tabpanel" aria-labelledby="investFaqHeading7">
-																	<div id="FAQbody" class="panel-body">
-																		크리에이터의 투자상품은 원금이 보장되지 않습니다. 크리에이터와 같은 P2P대출 플랫폼에서의 투자는 현행 법률상 '유사수신행위의 규제에 관한 법률'에 의해 원금과 수익을 보장할 수 없으며, '원금 보장이 안됨'을 명시하지 않는 것은 법률 위반입니다.
-																		크리에이터는 이에 대해 충분한 사전 고지 의무를 다하고자 합니다.
-																		투자고객님은 이를 인지하시고 신중한 결정 부탁드립니다. 다만, 크리에이터는 자체신용평가시스템을 통해 대출고객의 신용도를 세밀하고 정밀하게 평가하여 리스크를 낮추고 있습니다.
-																		투자고객님께서는 반드시 분산투자를 통해 부도에 대한 위험을 낮추실 수 있습니다. 분산투자가 어렵게 느껴지는 투자회원님을 위해 크리에이터에서는 자동 투자 시스템을 마련하였습니다.
-																	</div>
-																</div>
+														</div>
+													</div>
+													<div class="panel panel-default">
+														<div class="panel-heading" role="tab" id="investFaqHeading7">
+															<h4 class="panel-title" id="FAQhead">
+																<a data-toggle="collapse" data-parent="#investFaqAccordion" href="#investFaqCollapse7" aria-expanded="false" aria-controls="investFaqCollapse7" class="collapsed">
+																	Q7. 미드레이트에 투자하면 원금이 보장되나요?
+																</a>
+															</h4>
+														</div>
+														<div id="investFaqCollapse7" class="panel-collapse collapse" role="tabpanel" aria-labelledby="investFaqHeading7" aria-expanded="false">
+															<div id="FAQbody" class="panel-body">
+																미드레이트의 투자상품은 원금이 보장되지 않습니다. 미드레이트와 같은 P2P대출 플랫폼에서의 투자는 현행 법률상 '유사수신행위의 규제에 관한 법률'에 의해 원금과 수익을 보장할 수 없으며, '원금 보장이 안됨'을 명시하지 않는 것은 법률 위반입니다.
+																미드레이트는 이에 대해 충분한 사전 고지 의무를 다하고자 합니다.
+																투자고객님은 이를 인지하시고 신중한 결정 부탁드립니다. 다만, 미드레이트는 자체신용평가시스템을 통해 대출고객의 신용도를 세밀하고 정밀하게 평가하여 리스크를 낮추고 있습니다.
+																투자고객님께서는 반드시 분산투자를 통해 부도에 대한 위험을 낮추실 수 있습니다. 분산투자가 어렵게 느껴지는 투자회원님을 위해 미드레이트에서는 자동 투자 시스템을 마련하였습니다.
 															</div>
-															<div class="panel panel-default">
-																<div class="panel-heading" role="tab" id="investFaqHeading8">
-																	<h4 class="panel-title" id="FAQhead">
-																		<a data-toggle="collapse" data-parent="#investFaqAccordion" href="#investFaqCollapse8" aria-expanded="false" aria-controls="investFaqCollapse8">
-																			Q8. 차입자가 돈을 갚지 않으면 어떻게 되나요?
-																		</a>
-																	</h4>
-																</div>
-																<div id="investFaqCollapse8" class="panel-collapse collapse" role="tabpanel" aria-labelledby="investFaqHeading8">
-																	<div id="FAQbody" class="panel-body">
-																		㈜크리에이터대부가 채권추심을 합니다. ㈜크리에이터대부는 채권자로서 채권추심을 대행하여 투자고객의 자산 보호에 최선을 다하며, 전화, 문자메시지, 방문 등 적법한 절차에 따른 추심 과정을 진행하게 됩니다. 
-																		2개월 동안은 ㈜크리에이터대부에서 자체추심을 진행하며, 2개월 이상 연체될 경우 채권추심업체에 의뢰하여 추심업무를 이행하게 됩니다. 
-																		차입자의 연체일수가 장기화되어 6개월 이상 연체된다면 부실채권을 매각하며, 투자금의 일부를 회수합니다. 
-																		미회수분에 대해서는 대손처리되어 원금 손실이 있을 수 있습니다. 참고로, P2P금융업체는 원금이 보장되지 않음을 명시해야 하며, 
-																		이를 고객에게 적극적으로 알려야 할 의무가 있습니다. 이를 지키지 않는 것은 유사수신행위의 규제에 관한 법률 위반입니다. 
-																		다만, 크리에이터는 단일 채권에 대한 투자금액 상한선을 정하는 등 분산투자를 권유해드리고 있으며, 분산투자가 이루어졌을 때 대손율은 약 1% 내외로 예상하고 있습니다.
-																	</div>
-																</div>
+														</div>
+													</div>
+													<div class="panel panel-default">
+														<div class="panel-heading" role="tab" id="investFaqHeading8">
+															<h4 class="panel-title" id="FAQhead">
+																<a data-toggle="collapse" data-parent="#investFaqAccordion" href="#investFaqCollapse8" aria-expanded="false" aria-controls="investFaqCollapse8" class="collapsed">
+																	Q8. 차입자가 돈을 갚지 않으면 어떻게 되나요?
+																</a>
+															</h4>
+														</div>
+														<div id="investFaqCollapse8" class="panel-collapse collapse" role="tabpanel" aria-labelledby="investFaqHeading8" aria-expanded="false">
+															<div id="FAQbody" class="panel-body">
+																㈜미드레이트대부가 채권추심을 합니다. ㈜미드레이트대부는 채권자로서 채권추심을 대행하여 투자고객의 자산 보호에 최선을 다하며, 전화, 문자메시지, 방문 등 적법한 절차에 따른 추심 과정을 진행하게 됩니다. 
+																2개월 동안은 ㈜미드레이트대부에서 자체추심을 진행하며, 2개월 이상 연체될 경우 채권추심업체에 의뢰하여 추심업무를 이행하게 됩니다. 
+																차입자의 연체일수가 장기화되어 6개월 이상 연체된다면 부실채권을 매각하며, 투자금의 일부를 회수합니다. 
+																미회수분에 대해서는 대손처리되어 원금 손실이 있을 수 있습니다. 참고로, P2P금융업체는 원금이 보장되지 않음을 명시해야 하며, 
+																이를 고객에게 적극적으로 알려야 할 의무가 있습니다. 이를 지키지 않는 것은 유사수신행위의 규제에 관한 법률 위반입니다. 
+																다만, 미드레이트는 단일 채권에 대한 투자금액 상한선을 정하는 등 분산투자를 권유해드리고 있으며, 분산투자가 이루어졌을 때 대손율은 약 1% 내외로 예상하고 있습니다.
 															</div>
 														</div>
 													</div>
@@ -3990,6 +3354,9 @@ $(document).ready(function() {
 										</div>
 									</div>
 								</div>
+							</div>
+						</div>
+						<!-- 자주묻는질문 end -->
 								
 								<div class="display-none bottom_table infoOpenDiv" id="P2PLoanInformationListDiv">
 									<hr>
@@ -4054,7 +3421,6 @@ $(document).ready(function() {
 										</div>
 									</div>
 								</div>
-									
 								<div class="row">
 									<div class="col-xs-12 col-sm-12 col-md-12">
 										<div class="notice">
@@ -4063,15 +3429,11 @@ $(document).ready(function() {
 										</div>
 									</div>
 								</div>
-									
 							</div>
 						</div>
 					</div>
-
 				</div>
-			</div>
-		</div>
-	</div></section>
+	</section>
 	<!-- for all pages -->
 	
 	<!-- 알림 신청 Modal -->
@@ -4121,11 +3483,10 @@ $(document).ready(function() {
 		</div>
 	</div>
 
-	
 <!-- 카카오톡 세팅 -->
 <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
 	<!--footer start-->
-			<%@ include file="../footer.jsp" %>
+	<%@ include file="../footer.jsp" %>
 	<!--footer end-->
 
 <script>
