@@ -1,9 +1,12 @@
 package kr.co.creator.vo;
 
+import org.springframework.web.multipart.MultipartFile;
+
 // 프로젝트
 public class ProjectVO {
 	private String project_num;			// 프로젝트번호
-	private String img;					// 사진(경로)
+	private MultipartFile img;
+	private String img_path;					// 사진(경로)
 	private String project_name;		// 이름
 	private String type;				// 게임유형
 	private String genre;				// 장르
@@ -11,11 +14,14 @@ public class ProjectVO {
 	private String more_information;	// 상세정보
 	private String loan_bank_name;		// 대출은행명
 	private String loan_amount;			// 대출계좌
+	private String loan_class;			// 대출구분
+	private String loan_request;		// 대출신청일자
+	private String judge_status;		// 심사상태
+	private String ing_status;			// 1:승인 2:심사 3:반려
+	private String customer;			// 투자자수
 	private String price;				// 모집금액
 	private String loan_period;			// 대출기간
 	private String repay_method;		// 상환방식
-	private String loan_class;			// 대출구분
-	private String judge_status;		// 심사상태
 	private String agree_chk_1;			// 서비스 이용약관
 	private String agree_chk_2;			// 개인정보제공
 	private String agree_chk_3;			// 개인정보조회
@@ -23,25 +29,54 @@ public class ProjectVO {
 	private String agree_chk_5;			// 고유식별정보 처리방침
 	private String agree_chk_6;			// 개인정보 선택적 수집,이용
 	private String end_date;			// 종료날짜
-	private String ing_status;			// 1:승인 2:심사 3:반려
 	private String regi_date;			// 등록날짜
 	private String refund_count;		// 상환차수
 	private String refund;				// 상환기간
 	private String loan_history;		// 대출자 상환내역
 	private String guarantee_price;		// 남은대출금액
+<<<<<<< HEAD
 	private String customer;			// 투자자수
+=======
+>>>>>>> branch 'master' of https://github.com/gaonuri/Codetiator.git
 	private String rate;				// 금리
 	private String ach_rate;			// 모집현황
 	private String ach_state;			// 모집상태
 	private String current_price;		// 현재금액
 	private String deadline;			// 남은기간
 	private String refund_due_date;		// 상환예정일
+<<<<<<< HEAD
 	private String refund_end;			// 상환완료일
 	private String ad_price;			// 광고금액
 	private String ad_grade;			// 광고등급
+<<<<<<< HEAD
 
+=======
+=======
+	private String refund_end;			// 상환완료일
+>>>>>>> branch 'master' of https://github.com/gaonuri/Codetiator.git
+	private String guarantee_type;		// 담보유형(부동산, 동산)
+<<<<<<< HEAD
+	private String object_type;			// 물건유형(아파트, 연립주택)
+=======
+	private String object_type;			// 물건유형(아파트, 연립주택)
+>>>>>>> branch 'master' of https://github.com/gaonuri/Codetiator.git
+	private String loan_count;			// 투자받은횟수
+	private String project_count;		// 총프로젝트수
+	private String rate_average;		// 평균 연수익률
+	private int sum_price;				// 누적대출액
+	private int sum_guarantee_price;	// 현재대출잔액
+	private String refund_request;		// 상환요청
+	
+	public String getRefund_request() {
+		return refund_request;
+	}
+	public void setRefund_request(String refund_request) {
+		this.refund_request = refund_request;
+	}
+>>>>>>> branch 'master' of https://github.com/gaonuri/Codetiator.git
 	private String user_num;			// (참조)유저번호
 	private String busi_num;			// (참조)법인유저번호
+<<<<<<< HEAD
 
 	private String loan_count;			// 투자받은횟수
 	private String project_count;		// 총프로젝트수
@@ -51,15 +86,28 @@ public class ProjectVO {
 	
 	public String getAd_price() {
 		return ad_price;
+=======
+	private String guarantee_num;		// 담보번호
+	
+	
+	public String getGuarantee_type() {
+		return guarantee_type;
+>>>>>>> branch 'master' of https://github.com/gaonuri/Codetiator.git
 	}
-	public void setAd_price(String ad_price) {
-		this.ad_price = ad_price;
+	public void setGuarantee_type(String guarantee_type) {
+		this.guarantee_type = guarantee_type;
 	}
-	public String getAd_grade() {
-		return ad_grade;
+	public String getObject_type() {
+		return object_type;
 	}
-	public void setAd_grade(String ad_grade) {
-		this.ad_grade = ad_grade;
+	public void setObject_type(String object_type) {
+		this.object_type = object_type;
+	}
+	public String getLoan_request() {
+		return loan_request;
+	}
+	public void setLoan_request(String loan_request) {
+		this.loan_request = loan_request;
 	}
 	public String getAgree_chk_1() {
 		return agree_chk_1;
@@ -110,13 +158,19 @@ public class ProjectVO {
 		this.project_num = project_num;
 	}//project_num
 	
-	public String getImg() {
+	
+	public MultipartFile getImg() {
 		return img;
 	}
-	public void setImg(String img) {
+	public void setImg(MultipartFile img) {
 		this.img = img;
-	}//img
-	
+	}
+	public String getImg_path() {
+		return img_path;
+	}
+	public void setImg_path(String img_path) {
+		this.img_path = img_path;
+	}
 	public String getProject_name() {
 		return project_name;
 	}
@@ -349,4 +403,10 @@ public class ProjectVO {
 	public void setBusi_num(String busi_num) {
 		this.busi_num = busi_num;
 	}//busi_num
+	public String getGuarantee_num() {
+		return guarantee_num;
+	}
+	public void setGuarantee_num(String guarantee_num) {
+		this.guarantee_num = guarantee_num;
+	}
 }//class

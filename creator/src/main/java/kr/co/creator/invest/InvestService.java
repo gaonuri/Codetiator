@@ -16,6 +16,7 @@ public class InvestService {
 
 	@Autowired
 	InvestDAO investDAO;
+	
 
 //	public AccountVO invest(AccountVO vo) {
 //		System.out.println("Service111111111 : " + vo);
@@ -36,7 +37,7 @@ public class InvestService {
 		proCalcVO = investDAO.project_calc();
 		
 		return proCalcVO;
-	}//invest_list_all
+	}//project_calc
 
 	public InvestVO invest_calc() {
 		InvestVO inVO = null;

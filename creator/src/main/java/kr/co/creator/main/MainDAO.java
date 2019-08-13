@@ -19,6 +19,13 @@ public class MainDAO {
 		
 		return list;
 	}//project_list
+	
+	public ProjectVO project_calc() {
+		ProjectVO proCalcVO = null;
+		proCalcVO = sqlSession.selectOne("MainMapper.project_calc");
+		
+		return proCalcVO;
+	}//project_calc
 }//class
 
 

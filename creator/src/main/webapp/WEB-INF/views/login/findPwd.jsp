@@ -97,10 +97,106 @@ $(document).ready(function(){
 	});//click
 });//ready
 </script>
-
-
 </head>
+<style>
 
+body{
+	background-color: #f7f7f7;
+}
+
+#findpwd .section-body {
+	position: relative;
+	padding: 150px 20px 100px 20px;
+}
+
+@media (max-width: 767px) {
+	#findpwd .section-body {
+		position: relative;
+		padding: 100px 0px;
+	}
+}
+
+#findpwd .section-body .wrap {
+	max-width: 427px;
+	margin: auto;
+}
+
+/* xd ì ìš©ì‹œ */
+@media (max-width: 767px) {
+	#findpwd .section-body .wrap {
+		padding:  0px;
+	}
+}
+
+#findpwd .section-body .wrap .logo {
+	margin-bottom: 28px;
+}
+
+/* xd ì ìš©ì‹œ */
+@media (max-width: 767px) {
+	#findpwd .section-body .wrap .logo {
+	
+	}
+}
+
+#findpwd .section-body .wrap .logo img {
+	max-width: 200px;
+}
+
+#findpwd .section-body .wrap .title {
+	font-size: 20px;
+}
+
+@media (max-width: 767px) {
+	#findpwd .section-body .wrap .title {
+		font-size: 15px;
+	}
+}
+
+
+#findpwd .section-body .wrap .subTitle {
+	font-size: 14px;
+}
+
+@media (max-width: 767px) {
+	#findpwd .section-body .wrap .subTitle {
+		font-size: 11px;
+	}
+}
+
+#findpwd .section-body .wrap .form-group .form-control {
+	/*border-radius: 4px;
+	padding: 0px 26px;
+	min-height: 46px;
+	font-size: 16px;*/
+}
+
+#findpwd .section-body .wrap .form-group select.form-control {
+	padding: 0px 0px 0px 22px;
+	min-height: 46px;
+}
+
+#findpwd .section-body .wrap .form-group button {
+	border-radius: 4px;
+	padding: 10px 26px;
+	font-size: 16px;
+	font-weight: bold;
+	color: #fff;
+}
+.mr-purple {
+	color: #fff;
+	background-color: #782b9b;
+}
+.section-body .title {
+	font-size: 28px;
+	font-weight: bold;
+}
+#section-content {
+	padding: 50px 0 111px 0;
+	margin-left:15px;
+}
+
+</style>
 <body>
 	<section id="container">
 	    <!-- **********************************************************************************************************************************************************
@@ -115,38 +211,43 @@ $(document).ready(function(){
 	        *********************************************************************************************************************************************************** -->
 		<!--main content start-->
 		
-<section id="main-content">
-<section class="wrapper site-min-height">
-<div class="container">
-	<div class="col-md-offset-3">
-	<img src="${pageContext.request.contextPath}/resources/img/test_logo.jpg" alt="login_img">
-	</div>
-</div>
 				
 <!-- =====================================================================logo -->
 				
 				
-<div class="col-lg-6 mt col-md-offset-3">
-	<h3 class="title">비밀번호를 잊어 버리셨나요?</h3>
-	<h4 class="title">임시 비밀번호를 보내드립니다.</h4>
-	<div class="form-group">
-		<div class="col-sm-10">
-			<input type="text" class="form-control" id="email" placeholder="*이메일">
+<section id="section-content">
+<section class="wrapper site-min-height">
+<section id="findpwd" class="text-center">
+		<div class="container">
+			<div class="section-body">
+				<div class="wrap">
+					<div class="logo">
+						<img src="${pageContext.request.contextPath}/resources/img/img_login_logo.png" alt="login_img">
+					</div>
+					<div class="margin-b-12 title">
+						비밀번호를 잊어 버리셨나요?<br>
+					</div>
+					<div class="margin-b-12 subTitle text-center">
+						<p>
+							임시 비밀번호를 보내드립니다.<br>
+						</p>
+					</div>
+					<form>
+						<fieldset>
+							<div class="form-group margin-b-6">
+								<input class="form-control" id="email" type="text" placeholder="이메일을 입력해 주세요.">
+							</div>
+						</fieldset>
+					</form>
+					<div class="form-group margin-b-6">
+						<div class="mr-purple" id="resetPwdBtn">
+							<button type="button" class="btn btn-purple-transparent btn-block" style="background-color: #712594;" id="findpwd_btn" >비밀번호 초기화</button>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
-	</div>
-	<div class="form-group">
-		<div class="col-sm-10 col-lg-offset-3" id="findpwd_btn">
-		
-			<button id="findpwd_btn" class="btn btn-theme" >비밀번호 초기화</button>
-
-		</div>
-	</div>	
-<!-- 	<div class="form-send"> -->
-<!-- 		<div class="col-sm-10 col-lg-offset-3"> -->
-<!-- 			<input type="text" class="btn btn-theme" id="findpwd_btn" value="비밀번호 초기화" /> -->
-<!-- 		</div> -->
-<!-- 	</div>		 -->
-</div>
+	</section>
 				
 		<!-- ===================================================================== body-->		
 				

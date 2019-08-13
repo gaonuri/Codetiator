@@ -22,21 +22,33 @@ public class LoanDAO {
 		return cnt;
 	}//boardInsert
 
-	public int insert_project(ProjectVO pvo) {
-		int insert_project_yn = 0;
-		insert_project_yn = sqlSession.insert("LoanMapper.insert_project", pvo);
-		return insert_project_yn;
-	}//insert_project
+	public int update_project(ProjectVO pvo) {
+		int update_project_yn = 0;
+		update_project_yn = sqlSession.update("LoanMapper.update_project", pvo);
+		return update_project_yn;
+	}//update_project
 
 	public String RepaySelect(RepayVO vo) {
 		String rvo = sqlSession.selectOne("LoanMapper.RepaySelect", vo);
 		return rvo;
 	}
 
-	public int guaranteeInsert(GuaranteeVO gvo) {
+	public int update_guarantee(GuaranteeVO gvo) {
 		int gnt = 0;
-		gnt = sqlSession.insert("LoanMapper.insert_guarantee", gvo);
+		gnt = sqlSession.update("LoanMapper.update_guarantee", gvo);
 		return gnt;
+	}
+
+	public int applyLoanInsert(ProjectVO pvo) {
+		int cnt = 0;
+		cnt = sqlSession.insert("LoanMapper.ApplyLoanInsert", pvo);
+		return cnt;
+	}
+
+	public int applyLoanInsert1(ProjectVO pvo) {
+		int cnt = 0;
+		cnt = sqlSession.insert("LoanMapper.ApplyLoanInsert1", pvo);
+		return cnt;
 	}
 
 }//class

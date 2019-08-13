@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
+
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -32,9 +33,14 @@
 	  Author: TemplateMag.com
 	  License: https://templatemag.com/license/
 	======================================================= -->
-
 	<script type="text/javascript">
-/////////////////////////////////////////////////////////////////////////////////////////////금액 버튼 시작
+	/////////////////////////////////////////////////////////////////////////////////////////////금액 버튼 시작
+	$(document).ready(function() {
+		$("#depobu").click(function() {
+			location.href = "${pageContext.request.contextPath}/my_depo_mgn";
+		});//click
+	});//ready
+	
 	$(document).ready(function() {
 		var temp = 0;
 		var add  = 0; 
@@ -46,7 +52,6 @@
 		var confirmYN = false;
 		var check = $("input:checkbox[id=agreeCheckbox]:checked").is(":checked");
 		var count = 0; 
-		
 		
 		$("#deposit").text(addComma(deposit));						// 예치금
 		$("#out_able").text(addComma(deposit));						// 출금 가능액
@@ -106,7 +111,7 @@
 		
 		$("#withdrawReqBtn").click(function() {
 			request = parseInt($("#withdrawAmt").val());
-// 			alert("request : " + request);
+			//alert("request : " + request);
 			if(parseInt($("#withdrawAmt").val()) == 0) {
 				alert("금액을 입력하세요");
 				return;
@@ -116,7 +121,7 @@
 				var confirmYN = false;
 				confirmYN = confirm("출금 요청하시겠습니까?");
 				if(confirmYN == true) {
-// 					alert($("#user_num").val());alert($("#busi_num").val());
+				//alert($("#user_num").val());alert($("#busi_num").val());
 					$.post("${pageContext.request.contextPath}/depo_update",
 							{
 								user_num:$("#user_num").val(),
@@ -124,7 +129,7 @@
 								deposit:$("#deposit").val()
 							},
 							function(data, status) {
-// 								alert(data); alert(status);
+							//alert(data); alert(status);
 								if(status == "success") {
 									if(data == -1) {
 										alert("오류입니다. 관리자 : 02-5555-7777");
@@ -342,230 +347,284 @@
 </head>
      
 <body>
-	<section id="container">
-	    <!-- **********************************************************************************************************************************************************
-	        TOP BAR CONTENT & NOTIFICATIONS
-	        *********************************************************************************************************************************************************** -->
-	    <!--header start-->
+<!--header start-->
+	   
 	    <%@ include file="../header.jsp" %>
-	    <!--header end-->
-
-	   <!--sidebar start-->
-	    <aside>
-	      <div id="sidebar" class="nav-collapse">
-	        <!-- sidebar menu start-->
-	        <ul class="sidebar-menu" id="nav-accordion">
-	          <li class="mt">
-	            <a href="/creator/my_dashboard">
-	              <i class="fa fa-dashboard"></i>
-	              <span>대시 보드</span>
-	              </a>
-	          </li>
-	          <li class="mt">
-	            <a href="/creator/my_invest_list">
-	              <i class="fa fa-ticket"></i>
-	              <span>투자 내역</span>
-	              </a>
-	          </li>
-	          <li class="mt">
-	            <a href="/creator/my_loan_list">
-	              <i class="fa fa-ticket"></i>
-	              <span>대출 내역</span>
-	              </a>
-	          </li>
-	          <li class="mt">
-	            <a href="/creator/my_depo_mgn">
-	              <i class="fa fa-money"></i>
-	              <span>예치금 관리</span>
-	              </a>
-	          </li>
-	          <li class="mt">
-	            <a href="/creator/my_modify">
-	              <i class="fa fa-gear"></i>
-	              <span>기본 정보 수정</span>
-	              </a>
-	          </li>
-	        </ul>
-	        <!-- sidebar menu end-->
-	      </div>
-	    </aside>
-	    <!--sidebar end-->					
-	    <!-- **********************************************************************************************************************************************************
-	        MAIN CONTENT
-	        *********************************************************************************************************************************************************** -->
-		<section id="main-content">
-			<section class="wrapper">
-				<div class="container">
-					<div class="row">
-						<div class="col-sm-12 col-md-9 col col-box" id="mypage-main">
-					<!-- ExcelDownload JavaScript -->
-					<script type="text/javascript" src="/js/excel/jquery.table2excel.js"></script>
-								<div class="wrap">
-									<div class="box left">
-										<div class="row">
-											<div class="col-xs-12 col-sm-offset-1 col-sm-10 col-md-offset-1 col-md-10">
-												<c:choose>
-													<c:when test="${acnt == null || acnt.account_name == null || acnt.account_name == ''}">
-														<div class="row" id="vtAcntNDiv">
-															<div class="col-xs-12 col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8">
-																<div style="padding:60px 0 10px 0; font-size: 18px; font-weight: bold;">
-																	투자 신청을 위해 예치금 계좌를 발급해 주세요.
-																</div>
-																<div style="padding:20px 0;">
-																	<button type="button" id="cert_start" class="btn btn-purple-transparent btn-block" data-toggle="modal" data-target="#btn_cert1" >
-																		예치금 계좌 발급을 위해 본인 인증하기
-																	</button>
-																</div>
-															</div>
-														</div>
-													</c:when>
-													<c:otherwise>
-														<div class="row" id="vtAcntYDiv" style="">
-															<div class="col-xs-12 col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8">
-																<div style="padding:60px 0 10px 0; font-size: 18px; font-weight: bold;">
-																	예치금 계좌정보
-																</div>
-																<div class="withdraw-wrap">
-																	<div class="row" style="margin-top: 20px;">
-																		<div class="col-xs-5 col-sm-5 col-md-5 withdraw-title">
-																			예금주
-																		</div>
-																		<div class="col-xs-7 col-sm-7 col-md-7 withdraw-content">
-																			<font size="1">크리에이터</font>${acnt.account_name}
-																		</div>
-																	</div>
-																	<div class="row" style="margin-top: 10px;">
-																		<div class="col-xs-5 col-sm-5 col-md-5 withdraw-title">
-																			은행
-																		</div>
-																		<div class="col-xs-7 col-sm-7 col-md-7 withdraw-content">
-																			${acnt.bank_name}
-																		</div>
-																	</div>
-																	<div class="row" style="margin-top: 10px;">
-																		<div class="col-xs-5 col-sm-5 col-md-5 withdraw-title">
-																			입금계좌
-																		</div>
-																		<div class="col-xs-7 col-sm-7 col-md-7 withdraw-content">
-																			<span class="font-purple" id="vtAcntNoSpan">${acnt.bank_num}</span>
-																		</div>
-																	</div>
-																</div>
-															</div>
-														</div>
-													</c:otherwise>
-												</c:choose>
-												
-												<hr>
-												<div class="row">
-													<div class="col-xs-12 col-sm-offset-1 col-sm-10 col-md-offset-1 col-md-10">
-														<div class="withdrawGuide">
-															<ul>
-																<li>
-																	예치금 계좌는 고객님 명의의 투자를 위한 전용 가상계좌입니다.
-																</li>
-																<li>
-																	미성년자는 가상계좌 발급시 추가 인증이 필요합니다. 고객센터로 문의 부탁드립니다.
-																</li>
-																<li>
-																	예치금 계좌로 예치금 충전금액을 정확히 이체하여 주십시오.
-																</li>
-																<li>
-																	창구 또는 자동화기기(CD/ATM)에서는 예치금 입금이 불가능합니다.
-																</li>
-																<li>
-																	입금처리 시간은 1분 이내이며 고객메세지를 통해 알려드립니다.(단, 은행망전산 점검시간 0시~0시30분에는 불가능합니다.)
-																</li>
-																<li>
-																	자세한 내용은 <a href="${pageContext.request.contextPath}/support_detail" target="_blank"><strong>공지사항</strong></a>을 참고하시기 바랍니다.
-																</li>
-															</ul>
-														</div>
-													</div>
-												</div>
-											</div>
+		<%@ include file="../mypage_banner.jsp" %>
+    <section id="mypage-content">
+		<div class="container">
+			<!-- Container -->
+			
+				
+			<div class="row">
+				<div class="col-sm-12 col-md-3 col col-box">
+					<div class="wrap" id="smallMenu">
+						<div class="wrap">
+							<div class="box quick">
+								<div role="tabpanel" class="smallMenuTap">
+									<!-- Nav tabs -->
+									<ul class="nav nav-pills" role="tablist">
+										<li id="smallMenuLi2">
+											<a href="javascript:(void(0));" >
+												<span class="smallMenuItem">투자 내역</span>
+											</a>
+										</li>
+										<li id="smallMenuLi4">
+											<a href="javascript:(void(0));" >
+												<span class="smallMenuItem">대출 내역</span>
+											</a>
+										</li>
+										<li id="smallMenuLi5">
+											<a href="javascript:(void(0));" >
+												<span class="smallMenuItem">예치금 관리</span>
+											</a>
+										</li>
+										<li id="smallMenuLi8">
+											<a href="javascript:(void(0));" >
+												<span class="smallMenuItem">기본 정보 수정</span>
+											</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						
+					</div>
+					
+					<div class="wrap">
+						<div class="box left">
+							<div class="row">
+								<div class="col-xs-12 col-sm-12 col-md-12">
+									<span class="cusNm">${acnt.account_name}</span>&nbsp;
+									
+										님
+									
+								</div>
+							</div>
+							
+							<div class="row">
+								<div class="col-xs-12 col-sm-12 col-md-12">
+									
+								</div>
+							</div>
+							
+							<div class="row">
+								<div class="col-xs-10 col-sm-11 col-md-10" style="margin-top: 8px;">
+									<span class="email">${user.email}${busi.manager_email}</span>
+								</div>
+								<div class="col-xs-2 col-sm-1 col-md-1" style="margin-top: 8px;">
+									<div id="depositUnFold" style="display: none;cursor: pointer;">
+										<i class="glyphicon glyphicon-menu-down"></i>
+									</div>
+									<div id="depositFold" style="cursor: pointer;">
+										<i class="glyphicon glyphicon-menu-up"></i>
+									</div>
+								</div>
+							</div>
+							<div id="deposit-div" style="">
+								<div class="deposit-box">
+									<div class="row">
+										<div class="col-xs-7">
+											<span class="myDeposit">기본 예치금</span>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-xs-12 text-right" style="margin-top: 5px;">
+											<span class="amt">${acnt.deposit} <font size="2">원</font></span>
 										</div>
 									</div>
 								</div>
-								
+								<br>
+								<br>
+								<button type="button" class="btn btn-purple-transparent btn-block" id="depobu" style="margin-top: 4px;">나의 예치금</button>
+							</div>
+						</div>
+					</div>
+					
+					<div class="wrap" id="largeMenu">
+						<div class="menu">
+							<div class="item" id="menu2"> <a href="/creator/my_invest_list">
+								<img src="${pageContext.request.contextPath}/resources/img/ic_mypage_invest_list.png">
+								<span class="text" id="menuL2">투자 내역</span> </a>
+							</div>
+							<div class="item" id="menu4"> <a href="/creator/my_loan_list">
+								<img src="${pageContext.request.contextPath}/resources/img/ic_mypage_loan_list.png">
+								<span class="text" id="menuL4">대출 내역</span> </a>
+							</div>
+							<div class="item active" id="menu5">  <a href="/creator/my_depo_mgn">
+								<img src="${pageContext.request.contextPath}/resources/img/ic_mypage_depositandwithdraw.png">
+								<span class="text" id="menuL5">예치금 관리</span> </a>
+							</div>
+							<div class="item" id="menu8"> <a href="/creator/my_modify">
+								<img src="${pageContext.request.contextPath}/resources/img/ic_mypage_setting.png">
+								<span class="text" id="menuL8">기본 정보 수정</span> </a>
+							</div>
+						</div>
+					</div>
+				</div>
+			<div class="col-sm-12 col-md-9 col col-box" id="mypage-main">
+			<!-- ExcelDownload JavaScript -->
+			<script type="text/javascript" src="/js/excel/jquery.table2excel.js"></script>
+				<div class="wrap">
+					<div class="box left">
+						<div class="row">
+							<div class="col-xs-12 col-sm-offset-1 col-sm-10 col-md-offset-1 col-md-10">
+								<div class="row" id="vtAcntYDiv">
+									<div class="col-xs-12 col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8">
+										<c:choose>
+											<c:when test="${acnt == null || acnt.account_name == null || acnt.account_name == ''}">
+												<div class="row" id="vtAcntNDiv">
+													<div class="col-xs-12 col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8">
+														<div style="padding:60px 0 10px 0; font-size: 18px; font-weight: bold;">
+															투자 신청을 위해 예치금 계좌를 발급해 주세요.
+														</div>
+														<div style="padding:20px 0;">
+															<button type="button" id="cert_start" class="btn btn-purple-transparent btn-block" data-toggle="modal" data-target="#btn_cert1" >
+																예치금 계좌 발급을 위해 본인 인증하기
+															</button>
+														</div>
+													</div>
+												</div>
+											</c:when>
+											<c:otherwise>
+												<div class="row" id="vtAcntYDiv" style="">
+													<div class="col-xs-12 col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8">
+														<div style="padding:60px 0 10px 0; font-size: 18px; font-weight: bold;">
+															예치금 계좌정보
+														</div>
+														<div class="withdraw-wrap">
+															<div class="row" style="margin-top: 20px;">
+																<div class="col-xs-5 col-sm-5 col-md-5 withdraw-title">
+																	예금주
+																</div>
+																<div class="col-xs-7 col-sm-7 col-md-7 withdraw-content">
+																	<font size="1">크리에이터</font>${acnt.account_name}
+																</div>
+															</div>
+															<div class="row" style="margin-top: 10px;">
+																<div class="col-xs-5 col-sm-5 col-md-5 withdraw-title">
+																	은행
+																</div>
+																<div class="col-xs-7 col-sm-7 col-md-7 withdraw-content">
+																	${acnt.bank_name}
+																</div>
+															</div>
+															<div class="row" style="margin-top: 10px;">
+																<div class="col-xs-5 col-sm-5 col-md-5 withdraw-title">
+																	입금계좌
+																</div>
+																<div class="col-xs-7 col-sm-7 col-md-7 withdraw-content">
+																	<span class="font-purple" id="vtAcntNoSpan">${acnt.bank_num}</span>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</c:otherwise>
+										</c:choose>
+									</div>
+								</div>
+								<hr>
 								<div class="row">
-									<div class="col-md-12">
-										<div class="wrap">
-											<div class="box right">
+									<div class="col-xs-12 col-sm-offset-1 col-sm-10 col-md-offset-1 col-md-10">
+										<div class="withdrawGuide">
+											<ul>
+												<li>
+													예치금 계좌는 고객님 명의의 투자를 위한 전용 가상계좌입니다.
+												</li>
+												<li>
+													미성년자는 가상계좌 발급시 추가 인증이 필요합니다. 고객센터로 문의 부탁드립니다.
+												</li>
+												<li>
+													예치금 계좌로 예치금 충전금액을 정확히 이체하여 주십시오.
+												</li>
+												<li>
+													창구 또는 자동화기기(CD/ATM)에서는 예치금 입금이 불가능합니다.
+												</li>
+												<li>
+													입금처리 시간은 1분 이내이며 고객메세지를 통해 알려드립니다.(단, 은행망전산 점검시간 0시~0시30분에는 불가능합니다.)
+												</li>
+												<li>
+													자세한 내용은 <a href="/info/noticeDetail/10" target="_blank" style="color: #712594;"><strong>공지사항</strong></a>을 참고하시기 바랍니다.
+												</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12">
+						<div class="wrap">
+							<div class="box right">
+								<div class="row">
+									<div class="col-md-6 rightLine">
+										<div class="title">
+											<font class="font-purple">
+												●
+											</font> 예치금 현황
+										</div>
+										<div class="row height statsText">
+											<div class="col-xs-12 col-sm-12 col-md-12">
 												<div class="row">
-													<div class="col-md-6 rightLine">
-														<div class="title">
-															<font class="font-purple">
-																●
-															</font> 예치금 현황
-														</div>
-														<div class="row height statsText">
-															<div class="col-xs-12 col-sm-12 col-md-12">
-																<div class="row">
-																	<div class="col-xs-6 col-sm-6 col-md-6">
-																		예치금
-																	</div>
-																	<div class="col-xs-6 col-sm-6 col-md-6 text-right" id="inputDeposit771" name="inputDeposit">
-																		<span id="deposit"></span> 원
-																		<input type="hidden" id="inputDeposit" value="${acnt.deposit}" />
-																	</div>
-																</div>
-<!-- 																<div class="row" style="margin-top: 10px;"> 지워도 문제 없으면 지우자 -->
-<!-- 																	<div class="col-xs-6 col-sm-6 col-md-6">총 예치금</div> -->
-<!-- 																	<div class="col-xs-6 col-sm-6 col-md-6 text-right"> -->
-<!-- 																		<span class="font-purple" id="inputDeposit771" name="inputDeposit"><strong> -->
-<%-- 																			${acnt.deposit} <font size="2">원</font> --%>
-<!-- 																		</strong></span> -->
-<!-- 																	</div> -->
-<!-- 																</div> -->
-															</div>
-														</div>
+													<div class="col-xs-6 col-sm-6 col-md-6">
+														예치금
 													</div>
-													
-													<div class="col-md-6">
-														<div class="title">
-															<font class="font-purple">
-																●
-															</font> 입/출금 현황
-														</div>
-														<div class="row height statsText">
-															<div class="col-xs-12 col-sm-12 col-md-12">
-																<div class="row">
-																	<div class="col-xs-6 col-sm-6 col-md-6">
-																		입금 총액
-																	</div>
-																	<div class="col-xs-6 col-sm-6 col-md-6 text-right">
-																		<span id="DEPOSIT_AMT_SUM" name="DEPOSIT_AMT_SUM"></span> 원
-																		<input type="hidden" id="in_history"  value="${Inout.input_history}">
-																	</div>
-																</div>
-																<div class="row" style="margin-top: 10px;">
-																	<div class="col-xs-6 col-sm-6 col-md-6">
-																		출금 총액
-																	</div>
-																	<div class="col-xs-6 col-sm-6 col-md-6 text-right">
-																		<span id="WTHDRW_AMT_SUM" name="WTHDRW_AMT_SUM"></span> 원
-																		<input type="hidden" id="out_history" value="${Inout.output_history}">
-																	</div>
-																</div>
-																<div class="row" style="margin-top: 10px;">
-																	<div class="col-xs-6 col-sm-6 col-md-6">
-																		출금 대기금액
-																	</div>
-																	<div class="col-xs-6 col-sm-6 col-md-6 text-right">
-																		<span id="WTHDRW_REQ_AMT_SUM" name="WTHDRW_REQ_AMT_SUM">0</span> 원
-																	</div>	
-																</div>
-															</div>
-														</div>
+													<div class="col-xs-6 col-sm-6 col-md-6 text-right" id="inputDeposit771" name="inputDeposit">
+														<span id="deposit"></span> 원
+														<input type="hidden" id="inputDeposit" value="${acnt.deposit}" />
 													</div>
 												</div>
 											</div>
 										</div>
 									</div>
+									
+									<div class="col-md-6">
+										<div class="title">
+											<font class="font-purple">
+												●
+											</font> 입/출금 현황
+										</div>
+										<div class="row height statsText">
+											<div class="col-xs-12 col-sm-12 col-md-12">
+												<div class="row">
+													<div class="col-xs-6 col-sm-6 col-md-6">
+														입금 총액
+													</div>
+													<div class="col-xs-6 col-sm-6 col-md-6 text-right">
+														<span id="DEPOSIT_AMT_SUM" name="DEPOSIT_AMT_SUM"></span> 원
+														<input type="hidden" id="in_history"  value="${Inout.input_history}">
+													</div>
+												</div>
+												<div class="row" style="margin-top: 10px;">
+													<div class="col-xs-6 col-sm-6 col-md-6">
+														출금 총액
+													</div>
+													<div class="col-xs-6 col-sm-6 col-md-6 text-right">
+														<span id="WTHDRW_AMT_SUM" name="WTHDRW_AMT_SUM"></span> 원
+														<input type="hidden" id="out_history" value="${Inout.output_history}">
+													</div>
+												</div>
+												<div class="row" style="margin-top: 10px;">
+													<div class="col-xs-6 col-sm-6 col-md-6">
+														출금 대기금액
+													</div>
+													<div class="col-xs-6 col-sm-6 col-md-6 text-right">
+														<span id="WTHDRW_REQ_AMT_SUM" name="WTHDRW_REQ_AMT_SUM">0</span> 원
+													</div>	
+												</div>
+											</div>
+										</div>
+									</div>
 								</div>
-								
-								<div class="wrap">
+							</div>
+						</div>
+					</div>
+				</div>
+			
+			<div class="wrap">
 									<div class="box right">
 										<div class="row">
 											<div class="col-xs-12 col-sm-12">
@@ -660,9 +719,8 @@
 											</div>
 										</div>
 									</div>
-									
-									
-									<!-- 본인인증 서비스 팝업을 호출하기 위해서는 다음과 같은 form이 필요합니다. -->
+				
+				<!-- 본인인증 서비스 팝업을 호출하기 위해서는 다음과 같은 form이 필요합니다. -->
 									<form name="form_chk" method="post">
 										<input type="hidden" name="m" value="checkplusSerivce">	<!-- 필수 데이타로, 누락하시면 안됩니다. -->
 										<input type="hidden" id="EncodeData" name="EncodeData" value=""><!-- 위에서 업체정보를 암호화 한 데이타입니다. -->
@@ -965,5 +1023,558 @@
 	<script src="${pageContext.request.contextPath}/resources/bootstrap/lib/sparkline-chart.js"></script>
 	<script src="${pageContext.request.contextPath}/resources/bootstrap/lib/zabuto_calendar.js"></script>
 </body>
+<style>
+#mypage-banner {
+    position: relative;
+    overflow: hidden;
+    background: url(${pageContext.request.contextPath}/resources/img/common_banner_title.jpg) center 0% no-repeat;
+    background-size: 100%;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-attachment: fixed;
+    color: #fff;
+    height: 239px;
+}
+#mypage-banner .section-body {
+    color: #fff;
+    position: relative;
+    padding: 135px 20px 0px 20px;
+}
+#mypage-banner .section-body .title {
+    color: #fff;
+    text-shadow: 1px 2px #222;
+}
+#mypage-banner .title {
+    color: #fff;
+}
+.section-body .title {
+    font-size: 28px;
+    font-weight: bold;
+}
+#mypage-content {
+    padding: 41px 0 96px 0;
+}
+.container {
+    width: 1170px;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+.clearfix:before, .clearfix:after, .dl-horizontal dd:before, .dl-horizontal dd:after, .container:before, .container:after, .container-fluid:before, .container-fluid:after, .row:before, .row:after, .form-horizontal .form-group:before, .form-horizontal .form-group:after, .btn-toolbar:before, .btn-toolbar:after, .btn-group-vertical > .btn-group:before, .btn-group-vertical > .btn-group:after, .nav:before, .nav:after, .navbar:before, .navbar:after, .navbar-header:before, .navbar-header:after, .navbar-collapse:before, .navbar-collapse:after, .pager:before, .pager:after, .panel-body:before, .panel-body:after, .modal-footer:before, .modal-footer:after {
+    display: table;
+    content: " ";
+}
+.row {
+    margin-right: -15px;
+    margin-left: -15px;
+}
+.col {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+.col-md-3 {
+    width: 25%;
+}
+.col-md-1, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-10, .col-md-11, .col-md-12 {
+    float: left;
+}
+.col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, .col-xs-3, .col-sm-3, .col-md-3, .col-lg-3, .col-xs-4, .col-sm-4, .col-md-4, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, .col-sm-6, .col-md-6, .col-lg-6, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, .col-md-8, .col-lg-8, .col-xs-9, .col-sm-9, .col-md-9, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, .col-sm-12, .col-md-12, .col-lg-12 {
+    position: relative;
+    min-height: 1px;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+#mypage-content .wrap#smallMenu {
+    display: none;
+}
+#mypage-content .wrap {
+    padding: 4px;
+}
+#mypage-content .wrap .box.quick {
+    padding: 10px 12px 10px 12px;
+}
+#mypage-content .wrap .box {
+    background-color: #fff;
+    border-style: solid;
+    border-color: #d9d9de;
+    border-width: 1px;
+    /* border-radius: 4px; */
+    box-shadow: 0px 4px 10px -4px grey;
+}
+#mypage-content .smallMenuTap {
+    font-size: 14px;
+}
+.nav {
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+}
+ul, ol {
+    padding: 0;
+    webkit-padding: 0;
+    moz-padding: 0;
+}
+ul, ol {
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+ul {
+    display: block;
+    list-style-type: disc;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
+}
+#mypage-content .smallMenuTap li {
+    min-width: 49%;
+    text-align: center;
+}
+.nav-pills > li {
+    float: left;
+}
+.nav > li {
+    position: relative;
+    display: block;
+}
+#mypage-content .smallMenuTap li.active a {
+    background-color: #712594;
+}
+#mypage-content .smallMenuTap a {
+    padding: 5px 10px;
+}
+.nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus {
+    color: #fff;
+    background-color: #337ab7;
+}
+.nav-pills > li > a {
+    border-radius: 4px;
+}
+.nav > li > a {
+    position: relative;
+    display: block;
+    padding: 10px 15px;
+}
+#mypage-content .smallMenuTap li.active a .smallMenuItem {
+    border-bottom: none;
+}
+.nav-pills > li + li {
+    margin-left: 2px;
+}
+#mypage-content .smallMenuTap a .smallMenuItem {
+    border-bottom: #712594 1px solid;
+}
+#mypage-content .wrap .box.left {
+    padding: 15px;
+}
+.col-md-12 {
+    width: 100%;
+}
+#mypage-content .wrap .box.left .cusNm {
+    font-size: 24px;
+    font-weight: bold;
+    color: #3d3d3d;
+}
+#mypage-content .wrap .box.left .invstrTypeNm {
+    font-size: 14px;
+    font-weight: bold;
+    color: #00A0DC;
+}
+#mypage-content .wrap .box.left .email {
+    font-size: 14px;
+    color: #858585;
+}
+#mypage-content .wrap .box .deposit-box {
+    border-style: solid;
+    border-color: #d9d9de;
+    border-width: 1px;
+    border-radius: 4px;
+    padding: 10px 20px;
+    margin-top: 20px;
+}
+#mypage-content .wrap .box .deposit-box .myDeposit {
+    font-size: 14px;
+    font-weight: bold;
+    color: #858585;
+}
+a {
+    color: #712594;
+    text-decoration: none;
+}
+a {
+    background-color: transparent;
+}
+#mypage-content .wrap .box .deposit-box .tranList {
+    font-size: 12px;
+}
+#mypage-content .wrap .box .deposit-box .amt {
+    font-size: 24px;
+    font-weight: bold;
+    color: #3d3d3d;
+}
+#mypage-content .wrap .box.left .account-box {
+    padding: 20px 10px 30px 10px;
+    /* display: none; */
+}
+#mypage-content .wrap .box.left .account-box .account {
+    font-size: 14px;
+}
+.font-red {
+    color: #e08484 !important;
+}
+#mypage-content button.btn {
+    font-size: 14px;
+}
+.btn-purple-transparent {
+    color: #fff;
+    background-color: #712594;
+    opacity: 1.0;
+    font-size: 16px;
+    border-style: none;
+}
+.btn-block {
+    display: block;
+    width: 100%;
+}
+#mypage-content .wrap#largeMenu {
+    display: block;
+}
+#mypage-content .wrap {
+    padding: 4px;
+}
+#mypage-content .wrap .menu {
+    font-size: 15px;
+    font-weight: bold;
+    color: #3d3d3d;
+    padding: 0px 0px;
+}
+#mypage-content .wrap#largeMenu .menu .item.active {
+    background-color: #ecdeec;
+    border-radius: 4px;
+}
+#mypage-content .wrap .menu .item {
+    transition: all 0.8s, color 0.3s 0.3s;
+}
+#mypage-content .wrap .menu img {
+    padding: 12px 22px 12px 12px;
+    width: 55px;
+    height: 45px;
+}
+#mypage-content .wrap#largeMenu .menu .item span {
+    cursor: pointer;
+}
+.tabbable-line>.nav-tabs {
+    border: none;
+    margin: 0px;
+}
+.tabbable-line>.nav-tabs>li {
+    margin-right: 2px;
+    border: 1px solid #d9d9de;
+    border-bottom: 0px solid #d9d9de;
+}
+.nav-tabs > li {
+    float: left;
+    margin-bottom: -1px;
+}
+.nav > li {
+    position: relative;
+    display: block;
+}
+.tabbable-line>.nav-tabs>li>a {
+    border: 0;
+    margin-right: 0;
+    color: #737373;
+}
+.nav-tabs > li > a {
+    margin-right: 2px;
+    line-height: 1.42857143;
+    border: 1px solid transparent;
+    border-radius: 4px 4px 0 0;
+}
 
+.nav > li > a {
+    position: relative;
+    display: block;
+    padding: 10px 15px;
+}
+.tabbable-line>.nav-tabs>li>a>i {
+    color: #a6a6a6;
+}
+.fa {
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    transform: translate(0, 0);
+}
+.tabbable-line>.nav-tabs>li.active {
+    border-bottom: 4px solid #712594;
+    position: relative;
+}
+.tabbable-line>.nav-tabs>li.active>a {
+    border: 0;
+    color: #333333;
+}
+.tabbable-line>.nav-tabs>li.active>a>i {
+    color: #404040;
+}
+.tabbable-line>.tab-content {
+    border: 0;
+    /* border-top: 1px solid #d9d9de; */
+    /* padding: 15px 0; */
+}
+.tab-content > .tab-pane {
+    display: none;
+    visibility: hidden;
+}
+.fade {
+    opacity: 0;
+    -webkit-transition: opacity .15s linear;
+    -o-transition: opacity .15s linear;
+    transition: opacity .15s linear;
+}
+#mypage-content #mypage-main .wrap .box.right {
+    padding: 30px;
+}
+#mypage-content .wrap .box {
+    background-color: #fff;
+    border-style: solid;
+    border-color: #d9d9de;
+    border-width: 1px;
+    /* border-radius: 4px; */
+    box-shadow: 0px 4px 10px -4px grey;
+}
+.display-none {
+    display: none;
+}
+.col-md-6 {
+    width: 50%;
+}
+#mypage-content #mypage-main .wrap .box.right .title {
+    font-size: 18px;
+    font-weight: bold;
+    color: #3d3d3d;
+}
+#mypage-content #mypage-main .wrap .box.right button.btn-gradiation {
+    font-size: 12px;
+}
+.row-cat {
+    padding: 0 15px;
+    margin-top: 10px;
+}
+.btn-group, .btn-group-vertical {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+}
+#mypage-content #mypage-main .wrap .box.right .investDetail .btn-group.cate label {
+    font-size: 12px;
+    min-width: 16.7%;
+}
+.labelBtn-purple {
+    color: #fff;
+    background-color: #712594;
+    opacity: 1.0;
+    font-size: 14px;
+    border-radius: 0px;
+    border-color: #fff;
+}
+#mypage-content #mypage-main .wrap .box.right .investDetail .btn-group.cate label.checked {
+    background-color: #d9d9de;
+    border-color: #d9d9de;
+}
+#mypage-content #mypage-main .wrap .box.right .investDetail .btn-group.cate {
+    width: 100%;
+}
+body {
+    color: #797979;
+    background: #eaeaea;
+    font-family: 'Ruda', sans-serif;
+    padding: 0px !important;
+    margin: 0px !important;
+    font-size: 13px;
+}
+.col {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+#mypage-content #mypage-main .wrap .box.right .investDetail .investList {
+    padding: 0 15px;
+    margin-top: 10px;
+}
+#mypage-content #mypage-main .wrap .box.right table {
+    margin: auto;
+    font-size: 12px;
+}
+#mypage-content #mypage-main .wrap .box.right .investDetail table.investTable1 tr {
+    height: 30px;
+}
+#mypage-content #mypage-main .wrap .box.right .investDetail table.investTable1 th {
+    text-align: center;
+}
+.col-md-push-6 {
+    left: 50%;
+}
+input[type="text"] {
+    font-family: 'Arial',sans-serif !important;
+}
+.srchText{
+    margin-right: 5px;
+    font-size: 12px;
+    min-width: 200px;
+}
+#mypage-content #mypage-main .wrap .box.right .subTitle {
+    font-size: 15px;
+    color: #3d3d3d;
+}
+#mypage-content #mypage-main .wrap .box.right .loanReqGuide {
+    text-align: center;
+    padding: 10px;
+}
+#mypage-content #mypage-main .wrap .box.right .loanReqGuide .box {
+    background: url(${pageContext.request.contextPath}/resources/img/bg_loaninfo_type.png) center 0% no-repeat;
+    background-size: 100% 100%;
+    background-color: #fff;
+    border-style: solid;
+    padding: 5px;
+    border-width: 1px;
+    border-color: #dadada;
+    border-radius: 4px;
+    min-height: 300px;
+}
+#mypage-content #mypage-main .wrap .box.right .loanReqGuide .top {
+    font-size: 22px;
+    border-bottom-style: solid;
+    border-width: 1px;
+    border-color: #d9d9de;
+    padding: 20px 10px;
+    font-weight: bold;
+}
+#mypage-content #mypage-main .wrap .box.right .loanReqGuide .middle {
+    font-size: 16px;
+    padding: 15px 45px 5px 45px;
+    color: #712594;
+    text-align: left;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+#mypage-content #mypage-main .wrap .box.right .loanReqGuide .bottom {
+    font-size: 14px;
+    padding: 10px 0px 10px 40px;
+    text-align: left;
+}
+.bottom ul {
+	padding-left: 0px;
+}
+#mypage-content #mypage-main .wrap .box.right .loanReqGuide .bottom li {
+    list-style-type: square;
+}
+hr {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border: 0;
+    border-top: 1px solid #eee;
+    display: block;
+    unicode-bidi: isolate;
+    margin-block-start: 0.5em;
+    margin-block-end: 0.5em;
+    margin-inline-start: auto;
+    margin-inline-end: auto;
+    overflow: hidden;
+    height: 0;
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+}
+#mypage-content .wrap .box .withdrawGuide {
+    font-size: 14px;
+    padding: 20px;
+}
+#mypage-content .wrap .box .withdrawGuide li {
+    list-style-type: square;
+}
+#mypage-content .wrap .box .withdraw-wrap {
+    font-size: 16px;
+}
+#mypage-content .wrap .box .withdraw-wrap .withdraw-title {
+    font-weight: bold;
+    color: #858585;
+}
+#mypage-content .wrap .box .withdraw-wrap .withdraw-content {
+    font-weight: bold;
+}
+.withdrawGuide ul {
+    padding-left: 0px;
+    font-family: 'Noto Sans KR', sans-serif;
+    color: #5a5a5a;
+    letter-spacing: -0.4px;
+}
+#mypage-content .wrap .box .withdraw-box {
+    border-style: solid;
+    border-color: #d9d9de;
+    border-width: 1px;
+    border-radius: 4px;
+    padding: 15px 30px;
+    font-size: 16px;
+}
+#mypage-content .wrap .box .withdraw-box #withdrawAmt {
+    text-align: right;
+}
+span.multiselect-native-select {
+    position: relative;
+}
+span.multiselect-native-select select {
+    border: 0!important;
+    clip: rect(0 0 0 0)!important;
+    height: 1px!important;
+    margin: -1px -1px -1px -3px!important;
+    overflow: hidden!important;
+    padding: 0!important;
+    position: absolute!important;
+    width: 1px!important;
+    left: 50%;
+    top: 30px;
+}
+optgroup {
+    font-weight: bold;
+}
+button, input, optgroup, select, textarea {
+    margin: 0;
+    font: inherit;
+    color: inherit;
+}
+option {
+    font-weight: normal;
+    display: block;
+    white-space: pre;
+    min-height: 1.2em;
+    padding: 0px 2px 1px;
+}
+.btn-group, .btn-group-vertical {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+}
+#mypage-content .goodlist-title {
+    padding: 20px 0px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #d9d9de;
+    border-radius: 4px;
+    background-color: #fff;
+    margin-bottom: 8px;
+    font-size: 15px;
+    color: #858585;
+    text-align: center;
+}
+#mypage-content .goodlist-title .row {
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
+</style>
 </html>

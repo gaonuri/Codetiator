@@ -24,15 +24,22 @@ public class JoinController {
 	JoinService joinService;
 	
 	@RequestMapping(value = "/joinemailchk", method = RequestMethod.POST)
-	public void joinEmailChk(PrintWriter out, UserVO vo) throws IOException {
+	public void joinEmailChk(PrintWriter out, UserVO vo, Busi_userVO bvo) throws IOException {
 		logger.info("=== joinEmailChk ===");
 //		logger.info(vo.getEmail());
 		int cnt = 0;
 		cnt = joinService.joinEmailChk(vo);
+		int cnt1 = 0;
+		if(cnt == 0) {
+			cnt1 = joinService.joinMagEmailChk(bvo);
+			out.print(cnt1);
+			out.flush();
+			out.close();
+		}
 		out.print(cnt);
 		out.flush();
 		out.close();
-	}//joinEmailChk
+		}
 	
 	@RequestMapping(value="/joinuser", method=RequestMethod.POST)
 	public void joinUser(PrintWriter out, UserVO vo) {
@@ -67,11 +74,17 @@ public class JoinController {
 	}//joinLicenseChk
 	
 	@RequestMapping(value = "/joinmagemailchk", method = RequestMethod.POST)
-	public void joinMagEmailChk(PrintWriter out, Busi_userVO vo) throws IOException {
+	public void joinMagEmailChk(PrintWriter out, UserVO vo, Busi_userVO bvo) throws IOException {
 		logger.info("=== joinMagEmailChk ===");
-//		logger.info(vo.getEmail());
 		int cnt = 0;
-		cnt = joinService.joinMagEmailChk(vo);
+		cnt = joinService.joinMagEmailChk(bvo);
+		int cnt1 = 0;
+		if(cnt == 0) {
+			cnt1 = joinService.joinEmailChk(vo);
+			out.print(cnt1);
+			out.flush();
+			out.close();
+		}
 		out.print(cnt);
 		out.flush();
 		out.close();
@@ -82,4 +95,10 @@ public class JoinController {
 		logger.info("join");
 		return "join/join";
 	}//join
+	
+	@RequestMapping(value = "/join_new", method = RequestMethod.GET)
+	public String join_new() {
+		logger.info("join_new");
+		return "join/join_new";
+	}//join_new
 }
