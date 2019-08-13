@@ -50,23 +50,35 @@ public class MypageController {
 	@Autowired
 	private EmailSender emailSender;
 	@RequestMapping(value = "/my_invest_list", method = RequestMethod.GET)
-	public String invest(HttpSession session, Model model, MemberVO userVO, MypageVO myVO) {
+	public String invest(HttpSession session, Model model, MemberVO userVO, UserVO useVO, Busi_userVO busiVO, AccountVO accVO) {
 		logger.info("my_dashboard");
 		userVO = (MemberVO)session.getAttribute("memberVO");
 		List<MypageVO> invest = null;
 		invest = service.invest_detail(userVO);
+		useVO = service.useinformation(userVO);
+		busiVO = service.businformation(userVO);
+		accVO = service.account(userVO);
 		model.addAttribute("investList", invest);
-		model.addAttribute("investuser", userVO);
+		model.addAttribute("useinfo", useVO);
+		model.addAttribute("businfo", busiVO);
+		model.addAttribute("acc", accVO);
 		return "mypage/my_invest_list";
 	}
 	
 	@RequestMapping(value = "/my_loan_list", method = RequestMethod.GET)
-	public String loan(HttpSession session, Model model, MemberVO userVO, ProjectVO proVO, MypageVO myVO) {
+	public String loan(HttpSession session, Model model, MemberVO userVO, ProjectVO proVO, UserVO useVO, Busi_userVO busiVO, AccountVO accVO) {
 		logger.info("my_loan_list");
 		userVO = (MemberVO)session.getAttribute("memberVO");
 		List<ProjectVO> loan= null;
 		loan = service.loan_list(userVO);
+		useVO = service.useinformation(userVO);
+		busiVO = service.businformation(userVO);
+		accVO = service.account(userVO);
+		logger.info("my_loan_list : "+loan);
 		model.addAttribute("loanList",loan);
+		model.addAttribute("useinfo", useVO);
+		model.addAttribute("businfo", busiVO);
+		model.addAttribute("acc", accVO);
 		return "mypage/my_loan_list";
 	}
 	
@@ -98,13 +110,6 @@ public class MypageController {
 //		logger.info("my_depo_mgn"+busiVO);
 		return "mypage/my_depo_mgn";
 	}
-	
-	@RequestMapping(value = "/my_depo_mgn_new", method = RequestMethod.GET)
-	public String my_depo_mgn_new(HttpSession session, Model model, MemberVO userVO, UserVO useVO, Busi_userVO busiVO, AccountVO accVO, InOutVO ioVO) {
-		logger.info("my_depo_mgn_new");
-
-		return "mypage/my_depo_mgn_new";
-	}//my_depo_mgn_new
 	
 //	@RequestMapping(value = "/account_insert", method = RequestMethod.POST)
 //	public void account_insert(HttpSession session, Model model, PrintWriter out, AccountVO accVO, MemberVO userVO ) {

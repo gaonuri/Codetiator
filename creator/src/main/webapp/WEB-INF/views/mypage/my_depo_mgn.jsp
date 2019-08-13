@@ -33,7 +33,7 @@
 	  Author: TemplateMag.com
 	  License: https://templatemag.com/license/
 	======================================================= -->
-		<script type="text/javascript">
+	<script type="text/javascript">
 	/////////////////////////////////////////////////////////////////////////////////////////////금액 버튼 시작
 	$(document).ready(function() {
 		$("#depobu").click(function() {
@@ -111,7 +111,7 @@
 		
 		$("#withdrawReqBtn").click(function() {
 			request = parseInt($("#withdrawAmt").val());
-// 			alert("request : " + request);
+			//alert("request : " + request);
 			if(parseInt($("#withdrawAmt").val()) == 0) {
 				alert("금액을 입력하세요");
 				return;
@@ -121,7 +121,7 @@
 				var confirmYN = false;
 				confirmYN = confirm("출금 요청하시겠습니까?");
 				if(confirmYN == true) {
-// 					alert($("#user_num").val());alert($("#busi_num").val());
+				//alert($("#user_num").val());alert($("#busi_num").val());
 					$.post("${pageContext.request.contextPath}/depo_update",
 							{
 								user_num:$("#user_num").val(),
@@ -129,7 +129,7 @@
 								deposit:$("#deposit").val()
 							},
 							function(data, status) {
-// 								alert(data); alert(status);
+							//alert(data); alert(status);
 								if(status == "success") {
 									if(data == -1) {
 										alert("오류입니다. 관리자 : 02-5555-7777");
@@ -365,22 +365,22 @@
 									<!-- Nav tabs -->
 									<ul class="nav nav-pills" role="tablist">
 										<li id="smallMenuLi2">
-											<a href="javascript:(void(0));" onclick="gfn_goMypageMenu(&quot;2&quot;)">
+											<a href="javascript:(void(0));" >
 												<span class="smallMenuItem">투자 내역</span>
 											</a>
 										</li>
 										<li id="smallMenuLi4">
-											<a href="javascript:(void(0));" onclick="gfn_goMypageMenu(&quot;4&quot;)">
+											<a href="javascript:(void(0));" >
 												<span class="smallMenuItem">대출 내역</span>
 											</a>
 										</li>
 										<li id="smallMenuLi5">
-											<a href="javascript:(void(0));" onclick="gfn_goMypageMenu(&quot;5&quot;)">
+											<a href="javascript:(void(0));" >
 												<span class="smallMenuItem">예치금 관리</span>
 											</a>
 										</li>
 										<li id="smallMenuLi8">
-											<a href="javascript:(void(0));" onclick="gfn_goMypageMenu(&quot;8&quot;)">
+											<a href="javascript:(void(0));" >
 												<span class="smallMenuItem">기본 정보 수정</span>
 											</a>
 										</li>
@@ -462,100 +462,99 @@
 						</div>
 					</div>
 				</div>
-				
-<div class="col-sm-12 col-md-9 col col-box" id="mypage-main">
-<!-- ExcelDownload JavaScript -->
-<script type="text/javascript" src="/js/excel/jquery.table2excel.js"></script>
-	<div class="wrap">
-		<div class="box left">
-			<div class="row">
-				<div class="col-xs-12 col-sm-offset-1 col-sm-10 col-md-offset-1 col-md-10">
-					<div class="row" id="vtAcntYDiv">
-						<div class="col-xs-12 col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8">
-							<c:choose>
-								<c:when test="${acnt == null || acnt.account_name == null || acnt.account_name == ''}">
-									<div class="row" id="vtAcntNDiv">
-										<div class="col-xs-12 col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8">
-											<div style="padding:60px 0 10px 0; font-size: 18px; font-weight: bold;">
-												투자 신청을 위해 예치금 계좌를 발급해 주세요.
-											</div>
-											<div style="padding:20px 0;">
-												<button type="button" id="cert_start" class="btn btn-purple-transparent btn-block" data-toggle="modal" data-target="#btn_cert1" >
-													예치금 계좌 발급을 위해 본인 인증하기
-												</button>
-											</div>
+			<div class="col-sm-12 col-md-9 col col-box" id="mypage-main">
+			<!-- ExcelDownload JavaScript -->
+			<script type="text/javascript" src="/js/excel/jquery.table2excel.js"></script>
+				<div class="wrap">
+					<div class="box left">
+						<div class="row">
+							<div class="col-xs-12 col-sm-offset-1 col-sm-10 col-md-offset-1 col-md-10">
+								<div class="row" id="vtAcntYDiv">
+									<div class="col-xs-12 col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8">
+										<c:choose>
+											<c:when test="${acnt == null || acnt.account_name == null || acnt.account_name == ''}">
+												<div class="row" id="vtAcntNDiv">
+													<div class="col-xs-12 col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8">
+														<div style="padding:60px 0 10px 0; font-size: 18px; font-weight: bold;">
+															투자 신청을 위해 예치금 계좌를 발급해 주세요.
+														</div>
+														<div style="padding:20px 0;">
+															<button type="button" id="cert_start" class="btn btn-purple-transparent btn-block" data-toggle="modal" data-target="#btn_cert1" >
+																예치금 계좌 발급을 위해 본인 인증하기
+															</button>
+														</div>
+													</div>
+												</div>
+											</c:when>
+											<c:otherwise>
+												<div class="row" id="vtAcntYDiv" style="">
+													<div class="col-xs-12 col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8">
+														<div style="padding:60px 0 10px 0; font-size: 18px; font-weight: bold;">
+															예치금 계좌정보
+														</div>
+														<div class="withdraw-wrap">
+															<div class="row" style="margin-top: 20px;">
+																<div class="col-xs-5 col-sm-5 col-md-5 withdraw-title">
+																	예금주
+																</div>
+																<div class="col-xs-7 col-sm-7 col-md-7 withdraw-content">
+																	<font size="1">크리에이터</font>${acnt.account_name}
+																</div>
+															</div>
+															<div class="row" style="margin-top: 10px;">
+																<div class="col-xs-5 col-sm-5 col-md-5 withdraw-title">
+																	은행
+																</div>
+																<div class="col-xs-7 col-sm-7 col-md-7 withdraw-content">
+																	${acnt.bank_name}
+																</div>
+															</div>
+															<div class="row" style="margin-top: 10px;">
+																<div class="col-xs-5 col-sm-5 col-md-5 withdraw-title">
+																	입금계좌
+																</div>
+																<div class="col-xs-7 col-sm-7 col-md-7 withdraw-content">
+																	<span class="font-purple" id="vtAcntNoSpan">${acnt.bank_num}</span>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</c:otherwise>
+										</c:choose>
+									</div>
+								</div>
+								<hr>
+								<div class="row">
+									<div class="col-xs-12 col-sm-offset-1 col-sm-10 col-md-offset-1 col-md-10">
+										<div class="withdrawGuide">
+											<ul>
+												<li>
+													예치금 계좌는 고객님 명의의 투자를 위한 전용 가상계좌입니다.
+												</li>
+												<li>
+													미성년자는 가상계좌 발급시 추가 인증이 필요합니다. 고객센터로 문의 부탁드립니다.
+												</li>
+												<li>
+													예치금 계좌로 예치금 충전금액을 정확히 이체하여 주십시오.
+												</li>
+												<li>
+													창구 또는 자동화기기(CD/ATM)에서는 예치금 입금이 불가능합니다.
+												</li>
+												<li>
+													입금처리 시간은 1분 이내이며 고객메세지를 통해 알려드립니다.(단, 은행망전산 점검시간 0시~0시30분에는 불가능합니다.)
+												</li>
+												<li>
+													자세한 내용은 <a href="/info/noticeDetail/10" target="_blank" style="color: #712594;"><strong>공지사항</strong></a>을 참고하시기 바랍니다.
+												</li>
+											</ul>
 										</div>
 									</div>
-								</c:when>
-								<c:otherwise>
-									<div class="row" id="vtAcntYDiv" style="">
-										<div class="col-xs-12 col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8">
-											<div style="padding:60px 0 10px 0; font-size: 18px; font-weight: bold;">
-												예치금 계좌정보
-											</div>
-											<div class="withdraw-wrap">
-												<div class="row" style="margin-top: 20px;">
-													<div class="col-xs-5 col-sm-5 col-md-5 withdraw-title">
-														예금주
-													</div>
-													<div class="col-xs-7 col-sm-7 col-md-7 withdraw-content">
-														<font size="1">크리에이터</font>${acnt.account_name}
-													</div>
-												</div>
-												<div class="row" style="margin-top: 10px;">
-													<div class="col-xs-5 col-sm-5 col-md-5 withdraw-title">
-														은행
-													</div>
-													<div class="col-xs-7 col-sm-7 col-md-7 withdraw-content">
-														${acnt.bank_name}
-													</div>
-												</div>
-												<div class="row" style="margin-top: 10px;">
-													<div class="col-xs-5 col-sm-5 col-md-5 withdraw-title">
-														입금계좌
-													</div>
-													<div class="col-xs-7 col-sm-7 col-md-7 withdraw-content">
-														<span class="font-purple" id="vtAcntNoSpan">${acnt.bank_num}</span>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</c:otherwise>
-							</c:choose>
-						</div>
-					</div>
-					<hr>
-					<div class="row">
-						<div class="col-xs-12 col-sm-offset-1 col-sm-10 col-md-offset-1 col-md-10">
-							<div class="withdrawGuide">
-								<ul>
-									<li>
-										예치금 계좌는 고객님 명의의 투자를 위한 전용 가상계좌입니다.
-									</li>
-									<li>
-										미성년자는 가상계좌 발급시 추가 인증이 필요합니다. 고객센터로 문의 부탁드립니다.
-									</li>
-									<li>
-										예치금 계좌로 예치금 충전금액을 정확히 이체하여 주십시오.
-									</li>
-									<li>
-										창구 또는 자동화기기(CD/ATM)에서는 예치금 입금이 불가능합니다.
-									</li>
-									<li>
-										입금처리 시간은 1분 이내이며 고객메세지를 통해 알려드립니다.(단, 은행망전산 점검시간 0시~0시30분에는 불가능합니다.)
-									</li>
-									<li>
-										자세한 내용은 <a href="/info/noticeDetail/10" target="_blank" style="color: #712594;"><strong>공지사항</strong></a>을 참고하시기 바랍니다.
-									</li>
-								</ul>
+								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-			</div>
-		</div>
-	</div>
 				<div class="row">
 					<div class="col-md-12">
 						<div class="wrap">

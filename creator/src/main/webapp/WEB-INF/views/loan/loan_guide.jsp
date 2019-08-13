@@ -60,7 +60,7 @@
     width: 1170px;
 }
 #loanGuide-banner {
-    background: url(${pageContext.request.contextPath}/resources/bootstrap/img/blog-bg.jpg)no-repeat center center fixed;
+    background: url(${pageContext.request.contextPath}/resources/img/bgImg_loanIntro01.jpg)no-repeat center center fixed;
     background-size: cover;
     background-attachment: fixed;
     width: 100%;
@@ -207,6 +207,14 @@ p {
     margin-right: auto;
     border: 2px solid #01C351;
 }
+.mr-angle div {
+    transform: skew(30deg);
+    -webkit-transform: skew(30deg);
+    -ms-transform: skew(30deg);
+}
+p {
+    margin: 0 0 10px;
+}
 </style>
 <body>
 
@@ -297,7 +305,7 @@ p {
 				<div class="mr-green mainTop_btn" id="loanReqBtn">
 					대출신청<span class="mr-cap"></span>
 					<span class="mr-angle">
-						<div style="-webkit-transform: skew(30deg); line-height: 0px"><p>&gt;</p></div>
+						<div style="-webkit-transform: skew(30deg); line-height: 30px;"><p>&gt;</p></div>
 					</span>
 				</div>
 			</div>
