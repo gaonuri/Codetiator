@@ -529,7 +529,7 @@ form {
 	<%@ include file="../header.jsp" %>
 	<!--header end-->
 	<script type="text/javascript">
-
+	
 	$(function() {
 		$("#topGuideButton").on("click", function() {
 			$("#topGuideText").removeClass("animated fadeIn");
@@ -1332,8 +1332,10 @@ form {
 								</div>
 								<div class="col-xs-9 col-sm-9 col-md-1 col">
 									<div class="progress">
-										<div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="${vo.current_price / vo.price * 100}" aria-valuemin="0" aria-valuemax="100" style="min-width:20px; width: 90%;">
-											<span id="investing"></span>${vo.current_price / vo.price * 100}%
+										<div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="${vo.current_price / vo.price * 100}" aria-valuemin="0" aria-valuemax="100" style="min-width:20px; width: 100%;">
+											<span id="investing">${vo.current_price / vo.price * 100}</span> %
+											<input type="hidden" id="current_price" value="${vo.current_price}" />
+											<input type="hidden" id="price" value="${vo.price}" />
 										</div>
 									</div>
 								</div>
