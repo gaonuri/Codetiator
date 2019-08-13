@@ -501,7 +501,6 @@ form {
 
 </style>
 <body>
-	<body>
 	<!-- for all pages -->
 
 <form id="commonForm" name="commonForm"></form>
@@ -1428,7 +1427,6 @@ src="https://www.facebook.com/tr?id=1893138164280089&ev=PageView&noscript=1"
 </script>
 
 <script type="text/javascript" id="">!function(b,e,f,g,a,c,d){b.fbq||(a=b.fbq=function(){a.callMethod?a.callMethod.apply(a,arguments):a.queue.push(arguments)},b._fbq||(b._fbq=a),a.push=a,a.loaded=!0,a.version="2.0",a.queue=[],c=e.createElement(f),c.async=!0,c.src=g,d=e.getElementsByTagName(f)[0],d.parentNode.insertBefore(c,d))}(window,document,"script","https://connect.facebook.net/en_US/fbevents.js");fbq("init","1004949496302293",{em:"too@root.com"},{agent:"tmgoogletagmanager"});fbq("track","PageView");</script>
-</body>
 </body>
 
 </html>

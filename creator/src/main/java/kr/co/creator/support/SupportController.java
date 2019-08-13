@@ -59,7 +59,7 @@ public class SupportController {
 	
 	@RequestMapping(value = "/support_test", method = RequestMethod.GET)
 	public String support_test(Model model, NoticeVO vo) {
-		logger.info("support");
+		logger.info("support_test");
 		List<NoticeVO> support = null;   // 전체
 		List<NoticeVO> support2 = null;  // 새소식
 		List<NoticeVO> support3 = null;  // 운영사항

@@ -38,15 +38,20 @@
 	$(document).ready(function() {
 		var temp = 0;
 		var add  = 0; 
-		//var current_price = parseInt($("#current_price").val() * 10000);
-		//var invest_price = parseInt($("#invest_price").val());
-		var deposit = parseInt($("#inputDeposit771").val());
-		var request	= parseInt($("#withdrawAmt").val());
-		var intrst 	= invest * $("#rate").val() * 0.01;
-		var limit	= parseInt($("#request_limit").val());
+		var deposit = parseInt($("#inputDeposit").val());			// 예치금
+		var request	= parseInt($("#withdrawAmt").val());			// 출금액
+		var limit	= parseInt($("#request_limit").val());			// 출금 제한 금액
+		var input	= parseInt($("#in_history").val());				// 입금 총액
+		var output	= parseInt($("#out_history").val());			// 출금 총액
 		var confirmYN = false;
 		var check = $("input:checkbox[id=agreeCheckbox]:checked").is(":checked");
 		var count = 0; 
+		
+		
+		$("#deposit").text(addComma(deposit));						// 예치금
+		$("#out_able").text(addComma(deposit));						// 출금 가능액
+		$("#DEPOSIT_AMT_SUM").text(addComma(input));				// 입금 총액
+		$("#WTHDRW_AMT_SUM").text(addComma(output));				// 출금 총액
 		
 		$("#amtPlus100_771").click(function() {
 			tmpInt = parseInt($("#withdrawAmt").val()) + 1000000;
@@ -80,98 +85,167 @@
 			if(deposit > limit) {
 				alert("보유한 예치금을 초과하였습니다.");
 				$("#withdrawAmt").val($("#request_limit").val());
-				calculating();
-				}
+			}
+			calculating();
 		});//keyup
 		
 		$("#withdrawAmt").blur(function() {
 			var str = $("#withdrawAmt").val();
 			//alert(str.substr(str.length-4, 4)); 숫자 뒤 4자리가 0000인지 확인
 			if("00000" != str.substr(str.length-4, 4)) {
-				alert("10만원 단위로 입력하시기 바랍니다.");
+				alert("십만원 단위로 입력하시기 바랍니다.");
 				$("#withdrawAmt").val("0");
 				calculating();
 			}//if
 		});//blur
+
+		function addComma(num) {
+			var regexp = /\B(?=(\d{3})+(?!\d))/g;
+			return num.toString().replace(regexp, ',');
+		}//금액에 컴마 붙이기
 		
-// 		$("#withdrawReqBtn").click(function() {
-// 			if(parseInt($("#withdrawAmt").val()) == 0) {
-// 				alert("금액을 입력하세요");
-// 				return;
-// 			} else {
-// 				$("#deposit").val(deposit - request);
-	
-// 					var confirmYN = false;
-// 					confirmYN = confirm("정말 투자하시겠습니까?");
-// 					if(confirmYN == true) {
-// 						$.post("${pageContext.request.contextPath}/deposit_update",
-// 					}
-// 				}
-// 			}
-// 		});//click
-	});//ready
+		$("#withdrawReqBtn").click(function() {
+			request = parseInt($("#withdrawAmt").val());
+// 			alert("request : " + request);
+			if(parseInt($("#withdrawAmt").val()) == 0) {
+				alert("금액을 입력하세요");
+				return;
+			} else {
+				$("#deposit").val(deposit - request);
+				$("#output").val(output + request);
+				var confirmYN = false;
+				confirmYN = confirm("출금 요청하시겠습니까?");
+				if(confirmYN == true) {
+// 					alert($("#user_num").val());alert($("#busi_num").val());
+					$.post("${pageContext.request.contextPath}/depo_update",
+							{
+								user_num:$("#user_num").val(),
+								busi_num:$("#busi_num").val(),
+								deposit:$("#deposit").val()
+							},
+							function(data, status) {
+// 								alert(data); alert(status);
+								if(status == "success") {
+									if(data == -1) {
+										alert("오류입니다. 관리자 : 02-5555-7777");
+									} else if(data > 0) {
+										alert("출금 요청이 완료되었습니다");
+										location.href="${pageContext.request.contextPath}/my_depo_mgn";
+									} else if (status == "error") {
+										alert("잠시후 다시 시도해 주세요.");
+									} else {
+										alert("관리자 : 02-5555-7777");
+											}//else
+										}//if
+									}//function
+								);//post
+							}//if
+						}//else
+					});//click
+				});//ready
 ////////////////////////////////////////////////////////////////////////////////////////////////금액 버튼 끝
-		
+
 ////////////////////////////////////////////////////////////////////////////////////////////////은행별 계좌 유형 시작
-		
-
-
-//		if($("#cusBankCdSelect").val() == ""){
-// 			alert("은행을 선택 하세요.");
+	$(document).ready(function(){
+		$(".onlysan").change(function(){
+		//alert($(this).val());
+		var passStd = /^[0-9]{12,16}$/;
+		if($(this).val().match(passStd)){
+			//alert("ok");
+		} else {
+			alert("12~16자의 계좌번호 숫자만 입력해주시기 바랍니다.");
+			$(this).val("");
+			//$(this).focus();
+			return;
+			}
+		});//onlyPass
+	});//ready
+	
+	$(document).ready(function() {
+// 		$("#cusBankCdSelect").click(function(){
+// 		if($("#cusBankCdSelect").val() == ""){
+// 			alert("은행을 선택해 주세요.");
 // 			return;
 // 		}
-// 		if($("#cusBankCdSelect").val() == "010"){
-// 			var bankStd = /^[0-9]{8}$/;
-// 			if($.trim($("#cusBankCdSelect").val()) != $(this).val().match(sanStd)){
-// 				alert("올바르지 않은 입력입니다.");
-// 			return;
-// 			}
-// 		}
-		
-
-
-
-
+// 	});//click
+		$("#cusAccount").blur(function() {
+			$.post(
+					"${pageContext.request.contextPath}/bankNumChk",
+					{
+						bank_num:$("#cusAccount").val()
+					},
+					function(data,status){
+						if(data == 0){
+							alert("사용 가능한 계좌 입니다.");
+							chkemail = $("#cusAccount").val();
+							return;
+						}else{
+							alert("이미 등록된 계좌 입니다.");
+							return;
+						}//else
+					}//function
+				);//post
+		});//click
+	});//ready
 
 ////////////////////////////////////////////////////////////////////////////////////////////////은행별 계좌 유형 끝
 
-////////////////////////////////////////////////////////////////////////////////////////////////예치금 요청 시작
-
-
-
-////////////////////////////////////////////////////////////////////////////////////////////////예치금 요청 끝
-		
 ////////////////////////////////////////////////////////////////////////////////////////////////예치금 계좌 발급받기 시작
 		$(document).ready(function(){
-			$("#receaccn").blur(function(){
-				var banknum = /^([0-9]{16})$/;
-				if($.trim($("#receaccn").val()) != $(this).val().match(banknum)){
-					alert("올바르지 않은 계좌입니다.");
+			$("#receaccn").click(function(){
+				if($("#cusAccount").val() == ""){
+					alert("계좌번호를 입력해 주세요.");
 					return;
 				}
-		
-				$.post(
-						"${pageContext.request.contextPath}/bankNumChk",
+				$.post (
+						"${pageContext.request.contextPath}/account_insert",
 						{
-							bank_num:$("#receaccn").val()
+							user_num:$("#user_num").val(),
+							busi_num:$("#busi_num").val(),
+							account_name:$("#cusNm").val(),
+							bank_name:$("#cusBankCdSelect").val(),
+							bank_num:$("#cusAccount").val()
 						},
-						function(data,status){
-							if(data == 0){
+						function(data, status) {
+						if(status == "success") {
+							if (data > 0) {
+								alert("계좌 등록에 성공하였습니다 즐거운 투자 Creator펀딩!");
 								$("#btn_cert2").modal("hide");
-								alert("사용 가능한 계좌 입니다.");
-								chkemail = $("#receaccn").val();
-								return;
-							}else{
-								
-								alert("이미 등록된 계좌 입니다.");
-								return;
+							} else {
+								alert("다시 등록해주시기 바랍니다.");
 							}
-						}//function
+						}
+					}
 				);//post
 			});//blur
 		})//ready
+// 		$(document).ready(function(){
+// 			$("#receaccn").click(function(){
+// 				if($("#cusAccount").val() == ""){
+// 					alert("계좌번호를 입력해 주세요.");
+// 					return;
+// 				}
+// 				$.post (
+// 						"${pageContext.request.contextPath}/busiaccount_insert",
+// 						{
+// 							busi_num:$("#busi_num").val(),
+// 							account_name:$("#account_name").val(),
+// 							bank_name:$("#cusBankCdSelect").val(),
+// 							bank_num:$("#cusAccount").val()
+// 						},
+// 						function(data, status) {
+// 						if(status == "success") {
+// 							if(data = -1){
+// 								alert("다시 등록해주시기 바랍니다.");
+// 							} else if (data > 0) {
+// 								alert("계좌 등록에 성공하였습니다 즐거운 투자 Creator펀딩!");
+// 							}
+// 						}
+// 					}
+// 				);//post
+// 			});//blur
+// 		})//ready
 /////////////////////////////////////////////////////////////////////////////////////////////예치금 계좌 발급받기 끝
-
 /////////////////////////////////////////////////////////////////////////////////////////////모달 시작
 		function tempFunction() {
 			$("#btn_cert2");
@@ -179,7 +253,7 @@
 		}tempFunction
 		
 		var id;
-		var min = 02;
+		var min = 29;
 		var sec = 59;
 		var minZero = "";
 		var secZero = "";
@@ -204,46 +278,19 @@
 			}
 		}
 		$(document).ready(function(){
-			var chkemail = '';
-			
-			$("#cusEmail").blur(function(){
-				var emailStd = /([a-z0-9]{1,20}\@)([a-z]{1,20}\.)([a-z]{1,10})/gi;
-				
-				if($.trim($("#cusEmail").val()) != $(this).val().match(emailStd)){
-					alert("올바르지 않은 이메일 입니다.");
-					return;
-				}
-				$.post(
-						"./busifindChk",
-						"./findPwdChk",
-						{
-							Email:$("#cusEmail").val(),
-							manager_email:$("#cusEmail").val()
-						},
-						function(data,status){
-							if(data == 1){
-								alert("이메일이 확인 되었습니다. 인증번호 받기 버튼을 눌러주세요.");
-								chkemail = $("#cusEmail").val();
-							}else{
-								alert("등록된 이메일이 없습니다.");
-							}
-						}//function
-				);//post
-			});//blur
-		});//ready
-
-		$(document).ready(function(){
 			$("#numre").click(function(){
-				if($.trim($("#cusEmail").val()) == ""){
-					alert("등록된 이메일이 없습니다.");
+				
+// 				if($.trim($("#cusEmail").val()) == ""){
+// 					alert("등록된 이메일이 없습니다.");
 //		 			$("#cusEmail").focus();
-					return;
-				}
+// 					return;
+// 				}
 				$.post(
-						"./CertEmail"
+						"${pageContext.request.contextPath}/CertEmail"
 						,{
-							Email:$("#cusEmail").val(),
-							manager_email:$("#cusEmail").val()
+							user_email:$("#cusEmail").val(),
+							manager_email:$("#cusEmail").val(),
+							email:$("#cusEmail").val()
 						}
 						,function(data,status){
 							if(status == "success"){
@@ -265,8 +312,10 @@
 		});//ready
 		$(document).ready(function() {
 			$("#btn_certi_complete").click(function() {
+				alert("btn_certi_complete");
+				alert($("#cer_number").val());
 				$.post(
-						"./CheckCerNumber",
+						"${pageContext.request.contextPath}/DepocerNumber",
 						{
 							cer_number:$("#cer_number").val()
 						}
@@ -457,7 +506,7 @@
 																		예치금
 																	</div>
 																	<div class="col-xs-6 col-sm-6 col-md-6 text-right" id="inputDeposit771" name="inputDeposit">
-																		${acnt.deposit} 원
+																		<span id="deposit"></span> 원
 																		<input type="hidden" id="inputDeposit" value="${acnt.deposit}" />
 																	</div>
 																</div>
@@ -486,7 +535,8 @@
 																		입금 총액
 																	</div>
 																	<div class="col-xs-6 col-sm-6 col-md-6 text-right">
-																		<span name="DEPOSIT_AMT_SUM">${Inout.input_history}</span> 원
+																		<span id="DEPOSIT_AMT_SUM" name="DEPOSIT_AMT_SUM"></span> 원
+																		<input type="hidden" id="in_history"  value="${Inout.input_history}">
 																	</div>
 																</div>
 																<div class="row" style="margin-top: 10px;">
@@ -494,7 +544,8 @@
 																		출금 총액
 																	</div>
 																	<div class="col-xs-6 col-sm-6 col-md-6 text-right">
-																		<span name="WTHDRW_AMT_SUM">${Inout.output_history}</span> 원
+																		<span id="WTHDRW_AMT_SUM" name="WTHDRW_AMT_SUM"></span> 원
+																		<input type="hidden" id="out_history" value="${Inout.output_history}">
 																	</div>
 																</div>
 																<div class="row" style="margin-top: 10px;">
@@ -502,8 +553,8 @@
 																		출금 대기금액
 																	</div>
 																	<div class="col-xs-6 col-sm-6 col-md-6 text-right">
-																		<span name="WTHDRW_REQ_AMT_SUM">0</span> 원
-																	</div>
+																		<span id="WTHDRW_REQ_AMT_SUM" name="WTHDRW_REQ_AMT_SUM">0</span> 원
+																	</div>	
 																</div>
 															</div>
 														</div>
@@ -578,7 +629,7 @@
 																		출금 가능액
 																	</div>
 																	<div class="col-xs-7 col-sm-7 col-md-7 withdraw-content text-right">
-																		${acnt.deposit}<font size="2">원</font>
+																		<font size="2"><span id="out_able"></span>원</font>
 																	</div>
 																</div>
 																<div class="row" style="margin-top: 10px;">
@@ -618,33 +669,6 @@
 									</form>
 
 				<!-- Email 인증시작 -->
-					<script type="text/javascript">
-					var id;
-					var min = 02;
-					var sec = 59;
-					var minZero = "";
-					var secZero = "";
-					function setClock() {
-						id = setInterval(worker,1000);
-					}
-					function worker() {
-						if(min < 10){minZero = "0";}else{minZero = "";}
-						if(sec < 10){secZero = "0";}else{secZero = "";}
-						var now = minZero + min + " : " + secZero + sec;
-						clock.innerHTML = "<h6>"+now+"</h6>";
-						sec = parseInt(sec) - 1;
-						if(sec == -1) {
-							sec = 59;
-							min = parseInt(min) - 1;
-							if(min == -1){
-								clearInterval(id);
-								alert("인증시간이 만료 되었습니다.");
-								location.reload();
-								
-							}
-						}
-					}
-					</script>
 						<div class="modal fade" id="btn_cert1"  name="cert1" role="dialog" aria-labelledby="vtAcntModalLabel" aria-hidden="true">
 							<div class="modal-dialog">
 								<div class="modal-content">
@@ -768,159 +792,16 @@
 											<div class="form-group col-xs-7 col-sm-7 col-md-4">
 												<label for="cusBankCdSelect" class="control-label">은행명</label>
 												<select id="cusBankCdSelect" class="form-control" name="cusBankCd">
-													<option value="">선택하세요</option>
-													
-													<option id="san" value="002">산업은행</option>
-												
-													<option id="ki" value="003">기업은행</option>
-												
-													<option id="kb" value="004">국민은행</option>
-												
-													<option id="su" value="007">수협중앙회</option>
-												
-													<option id="chul" value="008">수출입은행</option>
-												
-													<option id="nh1" value="010">농협</option>
-												
-													<option id="nh2" value="011">농협중앙회</option>
-												
-													<option id="su3" value="012">지역농·축협</option>
-												
-													<option id="woo" value="020">우리은행</option>
-												
-													<option id="sc" value="023">SC제일은행</option>
-												
-													<option id="ct" value="027">한국씨티은행</option>
-												
-													<option value="031">대구은행</option>
-												
-													<option value="032">부산은행</option>
-												
-													<option value="034">광주은행</option>
-												
-													<option value="035">제주은행</option>
-												
-													<option value="037">전북은행</option>
-												
-													<option value="039">경남은행</option>
-												
-													<option value="045">새마을금고중앙회</option>
-												
-													<option value="048">신협중앙회</option>
-												
-													<option value="050">상호저축은행</option>
-												
-													<option value="052">모건스탠리은행</option>
-												
-													<option value="054">HSBC은행</option>
-												
-													<option value="055">도이치은행</option>
-												
-													<option value="057">제이피모간체이스은행</option>
-												
-													<option value="058">미즈호은행</option>
-												
-													<option value="059">미쓰비시도쿄UFJ은행</option>
-												
-													<option value="060">BOA은행</option>
-												
-													<option value="061">비엔피파리바은행</option>
-												
-													<option value="062">중국공상은행</option>
-												
-													<option value="063">중국은행</option>
-												
-													<option value="065">대화은행</option>
-												
-													<option value="066">교통은행</option>
-												
-													<option value="071">우체국</option>
-												
-													<option value="081">KEB하나은행</option>
-												
-													<option value="088">신한은행</option>
-												
-													<option value="089">케이뱅크</option>
-												
-													<option value="090">카카오뱅크</option>
-												
-													<option value="096">한국전자금융(주)</option>
-												
-													<option value="102">대신저축은행</option>
-												
-													<option value="103">에스비아이저축은행</option>
-												
-													<option value="104">에이치케이저축은행</option>
-												
-													<option value="105">웰컴저축은행</option>
-												
-													<option value="209">유안타증권</option>
-												
-													<option value="218">KB증권</option>
-												
-													<option value="221">골든브릿지투자증권</option>
-												
-													<option value="222">한양증권</option>
-												
-													<option value="223">리딩투자증권</option>
-												
-													<option value="224">BNK투자증권</option>
-												
-													<option value="225">IBK투자증권</option>
-												
-													<option value="227">KTB투자증권</option>
-												
-													<option value="238">미래에셋대우</option>
-												
-													<option value="240">삼성증권</option>
-												
-													<option value="243">한국투자증권</option>
-												
-													<option value="247">NH투자증권</option>
-												
-													<option value="261">교보증권</option>
-												
-													<option value="262">하이투자증권</option>
-												
-													<option value="263">HMC투자증권</option>
-												
-													<option value="264">키움증권</option>
-												
-													<option value="265">이베스트투자증권</option>
-												
-													<option value="266">SK증권</option>
-												
-													<option value="267">대신증권</option>
-												
-													<option value="269">한화투자증권</option>
-												
-													<option value="270">하나금융투자</option>
-												
-													<option value="278">신한금융투자</option>
-												
-													<option value="279">동부증권</option>
-												
-													<option value="280">유진투자증권</option>
-												
-													<option value="287">메리츠종합금융증권</option>
-												
-													<option value="290">부국증권</option>
-												
-													<option value="291">신영증권</option>
-												
-													<option value="292">케이프투자증권</option>
-												
-													<option value="293">한국증권금융</option>
-												
-													<option value="294">펀드온라인코리아</option>
-												
-													<option value="295">우리종합금융</option>
-												
-													<option value="296">삼성선물</option>
-												
-													<option value="297">외환선물</option>
-												
-													<option value="298">현대선물</option>
+													<option id="san" value="신한은행">신한은행</option>
+													<option id="ki" value="국민은행">국민은행</option>
+													<option id="kb" value="우리은행">우리은행</option>
+													<option id="su" value="하나은행">하나은행</option>
+													<option id="chul" value="시티은행">시티은행</option>
+													<option id="nh1" value="부산은행">부산은행</option>
+													<option id="nh2" value="경남은행">경남은행</option>
+													<option id="su3" value="광주은행">광주은행</option>
+													<option id="woo" value="제주은행">제주은행</option>
+													<option id="sc" value="산업은행">산업은행</option>
 												</select>
 											</div>
 											<div class="form-group col-xs-12 col-sm-12 col-md-5">
@@ -991,10 +872,7 @@
 		<input type="hidden" id="reqAmt771" name="reqAmt" value="0">
 		<input type="hidden" name="repayAmt" id="repayAmt771" value="164625000">
 		<input type="hidden" name="loanAmt" id="loanAmt771" value="150000000">
-		<input type="hidden" name="umbrellarRate" id="umbrellarRate771" value="0.0">
-		<input type="hidden" name="umbrellarAplyYn" id="umbrellarAplyYn771" value="N">
 		<input type="hidden" name="brrwrAmt" id="brrwrAmt771" value="5000000">
-		<input type="hidden" id="rate" value="${proVO.rate}" />									<!-- 금리 -->
 		<input type="hidden" id="user_num" value="${memVO.user_num}" />							<!-- 유저번호 -->
 		<input type="hidden" id="busi_num" value="${memVO.busi_num}" />							<!-- 법인유저번호 -->
 	    <input type="hidden" id="request_limit" value="${acnt.deposit}" />						<!-- 예치금한도 -->
