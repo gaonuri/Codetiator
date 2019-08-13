@@ -49,24 +49,6 @@ public class MypageController {
 
 	@Autowired
 	private EmailSender emailSender;
-	
-	@RequestMapping(value = "/my_dashboard", method = RequestMethod.GET)
-	public String list(HttpSession session, Model model, MemberVO userVO, MypageVO myVO) {
-		logger.info("my_dashboard");
-		userVO = (MemberVO)session.getAttribute("memberVO");
-		List<MypageVO> invest = null;
-		invest = service.invest_detail(userVO);
-		model.addAttribute("investList", invest);
-		return "mypage/my_dashboard";
-	}
-	
-	@RequestMapping(value = "/my_dashboard_new", method = RequestMethod.GET)
-	public String my_dashboard_new(HttpSession session, Model model, MemberVO userVO, MypageVO myVO) {
-		logger.info("my_dashboard_new");
-
-		return "mypage/my_dashboard_new";
-	}//my_dashboard_new
-	
 	@RequestMapping(value = "/my_invest_list", method = RequestMethod.GET)
 	public String invest(HttpSession session, Model model, MemberVO userVO, AccountVO accVO) {
 		logger.info("my_dashboard");
@@ -75,11 +57,16 @@ public class MypageController {
 		invest = service.invest_detail(userVO);
 		accVO = service.information(userVO);
 		model.addAttribute("investList", invest);
+		model.addAttribute("investuser", userVO);
 		return "mypage/my_invest_list";
 	}
 	
 	@RequestMapping(value = "/my_loan_list", method = RequestMethod.GET)
+<<<<<<< HEAD
 	public String loan(HttpSession session, Model model, MemberVO userVO, ProjectVO proVO, AccountVO accVO) {
+=======
+	public String loan(HttpSession session, Model model, MemberVO userVO, ProjectVO proVO, MypageVO myVO) {
+>>>>>>> branch 'master' of https://github.com/gaonuri/Codetiator.git
 		logger.info("my_loan_list");
 		userVO = (MemberVO)session.getAttribute("memberVO");
 		List<ProjectVO> loan= null;
@@ -88,7 +75,11 @@ public class MypageController {
 		model.addAttribute("loanList",loan);
 		return "mypage/my_loan_list";
 	}
+<<<<<<< HEAD
 
+=======
+	
+>>>>>>> branch 'master' of https://github.com/gaonuri/Codetiator.git
 	@RequestMapping(value = "/my_depo_mgn", method = RequestMethod.GET)
 	public String my_modify(HttpSession session, Model model, MemberVO userVO, UserVO useVO, Busi_userVO busiVO, AccountVO accVO, InOutVO ioVO) {
 		logger.info("my_depo_mgn");

@@ -39,6 +39,17 @@
 				location.href ="${pageContext.request.contextPath}/invest/invest_detail"
 			});
 		});
+	
+	$(document).ready(function() {
+		$("#depobu").click(function() {
+			location.href = "${pageContext.request.contextPath}/my_depo_mgn";
+		});//click
+	});//ready
+	$(document).ready(function() {
+		$("#myloan").click(function() {
+			location.href = "${pageContext.request.contextPath}/getloan";
+		});//click
+	});//ready
 	</script>
 </head>
      
@@ -54,104 +65,17 @@
 				
 			<div class="row">
 				<div class="col-sm-12 col-md-3 col col-box">
-					<div class="wrap" id="smallMenu">
-						<div class="wrap">
-							<div class="box quick">
-								<div role="tabpanel" class="smallMenuTap">
-									<!-- Nav tabs -->
-									<ul class="nav nav-pills" role="tablist">
-										<li id="smallMenuLi1" class="active">
-											<a href="javascript:(void(0));" onclick="gfn_goMypageMenu(&quot;1&quot;)">
-												<span class="smallMenuItem">대시보드</span>
-											</a>
-										</li>
-										<li id="smallMenuLi2">
-											<a href="javascript:(void(0));" onclick="gfn_goMypageMenu(&quot;2&quot;)">
-												<span class="smallMenuItem">투자 내역</span>
-											</a>
-										</li>
-										<li id="smallMenuLi3">
-											<a href="javascript:(void(0));" onclick="gfn_goMypageMenu(&quot;3&quot;)">
-												<span class="smallMenuItem">자동투자 설정</span>
-											</a>
-										</li>
-										<li id="smallMenuLi4">
-											<a href="javascript:(void(0));" onclick="gfn_goMypageMenu(&quot;4&quot;)">
-												<span class="smallMenuItem">대출 내역</span>
-											</a>
-										</li>
-										<li id="smallMenuLi5">
-											<a href="javascript:(void(0));" onclick="gfn_goMypageMenu(&quot;5&quot;)">
-												<span class="smallMenuItem">예치금 관리</span>
-											</a>
-										</li>
-										<li id="smallMenuLi6">
-											<a href="javascript:(void(0));" onclick="gfn_goMypageMenu(&quot;6&quot;)">
-												<span class="smallMenuItem">포인트 관리</span>
-											</a>
-										</li>
-										<li id="smallMenuLi9">
-											<a href="javascript:(void(0));" onclick="gfn_goMypageMenu(&quot;9&quot;)">
-												<span class="smallMenuItem">이벤트</span>
-											</a>
-										</li>
-										<li id="smallMenuLi7">
-											<a href="javascript:(void(0));" onclick="gfn_goMypageMenu(&quot;7&quot;)">
-												<span class="smallMenuItem">크리에이터 알림</span>
-											</a>
-										</li>
-										<li id="smallMenuLi8">
-											<a href="javascript:(void(0));" onclick="gfn_goMypageMenu(&quot;8&quot;)">
-												<span class="smallMenuItem">기본 정보 수정</span>
-											</a>
-										</li>
-									</ul>
-								</div>
-							</div>
-						</div>
-						
-					</div>
-					
 					<div class="wrap">
 						<div class="box left">
 							<div class="row">
 								<div class="col-xs-12 col-sm-12 col-md-12">
-									<span class="cusNm">김도엽</span>&nbsp;
+									<span class="cusNm">ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ</span>&nbsp;
 									
 										님
 									
 								</div>
 							</div>
 							
-							<div class="row">
-								<div class="col-xs-12 col-sm-12 col-md-12">
-									<span class="invstrTypeNm">개인투자자</span>
-									
-										<span class="glyphicon glyphicon-question-sign hover" style="font-size: 12px;" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="auto bottom" data-html="true" data-content="<strong>금융위원회의 가이드라인에 따라 아래와 같은 투자자 구분에 의한 인증 서류를 제출 시 해당 투자 한도가 적용됩니다.</strong>
-															<br>1. 개인투자자	
-															<br> - 동일차입자 500만원, 총 2,000만원
-															<br> ※ 단, 부동산 상품이면 총 1,000만원
-															<br> - 제출서류 없음
-															<br>
-															<br>2. 소득요건을 구비한 개인투자자
-															<br> - 동일차입자 2,000만원, 총 4,000만원
-															<br> - 아래 요건 중 하나 이상 해당 시 종합소득 과세표준 확정신고서, 종합소득세 신고서 접수증 제출
-															<br>  1) 이자, 배당소득이 2천만원(종합과세기준금액)을 초과하는 자
-															<br>  2) 사업, 근로소득 1억원을 초과하는 자
-															<br>  3) 그 밖에 창업자·벤처기업 등에 대한 투자의 전문성 등을 고려하여 금융위원회가 정하여 고시하는 자
-															<br>
-															<br>3. 개인전문투자자 : 제한없음 
-															<br> - 아래 세가지 요건 모두 충족 시, 금융투자협회 전문투자자 확인증 제출
-															<br>  1) 금융 투자업자에게 계좌 개설 1년 경과
-															<br>  2) 금융 투자 상품 잔고 5억원 이상
-															<br>  3) 소득액 1억원 또는 재산가액 10억원 이상
-															<br>
-															<br>※ 인증서류 제출 : 고객센터(contact@creator.co.kr)" data-original-title="" title="">
-										</span>
-									
-									
-								</div>
-							</div>
 							<div class="row">
 								<div class="col-xs-12 col-sm-12 col-md-12">
 									
@@ -177,70 +101,27 @@
 										<div class="col-xs-7">
 											<span class="myDeposit">기본 예치금</span>
 										</div>
-										<div class="col-xs-5 text-right">
-											<a href="/mypage/5#listWrap">
-												<span class="tranList font-purple"><strong>거래 내역 &gt;</strong></span>
-											</a>
-										</div>
 									</div>
 									<div class="row">
 										<div class="col-xs-12 text-right" style="margin-top: 5px;">
 											<span class="amt">0 <font size="2">원</font></span>
-										</div>
-									</div>
-									<div class="row" style="margin-top: 20px;">
-										<div class="col-xs-7">
-											<span class="myDeposit">자동투자 예치금</span>
-										</div>
-										<div class="col-xs-5 text-right">
-											<a href="/mypage/3#listWrap">
-											<span class="tranList font-purple"><strong>투자 설정 &gt;</strong></span>
-										</a>
-										</div>
-									</div>
-									<div class="row">
-										<div class="col-xs-12 text-right" style="margin-top: 5px;">
-											<span class="amt">0 <font size="2">원</font></span>
-										</div>
-									</div>
-									<div class="row" style="margin-top: 20px;">
-										<div class="col-xs-6">
-											<span class="myDeposit">퍼플포인트</span>
-										</div>
-										<div class="col-xs-6 text-right">
-											<a href="/mypage/6">
-											<span class="tranList font-purple"><strong>포인트 내역 &gt;</strong></span>
-										</a>
-										</div>
-									</div>
-									<div class="row">
-										<div class="col-xs-12 text-right" style="margin-top: 5px;">
-											<span class="amt">0 <font size="2">pp</font></span>
 										</div>
 									</div>
 								</div>
 								<div class="account-box">
-									
-									
-									<div class="row">
-										<div class="col-xs-12">
-											<span class="account">예치금 계좌 <a href="/mypage/5" class="font-red"><strong>미발급 상태</strong></a>입니다.</span>
-										</div>
-									</div>
-									
 								</div>
-								<button type="button" class="btn btn-purple-transparent btn-block" onclick="fn_setMenu('5')" style="margin-top: 4px;">나의 예치금</button>
+								<button type="button" class="btn btn-purple-transparent btn-block" id="depobu" style="margin-top: 4px;">나의 예치금</button>
 							</div>
 						</div>
 					</div>
 					
-					<div class="wrap" id="largeMenu">
+					<div class="wrap" id="largeMenu">	
 						<div class="menu">
-							<div class="item active" id="menu2"> <a href="/creator/my_invest_list">
+							<div class="item" id="menu2"> <a href="/creator/my_invest_list">
 								<img src="${pageContext.request.contextPath}/resources/img/ic_mypage_invest_list.png">
 								<span class="text" id="menuL2">투자 내역</span> </a>
 							</div>
-							<div class="item" id="menu4"> <a href="/creator/my_loan_list">
+							<div class="item active" id="menu4"> <a href="/creator/my_loan_list">
 								<img src="${pageContext.request.contextPath}/resources/img/ic_mypage_loan_list.png">
 								<span class="text" id="menuL4">대출 내역</span> </a>
 							</div>
@@ -259,35 +140,40 @@
 				
 <div class="col-sm-12 col-md-9 col col-box" id="mypage-main">
 <!-- ExcelDownload JavaScript -->
+<<<<<<< HEAD
 <script type="text/javascript" src="/js/excel/jquery.table2excel.js"></script>
 
+=======
+>>>>>>> branch 'master' of https://github.com/gaonuri/Codetiator.git
 					<div class="wrap">
 						<div class="box right">
 							<div class="row">
 								<div class="col-md-12">
-									<div id="reqListDiv" class="display-none">
-										<div class="title">
-											<font class="font-purple">●</font> 대출 신청 현황
-										</div>
-										<hr>
-										<div class="row">
-											<div class="col-md-12" id="reqListBody">
-											</div>
-										</div>
-										
-										<div class="row" id="reqListNextPageDiv">
-											<div class="col-xs-12 col-sm-12 col-md-12">
-												<div class="alarm-box-bottom">
-													<a href="javascript:(void(0));" onclick="fn_selectReqListNextPage()" id="reqListNextPageBtn" class="display-none" style="display: none;">
-														<i class="glyphicon glyphicon-menu-down"></i>
-													</a>
-													<a href="javascript:(void(0));" onclick="fn_reqListResetPage()" id="reqListResetPageBtn" class="display-none">
-														<i class="glyphicon glyphicon-menu-up"></i>
-													</a>
+									<c:choose>
+										<c:when test="${price == null || price == ''}">
+											<div id="reqListDiv" class="display-none">
+												<div class="title">
+													<font class="font-purple">●</font> 대출 신청 현황
+												</div>
+												<hr>
+												<div class="row">
+													<div class="col-md-12" id="reqListBody">
+													</div>
+												</div>
+												
+												<div class="row" id="reqListNextPageDiv">
+													<div class="col-xs-12 col-sm-12 col-md-12">
+														<div class="alarm-box-bottom">
+															<a href="javascript:(void(0));" onclick="fn_selectReqListNextPage()" id="reqListNextPageBtn" class="display-none" style="display: none;">
+																<i class="glyphicon glyphicon-menu-down"></i>
+															</a>
+															<a href="javascript:(void(0));" onclick="fn_reqListResetPage()" id="reqListResetPageBtn" class="display-none">
+																<i class="glyphicon glyphicon-menu-up"></i>
+															</a>
+														</div>
+													</div>
 												</div>
 											</div>
-										</div>
-									</div>
 								
 									<div id="noReqListDiv" class="display-none" style="display: block;">
 										<div class="title">
@@ -380,14 +266,68 @@
 										</div>
 										<div class="row">
 											<div class="col-sm-12 col-md-12">
-												<button class="btn btn-purple-transparent btn-block" type="button" onclick="location.href='/loan/loanReq'">대출하기</button>
+												<button class="btn btn-purple-transparent btn-block" type="button" id="myloan"">대출하기</button>
 											</div>
 										</div>
 									</div>
 								</div>
+							</c:when>
+						<c:otherwise>
+							<div class="col-xs-12 col-sm-12 col-md-12">
+								<div id="goodList" style="display: block;margin-top: 29px;">
+									<div class="goodlist-title">
+										<div class="row">
+											<table class="table">
+													<thead>
+														<tr>
+															<th scope="col" class="clickable" name="investListSortTitle" id="investListSortTitleBANNER_TITLE">
+																프로젝트번호<span name="investListSortDesc" id="investListSortDescBANNER_TITLE"></span>
+															</th>
+															<th scope="col" class="clickable" name="investListSortTitle" id="investListSortTitleLOAN_NM">
+																프로젝트명<span name="investListSortDesc" id="investListSortDescLOAN_NM"></span>
+															</th>
+															<th scope="col" class="clickable" name="investListSortTitle" id="investListSortTitleBANNER_TITLE">
+																신청일자<span name="investListSortDesc" id="investListSortDescBANNER_TITLE"></span>
+															</th>
+															<th scope="col" class="clickable" name="investListSortTitle" id="investListSortTitleINVEST_RATE">
+																대출일자<span name="investListSortDesc" id="investListSortDescINVEST_RATE"></span>
+															</th>
+															<th scope="col" colspan="clickable" class="clickable" name="investListSortTitle" id="investListSortTitleRND_CNT">
+																대출금액<span name="investListSortDesc" id="investListSortDescRND_CNT"></span>
+															</th>
+															<th scope="col" class="clickable" name="investListSortTitle" id="investListSortTitleMAX_DSTRBTN_DATE">
+																상환기간<span name="investListSortDesc" id="investListSortDescMAX_DSTRBTN_DATE"></span>
+															</th>
+															<th scope="col" class="clickable" name="investListSortTitle" id="investListSortTitleMAX_DSTRBTN_DATE">
+																금리<span name="investListSortDesc" id="investListSortDescMAX_DSTRBTN_DATE"></span>
+															</th>
+														</tr>
+													</thead>
+												<c:forEach items="${loanList}" var="vo" varStatus="status">
+													<tr>
+														<c:if test="${memberVO.busi_num != null && memberVO.busi_num !='' }">
+														</c:if>
+														<td>${vo.project_num}</td>
+														<td><a href="invest_detail?detail_num=${vo.project_num}"/>${vo.project_name}</td>
+														<td>${vo.refund_request}</td>
+														<td>${vo.regi_date}</td>
+														<td>${vo.price}</td>
+														<td>${vo.refund}</td>
+														<td>${vo.rate}%</td>
+													</tr>
+												</c:forEach>
+											</table>
+										</div>
+									</div>
+									<div id="repayListBody">
+									</div>
+								</div>
 							</div>
-						</div>
-					</div>
+						</c:otherwise>
+					</c:choose>
+				</div>
+			</div>
+		</div>
 					
 					<div class="display-none" id="loanCusDiv">
 						<div class="wrap">
@@ -505,43 +445,8 @@
 											</font> 상환일정
 										</div>
 									</div>
-									<div class="col-xs-12 col-sm-6 col-md-6 text-right">
-										<a id="btnExport">
-											<button type="button" class="btn btn-purple-transparent btn-gradiation">
-												EXCEL <i class="glyphicon glyphicon-download-alt"></i>
-											</button>
-										</a>
-									</div>
 									
-									<div class="col-xs-12 col-sm-12 col-md-12">
-										<div id="goodList" style="display: block;margin-top: 29px;">
-											<div class="goodlist-title">
-												<div class="row">
-													<div class="col-xs-4 col-md-2">
-														<div class="name">상품번호</div>
-													</div>
-													<div class="col-xs-4 col-md-2">
-														<div class="name">신청일자</div>
-													</div>
-													<div class="col-xs-4 col-md-2">
-														<div class="round">대출일자</div>
-													</div>
-													<div class="col-xs-4 col-md-2">
-														<div class="day">대출금액</div>
-													</div>
-													<div class="col-xs-4 col-md-2">
-														<div class="investAmt">상환기간</div>
-													</div>
-													<div class="col-xs-4 col-md-2">
-														<div class="rate">대출금리</div>
-													</div>
-												</div>
-											</div>
-	
-											<div id="repayListBody">
-											</div>
-										</div>
-									</div>
+									
 								</div>
 								
 								<div class="row" id="repayListNextPageDiv">

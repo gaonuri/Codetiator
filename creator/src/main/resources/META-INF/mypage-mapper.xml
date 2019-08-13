@@ -42,7 +42,14 @@
 	<select id="loanList"
 		resultType="kr.co.creator.vo.ProjectVO">
 		select *
-		from project_list
+		from project_list p, account_list a
+		where p.project_num = a.project_num 
+		<if test="user_num != null and user_num != ''">
+				AND i.user_num = #{user_num}
+		</if>
+		<if test="busi_num != null and busi_num != ''">
+			OR i.busi_num = #{busi_num}
+		</if>
 	</select>
 	
 	<select id="bankNumChk" parameterType="java.lang.String" resultType="int">

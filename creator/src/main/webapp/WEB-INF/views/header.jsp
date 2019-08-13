@@ -579,8 +579,8 @@ li {
 						</a>
 						<ul class="dropdown-menu" role="menu">
 							<li><a href="${pageContext.request.contextPath}/faq">FAQ</a></li>
-							<li><a href="${pageContext.request.contextPath}/support">이용약관</a></li>
-							<li><a href="${pageContext.request.contextPath}/privacy_policy">개인정보</a></li>
+							<li><a href="${pageContext.request.contextPath}/useTerm">이용약관</a></li>
+							<li><a href="${pageContext.request.contextPath}/pInfoProvideTerm">개인정보</a></li>
 							<li><a href="${pageContext.request.contextPath}/inquiry">1:1문의</a></li>
 							<li><a href="${pageContext.request.contextPath}/support">공지사항</a></li>
 						</ul>

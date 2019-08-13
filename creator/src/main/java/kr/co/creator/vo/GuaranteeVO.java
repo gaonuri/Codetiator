@@ -1,11 +1,14 @@
 package kr.co.creator.vo;
 
+import org.springframework.web.multipart.MultipartFile;
+
 // 게런티
 public class GuaranteeVO {
 	private String guarantee_num;			// 담보번호
 	private String guarantee_type;			// 담보유형(부동산, 동산)
 	private String object_type;				// 물건유형(아파트, 연립주택)
-	private String guarantee_img;			// 담보문사진경로
+	private MultipartFile guarantee_img;
+	private String guarantee_img_path;			// 담보문사진경로
 	private String debtor_type;				// 차주유형(개인, 법인)
 	private String business_type;			// 차주업종(직종)
 	private String guarantee_name;			// 담보이름
@@ -16,9 +19,12 @@ public class GuaranteeVO {
 	private String comple_year;				// 준공년도
 	private String connoisseur;				// 외부감정가
 	private String judge_status;			// 심사상태
-	private String reference_file1;			// 참고파일1
-	private String reference_file2;			// 참고파일2
-	private String reference_file3;			// 참고파일3
+	private MultipartFile reference_file1;			// 참고파일1
+	private MultipartFile reference_file2;			// 참고파일2
+	private MultipartFile reference_file3;			// 참고파일3
+	private String reference_file1_path;			// 참고파일1
+	private String reference_file2_path;			// 참고파일2
+	private String reference_file3_path;			// 참고파일3
 	private String scale;					// 규모
 	private String area;					// 면적
 	private String quote;					// 시세
@@ -40,13 +46,6 @@ public class GuaranteeVO {
 	public void setGuarantee_type(String guarantee_type) {
 		this.guarantee_type = guarantee_type;
 	}//guarantee_type
-	
-	public String getGuarantee_img() {
-		return guarantee_img;
-	}
-	public void setGuarantee_img(String guarantee_img) {
-		this.guarantee_img = guarantee_img;
-	}//guarantee_img
 	
 	public String getGuarantee_name() {
 		return guarantee_name;
@@ -153,28 +152,6 @@ public class GuaranteeVO {
 		this.code = code;
 	}//code
 	
-	public String getReference_file1() {
-		return reference_file1;
-	}
-	public void setReference_file1(String reference_file1) {
-		this.reference_file1 = reference_file1;
-	}//reference_file1
-	
-	public String getReference_file2() {
-		return reference_file2;
-	}
-	public void setReference_file2(String reference_file2) {
-		this.reference_file2 = reference_file2;
-	}//reference_file2
-	
-	public String getReference_file3() {
-		return reference_file3;
-	}
-	public void setReference_file3(String reference_file3) {
-		this.reference_file3 = reference_file3;
-	}//reference_file3
-	
-	
 	//참조
 	public String getProject_num() {
 		return project_num;
@@ -182,4 +159,52 @@ public class GuaranteeVO {
 	public void setProject_num(String project_num) {
 		this.project_num = project_num;
 	}//project_num
+	public MultipartFile getGuarantee_img() {
+		return guarantee_img;
+	}
+	public void setGuarantee_img(MultipartFile guarantee_img) {
+		this.guarantee_img = guarantee_img;
+	}
+	public String getGuarantee_img_path() {
+		return guarantee_img_path;
+	}
+	public void setGuarantee_img_path(String guarantee_img_path) {
+		this.guarantee_img_path = guarantee_img_path;
+	}
+	public MultipartFile getReference_file1() {
+		return reference_file1;
+	}
+	public void setReference_file1(MultipartFile reference_file1) {
+		this.reference_file1 = reference_file1;
+	}
+	public MultipartFile getReference_file2() {
+		return reference_file2;
+	}
+	public void setReference_file2(MultipartFile reference_file2) {
+		this.reference_file2 = reference_file2;
+	}
+	public MultipartFile getReference_file3() {
+		return reference_file3;
+	}
+	public void setReference_file3(MultipartFile reference_file3) {
+		this.reference_file3 = reference_file3;
+	}
+	public String getReference_file1_path() {
+		return reference_file1_path;
+	}
+	public void setReference_file1_path(String reference_file1_path) {
+		this.reference_file1_path = reference_file1_path;
+	}
+	public String getReference_file2_path() {
+		return reference_file2_path;
+	}
+	public void setReference_file2_path(String reference_file2_path) {
+		this.reference_file2_path = reference_file2_path;
+	}
+	public String getReference_file3_path() {
+		return reference_file3_path;
+	}
+	public void setReference_file3_path(String reference_file3_path) {
+		this.reference_file3_path = reference_file3_path;
+	}
 }//class
