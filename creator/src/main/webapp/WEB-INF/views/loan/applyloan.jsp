@@ -765,12 +765,10 @@ $(document).ready(function() {
 		});
 	});//인풋창 제약조건 //ready
 	
-<<<<<<< HEAD
 	function tempFunction() {
 		$("#frmLoan").attr("action","${pageContext.request.contextPath}/addinfo");
 		document.frmLoan.submit();
 	}
-=======
 	$(document).ready(function() {
 		function tempFunction() {
 		$.ajaxSetup({cache:false});
@@ -800,7 +798,6 @@ $(document).ready(function() {
 // 		$("#frmLoan").attr("action","${pageContext.request.contextPath}/applyloaninsert");
 // 		document.frmLoan.submit();
 // 	}//frmLoan에 있는거 addinfo로 옳김
->>>>>>> branch 'master' of https://github.com/gaonuri/Codetiator.git
 	
 	$(function() {
 		
