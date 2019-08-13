@@ -69,4 +69,24 @@
 		WHERE repay_num = #{repay_num}
 	</select>
 
+	<insert id="ApplyLoanInsert" parameterType="kr.co.creator.vo.ProjectVO">
+		insert into project_list (busi_num, loan_bank_name, loan_amount, price, loan_period, repay_method,
+									loan_class, agree_chk_1, agree_chk_2, agree_chk_3, agree_chk_4, agree_chk_5, 
+									agree_chk_6, judge_status)
+		values(#{busi_num}, #{loan_bank_name}, #{loan_amount}, #{price}, #{loan_period}, 
+				#{repay_method}, #{loan_class}, #{agree_chk_1}, #{agree_chk_2}, #{agree_chk_3}, #{agree_chk_4}, 
+				#{agree_chk_5}, #{agree_chk_6}, 1)
+       <selectKey resultType="String" keyProperty="project_num" order="AFTER">
+           SELECT LAST_INSERT_ID()
+       </selectKey>
+	</insert>
+	
+	<insert id="ApplyLoanInsert1" parameterType="kr.co.creator.vo.ProjectVO">
+		insert into guarantee (guarantee_type, object_type, project_num)
+		values(#{guarantee_type}, #{object_type},  #{project_num})
+       <selectKey resultType="String" keyProperty="guarantee_num" order="AFTER">
+           SELECT LAST_INSERT_ID()
+       </selectKey>
+	</insert>	
+
 </mapper>

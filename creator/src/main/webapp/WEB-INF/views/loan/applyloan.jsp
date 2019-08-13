@@ -34,7 +34,7 @@
 	======================================================= -->
 <script type="text/javascript">
 var id;
-var min = 02;
+var min = 29;
 var sec = 59;
 var minZero = "";
 var secZero = "";
@@ -150,7 +150,14 @@ $(document).ready(function() {
     font-weight: bold;
     color: #fff;
 }
-
+#loanGuide-banner {
+    background: url(${pageContext.request.contextPath}/resources/bootstrap/img/blog-bg.jpg)no-repeat center center fixed;
+    background-size: cover;
+    background-attachment: fixed;
+    width: 100%;
+    height: 80px;
+    padding: 100px 0 200px 0;
+}
 #content .step .wrap .item {
     padding: 10px 20px;
     border-style: solid;
@@ -189,7 +196,6 @@ $(document).ready(function() {
     text-shadow: 1px 1px 1px #bf9bcb;
     letter-spacing: -0.5pt;
     line-height: 1.2;
-    text-align: center;
 }
 .titles {
 	color: #000;
@@ -199,15 +205,30 @@ $(document).ready(function() {
     position: relative;
     padding: 60px 20px 30px 20px;
 }
+.btn {
+    display: inline-block;
+    padding: 6px 12px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
 .top {
     padding: 30px 0px;
     text-align: center;
-}
-.dl-horizontal dd {
-	    margin-left: 80px;
-}
-.dl-horizontal dt {
-	    width: 70px;
 }
 </style>
 <body>
@@ -217,226 +238,158 @@ $(document).ready(function() {
 	        TOP BAR CONTENT & NOTIFICATIONS
 	        *********************************************************************************************************************************************************** -->
 	    <%@ include file="../header.jsp" %>
-	   <section id="loanGuide-banner" class="text-center">
-			<div class="overlay">
-				<div class="section-body">
-					<span class="title">대출 신청하기</span>
-				</div>
+   <section id="loanGuide-banner" class="text-center">
+		<div class="overlay">
+			<div class="section-body">
+				<span class="title">대출 신청하기</span>
 			</div>
-		</section>
+		</div>
+	</section>
 	   
 	    <!-- **********************************************************************************************************************************************************
 	        MAIN CONTENT
 	        *********************************************************************************************************************************************************** -->
 		<!--main content start-->
-		<section id="main-content">
-			<section class="wrapper site-min-height">
-				<div class="row mt">
-					<div class="col-lg-12">
-					
-					<section id="content">
-<div class="container">
-			<div class="row" style="width: 950px;">
-				<div class="col-md-offset-2 col-md-8 col">
-					<div class="form">
-						<div class="box-header"></div>
-						<div class="box-body">
-							<div class="box-wrap">
-							<form id="frmLoan" name="frmLoan" method="get">
-							<div class="top">
-								<div class="step">
-									<div class="wrap">
-										<div class="item active">
-											대출신청
+	<section id="main-content">
+		<section class="wrapper site-min-height">
+			<div class="row mt">
+				<div class="col-lg-12">
+				<section id="content">
+				
+					<div class="container">
+					<div class="row" style="width: 800px;">
+						<div class="col-md-offset-2 col-md-8 col">
+							<div class="form" style="width: 700px;">
+								<div class="box-header"></div>
+								<div class="box-body">
+									<div class="box-wrap">
+									<div class="top">
+										<div class="step">
+											<div class="wrap">
+												<div class="item active">
+													대출신청
+												</div>
+												<div class="item">
+													추가정보
+												</div>
+												<div class="item">
+													서류제출
+												</div>
+												<div class="item">
+													대출심사
+												</div>
+											</div>
 										</div>
-										<div class="item">
-											추가정보
-										</div>
-										<div class="item">
-											서류제출
-										</div>
-										<div class="item">
-											대출심사
-										</div>
+									<div class="titles" style="font-size: 15pt;">
+										대출신청서
 									</div>
+									<div class="line"></div>
 								</div>
-								<div class="titles" style="font-size: 15pt;">
-									대출신청서
+								<form id="frmLoan" class="form-horizontal style-form" name="frmLoan">
+								<div class="form-horizontal style-form">
 								</div>
-								<div class="line"></div>
-							</div>
-							<div class="overlay1">
-								<dl class="dl-horizontal">
-									<dt>이름</dt>
-									<dd>
-										<div class="name-text">
-										<c:choose>
-											<c:when test="${memVO != null && memVO.user_name != null && memVO.user_name != ''}">
-												${memVO.user_name}
-											</c:when>
-											<c:otherwise>
-												${memVO.manager_name}
-											</c:otherwise>
-										</c:choose>
-										</div>
-									</dd>
-									<dd>
-										<hr>
-									</dd>
-									<dt>휴대전화</dt>
-									<dd>
-											<div class="form-group" style="margin-bottom: 0px;">
-											
-												<c:choose>
-															<c:when test="${memVO != null && memVO.phone != null && memVO.phone != ''}">
-																${memVO.phone}
-															</c:when>
-															<c:otherwise>
-																${memVO.manager_phone}
-															</c:otherwise>
-												</c:choose>
-												<!--
-												<button type="button" class="btn btn-purple-transparent" onclick="fn_doCert()" style="vertical-align: inherit;" id="certBtn">
-													인증하기
-												</button>
-												<input type="hidden" id="outerCrdtGrd">
-												<input type="hidden" id="outerCrdtScore">
-												<input type="hidden" id="outerCrdtBnkrpRate">
-												<input type="hidden" id="debtCd">
-												<input type="hidden" id="debtAmt">
-												<input type="hidden" id="stndrdDate">
-												<input type="hidden" id="score">
-												<input type="hidden" id="certYn" value="">
-												<input type="hidden" id="safekey" value="">
-												 -->
-											</div>
-									</dd>
-									<dd>
-										<hr>
-									</dd>
-									
-									<dt>은행명</dt>
-									<dd>
-										<div class="form-group">
-											<select class="form-control loanPurpose-select" id="loan_bank_name" name="loan_bank_name">
-<!-- 												<option value="00">선택하세요</option> -->
-													<option value="01">신한은행</option>
-													<option value="02">국민은행</option>
-													<option value="03">우리은행</option>
-													<option value="04">하나은행</option>
-													<option value="05">씨티은행</option>
-													<option value="06">부산은행</option>
-													<option value="07">경남은행</option>
-													<option value="08">광주은행</option>
-													<option value="09">제주은행</option>
-													<option value="10">산업은행</option>																								
+							 	<div class="form-panel">
+<!-- 						          <form id="addinfo_form" class="form-horizontal style-form" enctype="multipart/form-data"> -->
+
+						            <div class="form-group">
+						           		<label class="control-label col-md-3" >이름</label>
+						           		<div class="col-md-8">
+						            		<input type="text" id="project_name" name="project_name" class="form-control onlyprojectnm" value="<c:choose><c:when test="${memVO != null && memVO.user_name != null && memVO.user_name != ''}">${memVO.user_name}</c:when><c:otherwise>${memVO.manager_name}</c:otherwise></c:choose>"/>
+						            	</div>
+						            </div>
+						            <div class="form-group">
+						           		<label class="control-label col-md-3" >휴대전화</label>
+						           		<div class="col-md-8">
+						            		<input type="text" id="project_name" name="project_name" class="form-control onlyprojectnm" value="<c:choose><c:when test="${memVO != null && memVO.phone != null && memVO.phone != ''}">${memVO.phone}</c:when><c:otherwise>${memVO.manager_phone}</c:otherwise></c:choose>"/>
+						            	</div>
+						            </div>            
+						            <div class="form-group">
+						              	<label class="control-label col-md-3">은행명</label>
+						              	<div class="col-md-8">
+						              		<select class="form-control loanPurpose-select" id="loan_bank_name" name="loan_bank_name">
+<!-- 												<option value="00">선택하세요</option> -->						              		
+												<option value="01">신한은행</option>
+												<option value="02">국민은행</option>
+												<option value="03">우리은행</option>
+												<option value="04">하나은행</option>
+												<option value="05">씨티은행</option>
+												<option value="06">부산은행</option>
+												<option value="07">경남은행</option>
+												<option value="08">광주은행</option>
+												<option value="09">제주은행</option>
+												<option value="10">산업은행</option>
 											</select>
-										</div>
-									</dd>
-									<dd>
-										<hr>
-									</dd>
-									<dt>대출계좌</dt>
-									<dd>
-										<div class="form-group has-feedback">
-											<input type="text" id="loan_amount" name="loan_amount" class="form-control onlybank" placeholder="'-'빼고 입력 해주세요" />
-										</div>
-									</dd>
-									<dd>
-										<hr>
-									</dd>
-																
-									<dt>대출금액</dt>
-									<dd>
-											<div class="form-group has-feedback">
-												<input type="text" class="form-control loanAmt-text" id="loan_period" name="price" maxlength="7" placeholder="1000">
-												<span class="form-control-feedback" aria-hidden="true" style="z-index:0 ">만원</span>
-											</div>
-										
-									</dd>
-									<dd>
-										<hr>
-									</dd>
-									<dt>대출기간</dt>
-									<dd>
-										<div class="form-group">
-											<select class="form-control loanPurpose-select" id="loanPeriodSelect" name="loan_period">
+						                </div>
+						            </div>
+						            <div class="form-group">
+						           		<label class="control-label col-md-3" >대출계좌</label>
+						           		<div class="col-md-8">
+						            		<input type="text" id="loan_amount" name="loan_amount" class="form-control onlybank" placeholder="'-'빼고 입력 해주세요" />
+						            	</div>
+						            </div>      
+						            <div class="form-group has-feedback">
+						           		<label class="control-label col-md-3" >대출금액</label>
+						           		<div class="col-md-8">
+											<input type="text" class="form-control loanAmt-text" id="loan_period" name="price" maxlength="7" placeholder="1000">
+											<span class="form-control-feedback" aria-hidden="true" style="z-index:0 ">만원</span>
+						            	</div>
+						            </div>                    
+						            <div class="form-group">
+						              	<label class="control-label col-md-3">대출기간</label>
+						              	<div class="col-md-8">
+						              		<select class="form-control loanPurpose-select" id="loanPeriodSelect" name="loan_period">
 <!-- 												<option value="00">선택하세요</option> -->
-													<option value="01">3개월</option>
-													<option value="02">6개월</option>
-													<option value="03">12개월</option>
+												<option value="01">3개월</option>
+												<option value="02">6개월</option>
+												<option value="03">12개월</option>
 											</select>
-										</div>
-									</dd>
-									<dd>
-										<hr>
-									</dd>
-									<dt>상환방식</dt>
-									<dd>
-										
-											<div class="form-group">
+						                </div>
+						            </div>
+						            <div class="form-group">
+						              	<label class="control-label col-md-3">상환방식</label>
+						              	<div class="col-md-8">
+											<select class="form-control repayTypeCd-select" id="repayTypeCdSelect">
+<!-- 												<option value="">선택하세요</option> -->
+												<option value="3">만기일시</option>
+												<option value="1">원리금균등</option>
+<!-- 												<option value="2">원리금일시</option> -->
+											</select>
+						                </div>
+						            </div>
+						         <div class="form-group">
+						              	<label class="control-label col-md-3">대출구분</label>
+						              	<div class="col-md-8">
+						                	<select class="form-control loanGb-select" id="loan_class" name="loan_class">
+													<option value="">선택하세요</option>						                	
 												<!-- 
-												<select class="form-control repayTypeCd-select" id="repayTypeCdSelect">
-													<option value="">선택하세요</option>
-																<option value="1">원리금균등</option>
-																<option value="2">원리금일시</option>
-																<option value="3">만기일시</option>
-												</select>
+													<option value="01">개인신용</option>
+													<option value="02">개인담보</option>
+													<option value="03">개인사업자신용</option>
+													<option value="04">개인사업자담보</option>
+													<option value="05">법인신용</option>
+													<option value="06">법인담보</option>
 												 -->
-												<select class="form-control repayTypeCd-select" id="repay_method" name="repay_method">
-													<option value="3">만기일시</option>
-													<option value="1">원리금균등</option>
-												</select>
-											</div>
-										
-									</dd>
-									<dd>
-										<hr>
-									</dd>									
-									<dt>대출구분</dt>
-									<dd>
-										
-											<div class="form-group">
-												<select class="form-control loanGb-select" id="loan_class" name="loan_class">
-													<option value="">선택하세요</option>
-													<!-- 
-																<option value="01">개인신용</option>
-																<option value="02">개인담보</option>
-																<option value="03">개인사업자신용</option>
-																<option value="04">개인사업자담보</option>
-																<option value="05">법인신용</option>
-																<option value="06">법인담보</option>
-													 -->
-												</select>
-											</div>
-									</dd>
-									<dd>
-										<hr>
-									</dd>
-									<dt>담보유형</dt>
-									<dd>
-										
-											<div class="form-group">
+											</select>
+						                </div>
+						            </div>
+						         <div class="form-group">
+						              	<label class="control-label col-md-3">담보유형</label>
+						              	<div class="col-md-8">
 												<select class="form-control loanType-select" id="guarantee_type" name="guarantee_type">
 													<option value="">대출구분을 선택하세요</option>
 													<!-- 
-																<option value="01">개인신용</option>
-																<option value="02">법인신용</option>
-																<option value="03">개인사업자신용</option>
-																<option value="44">부동산담보</option>
-																<option value="66">동산담보</option>
+														<option value="01">개인신용</option>
+														<option value="02">법인신용</option>
+														<option value="03">개인사업자신용</option>
+														<option value="44">부동산담보</option>
+														<option value="66">동산담보</option>
 													 -->
-												</select>
-											</div>
-									</dd>
-									<dd>
-										<hr>
-									</dd>
-									
-									<dt>물건유형</dt>
-									<dd>
-										
-											<div class="form-group">
+											</select>
+						                </div>
+						            </div>
+						           <div class="form-group">
+						              	<label class="control-label col-md-3">물건유형</label>
+						              	<div class="col-md-8">
 												<select class="form-control objectType-select" id="object_type" name="object_type">
 													<option value="">담보유형을 선택하세요</option>
 													<!-- 
@@ -449,74 +402,101 @@ $(document).ready(function() {
 														<option value="07" id="ch7">자동차</option>
 														<option value="08" id="ch8">선박</option>	
 														<option value="09" id="ch9">항공기</option>	
-														-->														
-												</select>
-											</div>
-									</dd>
-									<dd>
-										<hr>
-									</dd>									
-									
-									<dt></dt>
-									<dd>
-										<div class="agree-checkbox">
-											<div class="checkbox">
-												<input type="checkbox" value="Y" id="agreeAllCheckbox">
-												<label for="agreeAllCheckbox" id="agreeAllLabel">
-													아래 내용을 확인하고 전체 동의합니다.
-												</label>
-											</div>
-											<div class="checkbox">
-												<input type="checkbox" value="0" id="agree1Checkbox" name="agree_chk_1">
-												<label for="agree1Checkbox">
-													<a href="${pageContext.request.contextPath}/useTerm" target="_blank"><u>서비스 이용약관</u></a>에 동의합니다. (필수)
-												</label>
-											</div>
-											<div class="checkbox">
-												<input type="checkbox" value="0" id="agree2Checkbox" name="agree_chk_2">
-												<label for="agree2Checkbox">
-													<a href="${pageContext.request.contextPath}/pInfoProvideTerm" target="_blank"><u>개인(신용)정보제공</u></a>에 동의합니다. (필수)
-												</label>
-											</div>
-											<div class="checkbox">
-												<input type="checkbox" value="0" id="agree3Checkbox" name="agree_chk_3">
-												<label for="agree3Checkbox">
-													<a href="${pageContext.request.contextPath}/pInfoInquiryTerm" target="_blank"><u>개인(신용)정보조회</u></a>에 동의합니다. (필수)
-												</label>
-											</div>
-											<div class="checkbox">
-												<input type="checkbox" value="0" id="agree4Checkbox" name="agree_chk_4">
-												<label for="agree4Checkbox">
-													<a href="${pageContext.request.contextPath}/pInfoUseTerm" target="_blank"><u>개인(신용)정보수집, 이용</u></a>에 동의합니다. (필수)
-												</label>
-											</div>
-											
-											<div class="checkbox">
-												<input type="checkbox" value="0" id="agree5Checkbox" name="agree_chk_5">
-												<label for="agree5Checkbox">
-													<a href="${pageContext.request.contextPath}/uniqueInfoTerm" target="_blank"><u>고유식별정보 처리방침</u></a>에 동의합니다. (필수)
-												</label>
-											</div>
-											<div class="checkbox">
-												<input type="checkbox" value="0" id="agree6Checkbox" name="agree_chk_6">
-												<label for="agree6Checkbox">
-													<a href="${pageContext.request.contextPath}/pInfoSelectedTerm" target="_blank"><u>개인(신용)정보 선택적 수집, 이용 및 제공</u></a>에 동의합니다. (선택)
-												</label>
-											</div>
+													-->														
+											</select>
+						                </div>
+						            </div>  
+<!-- 					            </form> -->
+									<div>
+										<div class="col-sm-10">
+											<input type="checkbox" id="agreeAllCheckbox" value="Y" />
+											<label class="control control-checkbox" id="agreeAllLabel">아래 내용을 확인하고 전체 동의합니다.</label>
 										</div>
-									</dd>
-								</dl>
-							</div>
-							<div class="bottom">
-								<input type="button" class="btn btn-purple-transparent btn-block" id="doNextStepBtn"
-										value="본인 인증 및 대출 가능여부 확인" data-toggle="modal"/>
-<!-- 									<button type="submit" class="btn btn-purple-transparent btn-block" id="doNextStepBtn">본인 인증 및 대출 가능여부 확인</button> -->
-									<p>※ 대출 신청은 신용등급에 영향을 끼치지 않습니다.</p>
+									</div>		
+									<div>
+										<div class="col-sm-10">
+											<input type="checkbox" name="agree_chk_1" id="agree1Checkbox" value="1" />
+											<label class="control-inline control-checkbox" for="agree1Checkbox">
+												<a href="${pageContext.request.contextPath}/useTerm" target="_blank"><u>서비스 이용약관</u></a>에 동의합니다. (필수)
+											</label>
+										</div>
+									</div>	
+									<div>
+										<div class="col-sm-10">
+											<input type="checkbox" name="agree_chk_2" id="agree2Checkbox" value="1" />
+											<label class="control-inline control-checkbox">
+												<a href="${pageContext.request.contextPath}/pInfoProvideTerm" target="_blank"><u>개인(신용)정보제공</u></a>에 동의합니다. (필수)
+											</label>
+										</div>
+									</div>	   
+									<div>
+										<div class="col-sm-10">
+											<input type="checkbox" name="agree_chk_3" id="agree3Checkbox" value="1" />
+											<label class="control control-checkbox">
+												<a href="${pageContext.request.contextPath}/pInfoInquiryTerm" target="_blank"><u>개인(신용)정보조회</u></a>에 동의합니다. (필수)
+											</label>
+										</div>
+									</div>		
+									<div>
+										<div class="col-sm-10">
+											<input type="checkbox" name="agree_chk_4" id="agree4Checkbox" value="1" />
+											<label class="control-inline control-checkbox">
+												<a href="${pageContext.request.contextPath}/pInfoUseTerm" target="_blank"><u>개인(신용)정보수집, 이용</u></a>에 동의합니다. (필수)
+											</label>
+										</div>
+									</div>	
+									<div>
+										<div class="col-sm-10">
+											<input type="checkbox" name="agree_chk_5" id="agree5Checkbox" value="1" />
+											<label class="control-inline control-checkbox">
+												<a href="${pageContext.request.contextPath}/uniqueInfoTerm" target="_blank"><u>고유식별정보 처리방침</u></a>에 동의합니다. (필수)
+											</label>
+										</div>
+									</div>
+									<div>
+										<div class="col-sm-10">
+											<input type="checkbox" name="agree_chk_6" id="agree6Checkbox" value="1" />
+											<label class="control-inline control-checkbox">
+												<a href="${pageContext.request.contextPath}/pInfoSelectedTerm" target="_blank"><u>개인(신용)정보 선택적 수집, 이용 및 제공</u></a>에 동의합니다. (선택)
+											</label>
+										</div>
+									</div>	
+									<div>
+										<div class="col-sm-10">
+											<label><br></label>
+										</div>
+									</div>		
+						          <div class="bottom">
+						          	<input type="button" class="btn btn-purple-transparent btn-block" id="doNextStepBtn"
+											value="본인 인증 및 대출 가능여부 확인" data-toggle="modal"/>
+												<span>※ 대출 신청은 신용등급에 영향을 끼치지 않습니다.</span>
 									<div class="page" style="text-align: right;">1/4</div>
-							</div>
-								</form>
-							</div>
-						<!-- Email 인증시작 -->
+									<div>
+										<div class="col-sm-10">
+											<label>
+											</label>
+										</div>
+									</div>									  
+								  </div>
+						   	 </div>
+ 							 </form>
+						    </div>
+						  </div>
+						<div class="box-footer"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		</section>
+       	 </div>
+		</div>
+	</section>
+			<!-- /wrapper -->
+  </section>							
+			
+					
+							
+		<!-- Email 인증시작 -->
 						<div class="modal fade" id="btn_cert1"  name="cert1" role="dialog" aria-labelledby="vtAcntModalLabel" aria-hidden="true">
 							<div class="modal-dialog">
 								<div class="modal-content">
@@ -581,9 +561,6 @@ $(document).ready(function() {
 													<input class="form-control" id="cer_number" type="text" maxlength="13"  placeholder="" style="display:none;">
 												</div>
 												<div id="clock"><!--여기서 수정 -->
-
-												<div id="clock">
-												</div>
 											</div>													
 												
 											
@@ -612,31 +589,8 @@ $(document).ready(function() {
 							<!-- /.modal-dialog -->
 						</div>
 						<!-- Email 인증끝. -->
-							<form name="form_chk" method="post" style="display: none;">
-								<!-- 필수 데이타로, 누락하시면 안됩니다. -->
-								<input type="hidden" name="m" value="safekeyService">
-								<!-- 위에서 업체정보를 암호화 한 데이타입니다. -->
-								<input type="hidden" id="EncodeData" name="EncodeData" value="">
-								<!-- 업체에서 응답받기 원하는 데이타를 설정하기 위해 사용할 수 있으며, 인증결과 응답시 해당 값을 그대로 송신합니다.
-									해당 파라미터는 추가하실 수 없습니다. -->
-								<input type="hidden" name="param_r1" value="" id="param_r1">
-								<input type="hidden" name="param_r2" value="" id="param_r2">
-								<input type="hidden" name="param_r3" value="" id="param_r3">
-							</form>
-						</div>
-						<div class="box-footer"></div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-					
-					</div>
-				</div>
-			</section>
-			<!-- /wrapper -->
-	    </section>
-	    <!-- /MAIN CONTENT -->
+	    		</div>
+	    
 	    <!--main content end-->
 		
 		<!--footer start-->
@@ -827,10 +781,35 @@ $(document).ready(function() {
 		});
 	});//인풋창 제약조건 //ready
 	
-	function tempFunction() {
-		$("#frmLoan").attr("action","${pageContext.request.contextPath}/addinfo");
-		document.frmLoan.submit();
-	}//frmLoan에 있는거 addinfo로 옳김
+	$(document).ready(function() {
+		function tempFunction() {
+		$.ajaxSetup({cache:false});
+			var form = new FormData(document.getElementById("frmLoan"));
+			$.ajax({
+				url:"${pageContext.request.contextPath}/applyloaninsert"
+				,data:form
+				,dataType:'json'
+				,processData:false
+				,contentType:false
+				,type:"POST"
+				,success:function(result){
+					alert(result);
+					if(result > 0){
+						location.href = "${pageContext.request.contextPath}/addinfo";
+					} else {
+						alert("잠시 후 다시 시도해 주세요.");
+					}
+				}
+				,error:function(xhr){
+					alert("fail");
+				}
+			});//ajax
+		}
+	});//ready
+
+// 		$("#frmLoan").attr("action","${pageContext.request.contextPath}/applyloaninsert");
+// 		document.frmLoan.submit();
+// 	}//frmLoan에 있는거 addinfo로 옳김
 	
 	$(function() {
 		

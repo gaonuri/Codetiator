@@ -37,4 +37,16 @@ public class LoanDAOService {
 		return gnt;
 	}
 
+	public int applyLoanInsert(ProjectVO pvo) {
+		int cnt = 0;
+		cnt = dao.applyLoanInsert(pvo);
+		return cnt;
+	}
+	
+	public int applyLoanInsert1(ProjectVO pvo) {
+		int cnt = 0;
+		cnt = dao.applyLoanInsert1(pvo);
+		return cnt;
+	}	
+
 }//class

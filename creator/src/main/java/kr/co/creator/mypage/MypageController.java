@@ -49,24 +49,6 @@ public class MypageController {
 
 	@Autowired
 	private EmailSender emailSender;
-	
-	@RequestMapping(value = "/my_dashboard", method = RequestMethod.GET)
-	public String list(HttpSession session, Model model, MemberVO userVO, MypageVO myVO) {
-		logger.info("my_dashboard");
-		userVO = (MemberVO)session.getAttribute("memberVO");
-		List<MypageVO> invest = null;
-		invest = service.invest_detail(userVO);
-		model.addAttribute("investList", invest);
-		return "mypage/my_dashboard";
-	}
-	
-	@RequestMapping(value = "/my_dashboard_new", method = RequestMethod.GET)
-	public String my_dashboard_new(HttpSession session, Model model, MemberVO userVO, MypageVO myVO) {
-		logger.info("my_dashboard_new");
-
-		return "mypage/my_dashboard_new";
-	}//my_dashboard_new
-	
 	@RequestMapping(value = "/my_invest_list", method = RequestMethod.GET)
 	public String invest(HttpSession session, Model model, MemberVO userVO, MypageVO myVO) {
 		logger.info("my_dashboard");
@@ -74,18 +56,12 @@ public class MypageController {
 		List<MypageVO> invest = null;
 		invest = service.invest_detail(userVO);
 		model.addAttribute("investList", invest);
+		model.addAttribute("investuser", userVO);
 		return "mypage/my_invest_list";
 	}
 	
-	@RequestMapping(value = "/my_invest_list_new", method = RequestMethod.GET)
-	public String my_invest_list_new(HttpSession session, Model model, MemberVO userVO, MypageVO myVO) {
-		logger.info("my_invest_list_new");
-
-		return "mypage/my_invest_list_new";
-	}//my_invest_list_new
-	
 	@RequestMapping(value = "/my_loan_list", method = RequestMethod.GET)
-	public String loan(HttpSession session, Model model, MemberVO userVO, ProjectVO proVO) {
+	public String loan(HttpSession session, Model model, MemberVO userVO, ProjectVO proVO, MypageVO myVO) {
 		logger.info("my_loan_list");
 		userVO = (MemberVO)session.getAttribute("memberVO");
 		List<ProjectVO> loan= null;
@@ -94,16 +70,11 @@ public class MypageController {
 		return "mypage/my_loan_list";
 	}
 	
-	@RequestMapping(value = "/my_loan_list_new", method = RequestMethod.GET)
-	public String my_loan_list_new(HttpSession session, Model model, MemberVO userVO, ProjectVO proVO) {
-		logger.info("my_loan_list_new");
-
-		return "mypage/my_loan_list_new";
-	}//my_loan_list_new
-	
 	@RequestMapping(value = "/my_depo_mgn", method = RequestMethod.GET)
 	public String my_modify(HttpSession session, Model model, MemberVO userVO, UserVO useVO, Busi_userVO busiVO, AccountVO accVO, InOutVO ioVO) {
 		logger.info("my_depo_mgn");
+		System.out.println("ioVO.getInput_history() : "+ ioVO.getInput_history());
+		System.out.println("ioVO.getOutput_history() : "+ ioVO.getOutput_history());
 		userVO = (MemberVO)session.getAttribute("memberVO");
 		accVO = service.account(userVO);
 		ioVO = service.inout(userVO);
@@ -282,7 +253,6 @@ public class MypageController {
 			out.flush();
 			out.close();
 		}
-<<<<<<< HEAD
 		out.print(cnt);
 		memvo = (MemberVO)session.getAttribute("memVO");
 		logger.info("=== CertEmail : "+memvo.getUser_num());
@@ -322,8 +292,6 @@ public class MypageController {
 		out.flush();
 		out.close();
 	}//CertEmail
-=======
-		}//CertEmail
 	
 //		out.print(cnt);
 //		memvo = (MemberVO)session.getAttribute("memVO");
@@ -364,7 +332,6 @@ public class MypageController {
 //		out.flush();
 //		out.close();
 //	}//CertEmail
->>>>>>> branch 'master' of https://github.com/gaonuri/Codetiator.git
 	
 	@RequestMapping(value = "/DepocerNumber", method = RequestMethod.POST)
 	public void DepocerNumber(HttpSession session, PrintWriter out, MemberVO memvo, FindPwdVO vo, Busi_userVO bsvo) {
@@ -525,9 +492,6 @@ public class MypageController {
 		out.flush();
 		out.close();	
 	}//deleteBusi
-<<<<<<< HEAD
-=======
 
 	
->>>>>>> branch 'master' of https://github.com/gaonuri/Codetiator.git
 }//class
