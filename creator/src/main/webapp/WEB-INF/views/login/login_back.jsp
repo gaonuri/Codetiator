@@ -5,8 +5,8 @@
 
 <head>
 
-	<script src="${pageContext.request.contextPath}/resources/jquery/jquery-3.4.1.js"></script>
-	<script src="${pageContext.request.contextPath}/resources/ckeditor/ckeditor.js"></script>
+<script src="${pageContext.request.contextPath}/resources/jquery/jquery-3.4.1.js"></script>
+<script src="${pageContext.request.contextPath}/resources/ckeditor/ckeditor.js"></script>
 
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -35,57 +35,35 @@
 	  Template URL: https://templatemag.com/dashio-bootstrap-admin-template/
 	  Author: TemplateMag.com
 	  License: https://templatemag.com/license/
+	  
 	======================================================= -->
-	
 <script type="text/javascript">
-
-//id check
 $(document).ready(function(){
-	var chkemail = '';
-
-	$("#email").blur(function(){
-		var emailStd = /([a-z0-9]{1,20}\@)([a-z]{1,20}\.)([a-z]{1,10})/gi;
-		
-		if($.trim($("#email").val()) != $(this).val().match(emailStd)){
-			alert("올바르지 않은 이메일 입니다.");
-			return;
-		}
-		$.post(
-				"${pageContext.request.contextPath}/findpwdchk",
-				{
-					email:$("#email").val()
-				},
-				function(data,status){
-					if(data == 1){
-						alert("이메일이 확인 되었습니다.");
-						chkemail = $("#email").val();
-					}else{
-						alert("등록된 이메일이 없습니다.");
-					}
-				}//function
-		);//post
-	});//ready
-});//blur
-
-$(document).ready(function(){
-	$("#findpwd_btn").click(function(){
+	$("#login_btn").click(function(){
 		if($.trim($("#email").val()) == ""){
-			alert("등록된 이메일이 없습니다.");
-// 			$("#email").focus();
+			alert("이메일을 확인하세요.");
+			$("#email").focus();
 			return;
 		}
+		if($.trim($("#user_password").val()) == ""){
+			alert("비밀번호를 확인하세요.");
+			$("#user_password").focus();
+			return;
+		}
+
 		$.post(
-				"${pageContext.request.contextPath}/sendnewpassword"
+				"${pageContext.request.contextPath}/loginuser"
 				,{
-					email:$("#email").val()
+					email:$("#email").val(),
+					user_password:$("#user_password").val()
 				}
 				,function(data,status){
 					if(status == "success"){
 						if(data > 0){
-							alert("해당 이메일로 임시비밀번호를 발송했습니다.");
-							location.href="/creator/findpwd";
+							alert("로그인 되었습니다.");
+							location.href="/creator/main";
 						} else if(data == 0){
-							alert("존재하지 않는 이메일 입니다.");
+							alert("존재하지 않는 이메일 또는 비밀번호 입니다.");
 						} else {
 							alert("잠시 후, 다시 시도해 주세요.");
 						}
@@ -97,157 +75,151 @@ $(document).ready(function(){
 	});//click
 });//ready
 </script>
-</head>
-<style>
 
-body{
-	background-color: #f7f7f7;
-}
-
-#findpwd .section-body {
-	position: relative;
-	padding: 150px 20px 100px 20px;
-}
-
-@media (max-width: 767px) {
-	#findpwd .section-body {
-		position: relative;
-		padding: 100px 0px;
-	}
-}
-
-#findpwd .section-body .wrap {
-	max-width: 427px;
-	margin: auto;
-}
-
-/* xd ì ìš©ì‹œ */
-@media (max-width: 767px) {
-	#findpwd .section-body .wrap {
-		padding:  0px;
-	}
-}
-
-#findpwd .section-body .wrap .logo {
-	margin-bottom: 28px;
-}
-
-/* xd ì ìš©ì‹œ */
-@media (max-width: 767px) {
-	#findpwd .section-body .wrap .logo {
+<script type="text/javascript">
+$(document).ready(function(){
+	$("#login_btn1").click(function(){
+		if($.trim($("#busi_resi_num").val()) == ""){
+			alert("사업자등록번호를 확인하세요.");
+			$("#busi_resi_num").focus();
+			return;
+		}
+		if($.trim($("#busi_password").val()) == ""){
+			alert("비밀번호를 확인하세요.");
+			$("#busi_password").focus();
+			return;
+		}
+		
+		$.post(
+				"${pageContext.request.contextPath}/loginbusi"
+				,{
+					busi_resi_num:$("#busi_resi_num").val(),
+					busi_password:$("#busi_password").val()
+				}
+				,function(data,status){
+					if(status == "success"){
+						if(data > 0){
+							alert("로그인 되었습니다.");
+							location.href="/creator/main";
+						} else if(data == 0){
+							alert("존재하지 않는 사업자등록번호 또는 비밀번호 입니다.");
+						} else {
+							alert("잠시 후, 다시 시도해 주세요.");
+						}
+					} else {
+						alert("시스템 관리자에게 문의 바랍니다.");
+					}
+				}
+		);//post
+	});//click
+});//ready
+</script>
 	
-	}
-}
+</head>
 
-#findpwd .section-body .wrap .logo img {
-	max-width: 200px;
-}
-
-#findpwd .section-body .wrap .title {
-	font-size: 20px;
-}
-
-@media (max-width: 767px) {
-	#findpwd .section-body .wrap .title {
-		font-size: 15px;
-	}
-}
-
-
-#findpwd .section-body .wrap .subTitle {
-	font-size: 14px;
-}
-
-@media (max-width: 767px) {
-	#findpwd .section-body .wrap .subTitle {
-		font-size: 11px;
-	}
-}
-
-#findpwd .section-body .wrap .form-group .form-control {
-	/*border-radius: 4px;
-	padding: 0px 26px;
-	min-height: 46px;
-	font-size: 16px;*/
-}
-
-#findpwd .section-body .wrap .form-group select.form-control {
-	padding: 0px 0px 0px 22px;
-	min-height: 46px;
-}
-
-#findpwd .section-body .wrap .form-group button {
-	border-radius: 4px;
-	padding: 10px 26px;
-	font-size: 16px;
-	font-weight: bold;
-	color: #fff;
-}
-.mr-purple {
-	color: #fff;
-	background-color: #782b9b;
-}
-.section-body .title {
-	font-size: 28px;
-	font-weight: bold;
-}
-#section-content {
-	padding: 50px 0 111px 0;
-	margin-left:15px;
-}
-
-</style>
 <body>
 	<section id="container">
 	    <!-- **********************************************************************************************************************************************************
 	        TOP BAR CONTENT & NOTIFICATIONS
 	        *********************************************************************************************************************************************************** -->
 	    <!--header start-->
-	    
-	     <%@ include file="../header.jsp" %>
+	   
+	    <%@ include file="../header.jsp" %>
 	   
 	    <!-- **********************************************************************************************************************************************************
 	        MAIN CONTENT
 	        *********************************************************************************************************************************************************** -->
 		<!--main content start-->
 		
+<section id="main-content">
+<section class="wrapper site-min-height">
+<div class="container">
+	<div class="col-md-offset-3">
+	<img src="${pageContext.request.contextPath}/resources/img/test_logo.jpg" alt="login_img">
+	</div>
+</div>
 				
 <!-- =====================================================================logo -->
+	
+<div class="col-lg-4 mt col-md-offset-3">
+<div class="row content-panel">
+	<div class="panel-heading">
+		<ul class="nav nav-tabs nav-justified">
+			<li class="active">
+				<a data-toggle="tab" href="#usertab">일반회원</a>
+			</li>
+			<li >
+				<a data-toggle="tab" href="#busitab">법인회원</a>
+			</li>
+		</ul>
+	</div>
+	
+    <!-- /panel-heading -->
 				
-				
-<section id="section-content">
-<section class="wrapper site-min-height">
-<section id="findpwd" class="text-center">
-		<div class="container">
-			<div class="section-body">
-				<div class="wrap">
-					<div class="logo">
-						<img src="${pageContext.request.contextPath}/resources/img/img_login_logo.png" alt="login_img">
-					</div>
-					<div class="margin-b-12 title">
-						비밀번호를 잊어 버리셨나요?<br>
-					</div>
-					<div class="margin-b-12 subTitle text-center">
-						<p>
-							임시 비밀번호를 보내드립니다.<br>
-						</p>
-					</div>
-					<form>
-						<fieldset>
-							<div class="form-group margin-b-6">
-								<input class="form-control" id="email" type="text" placeholder="이메일을 입력해 주세요.">
-							</div>
-						</fieldset>
-					</form>
-					<div class="form-group margin-b-6">
-						<div class="mr-purple" id="resetPwdBtn">
-							<button type="button" class="btn btn-purple-transparent btn-block" style="background-color: #712594;" id="findpwd_btn" >비밀번호 초기화</button>
+	<div class="panel-body">
+	<div class="tab-content">
+		<div id="usertab" class="tab-pane active">
+	    	<form role="form" class="form-horizontal">
+		   		<div class="row">
+		    	<div class="col-md col-md-offset-2  ">
+					<div class="form-group">
+						<div class="col-sm-10">
+							<input type="email" class="form-control" id="email" placeholder="*이메일">
 						</div>
 					</div>
+					<div class="form-group">
+						<div class="col-sm-10">
+							<input type="password" class="form-control" id="user_password" placeholder="*비밀번호">
+						</div>
+					</div>	
 				</div>
-			</div>
+				<div class="col-sm-10 col-lg-offset-3">
+					<input type="text" class="btn btn-theme" id="login_btn" value="로그인" />
+				</div>
+				</div>
+	    	</form>
+	    	<div class="col-md-offset-1">
+				<a class="" href="./findpwd">비밀번호를 잊으셨나요?</a>
+				<a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+				<a class="" href="./join">회원 가입하기</a>
+	    	</div>	    	
 		</div>
-	</section>
+		
+		<!-- =====================================================================일반회원 -->	
+		
+		<div id="busitab" class="tab-pane">
+			<form role="form" class="form-horizontal">
+		   		<div class="row">
+		    	<div class="col-md col-md-offset-2 ">
+					<div class="form-group">
+						<div class="col-sm-10">
+							<input type="text" class="form-control onlyLicense" id="busi_resi_num" placeholder="*사업자등록번호">
+							<span class="mt-2 d-block">'-'을 제외한 숫자만 입력해 주세요.</span>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-10">
+							<input type="password" class="form-control onlyPass" id="busi_password" placeholder="*비밀번호">
+						</div>				
+					</div>	
+				</div>
+				<div class="col-sm-10 col-lg-offset-3 ">
+					<input type="text" class="btn btn-theme" id="login_btn1" value="로그인" />
+				</div>
+				</div>
+	    	</form>
+	    	<div class="col-md-offset-1">
+				<a class="" href="./findpwd">비밀번호를 잊으셨나요?</a>
+				<a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+				<a class="" href="./join">회원 가입하기</a>
+	    	</div>
+	   	</div>
+	</div>
+	</div>
+</div>
+</div>			
 				
 		<!-- ===================================================================== body-->		
 				
@@ -255,7 +227,12 @@ body{
 			<!-- /wrapper -->
 	    </section>
 	    <!-- /MAIN CONTENT -->
+	    
+	    <input type="hidden" id="numChk" value="${memVO.user_num}"/>
+	    <input type="hidden" id="numChk1" value="${memVO.busi_num}"/>
+	    
 	    <!--main content end-->
+		
 		<!--footer start-->
 		<footer class="site-footer">
 			<div class="container">

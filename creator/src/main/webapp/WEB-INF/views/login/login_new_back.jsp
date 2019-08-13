@@ -543,71 +543,145 @@ $(document).ready(function() {
 						</div>
 						<div class="body" id="cusGb01">
 							<div class="form-group margin-b-6" style="margin-bottom: 6px;">
-								<input class="form-control-lgn" id="email" type="email" placeholder="*이메일">
+								<input class="form-control-lgn" id="loginId01" type="text" placeholder="*이메일(대소문자 구분 입력)">
 							</div>
 							<div class="form-group margin-b-6 pswdWrap">
-								<input class="form-control-lgn" id="user_password" type="password" placeholder="*비밀번호" >
-<!-- 								<i class="fa fa-eye-slash fa-lg"></i> -->
+								<input class="form-control-lgn" id="loginPswd01" type="password" placeholder="*비밀번호" onkeypress="fn_hitEnterKey(event, 'login')">
+								<i class="fa fa-eye-slash fa-lg"></i>
 							</div>
-<!-- 							<div class="form-group margin-b-6 text-left"> -->
-<!-- 								<label class="ui-checkbox" style="margin: 5px 20px 10px;"> -->
-<!-- 									<input type="checkbox" name="saveInfoCb01" id="saveInfoCb01"> <span>내 아이디 기억하기</span> -->
-<!-- 								</label> -->
-<!-- 							</div> -->
+							<div class="form-group margin-b-6 text-left">
+								<label class="ui-checkbox" style="margin: 5px 20px 10px;">
+									<input type="checkbox" name="saveInfoCb01" id="saveInfoCb01"> <span>내 아이디 기억하기</span>
+								</label>
+							</div>
 							<!-- 
 							<div class="sep-line"></div>
 							 -->
-							<div class="form-group margin-b-6" style="margin-bottom: 6px;">
-								<button type="button" class="btn btn-purple-transparent btn-block" id="login_btn" >로그인</button>
+							<div class="form-group margin-b-6" style="margin-bottom: 6px;height: 0px;">
+								<div class="text-left display-none font-red" id="error01">
+									<hr>없는 아이디거나 비밀번호가 일치하지 않습니다.<br>다시 시도해주세요.
+								</div>
+								<div class="text-left display-none font-red" id="errPswdErrCnt01">
+									<hr>비밀번호 5회 이상 입력 오류 상태입니다.
+									<div style="padding: 5px 0 30px 0;">
+										<div class="left">
+											<img src="${pageContext.request.contextPath}/resources/img/icon_login_lock.png">
+										</div>
+										<div class="left font-purple">
+											<a class="text-muted" href="/findpwd" style="text-decoration: underline;">비밀번호를 잊으셨나요?</a>
+										</div>
+									</div>
+								</div>
+								<div class="text-left display-none font-red" id="errNotFound01">
+									<hr>없는 아이디거나 비밀번호가 일치하지 않습니다.<br>다시 시도해주세요.
+								</div>
+								<div class="text-left display-none font-red" id="errUseYn01">
+									<hr>사용 중지된 계정입니다.<br>고객센터로 문의하세요.[02-546-4076]
+								</div>
 							</div>
-<!-- 							<hr style="margin-bottom: 20px;margin-top: 20px;"> -->
-<!-- 							<div class="form-group margin-b-12 facebook"> -->
-<%-- 								<img src="${pageContext.request.contextPath}/resources/img/icon_join_facebook.png"> --%>
-<!-- 								<button type="button" class="btn btn-facebook btn-block" >페이스북으로 로그인</button> -->
-<!-- 							</div> -->
-<!-- 							<hr style="margin-bottom: 20px;margin-top: 20px;"> -->
 							<div class="form-group margin-b-6" style="margin-bottom: 6px;">
+								<button type="button" class="btn btn-purple-transparent btn-block" onclick="fn_loginCheck()">로그인</button>
+							</div>
+							<hr style="margin-bottom: 20px;margin-top: 20px;">
+							<div class="form-group margin-b-6" style="margin-bottom: 6px;">
+								<input class="form-control-lgn" id="mpNo01" type="text" placeholder="휴대전화번호 간편로그인" onkeypress="fn_hitEnterKey(event, 'send')">
+								<input class="form-control-lgn display-none" id="authText01" type="text" placeholder="*인증번호" onkeypress="fn_hitEnterKey(event, 'cnfrm')" maxlength="6">
+							</div>
+							<div class="form-group margin-b-6" style="margin-bottom: 6px;">
+								<div class="text-left display-none font-red" id="authTextError01">
+									없는 아이디거나 비밀번호가 일치하지 않습니다.<br>다시 시도해주세요.
+								</div>
+								<div class="text-left display-none font-red" id="authTextErrPswdErrCnt01">
+									비밀번호 5회 이상 입력 오류 상태입니다.
+									<div style="padding: 5px 0 30px 0;">
+										<div class="left">
+											<img src="${pageContext.request.contextPath}/resources/img/icon_login_lock.png">
+										</div>
+										<div class="left font-purple">
+											<a class="text-muted" href="/findpwd" style="text-decoration: underline;">비밀번호를 잊으셨나요?</a>
+										</div>
+									</div>
+								</div>
+								<div class="text-left display-none font-red" id="authTextErrUseYn01">
+									사용 중지된 계정입니다.<br>고객센터로 문의하세요.[02-546-4076]
+								</div>
+								<div class="text-left display-none font-red" id="authTextErrAuthText01">
+									인증번호를 정확히 입력해 주세요.
+								</div>
+								<div class="text-left display-none font-red" id="authTextErrTimeOut01">
+									인증번호 입력시간이 초과되었습니다. 이메일 로그인을 이용해 주세요.
+								</div>
+							</div>
+							<div class="form-group margin-b-6" style="margin-bottom: 6px;">
+								<button type="button" class="btn btn-purple-transparent btn-block" id="authTextSendBtn" onclick="fn_authTextSend()">인증번호 발송</button>
+								<button type="button" class="btn btn-purple-transparent btn-block display-none" id="authTextCnfrmBtn" onclick="fn_authTextCnfrm()">인증번호 확인</button>
+							</div>
+							<hr style="margin-bottom: 20px;margin-top: 20px;">
+							<div class="form-group margin-b-12 facebook">
+								<img src="${pageContext.request.contextPath}/resources/img/icon_join_facebook.png">
+								<button type="button" class="btn btn-facebook btn-block" onclick="fn_loginFacebook()">페이스북으로 로그인</button>
+							</div>
+							<hr style="margin-bottom: 20px;margin-top: 20px;">
+							<div class="form-group margin-b-12">
 								<div class="left" id="findpwdBtn01">
-									<a class="text-muted" href="./findpwd" style="text-decoration: underline;">비밀번호를 잊으셨나요?</a>
+									<a class="text-muted" href="/findpwd" style="text-decoration: underline;">비밀번호를 잊으셨나요?</a>
 								</div>
 								<div class="right">
-									<a class="text-muted" href="./join" style="text-decoration: underline;">회원 가입하기</a>
+									<a class="text-muted" href="/register" style="text-decoration: underline;">회원 가입하기</a>
 								</div>
 							</div>
 						</div>
-						<div class="col-xs-12 col-sm-12 col-md-12" style="margin-top: 10px;">
-<!-- 							<div id="fb-root" class=" fb_reset"> -->
-<!-- 							<div style="position: absolute; top: -10000px; width: 0px; height: 0px;"> -->
-<!-- 							<div><iframe name="fb_xdm_frame_https" id="fb_xdm_frame_https" aria-hidden="true" title="Facebook Cross Domain Communication Frame" tabindex="-1" frameborder="0" allowtransparency="true" allowfullscreen="true" scrolling="no" allow="encrypted-media" src="https://staticxx.facebook.com/connect/xd_arbiter.php?version=44#channel=faa6e127dca87&amp;origin=https%3A%2F%2Fwww.creator.co.kr" style="border: none;"> -->
-<!-- 							</iframe></div><div></div></div></div> -->
-							
-<!-- 							<div class="fb-like fb_iframe_widget" data-href="https://www.creator.co.kr" data-colorscheme="dark" data-layout="button_count" data-action="like" data-size="large" data-show-faces="true" data-share="true" fb-xfbml-state="rendered" fb-iframe-plugin-query="action=like&amp;app_id=779679155494047&amp;color_scheme=dark&amp;container_width=360&amp;href=https%3A%2F%2Fwww.creator.co.kr%2F&amp;layout=button_count&amp;locale=ko_KR&amp;sdk=joey&amp;share=true&amp;show_faces=true&amp;size=large"> -->
-<!-- 							<span style="vertical-align: bottom; width: 198px; height: 28px;"> -->
-<!-- 							<iframe name="f311d471cc8ec58" width="1000px" height="1000px" title="fb:like Facebook Social Plugin" frameborder="0" allowtransparency="true" allowfullscreen="true" scrolling="no" allow="encrypted-media" src="https://www.facebook.com/v2.5/plugins/like.php?action=like&amp;app_id=779679155494047&amp;channel=https%3A%2F%2Fstaticxx.facebook.com%2Fconnect%2Fxd_arbiter.php%3Fversion%3D44%23cb%3Dfdb8ea088f3c08%26domain%3Dwww.creator.co.kr%26origin%3Dhttps%253A%252F%252Fwww.creator.co.kr%252Ffaa6e127dca87%26relation%3Dparent.parent&amp;color_scheme=dark&amp;container_width=360&amp;href=https%3A%2F%2Fwww.creator.co.kr%2F&amp;layout=button_count&amp;locale=ko_KR&amp;sdk=joey&amp;share=true&amp;show_faces=true&amp;size=large" style="border: none; visibility: visible; width: 198px; height: 28px;" class=""> -->
-<!-- 							</iframe></span></div> -->
-						</div>
-					<!-- ========================================================================================= -->
+						
 						<div class="body" id="cusGb02" style="display: none;">
 							<div class="form-group margin-b-6" style="margin-bottom: 6px;">
-								<input class="form-control-lgn" id="busi_resi_num" type="text" placeholder="*사업자등록번호" maxlength="10">
-								<p class="help-block" id="bizRgstNoResultText02" style="text-align: left; margin-top: -20px;">'-'을 제외한 숫자만 입력해 주세요.</p>
+								<input class="form-control-lgn" id="loginId02" type="text" placeholder="*사업자등록번호" maxlength="10">
 							</div>
-<!-- 							<div class="sep-line"></div> -->
-<!-- 							<hr style="margin-bottom: 20px;margin-top: 20px;"> -->
 							<div class="form-group margin-b-6" style="margin-bottom: 6px;">
-								<p></p>
-								<input class="form-control-lgn" id="busi_password" type="password" placeholder="*비밀번호" >
+								<input class="form-control-lgn" id="loginPswd02" type="password" placeholder="*비밀번호" onkeypress="fn_hitEnterKey(event, 'login')">
+							</div>
+							<div class="form-group margin-b-6" style="margin-bottom: 6px;">
+								<label class="ui-checkbox" style="margin: 5px 20px 10px;">
+									<input type="checkbox" name="saveInfoCb02" id="saveInfoCb02"> <span style="font-family: 'Noto Sans KR', sans-serif;">사업자등록번호 기억하기</span>
+								</label>
+							</div>
+							<div class="form-group margin-b-6 text-left">
+								<label class="ui-checkbox" style="margin: 5px 20px 10px;">
+									<input type="checkbox" name="showPswdCb01" id="showPswdCb02"> <span style="font-family: 'Noto Sans KR', sans-serif;">비밀번호 보이기</span>
+								</label>
 							</div>
 							<div class="sep-line"></div>
 							<div class="form-group margin-b-6" style="margin-bottom: 6px;">
-								<button type="button" class="btn btn-purple-transparent btn-block" id="login_btn1" >로그인</button>
+								<div class="text-left display-none font-red" id="error02">
+									<hr>없는 아이디거나 비밀번호가 일치하지 않습니다.<br>다시 시도해주세요.
+								</div>
+								<div class="text-left display-none font-red" id="errPswdErrCnt02">
+									<hr>비밀번호 5회 이상 입력 오류 상태입니다.
+									<div style="padding: 5px 0 30px 0;">
+										<div class="left">
+											<img src="${pageContext.request.contextPath}/resources/img/icon_login_lock.png">
+										</div>
+										<div class="left font-purple">
+											<a class="text-muted" href="/findpwd" style="text-decoration: underline;">비밀번호를 잊으셨나요?</a>
+										</div>
+									</div>
+								</div>
+								<div class="text-left display-none font-red" id="errNotFound02">
+									<hr>없는 아이디거나 비밀번호가 일치하지 않습니다.<br>다시 시도해주세요.
+								</div>
+								<div class="text-left display-none font-red" id="errUseYn02">
+									<hr>사용 중지된 계정입니다.<br>고객센터로 문의하세요.[02-546-4076]
+								</div>
 							</div>
-							<div class="form-group margin-b-6" style="margin-bottom: 6px;">
+							<div class="form-group margin-b-12">
+								<button type="button" class="btn btn-purple-transparent btn-block" onclick="fn_loginCheck()">로그인</button>
+							</div>
+							<hr>
+							<div class="form-group margin-b-12">
 								<div class="left" id="findpwdBtn02">
-									<a class="text-muted" href="./findpwd" style="text-decoration: underline;">비밀번호를 잊으셨나요?</a>
+									<a class="text-muted" href="/findpwd" style="text-decoration: underline;">비밀번호를 잊으셨나요?</a>
 								</div>
 								<div class="right">
-									<a class="text-muted" href="./join" style="text-decoration: underline;">회원 가입하기</a>
+									<a class="text-muted" href="/register" style="text-decoration: underline;">회원 가입하기</a>
 								</div>
 							</div>
 						</div>

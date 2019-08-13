@@ -15,8 +15,15 @@ public class UserVO {
 	private String user_join_date;				// 가입일
 	private String user_phone_key;				// 휴대폰인증
 	private String cer_number;					// 인증번호
+	private String manager_email;
 	
 
+	public String getManager_email() {
+		return manager_email;
+	}
+	public void setManager_email(String manager_email) {
+		this.manager_email = manager_email;
+	}
 	public String getCer_number() {
 		return cer_number;
 	}
