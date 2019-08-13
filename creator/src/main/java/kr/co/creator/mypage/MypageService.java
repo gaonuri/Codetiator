@@ -128,12 +128,17 @@ public class MypageService {
 		return count;
 	}//busiaccount_insert
 
-	public AccountVO information(MemberVO memVO) {
-		AccountVO accVO = null;
-		accVO = (AccountVO) dao.informaiton(memVO);
-		return accVO;
+	public UserVO useinformation(MemberVO userVO) {
+		UserVO useVO = null;
+		useVO = (UserVO) dao.useinformation(userVO);
+		return useVO;
 	}
-	
+
+	public Busi_userVO businformation(MemberVO userVO) {
+		Busi_userVO busiVO = null;
+		busiVO = (Busi_userVO) dao.businformation(userVO);
+		return busiVO;
+	}
 	
 }//class
 
