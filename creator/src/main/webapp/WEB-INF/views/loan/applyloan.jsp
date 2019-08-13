@@ -550,18 +550,11 @@ $(document).ready(function() {
 													</div>
 												</div>
 											</div>
-											
 											<div class="row">
 												<div class="form-group col-md-4">
 													<input class="form-control" id="cer_number" type="text" maxlength="13"  placeholder="" style="display:none;">
 												</div>
-<<<<<<< HEAD
-												<div id="clock">
-												
-												</div>
-=======
 												<div id="clock"><!--여기서 수정 -->
-<<<<<<< HEAD
 												</div>													
 											</div>
 											<div class="row">
@@ -569,12 +562,7 @@ $(document).ready(function() {
 													<label for="ssnNo" class="control-label" id="aa" style="display:none;">인증번호를 입력하세요.</label>
 												</div>
 											</div>		
-=======
->>>>>>> branch 'master' of https://github.com/gaonuri/Codetiator.git
 											</div>													
->>>>>>> branch 'master' of https://github.com/gaonuri/Codetiator.git
-												
-											
 											<div class="row">
 												<div class="col-xs-12 col-sm-12 col-md-12">
 												<span class="modal-body-light">&nbsp;● 정상처리가 불가할 경우 1:1문의사항을 이용하시기 바랍니다.</span>
