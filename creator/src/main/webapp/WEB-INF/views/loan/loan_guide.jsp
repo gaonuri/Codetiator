@@ -60,7 +60,7 @@
     width: 1170px;
 }
 #loanGuide-banner {
-    background: url(${pageContext.request.contextPath}/resources/img/bgImg_loanIntro01.jpg)no-repeat center center fixed;
+    background: url(${pageContext.request.contextPath}/resources/img/bgImg_investIntro.png)no-repeat center center fixed;
     background-size: cover;
     background-attachment: fixed;
     width: 100%;
@@ -302,11 +302,19 @@ p {
 						<h4><strong><span class="number">5.&nbsp;</span>대출 실행</strong></h4>
 					</div>
 				</div>
-				<div class="mr-green mainTop_btn" id="loanReqBtn">
+<!-- 				<button class="loan_int_btn mr-green" id="loanReqBtn" style="width:200px; height: 36px; margin-left: 248px; margin-right: 248px;"> -->
+<!-- 					대출신청<span class="mr-cap"></span> -->
+<!-- 					<span class="mr-angle"> -->
+<!-- 						<div> -->
+<!-- 							<p class="botn">&gt;</p> -->
+<!-- 						</div> -->
+<!-- 					</span> -->
+<!-- 				</button>				 -->
+				<div class="loan_int_btn mr-green" id="loanReqBtn" style="width:300px; height: 36px; margin-left: 405px; margin-right: 250px; margin-top: -70px; font-size: 20px;">
 					대출신청<span class="mr-cap"></span>
 					<span class="mr-angle">
 						<div style="-webkit-transform: skew(30deg); line-height: 30px;"><p>&gt;</p></div>
-					</span>
+					</span>	
 				</div>
 			</div>
 		</div>

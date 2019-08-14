@@ -39,7 +39,7 @@
 #faq-banner{
 	position: relative;
 	overflow: hidden;
-	background: url(/images/common/common_banner_cc.jpg) center 0% no-repeat;
+	background: url(${pageContext.request.contextPath}/resources/img/bgImg_investIntro.png) center 0% no-repeat;
 	background-size: 100%;
 	-webkit-background-size: cover; 
 	-moz-background-size: cover; 

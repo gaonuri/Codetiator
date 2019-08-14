@@ -49,7 +49,19 @@
 		});//click
 	});//ready
 	
+<<<<<<< HEAD
 </script>  
+=======
+	$(document).ready(function() {
+		$("#userDataUpdatee").change(function() {
+			$("#btn_certt").modal(); 
+			return;
+		});
+	});
+	
+</script>   
+
+>>>>>>> branch 'master' of https://github.com/gaonuri/Codetiator.git
 <script type="text/javascript">
 	$(document).ready(function(){
 		$(".onlyPass").change(function(){
@@ -1071,7 +1083,7 @@
 #mypage-banner {
     position: relative;
     overflow: hidden;
-    background: url(${pageContext.request.contextPath}/resources/img/common_banner_title.jpg) center 0% no-repeat;
+    background: url(${pageContext.request.contextPath}/resources/img/banner_bg_nmvbls.png) center 0% no-repeat;
     background-size: 100%;
     -webkit-background-size: cover;
     -moz-background-size: cover;

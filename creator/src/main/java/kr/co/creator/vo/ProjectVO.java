@@ -41,7 +41,10 @@ public class ProjectVO {
 	private String current_price;		// 현재금액
 	private String deadline;			// 남은기간
 	private String refund_due_date;		// 상환예정일
+<<<<<<< HEAD
 	private String refund_end;			// 상환완료일
+=======
+>>>>>>> branch 'master' of https://github.com/gaonuri/Codetiator.git
 	private String ad_price;			// 광고금액
 	private String ad_grade;			// 광고등급
 	private String guarantee_type;		// 담보유형(부동산, 동산)

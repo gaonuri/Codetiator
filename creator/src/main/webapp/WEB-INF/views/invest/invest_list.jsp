@@ -1345,10 +1345,10 @@ form {
 											<c:when test="${vo.ach_state == '투자하기'}">
 												<c:choose>
 													<c:when test="${memVO.user_num != null}">
-														<a href="${pageContext.request.contextPath}/invest?user_num=${memVO.user_num}&project_num=${vo.project_num}"><span class="active">${vo.ach_state}u</span></a>
+														<a href="${pageContext.request.contextPath}/invest?user_num=${memVO.user_num}&project_num=${vo.project_num}"><span class="active">${vo.ach_state}</span></a>
 													</c:when>
 													<c:when test="${memVO.busi_num != null}">
-														<a href="${pageContext.request.contextPath}/invest?busi_num=${memVO.busi_num}&project_num=${vo.project_num}"><span class="active">${vo.ach_state}u</span></a>
+														<a href="${pageContext.request.contextPath}/invest?busi_num=${memVO.busi_num}&project_num=${vo.project_num}"><span class="active">${vo.ach_state}</span></a>
 													</c:when>
 													<c:otherwise>
 														<a href="${pageContext.request.contextPath}/login"><span class="active">${vo.ach_state}</span></a>

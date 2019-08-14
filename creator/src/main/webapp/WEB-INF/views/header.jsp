@@ -615,7 +615,7 @@ li {
 					
 					<c:choose>
 						<c:when test="${memberVO != null && memberVO.user_num != '' || memberVO != null && memberVO.busi_num != ''}">
-							<li id="logout_btn"><a class="top-menu-font" href="${pageContext.request.contextPath}/main">로그아웃</a></li>
+							<li id="logout_btn"><a class="top-menu-font" href="${pageContext.request.contextPath}/logout">로그아웃</a></li>
 						</c:when>
 						<c:otherwise>
 							<li><a class="loginss top-menu-font" href="${pageContext.request.contextPath}/join">회원가입</a></li>
