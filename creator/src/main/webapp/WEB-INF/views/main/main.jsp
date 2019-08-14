@@ -846,7 +846,7 @@ small, .small {
 	<!-- 									<span>자동투자 100%</span> -->
 	<!-- 								</div> -->
 <%-- 									<img src="${pageContext.request.contextPath}/resources/img/overwatch.jpg"> --%>
-										<img alt="/${vo.img_path}" src="/${vo.img_path}" />
+										<img alt="${pageContext.request.contextPath}/${vo.img_path}" src="${pageContext.request.contextPath}/${vo.img_path}" />
 								</div>
 								<div class="item-bottom">
 									<div class="item-bottom-text">
