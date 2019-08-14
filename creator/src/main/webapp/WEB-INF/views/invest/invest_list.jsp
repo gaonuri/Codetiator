@@ -528,7 +528,7 @@ form {
 	<!--header start-->
 	<%@ include file="../header.jsp" %>
 	<!--header end-->
-	<script type="text/javascript">
+	<script type="text/javascript">	
 	
 	$(function() {
 		$("#topGuideButton").on("click", function() {

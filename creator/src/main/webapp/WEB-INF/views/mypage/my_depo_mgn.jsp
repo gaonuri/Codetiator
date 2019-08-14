@@ -258,7 +258,7 @@
 		}tempFunction
 		
 		var id;
-		var min = 29;
+		var min = 2;
 		var sec = 59;
 		var minZero = "";
 		var secZero = "";
@@ -315,10 +315,9 @@
 				);//post
 			});//click
 		});//ready
+		
 		$(document).ready(function() {
 			$("#btn_certi_complete").click(function() {
-				alert("btn_certi_complete");
-				alert($("#cer_number").val());
 				$.post(
 						"${pageContext.request.contextPath}/DepocerNumber",
 						{
@@ -395,7 +394,7 @@
 						<div class="box left">
 							<div class="row">
 								<div class="col-xs-12 col-sm-12 col-md-12">
-									<span class="cusNm">${acnt.account_name}</span>&nbsp;
+									<span class="cusNm">${user.user_name}${busi.manager_name}</span>&nbsp;
 									
 										님
 									
@@ -633,7 +632,7 @@
 																		예금주
 																	</div>
 																	<div class="col-xs-8 col-sm-8 col-md-8 withdraw-content" id="withdrawCusNm">
-																		${vo.account_name}
+																		${acnt.account_name}
 																	</div>
 																</div>
 																<div class="row" style="margin-top: 10px;">
@@ -641,7 +640,7 @@
 																		은행
 																	</div>
 																	<div class="col-xs-8 col-sm-8 col-md-8 withdraw-content">
-																		${vo.bank_name}
+																		${acnt.bank_name}
 																	</div>
 																</div>
 																<div class="row" style="margin-top: 10px;">
@@ -649,7 +648,7 @@
 																		나의 계좌 
 																	</div>
 																	<div class="col-xs-8 col-sm-8 col-md-8 withdraw-content">
-																		<span id="WD_ACNT_NO">${vo.bank_num}</span>
+																		<span id="WD_ACNT_NO">${acnt.bank_num}</span>
 																	</div>
 																</div>
 																<div class="row">

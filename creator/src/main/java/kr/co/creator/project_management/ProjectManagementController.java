@@ -1,6 +1,9 @@
 package kr.co.creator.project_management;
 
+import java.io.PrintWriter;
 import java.util.List;
+
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import kr.co.creator.invest.InvestService;
+import kr.co.creator.vo.GuaranteeVO;
 import kr.co.creator.vo.InvestVO;
 import kr.co.creator.vo.ProjectVO;
 
@@ -44,10 +48,44 @@ public class ProjectManagementController {
 		return "project_management/project_evaluate_mgn";
 	}
 	
+	@RequestMapping(value = "/project_detail_mgn", method = RequestMethod.GET)
+	public String project_detail_mgn(Model model, HttpSession session, ProjectVO proVO, GuaranteeVO guaVO, InvestVO inVO) {
+		logger.info("invest_detail");
+		
+		proVO = projectManagementService.project_detail(proVO);
+		guaVO = projectManagementService.guarantee_detail(guaVO);
+		inVO  = projectManagementService.invest_detail(inVO);
+					
+		model.addAttribute("proVO", proVO);
+		model.addAttribute("guaVO", guaVO);
+		session.setAttribute("inVO", inVO);
+		//System.out.println("Controller2222222222222222222222222222222 : " + inVO.getInvest_price());
+		//System.out.println("Controller2222222222222222222222222222222 : " + ((InvestVO)session.getAttribute("sess_investVO")).getInvest_price());
+		return "project_management/project_detail_mgn";
+	}//project_detail_mgn
+	
 	@RequestMapping(value = "/loan_evaluate", method = RequestMethod.GET)
 	public String loan_evaluate() {
 		logger.info("loan_evaluate");
 				
 		return "project_management/loan_evaluate";
 	}
+	
+	@RequestMapping(value = "/project_detail_success", method = RequestMethod.POST)
+	public void project_detail_success(HttpSession session, ProjectVO pvo, PrintWriter out) {
+		logger.info("project_detail_success");
+		int cnt = 0;
+		cnt = projectManagementService.project_success(pvo);
+		out.print(cnt);
+		out.close();
+	}//project_detail_success
+	
+	@RequestMapping(value = "/project_detail_delete", method = RequestMethod.POST)
+	public void project_detail_delete(HttpSession session, ProjectVO pvo, PrintWriter out) {
+		logger.info("project_detail_delete");
+		int cnt = 0;
+		cnt = projectManagementService.project_delete(pvo);
+		out.print(cnt);
+		out.close();
+	}//project_detail_delete
 }//class

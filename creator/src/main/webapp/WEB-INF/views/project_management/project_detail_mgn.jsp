@@ -36,15 +36,48 @@
 	<script type="text/javascript">
 	$(document).ready(function() {
 		$("#investBtn1").click(function() {
-			location.href = "${pageContext.request.contextPath}/invest?user_num=${memVO.user_num}&busi_num=${memVO.busi_num}&project_num=${proVO.project_num}";
+			$.post(
+					"${pageContext.request.contextPath}/project_detail_success"
+					,{
+						project_num:$("#pro_num").val()
+					}
+					,function(data,status){
+						if(status == "success"){
+							if(data > 0){
+								alert("심사 완료");
+								location.href = "${pageContext.request.contextPath}/main";
+							} else {
+								alert("잠시 후, 다시 시도해 주세요.");
+							}
+						} else {
+							alert("시스템 관리자에게 문의 바랍니다.");
+						}
+					}
+			);//post
 		});//investBtn1
 		
 		$("#investBtn2").click(function() {
-			alert("로그인 하시기 바랍니다.");
-			location.href = "${pageContext.request.contextPath}/login";
+			$.post(
+					"${pageContext.request.contextPath}/project_detail_delete"
+					,{
+						project_num:$("#pro_num").val()
+					}
+					,function(data,status){
+						if(status == "success"){
+							if(data > 0){
+								alert("심사 반려");
+								location.href = "${pageContext.request.contextPath}/main";
+							} else {
+								alert("잠시 후, 다시 시도해 주세요.");
+							}
+						} else {
+							alert("시스템 관리자에게 문의 바랍니다.");
+						}
+					}
+			);//post
 		});//investBtn2
 	});//ready
-	</script>
+</script>
 </head>
 <style>
 article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
@@ -1925,19 +1958,7 @@ $(document).ready(function() {
 				<div class="col-sm-12 col-md-3 col-md-push-9 right-col col-box">
 					<div class="wrap">
 						<div class="box right">
-							<div class="title">
-								<div class="day text-center" id="timeTitle">모집 마감까지</div>
-								<div class="time text-center" id="timeSub">22<font size="2">일</font> 6<font size="2">시간</font> 41<font size="2">분</font> 55<font size="2">초 남았습니다.</font></div>
-								<div class="display-none" id="alarmDiv" style="display: none;">
-									<button type="button" class="btn btn-purple-transparent btn-block" style="font-size: 14px;margin: 0px" onclick="fn_openAlarm()">
-										알림받기
-									</button>
-								</div>
-							</div>
-							<hr>
-							<div class="chart">
-								<canvas id="waterbubbleChart" width="205" height="205"></canvas>
-							</div>
+
 							<div class="amt">
 								<font class="font-purple">
 										${proVO.current_price}</font><font size="2">만원</font>
@@ -1994,18 +2015,12 @@ $(document).ready(function() {
 									</div>
 								</div>
 							</div>
-							<c:choose>
-								<c:when test="${memVO != null && (memVO.user_num != '' && memVO.user_num != null) || (memVO.busi_num != '' && memVO.busi_num != null)}">
-									<button type="button" class="btn btn-purple-transparent btn-block" id="investBtn1">
-										투자신청 <i class="glyphicon glyphicon glyphicon-ok"></i>
-									</button>					
-								</c:when>
-								<c:otherwise>
-									<button type="button" class="btn btn-purple-transparent btn-block" id="investBtn2">
-										투자신청 <i class="glyphicon glyphicon glyphicon-ok"></i>
+									<button type="button" class="btn btn-purple-transparent btn-block" id="investBtn1" style="width: 116px;">
+										심사승인 <i class="glyphicon glyphicon glyphicon-ok"></i>
 									</button>
-								</c:otherwise>
-							</c:choose>
+									<button type="button" class="btn btn-purple-transparent btn-block" id="investBtn2" style="width: 106px;margin-top: 0px;">
+										심사반려 <i class="glyphicon glyphicon glyphicon-no"></i>
+									</button>					
 						</div>
 					</div>
 				</div>
@@ -3027,7 +3042,7 @@ $(document).ready(function() {
 			</div>
 		</div>
 	</div>
-
+<input type="hidden" id="pro_num" value="${proVO.project_num}">
 <!-- 카카오톡 세팅 -->
 <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
 	<!--footer start-->
