@@ -151,14 +151,6 @@ $(document).ready(function() {
     font-weight: bold;
     color: #fff;
 }
-#loanGuide-banner {
-    background: url(${pageContext.request.contextPath}/resources/bootstrap/img/blog-bg.jpg)no-repeat center center fixed;
-    background-size: cover;
-    background-attachment: fixed;
-    width: 100%;
-    height: 80px;
-    padding: 100px 0 200px 0;
-}
 #content .step .wrap .item {
     padding: 10px 20px;
     border-style: solid;
