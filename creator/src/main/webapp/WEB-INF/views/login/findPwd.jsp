@@ -42,7 +42,7 @@
 //id check
 $(document).ready(function(){
 	var chkemail = '';
-
+	
 	$("#email").blur(function(){
 		var emailStd = /([a-z0-9]{1,20}\@)([a-z]{1,20}\.)([a-z]{1,10})/gi;
 		
@@ -60,7 +60,21 @@ $(document).ready(function(){
 						alert("이메일이 확인 되었습니다.");
 						chkemail = $("#email").val();
 					}else{
-						alert("등록된 이메일이 없습니다.");
+// 						alert("등록된 이메일이 없습니다.");
+					}
+				}//function
+		);//post
+		$.post(
+				"${pageContext.request.contextPath}/busifindChk",
+				{
+					manager_email:$("#email").val()
+				},
+				function(data,status){
+					if(data == 1){
+						alert("이메일이 확인 되었습니다.");
+						chkemail = $("#email").val();
+					}else{
+// 						alert("등록된 이메일이 없습니다.");
 					}
 				}//function
 		);//post
@@ -94,12 +108,32 @@ $(document).ready(function(){
 					}
 				}
 		);//post
+		$.post(
+				"${pageContext.request.contextPath}/CerEmail"
+				,{
+					manager_email:$("#email").val()
+				}
+				,function(data,status){
+					if(status == "success"){
+						if(data > 0){
+							alert("해당 이메일로 임시비밀번호를 발송했습니다.");
+							location.href="/creator/findpwd";
+						} else if(data == 0){
+							alert("존재하지 않는 이메일 입니다.");
+						} else {
+							alert("잠시 후, 다시 시도해 주세요.");
+						}
+					} else {
+						alert("시스템 관리자에게 문의 바랍니다.");
+					}
+				}
+		);//post
 	});//click
 });//ready
 </script>
 </head>
 <style>
-
+CerEmail
 body{
 	background-color: #f7f7f7;
 }
