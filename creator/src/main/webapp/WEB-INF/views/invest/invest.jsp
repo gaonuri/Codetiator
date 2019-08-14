@@ -443,18 +443,18 @@ html {
 																<div class="col-sm-5 col-md-5">
 																	<div class="row" id="popoverPlaceL">
 																		<div class="col-xs-10 col-sm-10 col-md-10 col">
-																			<div class="name">${proVO.project_name}</div>
+																			<div class="name" style="margin-left: 120px;">${proVO.project_name}</div>
 																		</div>
 																	</div>
 																</div>
 																<div class="col-sm-1 col-md-1">
 																	<div class="grade">
-																		<span id="grade771">${proVO.grade}</span>
+																		<span id="grade771" style="margin-left: 10px;">${proVO.grade}</span>
 																	</div>
 																</div>
 																<div class="col-sm-1 col-md-1">
 																	<div class="rate">
-																		<span id="rate771">${proVO.rate}</span><font size="1">%</font>
+																		<span id="rate771" style="margin-left: 10px;">${proVO.rate}</span><font size="1">%</font>
 																	</div>
 																</div>
 																<div class="col-sm-1 col-md-1">
@@ -464,12 +464,12 @@ html {
 																</div>
 																<div class="col-sm-2 col-md-2">
 																	<div class="amt">
-																		<span id="investOkAmt771">${proVO.price - proVO.current_price}</span><font size="1">만원</font>
+																		<span id="investOkAmt771" style="margin-left: 20px;">${proVO.price - proVO.current_price}</span><font size="1">만원</font>
 																	</div>
 																</div>
 																<div class="col-sm-2 col-md-2">
 																	<div class="amt">
-																		<span name="lmtAmt" id="lmtAmt771" class="font-purple">${500 - inVO.invest_price}</span><font size="1">만원</font>
+																		<span name="lmtAmt" id="lmtAmt771" class="font-purple" style="margin-left: 20px;">${500 - inVO.invest_price}</span><font size="1">만원</font>
 																	</div>
 																</div>
 															</div>
@@ -477,7 +477,8 @@ html {
 																<hr>
 																<div class="row">
 																	<div class="col-xs-6 col-sm-8 col-md-8 col-lg-3 col">
-																		<div class="inputAmtTitle">투자금액</div>
+																		<div class="inputAmtTitle" style="font-size:17px; margin-left: 20px; margin-top: 5px;"><strong>투자금액</strong></div>
+																	<hr>
 																	</div>
 																	<div class="col-xs-6 col-sm-4 col-md-4 col-lg-3 col">
 																		<div class="form-group has-feedback inputForm" id="inputAmtDiv">
@@ -486,24 +487,38 @@ html {
 																			<span id="inputAmtStatus" class="sr-only">(success)</span>
 																		</div>
 																	</div>
-																	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 col">
-																		<form class="form-inline amtForm">
-																			<div class="form-group">
-																				<span name="amtPlus100" id="amtPlus100_771" border="1">+100만</span>
-																				<span name="amtPlus50" id="amtPlus50_771" border="1">+50만</span>
-																				<span name="amtPlus10" id="amtPlus10_771" border="1">+10만</span>
-																				<span name="amtPlus5" id="amtPlus5_771" border="1">+5만</span>
-																				<span name="amtPlus1" id="amtPlus1_771" border="1">+1만</span>
-																				<span name="amtPlusAll" id="amtPlusAll_771" border="1">전액</span>
-																				<span name="amtReset" id="amtReset_771" class="gray" border="1">정정</span>
-																				<br><span>금액을 1만원이상, 만원단위로 입력해주시기 바랍니다.</span>
+																		<div class="row">
+																			<div class="col-sm-1 col-md-1">
+																				<button style="width: 70px; margin-left: 315px;"><span name="amtPlus100" id="amtPlus100_771" border="1">+100만</span></button>
 																			</div>
-																		</form>
-																	</div>
+																			<div class="col-sm-1 col-md-1">
+																				<button style="width: 70px; margin-left: 315px;"><span name="amtPlus50" id="amtPlus50_771" border="1">+50만</span></button>
+																			</div>
+																			<div class="col-sm-1 col-md-1">
+																				<button style="width: 70px; margin-left: 315px;"><span name="amtPlus10" id="amtPlus10_771" border="1">+10만</span></button>
+																			</div>
+																			<div class="col-sm-1 col-md-1">
+																				<button style="width: 70px; margin-left: 315px;"><span name="amtPlus5" id="amtPlus5_771" border="1">+5만</span></button>
+																			</div>
+																			<div class="col-sm-1 col-md-1">
+																				<button style="width: 70px; margin-left: 315px;"><span name="amtPlus1" id="amtPlus1_771" border="1">+1만</span></button>
+																			</div>
+																			<div class="col-sm-1 col-md-1">
+																				<button style="width: 70px; margin-left: 315px;"><span name="amtPlusAll" id="amtPlusAll_771" border="1">전액</span></button>
+																			</div>
+																			<div class="col-sm-1 col-md-1">
+																				<button style="width: 70px; margin-left: 315px;"><span name="amtReset" id="amtReset_771" class="gray" border="1">정정</span></button>
+																			</div>
+																		</div>
+																		<hr>
+																		<div style="font-size:13px; margin-left: 20px; margin-top: -15px;">
+																			<br><span>금액을 1만원이상, 만원단위로 입력해주시기 바랍니다.</span><br>
+																		</div>
 																</div>
+																<hr>
 																<div class="row" id="depositDiv">
 																	<div class="col-xs-6 col-sm-8 col-md-8 col-lg-3 col">
-																		<div class="inputDepositTitle">투자 가능 예치금</div>
+																		<div class="inputDepositTitle" style="font-size:17px; margin-left: 20px; margin-top: 5px;" ><strong>투자 가능 예치금</strong></div>
 																	</div>
 																	<div class="col-xs-6 col-sm-4 col-md-4 col-lg-3 col">
 																		<div class="form-group has-feedback inputForm" id="inputDepositDiv">
