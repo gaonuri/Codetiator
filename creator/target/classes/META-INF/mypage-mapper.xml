@@ -34,7 +34,7 @@
 				AND i.user_num = #{user_num}
 			</if>
 			<if test="busi_num != null and busi_num != ''">
-				OR i.busi_num = #{busi_num}
+				AND i.busi_num = #{busi_num}
 			</if>
 			order by invest_date desc
 	</select>
@@ -43,13 +43,10 @@
 		resultType="kr.co.creator.vo.ProjectVO">
 		select *
 		from project_list p, account_list a
-		where p.project_num = a.project_num 
-		<if test="user_num != null and user_num != ''">
-				AND p.user_num = #{user_num}
-		</if>
+		where p.busi_num = a.busi_num
 		<if test="busi_num != null and busi_num != ''">
-			OR p.busi_num = #{busi_num}
-		</if>
+				AND p.busi_num = #{busi_num}
+			</if>
 	</select>
 	
 	<select id="bankNumChk" parameterType="java.lang.String" resultType="int">

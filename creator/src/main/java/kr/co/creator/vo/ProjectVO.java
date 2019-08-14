@@ -11,6 +11,7 @@ public class ProjectVO {
 	private String type;				// 게임유형
 	private String genre;				// 장르
 	private String grade;				// 등급
+	private String age_grade;			// 이용등급
 	private String more_information;	// 상세정보
 	private String loan_bank_name;		// 대출은행명
 	private String loan_amount;			// 대출계좌
@@ -385,5 +386,11 @@ public class ProjectVO {
 	}
 	public void setGuarantee_num(String guarantee_num) {
 		this.guarantee_num = guarantee_num;
+	}
+	public String getAge_grade() {
+		return age_grade;
+	}
+	public void setAge_grade(String age_grade) {
+		this.age_grade = age_grade;
 	}
 }//class
