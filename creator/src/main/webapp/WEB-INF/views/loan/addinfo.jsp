@@ -262,7 +262,7 @@
                   	<div class="col-md-8">
                     	<select class="form-control loanPurpose-select" id="grade" name="grade">
 							<option value="">선택하세요</option>
-								<option value="부동산담보">7세 이용가</option>
+								<option value="7세 이용가">7세 이용가</option>
 								<option value="12세 이용가">12세 이용가</option>
 								<option value="15세 이용가">15세 이용가</option>
 								<option value="18세 이용가">18세 이용가</option>

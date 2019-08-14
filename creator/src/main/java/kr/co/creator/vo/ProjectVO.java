@@ -40,19 +40,9 @@ public class ProjectVO {
 	private String current_price;		// 현재금액
 	private String deadline;			// 남은기간
 	private String refund_due_date;		// 상환예정일
-<<<<<<< HEAD
 	private String refund_end;			// 상환완료일
-	private String ad_price;			// 광고금액
-	private String ad_grade;			// 광고등급
-=======
-	private String refund_end;			// 상환완료일
->>>>>>> branch 'master' of https://github.com/gaonuri/Codetiator.git
 	private String guarantee_type;		// 담보유형(부동산, 동산)
-<<<<<<< HEAD
 	private String object_type;			// 물건유형(아파트, 연립주택)
-=======
-	private String object_type;			// 물건유형(아파트, 연립주택)
->>>>>>> branch 'master' of https://github.com/gaonuri/Codetiator.git
 	private String loan_count;			// 투자받은횟수
 	private String project_count;		// 총프로젝트수
 	private String rate_average;		// 평균 연수익률
