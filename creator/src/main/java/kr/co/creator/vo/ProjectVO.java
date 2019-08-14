@@ -11,6 +11,7 @@ public class ProjectVO {
 	private String type;				// 게임유형
 	private String genre;				// 장르
 	private String grade;				// 등급
+	private String age_grade;			// 이용등급
 	private String more_information;	// 상세정보
 	private String loan_bank_name;		// 대출은행명
 	private String loan_amount;			// 대출계좌
@@ -40,10 +41,16 @@ public class ProjectVO {
 	private String current_price;		// 현재금액
 	private String deadline;			// 남은기간
 	private String refund_due_date;		// 상환예정일
+<<<<<<< HEAD
+	private String refund_end;			// 상환완료일
+	private String guarantee_type;		// 담보유형(부동산, 동산)
+	private String object_type;			// 물건유형(아파트, 연립주택)
+=======
 	private String ad_price;			// 광고금액
 	private String ad_grade;			// 광고등급
 	private String guarantee_type;		// 담보유형(부동산, 동산)
 	private String object_type;			// 물건유형(아파트, 연립주택)
+>>>>>>> branch 'master' of https://github.com/gaonuri/Codetiator.git
 	private String loan_count;			// 투자받은횟수
 	private String project_count;		// 총프로젝트수
 	private String rate_average;		// 평균 연수익률
@@ -385,5 +392,11 @@ public class ProjectVO {
 	}
 	public void setGuarantee_num(String guarantee_num) {
 		this.guarantee_num = guarantee_num;
+	}
+	public String getAge_grade() {
+		return age_grade;
+	}
+	public void setAge_grade(String age_grade) {
+		this.age_grade = age_grade;
 	}
 }//class

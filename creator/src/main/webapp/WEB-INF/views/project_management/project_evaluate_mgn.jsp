@@ -580,7 +580,7 @@ form {
 					<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 good-item-wrap">
 						<div class="good-item">
 							<div class="item-top">
-								<a href="${pageContext.request.contextPath}/invest_detail?
+								<a href="${pageContext.request.contextPath}/project_detail_mgn?
 														project_num=${vo.project_num}
 														&p_busi_num=${vo.busi_num}
 														&user_num=${memVO.user_num}">
