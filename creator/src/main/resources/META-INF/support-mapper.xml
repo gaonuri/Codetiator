@@ -27,9 +27,7 @@
 	
 	<select id="supportList"
 			resultType="kr.co.creator.vo.NoticeVO">
-		select notice_num
-			, title
-			, notice_date
+		select *
 			FROM notice
 			order by notice_date desc
 	</select>
@@ -37,9 +35,7 @@
 	<select id="supportList2"
 			parameterType="kr.co.creator.vo.NoticeVO" 
 			resultType="kr.co.creator.vo.NoticeVO">
-		select notice_num
-			, title
-			, notice_date
+		select *
 			FROM notice
 			where notice_type = #{notice_type}
 			order by notice_date desc
