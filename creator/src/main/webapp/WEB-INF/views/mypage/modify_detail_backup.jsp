@@ -583,7 +583,7 @@ $(document).ready(function() {
                 <table class="table condition-table">
 					<tbody>
 					<tr>
-					<td class="condition-title">이름</td>
+						<td class="condition-title">이름</td>
 						<td class="condition-content">
 							<input type="text" class="form-control" id="cusNm" maxlength="50" readonly="readonly" value="${mypagemem.user_name}${mypagemem.manager_name}">
 						</td>
@@ -592,46 +592,32 @@ $(document).ready(function() {
 						</td>
 					</tr>
 					<tr>
-					<td class="condition-title">휴대전화번호</td>
+						<td class="condition-title">휴대전화번호</td>
 						<td class="condition-content">
 							<input type="text" class="form-control" id="mpNo" maxlength="50" readonly="readonly" value="${mypagemem.phone}${mypagemem.manager_phone}">
-							<input type="hidden" id="ci">
-						</td>
-						<td>
-						</td>
-						<td>
-							<!-- 본인인증 서비스 팝업을 호출하기 위해서는 다음과 같은 form이 필요합니다. -->
-							<form name="form_chk" method="post">
-								<input type="hidden" name="m" value="checkplusSerivce">	<!-- 필수 데이타로, 누락하시면 안됩니다. -->
-								<input type="hidden" id="EncodeData" name="EncodeData" value="">	<!-- 위에서 업체정보를 암호화 한 데이타입니다. -->
-							</form>
 						</td>
 					</tr>
-					
 					<tr>
 						<td class="condition-title">주민등록번호</td>
 						<td class="condition-content">
-							<input type="text" class="form-control" id="email" maxlength="50" readonly="readonly" value="${mypagemem.jumin}${mypagemem.manager_birth}"></td>
+							<input type="text" class="form-control" id="jumin" maxlength="50" readonly="readonly" value="${mypagemem.jumin}${mypagemem.manager_birth}"></td>
 						<td>
 						</td>
 					</tr>
 					<tr>
-					<td class="condition-title">이메일</td>
+						<td class="condition-title">이메일</td>
 						<td class="condition-content">
 							<input type="text" class="form-control" id="email" maxlength="50" readonly="readonly" value="${mypagemem.email}${mypagemem.manager_email}">
 						</td>
-						<td></td>
 					</tr>
-					
 					<tr>
-					<td colspan="2" class="condition-content">
+						<td colspan="2" class="condition-content">
 						<span class="font-red"><strong>※ 왜 주민등록번호가 필요한가요?</strong></span><br>
 						<font size="2">
 							주민등록번호는 현행 세법상 원천징수 납부에 사용됩니다. 입력하지 않아도 
 							대출상품 투자를 제외한 사이트 이용은 가능하며 최초 투자시 한 번만 등록하시면 됩니다.
 						</font>
 					</td>
-					<td></td>
 					</tr>
 					</tbody>
 				</table>
@@ -769,11 +755,10 @@ $(document).ready(function() {
 									</c:forEach>
 								</td>
 							</tr>
-								<tr>
-									<td class="condition-title">최근 3회 동안 접속하신 정보입니다.</td>
-									<td></td>
-								</tr>		
-						
+							<tr>
+								<td class="condition-title">최근 3회 동안 접속하신 정보입니다.</td>
+								<td></td>
+							</tr>		
 						</tbody>
 					</table>
 					<form name="removeuser">
@@ -809,7 +794,7 @@ $(document).ready(function() {
 									<div class="page" style="text-align: right;">1/4</div>
 							</div>
 						<!-- Email 인증시작 -->
-						<div class="modal fade" id="btn_cert1"  name="cert1" role="dialog" aria-labelledby="vtAcntModalLabel" aria-hidden="true">
+						<div class="modal fade" id="btn_cert1" name="cert1" role="dialog" aria-labelledby="vtAcntModalLabel" aria-hidden="true">
 							<div class="modal-dialog">
 								<div class="modal-content">
 									<div class="modal-header">

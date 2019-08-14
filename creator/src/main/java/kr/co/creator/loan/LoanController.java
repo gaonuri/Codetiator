@@ -75,7 +75,8 @@ public class LoanController {
 		if(session.getAttribute("memVO") == null) {
 			return "redirect:/login";
 		}
-		session.setAttribute("ProjectVO", pvo);
+		pvo = (ProjectVO) session.getAttribute("applyProjectVO");
+		session.setAttribute("applyProjectVO", pvo);
 		session.setAttribute("FileVO", fvo);
 		session.setAttribute("GuaranteeVO", gvo);
 
@@ -83,11 +84,19 @@ public class LoanController {
     }
 	
 	@RequestMapping(value = "/addinfo_process", method = RequestMethod.POST)
-	public void addinfo_process(HttpSession session, ProjectVO pvo, GuaranteeVO gvo, RepayVO rvo, PrintWriter out) throws Exception {
+	public void addinfo_process(HttpSession session, ProjectVO pvo, GuaranteeVO gvo, PrintWriter out) {
+		logger.info("111");
 		int saveFileCnt = 0;
 		int cnt = 0;
 		int gnt = 0;
+		logger.info("222");
 		MemberVO voFromSession = (MemberVO) session.getAttribute("memVO");
+		logger.info("333");
+		ProjectVO pvo2 = (ProjectVO) session.getAttribute("applyProjectVO");
+		logger.info("444"+pvo2);
+		pvo.setProject_num(pvo2.getProject_num());
+		gvo.setGuarantee_num(pvo2.getGuarantee_num());
+		System.out.println("pvo2.getProject_num() : " + pvo2.getProject_num());
 		System.out.println("voFromSession.getBusi_num() : " + voFromSession.getBusi_num());
 		pvo.setBusi_num(voFromSession.getBusi_num());//법인 유저 넘버 가져오기
 		System.out.println("pvo.getBusi_num() : " + pvo.getBusi_num());
@@ -119,12 +128,13 @@ public class LoanController {
 		}
 		System.out.println("saveFileCnt : " + saveFileCnt);
 		if(saveFileCnt > 0) {
-			cnt = loanDAOService.insert_project(pvo); //프로젝트 DB에 넣기
-			System.out.println("프로젝트 인설트 성공");
+			cnt = loanDAOService.update_project(pvo); //프로젝트 DB에 넣기
+			System.out.println("프로젝트 업데이트 성공");
 			if(cnt > 0) {
 				gvo.setProject_num(pvo.getProject_num());
-				gnt = loanDAOService.guaranteeInsert(gvo); //담보 DB에 넣기
-				session.setAttribute("ProjectVO", pvo);
+				gnt = loanDAOService.update_guarantee(gvo); //담보 DB에 넣기
+			System.out.println("담보 업데이트 성공");
+				session.setAttribute("applyProjectVO", pvo);
 				session.setAttribute("GuaranteeVO", gvo);
 			}
 		}
@@ -133,11 +143,12 @@ public class LoanController {
     }
 	
 	@RequestMapping(value = "/sub_document", method = RequestMethod.GET)
-	public String sub_document(HttpSession session, ProjectVO pvo, FileVO dvo, GuaranteeVO gvo) throws Exception {
+	public String sub_document(HttpSession session, ProjectVO pvo) throws Exception {
 		if(session.getAttribute("memVO") == null) {
 			return "redirect:/login";
 		}
-		session.setAttribute("ProjectVO", pvo);
+		pvo = (ProjectVO) session.getAttribute("applyProjectVO");
+		session.setAttribute("applyProjectVO", pvo);
 		
     	return "loan/sub_document";
     }
@@ -145,8 +156,10 @@ public class LoanController {
 	@RequestMapping(value = "/sub_document_process", method = RequestMethod.POST)
 	public void sub_document_process(HttpSession session, MemberVO vo, FileVO fvo, ProjectVO pvo, GuaranteeVO gvo, PrintWriter out) {
 		MemberVO voFromSession = (MemberVO) session.getAttribute("memVO");
+		ProjectVO pvo2 = (ProjectVO) session.getAttribute("applyProjectVO");
 		System.out.println("voFromSession.getBusi_num() : " + voFromSession.getBusi_num());
 		pvo.setBusi_num(voFromSession.getBusi_num());//법인 유저 넘버 가져오기
+		pvo.setProject_num(pvo2.getProject_num());
 		System.out.println("pvo.getBusi_num() : " + pvo.getBusi_num());
 		//fileupload
 		int cnt = 0;
@@ -264,14 +277,17 @@ public class LoanController {
     }
 	
 	@RequestMapping(value="/applyloaninsert", method=RequestMethod.POST)
-	public void applyLoanInsert(PrintWriter out, ProjectVO pvo) {
+	public void applyLoanInsert(HttpSession session, PrintWriter out, ProjectVO pvo) {
 		logger.info("=== applyLoanInsert ===");
+		MemberVO voFromSession = (MemberVO) session.getAttribute("memVO");
+		pvo.setBusi_num(voFromSession.getBusi_num());//법인 유저 넘버 가져오기
 		int cnt = 0;
 		cnt = loanDAOService.applyLoanInsert(pvo);
 		int cnt1 = 0;
 		if(cnt > 0) {
 			cnt1 = loanDAOService.applyLoanInsert1(pvo);
 		}
+		session.setAttribute("applyProjectVO", pvo);
 		out.print(cnt1);
 		out.flush();
 		out.close();

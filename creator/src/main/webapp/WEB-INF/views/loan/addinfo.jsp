@@ -234,10 +234,10 @@
                   	<div class="col-md-8">
                   		<select class="form-control loanPurpose-select" id="type" name="type">
 							<option value="">선택하세요</option>
-								<option value="01">PC게임</option>
-								<option value="02">콘솔게임</option>
-								<option value="03">모바일게임</option>
-								<option value="04">VR게임</option>
+								<option value="PC게임">PC게임</option>
+								<option value="콘솔게임">콘솔게임</option>
+								<option value="모바일게임">모바일게임</option>
+								<option value="VR게임">VR게임</option>
 						</select>
                     </div>
                   </div>
@@ -246,14 +246,14 @@
                   	<div class="col-md-8">
                   		<select class="form-control loanPurpose-select" id="genre" name="genre">
 							<option value="">선택하세요</option>
-								<option value="01">슈팅 게임</option>
-								<option value="02">액션 게임</option>
-								<option value="03">어드벤처 게임</option>
-								<option value="04">시뮬레이션 게임</option>
-								<option value="05">롤 플레잉 게임</option>
-								<option value="06">스포츠 게임</option>
-								<option value="07">FPS 게임</option>
-								<option value="08">AOS 게임</option>
+								<option value="슈팅 게임">슈팅 게임</option>
+								<option value="액션 게임">액션 게임</option>
+								<option value="어드벤처 게임">어드벤처 게임</option>
+								<option value="시뮬레이션 게임">시뮬레이션 게임</option>
+								<option value="롤 플레잉 게임">롤 플레잉 게임</option>
+								<option value="스포츠 게임">스포츠 게임</option>
+								<option value="FPS 게임">FPS 게임</option>
+								<option value="AOS 게임">AOS 게임</option>
 						</select>
                     </div>
                   </div>
@@ -262,10 +262,10 @@
                   	<div class="col-md-8">
                     	<select class="form-control loanPurpose-select" id="grade" name="grade">
 							<option value="">선택하세요</option>
-								<option value="01">7세 이용가</option>
-								<option value="02">12세 이용가</option>
-								<option value="03">15세 이용가</option>
-								<option value="04">18세 이용가</option>
+								<option value="부동산담보">7세 이용가</option>
+								<option value="12세 이용가">12세 이용가</option>
+								<option value="15세 이용가">15세 이용가</option>
+								<option value="18세 이용가">18세 이용가</option>
 						</select>
                     </div>
                   </div>
@@ -358,7 +358,7 @@
                 <div class="form-group">
                   	<label class="control-label col-md-3">소재지</label>
                   	<div class="col-md-8">
-                    	<input type="text" id="location" name="location" class="form-control onlyAll" placeholder="서울특별시 금천구 가산디지털1로 186"/>
+                    	<input type="text" id="locations" name="location" class="form-control onlyAll" placeholder="서울특별시 금천구 가산디지털1로 186"/>
                     </div>
                 </div>
 <!--                 <div class="form-group"> -->
@@ -638,7 +638,7 @@ $(document).ready(function() {
 		var guarantee_name = $("#guarantee_name").val();
 		var supply_area = $("#supply_area").val();
 		var exclusive_area = $("#exclusive_area").val();
-		var location = $("#location").val();
+		var locations = $("#locations").val();
 		var comple_year = $("#comple_year").val();
 		var connoisseur = $("#connoisseur").val();
 		
@@ -690,9 +690,9 @@ $(document).ready(function() {
 			alert("전용면적을 선택해 주세요.");
 			$("#exclusive_area").focus();
 			
-		} else if(location == "") {
+		} else if(locations == "") {
 			alert("소재지를 입력 해주세요.");
-			$("#location").focus();
+			$("#locations").focus();
 			
 		} else if(comple_year == "") {
 			alert("준공(생산)일자를 입력 해주세요.");
@@ -711,7 +711,6 @@ $(document).ready(function() {
 				,contentType:false
 				,type:"POST"
 				,success:function(result){
-					alert(result);
 					if(result > 0){
 						location.href = "${pageContext.request.contextPath}/sub_document";
 					} else {

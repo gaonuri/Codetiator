@@ -37,18 +37,18 @@
 	$(document).ready(function() {
 		var temp = 0;
 		var add  = 0;
-		var current_price = parseInt($("#current_price").val() * 10000);
-		var invest_price = parseInt($("#invest_price").val());
-		var deposit = parseInt($("#inputDeposit771").val());
-		var invest 	= parseInt($("#inputAmt771").val());
-		var intrst 	= invest * $("#rate").val() * 0.01;
-		var limit	= parseInt($("#invest_limit").val());
-		var tax 	= parseInt(intrst * 0.275);
-		var benefit = invest + intrst - tax;
+		var current_price = parseInt($("#current_price").val() * 10000);	// 투자 받은 금액
+		var invest_price = parseInt($("#invest_price").val());				// 투자 한 금액
+		var deposit = parseInt($("#inputDeposit771").val());				// 예치금
+		var invest 	= parseInt($("#inputAmt771").val());					// 투자 할 금액
+		var intrst 	= invest * $("#rate").val() * 0.01;						// 이자
+		var limit	= parseInt($("#invest_limit").val());					// 최대 투자 가능 금액
+		var tax 	= parseInt(intrst * 0.275);								// 세금
+		var benefit = invest + intrst - tax;								// 이익
 		var confirmYN = false;
 		var check = $("input:checkbox[id=agreeCheckbox]:checked").is(":checked");
 
-
+		$("#inputDeposit771").val(addComma(deposit));
 		
 		$("#amtPlus100_771").click(function() {
 			addDeposit(1000000);
@@ -78,6 +78,7 @@
 			} else {
 				$("#inputAmt771").val($("#inputDeposit771").val());
 			}
+			alert($("#inputAmt771").val());
 			calculating();
 		});//amtPlusAll_771
 		
@@ -106,53 +107,12 @@
 		$("#inputAmt771").blur(function() {
 			var str = $("#inputAmt771").val();
 			//alert(str.substr(str.length-4, 4)); 숫자 뒤 4자리가 0000인지 확인
-			
 			if("0000" != str.substr(str.length-4, 4)) {
 				alert("만원 단위로 입력하시기 바랍니다.");
+				$("#inputAmt771").val("0");
+				calculating();
 			}//if
 		});//blur
-
-		function addDeposit(add) {
-			if(deposit > 0) {
-				temp = parseInt($("#inputAmt771").val());
-				temp += add;
-				//deposit = parseInt($("#inputDeposit771").val());
-				//alert(temp);alert(deposit);
-				if(temp > limit) {
-					alert("동일 차입자에게 투자한도 이상의 투자를 할 수 없습니다.");
-				} else if(temp > deposit) {
-					confirmYN = confirm("투자 가능 예치금이 부족합니다. 예치금 관리 페이지로 이동하시겠습니까?");
-					if(confirmYN == true) {
-						location.href = "${pageContext.request.contextPath}/my_depo_mgn";
-					} else {
-						return;
-					}//if
-				} else {
-					$("#inputAmt771").val(temp);
-					calculating();
-				}
-			} else {
-				confirmYN = confirm("투자 가능 예치금이 부족합니다. 예치금 관리 페이지로 이동하시겠습니까?");
-				if(confirmYN == true) {
-					location.href = "${pageContext.request.contextPath}/my_depo_mgn";
-				} else {
-					return;
-				}//if
-			}//if
-		}//addDeposit
-		
-		function calculating() {
-			invest 	= parseInt($("#inputAmt771").val());
-			intrst 	= invest * $("#rate").val() * 0.01;
-			tax 	= parseInt(intrst * 0.275);
-			benefit = invest + intrst - tax;
-
-			$("#investAmtL").text(invest);
-			$("#intrstAmtL").text(intrst);
-			$("#taxAmtL").text(tax);
-			$("#benefitAmtL").text(benefit);
-		}//calculating
-		
 	
 		$("#invest_offer_u").click(function() {
 			if(parseInt($("#inputAmt771").val()) == 0) {
@@ -257,6 +217,53 @@
 				alert("약관에 동의해주시기 바랍니다.");
 			}//if
 		});//invest_offer_b
+
+		
+		function addDeposit(add) {
+			if(deposit > 0) {
+				temp = parseInt($("#inputAmt771").val());
+				temp += add;
+				//deposit = parseInt($("#inputDeposit771").val());
+				//alert(temp);alert(deposit);
+				if(temp > limit) {
+					alert("동일 차입자에게 투자한도 이상의 투자를 할 수 없습니다.");
+				} else if(temp > deposit) {
+					confirmYN = confirm("투자 가능 예치금이 부족합니다. 예치금 관리 페이지로 이동하시겠습니까?");
+					if(confirmYN == true) {
+						location.href = "${pageContext.request.contextPath}/my_depo_mgn";
+					} else {
+						return;
+					}//if
+				} else {
+					$("#inputAmt771").val(temp);
+					calculating();
+				}
+			} else {
+				confirmYN = confirm("투자 가능 예치금이 부족합니다. 예치금 관리 페이지로 이동하시겠습니까?");
+				if(confirmYN == true) {
+					location.href = "${pageContext.request.contextPath}/my_depo_mgn";
+				} else {
+					return;
+				}//if
+			}//if
+		}//addDeposit
+		
+		function calculating() {
+			invest 	= parseInt($("#inputAmt771").val());
+			intrst 	= invest * $("#rate").val() * 0.01;
+			tax 	= parseInt(intrst * 0.275);
+			benefit = invest + intrst - tax;
+
+			$("#investAmtL").text(addComma(invest));
+			$("#intrstAmtL").text(addComma(intrst));
+			$("#taxAmtL").text(addComma(tax));
+			$("#benefitAmtL").text(addComma(benefit));
+		}//calculating
+		
+		function addComma(num) {
+			var regexp = /\B(?=(\d{3})+(?!\d))/g;
+			return num.toString().replace(regexp, ',');
+		}//addComma
 	});//ready
 	</script>
 </head>
@@ -575,7 +582,7 @@
 													</div>
 												</div>
 					
-												<div class="bottomLine">
+												<div class="bottomLine" style="float:center;">
 													<c:choose>
 														<c:when test="${memVO.user_num != null}">
 															<button id="invest_offer_u">투자 신청u</button>
@@ -605,7 +612,7 @@
 	    <!-- /MAIN CONTENT -->
 	    
 	    <!-- hidden value -->
-		<input type="hidden" id="reqAmt771" name="reqAmt" value="0">
+	    <input type="hidden" id="reqAmt771" name="reqAmt" value="0">
 		<input type="hidden" name="repayAmt" id="repayAmt771" value="164625000">
 		<input type="hidden" name="loanAmt" id="loanAmt771" value="150000000">
 		<input type="hidden" name="umbrellarRate" id="umbrellarRate771" value="0.0">
@@ -624,50 +631,7 @@
     <!--main content end-->
 		
 		<!--footer start-->
-		<footer class="site-footer">
-			<div class="container">
-			<div class="row">
-		        <!-- ADDRESS -->
-				<div class="col-lg-4">
-					<img alt="logo" src="${pageContext.request.contextPath}/resources/img/test_logo.jpg" width="200px" height="200px">
-					<h4>
-						<i class="fa fa-envelope-o"></i> contact@creator.co.kr<br/>
-						<i class="fa fa-phone"></i> (02) 546-4076<br/>
-						<i class="fa fa-home"></i> 서울특별시 강남구 논현로95길 12, 4층
-					</h4>
-				</div>
-		
-				<!-- LATEST POSTS -->
-				<div class="col-lg-8">
-					<h5>
-			            플랫폼 사업자 : (주)크리에이터 | 사업자번호 : 825-88-00203 | 대표이사 신규식 <br/>
-			            TEL. 02-546-4076 | FAX. 070-4015-0577 | MAIL. contact@creator.co.kr | KakaoTalk. @creator <br/>
-			            통신판매업 2018-서울강남-04669 서울 강남구청(02-3423-5114) <br/>
-			            <br/>
-			            여신회사 : (주)크리에이터 대부| 사업자번호 : 317-88-00338 | 대표이사 백승한 <br/>
-			            P2P연계대부업 2018-금감원-1374<br/>
-			            <br/>
-			            대출금리 연 19.9%내(연체금리 연 22.9%내), 플랫폼 이용료 외 취급수수료 등 기타 부대비용 없습니다. <br/>
-			            중개수수료를 요구하거나 받는 행위는 불법입니다. 과도한 빚은 당신에게 큰 불행을 안겨줄 수 있습니다. <br/>
-						대출 시 귀하의 신용등급이 하락할 수 있습니다. 채무의 조기상환 수수료율 등 조기상환 조건 없습니다. <br/>
-						크리에이터는 투자원금과 수익을 보장하지 않으며, 투자손실에 대한 책임은 모두 투자자에게 있습니다.
-					</h5>
-					<br/>
-					<h5>
-						크리에이터는 투자원금과 수익을 보장하지 않으며, 투자손실에 대한 책임은 모두 투자자에게 있습니다.
-					</h5>
-					<br/>
-					<h5>
-						Copyright (c) 2019 Creatator
-						<br/>
-						CREATATOR 플랫폼 이용료 외 취급수수료 등 기타 부대비용 없음. 중개수수료를 요구하거나 받는 것은 불법입니다.
-					</h5>
-				</div>
-				<!-- /col-lg-8 -->
-			</div>
-		</div>
-		<!-- /container -->
-		</footer>
+		<%@ include file="../footer.jsp" %>
 		<!--footer end-->
 	
 	</section>

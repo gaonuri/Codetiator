@@ -309,16 +309,16 @@ $(document).ready(function() {
 						              	<div class="col-md-8">
 						              		<select class="form-control loanPurpose-select" id="loan_bank_name" name="loan_bank_name">
 <!-- 												<option value="00">선택하세요</option> -->						              		
-												<option value="01">신한은행</option>
-												<option value="02">국민은행</option>
-												<option value="03">우리은행</option>
-												<option value="04">하나은행</option>
-												<option value="05">씨티은행</option>
-												<option value="06">부산은행</option>
-												<option value="07">경남은행</option>
-												<option value="08">광주은행</option>
-												<option value="09">제주은행</option>
-												<option value="10">산업은행</option>
+												<option value="신한은행">신한은행</option>
+												<option value="국민은행">국민은행</option>
+												<option value="우리은행">우리은행</option>
+												<option value="하나은행">하나은행</option>
+												<option value="씨티은행">씨티은행</option>
+												<option value="부산은행">부산은행</option>
+												<option value="경남은행">경남은행</option>
+												<option value="광주은행">광주은행</option>
+												<option value="제주은행">제주은행</option>
+												<option value="산업은행">산업은행</option>
 											</select>
 						                </div>
 						            </div>
@@ -340,9 +340,9 @@ $(document).ready(function() {
 						              	<div class="col-md-8">
 						              		<select class="form-control loanPurpose-select" id="loanPeriodSelect" name="loan_period">
 <!-- 												<option value="00">선택하세요</option> -->
-												<option value="01">3개월</option>
-												<option value="02">6개월</option>
-												<option value="03">12개월</option>
+												<option value="3개월">3개월</option>
+												<option value="6개월">6개월</option>
+												<option value="12개월">12개월</option>
 											</select>
 						                </div>
 						            </div>
@@ -351,8 +351,8 @@ $(document).ready(function() {
 						              	<div class="col-md-8">
 											<select class="form-control repayTypeCd-select" id="repayTypeCdSelect">
 <!-- 												<option value="">선택하세요</option> -->
-												<option value="3">만기일시</option>
-												<option value="1">원리금균등</option>
+												<option value="만기일시">만기일시</option>
+												<option value="원리금균등">원리금균등</option>
 <!-- 												<option value="2">원리금일시</option> -->
 											</select>
 						                </div>
@@ -542,7 +542,6 @@ $(document).ready(function() {
 											</div>
 										</div>
 										<div id="pInfDiv" style="">
-											<hr>
 											<div class="row">
 												<div class="col-xs-12 col-sm-12 col-md-12">
 													<div class="modal-body-title">
@@ -757,33 +756,30 @@ $(document).ready(function() {
 	});//인풋창 제약조건 //ready
 	
 	function tempFunction() {
-		$("#frmLoan").attr("action","${pageContext.request.contextPath}/addinfo");
-		document.frmLoan.submit();
-	}
+//		$("#frmLoan").attr("action","${pageContext.request.contextPath}/addinfo");
+//		document.frmLoan.submit();
+		var form = new FormData(document.getElementById("frmLoan"));
+		$.ajax({
+			url:"${pageContext.request.contextPath}/applyloaninsert"
+			,data:form
+			,dataType:'json'
+			,processData:false
+			,contentType:false
+			,type:"POST"
+			,success:function(result){
+				if(result > 0){
+					location.href = "${pageContext.request.contextPath}/addinfo";
+				} else {
+					alert("잠시 후 다시 시도해 주세요.");
+				}
+			}
+			,error:function(xhr){
+				alert("fail");
+			}
+		});//ajax
+	}//tempFunction
 	$(document).ready(function() {
-		function tempFunction() {
 		$.ajaxSetup({cache:false});
-			var form = new FormData(document.getElementById("frmLoan"));
-			$.ajax({
-				url:"${pageContext.request.contextPath}/applyloaninsert"
-				,data:form
-				,dataType:'json'
-				,processData:false
-				,contentType:false
-				,type:"POST"
-				,success:function(result){
-					alert(result);
-					if(result > 0){
-						location.href = "${pageContext.request.contextPath}/addinfo";
-					} else {
-						alert("잠시 후 다시 시도해 주세요.");
-					}
-				}
-				,error:function(xhr){
-					alert("fail");
-				}
-			});//ajax
-		}
 	});//ready
 
 // 		$("#frmLoan").attr("action","${pageContext.request.contextPath}/applyloaninsert");
@@ -838,25 +834,25 @@ $(document).ready(function() {
 			var loan_class = $(this).val();
 			var str = "";
 			
-			if(loan_class == "01") {	// 개인신용
-				str += "<option value=\"01\">개인신용</option>";
-			} else if(loan_class == "02") {	// 개인담보
+			if(loan_class == "개인신용") {	// 개인신용
+				str += "<option value=\"개인신용\">개인신용</option>";
+			} else if(loan_class == "개인담보") {	// 개인담보
 // 				str += "<option value=\"\">선택하세요</option>";
-				str += "<option value=\"04\">부동산담보</option>";
-				str += "<option value=\"06\">동산담보</option>";
-			} else if(loan_class == "03") {	// 개인사업자신용
-				str += "<option value=\"03\">개인사업자신용</option>";
-			} else if(loan_class == "04") {	// 개인사업자담보
+				str += "<option value=\"부동산담보\">부동산담보</option>";
+				str += "<option value=\"동산담보\">동산담보</option>";
+			} else if(loan_class == "개인사업자신용") {	// 개인사업자신용
+				str += "<option value=\"개인사업자신용\">개인사업자신용</option>";
+			} else if(loan_class == "개인사업자담보") {	// 개인사업자담보
 // 				str += "<option value=\"\">선택하세요</option>";
-				str += "<option value=\"04\">부동산담보</option>";
-				str += "<option value=\"06\">동산담보</option>";
+				str += "<option value=\"부동산담보\">부동산담보</option>";
+				str += "<option value=\"동산담보\">동산담보</option>";
 ////////////////////////////////////////////////////////////////////////////////////
-			} else if(loan_class == "05") {	// 법인신용
-				str += "<option value=\"02\">법인신용</option>";
-			} else if(loan_class == "06") {	// 법인담보
+			} else if(loan_class == "법인신용") {	// 법인신용
+				str += "<option value=\"법인신용\">법인신용</option>";
+			} else if(loan_class == "법인담보") {	// 법인담보
 // 				str += "<option value=\"\">선택하세요</option>";
-				str += "<option value=\"04\">부동산담보</option>";
-				str += "<option value=\"06\">동산담보</option>";
+				str += "<option value=\"부동산담보\">부동산담보</option>";
+				str += "<option value=\"동산담보\">동산담보</option>";
 			} else {
 				str += "<option value=\"\">대출구분을 선택하세요</option>";
 			}
@@ -869,14 +865,14 @@ $(document).ready(function() {
 		$("#loan_class").on("change", function() {
 			var guaranteeType = $(this).val();
 			var str = "";
-			if (guaranteeType == "05"){
-				str += "<option value=\"01\">법인신용</option>";
-			} else if (guaranteeType == "06") {
-				str += "<option value=\"02\">아파트</option>";
-				str += "<option value=\"03\">주택</option>";
-				str += "<option value=\"04\">빌라</option>";
-				str += "<option value=\"05\">상가</option>";
-				str += "<option value=\"06\">토지</option>";	
+			if (guaranteeType == "법인신용"){
+				str += "<option value=\"법인신용\">법인신용</option>";
+			} else if (guaranteeType == "법인담보") {
+				str += "<option value=\"아파트\">아파트</option>";
+				str += "<option value=\"주택\">주택</option>";
+				str += "<option value=\"빌라\">빌라</option>";
+				str += "<option value=\"상가\">상가</option>";
+				str += "<option value=\"토지\">토지</option>";	
 			} else {
 				str += "<option value=\"\">담보유형을 선택하세요</option>";
 			}
@@ -890,12 +886,12 @@ $(document).ready(function() {
 		var str = "";
 		if(loginCusGbCd == "1") {	// 일반회원
 			//str += "<option value=\"01\">개인신용</option>";
-			str += "<option value=\"02\">개인담보</option>";
-			str += "<option value=\"03\">개인사업자신용</option>";
-			str += "<option value=\"04\">개인사업자담보</option>";
+			str += "<option value=\"개인담보\">개인담보</option>";
+			str += "<option value=\"개인사업자신용\">개인사업자신용</option>";
+			str += "<option value=\"개인사업자담보\">개인사업자담보</option>";
 		} else {	// 법인회원
-			str += "<option value=\"05\">법인신용</option>";
-			str += "<option value=\"06\">법인담보</option>";
+			str += "<option value=\"법인신용\">법인신용</option>";
+			str += "<option value=\"법인담보\">법인담보</option>";
 		}
 		var loan_class = $("#loan_class");
 // 		loan_class.empty();
@@ -909,16 +905,16 @@ $(document).ready(function() {
 			var loan_class =  $(this).val();
 			var str = "";
 			
-			if(loan_class == "04") {	// 부동산 담보
-				str += "<option value=\"02\">아파트</option>";
-				str += "<option value=\"03\">주택</option>";
-				str += "<option value=\"04\">빌라</option>";
-				str += "<option value=\"05\">상가</option>";
-				str += "<option value=\"06\">토지</option>";				
-			} else if (loan_class == "06") {
-				str += "<option value=\"07\">자동차</option>";	
-				str += "<option value=\"08\">선박</option>";
-				str += "<option value=\"09\">항공기</option>";	
+			if(loan_class == "부동산담보") {	// 부동산 담보
+				str += "<option value=\"아파트\">아파트</option>";
+				str += "<option value=\"주택\">주택</option>";
+				str += "<option value=\"빌라\">빌라</option>";
+				str += "<option value=\"상가\">상가</option>";
+				str += "<option value=\"토지\">토지</option>";				
+			} else if (loan_class == "동산담보") {
+				str += "<option value=\"자동차\">자동차</option>";	
+				str += "<option value=\"선박\">선박</option>";
+				str += "<option value=\"항공기\">항공기</option>";	
 			} else {
 				str += "<option value=\"\">담보유형을 선택하세요</option>";
 			}

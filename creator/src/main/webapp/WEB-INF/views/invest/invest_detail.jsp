@@ -1893,7 +1893,7 @@ $(document).ready(function() {
 			<div class="rpm_banner col-sm-12 col-md-12">
 				<p style="text-align:center; padding:16px 0 6px 0;">
 					<a href="/info/noticeDetail/39" target="_blank">
-						<img src="${pageContext.request.contextPath}/resources/img/rpm_txtIMG.png" class="" alt="Recovery Plan of creator" style="max-width:300px;">
+						<img src="${pageContext.request.contextPath}/resources/investtext.png" class="" alt="Recovery Plan of creator" style="max-width:300px;">
 					</a>
 				</p>
 			</div>
@@ -1940,7 +1940,7 @@ $(document).ready(function() {
 							</div>
 							<div class="amt">
 								<font class="font-purple">
-										${proVO.current_price}</font><font size="2">만원</font>
+										${proVO.current_price}</font><font size="2"></font>
 									/ ${proVO.price}<font size="2">만원</font>
 							</div>
 							<hr>
@@ -1995,16 +1995,25 @@ $(document).ready(function() {
 								</div>
 							</div>
 							<c:choose>
-								<c:when test="${memVO != null && (memVO.user_num != '' && memVO.user_num != null) || (memVO.busi_num != '' && memVO.busi_num != null)}">
-									<button type="button" class="btn btn-purple-transparent btn-block" id="investBtn1">
-										투자신청 <i class="glyphicon glyphicon glyphicon-ok"></i>
-									</button>					
+								<c:when test="${proVO.ach_state == '투자하기'}">
+									<c:choose>
+										<c:when test="${memVO != null && (memVO.user_num != '' && memVO.user_num != null) || (memVO.busi_num != '' && memVO.busi_num != null)}">
+											<button type="button" class="btn btn-purple-transparent btn-block" id="investBtn1">
+												투자신청 <i class="glyphicon glyphicon glyphicon-ok"></i>
+											</button>					
+										</c:when>
+										<c:otherwise>
+											<button type="button" class="btn btn-purple-transparent btn-block" id="investBtn2">
+												투자신청 <i class="glyphicon glyphicon glyphicon-ok"></i>
+											</button>
+										</c:otherwise>
+									</c:choose>
 								</c:when>
-								<c:otherwise>
-									<button type="button" class="btn btn-purple-transparent btn-block" id="investBtn2">
-										투자신청 <i class="glyphicon glyphicon glyphicon-ok"></i>
-									</button>
-								</c:otherwise>
+									<c:otherwise>
+										<button type="button" class="btn btn-purple-transparent btn-block" disabled="disabled">
+											${proVO.ach_state} <i class="glyphicon glyphicon glyphicon-ok"></i>
+										</button>
+									</c:otherwise>
 							</c:choose>
 						</div>
 					</div>
@@ -2041,20 +2050,6 @@ $(document).ready(function() {
 						<div class="col-md-12 col-box" style="padding-bottom:15px;">
 							<div class="wrap">
 								<div class="box loanDet">
-
-	<!-- 카카오 지도 web API -->
-	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=634dddac053ddf6be0b6aa5a165b2da8"></script>
-	<script>
-		var container = document.getElementById('map');
-		var options = {
-			center: new kakao.maps.LatLng(33.450701, 126.570667),
-			level: 3
-		};
-		var map = new kakao.maps.Map(container, options);
-	</script>
-	<!-- 카카오 지도 web API -->
-
-
 <div id="loanNoticeListDiv" class="display-none">
 	<div class="row">
 		<div class="col-md-12">
@@ -2285,7 +2280,7 @@ $(document).ready(function() {
 						<div class="row wrap_grade_IMG">
 							<div class="col-sm-12 col-md-12 col grade_txt">
 								<p style="text-align: center;">
-									크리에이터 <b>MA</b> 등급입니다
+									크리에이터 <b>${proVO.grade}</b> 등급입니다
 								</p>
 							</div>
 							<div class="col-sm-12 col-md-12 col grade_IMG">
@@ -2306,96 +2301,25 @@ $(document).ready(function() {
 										<tr>
 											<td scope="col" class="title_td">안정성</td>
 											<td scope="col">선순위 금액을 고려한 유효담보력</td>
-											<td scope="col" class="bgBL"><span id="NMVBLS_SCORE_1">8</span>점</td>
+											<td scope="col" class="bgBL"><span id="NMVBLS_SCORE_1">9</span>점</td>
 										</tr>
 										<tr>
 											<td scope="col" class="title_td">환가성</td>
 											<td scope="col">부실발생시 시장매각 또는 경매회수력</td>
-											<td scope="col" class="bgBL"><span id="NMVBLS_SCORE_2">6.5</span>점</td>
+											<td scope="col" class="bgBL"><span id="NMVBLS_SCORE_2">8</span>점</td>
 										</tr>
 										<tr>
 											<td scope="col" class="title_td">수익성</td>
 											<td scope="col">상품 투자수익률</td>
-											<td scope="col" class="bgBL"><span id="NMVBLS_SCORE_3">7.5</span>점</td>
+											<td scope="col" class="bgBL"><span id="NMVBLS_SCORE_3">7</span>점</td>
 										</tr>
 										<tr>
 											<td scope="col" class="title_td">상환성</td>
 											<td scope="col">신용등급, 소득 등 상환가능성</td>
-											<td scope="col" class="bgBL"><span id="NMVBLS_SCORE_4">7</span>점</td>
+											<td scope="col" class="bgBL"><span id="NMVBLS_SCORE_4">9</span>점</td>
 										</tr>
 									</tbody>
 								</table>
-							</div>
-						</div>
-					</div>
-					<div class="col-xs-12 col-sm-12 col-md-6 col wrap_gGraph display-none" id="nmvblsScoreChartDiv" style="display: block;">
-						<div id="nmvblsScoreChart" data-highcharts-chart="1">
-							<div id="highcharts-2wv0c4m-6" dir="ltr" class="highcharts-container " style="position: relative; overflow: hidden; width: 387px; height: 250px; text-align: left; line-height: normal; z-index: 0; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
-								<svg version="1.1" class="highcharts-root" style="font-family:&quot;Lucida Grande&quot;, &quot;Lucida Sans Unicode&quot;, Arial, Helvetica, sans-serif;font-size:12px;" xmlns="http://www.w3.org/2000/svg" width="387" height="250" viewBox="0 0 387 250">
-									<desc>Created with Highcharts 6.2.0</desc>
-									<defs>
-										<clipPath id="highcharts-2wv0c4m-7">
-											<rect x="0" y="0" width="367" height="225" fill="none"></rect>
-										</clipPath>
-										<clipPath id="highcharts-2wv0c4m-12">
-											<circle cx="183.5" cy="112.5" r="95.625"></circle>
-										</clipPath>
-									</defs>
-									<rect fill="#ffffff" class="highcharts-background" x="0" y="0" width="387" height="250" rx="0" ry="0"></rect>
-									<rect fill="none" class="highcharts-plot-background" x="10" y="10" width="367" height="225"></rect>
-									<g class="highcharts-pane-group" data-z-index="0"></g>
-									<g class="highcharts-grid highcharts-xaxis-grid " data-z-index="1">
-										<path fill="none" stroke="#e6e6e6" stroke-width="1" data-z-index="1" class="highcharts-grid-line" d="M 193.5 122.5 L 193.5 26.875" opacity="1"></path>
-										<path fill="none" stroke="#e6e6e6" stroke-width="1" data-z-index="1" class="highcharts-grid-line" d="M 193.5 122.5 L 289.125 122.5" opacity="1"></path>
-										<path fill="none" stroke="#e6e6e6" stroke-width="1" data-z-index="1" class="highcharts-grid-line" d="M 193.5 122.5 L 193.5 218.125" opacity="1"></path>
-										<path fill="none" stroke="#e6e6e6" stroke-width="1" data-z-index="1" class="highcharts-grid-line" d="M 193.5 122.5 L 97.875 122.50000000000001" opacity="1"></path>
-										<path fill="none" stroke="#e6e6e6" stroke-width="1" data-z-index="1" class="highcharts-grid-line" d="M 193.5 122.5 L 193.49999999999997 26.875" opacity="1"></path>
-									</g>
-									<g class="highcharts-grid highcharts-yaxis-grid " data-z-index="1">
-										<path fill="none" stroke="#e6e6e6" stroke-width="1" data-z-index="1" class="highcharts-grid-line" d="M 193.5 122.5 L 193.5 122.5 L 193.5 122.5 L 193.5 122.5 L 193.5 122.5 L 193.5 122.5" opacity="1"></path>
-										<path fill="none" stroke="#e6e6e6" stroke-width="1" data-z-index="1" class="highcharts-grid-line" d="M 193.5 103.375 L 193.5 103.375 L 174.375 122.5 L 193.5 141.625 L 212.625 122.5 L 193.5 103.375" opacity="1"></path>
-										<path fill="none" stroke="#e6e6e6" stroke-width="1" data-z-index="1" class="highcharts-grid-line" d="M 193.5 84.25 L 193.5 84.25 L 155.25 122.5 L 193.5 160.75 L 231.75 122.5 L 193.5 84.25" opacity="1"></path>
-										<path fill="none" stroke="#e6e6e6" stroke-width="1" data-z-index="1" class="highcharts-grid-line" d="M 193.5 65.125 L 193.5 65.125 L 136.125 122.5 L 193.5 179.875 L 250.875 122.5 L 193.5 65.125" opacity="1"></path>
-										<path fill="none" stroke="#e6e6e6" stroke-width="1" data-z-index="1" class="highcharts-grid-line" d="M 193.5 46 L 193.5 46 L 117 122.50000000000001 L 193.5 199 L 270 122.5 L 193.5 46" opacity="1"></path>
-										<path fill="none" stroke="#e6e6e6" stroke-width="1" data-z-index="1" class="highcharts-grid-line" d="M 193.5 26.875 L 193.49999999999997 26.875 L 97.875 122.50000000000001 L 193.5 218.125 L 289.125 122.5 L 193.5 26.875" opacity="1"></path>
-									</g>
-									<rect fill="none" class="highcharts-plot-border" data-z-index="1" x="10" y="10" width="367" height="225"></rect>
-									<g class="highcharts-axis highcharts-xaxis " data-z-index="2">
-										<path fill="none" class="highcharts-axis-line" data-z-index="7" d="M 193.5 26.875 A 95.625 95.625 0 1 1 193.40437501593746 26.87504781249602 M 193.5 122.5 A 0 0 0 1 0 193.5 122.5 "></path>
-									</g>
-									<g class="highcharts-axis highcharts-yaxis " data-z-index="2">
-										<path fill="none" class="highcharts-axis-line" data-z-index="7" d="M 193.5 122.5 L 193.5 26.875"></path>
-									</g>
-									<g class="highcharts-series-group" data-z-index="3">
-										<g data-z-index="0.1" class="highcharts-series highcharts-series-0 highcharts-line-series highcharts-color-0 " transform="translate(10,10) scale(1 1)" clip-path="url(#highcharts-2wv0c4m-12)">
-											<path fill="none" d="M 183.5 36 L 240.875 112.5000000000002 L 183.49999999999952 179.4375 L 116.5625 112.49999999999929 L 183.5 36" class="highcharts-graph" data-z-index="1" stroke="#712594" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"></path>
-											<path fill="none" d="M 173.5 36 L 183.5 36 L 240.875 112.5000000000002 L 183.49999999999952 179.4375 L 116.5625 112.49999999999929 L 183.5 36 L 193.5 36" stroke-linejoin="round" stroke="rgba(192,192,192,0.0001)" stroke-width="22" visibility="visible" data-z-index="2" class="highcharts-tracker-line"></path>
-										</g>
-										<g data-z-index="0.1" class="highcharts-markers highcharts-series-0 highcharts-line-series highcharts-color-0 highcharts-tracker" transform="translate(10,10) scale(1 1)">
-											<path fill="#712594" d="M 187 36 A 4 4 0 1 1 186.99999800000018 35.99600000066666 Z" class="highcharts-point highcharts-color-0"></path>
-											<path fill="#712594" d="M 244 113 A 4 4 0 1 1 243.99999800000018 112.99600000066667 Z" class="highcharts-point highcharts-color-0"></path>
-											<path fill="#712594" d="M 187 179 A 4 4 0 1 1 186.99999800000018 178.99600000066667 Z" class="highcharts-point highcharts-color-0"></path>
-											<path fill="#712594" d="M 120 112 A 4 4 0 1 1 119.99999800000016 111.99600000066667 Z" class="highcharts-point highcharts-color-0"></path>
-										</g>
-									</g>
-									<text x="194" text-anchor="middle" class="highcharts-title" data-z-index="4" style="color:#333333;font-size:18px;fill:#333333;" y="24"></text>
-									<text x="194" text-anchor="middle" class="highcharts-subtitle" data-z-index="4" style="color:#666666;fill:#666666;" y="24"></text>
-									<g class="highcharts-axis-labels highcharts-xaxis-labels " data-z-index="7">
-										<text x="193.5" style="color:#666666;cursor:default;font-size:11px;fill:#666666;" transform="translate(0,0)" text-anchor="middle" y="15.875" opacity="1">안정성</text>
-										<text x="304.125" style="color:#666666;cursor:default;font-size:11px;fill:#666666;" transform="translate(0,0)" text-anchor="start" y="126.5" opacity="1">환가성</text>
-										<text x="193.5" style="color:#666666;cursor:default;font-size:11px;fill:#666666;" transform="translate(0,0)" text-anchor="middle" y="237.125" opacity="1">수익성</text>
-										<text x="82.875" style="color:#666666;cursor:default;font-size:11px;fill:#666666;" transform="translate(0,0)" text-anchor="end" y="126.50000000000001" opacity="1">상환성</text>
-										<text x="0" style="color:#666666;cursor:default;font-size:11px;fill:#666666;" transform="translate(0,0)" text-anchor="middle" y="-9999">4</text>
-									</g>
-									<g class="highcharts-axis-labels highcharts-yaxis-labels " data-z-index="7">
-										<text x="190.5" style="color:#666666;cursor:default;font-size:11px;fill:#666666;" text-anchor="end" transform="translate(0,0)" y="120.5" opacity="1">0</text>
-										<text x="190.5" style="color:#666666;cursor:default;font-size:11px;fill:#666666;" text-anchor="end" transform="translate(0,0)" y="101.375" opacity="1">2</text>
-										<text x="190.5" style="color:#666666;cursor:default;font-size:11px;fill:#666666;" text-anchor="end" transform="translate(0,0)" y="82.25" opacity="1">4</text>
-										<text x="190.5" style="color:#666666;cursor:default;font-size:11px;fill:#666666;" text-anchor="end" transform="translate(0,0)" y="63.125" opacity="1">6</text>
-										<text x="190.5" style="color:#666666;cursor:default;font-size:11px;fill:#666666;" text-anchor="end" transform="translate(0,0)" y="44" opacity="1">8</text>
-										<text x="0" style="color:#666666;cursor:default;font-size:11px;fill:#666666;" text-anchor="end" transform="translate(0,0)" y="-9999">10</text>
-									</g>
-								</svg>
 							</div>
 						</div>
 					</div>
@@ -2484,7 +2408,43 @@ $(document).ready(function() {
 				<div class="row">
 					<div class="col-md-12">
 						<div class="content">
-							<div id="map" style="width:800px;height:300px;"></div>
+						<!-- 카카오 지도 web API -->
+						<div id="map" style="width:800px;height:400px;"></div>
+						<div id="roadview" style="width:800px;height:400px;"></div>
+						
+						<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=634dddac053ddf6be0b6aa5a165b2da8"></script>
+						<script>
+							var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+							    mapOption = {
+							        center: new kakao.maps.LatLng(37.56669, 126.98089), // 지도의 중심좌표
+							        level: 3, // 지도의 확대 레벨
+							        mapTypeId : kakao.maps.MapTypeId.ROADMAP // 지도종류
+							    }; 
+							// 지도를 생성한다 
+							var map = new kakao.maps.Map(mapContainer, mapOption); 
+							// 지도 타입 변경 컨트롤을 생성한다
+							var mapTypeControl = new kakao.maps.MapTypeControl();
+							// 지도의 상단 우측에 지도 타입 변경 컨트롤을 추가한다
+							map.addControl(mapTypeControl, kakao.maps.ControlPosition.TOPRIGHT);	
+							// 지도에 확대 축소 컨트롤을 생성한다
+							var zoomControl = new kakao.maps.ZoomControl();
+							// 지도의 우측에 확대 축소 컨트롤을 추가한다
+							map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
+							//로드뷰를 표시할 div
+							var roadviewContainer = document.getElementById('roadview'); 
+							// 로드뷰 위치
+							var rvPosition = new kakao.maps.LatLng(37.56613, 126.97853);
+							//로드뷰 객체를 생성한다
+							var roadview = new kakao.maps.Roadview(roadviewContainer, {
+								panoId : 1050215190, // 로드뷰 시작 지역의 고유 아이디 값
+								panoX : 126.97853, // panoId가 유효하지 않을 경우 지도좌표를 기반으로 데이터를 요청할 수평 좌표값
+								panoY : 37.56613, // panoId가 유효하지 않을 경우 지도좌표를 기반으로 데이터를 요청할 수직 좌표값
+								pan: 180.16640000000007, // 로드뷰 처음 실행시에 바라봐야 할 수평 각
+								tilt: 19.031999999999996, // 로드뷰 처음 실행시에 바라봐야 할 수직 각
+								zoom: -1 // 로드뷰 줌 초기값
+							}); 
+						</script>
+						<!-- 카카오 지도 web API -->
 							<table border="0" class="table">
 								<colgroup>
 									<col width="30%">
@@ -2512,7 +2472,7 @@ $(document).ready(function() {
 												지목
 											</td>
 											<td class="text-left">
-												전 및 임야
+												토지
 											</td>
 										</tr>
 										<tr>
@@ -2766,124 +2726,6 @@ $(document).ready(function() {
 										</div>
 									</div>
 								</div>
-								
-								<div class="display-none infoOpenDiv" id="scheduleDiv" style="display: block;">
-									<div class="row">
-										<div class="col-xs-12 col-sm-6 col-md-6 investCont_tit">
-											<b>|</b>&nbsp;예상 상환일정 <span class="glyphicon glyphicon-question-sign hover" style="font-size: 12px;" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="auto bottom" data-content="금일 기준으로 대출이 실행되었다고 가정할 때의 예상 일정이며, 실 상황일정은 대출 실행 후 마이페이지 > 투자 내역에서 투자상품을 클릭하시면 확인 가능합니다." data-original-title="" title=""></span>
-										</div>
-										<div class="col-xs-12 col-sm-6 col-md-6 investCont_tit_right">
-											<div class="excptRepaySchedule">
-												<div class="excptRepaySchedule1">이 상품에&nbsp;</div>
-												<div class="excptRepaySchedule2">
-													<select class="form-control" id="excptRepayScheduleAmtSelect">
-														
-															
-																<option value="1000">1000만원 투자시</option>
-															
-															
-																<option value="500">500만원 투자시</option>
-															
-															
-																<option value="300">300만원 투자시</option>
-															
-															<option value="100">100만원 투자시</option>
-															<option value="50">50만원  투자시</option>
-															<option value="20">20만원 투자시</option>
-															<option value="10">10만원 투자시</option>
-															<option value="5">5만원 투자시</option>
-															<option value="1">1만원 투자시</option>
-														
-														
-													</select>
-												</div>
-											</div>
-										</div>
-										
-										<div class="clearfix visible-sm-block visible-md-block visible-lg-block"></div>
-										
-										<div class="col-xs-12 col-sm-12 col-md-12">
-											<div class="content">
-												<div id="scheduleList">
-													<div class="goodlist-title">
-														<div class="row">
-															<div class="col-xs-4 col-md-2 col">
-																<div class="round">
-																	회차
-																	<a href="javascript:(void(0));" id="showScheduleListA">
-																		<i class="glyphicon glyphicon-plus" style="font-size: 10px;"></i>
-																	</a>
-																	<a href="javascript:(void(0));" id="hideScheduleListA" class="display-none">
-																		<i class="glyphicon glyphicon-minus" style="font-size: 10px;"></i>
-																	</a>
-																</div>
-															</div>
-															<div class="col-xs-4 col-md-2 col">
-																<div class="repayAmt">상환예정금</div>
-															</div>
-															<div class="col-xs-4 col-md-2 col">
-																<div class="repayAmt">원금(+)</div>
-															</div>
-															<div class="col-xs-4 col-md-2 col">
-																<div class="interest">이자(+)</div>
-															</div>
-															<div class="col-xs-4 col-md-2 col">
-																<div class="tax">
-																	세금(-) <span class="glyphicon glyphicon-question-sign hover" style="font-size: 12px;" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="auto bottom" data-content="2회(이자소득세, 주민세)에 걸쳐 원단위로 절사되었습니다."> <="" span="" data-original-title="" title="">
-																</span></div>
-															</div>
-															<div class="col-xs-4 col-md-2 col">
-																<div class="tranAmt">입금액</div>
-															</div>
-														</div>
-													</div>
-													<div id="scheduleListBody" class="display-none"><div class="goodlist-item">	<div class="row">		<div class="col-xs-4 col-md-2 col">			<div class="item-title">회차</div>			<div class="round">				1/9			</div>		</div>		<div class="col-xs-4 col-md-2 col">			<div class="item-title">상환예정금</div>			<div>				11,397<font size="1">원</font>			</div>		</div>		<div class="col-xs-4 col-md-2 col">			<div class="item-title">원금(+)</div>			<div class="repayAmt">				0<font size="1">원</font>			</div>		</div>		<div class="col-xs-12 col xd">			<hr>		</div>		<div class="col-xs-4 col-md-2 col">			<div class="item-title">이자(+)</div>			<div class="interest">				11,397<font size="1">원</font>			</div>		</div>		<div class="col-xs-4 col-md-2 col">			<div class="item-title">				세금(-)			</div>			<div class="tax">				3,120<font size="1">원</font>			</div>		</div>		<div class="col-xs-4 col-md-2 col">			<div class="item-title">입금액</div>			<div class="tranAmt">				8,277<font size="1">원</font>			</div>		</div>	</div></div><div class="goodlist-item">	<div class="row">		<div class="col-xs-4 col-md-2 col">			<div class="item-title">회차</div>			<div class="round">				2/9			</div>		</div>		<div class="col-xs-4 col-md-2 col">			<div class="item-title">상환예정금</div>			<div>				9,973<font size="1">원</font>			</div>		</div>		<div class="col-xs-4 col-md-2 col">			<div class="item-title">원금(+)</div>			<div class="repayAmt">				0<font size="1">원</font>			</div>		</div>		<div class="col-xs-12 col xd">			<hr>		</div>		<div class="col-xs-4 col-md-2 col">			<div class="item-title">이자(+)</div>			<div class="interest">				9,973<font size="1">원</font>			</div>		</div>		<div class="col-xs-4 col-md-2 col">			<div class="item-title">				세금(-)			</div>			<div class="tax">				2,730<font size="1">원</font>			</div>		</div>		<div class="col-xs-4 col-md-2 col">			<div class="item-title">입금액</div>			<div class="tranAmt">				7,243<font size="1">원</font>			</div>		</div>	</div></div><div class="goodlist-item">	<div class="row">		<div class="col-xs-4 col-md-2 col">			<div class="item-title">회차</div>			<div class="round">				3/9			</div>		</div>		<div class="col-xs-4 col-md-2 col">			<div class="item-title">상환예정금</div>			<div>				10,685<font size="1">원</font>			</div>		</div>		<div class="col-xs-4 col-md-2 col">			<div class="item-title">원금(+)</div>			<div class="repayAmt">				0<font size="1">원</font>			</div>		</div>		<div class="col-xs-12 col xd">			<hr>		</div>		<div class="col-xs-4 col-md-2 col">			<div class="item-title">이자(+)</div>			<div class="interest">				10,685<font size="1">원</font>			</div>		</div>		<div class="col-xs-4 col-md-2 col">			<div class="item-title">				세금(-)			</div>			<div class="tax">				2,930<font size="1">원</font>			</div>		</div>		<div class="col-xs-4 col-md-2 col">			<div class="item-title">입금액</div>			<div class="tranAmt">				7,755<font size="1">원</font>			</div>		</div>	</div></div><div class="goodlist-item">	<div class="row">		<div class="col-xs-4 col-md-2 col">			<div class="item-title">회차</div>			<div class="round">				4/9			</div>		</div>		<div class="col-xs-4 col-md-2 col">			<div class="item-title">상환예정금</div>			<div>				10,685<font size="1">원</font>			</div>		</div>		<div class="col-xs-4 col-md-2 col">			<div class="item-title">원금(+)</div>			<div class="repayAmt">				0<font size="1">원</font>			</div>		</div>		<div class="col-xs-12 col xd">			<hr>		</div>		<div class="col-xs-4 col-md-2 col">			<div class="item-title">이자(+)</div>			<div class="interest">				10,685<font size="1">원</font>			</div>		</div>		<div class="col-xs-4 col-md-2 col">			<div class="item-title">				세금(-)			</div>			<div class="tax">				2,930<font size="1">원</font>			</div>		</div>		<div class="col-xs-4 col-md-2 col">			<div class="item-title">입금액</div>			<div class="tranAmt">				7,755<font size="1">원</font>			</div>		</div>	</div></div><div class="goodlist-item">	<div class="row">		<div class="col-xs-4 col-md-2 col">			<div class="item-title">회차</div>			<div class="round">				5/9			</div>		</div>		<div class="col-xs-4 col-md-2 col">			<div class="item-title">상환예정금</div>			<div>				11,041<font size="1">원</font>			</div>		</div>		<div class="col-xs-4 col-md-2 col">			<div class="item-title">원금(+)</div>			<div class="repayAmt">				0<font size="1">원</font>			</div>		</div>		<div class="col-xs-12 col xd">			<hr>		</div>		<div class="col-xs-4 col-md-2 col">			<div class="item-title">이자(+)</div>			<div class="interest">				11,041<font size="1">원</font>			</div>		</div>		<div class="col-xs-4 col-md-2 col">			<div class="item-title">				세금(-)			</div>			<div class="tax">				3,030<font size="1">원</font>			</div>		</div>		<div class="col-xs-4 col-md-2 col">			<div class="item-title">입금액</div>			<div class="tranAmt">				8,011<font size="1">원</font>			</div>		</div>	</div></div><div class="goodlist-item">	<div class="row">		<div class="col-xs-4 col-md-2 col">			<div class="item-title">회차</div>			<div class="round">				6/9			</div>		</div>		<div class="col-xs-4 col-md-2 col">			<div class="item-title">상환예정금</div>			<div>				10,685<font size="1">원</font>			</div>		</div>		<div class="col-xs-4 col-md-2 col">			<div class="item-title">원금(+)</div>			<div class="repayAmt">				0<font size="1">원</font>			</div>		</div>		<div class="col-xs-12 col xd">			<hr>		</div>		<div class="col-xs-4 col-md-2 col">			<div class="item-title">이자(+)</div>			<div class="interest">				10,685<font size="1">원</font>			</div>		</div>		<div class="col-xs-4 col-md-2 col">			<div class="item-title">				세금(-)			</div>			<div class="tax">				2,930<font size="1">원</font>			</div>		</div>		<div class="col-xs-4 col-md-2 col">			<div class="item-title">입금액</div>			<div class="tranAmt">				7,755<font size="1">원</font>			</div>		</div>	</div></div><div class="goodlist-item">	<div class="row">		<div class="col-xs-4 col-md-2 col">			<div class="item-title">회차</div>			<div class="round">				7/9			</div>		</div>		<div class="col-xs-4 col-md-2 col">			<div class="item-title">상환예정금</div>			<div>				11,753<font size="1">원</font>			</div>		</div>		<div class="col-xs-4 col-md-2 col">			<div class="item-title">원금(+)</div>			<div class="repayAmt">				0<font size="1">원</font>			</div>		</div>		<div class="col-xs-12 col xd">			<hr>		</div>		<div class="col-xs-4 col-md-2 col">			<div class="item-title">이자(+)</div>			<div class="interest">				11,753<font size="1">원</font>			</div>		</div>		<div class="col-xs-4 col-md-2 col">			<div class="item-title">				세금(-)			</div>			<div class="tax">				3,220<font size="1">원</font>			</div>		</div>		<div class="col-xs-4 col-md-2 col">			<div class="item-title">입금액</div>			<div class="tranAmt">				8,533<font size="1">원</font>			</div>		</div>	</div></div><div class="goodlist-item">	<div class="row">		<div class="col-xs-4 col-md-2 col">			<div class="item-title">회차</div>			<div class="round">				8/9			</div>		</div>		<div class="col-xs-4 col-md-2 col">			<div class="item-title">상환예정금</div>			<div>				10,329<font size="1">원</font>			</div>		</div>		<div class="col-xs-4 col-md-2 col">			<div class="item-title">원금(+)</div>			<div class="repayAmt">				0<font size="1">원</font>			</div>		</div>		<div class="col-xs-12 col xd">			<hr>		</div>		<div class="col-xs-4 col-md-2 col">			<div class="item-title">이자(+)</div>			<div class="interest">				10,329<font size="1">원</font>			</div>		</div>		<div class="col-xs-4 col-md-2 col">			<div class="item-title">				세금(-)			</div>			<div class="tax">				2,830<font size="1">원</font>			</div>		</div>		<div class="col-xs-4 col-md-2 col">			<div class="item-title">입금액</div>			<div class="tranAmt">				7,499<font size="1">원</font>			</div>		</div>	</div></div><div class="goodlist-item">	<div class="row">		<div class="col-xs-4 col-md-2 col">			<div class="item-title">회차</div>			<div class="round">				9/9			</div>		</div>		<div class="col-xs-4 col-md-2 col">			<div class="item-title">상환예정금</div>			<div>				1,010,685<font size="1">원</font>			</div>		</div>		<div class="col-xs-4 col-md-2 col">			<div class="item-title">원금(+)</div>			<div class="repayAmt">				1,000,000<font size="1">원</font>			</div>		</div>		<div class="col-xs-12 col xd">			<hr>		</div>		<div class="col-xs-4 col-md-2 col">			<div class="item-title">이자(+)</div>			<div class="interest">				10,685<font size="1">원</font>			</div>		</div>		<div class="col-xs-4 col-md-2 col">			<div class="item-title">				세금(-)			</div>			<div class="tax">				2,930<font size="1">원</font>			</div>		</div>		<div class="col-xs-4 col-md-2 col">			<div class="item-title">입금액</div>			<div class="tranAmt">				1,007,755<font size="1">원</font>			</div>		</div>	</div></div></div>
-													<div class="goodlist-title" style="font-weight: bold;">
-														<div class="row">
-															<div class="col-xs-4 col-md-2 col">
-																<div>
-																	<font size="1">총</font> <span id="dstrbtnRnd">9</span><font size="1">회</font>
-																</div>
-															</div>
-															<div class="col-xs-4 col-md-2 col">
-																<div>
-																	<span id="dstrbtnAmt">1,097,233</span><font size="1">원</font>
-																</div>
-															</div>
-															<div class="col-xs-4 col-md-2 col">
-																<div class="font-blue">
-																	<span id="prncplAmt">1,000,000</span><font size="1">원</font>
-																</div>
-															</div>
-															<div class="col-xs-4 col-md-2 col">
-																<div class="font-blue">
-																	<span id="intrstAmt">97,233</span><font size="1">원</font>
-																</div>
-															</div>
-															<div class="col-xs-4 col-md-2 col">
-																<div class="font-red">
-																	<span id="taxAmt">26,650</span><font size="1">원</font>
-																</div>
-															</div>
-															<div class="col-xs-4 col-md-2 col">
-																<div class="font-navy">
-																	<span id="tranAmt">1,070,583</span><font size="1">원</font>
-																</div>
-															</div>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-								
-								<div id="closedInfoDiv" class="closedInfo display-none" style="margin-bottom: 20px;">
-									<div class="row">
-										<div class="closedInfoCont_tit col-md-12" id="closedInfoTxt"></div>
-									</div>
-								</div>
-								
 								<!-- 자주묻는질문 start -->
 						<div>
 							<hr>
@@ -2950,7 +2792,7 @@ $(document).ready(function() {
 														</div>
 														<div id="investFaqCollapse3" class="panel-collapse collapse" role="tabpanel" aria-labelledby="investFaqHeading3" aria-expanded="false" style="height: 0px;">
 															<div id="FAQbody" class="panel-body">
-																투자 시 발생된 이자수익은 과세대상입니다. 현행 세법에 따라 비영업대금에 대한 이익은 이자소득으로 간주되어 25%의 세율이 적용됩니다. (소득세법 제16조 제1항 제11) 여기에 주민세가 2.5% 추가되어 총 27.5%를 세금으로 원천징수 하고있습니다. 미드레이트에서는 회원님의 이자 수익에대해서 납세금을 납부하며, 세후의 순수익에 대하여 회원님의 예치금 계좌로 입금해 드립니다.
+																투자 시 발생된 이자수익은 과세대상입니다. 현행 세법에 따라 비영업대금에 대한 이익은 이자소득으로 간주되어 25%의 세율이 적용됩니다. (소득세법 제16조 제1항 제11) 여기에 주민세가 2.5% 추가되어 총 27.5%를 세금으로 원천징수 하고있습니다. 크리에이터에서는 회원님의 이자 수익에대해서 납세금을 납부하며, 세후의 순수익에 대하여 회원님의 예치금 계좌로 입금해 드립니다.
 															</div>
 														</div>
 													</div>
@@ -3006,7 +2848,7 @@ $(document).ready(function() {
 																 3. 법정대리인 신분증 사본<br>
 																 4. 미성년자 계좌 사본
 																<br><br>
-																* 이메일 주소: contact@midrate.co.kr<br>
+																* 이메일 주소: contact@creator.co.kr<br>
 																* 우편 주소: (우)06131 서울특별시 강남구 논현로95길 12, 4층
 															</div>
 														</div>
@@ -3021,7 +2863,7 @@ $(document).ready(function() {
 														</div>
 														<div id="investFaqCollapse6" class="panel-collapse collapse" role="tabpanel" aria-labelledby="investFaqHeading6" aria-expanded="false">
 															<div id="FAQbody" class="panel-body">
-																투자 회원님의 이자소득에 대한 세금은 미드레이트에서 원천징수합니다. 따라서 별도로 소득 신고를 하실 필요가 없습니다.
+																투자 회원님의 이자소득에 대한 세금은 크리에이터에서 원천징수합니다. 따라서 별도로 소득 신고를 하실 필요가 없습니다.
 															</div>
 														</div>
 													</div>
@@ -3029,16 +2871,16 @@ $(document).ready(function() {
 														<div class="panel-heading" role="tab" id="investFaqHeading7">
 															<h4 class="panel-title" id="FAQhead">
 																<a data-toggle="collapse" data-parent="#investFaqAccordion" href="#investFaqCollapse7" aria-expanded="false" aria-controls="investFaqCollapse7" class="collapsed">
-																	Q7. 미드레이트에 투자하면 원금이 보장되나요?
+																	Q7. 크리에이터에 투자하면 원금이 보장되나요?
 																</a>
 															</h4>
 														</div>
 														<div id="investFaqCollapse7" class="panel-collapse collapse" role="tabpanel" aria-labelledby="investFaqHeading7" aria-expanded="false">
 															<div id="FAQbody" class="panel-body">
-																미드레이트의 투자상품은 원금이 보장되지 않습니다. 미드레이트와 같은 P2P대출 플랫폼에서의 투자는 현행 법률상 '유사수신행위의 규제에 관한 법률'에 의해 원금과 수익을 보장할 수 없으며, '원금 보장이 안됨'을 명시하지 않는 것은 법률 위반입니다.
-																미드레이트는 이에 대해 충분한 사전 고지 의무를 다하고자 합니다.
-																투자고객님은 이를 인지하시고 신중한 결정 부탁드립니다. 다만, 미드레이트는 자체신용평가시스템을 통해 대출고객의 신용도를 세밀하고 정밀하게 평가하여 리스크를 낮추고 있습니다.
-																투자고객님께서는 반드시 분산투자를 통해 부도에 대한 위험을 낮추실 수 있습니다. 분산투자가 어렵게 느껴지는 투자회원님을 위해 미드레이트에서는 자동 투자 시스템을 마련하였습니다.
+																크리에이터의 투자상품은 원금이 보장되지 않습니다. 크리에이터와 같은 P2P대출 플랫폼에서의 투자는 현행 법률상 '유사수신행위의 규제에 관한 법률'에 의해 원금과 수익을 보장할 수 없으며, '원금 보장이 안됨'을 명시하지 않는 것은 법률 위반입니다.
+																크리에이터는 이에 대해 충분한 사전 고지 의무를 다하고자 합니다.
+																투자고객님은 이를 인지하시고 신중한 결정 부탁드립니다. 다만, 크리에이터는 자체신용평가시스템을 통해 대출고객의 신용도를 세밀하고 정밀하게 평가하여 리스크를 낮추고 있습니다.
+																투자고객님께서는 반드시 분산투자를 통해 부도에 대한 위험을 낮추실 수 있습니다. 분산투자가 어렵게 느껴지는 투자회원님을 위해 크리에이터에서는 자동 투자 시스템을 마련하였습니다.
 															</div>
 														</div>
 													</div>
@@ -3052,12 +2894,12 @@ $(document).ready(function() {
 														</div>
 														<div id="investFaqCollapse8" class="panel-collapse collapse" role="tabpanel" aria-labelledby="investFaqHeading8" aria-expanded="false">
 															<div id="FAQbody" class="panel-body">
-																㈜미드레이트대부가 채권추심을 합니다. ㈜미드레이트대부는 채권자로서 채권추심을 대행하여 투자고객의 자산 보호에 최선을 다하며, 전화, 문자메시지, 방문 등 적법한 절차에 따른 추심 과정을 진행하게 됩니다. 
-																2개월 동안은 ㈜미드레이트대부에서 자체추심을 진행하며, 2개월 이상 연체될 경우 채권추심업체에 의뢰하여 추심업무를 이행하게 됩니다. 
+																㈜크리에이터대부가 채권추심을 합니다. ㈜크리에이터대부는 채권자로서 채권추심을 대행하여 투자고객의 자산 보호에 최선을 다하며, 전화, 문자메시지, 방문 등 적법한 절차에 따른 추심 과정을 진행하게 됩니다. 
+																2개월 동안은 ㈜크리에이터대부에서 자체추심을 진행하며, 2개월 이상 연체될 경우 채권추심업체에 의뢰하여 추심업무를 이행하게 됩니다. 
 																차입자의 연체일수가 장기화되어 6개월 이상 연체된다면 부실채권을 매각하며, 투자금의 일부를 회수합니다. 
 																미회수분에 대해서는 대손처리되어 원금 손실이 있을 수 있습니다. 참고로, P2P금융업체는 원금이 보장되지 않음을 명시해야 하며, 
 																이를 고객에게 적극적으로 알려야 할 의무가 있습니다. 이를 지키지 않는 것은 유사수신행위의 규제에 관한 법률 위반입니다. 
-																다만, 미드레이트는 단일 채권에 대한 투자금액 상한선을 정하는 등 분산투자를 권유해드리고 있으며, 분산투자가 이루어졌을 때 대손율은 약 1% 내외로 예상하고 있습니다.
+																다만, 크리에이터는 단일 채권에 대한 투자금액 상한선을 정하는 등 분산투자를 권유해드리고 있으며, 분산투자가 이루어졌을 때 대손율은 약 1% 내외로 예상하고 있습니다.
 															</div>
 														</div>
 													</div>
