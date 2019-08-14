@@ -1182,7 +1182,8 @@ form {
 										<div class="clearfix"></div>
 										<div class="hover-button"></div>
 									</div>
-									<img src="${pageContext.request.contextPath}/resources/img/overwatch.jpg">
+<%-- 									<img src="${pageContext.request.contextPath}/resources/img/overwatch.jpg"> --%>
+										<img alt="/${vo.img_path}" src="/${vo.img_path}" />
 								</a>
 								<div class="item-top-badge">
 									<span class="label label-primary">LTV ${(proVO.price / guaVO.connoisseur) * 100}%</span>
