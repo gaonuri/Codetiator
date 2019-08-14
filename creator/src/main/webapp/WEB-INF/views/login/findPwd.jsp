@@ -99,6 +99,18 @@ $(document).ready(function(){
 </script>
 </head>
 <style>
+#findpwd-banner {
+    position: relative;
+    overflow: hidden;
+    background: url(${pageContext.request.contextPath}/resources/img/bgImg_investIntro.png) center 0% no-repeat;
+    background-size: 100%;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-attachment: fixed;
+    color: #fff;
+    height: 50px;
+}
 
 body{
 	background-color: #f7f7f7;
@@ -198,6 +210,12 @@ body{
 
 </style>
 <body>
+<section id="findpwd-banner" class="text-center">
+		<div class="overlay">
+			<div class="section-body">
+			</div>
+		</div>
+</section>
 	<section id="container">
 	    <!-- **********************************************************************************************************************************************************
 	        TOP BAR CONTENT & NOTIFICATIONS
