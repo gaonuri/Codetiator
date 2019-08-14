@@ -10,6 +10,7 @@
 		FROM project_list p 
 		LEFT OUTER JOIN guarantee g 
 		ON p.project_num = g.project_num 
+		WHERE p.judge_status = 2
 		ORDER BY p.regi_date DESC
 	</select>
 	

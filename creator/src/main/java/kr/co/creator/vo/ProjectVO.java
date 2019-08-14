@@ -69,6 +69,7 @@ public class ProjectVO {
 	private String busi_num;			// (참조)법인유저번호
 	private String guarantee_num;		// 담보번호
 	
+	
 	public String getRefund_request() {
 		return refund_request;
 	}

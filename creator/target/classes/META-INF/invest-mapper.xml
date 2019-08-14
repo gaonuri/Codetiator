@@ -8,8 +8,9 @@
 	<select id="investList" resultType="kr.co.creator.vo.ProjectVO">
 		SELECT *
 		FROM 	project_list 
-		WHERE	ach_state != "상환완료" 
-		AND 	ach_state != "중도상환"
+		WHERE	(ach_state != "상환완료" 
+		AND 	ach_state != "중도상환")
+		AND		judge_status = 2
 		ORDER BY regi_date DESC
 	</select>
 	
@@ -48,7 +49,8 @@
 	<select id="investFinished" resultType="kr.co.creator.vo.ProjectVO">
 		select	* 
 		from	project_list 
-		where	ach_state = "상환완료" || ach_state = "중도상환" 
+		where	(ach_state = "상환완료" || ach_state = "중도상환") 
+		and		judge_status = 2 
 		order by regi_date desc 
 	</select>
 	
