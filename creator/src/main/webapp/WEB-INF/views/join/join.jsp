@@ -585,6 +585,18 @@ $(document).ready(function(){
 article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
     display: block;
 }
+#join-banner {
+    position: relative;
+    overflow: hidden;
+    background: url(${pageContext.request.contextPath}/resources/img/bgImg_investIntro.png) center 0% no-repeat;
+    background-size: 100%;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-attachment: fixed;
+    color: #fff;
+    height: 50px;
+}
 body, html {
     font-family: 'Noto Sans KR', sans-serif;
     /* font-family: "Seoul Namsan", sans-serif; */
@@ -1048,6 +1060,13 @@ $(document).ready(function() {
 	    <!-- **********************************************************************************************************************************************************
 	        TOP BAR CONTENT & NOTIFICATIONS
 	        *********************************************************************************************************************************************************** -->
+	        
+<section id="join-banner" class="text-center">
+		<div class="overlay">
+			<div class="section-body">
+			</div>
+		</div>
+</section>	        
 	    <!--header start-->
 	    
 	     <%@ include file="../header.jsp" %>

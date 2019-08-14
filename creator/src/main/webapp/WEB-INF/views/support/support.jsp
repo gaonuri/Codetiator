@@ -85,7 +85,7 @@ body{
 	width: 100%;
 	height: 430px;
 	color: #fff;
-	background: url(/images/common/common_banner_title.jpg)center 0% no-repeat;
+	background: url(${pageContext.request.contextPath}/resources/img/bgImg_investIntro.png)center 0% no-repeat;
 				/*
 				linear-gradient(120deg,  #712594, #9968fe, #ff5c5c, #a55cff, #712594);
 				*/

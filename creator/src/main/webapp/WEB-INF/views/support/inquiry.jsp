@@ -98,7 +98,7 @@
 .contact_title{
 	width:100%;
 	height: 430px;
-	background: url(/images/common/common_banner_cc.jpg) center 0% no-repeat;
+	background: url(${pageContext.request.contextPath}/resources/img/bgImg_investIntro.png) center 0% no-repeat;
 	background-size: cover;
 	-webkit-background-size: cover; 
 	-moz-background-size: cover; 
@@ -294,7 +294,7 @@
 #aboutus-banner{
 	position: relative;
 	overflow: hidden;
-	background: url(/images/common/common_banner_title.jpg) center 0% no-repeat;
+	background: url(${pageContext.request.contextPath}/resources/img/bgImg_investIntro.png) center 0% no-repeat;
 	background-color:#712594;
 	background-size: 100%;
 	-webkit-background-size: cover; 
