@@ -2,7 +2,6 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <head>
-<script src="${pageContext.request.contextPath}/resources/jquery/jquery-3.4.1.js"></script>
 <script type="text/javascript">
 $(document).ready(function() {
 	  $(window).scroll(function() {

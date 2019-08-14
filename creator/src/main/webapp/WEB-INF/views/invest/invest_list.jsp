@@ -521,14 +521,14 @@ form {
 <body>
 	<!-- for all pages -->
 
-<form id="commonForm" name="commonForm"></form>
+<form id="commonForm" name="commonForm" style="display: none;"></form>
 
 <!-- Navigation
 ==========================================-->
 	<!--header start-->
 	<%@ include file="../header.jsp" %>
 	<!--header end-->
-	<script type="text/javascript">
+	<script type="text/javascript">	
 	
 	$(function() {
 		$("#topGuideButton").on("click", function() {

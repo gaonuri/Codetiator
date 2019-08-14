@@ -31,4 +31,30 @@
 		from	project_list 
 		where 	project_num = #{project_num}
 	</select>
+	
+	<select id="investDetail" parameterType="kr.co.creator.vo.InvestVO" resultType="kr.co.creator.vo.InvestVO">
+		SELECT SUM(invest_price) invest_price, p.busi_num 
+		FROM invest_list i, project_list p 
+		WHERE i.project_num = p.project_num 
+		AND p.busi_num = #{p_busi_num} 
+		AND (i.user_num = #{user_num} OR i.busi_num = #{busi_num}) 
+		AND p.ach_state = '투자하기'
+	</select>
+	
+	<select id="guaranteeDetail" parameterType="kr.co.creator.vo.GuaranteeVO" resultType="kr.co.creator.vo.GuaranteeVO">
+		select	* 
+		from	guarantee 
+		where 	project_num = #{project_num}
+	</select>
+	
+	<update id="project_success" parameterType="kr.co.creator.vo.ProjectVO">
+		update project_list
+		set judge_status = 2
+		where project_num = #{project_num}
+	</update>
+	
+	<delete id="project_delete" parameterType="kr.co.creator.vo.ProjectVO">
+		delete from project_list 
+		where project_num = #{project_num}
+	</delete>
 </mapper>

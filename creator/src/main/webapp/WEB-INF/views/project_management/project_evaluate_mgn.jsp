@@ -618,7 +618,7 @@ form {
 										</div>
 									</div>
 									<h4 style="text-align:center;">[${vo.genre}] ${vo.project_name}</h4>
-									<div class="progress">
+									<div class="progress">	
 										<div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="${vo.current_price / vo.price * 100}" aria-valuemin="0" aria-valuemax="100" style="min-width:20px;width: 57%">
 											${vo.current_price / vo.price * 100}%					
 										</div>
@@ -702,38 +702,38 @@ form {
 						<div class="goodlist-item">
 							<div class="row">
 								<div class="col-xs-9 col-sm-9 col-md-4">
-									<a href="${pageContext.request.contextPath}/invest_detail?project_num=${vo.project_num}&p_busi_num=${vo.busi_num}&user_num=${memVO.user_num}">
+									<a href="${pageContext.request.contextPath}/project_detail_mgn?project_num=${vo.project_num}&p_busi_num=${vo.busi_num}&user_num=${memVO.user_num}">
 										<div class="id">04-19-136</div>
 										<div class="title">[${vo.genre}] ${vo.project_name}</div>
 									</a>
 								</div>
 								<div class="col-xs-3 col-sm-3 col-md-1 col">
 									<div class="item-title">등급</div>
-									<a href="${pageContext.request.contextPath}/invest_detail?project_num=${vo.project_num}&p_busi_num=${vo.busi_num}&user_num=${memVO.user_num}">
+									<a href="${pageContext.request.contextPath}/project_detail_mgn?project_num=${vo.project_num}&p_busi_num=${vo.busi_num}&user_num=${memVO.user_num}">
 										<div class="grade grade-font-MA">${vo.grade}</div>
 									</a>
 								</div>
 								<div class="col-xs-3 col-sm-3 col-md-1 col">
 									<div class="item-title">연 수익률</div>
-									<a href="${pageContext.request.contextPath}/invest_detail?project_num=${vo.project_num}&p_busi_num=${vo.busi_num}&user_num=${memVO.user_num}">
+									<a href="${pageContext.request.contextPath}/project_detail_mgn?project_num=${vo.project_num}&p_busi_num=${vo.busi_num}&user_num=${memVO.user_num}">
 										<div class="rate">${vo.rate}<font size="1">%</font></div>
 									</a>
 								</div>
 								<div class="col-xs-3 col-sm-3 col-md-1 col">
 									<div class="item-title">기간</div>
-									<a href="${pageContext.request.contextPath}/invest_detail?project_num=${vo.project_num}&p_busi_num=${vo.busi_num}&user_num=${memVO.user_num}">
+									<a href="${pageContext.request.contextPath}/project_detail_mgn?project_num=${vo.project_num}&p_busi_num=${vo.busi_num}&user_num=${memVO.user_num}">
 										<div class="period">${vo.refund}<font size="1">개월</font></div>
 									</a>
 								</div>
 								<div class="col-xs-3 col-sm-3 col-md-1 col">
 									<div class="item-title">모집금액</div>
-									<a href="${pageContext.request.contextPath}/invest_detail?project_num=${vo.project_num}&p_busi_num=${vo.busi_num}&user_num=${memVO.user_num}">
+									<a href="${pageContext.request.contextPath}/project_detail_mgn?project_num=${vo.project_num}&p_busi_num=${vo.busi_num}&user_num=${memVO.user_num}">
 										<div class="amt">${vo.price}<font size="1">만원</font></div>
 									</a>
 								</div>
 								<div class="col-xs-3 col-sm-3 col-md-1 col">
 									<div class="item-title">상환방식</div>
-									<a href="${pageContext.request.contextPath}/invest_detail?project_num=${vo.project_num}&p_busi_num=${vo.busi_num}&user_num=${memVO.user_num}">
+									<a href="${pageContext.request.contextPath}/project_detail_mgn?project_num=${vo.project_num}&p_busi_num=${vo.busi_num}&user_num=${memVO.user_num}">
 										<div class="amt">${vo.repay_method}</div>
 									</a>
 								</div>
@@ -742,28 +742,6 @@ form {
 										<div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="${vo.current_price / vo.price * 100}" aria-valuemin="0" aria-valuemax="100" style="min-width:20px; width: 90%;">
 											<span id="investing"></span>${vo.current_price / vo.price * 100}%
 										</div>
-									</div>
-								</div>
-								<div class="col-xs-3 col-sm-3 col-md-2 col">
-									<div class="invest">
-										<c:choose>
-											<c:when test="${vo.ach_state == '투자하기'}">
-												<c:choose>
-													<c:when test="${memVO.user_num != null}">
-														<a href="${pageContext.request.contextPath}/invest?user_num=${memVO.user_num}&project_num=${vo.project_num}"><span class="active">${vo.ach_state}u</span></a>
-													</c:when>
-													<c:when test="${memVO.busi_num != null}">
-														<a href="${pageContext.request.contextPath}/invest?busi_num=${memVO.busi_num}&project_num=${vo.project_num}"><span class="active">${vo.ach_state}u</span></a>
-													</c:when>
-													<c:otherwise>
-														<a href="${pageContext.request.contextPath}/login"><span class="active">${vo.ach_state}</span></a>
-													</c:otherwise>
-												</c:choose>
-											</c:when>
-											<c:otherwise>
-												<span class="active">${vo.ach_state}</span>
-											</c:otherwise>
-										</c:choose>
 									</div>
 								</div>
 							</div>
