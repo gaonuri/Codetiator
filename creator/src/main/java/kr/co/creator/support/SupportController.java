@@ -45,10 +45,10 @@ public class SupportController {
 		
 		support = service.supportList();
 		
-		vo.setNotice_type("1");
+		vo.setNotice_type("새소식");
 		support2 = service.supportList2(vo);
 		
-		vo.setNotice_type("2");
+		vo.setNotice_type("공지");
 		support3 = service.supportList2(vo);
 		
 		model.addAttribute("supportlist", support);
@@ -66,10 +66,10 @@ public class SupportController {
 		
 		support = service.supportList();
 		
-		vo.setNotice_type("1");
+		vo.setNotice_type("새소식");
 		support2 = service.supportList2(vo);
 		
-		vo.setNotice_type("2");
+		vo.setNotice_type("공지");
 		support3 = service.supportList2(vo);
 		
 		model.addAttribute("supportlist", support);

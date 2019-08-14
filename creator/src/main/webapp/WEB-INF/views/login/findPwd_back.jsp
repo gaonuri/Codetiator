@@ -4,13 +4,16 @@
 <html>
 
 <head>
+
+	<script src="${pageContext.request.contextPath}/resources/jquery/jquery-3.4.1.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/ckeditor/ckeditor.js"></script>
+
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="description" content="">
 	<meta name="author" content="Dashboard">
 	<meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
 	<title>Dashio - Bootstrap Admin Template</title>
-	<script src="${pageContext.request.contextPath}/resources/jquery/jquery-3.4.1.js"></script>
 	
 	<!-- Favicons -->
 	<link href="${pageContext.request.contextPath}/resources/bootstrap/img/favicon.png" rel="icon">
@@ -33,6 +36,69 @@
 	  Author: TemplateMag.com
 	  License: https://templatemag.com/license/
 	======================================================= -->
+	
+<script type="text/javascript">
+
+//id check
+$(document).ready(function(){
+	var chkemail = '';
+
+	$("#email").blur(function(){
+		var emailStd = /([a-z0-9]{1,20}\@)([a-z]{1,20}\.)([a-z]{1,10})/gi;
+		
+		if($.trim($("#email").val()) != $(this).val().match(emailStd)){
+			alert("올바르지 않은 이메일 입니다.");
+			return;
+		}
+		$.post(
+				"${pageContext.request.contextPath}/findpwdchk",
+				{
+					email:$("#email").val()
+				},
+				function(data,status){
+					if(data == 1){
+						alert("이메일이 확인 되었습니다.");
+						chkemail = $("#email").val();
+					}else{
+						alert("등록된 이메일이 없습니다.");
+					}
+				}//function
+		);//post
+	});//ready
+});//blur
+
+$(document).ready(function(){
+	$("#findpwd_btn").click(function(){
+		if($.trim($("#email").val()) == ""){
+			alert("등록된 이메일이 없습니다.");
+// 			$("#email").focus();
+			return;
+		}
+		$.post(
+				"${pageContext.request.contextPath}/sendnewpassword"
+				,{
+					email:$("#email").val()
+				}
+				,function(data,status){
+					if(status == "success"){
+						if(data > 0){
+							alert("해당 이메일로 임시비밀번호를 발송했습니다.");
+							location.href="/creator/findpwd";
+						} else if(data == 0){
+							alert("존재하지 않는 이메일 입니다.");
+						} else {
+							alert("잠시 후, 다시 시도해 주세요.");
+						}
+					} else {
+						alert("시스템 관리자에게 문의 바랍니다.");
+					}
+				}
+		);//post
+	});//click
+});//ready
+</script>
+
+
 </head>
 
 <body>
@@ -40,32 +106,55 @@
 	    <!-- **********************************************************************************************************************************************************
 	        TOP BAR CONTENT & NOTIFICATIONS
 	        *********************************************************************************************************************************************************** -->
-		<!--header start-->
-		<%@ include file="../header.jsp" %>
-		<!--header end-->
+	    <!--header start-->
+	    
+	     <%@ include file="../header.jsp" %>
 	   
 	    <!-- **********************************************************************************************************************************************************
 	        MAIN CONTENT
 	        *********************************************************************************************************************************************************** -->
 		<!--main content start-->
-		<section id="main-content">
-			<section class="wrapper site-min-height">
-				<div class="row mt">
-					<!-- page start -->
-					<div class="col-lg-12">
-						<div>나의 남은 예치금<span><input type="text" value="${accVO.deposit}" readonly="readonly"></span></div>
-						<div>투자금<span><input type="text" value="${inVO.invest_price}" readonly="readonly"></span></div>
-						<div>${proVO.project_num}번 프로젝트 현재 모금액<span><input type="text" value="${proVO.current_price}" readonly="readonly"></span></div>
-						<a href="${pageContext.request.contextPath}/main">메인화면으로 돌아가기</a>
-					</div>
-					<!-- page end -->
-				</div>
-			</section>
+		
+<section id="main-content">
+<section class="wrapper site-min-height">
+<div class="container">
+	<div class="col-md-offset-3">
+	<img src="${pageContext.request.contextPath}/resources/img/test_logo.jpg" alt="login_img">
+	</div>
+</div>
+				
+<!-- =====================================================================logo -->
+				
+				
+<div class="col-lg-6 mt col-md-offset-3">
+	<h3 class="title">비밀번호를 잊어 버리셨나요?</h3>
+	<h4 class="title">임시 비밀번호를 보내드립니다.</h4>
+	<div class="form-group">
+		<div class="col-sm-10">
+			<input type="text" class="form-control" id="email" placeholder="*이메일">
+		</div>
+	</div>
+	<div class="form-group">
+		<div class="col-sm-10 col-lg-offset-3" id="findpwd_btn">
+		
+			<button id="findpwd_btn" class="btn btn-theme" >비밀번호 초기화</button>
+
+		</div>
+	</div>	
+<!-- 	<div class="form-send"> -->
+<!-- 		<div class="col-sm-10 col-lg-offset-3"> -->
+<!-- 			<input type="text" class="btn btn-theme" id="findpwd_btn" value="비밀번호 초기화" /> -->
+<!-- 		</div> -->
+<!-- 	</div>		 -->
+</div>
+				
+		<!-- ===================================================================== body-->		
+				
+		</section>
 			<!-- /wrapper -->
 	    </section>
 	    <!-- /MAIN CONTENT -->
 	    <!--main content end-->
-		
 		<!--footer start-->
 		<footer class="site-footer">
 			<div class="container">
@@ -129,7 +218,70 @@
 	<!--script for this page-->
 	<script src="${pageContext.request.contextPath}/resources/bootstrap/lib/sparkline-chart.js"></script>
 	<script src="${pageContext.request.contextPath}/resources/bootstrap/lib/zabuto_calendar.js"></script>
-	
+	<script type="text/javascript">
+	/*
+    $(document).ready(function() {
+      var unique_id = $.gritter.add({
+        // (string | mandatory) the heading of the notification
+        title: 'Welcome to Dashio!',
+        // (string | mandatory) the text inside the notification
+        text: 'Hover me to enable the Close Button. You can hide the left sidebar clicking on the button next to the logo. Developed by <a href="http://alvarez.is" target="_blank" style="color:#4ECDC4">Alvarez.is</a>.',
+        // (string | optional) the image to display on the left
+        image: '${pageContext.request.contextPath}/resources/bootstrap/img/ui-sam.jpg',
+        // (bool | optional) if you want it to fade out on its own or just sit there
+        sticky: false,
+        // (int | optional) the time you want it to be alive for before fading out
+        time: 8000,
+        // (string | optional) the class name you want to apply to that specific message
+        class_name: 'my-sticky-class'
+      });
+
+      return false;
+    });
+	*/
+	</script>
+	<script type="application/javascript">
+    $(document).ready(function() {
+      $("#date-popover").popover({
+        html: true,
+        trigger: "manual"
+      });
+      $("#date-popover").hide();
+      $("#date-popover").click(function(e) {
+        $(this).hide();
+      });
+
+      $("#my-calendar").zabuto_calendar({
+        action: function() {
+          return myDateFunction(this.id, false);
+        },
+        action_nav: function() {
+          return myNavFunction(this.id);
+        },
+        ajax: {
+          url: "show_data.php?action=1",
+          modal: true
+        },
+        legend: [{
+            type: "text",
+            label: "Special event",
+            badge: "00"
+          },
+          {
+            type: "block",
+            label: "Regular event",
+          }
+        ]
+      });
+    });
+
+    function myNavFunction(id) {
+      $("#date-popover").hide();
+      var nav = $("#" + id).data("navigation");
+      var to = $("#" + id).data("to");
+      console.log('nav ' + nav + ' to: ' + to.month + '/' + to.year);
+    }
+	</script>
 </body>
 
 </html>

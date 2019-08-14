@@ -116,7 +116,391 @@ $(document).ready(function(){
 </script>
 	
 </head>
+<style>
+.text-center {
+    text-align: center;
+}
+article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
+    display: block;
+}
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+section {
+    display: block;
+}
+body, html {
+    font-family: 'Noto Sans KR', sans-serif;
+    /* font-family: "Seoul Namsan", sans-serif; */
+    /* font-family: "NanumSquareRound", sans-serif; */
+    /* text-rendering: optimizeLegibility !important; */
+    /* -webkit-font-smoothing: antialiased !important; */
+    color: #5a5a5a;
+    letter-spacing: -0.4px;
+}
 
+body {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #333;
+    background-color: #EAEAEA;
+}
+html {
+    font-size: 10px;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    font-family: sans-serif;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    color: -internal-root-color;
+}
+.container {
+    width: 1170px;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+#login .section-body {
+    position: relative;
+    padding: 180px 20px 107px 20px;
+}
+#login .section-body .wrap {
+    max-width: 400px;
+    margin: auto;
+}
+#login .section-body .wrap .logo {
+    margin-bottom: 24px;
+}
+#login .section-body .wrap .logo img {
+    max-width: 160px;
+}
+img {
+    vertical-align: middle;
+    border: 0;
+}
+#login .section-body .wrap .box {
+    border: 2px solid #555;
+}
+.margin-b-40 {
+    margin-bottom: 40px;
+}
+#login .section-body .wrap .box .row-cat {
+    padding: 0 15px;
+}
+.row {
+    margin-right: -15px;
+    margin-left: -15px;
+}
+#login .section-body .wrap .box .btn-group.cusGb {
+    width: 100%;
+    border-bottom: 2px solid #555;
+}
+.btn-group, .btn-group-vertical {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+}
+.col {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+.col-md-6 {
+    width: 50%;
+}
+.col-md-1, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-10, .col-md-11, .col-md-12 {
+    float: left;
+}
+#login .section-body .wrap .box .btn-group.cusGb label {
+    font-size: 16px;
+    min-width: 50%;
+    padding: 10px;
+}
+.labelBtn-purple {
+    color: #fff;
+    font-weight: 600;
+    background-color: #712594;
+    opacity: 1.0;
+    border-radius: 0px;
+}
+
+.btn-block {
+    display: block;
+    width: 100%;
+}
+.btn {
+    display: inline-block;
+    padding: 6px 12px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+label {
+    float: left;
+    font-size: 12px;
+    font-weight: 400;
+    display: inline-block;
+    max-width: 100%;
+    margin-bottom: 5px;
+}
+#login .section-body .wrap .box .btn-group.cusGb label.checked {
+    background-color: #d9d9de;
+    border-color: #d9d9de;
+}
+#login .section-body .wrap .box .body {
+    padding: 40px 40px 60px 40px;
+}
+.margin-b-6 {
+    margin-bottom: 6px;
+}
+.form-group {
+    margin-bottom: 15px;
+}
+input[type="text"] {
+    font-family: 'Arial',sans-serif !important;
+}
+.form-control-lgn {
+    width: 100%;
+    height: 36px;
+    margin-bottom: 22px;
+    padding: 12px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #EAEAEA;
+    background-image: none;
+    border: none;
+    border-bottom: 2px solid #555;
+}
+body input {
+    margin-bottom: 14px;
+}
+input, button, select, textarea {
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+}
+input {
+    line-height: normal;
+    -webkit-writing-mode: horizontal-tb !important;
+    text-rendering: auto;
+    color: initial;
+    letter-spacing: normal;
+    word-spacing: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    display: inline-block;
+    text-align: start;
+    -webkit-appearance: textfield;
+    background-color: white;
+    -webkit-rtl-ordering: logical;
+    cursor: text;
+    margin: 0em;
+    font: 400 13.3333px Arial;
+    padding: 1px 0px;
+    border-width: 2px;
+    border-style: inset;
+    border-color: initial;
+    border-image: initial;
+}
+button, input, optgroup, select, textarea {
+    margin: 0;
+    font: inherit;
+    color: inherit;
+}
+.pswdWrap {
+    position: relative;
+}
+input[type="password"] {
+    font-family: 'Arial',sans-serif !important;
+}
+.pswdWrap i {
+    position: absolute;
+    top: 10px;
+    left: 90%;
+}
+.fa-lg {
+    font-size: 1.33333333em;
+    line-height: 0.75em;
+    vertical-align: -15%;
+}
+.fa {
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    transform: translate(0, 0);
+}
+.ui-checkbox {
+    position: relative;
+    margin: 0 20px 0 15px;
+    display: inline;
+}
+.ui-checkbox input[type=checkbox] {
+    display: none;
+}
+#saveInfoCb01 input {
+	border-width: 0px;
+}
+input[type="checkbox" i] {
+    background-color: initial;
+    cursor: default;
+    -webkit-appearance: checkbox;
+    box-sizing: border-box;
+    margin: 3px 3px 3px 4px;
+    padding: initial;
+    border: initial;
+}
+.ui-checkbox input[type=checkbox]+span {
+    font-weight: 400;
+}
+.ui-checkbox input[type=checkbox]+span:before {
+    content: "";
+    width: 18px;
+    height: 18px;
+    display: inline-block;
+    vertical-align: top;
+    margin-right: 10px;
+    margin-left: -17px;
+    background-color: transparent;
+    /* border-radius: 2px; */
+    border: 2px solid #555;
+}
+#login .section-body .wrap .form-group button {
+    border-radius: 0px;
+    border: 2px solid #555;
+    padding: 10px 26px;
+    /* margin-bottom: 12px; */
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+}
+.btn-purple-transparent {
+    color: #fff;
+    background-color: #712594;
+    opacity: 1.0;
+    font-size: 16px;
+    border-style: none;
+}
+hr {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border: 0;
+    border-top: 1px solid #eee;
+     height: 0;
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+}
+hr {
+    display: block;
+    unicode-bidi: isolate;
+    margin-block-start: 0.5em;
+    margin-block-end: 0.5em;
+    margin-inline-start: auto;
+    margin-inline-end: auto;
+    overflow: hidden;
+    border-style: inset;
+    border-width: 1px;
+}
+.display-none {
+    display: none;
+}
+.font-red {
+    color: #e08484 !important;
+}
+.margin-b-12 {
+    margin-bottom: 12px;
+}
+#login .section-body .wrap .form-group.facebook img {
+    position: absolute;
+    margin-top: 10px;
+    margin-left: 45px;
+    display: block;
+    max-width: 11px;
+}
+.btn-facebook {
+    color: #fff;
+    background-color: #425f9f;
+    opacity: 1.0;
+    font-size: 14px;
+}
+#login .section-body .wrap .form-group .left {
+    text-align: left;
+    display: inline-block;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    color: #838383;
+    float: left;
+}
+#login .section-body .wrap .form-group .left a {
+    font-size: 14px;
+}
+.text-muted {
+    color: #777;
+}
+a {
+    color: #712594;
+}
+a {
+    color: #337ab7;
+    text-decoration: none;
+}
+a {
+    background-color: transparent;
+}
+#login .section-body .wrap .form-group .right {
+    text-align: right;
+    display: inline-block;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    color: #838383;
+    float: right;
+}
+#login .section-body .wrap .form-group .right a {
+    font-size: 14px;
+    color: #838383;
+}
+</style>
+<script type="text/javascript">
+$(document).ready(function() {
+	$("#cusGbLabel01").on("click", function() {
+		$("#cusGb01").css("display", "block");
+		$("#cusGb02").css("display", "none");
+		$("#cusGbLabel02").removeClass("btn labelBtn-purple btn-block active");
+		$("#cusGbLabel01").removeClass("btn labelBtn-purple btn-block checked");
+		$("#cusGbLabel02").addClass("btn labelBtn-purple btn-block active checked");
+		$("#cusGbLabel01").addClass("btn labelBtn-purple btn-block active");
+	});
+	$("#cusGbLabel02").on("click", function() {
+		$("#cusGb01").css("display", "none");
+		$("#cusGb02").css("display", "block");
+		$("#cusGbLabel02").removeClass("btn labelBtn-purple btn-block active checked");
+		$("#cusGbLabel01").removeClass("btn labelBtn-purple btn-block active");
+		$("#cusGbLabel02").addClass("btn labelBtn-purple btn-block active");
+		$("#cusGbLabel01").addClass("btn labelBtn-purple btn-block checked");
+	});
+});
+</script>
 <body>
 	<section id="container">
 	    <!-- **********************************************************************************************************************************************************
@@ -131,101 +515,109 @@ $(document).ready(function(){
 	        *********************************************************************************************************************************************************** -->
 		<!--main content start-->
 		
-<section id="main-content">
-<section class="wrapper site-min-height">
-<div class="container">
-	<div class="col-md-offset-3">
-	<img src="${pageContext.request.contextPath}/resources/img/test_logo.jpg" alt="login_img">
-	</div>
-</div>
-				
-<!-- =====================================================================logo -->
-	
-<div class="col-lg-4 mt col-md-offset-3">
-<div class="row content-panel">
-	<div class="panel-heading">
-		<ul class="nav nav-tabs nav-justified">
-			<li class="active">
-				<a data-toggle="tab" href="#usertab">일반회원</a>
-			</li>
-			<li >
-				<a data-toggle="tab" href="#busitab">법인회원</a>
-			</li>
-		</ul>
-	</div>
-	
-    <!-- /panel-heading -->
-				
-	<div class="panel-body">
-	<div class="tab-content">
-		<div id="usertab" class="tab-pane active">
-	    	<form role="form" class="form-horizontal">
-		   		<div class="row">
-		    	<div class="col-md col-md-offset-2  ">
-					<div class="form-group">
-						<div class="col-sm-10">
-							<input type="email" class="form-control" id="email" placeholder="*이메일">
-						</div>
+<section id="login" class="text-center">
+		<div class="container">
+			<div class="section-body">
+				<div class="wrap">
+					<div class="logo">
+						<img src="${pageContext.request.contextPath}/resources/krlogo3.png" alt="login_img">
 					</div>
-					<div class="form-group">
-						<div class="col-sm-10">
-							<input type="password" class="form-control" id="user_password" placeholder="*비밀번호">
+					<div class="loginComment">
+					</div>
+					<div class="box margin-b-40 lgn_wrap">
+						<div class="tap">
+							<div class="row row-cat">
+								<div class="btn-group cusGb" data-toggle="buttons">
+									<div class="col-xs-6 col-sm-6 col-md-6 col" style="padding-left: 0px;padding-right: 0px;">
+										<label class="btn labelBtn-purple btn-block" id="cusGbLabel01"style="border-radius: 0px;">
+											일반회원
+										</label>
+									</div>
+									<div class="col-xs-6 col-sm-6 col-md-6 col" style="padding-left: 0px;padding-right: 0px;">
+										<label class="btn labelBtn-purple btn-block checked" id="cusGbLabel02"style="border-radius: 0px;">
+											법인회원
+										</label>
+									</div>
+								</div>
+							</div>
 						</div>
-					</div>	
+						<div class="body" id="cusGb01">
+							<div class="form-group margin-b-6" style="margin-bottom: 6px;">
+								<input class="form-control-lgn" id="email" type="email" placeholder="*이메일">
+							</div>
+							<div class="form-group margin-b-6 pswdWrap">
+								<input class="form-control-lgn" id="user_password" type="password" placeholder="*비밀번호" >
+<!-- 								<i class="fa fa-eye-slash fa-lg"></i> -->
+							</div>
+<!-- 							<div class="form-group margin-b-6 text-left"> -->
+<!-- 								<label class="ui-checkbox" style="margin: 5px 20px 10px;"> -->
+<!-- 									<input type="checkbox" name="saveInfoCb01" id="saveInfoCb01"> <span>내 아이디 기억하기</span> -->
+<!-- 								</label> -->
+<!-- 							</div> -->
+							<!-- 
+							<div class="sep-line"></div>
+							 -->
+							<div class="form-group margin-b-6" style="margin-bottom: 6px;">
+								<button type="button" class="btn btn-purple-transparent btn-block" id="login_btn" >로그인</button>
+							</div>
+<!-- 							<hr style="margin-bottom: 20px;margin-top: 20px;"> -->
+<!-- 							<div class="form-group margin-b-12 facebook"> -->
+<%-- 								<img src="${pageContext.request.contextPath}/resources/img/icon_join_facebook.png"> --%>
+<!-- 								<button type="button" class="btn btn-facebook btn-block" >페이스북으로 로그인</button> -->
+<!-- 							</div> -->
+<!-- 							<hr style="margin-bottom: 20px;margin-top: 20px;"> -->
+							<div class="form-group margin-b-6" style="margin-bottom: 6px;">
+								<div class="left" id="findpwdBtn01">
+									<a class="text-muted" href="./findpwd" style="text-decoration: underline;">비밀번호를 잊으셨나요?</a>
+								</div>
+								<div class="right">
+									<a class="text-muted" href="./join" style="text-decoration: underline;">회원 가입하기</a>
+								</div>
+							</div>
+						</div>
+						<div class="col-xs-12 col-sm-12 col-md-12" style="margin-top: 10px;">
+<!-- 							<div id="fb-root" class=" fb_reset"> -->
+<!-- 							<div style="position: absolute; top: -10000px; width: 0px; height: 0px;"> -->
+<!-- 							<div><iframe name="fb_xdm_frame_https" id="fb_xdm_frame_https" aria-hidden="true" title="Facebook Cross Domain Communication Frame" tabindex="-1" frameborder="0" allowtransparency="true" allowfullscreen="true" scrolling="no" allow="encrypted-media" src="https://staticxx.facebook.com/connect/xd_arbiter.php?version=44#channel=faa6e127dca87&amp;origin=https%3A%2F%2Fwww.creator.co.kr" style="border: none;"> -->
+<!-- 							</iframe></div><div></div></div></div> -->
+							
+<!-- 							<div class="fb-like fb_iframe_widget" data-href="https://www.creator.co.kr" data-colorscheme="dark" data-layout="button_count" data-action="like" data-size="large" data-show-faces="true" data-share="true" fb-xfbml-state="rendered" fb-iframe-plugin-query="action=like&amp;app_id=779679155494047&amp;color_scheme=dark&amp;container_width=360&amp;href=https%3A%2F%2Fwww.creator.co.kr%2F&amp;layout=button_count&amp;locale=ko_KR&amp;sdk=joey&amp;share=true&amp;show_faces=true&amp;size=large"> -->
+<!-- 							<span style="vertical-align: bottom; width: 198px; height: 28px;"> -->
+<!-- 							<iframe name="f311d471cc8ec58" width="1000px" height="1000px" title="fb:like Facebook Social Plugin" frameborder="0" allowtransparency="true" allowfullscreen="true" scrolling="no" allow="encrypted-media" src="https://www.facebook.com/v2.5/plugins/like.php?action=like&amp;app_id=779679155494047&amp;channel=https%3A%2F%2Fstaticxx.facebook.com%2Fconnect%2Fxd_arbiter.php%3Fversion%3D44%23cb%3Dfdb8ea088f3c08%26domain%3Dwww.creator.co.kr%26origin%3Dhttps%253A%252F%252Fwww.creator.co.kr%252Ffaa6e127dca87%26relation%3Dparent.parent&amp;color_scheme=dark&amp;container_width=360&amp;href=https%3A%2F%2Fwww.creator.co.kr%2F&amp;layout=button_count&amp;locale=ko_KR&amp;sdk=joey&amp;share=true&amp;show_faces=true&amp;size=large" style="border: none; visibility: visible; width: 198px; height: 28px;" class=""> -->
+<!-- 							</iframe></span></div> -->
+						</div>
+					<!-- ========================================================================================= -->
+						<div class="body" id="cusGb02" style="display: none;">
+							<div class="form-group margin-b-6" style="margin-bottom: 6px;">
+								<input class="form-control-lgn" id="busi_resi_num" type="text" placeholder="*사업자등록번호" maxlength="10">
+								<p class="help-block" id="bizRgstNoResultText02" style="text-align: left; margin-top: -20px;">'-'을 제외한 숫자만 입력해 주세요.</p>
+							</div>
+<!-- 							<div class="sep-line"></div> -->
+<!-- 							<hr style="margin-bottom: 20px;margin-top: 20px;"> -->
+							<div class="form-group margin-b-6" style="margin-bottom: 6px;">
+								<p></p>
+								<input class="form-control-lgn" id="busi_password" type="password" placeholder="*비밀번호" >
+							</div>
+							<div class="sep-line"></div>
+							<div class="form-group margin-b-6" style="margin-bottom: 6px;">
+								<button type="button" class="btn btn-purple-transparent btn-block" id="login_btn1" >로그인</button>
+							</div>
+							<div class="form-group margin-b-6" style="margin-bottom: 6px;">
+								<div class="left" id="findpwdBtn02">
+									<a class="text-muted" href="./findpwd" style="text-decoration: underline;">비밀번호를 잊으셨나요?</a>
+								</div>
+								<div class="right">
+									<a class="text-muted" href="./join" style="text-decoration: underline;">회원 가입하기</a>
+								</div>
+							</div>
+						</div>
+						<input id="cusGbCd" type="hidden" value="01">
+						<input id="checkFbEmailYn" type="hidden" value="N">
+					</div>
 				</div>
-				<div class="col-sm-10 col-lg-offset-3">
-					<input type="text" class="btn btn-theme" id="login_btn" value="로그인" />
-				</div>
-				</div>
-	    	</form>
-	    	<div class="col-md-offset-1">
-				<a class="" href="./findpwd">비밀번호를 잊으셨나요?</a>
-				<a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
-				<a class="" href="./join">회원 가입하기</a>
-	    	</div>	    	
+			</div>
 		</div>
-		
-		<!-- =====================================================================일반회원 -->	
-		
-		<div id="busitab" class="tab-pane">
-			<form role="form" class="form-horizontal">
-		   		<div class="row">
-		    	<div class="col-md col-md-offset-2 ">
-					<div class="form-group">
-						<div class="col-sm-10">
-							<input type="text" class="form-control onlyLicense" id="busi_resi_num" placeholder="*사업자등록번호">
-							<span class="mt-2 d-block">'-'을 제외한 숫자만 입력해 주세요.</span>
-						</div>
-					</div>
-					<div class="form-group">
-						<div class="col-sm-10">
-							<input type="password" class="form-control onlyPass" id="busi_password" placeholder="*비밀번호">
-						</div>				
-					</div>	
-				</div>
-				<div class="col-sm-10 col-lg-offset-3 ">
-					<input type="text" class="btn btn-theme" id="login_btn1" value="로그인" />
-				</div>
-				</div>
-	    	</form>
-	    	<div class="col-md-offset-1">
-				<a class="" href="./findpwd">비밀번호를 잊으셨나요?</a>
-				<a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
-				<a class="" href="./join">회원 가입하기</a>
-	    	</div>
-	   	</div>
-	</div>
-	</div>
-</div>
-</div>			
-				
-		<!-- ===================================================================== body-->		
-				
-		</section>
-			<!-- /wrapper -->
-	    </section>
+	</section>
 	    <!-- /MAIN CONTENT -->
 	    
 	    <input type="hidden" id="numChk" value="${memVO.user_num}"/>
@@ -234,132 +626,11 @@ $(document).ready(function(){
 	    <!--main content end-->
 		
 		<!--footer start-->
-		<footer class="site-footer">
-			<div class="container">
-			<div class="row">
-		        <!-- ADDRESS -->
-				<div class="col-lg-4">
-					<img alt="logo" src="${pageContext.request.contextPath}/resources/img/test_logo.jpg" width="200px" height="200px">
-					<h4>
-						<i class="fa fa-envelope-o"></i> contact@creator.co.kr<br/>
-						<i class="fa fa-phone"></i> (02) 546-4076<br/>
-						<i class="fa fa-home"></i> 서울특별시 강남구 논현로95길 12, 4층
-					</h4>
-				</div>
-		
-				<!-- LATEST POSTS -->
-				<div class="col-lg-8">
-					<h5>
-			            플랫폼 사업자 : (주)크리에이터 | 사업자번호 : 825-88-00203 | 대표이사 신규식 <br/>
-			            TEL. 02-546-4076 | FAX. 070-4015-0577 | MAIL. contact@creator.co.kr | KakaoTalk. @creator <br/>
-			            통신판매업 2018-서울강남-04669 서울 강남구청(02-3423-5114) <br/>
-			            <br/>
-			            여신회사 : (주)크리에이터 대부| 사업자번호 : 317-88-00338 | 대표이사 백승한 <br/>
-			            P2P연계대부업 2018-금감원-1374<br/>
-			            <br/>
-			            대출금리 연 19.9%내(연체금리 연 22.9%내), 플랫폼 이용료 외 취급수수료 등 기타 부대비용 없습니다. <br/>
-			            중개수수료를 요구하거나 받는 행위는 불법입니다. 과도한 빚은 당신에게 큰 불행을 안겨줄 수 있습니다. <br/>
-						대출 시 귀하의 신용등급이 하락할 수 있습니다. 채무의 조기상환 수수료율 등 조기상환 조건 없습니다. <br/>
-						크리에이터는 투자원금과 수익을 보장하지 않으며, 투자손실에 대한 책임은 모두 투자자에게 있습니다.
-					</h5>
-					<br/>
-					<h5>
-						크리에이터는 투자원금과 수익을 보장하지 않으며, 투자손실에 대한 책임은 모두 투자자에게 있습니다.
-					</h5>
-					<br/>
-					<h5>
-						Copyright (c) 2019 Creatator
-						<br/>
-						CREATATOR 플랫폼 이용료 외 취급수수료 등 기타 부대비용 없음. 중개수수료를 요구하거나 받는 것은 불법입니다.
-					</h5>
-				</div>
-				<!-- /col-lg-8 -->
-			</div>
-		</div>
-		<!-- /container -->
-		</footer>
+			<%@ include file="../footer.jsp" %>
 		<!--footer end-->
 	
 	</section>
 	<!-- js placed at the end of the document so the pages load faster -->
-	<script src="${pageContext.request.contextPath}/resources/bootstrap/lib/jquery/jquery.min.js"></script>
-	
-	<script src="${pageContext.request.contextPath}/resources/bootstrap/lib/bootstrap/js/bootstrap.min.js"></script>
-	<script class="include" type="text/javascript" src="${pageContext.request.contextPath}/resources/bootstrap/lib/jquery.dcjqaccordion.2.7.js"></script>
-	<script src="${pageContext.request.contextPath}/resources/bootstrap/lib/jquery.scrollTo.min.js"></script>
-	<script src="${pageContext.request.contextPath}/resources/bootstrap/lib/jquery.nicescroll.js" type="text/javascript"></script>
-	<script src="${pageContext.request.contextPath}/resources/bootstrap/lib/jquery.sparkline.js"></script>
-	<!--common script for all pages-->
-	<script src="${pageContext.request.contextPath}/resources/bootstrap/lib/common-scripts.js"></script>
-	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/bootstrap/lib/gritter/js/jquery.gritter.js"></script>
-	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/bootstrap/lib/gritter-conf.js"></script>
-	<!--script for this page-->
-	<script src="${pageContext.request.contextPath}/resources/bootstrap/lib/sparkline-chart.js"></script>
-	<script src="${pageContext.request.contextPath}/resources/bootstrap/lib/zabuto_calendar.js"></script>
-	<script type="text/javascript">
-	/*
-    $(document).ready(function() {
-      var unique_id = $.gritter.add({
-        // (string | mandatory) the heading of the notification
-        title: 'Welcome to Dashio!',
-        // (string | mandatory) the text inside the notification
-        text: 'Hover me to enable the Close Button. You can hide the left sidebar clicking on the button next to the logo. Developed by <a href="http://alvarez.is" target="_blank" style="color:#4ECDC4">Alvarez.is</a>.',
-        // (string | optional) the image to display on the left
-        image: '${pageContext.request.contextPath}/resources/bootstrap/img/ui-sam.jpg',
-        // (bool | optional) if you want it to fade out on its own or just sit there
-        sticky: false,
-        // (int | optional) the time you want it to be alive for before fading out
-        time: 8000,
-        // (string | optional) the class name you want to apply to that specific message
-        class_name: 'my-sticky-class'
-      });
-
-      return false;
-    });
-	*/
-	</script>
-	<script type="application/javascript">
-    $(document).ready(function() {
-      $("#date-popover").popover({
-        html: true,
-        trigger: "manual"
-      });
-      $("#date-popover").hide();
-      $("#date-popover").click(function(e) {
-        $(this).hide();
-      });
-
-      $("#my-calendar").zabuto_calendar({
-        action: function() {
-          return myDateFunction(this.id, false);
-        },
-        action_nav: function() {
-          return myNavFunction(this.id);
-        },
-        ajax: {
-          url: "show_data.php?action=1",
-          modal: true
-        },
-        legend: [{
-            type: "text",
-            label: "Special event",
-            badge: "00"
-          },
-          {
-            type: "block",
-            label: "Regular event",
-          }
-        ]
-      });
-    });
-
-    function myNavFunction(id) {
-      $("#date-popover").hide();
-      var nav = $("#" + id).data("navigation");
-      var to = $("#" + id).data("to");
-      console.log('nav ' + nav + ' to: ' + to.month + '/' + to.year);
-    }
-	</script>
 </body>
 
 </html>

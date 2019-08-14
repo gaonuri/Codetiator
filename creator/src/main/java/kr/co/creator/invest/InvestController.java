@@ -50,13 +50,6 @@ public class InvestController {
 		return "invest/invest_guide";
 	}//invest_guide
 	
-	@RequestMapping(value = "/invest_guide_new", method = RequestMethod.GET)
-	public String invest_guide_new() {
-		logger.info("invest_guide_new");
-		
-		return "invest/invest_guide_new";
-	}//invest_guide_new
-	
 	@RequestMapping(value = "/invest_list", method = RequestMethod.GET)
 	public String invest_list(Model model, ProjectVO proVO, ProjectVO proCalcVO, InvestVO inVO) {
 		logger.info("invest_list");
@@ -151,13 +144,36 @@ public class InvestController {
 		return "invest/invest";
 	}//invest
 	
+	@RequestMapping(value = "/invest2", method = RequestMethod.GET)
+	public String invest2(HttpSession session, Model model, MemberVO memVO, AccountVO accVO, ProjectVO proVO) {
+		logger.info("invest2");
+		
+		if(session.getAttribute("memVO") == null) {
+			return "redirect:/login";
+		}
+		System.out.println("Controller1111111111 : " + accVO);
+		accVO = investService.acount_detail(accVO);
+		proVO = investService.project_detail(proVO);
+		System.out.println("Controller2222222222 : " + accVO);
+		model.addAttribute("accVO", accVO);
+		model.addAttribute("proVO", proVO);
+		
+		return "invest/invest2";
+	}//invest
+	
 	@RequestMapping(value = "/invest_finished", method = RequestMethod.GET)
-	public String invest_finished(Model model) {
+	public String invest_finished(Model model, ProjectVO proVO, ProjectVO proCalcVO, InvestVO inVO) {
 		logger.info("invest_finished");
 		
 		List<ProjectVO> list = null;
 		list = investService.invest_finished();
+		proVO = investService.project_detail(proVO);
+		proCalcVO = investService.project_calc();
+		inVO = investService.invest_calc();
 		model.addAttribute("investFinished", list);
+		model.addAttribute("proVO", proVO);
+		model.addAttribute("proCalcVO", proCalcVO);
+		model.addAttribute("inVO", inVO);
 		
 		return "invest/invest_finished";
 	}//invest_finish

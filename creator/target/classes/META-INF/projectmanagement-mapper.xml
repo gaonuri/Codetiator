@@ -5,4 +5,30 @@
  
 <mapper namespace="ProjectManagementMapper">
 	
+	<select id="investList" resultType="kr.co.creator.vo.ProjectVO">
+		SELECT *
+		FROM 	project_list 
+		WHERE	judge_status = 1
+		ORDER BY regi_date
+	</select>
+	
+	<select id="project_calc" resultType="kr.co.creator.vo.ProjectVO">
+		SELECT	COUNT(*) project_count, CAST(SUM(rate) / COUNT(*) AS DECIMAL(4, 2)) rate_average
+		FROM	project_list 
+	</select>
+	
+	<select id="invest_calc" resultType="kr.co.creator.vo.InvestVO">
+		SELECT SUM(invest_price) sum_invest_price, 
+		COUNT(invest_price) invest_count 
+		FROM invest_list
+	</select>
+	
+	<select id="projectDetail" parameterType="kr.co.creator.vo.ProjectVO" resultType="kr.co.creator.vo.ProjectVO">
+		select	*, 
+				COUNT(busi_num) loan_count, 
+				SUM(price) sum_price, 
+				SUM(guarantee_price) sum_guarantee_price 
+		from	project_list 
+		where 	project_num = #{project_num}
+	</select>
 </mapper>

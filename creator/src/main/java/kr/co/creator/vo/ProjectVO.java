@@ -11,6 +11,7 @@ public class ProjectVO {
 	private String type;				// 게임유형
 	private String genre;				// 장르
 	private String grade;				// 등급
+	private String age_grade;			// 이용등급
 	private String more_information;	// 상세정보
 	private String loan_bank_name;		// 대출은행명
 	private String loan_amount;			// 대출계좌
@@ -40,7 +41,8 @@ public class ProjectVO {
 	private String current_price;		// 현재금액
 	private String deadline;			// 남은기간
 	private String refund_due_date;		// 상환예정일
-	private String refund_end;			// 상환완료일
+	private String ad_price;			// 광고금액
+	private String ad_grade;			// 광고등급
 	private String guarantee_type;		// 담보유형(부동산, 동산)
 	private String object_type;			// 물건유형(아파트, 연립주택)
 	private String loan_count;			// 투자받은횟수
@@ -50,14 +52,29 @@ public class ProjectVO {
 	private int sum_guarantee_price;	// 현재대출잔액
 	private String refund_request;		// 상환요청
 	
+	private String user_num;			// (참조)유저번호
+	private String busi_num;			// (참조)법인유저번호
+	private String guarantee_num;		// 담보번호
+	
+	
+	public String getAd_price() {
+		return ad_price;
+	}
+	public void setAd_price(String ad_price) {
+		this.ad_price = ad_price;
+	}
+	public String getAd_grade() {
+		return ad_grade;
+	}
+	public void setAd_grade(String ad_grade) {
+		this.ad_grade = ad_grade;
+	}
 	public String getRefund_request() {
 		return refund_request;
 	}
 	public void setRefund_request(String refund_request) {
 		this.refund_request = refund_request;
 	}
-	private String user_num;			// (참조)유저번호
-	private String busi_num;			// (참조)법인유저번호
 	
 	
 	public String getGuarantee_type() {
@@ -230,14 +247,6 @@ public class ProjectVO {
 	public void setRefund_due_date(String refund_due_date) {
 		this.refund_due_date = refund_due_date;
 	}//refund_due_date
-	
-	public String getRefund_end() {
-		return refund_end;
-	}
-	public void setRefund_end(String refund_end) {
-		this.refund_end = refund_end;
-	}//refund_end
-	
 	public String getType() {
 		return type;
 	}
@@ -372,4 +381,16 @@ public class ProjectVO {
 	public void setBusi_num(String busi_num) {
 		this.busi_num = busi_num;
 	}//busi_num
+	public String getGuarantee_num() {
+		return guarantee_num;
+	}
+	public void setGuarantee_num(String guarantee_num) {
+		this.guarantee_num = guarantee_num;
+	}
+	public String getAge_grade() {
+		return age_grade;
+	}
+	public void setAge_grade(String age_grade) {
+		this.age_grade = age_grade;
+	}
 }//class

@@ -80,13 +80,12 @@
 		set cer_number = #{newPassword} 
 		where email = #{email}
 	</update>
-	
+
 	<select id="CheckCerUserNumber" parameterType="kr.co.creator.vo.FindPwdVO" resultType="int">
 		select count(*)
 		from user_list
 		where cer_number = #{cer_number}
 	</select>
-
 	
 	<select id="CheckCerNumber" parameterType="kr.co.creator.vo.Busi_userVO" resultType="int">
 		select count(*)
