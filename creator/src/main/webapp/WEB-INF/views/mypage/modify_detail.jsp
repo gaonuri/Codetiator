@@ -10,14 +10,16 @@
 	<meta name="author" content="Dashboard">
 	<meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
 	<title>Dashio - Bootstrap Admin Template</title>
-	<script src="${pageContext.request.contextPath}/resources/jquery/jquery-3.4.1.js"></script>
+	
 	
 	<!-- Favicons -->
 	<link href="${pageContext.request.contextPath}/resources/bootstrap/img/favicon.png" rel="icon">
 	<link href="${pageContext.request.contextPath}/resources/bootstrap/img/apple-touch-icon.png" rel="apple-touch-icon">
 	
 	<!-- Bootstrap core CSS -->
-	<link href="${pageContext.request.contextPath}/resources/bootstrap/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 	<!--external css-->
 	<link href="${pageContext.request.contextPath}/resources/bootstrap/lib/font-awesome/css/font-awesome.css" rel="stylesheet" />
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/bootstrap/css/zabuto_calendar.css">
@@ -47,8 +49,11 @@
 		});//click
 	});//ready
 	
+<<<<<<< HEAD
+</script>  
+=======
 	$(document).ready(function() {
-		$(".userDataUpdatee").change(function() {
+		$("#userDataUpdatee").change(function() {
 			$("#btn_certt").modal(); 
 			return;
 		});
@@ -56,6 +61,7 @@
 	
 </script>   
 
+>>>>>>> branch 'master' of https://github.com/gaonuri/Codetiator.git
 <script type="text/javascript">
 	$(document).ready(function(){
 		$(".onlyPass").change(function(){
@@ -714,8 +720,8 @@
 															<td></td>
 															<td>
 																<div class="autoConditionSet">
-																	<input type="submit" style="margin-left: 200px; width: 100px;" class="btn btn-purple-transparent btn-block" 
-																			id="userDataUpdatee" name="userDataUpdatee" value="변경">
+																	<input type="button" style="margin-left: 200px; width: 100px;" class="btn btn-purple-transparent btn-block" 
+																			id="userDataUpdatee" name="userDataUpdatee" value="변경" data-toggle="modal">
 																</div>
 																</td>
 															</tr>
@@ -1065,13 +1071,19 @@
 		<!--footer start-->
 			<%@ include file="../footer.jsp" %>
 		<!--footer end-->
-	
+<script type="text/javascript"> 
+	$(document).ready(function() {
+		$("#userDataUpdatee").click(function() {
+			$("#btn_certt").modal(); 
+		});
+	});
+</script>	
 </body>
 <style>
 #mypage-banner {
     position: relative;
     overflow: hidden;
-    background: url(${pageContext.request.contextPath}/resources/img/common_banner_title.jpg) center 0% no-repeat;
+    background: url(${pageContext.request.contextPath}/resources/img/banner_bg_nmvbls.png) center 0% no-repeat;
     background-size: 100%;
     -webkit-background-size: cover;
     -moz-background-size: cover;

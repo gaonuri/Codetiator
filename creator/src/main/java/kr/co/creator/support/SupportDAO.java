@@ -32,34 +32,29 @@ public class SupportDAO {
 
 	public List<NoticeVO> supportList() {
 		List<NoticeVO> support = null;
-		support = sqlSession.selectList(
-							"SupportMapper.supportList");
+		support = sqlSession.selectList("SupportMapper.supportList");
 		return support;
 	}//supportList
 	
 	public List<NoticeVO> supportList2(NoticeVO vo) {
 		List<NoticeVO> support = null;
-		support = sqlSession.selectList(
-							"SupportMapper.supportList2", vo.getNotice_type());
+		support = sqlSession.selectList("SupportMapper.supportList2", vo.getNotice_type());
 		return support;
 	}//supportList2
 	
 	public NoticeVO supportDetail(NoticeVO vo) {
-		vo = sqlSession.selectOne(
-				"SupportMapper.supportDetail", vo);
+		vo = sqlSession.selectOne("SupportMapper.supportDetail", vo);
 		return vo;
 	}//totalDetail
 	
 	public NoticeVO supportDetailType(NoticeVO vo) {
-		vo = sqlSession.selectOne(
-				"SupportMapper.supportDetailType", vo);
+		vo = sqlSession.selectOne("SupportMapper.supportDetailType", vo);
 		return vo;
 	}//supportDatailType
 
 	public int supportDelete(NoticeVO vo) {
 		int count = 0;
-		count = sqlSession.delete(
-						"SupportMapper.supportDelete", vo);
+		count = sqlSession.delete("SupportMapper.supportDelete", vo);
 		return count;
 	}
 

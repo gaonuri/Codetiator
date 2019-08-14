@@ -258,7 +258,7 @@
 		}tempFunction
 		
 		var id;
-		var min = 29;
+		var min = 2;
 		var sec = 59;
 		var minZero = "";
 		var secZero = "";
@@ -315,10 +315,9 @@
 				);//post
 			});//click
 		});//ready
+		
 		$(document).ready(function() {
 			$("#btn_certi_complete").click(function() {
-				alert("btn_certi_complete");
-				alert($("#cer_number").val());
 				$.post(
 						"${pageContext.request.contextPath}/DepocerNumber",
 						{
@@ -395,7 +394,7 @@
 						<div class="box left">
 							<div class="row">
 								<div class="col-xs-12 col-sm-12 col-md-12">
-									<span class="cusNm">${acnt.account_name}</span>&nbsp;
+									<span class="cusNm">${user.user_name}${busi.manager_name}</span>&nbsp;
 									
 										님
 									
@@ -607,14 +606,6 @@
 														<input type="hidden" id="out_history" value="${Inout.output_history}">
 													</div>
 												</div>
-												<div class="row" style="margin-top: 10px;">
-													<div class="col-xs-6 col-sm-6 col-md-6">
-														출금 대기금액
-													</div>
-													<div class="col-xs-6 col-sm-6 col-md-6 text-right">
-														<span id="WTHDRW_REQ_AMT_SUM" name="WTHDRW_REQ_AMT_SUM">0</span> 원
-													</div>	
-												</div>
 											</div>
 										</div>
 									</div>
@@ -641,7 +632,7 @@
 																		예금주
 																	</div>
 																	<div class="col-xs-8 col-sm-8 col-md-8 withdraw-content" id="withdrawCusNm">
-																		${vo.account_name}
+																		${acnt.account_name}
 																	</div>
 																</div>
 																<div class="row" style="margin-top: 10px;">
@@ -649,7 +640,7 @@
 																		은행
 																	</div>
 																	<div class="col-xs-8 col-sm-8 col-md-8 withdraw-content">
-																		${vo.bank_name}
+																		${acnt.bank_name}
 																	</div>
 																</div>
 																<div class="row" style="margin-top: 10px;">
@@ -657,7 +648,7 @@
 																		나의 계좌 
 																	</div>
 																	<div class="col-xs-8 col-sm-8 col-md-8 withdraw-content">
-																		<span id="WD_ACNT_NO">${vo.bank_num}</span>
+																		<span id="WD_ACNT_NO">${acnt.bank_num}</span>
 																	</div>
 																</div>
 																<div class="row">
@@ -962,50 +953,7 @@
 		
 		
 		<!--footer start-->
-		<footer class="site-footer">
-			<div class="container">
-			<div class="row">
-		        <!-- ADDRESS -->
-				<div class="col-lg-4">
-					<img alt="logo" src="${pageContext.request.contextPath}/resources/img/test_logo.jpg" width="200px" height="200px">
-					<h4>
-						<i class="fa fa-envelope-o"></i> contact@creator.co.kr<br/>
-						<i class="fa fa-phone"></i> (02) 546-4076<br/>
-						<i class="fa fa-home"></i> 서울특별시 강남구 논현로95길 12, 4층
-					</h4>
-				</div>
-		
-				<!-- LATEST POSTS -->
-				<div class="col-lg-8">
-					<h5>
-			            플랫폼 사업자 : (주)크리에이터 | 사업자번호 : 825-88-00203 | 대표이사 신규식 <br/>
-			            TEL. 02-546-4076 | FAX. 070-4015-0577 | MAIL. contact@creator.co.kr | KakaoTalk. @creator <br/>
-			            통신판매업 2018-서울강남-04669 서울 강남구청(02-3423-5114) <br/>
-			            <br/>
-			            여신회사 : (주)크리에이터 대부| 사업자번호 : 317-88-00338 | 대표이사 백승한 <br/>
-			            P2P연계대부업 2018-금감원-1374<br/>
-			            <br/>
-			            대출금리 연 19.9%내(연체금리 연 22.9%내), 플랫폼 이용료 외 취급수수료 등 기타 부대비용 없습니다. <br/>
-			            중개수수료를 요구하거나 받는 행위는 불법입니다. 과도한 빚은 당신에게 큰 불행을 안겨줄 수 있습니다. <br/>
-						대출 시 귀하의 신용등급이 하락할 수 있습니다. 채무의 조기상환 수수료율 등 조기상환 조건 없습니다. <br/>
-						크리에이터는 투자원금과 수익을 보장하지 않으며, 투자손실에 대한 책임은 모두 투자자에게 있습니다.
-					</h5>
-					<br/>
-					<h5>
-						크리에이터는 투자원금과 수익을 보장하지 않으며, 투자손실에 대한 책임은 모두 투자자에게 있습니다.
-					</h5>
-					<br/>
-					<h5>
-						Copyright (c) 2019 Creatator
-						<br/>
-						CREATATOR 플랫폼 이용료 외 취급수수료 등 기타 부대비용 없음. 중개수수료를 요구하거나 받는 것은 불법입니다.
-					</h5>
-				</div>
-				<!-- /col-lg-8 -->
-			</div>
-		</div>
-		<!-- /container -->
-		</footer>
+		<%@ include file="../footer.jsp" %>
 		<!--footer end-->
 	
 	</section>
@@ -1027,7 +975,7 @@
 #mypage-banner {
     position: relative;
     overflow: hidden;
-    background: url(${pageContext.request.contextPath}/resources/img/common_banner_title.jpg) center 0% no-repeat;
+    background: url(${pageContext.request.contextPath}/resources/img/banner_bg_nmvbls.png) center 0% no-repeat;
     background-size: 100%;
     -webkit-background-size: cover;
     -moz-background-size: cover;

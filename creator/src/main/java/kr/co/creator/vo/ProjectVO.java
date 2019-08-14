@@ -5,12 +5,13 @@ import org.springframework.web.multipart.MultipartFile;
 // 프로젝트
 public class ProjectVO {
 	private String project_num;			// 프로젝트번호
-	private MultipartFile img;
-	private String img_path;					// 사진(경로)
+	private MultipartFile img;			// 사진
+	private String img_path;			// 사진(경로)
 	private String project_name;		// 이름
 	private String type;				// 게임유형
 	private String genre;				// 장르
 	private String grade;				// 등급
+	private String age_grade;			// 이용등급
 	private String more_information;	// 상세정보
 	private String loan_bank_name;		// 대출은행명
 	private String loan_amount;			// 대출계좌
@@ -40,8 +41,21 @@ public class ProjectVO {
 	private String current_price;		// 현재금액
 	private String deadline;			// 남은기간
 	private String refund_due_date;		// 상환예정일
+	private String refund_end;			// 상환완료일
 	private String ad_price;			// 광고금액
 	private String ad_grade;			// 광고등급
+	public String getAd_price() {
+		return ad_price;
+	}
+	public void setAd_price(String ad_price) {
+		this.ad_price = ad_price;
+	}
+	public String getAd_grade() {
+		return ad_grade;
+	}
+	public void setAd_grade(String ad_grade) {
+		this.ad_grade = ad_grade;
+	}
 	private String guarantee_type;		// 담보유형(부동산, 동산)
 	private String object_type;			// 물건유형(아파트, 연립주택)
 	private String loan_count;			// 투자받은횟수
@@ -56,18 +70,6 @@ public class ProjectVO {
 	private String guarantee_num;		// 담보번호
 	
 	
-	public String getAd_price() {
-		return ad_price;
-	}
-	public void setAd_price(String ad_price) {
-		this.ad_price = ad_price;
-	}
-	public String getAd_grade() {
-		return ad_grade;
-	}
-	public void setAd_grade(String ad_grade) {
-		this.ad_grade = ad_grade;
-	}
 	public String getRefund_request() {
 		return refund_request;
 	}
@@ -385,5 +387,17 @@ public class ProjectVO {
 	}
 	public void setGuarantee_num(String guarantee_num) {
 		this.guarantee_num = guarantee_num;
+	}
+	public String getAge_grade() {
+		return age_grade;
+	}
+	public void setAge_grade(String age_grade) {
+		this.age_grade = age_grade;
+	}
+	public String getRefund_end() {
+		return refund_end;
+	}
+	public void setRefund_end(String refund_end) {
+		this.refund_end = refund_end;
 	}
 }//class
