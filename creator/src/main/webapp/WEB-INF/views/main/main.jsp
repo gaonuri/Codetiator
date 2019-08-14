@@ -833,7 +833,7 @@ small, .small {
 										</div>
 									</a>
 									<div class="item-top-badge">
-<%-- 										<span class="label label-primary">LTV <span>${proVO.price / guaVO.connoisseur * 100}</span>%</span> --%>
+										<span class="label label-primary">LTV <span>${proVO.price / guaVO.connoisseur * 100}</span>%</span>
 									</div>
 									<div class="item-top-badge text-right">
 										<span class="label label-primary animated infinite flash">${vo.ach_state}</span>
