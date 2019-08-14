@@ -315,6 +315,7 @@
 				);//post
 			});//click
 		});//ready
+		
 		$(document).ready(function() {
 			$("#btn_certi_complete").click(function() {
 				alert("btn_certi_complete");
