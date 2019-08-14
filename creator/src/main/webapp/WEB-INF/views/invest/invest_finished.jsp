@@ -521,7 +521,7 @@ form {
 <body>
 	<!-- for all pages -->
 
-<form id="commonForm" name="commonForm"></form>
+<form id="commonForm" name="commonForm" style="display: none;"></form>
 
 <!-- Navigation
 ==========================================-->

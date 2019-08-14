@@ -605,14 +605,6 @@
 														<input type="hidden" id="out_history" value="${Inout.output_history}">
 													</div>
 												</div>
-												<div class="row" style="margin-top: 10px;">
-													<div class="col-xs-6 col-sm-6 col-md-6">
-														출금 대기금액
-													</div>
-													<div class="col-xs-6 col-sm-6 col-md-6 text-right">
-														<span id="WTHDRW_REQ_AMT_SUM" name="WTHDRW_REQ_AMT_SUM">0</span> 원
-													</div>	
-												</div>
 											</div>
 										</div>
 									</div>
@@ -982,7 +974,7 @@
 #mypage-banner {
     position: relative;
     overflow: hidden;
-    background: url(${pageContext.request.contextPath}/resources/img/common_banner_title.jpg) center 0% no-repeat;
+    background: url(${pageContext.request.contextPath}/resources/img/banner_bg_nmvbls.png) center 0% no-repeat;
     background-size: 100%;
     -webkit-background-size: cover;
     -moz-background-size: cover;

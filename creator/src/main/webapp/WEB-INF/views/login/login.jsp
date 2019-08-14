@@ -117,6 +117,24 @@ $(document).ready(function(){
 	
 </head>
 <style>
+#login-banner {
+    position: relative;
+    overflow: hidden;
+    background: url(${pageContext.request.contextPath}/resources/img/bgImg_investIntro.png) center 0% no-repeat;
+    background-size: 100%;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-attachment: fixed;
+    color: #fff;
+    height: 50px;
+}
+#login-banner .section-body {
+    color: #fff;
+    position: relative;
+    padding: 135px 20px 0px 20px;
+}
+
 .text-center {
     text-align: center;
 }
@@ -502,6 +520,13 @@ $(document).ready(function() {
 });
 </script>
 <body>
+<section id="login-banner" class="text-center">
+		<div class="overlay">
+			<div class="section-body">
+			</div>
+		</div>
+</section>
+
 	<section id="container">
 	    <!-- **********************************************************************************************************************************************************
 	        TOP BAR CONTENT & NOTIFICATIONS

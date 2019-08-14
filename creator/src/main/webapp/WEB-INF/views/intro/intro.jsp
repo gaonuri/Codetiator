@@ -43,7 +43,7 @@
 #aboutus-banner{
 	position: relative;
 	overflow: hidden;
-	background: url(/images/common/common_banner_title.jpg) center 0% no-repeat;
+	background: url(${pageContext.request.contextPath}/resources/img/bgImg_investIntro.png) center 0% no-repeat;
 	background-color:#712594;
 	background-size: 100%;
 	-webkit-background-size: cover; 
@@ -529,7 +529,7 @@
 													<b>|</b>&nbsp;&nbsp;&nbsp;구도
 												</div>
 												<div class="tab01_3_1">
-													<img src="/images/info/aboutus/img_aboutus_tab01_3_1.png" class="img-responsive center-block">
+													<img src="${pageContext.request.contextPath}/resources/img/img_aboutus_tab01_3_1.png" class="img-responsive center-block">
 												</div>
 												
 												<div class="">
@@ -538,7 +538,7 @@
 													</div>
 													<div class="col-xs-12 col-md-4">
 														<div class="tab01_3_2">
-															<img src="/images/info/aboutus/img_aboutus_tab01_3_2_1.png" class="img-responsive center-block">
+															<img src="${pageContext.request.contextPath}/resources/img/img_aboutus_tab01_3_2_1.png" class="img-responsive center-block">
 														</div>
 														<div class="section-unit-c">
 															<b>Change the Outdated<br>Banking System</b>
@@ -546,7 +546,7 @@
 													</div>
 													<div class="col-xs-12 col-md-4">
 														<div class="tab01_3_2">
-															<img src="/images/info/aboutus/img_aboutus_tab01_3_2_2.png" class="img-responsive center-block">
+															<img src="${pageContext.request.contextPath}/resources/img/img_aboutus_tab01_3_2_2.png" class="img-responsive center-block">
 														</div>
 														<div class="section-unit-c">
 															<b>Be Smart with the<br>World Wide</b>
@@ -554,7 +554,7 @@
 													</div>
 													<div class="col-xs-12 col-md-4">
 														<div class="tab01_3_2">
-															<img src="/images/info/aboutus/img_aboutus_tab01_3_2_3.png" class="img-responsive center-block">
+															<img src="${pageContext.request.contextPath}/resources/img/img_aboutus_tab01_3_2_3.png" class="img-responsive center-block">
 														</div>
 														<div class="section-unit-c">
 															<b>Make a better<br>Financial Environment</b>
@@ -572,16 +572,11 @@
 												</div>
 											</div>
 											<div class="clearfix"></div>
-											
-											<section id="timeline_banner" class="section-cont">
-												<div class="container-fluid main_timelineSection">
-													<div class="row">
-														<div id="timeline_txt" class="xd_on col-xs-12 col-sm-12 col-md-12 img_tab01_4_1">
-															<img id="timelineImgL" src="/images/mainV2/main_timelineOnly_ImgL.png" class="img-responsive" alt="크리에이터주요연혁">
-														</div>
-													</div>
+											<div class="row">
+												<div id="timeline_txt" class="xd_on col-xs-12 col-sm-12 col-md-12 img_tab01_4_1">
+													<img id="timelineImgL" src="${pageContext.request.contextPath}/resources/img/main_timelineOnly_ImgL.png" class="img-responsive" alt="크리에이터주요연혁">
 												</div>
-											</section>
+											</div>
 										</div>
 										
 									<div class="col-md-12">
@@ -592,7 +587,7 @@
 									<div class="clearfix">
 										<div class="col-xs-12 col-md-3">
 											<div class="tab01_3_2">
-												<img src="/images/info/aboutus/img_aboutus_tab01_3_2_1.png" class="img-responsive center-block">
+												<img src="${pageContext.request.contextPath}/resources/img/manager.jpg" class="img-responsive center-block">
 											</div>
 											<div class="owl-item">
 											<div class="item">
@@ -604,7 +599,7 @@
 										</div>
 										<div class="col-xs-12 col-md-3">
 											<div class="tab01_3_2">
-												<img src="/images/info/aboutus/img_aboutus_tab01_3_2_2.png" class="img-responsive center-block">
+												<img src="${pageContext.request.contextPath}/resources/img/manager.jpg" class="img-responsive center-block">
 											</div>
 											<div class="owl-item">
 											<div class="item">
@@ -616,7 +611,7 @@
 										</div>
 										<div class="col-xs-12 col-md-3">
 											<div class="tab01_3_2">
-												<img src="/images/info/aboutus/img_aboutus_tab01_3_2_3.png" class="img-responsive center-block">
+												<img src="${pageContext.request.contextPath}/resources/img/manager.jpg" class="img-responsive center-block">
 											</div>
 											<div class="owl-item">
 											<div class="item">
@@ -628,7 +623,7 @@
 										</div>	
 										<div class="col-xs-12 col-md-3">
 											<div class="tab01_3_2">
-												<img src="/images/info/aboutus/img_aboutus_tab01_3_2_3.png" class="img-responsive center-block">
+												<img src="${pageContext.request.contextPath}/resources/img/manager.jpg" class="img-responsive center-block">
 											</div>
 											<div class="owl-item">
 											<div class="item">

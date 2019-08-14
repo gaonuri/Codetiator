@@ -53,7 +53,7 @@
 	<update id="update_project" parameterType="kr.co.creator.vo.ProjectVO">
 		update project_list
 		set img = #{img_path}, project_name = #{project_name}, type = #{type}, genre = #{genre}
-			,grade = #{grade}, more_information = #{more_information}
+			,age_grade = #{age_grade}, more_information = #{more_information}
 		where project_num = #{project_num}
 	</update>
 	
