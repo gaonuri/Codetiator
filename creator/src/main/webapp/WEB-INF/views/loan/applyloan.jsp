@@ -542,7 +542,6 @@ $(document).ready(function() {
 											</div>
 										</div>
 										<div id="pInfDiv" style="">
-											<hr>
 											<div class="row">
 												<div class="col-xs-12 col-sm-12 col-md-12">
 													<div class="modal-body-title">
@@ -553,15 +552,6 @@ $(document).ready(function() {
 											<div class="row">
 												<div class="form-group col-md-4">
 													<input class="form-control" id="cer_number" type="text" maxlength="13"  placeholder="" style="display:none;">
-<<<<<<< HEAD
-												</div>
-												<div id="clock">
-												
-												</div>
-											</div>													
-												
-											
-=======
 												</div>
 												<div id="clock"><!--여기서 수정 -->
 												</div>													
@@ -571,7 +561,6 @@ $(document).ready(function() {
 													<label for="ssnNo" class="control-label" id="aa" style="display:none;">인증번호를 입력하세요.</label>
 												</div>
 											</div>		
->>>>>>> branch 'master' of https://github.com/gaonuri/Codetiator.git
 											<div class="row">
 												<div class="col-xs-12 col-sm-12 col-md-12">
 													<span class="modal-body-light">&nbsp;● 정상처리가 불가할 경우 1:1문의사항을 이용하시기 바랍니다.</span>
@@ -764,14 +753,9 @@ $(document).ready(function() {
 				return;
 // 				$("#btn_cert1").modal();
 		});
-<<<<<<< HEAD
-	});//인풋창 제약조건 //ready
-=======
 	});//인풋창 제약조건 //ready
 	
->>>>>>> branch 'master' of https://github.com/gaonuri/Codetiator.git
 	function tempFunction() {
-<<<<<<< HEAD
 //		$("#frmLoan").attr("action","${pageContext.request.contextPath}/addinfo");
 //		document.frmLoan.submit();
 		var form = new FormData(document.getElementById("frmLoan"));
@@ -794,22 +778,13 @@ $(document).ready(function() {
 			}
 		});//ajax
 	}//tempFunction
-=======
-		$("#frmLoan").attr("action","${pageContext.request.contextPath}/addinfo");
-		document.frmLoan.submit();
-	}
->>>>>>> branch 'master' of https://github.com/gaonuri/Codetiator.git
 	$(document).ready(function() {
 		$.ajaxSetup({cache:false});
 	});//ready
 
 // 		$("#frmLoan").attr("action","${pageContext.request.contextPath}/applyloaninsert");
 // 		document.frmLoan.submit();
-<<<<<<< HEAD
 // 	}//frmLoan에 있는거 addinfo로 옳김
-=======
-// 	}//frmLoan에 있는거 addinfo로 옳김
->>>>>>> branch 'master' of https://github.com/gaonuri/Codetiator.git
 	
 	$(function() {
 		

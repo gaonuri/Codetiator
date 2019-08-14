@@ -370,9 +370,10 @@ public class MypageController {
 	}//joinEmailChk
 	
 	@RequestMapping(value = "/my_modify", method = RequestMethod.GET)
-	public String my_modify() {
+	public String my_modify(HttpSession session, Model model, AccountVO avo) {
 		logger.info("my_modify");
-		
+		avo = sqlSession.selectOne("MypageMapper.MyPageBank", avo);
+		model.addAttribute("mypagebank", avo);
 		return "mypage/my_modify";
 	}//my_modify
 	

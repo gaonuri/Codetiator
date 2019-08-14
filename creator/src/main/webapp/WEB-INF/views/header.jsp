@@ -344,6 +344,7 @@ a {
     display: block;
     max-width: 100%;
     height: auto;
+    margin-top: -12px;
 }
 img {
     vertical-align: middle;
@@ -549,7 +550,7 @@ li {
 					<span class="icon-bar"></span>
 				</button>
 				<a class="navbar-brand" href="${pageContext.request.contextPath}/main">
-					<img src="${pageContext.request.contextPath}/resources/img/logo_mainTop.png" class="img-responsive" alt="brand_img">
+					<img src="${pageContext.request.contextPath}/resources/krlogo2.png" class="img-responsive" alt="brand_img">
 				</a>
 			</div>
 	

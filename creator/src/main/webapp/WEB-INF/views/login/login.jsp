@@ -520,7 +520,7 @@ $(document).ready(function() {
 			<div class="section-body">
 				<div class="wrap">
 					<div class="logo">
-						<img src="${pageContext.request.contextPath}/resources/img/img_login_logo.png" alt="login_img">
+						<img src="${pageContext.request.contextPath}/resources/krlogo3.png" alt="login_img">
 					</div>
 					<div class="loginComment">
 					</div>
@@ -529,12 +529,12 @@ $(document).ready(function() {
 							<div class="row row-cat">
 								<div class="btn-group cusGb" data-toggle="buttons">
 									<div class="col-xs-6 col-sm-6 col-md-6 col" style="padding-left: 0px;padding-right: 0px;">
-										<label class="btn labelBtn-purple btn-block" id="cusGbLabel01" style="font-weight: 600;opacity: 1.0;border-radius: 0px;">
+										<label class="btn labelBtn-purple btn-block" id="cusGbLabel01"style="border-radius: 0px;">
 											일반회원
 										</label>
 									</div>
 									<div class="col-xs-6 col-sm-6 col-md-6 col" style="padding-left: 0px;padding-right: 0px;">
-										<label class="btn labelBtn-purple btn-block checked" id="cusGbLabel02" style="font-weight: 600;opacity: 1.0;border-radius: 0px;">
+										<label class="btn labelBtn-purple btn-block checked" id="cusGbLabel02"style="border-radius: 0px;">
 											법인회원
 										</label>
 									</div>
