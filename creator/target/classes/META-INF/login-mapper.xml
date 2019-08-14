@@ -71,44 +71,24 @@
 	
 	<update id="insertNumber" parameterType="kr.co.creator.vo.FindPwdVO">
 		update busi_user_list
-<<<<<<< HEAD
 		set cer_number = #{newPassword} 
 		where manager_email = #{manager_email}
-=======
-		set cer_number = #{newPassword} 
-		where manager_email = #{manager_email}
->>>>>>> branch 'master' of https://github.com/gaonuri/Codetiator.git
 	</update>
-<<<<<<< HEAD
 	
-=======
 	
->>>>>>> branch 'master' of https://github.com/gaonuri/Codetiator.git
 	<update id="insertNumber1" parameterType="kr.co.creator.vo.FindPwdVO">
 		update user_list
-<<<<<<< HEAD
 		set cer_number = #{newPassword} 
 		where email = #{email}
-=======
-		set cer_number = #{newPassword} 
-		where email = #{email}
->>>>>>> branch 'master' of https://github.com/gaonuri/Codetiator.git
 	</update>
 
 	<select id="CheckCerUserNumber" parameterType="kr.co.creator.vo.FindPwdVO" resultType="int">
 		select count(*)
 		from user_list
-<<<<<<< HEAD
 		where cer_number = #{cer_number}
-=======
-		where cer_number = #{cer_number}
->>>>>>> branch 'master' of https://github.com/gaonuri/Codetiator.git
 	</select>
-<<<<<<< HEAD
 
-=======
 	
->>>>>>> branch 'master' of https://github.com/gaonuri/Codetiator.git
 	<select id="CheckCerNumber" parameterType="kr.co.creator.vo.Busi_userVO" resultType="int">
 		select count(*)
 		from busi_user_list
