@@ -2276,7 +2276,7 @@ $(document).ready(function() {
 					크리에이터 종합등급
 				</div>
 				<div class="row wrap_grade col">
-					<div class="col-xs-12 col-sm-12 col-md-6 col wrap_gCont">
+					<div class="col-xs-12 col-sm-12 col-md-12 col wrap_gCont">
 						<div class="row wrap_grade_IMG">
 							<div class="col-sm-12 col-md-12 col grade_txt">
 								<p style="text-align: center;">
@@ -2513,14 +2513,6 @@ $(document).ready(function() {
 					</div>
 				</div>
 				<div class="row">
-					<div class="col-md-12">
-						<div class="tabSubTit">
-							선순위 채권 및 임대차
-						</div>
-						<div class="content">
-							선순위 금액으로 <strong>농협 34.2억원(채권최고액 : 50.16억원)</strong>이 있습니다.
-						</div>
-					</div>
 				</div>
 				<div class="row">
 					<div class="col-md-12">

@@ -64,7 +64,7 @@
     margin-left: auto;
 }
 #loanGuide-banner {
-    background: url(${pageContext.request.contextPath}/resources/img/bgImg_loanIntro01.jpg)no-repeat center center fixed;
+    background: url(${pageContext.request.contextPath}/resources/img/bgImg_investIntro.png)no-repeat center center fixed;
     background-size: cover;
     background-attachment: fixed;
     width: 100%;
@@ -316,7 +316,7 @@ li {
 									<li class="colorTxt">대출심사 결격사유 : 최근 현금서비스 3회 이상 이용 고객 및 기타 당사가 규정하는 채무 불이행 사유가 있는 고객</li>
 								</ul>
 							</section>
-							<button class="loan_int_btn mr-green" id="loanReqBtn2" style="width:200px; height: 36px; margin-left: 248px; margin-right: 248px;">
+							<button class="loan_int_btn mr-green" id="loanReqBtn2" style="color:#fff; width:200px; height: 36px; margin-left: 248px; margin-right: 248px; background-color: #01C351;">
 								대출신청서 작성하기<span class="mr-cap"></span>
 								<span class="mr-angle">
 									<div>

@@ -47,7 +47,7 @@
     color: #fff;
 }
 #loanGuide-banner {
-    background: url(${pageContext.request.contextPath}/resources/img/bgImg_loanIntro01.jpg)no-repeat center center fixed;
+    background: url(${pageContext.request.contextPath}/resources/img/bgImg_investIntro.png)no-repeat center center fixed;
     background-size: cover;
     background-attachment: fixed;
     width: 100%;

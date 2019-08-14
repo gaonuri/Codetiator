@@ -2,7 +2,6 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <head>
-<script src="${pageContext.request.contextPath}/resources/jquery/jquery-3.4.1.js"></script>
 <script type="text/javascript">
 $(document).ready(function() {
 	  $(window).scroll(function() {
@@ -616,7 +615,7 @@ li {
 					
 					<c:choose>
 						<c:when test="${memberVO != null && memberVO.user_num != '' || memberVO != null && memberVO.busi_num != ''}">
-							<li id="logout_btn"><a class="top-menu-font" href="${pageContext.request.contextPath}/main">로그아웃</a></li>
+							<li id="logout_btn"><a class="top-menu-font" href="${pageContext.request.contextPath}/logout">로그아웃</a></li>
 						</c:when>
 						<c:otherwise>
 							<li><a class="loginss top-menu-font" href="${pageContext.request.contextPath}/join">회원가입</a></li>
