@@ -370,7 +370,7 @@
                 <div class="form-group">
                   	<label class="control-label col-md-3">준공(생산)일자 </label>
                   	<div class="col-md-8">
-                    	<input type="text" id="comple_year" name="comple_year" class="form-control  onlycal" placeholder="199202"/>
+                    	<input type="text" id="comple_year" name="comple_year" class="form-control  onlycal" maxlength="6" placeholder="199202"/>
                     </div>
                 </div>
 <!--                 <div class="form-group"> -->

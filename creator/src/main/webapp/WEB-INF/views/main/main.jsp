@@ -833,7 +833,7 @@ small, .small {
 										</div>
 									</a>
 									<div class="item-top-badge">
-										<span class="label label-primary">LTV <span>${proVO.price / guaVO.connoisseur * 100}</span>%</span>
+<%-- 										<span class="label label-primary">LTV <span>${proVO.price / guaVO.connoisseur * 100}</span>%</span> --%>
 									</div>
 									<div class="item-top-badge text-right">
 										<span class="label label-primary animated infinite flash">${vo.ach_state}</span>
@@ -845,13 +845,14 @@ small, .small {
 	<!-- 								<div class="item-bottom-badge text-right"> -->
 	<!-- 									<span>자동투자 100%</span> -->
 	<!-- 								</div> -->
-									<img src="${pageContext.request.contextPath}/resources/img/overwatch.jpg">
+<%-- 									<img src="${pageContext.request.contextPath}/resources/img/overwatch.jpg"> --%>
+										<img alt="/${vo.img_path}" src="/${vo.img_path}" />
 								</div>
 								<div class="item-bottom">
 									<div class="item-bottom-text">
 										<div class="row">
 											<div class="col-xs-6">
-												<h5>02-19-42</h5>
+												<h5>${vo.img}</h5>
 											</div>
 										</div>
 										<h4 style="text-align:center;">[${vo.genre}] ${vo.project_name}</h4>
@@ -891,69 +892,6 @@ small, .small {
 							</div>
 						</div>
 					</c:forEach>
-<!-- 					<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 good-item-wrap"> -->
-<!-- 						<div class="good-item">	 -->
-<!-- 							<div class="item-top">		 -->
-<!-- 								<a href="javascript:(void(0));" onclick="fn_openInvestDetail(791)">	 -->
-<!-- 									<div class="hover-text">	 -->
-<!-- 										<div class="clearfix"></div>	 -->
-<!-- 										<div class="hover-button"></div> -->
-<!-- 									</div>	 -->
-<!-- 								</a> -->
-<!-- 								<div class="item-top-badge">			 -->
-<!-- 									<span class="label label-primary">LTV 66.67%</span>			 -->
-<!-- 								</div>			 -->
-<!-- 								<div class="item-top-badge text-right">		 -->
-<!-- 									<span class="label label-primary animated infinite flash">모집중</span>			 -->
-<!-- 								</div>		 -->
-<!-- 								<div class="item-middle-badge">	 -->
-<!-- 									<div style="display: inline-block;">리그오브레전드</div>		 -->
-<!-- 									<div style="display: inline-block;"></div>		 -->
-<!-- 								</div>			 -->
-<%-- 								<img src="${pageContext.request.contextPath}/resources/img/LOL.jpg">		 --%>
-<!-- 							</div>		 -->
-<!-- 							<div class="item-bottom">			 -->
-<!-- 								<div class="item-bottom-text">				 -->
-<!-- 									<div class="row">					 -->
-<!-- 										<div class="col-xs-6">						 -->
-<!-- 											<h5>04-19-131</h5>					 -->
-<!-- 										</div>				 -->
-<!-- 									</div>				 -->
-<!-- 									<h4 style="text-align:center;">[AOS] 리그오브레전드 (2차)</h4>				 -->
-<!-- 									<div class="progress">				 -->
-<!-- 										<div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="84" aria-valuemin="0" aria-valuemax="100" style="min-width:20px;width: 84%"> -->
-<!-- 											84%					 -->
-<!-- 										</div>				 -->
-<!-- 									</div>				 -->
-<!-- 									<div class="item-top-text-num">					 -->
-<!-- 										<small>(267명)</small>				 -->
-<!-- 									</div>			 -->
-<!-- 								</div>			 -->
-<!-- 								<hr>			 -->
-<!-- 								<div class="grade">				 -->
-<!-- 									<div class="circle grade-MA">MA</div>			 -->
-<!-- 								</div>			 -->
-<!-- 								<div class="cat">				 -->
-<!-- 									<div class="title">연 수익률</div>				 -->
-<!-- 									<div class="sub">12 -->
-<!-- 										<font size="1">%</font> -->
-<!-- 									</div>			 -->
-<!-- 								</div>	 -->
-<!-- 								<div class="cat">				 -->
-<!-- 									<div class="title">기간</div>				 -->
-<!-- 									<div class="sub">9<font size="1">개월</font></div>			 -->
-<!-- 								</div>			 -->
-<!-- 								<div class="cat">	 -->
-<!-- 									<div class="title">모집금액</div>				 -->
-<!-- 									<div class="sub">5,000<font size="1">만원</font></div>			 -->
-<!-- 								</div> -->
-<!-- 								<div class="cat"> -->
-<!-- 									<div class="title">상환방식</div>				 -->
-<!-- 									<div class="sub">만기일시</div> -->
-<!-- 								</div> -->
-<!-- 							</div> -->
-<!-- 						</div> -->
-<!-- 					</div> -->
 					<div class="clearfix visible-md-block visible-lg-block"></div>
 				</div>
 			</div>
