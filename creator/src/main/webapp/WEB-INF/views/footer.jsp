@@ -284,10 +284,10 @@ footer .legal_copyright {
 	    <footer>
 	<div class="container">
 		<div class="row footer-row">
-			<div class="col-xs-12 col-sm-4 col-md-4">
+			<div class="col-xs-12 col-sm-4 col-md-4" style="margin-top: -30px;">
 				<div class="company">
 					<a class="brand_logo" href="/">
-						<img src="${pageContext.request.contextPath}/resources/img/logo_creator_kor_white.png" alt="creator">
+						<img src="${pageContext.request.contextPath}/resources/footlogo.png" alt="creator">
 					</a>
 					<div class="logo">
 						<a href="https://www.facebook.com/creator.co.kr/" target="_blank">
@@ -310,22 +310,26 @@ footer .legal_copyright {
 					</div>
 					<div class="telno">
 						<a href="tel:+025464076">
-							<span>(02) 546-4076</span>
+							<span>(02) 777-7777</span>
 						</a>
 					</div>
 					<div class="addr">
-						서울특별시 강남구 논현로95길 12, 4층
+						서울특별시 강남구 논현로77길 77, 7층
 					</div>
 					
 					<div class="row logo">
-						<div class="col-xs-5 col-sm-4 col-md-4">
+						<div class="col-xs-12 col-sm-12 col-md-12" style="margin-top: -15px;">
+							<div id="fb-root" class=" fb_reset"><div style="position: absolute; top: -10000px; width: 0px; height: 0px;"><div><iframe name="fb_xdm_frame_https" id="fb_xdm_frame_https" aria-hidden="true" title="Facebook Cross Domain Communication Frame" tabindex="-1" frameborder="0" allowtransparency="true" allowfullscreen="true" scrolling="no" allow="encrypted-media" src="https://staticxx.facebook.com/connect/xd_arbiter.php?version=44#channel=faa6e127dca87&amp;origin=https%3A%2F%2Fwww.creator.co.kr" style="border: none;"></iframe></div><div></div></div></div>
+							<div class="fb-like fb_iframe_widget" data-href="https://www.creator.co.kr" data-colorscheme="dark" data-layout="button_count" data-action="like" data-size="large" data-show-faces="true" data-share="true" fb-xfbml-state="rendered" fb-iframe-plugin-query="action=like&amp;app_id=779679155494047&amp;color_scheme=dark&amp;container_width=360&amp;href=https%3A%2F%2Fwww.creator.co.kr%2F&amp;layout=button_count&amp;locale=ko_KR&amp;sdk=joey&amp;share=true&amp;show_faces=true&amp;size=large"><span style="vertical-align: bottom; width: 198px; height: 28px;"><iframe name="f311d471cc8ec58" width="1000px" height="1000px" title="fb:like Facebook Social Plugin" frameborder="0" allowtransparency="true" allowfullscreen="true" scrolling="no" allow="encrypted-media" src="https://www.facebook.com/v2.5/plugins/like.php?action=like&amp;app_id=779679155494047&amp;channel=https%3A%2F%2Fstaticxx.facebook.com%2Fconnect%2Fxd_arbiter.php%3Fversion%3D44%23cb%3Dfdb8ea088f3c08%26domain%3Dwww.creator.co.kr%26origin%3Dhttps%253A%252F%252Fwww.creator.co.kr%252Ffaa6e127dca87%26relation%3Dparent.parent&amp;color_scheme=dark&amp;container_width=360&amp;href=https%3A%2F%2Fwww.creator.co.kr%2F&amp;layout=button_count&amp;locale=ko_KR&amp;sdk=joey&amp;share=true&amp;show_faces=true&amp;size=large" style="border: none; visibility: visible; width: 198px; height: 28px;" class=""></iframe></span></div>
+						</div>
+						<div class="col-xs-5 col-sm-4 col-md-4" style="margin-top: 25px;">
 							<div class="logo">
-								<a href="http://p2plending.or.kr" target="_blank">
+								<a href="http://p2plending.or.kr" target="_blank" >
 									<img id="p2pkpfaLogo" src="${pageContext.request.contextPath}/resources/img/img_p2pkpfa_auth_logo_color.jpg" alt="P2PKPFA" class="img-responsive">
 								</a>
 							</div>
 						</div>
-						<div class="col-xs-5 col-sm-4 col-md-4">
+						<div class="col-xs-5 col-sm-4 col-md-4" style="margin-top: 25px;">
 							<div class="logo" style="padding: 10px 0">
 								<img id="comodoLogo" src="${pageContext.request.contextPath}/resources/img/btn_comodo_secure_green.jpg" alt="COMODO" class="img-responsive">
 							</div>
@@ -333,99 +337,15 @@ footer .legal_copyright {
 					</div>
 				</div>
 			</div>
-			<div class="col-xs-12 col-sm-8 col-md-8">
-				
-				<div class="row">
-					<div class="col-xs-6 col-sm-3 col-md-3">
-						<ul class="list-unstyled main">
-							<li>회사소개</li>
-						</ul>
-						<ul class="list-unstyled sub">
-							<li><a href="/info/aboutus">creator 소개</a></li>
-							<li><a href="/info/notice">공지사항</a></li>
-							<li><a href="/info/news">언론보도</a></li>
-						</ul>
-					</div>
-					<div class="col-xs-6 col-sm-3 col-md-3">
-						<ul class="list-unstyled main">
-							<li>대출</li>
-						</ul>
-						<ul class="list-unstyled sub">
-							<li><a href="/loan/guide">대출안내</a></li>
-							<li><a href="/loan/loanReq">대출하기</a></li>
-						</ul>
-					</div>
-					<div class="clearfix xd"></div>
-					<div class="col-xs-6 col-sm-3 col-md-3">
-						<ul class="list-unstyled main">
-							<li>투자</li>
-						</ul>
-						<ul class="list-unstyled sub">
-							<li><a href="/invest/guide">투자안내</a></li>
-							<li><a href="/invest/list">투자하기</a></li>
-							<li><a href="/invest/history">완료된 투자</a></li>
-						</ul>
-					</div>
-					<div class="col-xs-6 col-sm-3 col-md-3">
-						<ul class="list-unstyled main">
-							<li>고객지원</li>
-						</ul>
-						<ul class="list-unstyled sub">
-							<li><a href="/info/faq">자주 묻는 질문</a></li>
-							<li><a href="/info/contact">연락하시는 곳</a></li>
-							<li><a href="/info/useTerm">이용약관</a></li>
-							<li><a href="/info/pInfoTerm">개인정보처리방침</a></li>
-						</ul>
-					</div>
-				</div>
-				
-			</div>
-			
-		</div>
-		<hr>
-		<div class="row footer-row">
-			<div class="col-md-4 col-md-push-8">
-				<div class="sns">
-					<h4>
-						크리에이터 소식을 받아보세요!
-					</h4>
-					<div class="row logo">
-						<div class="col-xs-12 col-sm-12 col-md-12">
-							<div id="plusfriend-addfriend-button"><a href="#"><img src="https://developers.kakao.com/assets/img/about/logos/plusfriend/friendadd_small_yellow_rect.png" alt="플러스친구 친구 추가 버튼" title="플러스친구 친구 추가 버튼"></a></div>
-						</div>
-						<div class="col-xs-12 col-sm-12 col-md-12" style="margin-top: 10px;">
-							<div id="fb-root" class=" fb_reset"><div style="position: absolute; top: -10000px; width: 0px; height: 0px;"><div><iframe name="fb_xdm_frame_https" id="fb_xdm_frame_https" aria-hidden="true" title="Facebook Cross Domain Communication Frame" tabindex="-1" frameborder="0" allowtransparency="true" allowfullscreen="true" scrolling="no" allow="encrypted-media" src="https://staticxx.facebook.com/connect/xd_arbiter.php?version=44#channel=faa6e127dca87&amp;origin=https%3A%2F%2Fwww.creator.co.kr" style="border: none;"></iframe></div><div></div></div></div>
-							<div class="fb-like fb_iframe_widget" data-href="https://www.creator.co.kr" data-colorscheme="dark" data-layout="button_count" data-action="like" data-size="large" data-show-faces="true" data-share="true" fb-xfbml-state="rendered" fb-iframe-plugin-query="action=like&amp;app_id=779679155494047&amp;color_scheme=dark&amp;container_width=360&amp;href=https%3A%2F%2Fwww.creator.co.kr%2F&amp;layout=button_count&amp;locale=ko_KR&amp;sdk=joey&amp;share=true&amp;show_faces=true&amp;size=large"><span style="vertical-align: bottom; width: 198px; height: 28px;"><iframe name="f311d471cc8ec58" width="1000px" height="1000px" title="fb:like Facebook Social Plugin" frameborder="0" allowtransparency="true" allowfullscreen="true" scrolling="no" allow="encrypted-media" src="https://www.facebook.com/v2.5/plugins/like.php?action=like&amp;app_id=779679155494047&amp;channel=https%3A%2F%2Fstaticxx.facebook.com%2Fconnect%2Fxd_arbiter.php%3Fversion%3D44%23cb%3Dfdb8ea088f3c08%26domain%3Dwww.creator.co.kr%26origin%3Dhttps%253A%252F%252Fwww.creator.co.kr%252Ffaa6e127dca87%26relation%3Dparent.parent&amp;color_scheme=dark&amp;container_width=360&amp;href=https%3A%2F%2Fwww.creator.co.kr%2F&amp;layout=button_count&amp;locale=ko_KR&amp;sdk=joey&amp;share=true&amp;show_faces=true&amp;size=large" style="border: none; visibility: visible; width: 198px; height: 28px;" class=""></iframe></span></div>
-						</div>
-					</div>
-					
-					<h4 style="margin-top: 20px;margin-bottom: 0px;">
-						궁금한 점이 있으시다면..
-					</h4>
-					<div class="row logo">
-						<div class="col-xs-12 col-sm-12 col-md-12" style="display: inline;">
-							<!-- 
-							<div class="logo" style="display: inline-block;">
-								<a href="https://goto.kakao.com/@creator" target="_blank">
-									<img id="kakaoLink" src="/images/common/btn_footer_yellowid.png" id="kakaoLink" alt="kakao talk" class="img-responsive">
-								</a>
-							</div>
-							 -->
-							
-							<div id="plusfriend-chat-button"><a href="#"><img src="https://developers.kakao.com/assets/img/about/logos/plusfriend/consult_small_yellow_pc.png" alt="플러스친구 1:1 채팅 버튼" title="플러스친구 1:1 채팅 버튼"></a></div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-8 col-md-pull-4">
+			<div class="col-xs-12 col-sm-8 col-md-8" style="margin-top: -40px;">
 				<p class="legal_copyright">
-					플랫폼 사업자 : (주)크리에이터 | 사업자번호 : 825-88-00203 | 대표이사 신규식
-					<br>TEL. 02-546-4076 | FAX. 070-4015-0577 | MAIL. contact@creator.co.kr | KakaoTalk. @creator
-					<br>통신판매업 2018-서울강남-04669 서울 강남구청(02-3423-5114)
+					플랫폼 사업자 : (주)크리에이터 | 사업자번호 : 777-88-00000 | 공동대표 김도엽,나영주
+					<br>TEL. 02-777-7777 | FAX. 070-7777-7777 | MAIL. contact@creator.co.kr | KakaoTalk. @creator
+					<br>통신판매업 2019-서울구로-77777 서울 구로구청(02-3333-5555)
 				</p>
 				<p class="legal_copyright" id="loanCopyright">
-					여신회사 : (주)크리에이터대부 | 사업자번호 : 317-88-00338 | 대표이사 백승한
-					<br>P2P연계대부업 2018-금감원-1374
+					여신회사 : (주)크리에이터대부 | 사업자번호 : 777-88-99999 | 대표이사 박태민,이명재
+					<br>P2P연계대부업 2019-금감원-1777
 				</p>
 				<p class="borrower-notification" id="loanNotification">
 					대출금리 : 연 19.9%내, 연체금리 : 약정금리 +3%(법정최고금리 24%내), 플랫폼 이용료 외 취급수수료 등 기타 부대비용 없습니다.
@@ -436,10 +356,23 @@ footer .legal_copyright {
 					크리에이터는 투자원금과 수익을 보장하지 않으며, 투자손실에 대한 책임은 모두 투자자에게 있습니다.
 				</div>
 				<p class="legal_copyright">
-					Copyright (c) 2016 creator
+					Copyright (c) 2019 creator
 					<br>creator 플랫폼 이용료 외 취급수수료 등 기타 부대비용 없음. 중개수수료를 요구하거나 받는 것은 불법입니다.
 				</p>
 			</div>
+			<hr>
+<!-- 		<div class="row footer-row"> -->
+<!-- 			<div class="col-md-4 col-md-push-8"> -->
+<!-- 				<div class="sns"> -->
+<!-- 					<div class="row logo"> -->
+<!-- 						<div class="col-xs-12 col-sm-12 col-md-12"> -->
+<!-- 							<div id="plusfriend-addfriend-button" ><a href="#"><img src="https://developers.kakao.com/assets/img/about/logos/plusfriend/friendadd_small_yellow_rect.png" alt="플러스친구 친구 추가 버튼" title="플러스친구 친구 추가 버튼"></a></div> -->
+<!-- 							<div id="plusfriend-chat-button"><a href="#"><img src="https://developers.kakao.com/assets/img/about/logos/plusfriend/consult_small_yellow_pc.png" alt="플러스친구 1:1 채팅 버튼" title="플러스친구 1:1 채팅 버튼"></a></div> -->
+<!-- 						</div> -->
+<!-- 					</div> -->
+<!-- 				</div> -->
+<!-- 			</div> -->
+<!-- 		</div> -->
 		</div>
 	</div>
 </footer>

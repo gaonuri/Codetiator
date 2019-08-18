@@ -47,7 +47,7 @@
     color: #fff;
 }
 #loanGuide-banner {
-    background: url(${pageContext.request.contextPath}/resources/bootstrap/img/blog-bg.jpg)no-repeat center center fixed;
+    background: url(${pageContext.request.contextPath}/resources/img/bgImg_investIntro.png)no-repeat center center fixed;
     background-size: cover;
     background-attachment: fixed;
     width: 100%;
@@ -75,7 +75,7 @@
     margin-left: auto;
 }
 #loanGuide-banner {
-    background: url(${pageContext.request.contextPath}/resources/img/bgImg_loanIntro01.jpg)no-repeat center center fixed;
+    background: url(${pageContext.request.contextPath}/resources/img/bgImg_investIntro.png)no-repeat center center fixed;
     background-size: cover;
     background-attachment: fixed;
     width: 100%;
@@ -260,9 +260,9 @@
                   <div class="form-group">
                   	<label class="control-label col-md-3">등급</label>
                   	<div class="col-md-8">
-                    	<select class="form-control loanPurpose-select" id="grade" name="grade">
+                    	<select class="form-control loanPurpose-select" id="age_age_grade" name="age_grade">
 							<option value="">선택하세요</option>
-								<option value="부동산담보">7세 이용가</option>
+								<option value="7세 이용가">7세 이용가</option>
 								<option value="12세 이용가">12세 이용가</option>
 								<option value="15세 이용가">15세 이용가</option>
 								<option value="18세 이용가">18세 이용가</option>
@@ -370,7 +370,7 @@
                 <div class="form-group">
                   	<label class="control-label col-md-3">준공(생산)일자 </label>
                   	<div class="col-md-8">
-                    	<input type="text" id="comple_year" name="comple_year" class="form-control  onlycal" placeholder="199202"/>
+                    	<input type="text" id="comple_year" name="comple_year" class="form-control  onlycal" maxlength="6" placeholder="199202"/>
                     </div>
                 </div>
 <!--                 <div class="form-group"> -->
@@ -471,25 +471,6 @@
   	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/bootstrap/lib/bootstrap-timepicker/js/bootstrap-timepicker.js"></script>
   	<script src="${pageContext.request.contextPath}/resources/bootstrap/lib/advanced-form-components.js"></script>
 	<script type="text/javascript">
-    $(document).ready(function() {
-      var unique_id = $.gritter.add({
-        // (string | mandatory) the heading of the notification
-        title: 'Welcome to Dashio!',
-        // (string | mandatory) the text inside the notification
-        text: 'Hover me to enable the Close Button. You can hide the left sidebar clicking on the button next to the logo. Developed by <a href="http://alvarez.is" target="_blank" style="color:#4ECDC4">Alvarez.is</a>.',
-        // (string | optional) the image to display on the left
-        image: '${pageContext.request.contextPath}/resources/bootstrap/img/ui-sam.jpg',
-        // (bool | optional) if you want it to fade out on its own or just sit there
-        sticky: false,
-        // (int | optional) the time you want it to be alive for before fading out
-        time: 8000,
-        // (string | optional) the class name you want to apply to that specific message
-        class_name: 'my-sticky-class'
-      });
-
-      return false;
-    });
-    
     	$(".onlyKor").change(function(){
     		//alert($(this).val());
     		var korStd = /^[가-힣]{1,9}$/;
@@ -629,7 +610,7 @@ $(document).ready(function() {
 		var project_name = $("#project_name").val();
 		var type = $("#type").val();
 		var genre = $("#genre").val();
-		var grade = $("#grade").val();
+		var age_grade = $("#age_grade").val();
 		var more_information = $("#more_information").val();
 		
 		var guarantee_img = $("#guarantee_img").val();
@@ -658,9 +639,9 @@ $(document).ready(function() {
 			alert("장르를 선택 해주세요.");
 			$("#genre").focus();
 			
-		} else if(grade == "") {
+		} else if(age_grade == "") {
 			alert("등급을 선택 해주세요.");
-			$("#grade").focus();
+			$("#age_grade").focus();
 			
 		} else if(more_information == "") {
 			alert("상세정보를 입력 해주세요.");

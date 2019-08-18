@@ -1893,7 +1893,7 @@ $(document).ready(function() {
 			<div class="rpm_banner col-sm-12 col-md-12">
 				<p style="text-align:center; padding:16px 0 6px 0;">
 					<a href="/info/noticeDetail/39" target="_blank">
-						<img src="${pageContext.request.contextPath}/resources/img/rpm_txtIMG.png" class="" alt="Recovery Plan of creator" style="max-width:300px;">
+						<img src="${pageContext.request.contextPath}/resources/investtext.png" class="" alt="Recovery Plan of creator" style="max-width:300px;">
 					</a>
 				</p>
 			</div>
@@ -2276,7 +2276,7 @@ $(document).ready(function() {
 					크리에이터 종합등급
 				</div>
 				<div class="row wrap_grade col">
-					<div class="col-xs-12 col-sm-12 col-md-6 col wrap_gCont">
+					<div class="col-xs-12 col-sm-12 col-md-12 col wrap_gCont">
 						<div class="row wrap_grade_IMG">
 							<div class="col-sm-12 col-md-12 col grade_txt">
 								<p style="text-align: center;">
@@ -2513,14 +2513,6 @@ $(document).ready(function() {
 					</div>
 				</div>
 				<div class="row">
-					<div class="col-md-12">
-						<div class="tabSubTit">
-							선순위 채권 및 임대차
-						</div>
-						<div class="content">
-							선순위 금액으로 <strong>농협 34.2억원(채권최고액 : 50.16억원)</strong>이 있습니다.
-						</div>
-					</div>
 				</div>
 				<div class="row">
 					<div class="col-md-12">
@@ -2543,10 +2535,10 @@ $(document).ready(function() {
 		</div>
 		<div class="col-md-12 planCont" style="margin-bottom: 30px;">
 			<div class="md">
-				<img src="${pageContext.request.contextPath}/resources/img/img_invest_nmvbls_strctr2_l.png" class="img-responsive" style="margin: 30px auto;">
+				<img src="${pageContext.request.contextPath}/resources/invest_ii.png" class="img-responsive" style="margin: 30px auto;">
 			</div>
 			<div class="xd">
-				<img src="${pageContext.request.contextPath}/resources/img/img_invest_nmvbls_strctr2_s.png" class="img-responsive" style="margin: 30px auto;">
+				<img src="${pageContext.request.contextPath}/resources/invest_ii.png" class="img-responsive" style="margin: 30px auto;">
 			</div>
 		</div>
 	</div>
@@ -2977,8 +2969,8 @@ $(document).ready(function() {
 								</div>
 								<div class="row">
 									<div class="col-xs-12 col-sm-12 col-md-12">
-										<div class="notice">
-											<div class="title">투자시 위험안내</div>
+										<div class="notice" style="margin-bottom: 100px;">
+											<div class="title" style="color: red; font-size: 20px">@투자시 위험안내@</div>
 											<div class="text">creator는 원금과 수익률을 보장하지 않으며 투자 손실의 가능성이 있습니다. 엄격한 차입자 신용 평가와 금리 산정으로 평균 수익률 연 8%를 목표로 합니다.</div>
 										</div>
 									</div>

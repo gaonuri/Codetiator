@@ -476,7 +476,7 @@
 #mypage-banner {
     position: relative;
     overflow: hidden;
-    background: url(${pageContext.request.contextPath}/resources/img/common_banner_title.jpg) center 0% no-repeat;
+    background: url(${pageContext.request.contextPath}/resources/img/bgImg_investIntro.png) center 0% no-repeat;
     background-size: 100%;
     -webkit-background-size: cover;
     -moz-background-size: cover;

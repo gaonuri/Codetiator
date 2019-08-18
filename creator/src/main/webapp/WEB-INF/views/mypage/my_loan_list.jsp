@@ -238,7 +238,7 @@
 											</div>
 											<div class="row">
 												<div class="col-sm-12 col-md-12">
-													<button class="btn btn-purple-transparent btn-block" type="button" id="myloan"">대출하기</button>
+													<button class="btn btn-purple-transparent btn-block" type="button" id="myloan">대출하기</button>
 												</div>
 											</div>
 										</div>
@@ -1473,7 +1473,7 @@
 #mypage-banner {
     position: relative;
     overflow: hidden;
-    background: url(${pageContext.request.contextPath}/resources/img/common_banner_title.jpg) center 0% no-repeat;
+    background: url(${pageContext.request.contextPath}/resources/img/bgImg_investIntro.png) center 0% no-repeat;
     background-size: 100%;
     -webkit-background-size: cover;
     -moz-background-size: cover;

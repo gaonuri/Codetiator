@@ -585,6 +585,18 @@ $(document).ready(function(){
 article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
     display: block;
 }
+#join-banner {
+    position: relative;
+    overflow: hidden;
+    background: url(${pageContext.request.contextPath}/resources/img/bgImg_investIntro.png) center 0% no-repeat;
+    background-size: 100%;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-attachment: fixed;
+    color: #fff;
+    height: 50px;
+}
 body, html {
     font-family: 'Noto Sans KR', sans-serif;
     /* font-family: "Seoul Namsan", sans-serif; */
@@ -996,38 +1008,38 @@ $(document).ready(function() {
 	});
 	$("#allTeamCheckbox01").on("change", function() {
 		if($(this).is(":checked")){
-			$("#user_chk_email").prop("checked", true);
-			$("#user_chk_email").attr("checked", true);
-			$("#user_terms_of_service").prop("checked", true);
-			$("#user_terms_of_service").attr("checked", true);
-			$("#user_privacy_policy_agree").prop("checked", true);
-			$("#user_privacy_policy_agree").attr("checked", true);
+			$("input:checkbox[name='agree_chk_1']").prop("checked", true);
+			$("input:checkbox[name='agree_chk_1']").attr("checked", true);
+			$("input:checkbox[name='agree_chk_2']").prop("checked", true);
+			$("input:checkbox[name='agree_chk_2']").attr("checked", true);
+			$("input:checkbox[name='agree_chk_3']").prop("checked", true);
+			$("input:checkbox[name='agree_chk_3']").attr("checked", true);
 		} else {
-			$("#user_chk_email").prop("checked", false);
-			$("#user_chk_email").attr("checked", false);
-			$("#user_terms_of_service").prop("checked", false);
-			$("#user_terms_of_service").attr("checked", false);
-			$("#user_privacy_policy_agree").prop("checked", false);
-			$("#user_privacy_policy_agree").attr("checked", false);
+			$("input:checkbox[name='agree_chk_1']").prop("checked", false);
+			$("input:checkbox[name='agree_chk_1']").attr("checked", false);
+			$("input:checkbox[name='agree_chk_2']").prop("checked", false);
+			$("input:checkbox[name='agree_chk_2']").attr("checked", false);
+			$("input:checkbox[name='agree_chk_3']").prop("checked", false);
+			$("input:checkbox[name='agree_chk_3']").attr("checked", false);
 		}
 		fn_setRegistBtn("01");
 	});
 	
 	$("#allTeamCheckbox02").on("change", function() {
 		if($(this).is(":checked")){
-			$("#busi_chk_email").prop("checked", true);
-			$("#busi_chk_email").attr("checked", true);
-			$("#busi_terms_of_service").prop("checked", true);
-			$("#busi_terms_of_service").attr("checked", true);
-			$("#busi_privacy_policy_agree").prop("checked", true);
-			$("#busi_privacy_policy_agree").attr("checked", true);
+			$("input:checkbox[name='agree_chk_4']").prop("checked", true);
+			$("input:checkbox[name='agree_chk_4']").attr("checked", true);
+			$("input:checkbox[name='agree_chk_5']").prop("checked", true);
+			$("input:checkbox[name='agree_chk_5']").attr("checked", true);
+			$("input:checkbox[name='agree_chk_6']").prop("checked", true);
+			$("input:checkbox[name='agree_chk_6']").attr("checked", true);
 		} else {
-			$("#busi_chk_email").prop("checked", false);
-			$("#busi_chk_email").attr("checked", false);
-			$("#busi_terms_of_service").prop("checked", false);
-			$("#busi_terms_of_service").attr("checked", false);
-			$("#busi_privacy_policy_agree").prop("checked", false);
-			$("#busi_privacy_policy_agree").attr("checked", false);
+			$("input:checkbox[name='agree_chk_4']").prop("checked", false);
+			$("input:checkbox[name='agree_chk_4']").attr("checked", false);
+			$("input:checkbox[name='agree_chk_5']").prop("checked", false);
+			$("input:checkbox[name='agree_chk_5']").attr("checked", false);
+			$("input:checkbox[name='agree_chk_6']").prop("checked", false);
+			$("input:checkbox[name='agree_chk_6']").attr("checked", false);
 		}
 		fn_setRegistBtn("02");
 	});
@@ -1048,6 +1060,13 @@ $(document).ready(function() {
 	    <!-- **********************************************************************************************************************************************************
 	        TOP BAR CONTENT & NOTIFICATIONS
 	        *********************************************************************************************************************************************************** -->
+	        
+<section id="join-banner" class="text-center">
+		<div class="overlay">
+			<div class="section-body">
+			</div>
+		</div>
+</section>	        
 	    <!--header start-->
 	    
 	     <%@ include file="../header.jsp" %>
@@ -1064,7 +1083,7 @@ $(document).ready(function() {
 			<div class="section-body">
 				<div class="wrap">
 					<div class="logo text-center">
-						<img src="${pageContext.request.contextPath}/resources/img/img_login_logo.png" alt="login_img">
+						<img src="${pageContext.request.contextPath}/resources/krlogo3.png" alt="login_img">
 					</div>
 					<div class="box margin-b-40">
 						<div class="tap">
@@ -1125,7 +1144,7 @@ $(document).ready(function() {
 									<tr>
 										<td>
 											<label class="ui-checkbox" style="margin-bottom:12px;">
-												<input type="checkbox" id="allTeamCheckbox01">
+												<input type="checkbox" id="allTeamCheckbox01" value="Y">
 												<span style="font-weight: bold;">
 													이용약관, 개인정보 처리방침 모두 동의
 												</span>
@@ -1135,7 +1154,7 @@ $(document).ready(function() {
 									<tr>
 										<td>
 											<label class="ui-checkbox row" >
-												<input type="checkbox" name="checkbox1" id="user_chk_email" value="0">
+												<input type="checkbox" name="agree_chk_1" id="user_chk_email" value="1">
 												<span>
 													이메일 수신 여부[선택]
 												</span>
@@ -1145,7 +1164,7 @@ $(document).ready(function() {
 									<tr>
 										<td>
 											<label class="ui-checkbox row">
-												<input type="checkbox" name="checkbox1" id="user_terms_of_service" value="0">
+												<input type="checkbox" name="agree_chk_2" id="user_terms_of_service" value="1">
 												<span>
 													이용약관 동의
 												</span>
@@ -1156,7 +1175,7 @@ $(document).ready(function() {
 									<tr>
 										<td>
 											<label class="ui-checkbox row">
-												<input type="checkbox" name="checkbox1" id="user_privacy_policy_agree" value="0">
+												<input type="checkbox" name="agree_chk_3" id="user_privacy_policy_agree" value="1">
 												<span>
 													개인정보 처리방침 동의
 												</span>
@@ -1268,7 +1287,7 @@ $(document).ready(function() {
 									<tr>
 										<td>
 											<label class="ui-checkbox" style="margin-bottom:12px;">
-												<input type="checkbox" id="allTeamCheckbox02">
+												<input type="checkbox" id="allTeamCheckbox02" value="Y">
 												<span style="font-weight: bold;">
 													이용약관, 개인정보 처리방침 모두 동의
 												</span>
@@ -1278,7 +1297,7 @@ $(document).ready(function() {
 									<tr>
 										<td>
 											<label class="ui-checkbox row" >
-												<input type="checkbox" name="checkbox1" id="busi_chk_email" value="0">
+												<input type="checkbox" name="agree_chk_4" id="busi_chk_email" value="1">
 												<span>
 													이메일 수신 여부[선택]
 												</span>
@@ -1288,7 +1307,7 @@ $(document).ready(function() {
 									<tr>
 										<td>
 											<label class="ui-checkbox row">
-												<input type="checkbox" name="checkbox1" id="busi_terms_of_service" value="0">
+												<input type="checkbox" name="agree_chk_5" id="busi_terms_of_service" value="1">
 												<span>
 													이용약관 동의
 												</span>
@@ -1299,7 +1318,7 @@ $(document).ready(function() {
 									<tr>
 										<td>
 											<label class="ui-checkbox row">
-												<input type="checkbox" name="checkbox1" id="busi_privacy_policy_agree" value="0">
+												<input type="checkbox" name="agree_chk_6" id="busi_privacy_policy_agree" value="1">
 												<span>
 													개인정보 처리방침 동의
 												</span>

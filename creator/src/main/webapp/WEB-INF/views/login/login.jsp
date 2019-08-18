@@ -117,6 +117,24 @@ $(document).ready(function(){
 	
 </head>
 <style>
+#login-banner {
+    position: relative;
+    overflow: hidden;
+    background: url(${pageContext.request.contextPath}/resources/img/bgImg_investIntro.png) center 0% no-repeat;
+    background-size: 100%;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-attachment: fixed;
+    color: #fff;
+    height: 50px;
+}
+#login-banner .section-body {
+    color: #fff;
+    position: relative;
+    padding: 135px 20px 0px 20px;
+}
+
 .text-center {
     text-align: center;
 }
@@ -502,6 +520,13 @@ $(document).ready(function() {
 });
 </script>
 <body>
+<section id="login-banner" class="text-center">
+		<div class="overlay">
+			<div class="section-body">
+			</div>
+		</div>
+</section>
+
 	<section id="container">
 	    <!-- **********************************************************************************************************************************************************
 	        TOP BAR CONTENT & NOTIFICATIONS
@@ -520,7 +545,7 @@ $(document).ready(function() {
 			<div class="section-body">
 				<div class="wrap">
 					<div class="logo">
-						<img src="${pageContext.request.contextPath}/resources/img/img_login_logo.png" alt="login_img">
+						<img src="${pageContext.request.contextPath}/resources/krlogo3.png" alt="login_img">
 					</div>
 					<div class="loginComment">
 					</div>
@@ -529,12 +554,12 @@ $(document).ready(function() {
 							<div class="row row-cat">
 								<div class="btn-group cusGb" data-toggle="buttons">
 									<div class="col-xs-6 col-sm-6 col-md-6 col" style="padding-left: 0px;padding-right: 0px;">
-										<label class="btn labelBtn-purple btn-block" id="cusGbLabel01" style="font-weight: 600;opacity: 1.0;border-radius: 0px;">
+										<label class="btn labelBtn-purple btn-block" id="cusGbLabel01"style="border-radius: 0px;">
 											일반회원
 										</label>
 									</div>
 									<div class="col-xs-6 col-sm-6 col-md-6 col" style="padding-left: 0px;padding-right: 0px;">
-										<label class="btn labelBtn-purple btn-block checked" id="cusGbLabel02" style="font-weight: 600;opacity: 1.0;border-radius: 0px;">
+										<label class="btn labelBtn-purple btn-block checked" id="cusGbLabel02"style="border-radius: 0px;">
 											법인회원
 										</label>
 									</div>

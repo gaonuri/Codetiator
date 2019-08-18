@@ -39,7 +39,7 @@ public class MypageService {
 	
 	public InOutVO inout(MemberVO userVO) {
 		InOutVO ioVO = null;
-		ioVO = (InOutVO) dao.inout(userVO);
+		ioVO = dao.inout(userVO);
 		return ioVO;
 	}
 	

@@ -47,7 +47,7 @@
     color: #fff;
 }
 #loanGuide-banner {
-    background: url(${pageContext.request.contextPath}/resources/img/bgImg_loanIntro01.jpg)no-repeat center center fixed;
+    background: url(${pageContext.request.contextPath}/resources/img/bgImg_investIntro.png)no-repeat center center fixed;
     background-size: cover;
     background-attachment: fixed;
     width: 100%;
@@ -144,7 +144,7 @@
     font-size: 13;
     line-height: 100px;
     color: #fff;
-    background-color: blue;
+    background-color: #712594;
     -webkit-transition: all 0.6s ease-in-out;
     transition: all 0.6s ease-in-out;
 }
@@ -226,7 +226,7 @@
 				<div class="row mt">
 					<div class="col-lg-12">
 					<section id="content">
-<div class="container">
+		<div class="container">
 			<div class="row" style="width: 800px;">
 				<div class="col-md-offset-2 col-md-8 col">
 					<div class="form" style="width: 750px;">
@@ -256,29 +256,28 @@
 								<div class="line"></div>
 							</div>
             
-					 <div class="icn-main-container" style="margin-top: 200px;">
-                  		<span class="icn-container-active" style="margin-right: 220px;">인적사항 검토중</span>
-                  		<span class="icn-container" style="margin-right: 220px;">제출서류 검토중</span>
-                  		<span class="icn-container" style="font-size: 10;">최종적격 여부 검토중</span>
-               		 </div>
-               		 <button class="loan_int_btn mr-green" id="loanReqBtn2" style="width:200px; height: 36px;margin-left: 280px;margin-right: 248px;margin-top: 150px;">
+							 <div class="icn-main-container" style="margin-top: 100px;">
+		                  		<span class="icn-container-active" style="margin-right: 220px;">인적사항 검토중</span>
+		                  		<span class="icn-container" style="margin-right: 220px;">제출서류 검토중</span>
+		                  		<span class="icn-container" style="font-size: 10;">최종적격 여부 검토중</span>
+		               		 </div>
+		               		 <button class="loan_int_btn mr-green" id="loanReqBtn2" style="width:200px; height: 36px;margin-left: 280px;margin-right: 248px;margin-top: 150px; background-color: #01C351; color: #fff;">
 								돌아가기<span class="mr-cap"></span>
 								<span class="mr-angle">
 									<div>
 										<p class="botn">&gt;</p>
 									</div>
 								</span>
-					 </button>
-             
-              </div>
-              </div>
+					 		</button>
+		              	</div>
+		              </div>
 						<div class="box-footer"></div>
 					</div>
 				</div>	
 			</div>
 		</div>
 	</section>
-            </div>
+           			 </div>
 					</div>
 			</section>
 			<!-- /wrapper -->
@@ -315,26 +314,6 @@
  	 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/bootstrap/lib/bootstrap-daterangepicker/moment.min.js"></script>
   	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/bootstrap/lib/bootstrap-timepicker/js/bootstrap-timepicker.js"></script>
   	<script src="${pageContext.request.contextPath}/resources/bootstrap/lib/advanced-form-components.js"></script>
-	<script type="text/javascript">
-    $(document).ready(function() {
-      var unique_id = $.gritter.add({
-        // (string | mandatory) the heading of the notification
-        title: 'Welcome to Dashio!',
-        // (string | mandatory) the text inside the notification
-        text: 'Hover me to enable the Close Button. You can hide the left sidebar clicking on the button next to the logo. Developed by <a href="http://alvarez.is" target="_blank" style="color:#4ECDC4">Alvarez.is</a>.',
-        // (string | optional) the image to display on the left
-        image: '${pageContext.request.contextPath}/resources/bootstrap/img/ui-sam.jpg',
-        // (bool | optional) if you want it to fade out on its own or just sit there
-        sticky: false,
-        // (int | optional) the time you want it to be alive for before fading out
-        time: 8000,
-        // (string | optional) the class name you want to apply to that specific message
-        class_name: 'my-sticky-class'
-      });
-
-      return false;
-    });
-	</script>
 	<script type="application/javascript">
     $(document).ready(function() {
       $("#date-popover").popover({

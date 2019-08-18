@@ -2,7 +2,6 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <head>
-<script src="${pageContext.request.contextPath}/resources/jquery/jquery-3.4.1.js"></script>
 <script type="text/javascript">
 $(document).ready(function() {
 	  $(window).scroll(function() {
@@ -344,6 +343,7 @@ a {
     display: block;
     max-width: 100%;
     height: auto;
+    margin-top: -12px;
 }
 img {
     vertical-align: middle;
@@ -549,7 +549,7 @@ li {
 					<span class="icon-bar"></span>
 				</button>
 				<a class="navbar-brand" href="${pageContext.request.contextPath}/main">
-					<img src="${pageContext.request.contextPath}/resources/img/logo_mainTop.png" class="img-responsive" alt="brand_img">
+					<img src="${pageContext.request.contextPath}/resources/krlogo2.png" class="img-responsive" alt="brand_img">
 				</a>
 			</div>
 	
@@ -615,7 +615,7 @@ li {
 					
 					<c:choose>
 						<c:when test="${memberVO != null && memberVO.user_num != '' || memberVO != null && memberVO.busi_num != ''}">
-							<li id="logout_btn"><a class="top-menu-font" href="${pageContext.request.contextPath}/main">로그아웃</a></li>
+							<li id="logout_btn"><a class="top-menu-font" href="${pageContext.request.contextPath}/logout">로그아웃</a></li>
 						</c:when>
 						<c:otherwise>
 							<li><a class="loginss top-menu-font" href="${pageContext.request.contextPath}/join">회원가입</a></li>

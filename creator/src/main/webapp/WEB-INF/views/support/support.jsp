@@ -85,7 +85,7 @@ body{
 	width: 100%;
 	height: 430px;
 	color: #fff;
-	background: url(/images/common/common_banner_title.jpg)center 0% no-repeat;
+	background: url(${pageContext.request.contextPath}/resources/img/bgImg_investIntro.png)center 0% no-repeat;
 				/*
 				linear-gradient(120deg,  #712594, #9968fe, #ff5c5c, #a55cff, #712594);
 				*/
@@ -530,6 +530,128 @@ body{
 													</tr>
 												</thead>
 												<tbody id="mngmntBody">
+</style>
+
+<body>
+	<section id="container">
+	    <!-- **********************************************************************************************************************************************************
+	        TOP BAR CONTENT & NOTIFICATIONS
+	        *********************************************************************************************************************************************************** -->
+	    <!--header start-->
+	    <%@ include file="../header.jsp" %>
+	    <!--header end-->
+		   <section id="notice-banner" class="text-center">
+				<div class="overlay">
+					<div class="section-body">
+						<h1 class="notice-title">공지사항</h1>
+						<!--  **그라데이션 백그라운드 test용**
+						<div class="notice-image"> </div>
+						 -->
+					</div>
+				</div>
+			</section>
+	   
+	    <!-- **********************************************************************************************************************************************************
+	        MAIN CONTENT
+	        *********************************************************************************************************************************************************** -->
+
+		
+
+		<!--main content start-->
+	    <section id="board">
+		<div class="container">
+			<div class="section-body">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="wrap">
+							<div class="box">
+								<div role="tabpanel">
+									<!-- Nav tabs -->
+									<ul class="nav nav-tabs" role="tablist" id="notiTab">
+										<li role="presentation" class="active">
+											<a href="#allTab" aria-controls="all" role="tab" data-toggle="tab" id="all">전체</a>
+										</li>
+										<li role="presentation">
+											<a href="#eventTab" aria-controls="event" role="tab" data-toggle="tab" id="event">새소식</a>
+										</li>
+										<li role="presentation">
+											<a href="#mngmntTab" aria-controls="mngmnt" role="tab" data-toggle="tab" id="mngmnt">운영사항</a>
+										</li>
+									</ul>
+									<!-- Tab panes -->
+									<div class="tab-content" style="margin-top:5px;">
+										<div role="tabpanel" class="tab-pane fade in active" id="allTab">
+											<table class="table table-hover">
+												<colgroup>
+													<col width="15%">
+													<col width="*">
+													<col width="15%">
+												</colgroup>
+												<thead style="display: none;">
+													<tr>
+														<th scope="col">순번</th>
+														<th scope="col">제목</th>
+														<th scope="col">등록일</th>
+													</tr>
+												</thead>
+												<tbody id="allBody">
+													<c:forEach items="${supportlist}" var="vo">
+														<tr class="noticeRow">	
+															<td class="seq"><span class="noticeSeq">${vo.notice_type}<span></span></span></td>
+															<td class="title noticeTitle">		<a href="support_detail?notice_num=${vo.notice_num}">${vo.title}</a>	</td>
+															<td class="indDate">${vo.notice_date}</td>
+														</tr>
+													</c:forEach>
+												</tbody>
+											</table>
+										</div>
+										<div role="tabpanel" class="tab-pane fade" id="eventTab">
+											<table class="table table-hover">
+												<colgroup>
+													<col width="15%">
+													<col width="*">
+													<col width="15%">
+												</colgroup>
+												<thead style="display: none;">
+													<tr>
+														<th scope="col">순번</th>
+														<th scope="col">제목</th>
+														<th scope="col">등록일</th>
+													</tr>
+												</thead>
+												<tbody id="eventBody">
+													<c:forEach items="${supportlist2}" var="vo">
+														<tr class="noticeRow">	
+															<td class="seq"><span class="noticeSeq">${vo.notice_type}<span></span></span></td>
+															<td class="title noticeTitle">		<a href="support_detail?notice_num=${vo.notice_num}">${vo.title}</a>	</td>
+															<td class="indDate">${vo.notice_date}</td>
+														</tr>
+													</c:forEach>
+												</tbody>
+											</table>
+										</div>
+										<div role="tabpanel" class="tab-pane fade" id="mngmntTab">
+											<table class="table table-hover">
+												<colgroup>
+													<col width="15%">
+													<col width="*">
+													<col width="15%">
+												</colgroup>
+												<thead style="display: none;">
+													<tr>
+														<th scope="col">순번</th>
+														<th scope="col">제목</th>
+														<th scope="col">등록일</th>
+													</tr>
+												</thead>
+												<tbody id="mngmntBody">
+													<c:forEach items="${supportlist3}" var="vo">
+														<tr class="noticeRow">	
+															<td class="seq"><span class="noticeSeq">${vo.notice_type}<span></span></span></td>
+															<td class="title noticeTitle">		<a href="support_detail?notice_num=${vo.notice_num}">${vo.title}</a>	</td>
+															<td class="indDate">${vo.notice_date}</td>
+														</tr>
+													</c:forEach>
 												</tbody>
 											</table>
 										</div>
