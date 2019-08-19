@@ -10,7 +10,9 @@
 		FROM project_list p 
 		LEFT OUTER JOIN guarantee g 
 		ON p.project_num = g.project_num 
-		WHERE p.judge_status = 2
+		WHERE 	(p.ach_state != "상환완료" 
+		AND 	p.ach_state != "중도상환")
+		AND		p.judge_status = 2
 		ORDER BY p.regi_date DESC
 	</select>
 	
