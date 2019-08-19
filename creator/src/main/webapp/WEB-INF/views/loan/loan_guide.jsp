@@ -114,7 +114,7 @@
     letter-spacing: -0.2pt;
     /* text-shadow: 0px 0px 1px #777; */
 }
-.row {
+.roww {
     margin-right: -15px;
     margin-left: -15px;
     margin-bottom: 120px;
@@ -205,6 +205,7 @@ p {
     font-weight: 600;
     margin-left: auto;
     margin-right: auto;
+    margin-top: 250px;
     border: 2px solid #01C351;
 }
 .mr-angle div {
@@ -243,7 +244,7 @@ p {
 				<div class="loan_int_tit">대출 절차</div>
 			</div>
 			<div class="section-body">
-				<div class="row">
+				<div class="roww">
 					<div class="col-xs-6 col-sm-6 col-md-2 col-md-offset-1 procedure side">
 						<div class="step step-1">
 							<!-- 
@@ -310,7 +311,7 @@ p {
 <!-- 						</div> -->
 <!-- 					</span> -->
 <!-- 				</button>				 -->
-				<div class="loan_int_btn mr-green" id="loanReqBtn" style="width:300px; height: 36px; margin-left: 405px; margin-right: 250px; margin-top: -70px; font-size: 20px;">
+				<div class="loan_int_btn " id="loanReqBtn" style="width:300px; height: 36px; margin-left: 405px; margin-right: 250px; margin-top: -75px; font-size: 20px;">
 					대출신청<span class="mr-cap"></span>
 					<span class="mr-angle">
 						<div style="-webkit-transform: skew(30deg); line-height: 30px;"><p>&gt;</p></div>
@@ -342,26 +343,7 @@ p {
 	<!--script for this page-->
 	<script src="${pageContext.request.contextPath}/resources/bootstrap/lib/sparkline-chart.js"></script>
 	<script src="${pageContext.request.contextPath}/resources/bootstrap/lib/zabuto_calendar.js"></script>
-	<script type="text/javascript">
-    $(document).ready(function() {
-      var unique_id = $.gritter.add({
-        // (string | mandatory) the heading of the notification
-        title: 'Welcome to Dashio!',
-        // (string | mandatory) the text inside the notification
-        text: 'Hover me to enable the Close Button. You can hide the left sidebar clicking on the button next to the logo. Developed by <a href="http://alvarez.is" target="_blank" style="color:#4ECDC4">Alvarez.is</a>.',
-        // (string | optional) the image to display on the left
-        image: '${pageContext.request.contextPath}/resources/bootstrap/img/ui-sam.jpg',
-        // (bool | optional) if you want it to fade out on its own or just sit there
-        sticky: false,
-        // (int | optional) the time you want it to be alive for before fading out
-        time: 8000,
-        // (string | optional) the class name you want to apply to that specific message
-        class_name: 'my-sticky-class'
-      });
-
-      return false;
-    });
-	</script>
+	
 	<script type="application/javascript">
     $(document).ready(function() {
       $("#date-popover").popover({

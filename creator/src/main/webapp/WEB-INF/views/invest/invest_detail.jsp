@@ -2535,10 +2535,10 @@ $(document).ready(function() {
 		</div>
 		<div class="col-md-12 planCont" style="margin-bottom: 30px;">
 			<div class="md">
-				<img src="${pageContext.request.contextPath}/resources/img/img_invest_nmvbls_strctr2_l.png" class="img-responsive" style="margin: 30px auto;">
+				<img src="${pageContext.request.contextPath}/resources/invest_ii.png" class="img-responsive" style="margin: 30px auto;">
 			</div>
 			<div class="xd">
-				<img src="${pageContext.request.contextPath}/resources/img/img_invest_nmvbls_strctr2_s.png" class="img-responsive" style="margin: 30px auto;">
+				<img src="${pageContext.request.contextPath}/resources/invest_ii.png" class="img-responsive" style="margin: 30px auto;">
 			</div>
 		</div>
 	</div>
@@ -2969,8 +2969,8 @@ $(document).ready(function() {
 								</div>
 								<div class="row">
 									<div class="col-xs-12 col-sm-12 col-md-12">
-										<div class="notice">
-											<div class="title">투자시 위험안내</div>
+										<div class="notice" style="margin-bottom: 100px;">
+											<div class="title" style="color: red; font-size: 20px">@투자시 위험안내@</div>
 											<div class="text">creator는 원금과 수익률을 보장하지 않으며 투자 손실의 가능성이 있습니다. 엄격한 차입자 신용 평가와 금리 산정으로 평균 수익률 연 8%를 목표로 합니다.</div>
 										</div>
 									</div>

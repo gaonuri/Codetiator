@@ -528,8 +528,8 @@
 												<div class="section-subtitle-line">
 													<b>|</b>&nbsp;&nbsp;&nbsp;구도
 												</div>
-												<div class="tab01_3_1">
-													<img src="${pageContext.request.contextPath}/resources/img/img_aboutus_tab01_3_1.png" class="img-responsive center-block">
+												<div class="tab01_3_1" style="width: 300px; height: auto; margin-left: 250px;">
+													<img src="${pageContext.request.contextPath}/resources/infotree.png" class="img-responsive center-block">
 												</div>
 												
 												<div class="">
