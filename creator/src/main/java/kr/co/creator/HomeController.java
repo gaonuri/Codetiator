@@ -21,11 +21,11 @@ public class HomeController {
 	@Autowired
 	SqlSession sqlSession;
 	
-	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String home() {
-		logger.info("main");
+	
+	public void home() {
+		sqlSession.commit();
 				
-		return "main";
+		
 	}//main
 	
 	@RequestMapping(value = "/datetest", method = RequestMethod.GET)
@@ -33,10 +33,15 @@ public class HomeController {
 		logger.info("dateTest");
 		
 		List<ProjectVO> list = sqlSession.selectList("TestSelectMapper.investList");
+		if(list.add(proVO)&& list.add(proVO)) {
+			
+		}
 		proVO = sqlSession.selectOne("TestSelectMapper.projectDetail", proVO);
 		model.addAttribute("projectList", list);
 		model.addAttribute("proVO", proVO);
 		
 		return "datetest";
 	}//dateTest
+	
+	
 }
