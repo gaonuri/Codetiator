@@ -579,9 +579,9 @@ $(document).ready(function() {
 			</section>
 		</div>  <!--cont01 E--> 
 		<div id="cont02" class="invIntcont02">  <!--cont02 S-->
+			<h3 class="inv_int_tit titLine_w">투자상품유형</h3>
+				<div style="height: 900px;">
 			<section id="inv_int_02">
-				<h3 class="inv_int_tit titLine_w">투자상품유형</h3>
-				<div style="height: 856.734px;">
 					<ul class="investIconSet">
 						<li class="col-xs-6 col-sm-6 col-md-3">
 							<a href="#tab_01" class="tab on" id="a_tab1">
@@ -813,8 +813,8 @@ $(document).ready(function() {
 							</div>
 						</div>
 					</div>
-				</div>
 			</section>
+				</div>
 		</div> <!--cont02 E-->
 	</div>
 	    <!-- /MAIN CONTENT -->
