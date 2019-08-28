@@ -852,7 +852,7 @@ small, .small {
 									<div class="item-bottom-text">
 										<div class="row">
 											<div class="col-xs-6">
-												<h5>${vo.img}</h5>
+												<h5>${vo.img_path}</h5>
 											</div>
 										</div>
 										<h4 style="text-align:center;">[${vo.genre}] ${vo.project_name}</h4>
