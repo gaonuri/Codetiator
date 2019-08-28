@@ -7,15 +7,15 @@
 <script src="${pageContext.request.contextPath}/resources/ckeditor/ckeditor.js"></script>
 
   <meta charset="utf-8">
-  <title>Marco - Bootstrap Agency Template</title>
+  <title>CREATOR</title>
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <meta content="" name="keywords">
   <meta content="" name="description">
 
 
   <!-- Favicons -->
-  <link href="${pageContext.request.contextPath}/resources/bootstrap/img/test_logo.jpg" rel="icon">
-  <link href="${pageContext.request.contextPath}/resources/bootstrap/img/test_logo.jpg" rel="apple-touch-icon">
+	<link href="${pageContext.request.contextPath}/resources/headerlogo.png" rel="icon">
+	<link href="${pageContext.request.contextPath}/resources/headerlogo.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Ruda:400,900,700" rel="stylesheet">
