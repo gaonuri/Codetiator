@@ -9,12 +9,11 @@
 	<meta name="description" content="">
 	<meta name="author" content="Dashboard">
 	<meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
-	<title>Dashio - Bootstrap Admin Template</title>
-	
+	<title>CREATOR</title>	
 	
 	<!-- Favicons -->
-	<link href="${pageContext.request.contextPath}/resources/bootstrap/img/favicon.png" rel="icon">
-	<link href="${pageContext.request.contextPath}/resources/bootstrap/img/apple-touch-icon.png" rel="apple-touch-icon">
+	<link href="${pageContext.request.contextPath}/resources/headerlogo.png" rel="icon">
+	<link href="${pageContext.request.contextPath}/resources/headerlogo.png" rel="apple-touch-icon">
 	
 	<!-- Bootstrap core CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
