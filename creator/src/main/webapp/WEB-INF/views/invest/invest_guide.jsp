@@ -9,12 +9,12 @@
 	<meta name="description" content="">
 	<meta name="author" content="Dashboard">
 	<meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
-	<title>Dashio - Bootstrap Admin Template</title>
+	<title>CREATOR</title>
 	<script src="${pageContext.request.contextPath}/resources/jquery/jquery-3.4.1.js"></script>
 	
 	<!-- Favicons -->
-	<link href="${pageContext.request.contextPath}/resources/bootstrap/img/favicon.png" rel="icon">
-	<link href="${pageContext.request.contextPath}/resources/bootstrap/img/apple-touch-icon.png" rel="apple-touch-icon">
+	<link href="${pageContext.request.contextPath}/resources/headerlogo.png" rel="icon">
+	<link href="${pageContext.request.contextPath}/resources/headerlogo.png" rel="apple-touch-icon">
 	
 	<!-- Bootstrap core CSS -->
 	<link href="${pageContext.request.contextPath}/resources/bootstrap/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -578,11 +578,10 @@ $(document).ready(function() {
 				</div>
 			</section>
 		</div>  <!--cont01 E--> 
-
 		<div id="cont02" class="invIntcont02">  <!--cont02 S-->
+			<h3 class="inv_int_tit titLine_w">투자상품유형</h3>
+				<div style="height: 900px;">
 			<section id="inv_int_02">
-				<h3 class="inv_int_tit titLine_w">투자상품유형</h3>
-				<div style="height: 856.734px;">
 					<ul class="investIconSet">
 						<li class="col-xs-6 col-sm-6 col-md-3">
 							<a href="#tab_01" class="tab on" id="a_tab1">
@@ -814,8 +813,8 @@ $(document).ready(function() {
 							</div>
 						</div>
 					</div>
-				</div>
 			</section>
+				</div>
 		</div> <!--cont02 E-->
 	</div>
 	    <!-- /MAIN CONTENT -->

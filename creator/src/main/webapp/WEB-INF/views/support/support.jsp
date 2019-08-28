@@ -9,11 +9,11 @@
 	<meta name="description" content="">
 	<meta name="author" content="Dashboard">
 	<meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
-	<title>Dashio - Bootstrap Admin Template</title>
+	<title>CREATOR</title>	
 	
 	<!-- Favicons -->
-	<link href="${pageContext.request.contextPath}/resources/bootstrap/img/favicon.png" rel="icon">
-	<link href="${pageContext.request.contextPath}/resources/bootstrap/img/apple-touch-icon.png" rel="apple-touch-icon">
+	<link href="${pageContext.request.contextPath}/resources/headerlogo.png" rel="icon">
+	<link href="${pageContext.request.contextPath}/resources/headerlogo.png" rel="apple-touch-icon">
 	
 	<!-- Bootstrap core CSS -->
 	<link href="${pageContext.request.contextPath}/resources/bootstrap/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -85,7 +85,6 @@ body{
 	width: 100%;
 	height: 430px;
 	color: #fff;
-<<<<<<< HEAD
 	background: url(${pageContext.request.contextPath}/resources/img/bgImg_investIntro.png)center 0% no-repeat;
 				/*
 				linear-gradient(120deg,  #712594, #9968fe, #ff5c5c, #a55cff, #712594);
@@ -531,263 +530,6 @@ body{
 													</tr>
 												</thead>
 												<tbody id="mngmntBody">
-=======
-	background: url(/images/common/common_banner_title.jpg)center 0% no-repeat;
-				/*
-				linear-gradient(120deg,  #712594, #9968fe, #ff5c5c, #a55cff, #712594);
-				*/
-	background-size: 100%;/*100% 110%, 600% 100%;
-	-webkit-animation: Gradient 100s ease normal;
-	-moz-animation: Gradient 100s ease normal;
-	animation: Gradient 100s ease normal;
-	*/
-	-webkit-background-size: cover; 
-	-moz-background-size: cover; 
-	-o-background-size: cover;
-	background-attachment: fixed;
-	
-	
-}
-/*
-@-webkit-keyframes Gradient {
-	0% {
-		background-position: 0% 50%
-	}
-	50% {
-		background-position: 100% 50%
-	}
-	100% {
-		background-position: 0% 50%
-	}
-}
-
-@-moz-keyframes Gradient {
-	0% {
-		background-position: 0% 50%
-	}
-	50% {
-		background-position: 100% 50%
-	}
-	100% {
-		background-position: 0% 50%
-	}
-}
-
-@keyframes Gradient {
-	0% {
-		background-position: 0% 50%
-	}
-	50% {
-		background-position: 100% 50%
-	}
-	100% {
-		background-position: 0% 50%
-	}
-}
-*/
-
-/* Banner Style */
-
-#notice-banner{
-	position: relative;
-	overflow: hidden;
-	/*  그라데이션 백그라운드 테스트용
-	background: url(/images/common/common_banner_title.jpg) center 0% no-repeat;
-	background-color:#712594;
-	background-size: 100%;
-	-webkit-background-size: cover; 
-	-moz-background-size: cover; 
-	-o-background-size: cover;
-	background-attachment: fixed;
-	*/
-	color: #fff;
-}
-
-@media (max-width: 767px) {
-	#notice-banner{
-		height: 347px;
-	}
-}
-
-#notice-banner .section-body{
-	color: #fff;
-	position: relative;
-	padding: 200px 20px 0px 20px;
-}
-
-@media (max-width: 767px) {
-	#notice-banner .section-body{
-		padding: 160px 20px 0px 20px;
-	}
-}
-
-#notice-banner .notice-title{
-	font-size:26pt;
-	line-height:1.2;
-	text-shadow:2px 2px 2px #555;
-	
-	
-}
-
-@media (max-width: 767px) {
-	#notice-banner .notice-title{
-		font-size:21pt;
-		line-height:1.2;
-		text-shadow:2px 2px 2px #555;
-	}
-}
-
-#board .section-body .wrap {
-	padding: 50px 0 111px 0;
-}
-@media (max-width: 767px) {
-	#board .section-body .wrap {
-		padding: 5px;
-	}
-}
-
-#board .section-body .wrap .box {
-	border-color: #d9d9de;
-	border-style: solid;
-	border-width: 1px;
-	border-radius: 4px;
-	padding: 20px 40px;
-	background-color: #fff;
-	font-size: 14px;
-}
-
-@media (max-width: 767px) {
-	#board .section-body .wrap .box {
-		padding: 5px;
-	}
-}
-
-#board .section-body .wrap .box .title {
-	font-size: 14px;
-	font-weight: normal;
-}
-
-#board .section-body .wrap .box .title a {
-	color: #5a5a5a;
-}
-
-#board .section-body .wrap .box .noticeRow {
-	background-color: #fafafa;
-	font-weight: bold;
-}
-
-#board .section-body .wrap .box .noticeSeq {
-	border-style: none;
-	background-color: #712594;
-	border-radius: 2px;
-	color: #fff;
-	padding: 5px;
-	font-size: 12px;
-}
-
-#board .section-body .wrap .box th {
-	text-align: center;
-	padding: 5px;
-}
-
-#board .section-body .wrap .box .seq {
-	text-align: center;
-	font-weight: bold;
-	color: #712594;
-}
-
-#board .section-body .wrap .box .readCnt {
-	text-align: center;
-}
-
-#board .section-body .wrap .box .indDate {
-	text-align: center;
-}
-
-@media (max-width: 767px) {
-	#board .section-body .wrap .box .seq {
-		/*display: none;*/
-		font-size: 12px;
-	}
-	#board .section-body .wrap .box .noticeSeq {
-		padding: 2px;
-		font-size: 10px;
-	}
-	#board .section-body .wrap .box .title a {
-		font-size: 12px;
-	}
-	#board .section-body .wrap .box .readCnt {
-		font-size: 12px;
-	}
-	#board .section-body .wrap .box .indDate {
-		/*display: none;*/
-		font-size: 12px;
-	}
-}
-
-#board .section-body .wrap .box .hrTop {
-	margin-top: 5px;
-	margin-bottom: 20px;
-}
-
-#board .section-body .wrap .box .detTitle {
-	font-size: 18px;
-	font-weight: bold;
-}
-
-#board .section-body .wrap .box .detInsNm {
-	font-size: 12px;
-}
-
-#board .section-body .wrap .box .detInsDate {
-	font-size: 12px;
-	color: #8c8c8c;
-}
-
-#board .section-body .wrap .box .detContent {
-	padding: 5px;
-}
-
-#board .section-body .wrap .box .detContent img{
-	max-width: 100%;
-	height: auto;
-}
-
-#board .section-body .wrap .box .button {
-	text-align: center;
-}
-
-@media (max-width: 767px) {
-	#board .section-body .wrap .box .detTitle {
-		font-size: 14px;
-	}
-	#board .section-body .wrap .box .detContent {
-		font-size: 12px;
-	}
-	#board .section-body .wrap .box .button button {
-		font-size: 12px;
-	}
-}
-
-.board_view {border-bottom:1px solid #ccc;width: 100%}
-.board_view tbody th {text-align:left;background:#f7f7f7;color:#3b3a3a}
-.board_view tbody th.list_tit {font-size:13px;color:#000;letter-spacing:0.1px}
-.board_view tbody .no_line_b th, .board_view tbody .no_line_b td {border-bottom:none}
-.board_view tbody th, .board_view tbody td {padding:15px 0 16px 16px;border-bottom:1px solid #ccc}
-.board_view tbody td.view_text {border-top:1px solid #ccc; border-bottom:1px solid #ccc;padding:20px 15px 20px 15px}
-.board_view tbody th.th_file {padding:0 0 0 15px; vertical-align:middle}
-
-
-.nav-tabs > li > a {
-	
-}
-/* xd �쟻�슜�떆 */
-@media (max-width: 767px) {
-	.nav-tabs > li > a {
-		padding: 5px 10px;
-		font-size: 12px;
-	}
-}
 </style>
 
 <body>
@@ -910,7 +652,6 @@ body{
 															<td class="indDate">${vo.notice_date}</td>
 														</tr>
 													</c:forEach>
->>>>>>> branch 'master' of https://github.com/gaonuri/Codetiator.git
 												</tbody>
 											</table>
 										</div>

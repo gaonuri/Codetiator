@@ -9,12 +9,12 @@
 	<meta name="description" content="">
 	<meta name="author" content="Dashboard">
 	<meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
-	<title>Dashio - Bootstrap Admin Template</title>
+	<title>CREATOR</title>
 	<script src="${pageContext.request.contextPath}/resources/jquery/jquery-3.4.1.js"></script>
 	
 	<!-- Favicons -->
-	<link href="${pageContext.request.contextPath}/resources/bootstrap/img/favicon.png" rel="icon">
-	<link href="${pageContext.request.contextPath}/resources/bootstrap/img/apple-touch-icon.png" rel="apple-touch-icon">
+	<link href="${pageContext.request.contextPath}/resources/headerlogo.png" rel="icon">
+	<link href="${pageContext.request.contextPath}/resources/headerlogo.png" rel="apple-touch-icon">
 	
 	<!-- Bootstrap core CSS -->
 	<link href="${pageContext.request.contextPath}/resources/bootstrap/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -833,7 +833,7 @@ small, .small {
 										</div>
 									</a>
 									<div class="item-top-badge">
-<%-- 										<span class="label label-primary">LTV <span>${proVO.price / guaVO.connoisseur * 100}</span>%</span> --%>
+										<span class="label label-primary">LTV <span>${proVO.price / guaVO.connoisseur * 100}</span>%</span>
 									</div>
 									<div class="item-top-badge text-right">
 										<span class="label label-primary animated infinite flash">${vo.ach_state}</span>
@@ -846,15 +846,15 @@ small, .small {
 	<!-- 									<span>자동투자 100%</span> -->
 	<!-- 								</div> -->
 <%-- 									<img src="${pageContext.request.contextPath}/resources/img/overwatch.jpg"> --%>
-										<img alt="/${vo.img_path}" src="/${vo.img_path}" />
+										<img alt="${pageContext.request.contextPath}/${vo.img_path}" src="${pageContext.request.contextPath}/${vo.img_path}" />
 								</div>
 								<div class="item-bottom">
 									<div class="item-bottom-text">
-										<div class="row">
-											<div class="col-xs-6">
-												<h5>${vo.img}</h5>
-											</div>
-										</div>
+<!-- 										<div class="row"> -->
+<!-- 											<div class="col-xs-6"> -->
+<%-- 												<h5>${vo.img_path}</h5> --%>
+<!-- 											</div>s -->
+<!-- 										</div> -->
 										<h4 style="text-align:center;">[${vo.genre}] ${vo.project_name}</h4>
 										<div class="progress">
 											<div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="${vo.current_price / vo.price * 100}" aria-valuemin="0" aria-valuemax="100" style="min-width:20px; width:47%">

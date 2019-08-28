@@ -112,9 +112,9 @@ public class InvestController {
 		return "invest/invest_detail_old";
 	}//invest_detail_old
 	
-	@RequestMapping(value = "/invest_detail_new", method = RequestMethod.GET)
-	public String invest_detail_new(Model model, HttpSession session, ProjectVO proVO, GuaranteeVO guaVO, InvestVO inVO) {
-		logger.info("invest_detail_new");
+	@RequestMapping(value = "/invest_detail2", method = RequestMethod.GET)
+	public String invest_detail2(Model model, HttpSession session, ProjectVO proVO, GuaranteeVO guaVO, InvestVO inVO) {
+		logger.info("invest_detail2");
 		
 		proVO = investService.project_detail(proVO);
 		guaVO = investService.guarantee_detail(guaVO);
@@ -124,7 +124,7 @@ public class InvestController {
 		model.addAttribute("guaVO", guaVO);
 		session.setAttribute("inVO", inVO);
 		
-		return "invest/invest_detail_new";
+		return "invest/invest_detail2";
 	}//invest_detail_new
 	
 	@RequestMapping(value = "/invest", method = RequestMethod.GET)
