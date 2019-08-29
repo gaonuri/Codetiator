@@ -9,12 +9,12 @@
 	<meta name="description" content="">
 	<meta name="author" content="Dashboard">
 	<meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
-	<title>Dashio - Bootstrap Admin Template</title>
+	<title>CREATOR</title>
 	<script src="${pageContext.request.contextPath}/resources/jquery/jquery-3.4.1.js"></script>
 	
 	<!-- Favicons -->
-	<link href="${pageContext.request.contextPath}/resources/bootstrap/img/favicon.png" rel="icon">
-	<link href="${pageContext.request.contextPath}/resources/bootstrap/img/apple-touch-icon.png" rel="apple-touch-icon">
+	<link href="${pageContext.request.contextPath}/resources/headerlogo.png" rel="icon">
+	<link href="${pageContext.request.contextPath}/resources/headerlogo.png" rel="apple-touch-icon">
 	
 	<!-- Bootstrap core CSS -->
 	<link href="${pageContext.request.contextPath}/resources/bootstrap/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -1183,7 +1183,7 @@ form {
 										<div class="hover-button"></div>
 									</div>
 <%-- 									<img src="${pageContext.request.contextPath}/resources/img/overwatch.jpg"> --%>
-										<img alt="/${vo.img_path}" src="/${vo.img_path}" />
+										<img alt="${pageContext.request.contextPath}/${vo.img_path}" src="${pageContext.request.contextPath}/${vo.img_path}" />
 								</a>
 								<div class="item-top-badge">
 									<span class="label label-primary">LTV ${(proVO.price / guaVO.connoisseur) * 100}%</span>

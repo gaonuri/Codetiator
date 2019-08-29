@@ -9,12 +9,11 @@
 	<meta name="description" content="">
 	<meta name="author" content="Dashboard">
 	<meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
-	<title>Dashio - Bootstrap Admin Template</title>
-	
+	<title>CREATOR</title>	
 	
 	<!-- Favicons -->
-	<link href="${pageContext.request.contextPath}/resources/bootstrap/img/favicon.png" rel="icon">
-	<link href="${pageContext.request.contextPath}/resources/bootstrap/img/apple-touch-icon.png" rel="apple-touch-icon">
+	<link href="${pageContext.request.contextPath}/resources/headerlogo.png" rel="icon">
+	<link href="${pageContext.request.contextPath}/resources/headerlogo.png" rel="apple-touch-icon">
 	
 	<!-- Bootstrap core CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
@@ -48,20 +47,7 @@
 			location.href = "${pageContext.request.contextPath}/my_modify";
 		});//click
 	});//ready
-	
-<<<<<<< HEAD
 </script>  
-=======
-	$(document).ready(function() {
-		$("#userDataUpdatee").change(function() {
-			$("#btn_certt").modal(); 
-			return;
-		});
-	});
-	
-</script>   
-
->>>>>>> branch 'master' of https://github.com/gaonuri/Codetiator.git
 <script type="text/javascript">
 	$(document).ready(function(){
 		$(".onlyPass").change(function(){
@@ -785,7 +771,7 @@
 														</tr>
 													</tbody></table>
 													<div class="autoConditionSet">
-														<button type="button" class="btn btn-purple-transparent btn-block" id="updateCusAccountBtn">예치금 계좌 발급</button>
+														<button type="button" class="btn btn-purple-transparent btn-block" id="updateCusAccountBtn">예치금 계좌 (재)발급</button>
 													</div>
 												</div>
 											</div>
@@ -1083,7 +1069,7 @@
 #mypage-banner {
     position: relative;
     overflow: hidden;
-    background: url(${pageContext.request.contextPath}/resources/img/banner_bg_nmvbls.png) center 0% no-repeat;
+    background: url(${pageContext.request.contextPath}/resources/img/bgImg_investIntro.png) center 0% no-repeat;
     background-size: 100%;
     -webkit-background-size: cover;
     -moz-background-size: cover;

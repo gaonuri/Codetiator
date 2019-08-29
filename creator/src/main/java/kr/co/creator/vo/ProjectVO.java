@@ -42,6 +42,20 @@ public class ProjectVO {
 	private String deadline;			// 남은기간
 	private String refund_due_date;		// 상환예정일
 	private String refund_end;			// 상환완료일
+	private String ad_price;			// 광고금액
+	private String ad_grade;			// 광고등급
+	public String getAd_price() {
+		return ad_price;
+	}
+	public void setAd_price(String ad_price) {
+		this.ad_price = ad_price;
+	}
+	public String getAd_grade() {
+		return ad_grade;
+	}
+	public void setAd_grade(String ad_grade) {
+		this.ad_grade = ad_grade;
+	}
 	private String guarantee_type;		// 담보유형(부동산, 동산)
 	private String object_type;			// 물건유형(아파트, 연립주택)
 	private String loan_count;			// 투자받은횟수

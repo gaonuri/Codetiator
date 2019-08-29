@@ -9,11 +9,11 @@
 	<meta name="description" content="">
 	<meta name="author" content="Dashboard">
 	<meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
-	<title>Dashio - Bootstrap Admin Template</title>
+	<title>CREATOR</title>
 	<script src="../resources/jquery/jquery-3.4.1.js"></script>
 	<!-- Favicons -->
-	<link href="${pageContext.request.contextPath}/resources/bootstrap/img/favicon.png" rel="icon">
-	<link href="${pageContext.request.contextPath}/resources/bootstrap/img/apple-touch-icon.png" rel="apple-touch-icon">
+	<link href="${pageContext.request.contextPath}/resources/headerlogo.png" rel="icon">
+	<link href="${pageContext.request.contextPath}/resources/headerlogo.png" rel="apple-touch-icon">
 	
 	<!-- Bootstrap core CSS -->
 	<link href="${pageContext.request.contextPath}/resources/bootstrap/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -109,12 +109,12 @@
     font-weight: 500;
     color: #333;
     margin-top: 70px;
-    margin-bottom: 45px;
+    margin-bottom: -45px;
     text-align: center;
     letter-spacing: -0.2pt;
     /* text-shadow: 0px 0px 1px #777; */
 }
-.row {
+.roww {
     margin-right: -15px;
     margin-left: -15px;
     margin-bottom: 120px;
@@ -160,7 +160,7 @@ strong {
     font-weight: bold;
 }
 .number {
-    display: none;
+    color: #9932CC;
 }
 .mainTop_btn {
     width: 26%;
@@ -205,6 +205,7 @@ p {
     font-weight: 600;
     margin-left: auto;
     margin-right: auto;
+    margin-top: 100px;
     border: 2px solid #01C351;
 }
 .mr-angle div {
@@ -243,7 +244,7 @@ p {
 				<div class="loan_int_tit">대출 절차</div>
 			</div>
 			<div class="section-body">
-				<div class="row">
+				<div class="roww">
 					<div class="col-xs-6 col-sm-6 col-md-2 col-md-offset-1 procedure side">
 						<div class="step step-1">
 							<!-- 
@@ -254,7 +255,7 @@ p {
 						<div class="arrow">
 							<img src="${pageContext.request.contextPath}/resources/img//img_next.png">
 						</div>
-						<h4><strong><span class="number">1.&nbsp;</span>대출 신청</strong></h4>
+						<h4><span class="number"><strong>1.&nbsp;대출 신청</strong></span></h4>
 					</div>
 					<div class="col-xs-6 col-sm-6 col-md-2 procedure">
 						<div class="step step-2">
@@ -263,7 +264,7 @@ p {
 							-->
 							<img src="${pageContext.request.contextPath}/resources/img/img_loan_process_02.png">
 						</div>
-						<h4><strong><span class="number">2.&nbsp;</span>추가정보</strong></h4>
+						<h4><span class="number"><strong>2.&nbsp;추가정보</strong></span></h4>
 						<div class="arrow pc">
 							<img src="${pageContext.request.contextPath}/resources/img/img_next.png">
 						</div>
@@ -275,7 +276,7 @@ p {
 							-->
 							<img src="${pageContext.request.contextPath}/resources/img/img_loan_process_03.png">
 						</div>
-						<h4><strong><span class="number">3.&nbsp;</span>서류심사</strong></h4>
+						<h4><span class="number"><strong>3.&nbsp;서류심사</strong></span></h4>
 						<div class="arrow">
 							<img src="${pageContext.request.contextPath}/resources/img/img_next.png">
 						</div>
@@ -287,7 +288,7 @@ p {
 							-->
 							<img src="${pageContext.request.contextPath}/resources/img/img_loan_process_04.png">
 						</div>
-						<h4><strong><span class="number">4.&nbsp;</span>상품오픈</strong></h4>
+						<h4><span class="number"><strong>4.&nbsp;상품오픈</strong></span></h4>
 						<div class="arrow">
 							<img src="${pageContext.request.contextPath}/resources/img/img_next.png">
 						</div>
@@ -299,25 +300,24 @@ p {
 							-->
 							<img src="${pageContext.request.contextPath}/resources/img/img_loan_process_05.png">
 						</div>
-						<h4><strong><span class="number">5.&nbsp;</span>대출 실행</strong></h4>
+						<h4><span class="number"><strong>5.&nbsp;대출 실행</strong></span></h4>
 					</div>
 				</div>
-<!-- 				<button class="loan_int_btn mr-green" id="loanReqBtn" style="width:200px; height: 36px; margin-left: 248px; margin-right: 248px;"> -->
-<!-- 					대출신청<span class="mr-cap"></span> -->
+<!-- 				<div class="loan_int_btn " id="loanReqBtn" style="color: #fff; width:300px; height: 36px; margin-left: 405px; margin-right: 250px; margin-top: -75px; font-size: 20px;"> -->
+<!-- 					대출신청<span class="mr-cap mr-green" style="background-color:#01C351"></span> -->
 <!-- 					<span class="mr-angle"> -->
-<!-- 						<div> -->
-<!-- 							<p class="botn">&gt;</p> -->
-<!-- 						</div> -->
-<!-- 					</span> -->
-<!-- 				</button>				 -->
-				<div class="loan_int_btn mr-green" id="loanReqBtn" style="width:300px; height: 36px; margin-left: 405px; margin-right: 250px; margin-top: -70px; font-size: 20px;">
-					대출신청<span class="mr-cap"></span>
-					<span class="mr-angle">
-						<div style="-webkit-transform: skew(30deg); line-height: 30px;"><p>&gt;</p></div>
-					</span>	
-				</div>
+<!-- 						<div style="-webkit-transform: skew(30deg); line-height: 30px;"><p>&gt;</p></div> -->
+<!-- 					</span>	 -->
+<!-- 				</div> -->
 			</div>
 		</div>
+		<button class="loan_int_btn mr-green" id="loanReqBtn" style="font-size:18px; color:#fff; background-color: #01C351;
+						 width:300px; height: 36px; margin-left: 615px; margin-right: 250px; ">
+			대출신청<span class="mr-cap"></span>
+			<span class="mr-angle">
+				<div style="-webkit-transform: skew(30deg); line-height: 30px;"><p>&gt;</p></div>
+			</span>
+		</button>
 	</section>
 	    <!-- /MAIN CONTENT -->
 	    <!--main content end-->
@@ -342,26 +342,7 @@ p {
 	<!--script for this page-->
 	<script src="${pageContext.request.contextPath}/resources/bootstrap/lib/sparkline-chart.js"></script>
 	<script src="${pageContext.request.contextPath}/resources/bootstrap/lib/zabuto_calendar.js"></script>
-	<script type="text/javascript">
-    $(document).ready(function() {
-      var unique_id = $.gritter.add({
-        // (string | mandatory) the heading of the notification
-        title: 'Welcome to Dashio!',
-        // (string | mandatory) the text inside the notification
-        text: 'Hover me to enable the Close Button. You can hide the left sidebar clicking on the button next to the logo. Developed by <a href="http://alvarez.is" target="_blank" style="color:#4ECDC4">Alvarez.is</a>.',
-        // (string | optional) the image to display on the left
-        image: '${pageContext.request.contextPath}/resources/bootstrap/img/ui-sam.jpg',
-        // (bool | optional) if you want it to fade out on its own or just sit there
-        sticky: false,
-        // (int | optional) the time you want it to be alive for before fading out
-        time: 8000,
-        // (string | optional) the class name you want to apply to that specific message
-        class_name: 'my-sticky-class'
-      });
-
-      return false;
-    });
-	</script>
+	
 	<script type="application/javascript">
     $(document).ready(function() {
       $("#date-popover").popover({
