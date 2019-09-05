@@ -584,6 +584,11 @@ public class MypageController {
 		out.flush();
 		out.close();	
 	}//deleteBusi
-
+	
+	@RequestMapping(value = "/test", method = RequestMethod.GET)
+	public String test(Model model) throws Exception {
+		System.out.println("testpage");
+    	return "mypage/test";
+    }
 	
 }//class
