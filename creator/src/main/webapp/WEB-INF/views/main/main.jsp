@@ -846,11 +846,11 @@ small, .small {
 	<!-- 									<span>자동투자 100%</span> -->
 	<!-- 								</div> -->
 <%-- 									<img src="${pageContext.request.contextPath}/resources/img/overwatch.jpg"> --%>
-<<<<<<< HEAD
+
 										<img alt="/${vo.img_path}" src="${pageContext.request.contextPath}/${vo.img_path}" />
-=======
+
 										<img alt="${pageContext.request.contextPath}/${vo.img_path}" src="${pageContext.request.contextPath}/${vo.img_path}" />
->>>>>>> branch 'master' of https://github.com/gaonuri/Codetiator.git
+
 								</div>
 								<div class="item-bottom">
 									<div class="item-bottom-text">
