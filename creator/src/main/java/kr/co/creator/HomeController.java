@@ -24,8 +24,6 @@ public class HomeController {
 	
 	public void home() {
 		sqlSession.commit();
-				
-		
 	}//main
 	
 	@RequestMapping(value = "/datetest", method = RequestMethod.GET)

@@ -48,7 +48,7 @@ public class InvestDAO {
 	}//invest_calc
 
 	public InvestVO invest_detail(InvestVO inVO) {
-		System.out.println("DAO11111111111111111 : " + inVO);
+		System.out.println("DAO11111111111111111 : " + inVO.getUser_num() + inVO.getBusi_num());
 		inVO = sqlSession.selectOne("InvestMapper.investDetail", inVO);
 		System.out.println("DAO22222222222222222 : " + inVO);
 		

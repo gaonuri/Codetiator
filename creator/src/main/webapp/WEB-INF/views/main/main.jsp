@@ -9,12 +9,12 @@
 	<meta name="description" content="">
 	<meta name="author" content="Dashboard">
 	<meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
-	<title>Dashio - Bootstrap Admin Template</title>
+	<title>CREATOR</title>
 	<script src="${pageContext.request.contextPath}/resources/jquery/jquery-3.4.1.js"></script>
 	
 	<!-- Favicons -->
-	<link href="${pageContext.request.contextPath}/resources/bootstrap/img/favicon.png" rel="icon">
-	<link href="${pageContext.request.contextPath}/resources/bootstrap/img/apple-touch-icon.png" rel="apple-touch-icon">
+	<link href="${pageContext.request.contextPath}/resources/headerlogo.png" rel="icon">
+	<link href="${pageContext.request.contextPath}/resources/headerlogo.png" rel="apple-touch-icon">
 	
 	<!-- Bootstrap core CSS -->
 	<link href="${pageContext.request.contextPath}/resources/bootstrap/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -746,7 +746,7 @@ small, .small {
 			<div id="video_bg" style="position: relative;">
 				<div style="position: absolute; z-index: -1; top: 0px; left: 0px; bottom: 0px; right: 0px; overflow: hidden; background-size: cover; background-color: transparent; background-repeat: no-repeat; background-position: 50% 50%; background-image: none;">
 					<video autoplay loop muted="100" style="margin: auto; position: absolute; z-index: -1; top: 50%; left: 50%; transform: translate(-50%, -50%); visibility: visible; opacity: 1; width: auto; height: auto;">
-						<source src="${pageContext.request.contextPath}/resources/video/overwatch.mp4" type="video/mp4">
+						<source src="${pageContext.request.contextPath}/resources/starcraft.mp4" type="video/mp4">
 					</video>
 				</div>
 		
@@ -846,19 +846,25 @@ small, .small {
 	<!-- 									<span>자동투자 100%</span> -->
 	<!-- 								</div> -->
 <%-- 									<img src="${pageContext.request.contextPath}/resources/img/overwatch.jpg"> --%>
+<<<<<<< HEAD
 
 										<img alt="/${vo.img_path}" src="${pageContext.request.contextPath}/${vo.img_path}" />
 
+=======
+>>>>>>> branch 'master' of https://github.com/gaonuri/Codetiator.git
 										<img alt="${pageContext.request.contextPath}/${vo.img_path}" src="${pageContext.request.contextPath}/${vo.img_path}" />
+<<<<<<< HEAD
 
+=======
+>>>>>>> branch 'master' of https://github.com/gaonuri/Codetiator.git
 								</div>
 								<div class="item-bottom">
 									<div class="item-bottom-text">
-										<div class="row">
-											<div class="col-xs-6">
-												<h5>${vo.img}</h5>
-											</div>
-										</div>
+<!-- 										<div class="row"> -->
+<!-- 											<div class="col-xs-6"> -->
+<%-- 												<h5>${vo.img_path}</h5> --%>
+<!-- 											</div>s -->
+<!-- 										</div> -->
 										<h4 style="text-align:center;">[${vo.genre}] ${vo.project_name}</h4>
 										<div class="progress">
 											<div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="${vo.current_price / vo.price * 100}" aria-valuemin="0" aria-valuemax="100" style="min-width:20px; width:47%">
