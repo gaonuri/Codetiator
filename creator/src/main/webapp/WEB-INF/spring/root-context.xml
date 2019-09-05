@@ -16,6 +16,8 @@
 		<property name="url" value="jdbc:mysql://umj7-006.cafe24.com:3306/whitesky1203?serverTimezone=UTC" />
 		<property name="username" value="whitesky1203" />
 		<property name="password" value="zhdlxm12!" />
+		<property name="validationQuery" value="SELECT 1" />
+		<property name="testOnBorrow" value="true" />
 		<property name="initialSize" value="10" />
 		<property name="maxActive" value="100" />
 		<property name="maxIdle" value="30" />
