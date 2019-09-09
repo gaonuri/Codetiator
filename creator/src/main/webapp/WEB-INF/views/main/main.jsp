@@ -746,7 +746,7 @@ small, .small {
 			<div id="video_bg" style="position: relative;">
 				<div style="position: absolute; z-index: -1; top: 0px; left: 0px; bottom: 0px; right: 0px; overflow: hidden; background-size: cover; background-color: transparent; background-repeat: no-repeat; background-position: 50% 50%; background-image: none;">
 					<video autoplay loop muted="100" style="margin: auto; position: absolute; z-index: -1; top: 50%; left: 50%; transform: translate(-50%, -50%); visibility: visible; opacity: 1; width: auto; height: auto;">
-						<source src="${pageContext.request.contextPath}/resources/video/overwatch.mp4" type="video/mp4">
+						<source src="${pageContext.request.contextPath}/resources/starcraft.mp4" type="video/mp4">
 					</video>
 				</div>
 		
@@ -846,7 +846,17 @@ small, .small {
 	<!-- 									<span>자동투자 100%</span> -->
 	<!-- 								</div> -->
 <%-- 									<img src="${pageContext.request.contextPath}/resources/img/overwatch.jpg"> --%>
+<<<<<<< HEAD
+
+										<img alt="/${vo.img_path}" src="${pageContext.request.contextPath}/${vo.img_path}" />
+
+=======
+>>>>>>> branch 'master' of https://github.com/gaonuri/Codetiator.git
 										<img alt="${pageContext.request.contextPath}/${vo.img_path}" src="${pageContext.request.contextPath}/${vo.img_path}" />
+<<<<<<< HEAD
+
+=======
+>>>>>>> branch 'master' of https://github.com/gaonuri/Codetiator.git
 								</div>
 								<div class="item-bottom">
 									<div class="item-bottom-text">
