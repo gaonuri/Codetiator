@@ -838,10 +838,10 @@ small, .small {
 									<div class="item-top-badge text-right">
 										<span class="label label-primary animated infinite flash">${vo.ach_state}</span>
 									</div>
-									<div class="item-middle-badge">
-										<div style="display: inline-block;">${vo.project_name}</div>
-										<div style="display: inline-block;"></div>
-									</div>
+<!-- 									<div class="item-middle-badge"> -->
+<%-- 										<div style="display: inline-block;">${vo.project_name}</div> --%>
+<!-- 										<div style="display: inline-block;"></div> -->
+<!-- 									</div> -->
 	<!-- 								<div class="item-bottom-badge text-right"> -->
 	<!-- 									<span>자동투자 100%</span> -->
 	<!-- 								</div> -->
